@@ -9,6 +9,18 @@
 #endif
 
 #ifdef __OBJC__
-	#import <UIKit/UIKit.h>
-	#import <Foundation/Foundation.h>
+
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+
+#import "MBProgressHUD.h"
+#import "MTStatusBarOverlay.h"
+#import "SoundManager.h"
+
+#import "AppDelegate.h"
+#import "API.h"
+#import "DB.h"
+
+#pragma clang diagnostic ignored "-Wmissing-selector-name"
+
 #endif

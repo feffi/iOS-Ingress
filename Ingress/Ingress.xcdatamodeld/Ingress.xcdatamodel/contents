@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1811" systemVersion="12C3006" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="ControlField" representedClassName="ControlField" syncable="YES">
+        <attribute name="controllingTeam" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="entityScore" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="guid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="creator" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="createdControlFields" inverseEntity="User" syncable="YES"/>
+        <relationship name="portals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Portal" inverseName="vertexForControlFields" inverseEntity="Portal" syncable="YES"/>
+    </entity>
+    <entity name="DeployedMod" representedClassName="DeployedMod" syncable="YES">
+        <attribute name="slot" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="deployedMods" inverseEntity="User" syncable="YES"/>
+        <relationship name="portal" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Portal" inverseName="mods" inverseEntity="Portal" syncable="YES"/>
+    </entity>
+    <entity name="DeployedResonator" representedClassName="DeployedResonator" syncable="YES">
+        <attribute name="distanceToPortal" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="energy" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="maxEnergy" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="slot" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="deployedResonators" inverseEntity="User" syncable="YES"/>
+        <relationship name="portal" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Portal" inverseName="resonators" inverseEntity="Portal" syncable="YES"/>
+    </entity>
+    <entity name="DeployedShield" representedClassName="DeployedShield" parentEntity="DeployedMod" syncable="YES">
+        <attribute name="mitigation" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="rarity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="EnergyGlob" representedClassName="EnergyGlob" parentEntity="Item" syncable="YES"/>
+    <entity name="Item" representedClassName="Item" isAbstract="YES" syncable="YES">
+        <attribute name="dropped" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="guid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+    </entity>
+    <entity name="Media" representedClassName="Media" parentEntity="Item" syncable="YES">
+        <attribute name="imageData" optional="YES" transient="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Player" representedClassName="Player" parentEntity="User" syncable="YES">
+        <attribute name="ap" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="energy" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="level" optional="YES" transient="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="maxEnergy" optional="YES" transient="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="nextLevelAP" optional="YES" transient="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Portal" representedClassName="Portal" parentEntity="Item" syncable="YES">
+        <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="completeInfo" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="controllingTeam" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageData" optional="YES" transient="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
+        <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="capturedBy" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="capturedPortals" inverseEntity="User" syncable="YES"/>
+        <relationship name="destinationForLinks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PortalLink" inverseName="destinationPortal" inverseEntity="PortalLink" syncable="YES"/>
+        <relationship name="mods" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DeployedMod" inverseName="portal" inverseEntity="DeployedMod" syncable="YES"/>
+        <relationship name="originForLinks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PortalLink" inverseName="originPortal" inverseEntity="PortalLink" syncable="YES"/>
+        <relationship name="portalKeys" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PortalKey" inverseName="portal" inverseEntity="PortalKey" syncable="YES"/>
+        <relationship name="resonators" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DeployedResonator" inverseName="portal" inverseEntity="DeployedResonator" syncable="YES"/>
+        <relationship name="vertexForControlFields" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ControlField" inverseName="portals" inverseEntity="ControlField" syncable="YES"/>
+    </entity>
+    <entity name="PortalKey" representedClassName="PortalKey" parentEntity="Item" syncable="YES">
+        <relationship name="portal" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Portal" inverseName="portalKeys" inverseEntity="Portal" syncable="YES"/>
+    </entity>
+    <entity name="PortalLink" representedClassName="PortalLink" syncable="YES">
+        <attribute name="controllingTeam" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="guid" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="creator" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="createdLinks" inverseEntity="User" syncable="YES"/>
+        <relationship name="destinationPortal" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Portal" inverseName="destinationForLinks" inverseEntity="Portal" syncable="YES"/>
+        <relationship name="originPortal" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Portal" inverseName="originForLinks" inverseEntity="Portal" syncable="YES"/>
+    </entity>
+    <entity name="Resonator" representedClassName="Resonator" parentEntity="Item" syncable="YES">
+        <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Shield" representedClassName="Shield" parentEntity="Item" syncable="YES">
+        <attribute name="rarity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="User" representedClassName="User" syncable="YES">
+        <attribute name="guid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="nickname" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="capturedPortals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Portal" inverseName="capturedBy" inverseEntity="Portal" syncable="YES"/>
+        <relationship name="createdControlFields" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ControlField" inverseName="creator" inverseEntity="ControlField" syncable="YES"/>
+        <relationship name="createdLinks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PortalLink" inverseName="creator" inverseEntity="PortalLink" syncable="YES"/>
+        <relationship name="deployedMods" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DeployedMod" inverseName="owner" inverseEntity="DeployedMod" syncable="YES"/>
+        <relationship name="deployedResonators" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="DeployedResonator" inverseName="owner" inverseEntity="DeployedResonator" syncable="YES"/>
+    </entity>
+    <entity name="XMP" representedClassName="XMP" parentEntity="Item" syncable="YES">
+        <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="ControlField" positionX="-4025" positionY="-1377" width="128" height="118"/>
+        <element name="DeployedMod" positionX="-4599" positionY="-1297" width="128" height="88"/>
+        <element name="DeployedResonator" positionX="-4581" positionY="-1201" width="128" height="148"/>
+        <element name="DeployedShield" positionX="-4763" positionY="-1296" width="128" height="73"/>
+        <element name="EnergyGlob" positionX="-4889" positionY="-1413" width="128" height="43"/>
+        <element name="Item" positionX="-4635" positionY="-1629" width="128" height="103"/>
+        <element name="Media" positionX="-4464" positionY="-1638" width="128" height="118"/>
+        <element name="Player" positionX="-4221" positionY="-1134" width="128" height="118"/>
+        <element name="Portal" positionX="-4401" positionY="-1498" width="128" height="238"/>
+        <element name="PortalKey" positionX="-4725" positionY="-1381" width="128" height="58"/>
+        <element name="PortalLink" positionX="-4041" positionY="-1558" width="128" height="118"/>
+        <element name="Resonator" positionX="-4806" positionY="-1503" width="128" height="58"/>
+        <element name="Shield" positionX="-4817" positionY="-1615" width="128" height="58"/>
+        <element name="User" positionX="-4221" positionY="-1296" width="128" height="148"/>
+        <element name="XMP" positionX="-4637" positionY="-1503" width="128" height="58"/>
+    </elements>
+</model>
