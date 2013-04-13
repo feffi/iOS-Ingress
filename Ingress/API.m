@@ -332,11 +332,11 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 //		if ([jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"allowNicknameEdit"] boolValue]) {
 //			NSLog(@"allowNicknameEdit");
 //			
-////			[self validateNickname:@"Alex399" completionHandler:^{
+////			[self validateNickname:@"" completionHandler:^{
 ////				
 ////			}];
 //			
-////			[self persistNickname:@"Alex399" completionHandler:^{
+////			[self persistNickname:@"" completionHandler:^{
 ////				
 ////			}];
 //		}

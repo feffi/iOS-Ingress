@@ -205,6 +205,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C870F10D9D44E74AE2DBDF7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		FA13CDA216A038D7003C9962 /* CommTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommTableViewCell.h; sourceTree = "<group>"; };
 		FA13CDA316A038D7003C9962 /* CommTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommTableViewCell.m; sourceTree = "<group>"; };
 		FA143F7816D526440007330F /* DeployedResonatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeployedResonatorView.h; sourceTree = "<group>"; };
@@ -1085,6 +1086,7 @@
 				FAEA583B169C7E7500E2F502 /* UIKit.framework */,
 				FAEA583D169C7E7500E2F502 /* Foundation.framework */,
 				FAEA583F169C7E7500E2F502 /* CoreGraphics.framework */,
+				5C870F10D9D44E74AE2DBDF7 /* libPods.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

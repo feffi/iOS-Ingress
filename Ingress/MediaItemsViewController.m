@@ -114,7 +114,7 @@
 	Media *media = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	
 	cell.textLabel.text = [NSString stringWithFormat:@"L%d %@", media.level, media.name];
-	cell.detailTextLabel.text = [media.url substringFromIndex:49];
+	cell.detailTextLabel.text = media.url; //[media.url substringFromIndex:49];
 	
 	cell.imageView.image = [UIImage imageNamed:@"missing_image"];
 	
