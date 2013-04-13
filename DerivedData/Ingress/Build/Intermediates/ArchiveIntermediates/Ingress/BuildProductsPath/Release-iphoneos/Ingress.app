@@ -1,1 +1,0 @@
-/Users/Alex/Documents/iOS DEV/Ingress/DerivedData/Ingress/Build/Intermediates/ArchiveIntermediates/Ingress/InstallationBuildProductsLocation/Applications/Ingress.app
