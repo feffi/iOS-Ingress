@@ -47,8 +47,6 @@
 
 - (void)loadNumberOfInvites {
 	
-	return;
-	
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
 	HUD.userInteractionEnabled = NO;
 	//HUD.labelText = @"Loading...";
