@@ -52,8 +52,6 @@
 		weakPasscodeContainerView.frame = passcodeContainerViewFrame;
 	}];
 	
-	//
-	
 //	[[API sharedInstance] chooseFaction:@"ALIENS" completionHandler:^{
 //		
 //	}];
@@ -207,12 +205,6 @@
 }
 
 - (IBAction)actionSheet {
-	
-//	[[MTStatusBarOverlay sharedInstance] postMessage:@"Test :)" duration:2 animated:YES];
-//	return;
-	
-//	[[API sharedInstance] cheatSetPlayerLevel];
-//	return;
 	
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 

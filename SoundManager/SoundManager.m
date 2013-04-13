@@ -405,7 +405,7 @@ NSString *const SoundDidFinishPlayingNotification = @"SoundDidFinishPlayingNotif
         BOOL foundSound = NO;
         for (NSString *extension in extensions)
         {
-            paths = [[NSBundle mainBundle] pathsForResourcesOfType:extension inDirectory:nil];
+            paths = [[NSBundle mainBundle] pathsForResourcesOfType:extension inDirectory:@"Sound"];
             if ([paths count])
             {
                 [self prepareToPlayWithSound:[paths objectAtIndex:0]];

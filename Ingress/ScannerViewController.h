@@ -12,7 +12,7 @@
 #import <CoreImage/CoreImage.h>
 #import "LevelChooserViewController.h"
 
-@interface ScannerViewController : UIViewController <MKMapViewDelegate, UIWebViewDelegate> {
+@interface ScannerViewController : UIViewController <MKMapViewDelegate> {
 	
 	__weak IBOutlet MKMapView *_mapView;
 	Portal *currentPortal;

@@ -19,49 +19,13 @@
 #import "ColorOverlay.h"
 #import "ColorOverlayView.h"
 
-//#import <objc/runtime.h>
-//#import <objc/message.h>
-//
-//void Swizzle(Class c, SEL orig, SEL new) {
-//    Method origMethod = class_getInstanceMethod(c, orig);
-//    Method newMethod = class_getInstanceMethod([ScannerViewController class], new);
-//    if(class_addMethod(c, orig, method_getImplementation(newMethod), method_getTypeEncoding(newMethod)))
-//        class_replaceMethod(c, new, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));
-//    else
-//		method_exchangeImplementations(origMethod, newMethod);
-//}
-//
-//@implementation UIView (ViewHierarchyLogging)
-//- (void)logViewHierarchy:(int)level {
-//    NSLog(@"%d - %@", level, self);
-//    for (UIView *subview in self.subviews) {
-//        [subview logViewHierarchy:(level+1)];
-//    }
-//}
-//@end
-
 @implementation ScannerViewController
-
-//- (void)canvasDrawRect:(CGRect)rect {
-//	NSLog(@"drawRect");
-//
-//	CGContextRef context = UIGraphicsGetCurrentContext();
-//
-//	CGContextSetBlendMode(context, kCGBlendModeSaturation);
-//    CGContextSetRGBFillColor(context, 0, 0, 0, 1);
-//    CGContextFillRect(context, rect);
-//
-//}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
 	[[AppDelegate instance] setMapView:_mapView];
-	
-	//[_mapView logViewHierarchy:0];
-	
-	//Swizzle(NSClassFromString(@"VKMapCanvas"), @selector(drawRect:), @selector(canvasDrawRect:));
-	
+
 	//UILongPressGestureRecognizer *xmpLongPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(xmpLongPressGestureHandler:)];
 	//[fireXmpButton addGestureRecognizer:xmpLongPressGesture];
 
@@ -101,8 +65,6 @@
 	
 //	UITapGestureRecognizer *mapViewGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapTapped:)];
 //	[_mapView addGestureRecognizer:mapViewGestureRecognizer];
-	
-	//////////
 
 //	[self refreshProfile];
 	
@@ -134,18 +96,6 @@
 }
 
 - (IBAction)refresh {
-	
-//	int lat = mapView.userLocation.location.coordinate.latitude*1E6;
-//	int lng = mapView.userLocation.location.coordinate.longitude*1E6;
-//	int zoom = 20; //[self getMapViewZoomLevel];
-//	NSString *URLStr = [NSString stringWithFormat:@"http://www.ingress.com/intel?latE6=%d&lngE6=%d&z=%d", lat, lng, zoom];
-//	
-//	UIWebView *_webView = [[UIWebView alloc] initWithFrame:self.view.bounds];
-//	//[_webView setHidden:YES];
-//	[_webView setDelegate:self];
-//	[self.view addSubview:_webView];
-//	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:URLStr]];
-//	[_webView loadRequest:request];
 	
 	//[mapView setRegion:MKCoordinateRegionMakeWithDistance(mapView.centerCoordinate, 1000, 1000) animated:NO];
 	//[mapView setCenterCoordinate:mapView.userLocation.location.coordinate animated:YES];
@@ -261,33 +211,6 @@
 	
 	[_mapView setUserTrackingMode:MKUserTrackingModeFollow animated:animated]; //WithHeading
 	
-//	UIGraphicsBeginImageContextWithOptions(mapView.bounds.size, NO, 0.0);
-//    [mapView.layer renderInContext:UIGraphicsGetCurrentContext()];
-//    UIImage *img = UIGraphicsGetImageFromCurrentImageContext();
-//    UIGraphicsEndImageContext();
-//	
-//	CIImage *beginImage = [CIImage imageWithCGImage:img.CGImage];
-//	CIContext *context = [CIContext contextWithOptions:nil];
-//	
-//	CIFilter *filter = [CIFilter filterWithName:@"CIColorInvert" keysAndValues:
-//			  kCIInputImageKey, beginImage,
-//			  nil];
-//	CIImage *outputImage = [filter outputImage];
-//	
-//	filter = [CIFilter filterWithName:@"CIColorControls" keysAndValues:
-//						kCIInputImageKey, outputImage,
-//						@"inputSaturation", @0,
-//						//@"inputBrightness", @.25,
-//						nil];
-//	outputImage = [filter outputImage];
-//	
-//	CGImageRef cgimg = [context createCGImage:outputImage fromRect:[outputImage extent]];
-//	UIImage *newImg = [UIImage imageWithCGImage:cgimg];
-//	
-//	bgImage.image = newImg;
-//
-//	bgImage.alpha = 1;
-	
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
@@ -301,8 +224,6 @@
 - (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
 	
 	if ([view.annotation isKindOfClass:[Item class]]) {
-		
-		//NSLog(@"calloutAccessoryControlTapped: %@", view.annotation);
 		
 		__block Item *item = (Item *)view.annotation;
 		
