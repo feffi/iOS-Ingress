@@ -6,6 +6,11 @@ Google's AR Game Ingress port for iOS
 Account activation
 ------------------
 
+<<<<<<< HEAD
+=======
+Send handshake with parameter "activationCode" with value of your activation code.
+
+>>>>>>> 85481863f023083e3ab37dc5ca30e8f07516d75f
 Choosing nickname
     
     API
