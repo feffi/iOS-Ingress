@@ -6,21 +6,15 @@ Google's AR Game Ingress port for iOS
 Account activation
 ------------------
 
-a) Via Android device
+Send handshake with parameter "activationCode" with value of your activation code.
 
-b) Via few API calls
-
-    1) Send handshake with parameter "activationCode" with value of your activation code
-
-    2) Send handshake with parameter "tosAccepted" with value "1" as you agree with Terms of Service (http://www.ingress.com/terms)
-
-    3) Choose nickname
+Choosing nickname
     
     API
         - (void)validateNickname:(NSString *)nickname completionHandler:(void (^)(void))handler;
         - (void)persistNickname:(NSString *)nickname completionHandler:(void (^)(void))handler;
 
-    3) Choose faction
+Choosing faction
     
     API
         - (void)chooseFaction:(NSString *)faction completionHandler:(void (^)(void))handler;
