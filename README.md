@@ -35,6 +35,15 @@ I have big problems with this part. Ingress uses cell/tile IDs for getting data 
 
 You can get cellsIDs by catching Android app's communication.
 
+Screenshots
+-----------
+
+![Screenshot 1](http://i.imgur.com/Od5sVxh.jpg)
+![Screenshot 2](http://i.imgur.com/r21wnTc.png)
+![Screenshot 3](http://i.imgur.com/FIYe6bm.png)
+![Screenshot 4](http://i.imgur.com/V1r6eER.png)
+![Screenshot 5](http://i.imgur.com/Joik8Qe.png)
+
 Attribution & License
 ---------------------
 
