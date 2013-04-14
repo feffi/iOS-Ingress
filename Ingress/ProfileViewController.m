@@ -52,10 +52,6 @@
 		weakPasscodeContainerView.frame = passcodeContainerViewFrame;
 	}];
 	
-//	[[API sharedInstance] chooseFaction:@"ALIENS" completionHandler:^{
-//		
-//	}];
-	
 }
 
 - (void)viewWillAppear:(BOOL)animated {

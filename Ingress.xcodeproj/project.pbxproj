@@ -20,7 +20,6 @@
 		FA4D43B016A8386A00B98C1F /* innerwheel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA4D43AE16A8386A00B98C1F /* innerwheel@2x.png */; };
 		FA4D43B116A8386A00B98C1F /* outerwheel@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA4D43AF16A8386A00B98C1F /* outerwheel@2x.png */; };
 		FA4D43B816A860D600B98C1F /* ItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4D43B716A860D600B98C1F /* ItemsViewController.m */; };
-		FA4D43BD16A860F800B98C1F /* ResourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4D43BC16A860F800B98C1F /* ResourcesViewController.m */; };
 		FA4D43D416A8AB6C00B98C1F /* MTStatusBarOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4D43D316A8AB2200B98C1F /* MTStatusBarOverlay.m */; };
 		FA4FB3D816A72D9000FD989C /* TabBarNipple.png in Resources */ = {isa = PBXBuildFile; fileRef = FA4FB3D616A72D9000FD989C /* TabBarNipple.png */; };
 		FA4FB3D916A72D9000FD989C /* TabBarNipple@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA4FB3D716A72D9000FD989C /* TabBarNipple@2x.png */; };
@@ -142,6 +141,8 @@
 		FAC23E5216B2E5B3000C17DD /* MKPolygon+ControlField.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E5116B2E5B3000C17DD /* MKPolygon+ControlField.m */; };
 		FAC23E5516B2F9CA000C17DD /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E5416B2F9CA000C17DD /* Item.m */; };
 		FAC37C49169DE303000F88AB /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC37C48169DE303000F88AB /* LoadingViewController.m */; };
+		FAC6BBAE171B080900AA0600 /* ResourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC6BBAD171B080900AA0600 /* ResourcesViewController.m */; };
+		FAC6BBB1171B0FFF00AA0600 /* ResourceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC6BBB0171B0FFF00AA0600 /* ResourceCell.m */; };
 		FACD502316A441400077837F /* PortalDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FACD502216A441400077837F /* PortalDetailViewController.m */; };
 		FACF89E116BBFD410071A03D /* GUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FACF89E016BBFD410071A03D /* GUIButton.m */; };
 		FAD5EEFE16A1F1CA00182F6B /* warning.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD5EEFC16A1F1CA00182F6B /* warning.png */; };
@@ -225,8 +226,6 @@
 		FA4D43AF16A8386A00B98C1F /* outerwheel@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "outerwheel@2x.png"; sourceTree = "<group>"; };
 		FA4D43B616A860D600B98C1F /* ItemsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ItemsViewController.h; sourceTree = "<group>"; };
 		FA4D43B716A860D600B98C1F /* ItemsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ItemsViewController.m; sourceTree = "<group>"; };
-		FA4D43BB16A860F800B98C1F /* ResourcesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourcesViewController.h; sourceTree = "<group>"; };
-		FA4D43BC16A860F800B98C1F /* ResourcesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourcesViewController.m; sourceTree = "<group>"; };
 		FA4D43D216A8AB2200B98C1F /* MTStatusBarOverlay.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = MTStatusBarOverlay.h; path = MTStatusBarOverlay/MTStatusBarOverlay.h; sourceTree = "<group>"; };
 		FA4D43D316A8AB2200B98C1F /* MTStatusBarOverlay.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = MTStatusBarOverlay.m; path = MTStatusBarOverlay/MTStatusBarOverlay.m; sourceTree = "<group>"; };
 		FA4FB3C916A7200D00FD989C /* iCarousel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = iCarousel.h; path = iCarousel/iCarousel.h; sourceTree = "<group>"; };
@@ -400,6 +399,10 @@
 		FAC23E5416B2F9CA000C17DD /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = CoreData/Item.m; sourceTree = "<group>"; };
 		FAC37C47169DE303000F88AB /* LoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingViewController.h; sourceTree = "<group>"; };
 		FAC37C48169DE303000F88AB /* LoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingViewController.m; sourceTree = "<group>"; };
+		FAC6BBAC171B080900AA0600 /* ResourcesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourcesViewController.h; sourceTree = "<group>"; };
+		FAC6BBAD171B080900AA0600 /* ResourcesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourcesViewController.m; sourceTree = "<group>"; };
+		FAC6BBAF171B0FFE00AA0600 /* ResourceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceCell.h; sourceTree = "<group>"; };
+		FAC6BBB0171B0FFF00AA0600 /* ResourceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceCell.m; sourceTree = "<group>"; };
 		FACD502116A441400077837F /* PortalDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortalDetailViewController.h; sourceTree = "<group>"; };
 		FACD502216A441400077837F /* PortalDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalDetailViewController.m; sourceTree = "<group>"; };
 		FACF89DF16BBFD410071A03D /* GUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIButton.h; sourceTree = "<group>"; };
@@ -536,8 +539,10 @@
 		FA4D43B316A8609D00B98C1F /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				FA4D43BB16A860F800B98C1F /* ResourcesViewController.h */,
-				FA4D43BC16A860F800B98C1F /* ResourcesViewController.m */,
+				FAC6BBAC171B080900AA0600 /* ResourcesViewController.h */,
+				FAC6BBAD171B080900AA0600 /* ResourcesViewController.m */,
+				FAC6BBAF171B0FFE00AA0600 /* ResourceCell.h */,
+				FAC6BBB0171B0FFF00AA0600 /* ResourceCell.m */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -1350,7 +1355,6 @@
 				FAD5EF1816A2081B00182F6B /* PCPieChart.m in Sources */,
 				FACD502316A441400077837F /* PortalDetailViewController.m in Sources */,
 				FA4D43B816A860D600B98C1F /* ItemsViewController.m in Sources */,
-				FA4D43BD16A860F800B98C1F /* ResourcesViewController.m in Sources */,
 				FA4D43D416A8AB6C00B98C1F /* MTStatusBarOverlay.m in Sources */,
 				FA52007016A99AB0004AFE4D /* PortalKeysViewController.m in Sources */,
 				FA52007216A99C98004AFE4D /* iCarousel.m in Sources */,
@@ -1398,6 +1402,8 @@
 				FAA7E4F616D7E429007EAE9A /* MediaItemsViewController.m in Sources */,
 				FAA7E4F716D7E42B007EAE9A /* PortalKeyCell.m in Sources */,
 				FAF618B416DBDA6700AF0742 /* WheelActivityIndicatorView.m in Sources */,
+				FAC6BBAE171B080900AA0600 /* ResourcesViewController.m in Sources */,
+				FAC6BBB1171B0FFF00AA0600 /* ResourceCell.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

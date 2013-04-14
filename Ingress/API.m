@@ -343,6 +343,15 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 			return;
 		}
 		
+		if ([jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"allowFactionChoice"] boolValue]) {
+			NSLog(@"allowFactionChoice");
+			
+//			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Faction choose" message:nil delegate:self cancelButtonTitle:@"Later" otherButtonTitles:@"Enlightened", @"Resistance", nil];
+//			[alertView show];
+			
+//			[[API sharedInstance] chooseFaction:@"ALIENS/RESISTANCE" completionHandler:^{ }];
+		}
+		
 		self.playerInfo = @{
 		@"nickname": jsonObject[@"result"][@"nickname"],
 		@"team": jsonObject[@"result"][@"playerEntity"][2][@"controllingTeam"][@"team"],

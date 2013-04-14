@@ -7,6 +7,7 @@
 //
 
 #import "ItemsViewController.h"
+//#import "ResourcesViewController.h"
 #import "ResourcesViewController.h"
 #import "PortalKeysViewController.h"
 #import "MediaItemsViewController.h"
