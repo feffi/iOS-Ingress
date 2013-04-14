@@ -3,29 +3,26 @@ iOS Ingress
 
 Google's AR Game Ingress port for iOS
 
-Account activation
-------------------
-
-Choosing nickname
-    
-    API
-        - (void)validateNickname:(NSString *)nickname completionHandler:(void (^)(void))handler;
-        - (void)persistNickname:(NSString *)nickname completionHandler:(void (^)(void))handler;
-
-Choosing faction
-    
-    API
-        - (void)chooseFaction:(NSString *)faction completionHandler:(void (^)(void))handler;
-        
-        "ALIENS"        = enlightened
-        "RESISTANCE"    = resistance
-
 Getting map data from API
 -------------------------
 
 I have big problems with this part. Ingress uses cell/tile IDs for getting data from API and I don't know how it works. Few examples from Czech republic are implemented by default in [API cellsAsHex]. Help with this would be nice.
 
 You can get cellsIDs by catching Android app's communication.
+
+Storyboard
+----------
+
+You need to install font **Coda-Regular.ttf** to open Storyboard.
+
+Choosing faction
+----------------
+
+    API
+        - (void)chooseFaction:(NSString *)faction completionHandler:(void (^)(void))handler;
+        
+        "ALIENS"        = enlightened
+        "RESISTANCE"    = resistance
 
 Screenshots
 -----------
