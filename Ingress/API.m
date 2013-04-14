@@ -312,9 +312,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		
 //		NSLog(@"processHandshakeData: %@", jsonObject);
 		
-		if (![jsonObject[@"result"][@"canPlay"] boolValue]) {
+		if ([jsonObject[@"result"][@"pregameStatus"][@"action"] isEqualToString:@"USER_REQUIRES_ACTIVATION"]) {
 			dispatch_async(dispatch_get_main_queue(), ^{
-				handler(@"You are not able to play");
+				handler(@"Activation needed for playing");
 			});
 			return;
 		}
@@ -322,6 +322,13 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		if ([jsonObject[@"result"][@"pregameStatus"][@"action"] isEqualToString:@"USER_MUST_ACCEPT_TOS"]) {
 			dispatch_async(dispatch_get_main_queue(), ^{
 				handler(@"You must accept TOS");
+			});
+			return;
+		}
+		
+		if (![jsonObject[@"result"][@"canPlay"] boolValue]) {
+			dispatch_async(dispatch_get_main_queue(), ^{
+				handler(@"You are not able to play");
 			});
 			return;
 		}
