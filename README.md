@@ -3,6 +3,18 @@ iOS Ingress
 
 Google's AR Game Ingress port for iOS
 
+Getting map data from API
+-------------------------
+
+I have big problems with this part. Ingress uses cell/tile IDs for getting data from API and I don't know how it works. Few examples from Czech republic are implemented by default in [API cellsAsHex]. Help with this would be nice.
+
+You can get cellsIDs by catching Android app's communication.
+
+Storyboard
+----------
+
+You need to install font **Coda-Regular.ttf** to open Storyboard.
+
 Choosing faction
 ----------------
 
@@ -11,13 +23,6 @@ Choosing faction
         
         "ALIENS"        = enlightened
         "RESISTANCE"    = resistance
-
-Getting map data from API
--------------------------
-
-I have big problems with this part. Ingress uses cell/tile IDs for getting data from API and I don't know how it works. Few examples from Czech republic are implemented by default in [API cellsAsHex]. Help with this would be nice.
-
-You can get cellsIDs by catching Android app's communication.
 
 Screenshots
 -----------
