@@ -314,14 +314,14 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		
 		if ([jsonObject[@"result"][@"pregameStatus"][@"action"] isEqualToString:@"USER_REQUIRES_ACTIVATION"]) {
 			dispatch_async(dispatch_get_main_queue(), ^{
-				handler(@"Activation needed for playing");
+				handler(@"USER_REQUIRES_ACTIVATION");
 			});
 			return;
 		}
 		
 		if ([jsonObject[@"result"][@"pregameStatus"][@"action"] isEqualToString:@"USER_MUST_ACCEPT_TOS"]) {
 			dispatch_async(dispatch_get_main_queue(), ^{
-				handler(@"You must accept TOS");
+				handler(@"USER_MUST_ACCEPT_TOS");
 			});
 			return;
 		}
@@ -336,17 +336,12 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		self.xsrfToken = jsonObject[@"result"][@"xsrfToken"];
 		//NSLog(@"xsrfToken: %@", self.xsrfToken);
 		
-//		if ([jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"allowNicknameEdit"] boolValue]) {
-//			NSLog(@"allowNicknameEdit");
-//			
-////			[self validateNickname:@"" completionHandler:^{
-////				
-////			}];
-//			
-////			[self persistNickname:@"" completionHandler:^{
-////				
-////			}];
-//		}
+		if ([jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"allowNicknameEdit"] boolValue]) {
+			dispatch_async(dispatch_get_main_queue(), ^{
+				handler(@"allowNicknameEdit");
+			});
+			return;
+		}
 		
 		self.playerInfo = @{
 		@"nickname": jsonObject[@"result"][@"nickname"],
@@ -1030,28 +1025,28 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	
 }
 
-- (void)validateNickname:(NSString *)nickname completionHandler:(void (^)(void))handler {
+- (void)validateNickname:(NSString *)nickname completionHandler:(void (^)(NSString *errorStr))handler {
 	
 	[self sendRequest:@"playerUndecorated/validateNickname" params:@[nickname] completionHandler:^(id responseObj) {
 		
-		NSLog(@"validateNickname: %@", responseObj);
+		//NSLog(@"validateNickname: %@", responseObj);
 		
 		dispatch_async(dispatch_get_main_queue(), ^{
-			handler();
+			handler(responseObj[@"error"]);
 		});
 		
 	}];
 	
 }
 
-- (void)persistNickname:(NSString *)nickname completionHandler:(void (^)(void))handler {
+- (void)persistNickname:(NSString *)nickname completionHandler:(void (^)(NSString *errorStr))handler {
 	
 	[self sendRequest:@"playerUndecorated/persistNickname" params:@[nickname] completionHandler:^(id responseObj) {
 		
-		NSLog(@"persistNickname: %@", responseObj);
+		//NSLog(@"persistNickname: %@", responseObj);
 		
 		dispatch_async(dispatch_get_main_queue(), ^{
-			handler();
+			handler(responseObj[@"error"]);
 		});
 		
 	}];
