@@ -3,17 +3,9 @@ iOS Ingress
 
 Google's AR Game Ingress port for iOS
 
-Account activation
-------------------
-
-Choosing nickname
-    
-    API
-        - (void)validateNickname:(NSString *)nickname completionHandler:(void (^)(void))handler;
-        - (void)persistNickname:(NSString *)nickname completionHandler:(void (^)(void))handler;
-
 Choosing faction
-    
+----------------
+
     API
         - (void)chooseFaction:(NSString *)faction completionHandler:(void (^)(void))handler;
         
