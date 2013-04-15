@@ -67,6 +67,7 @@ typedef void (^SoundCompletionBlock)(void);
 - (void)loadScoreWithCompletionHandler:(void (^)(int alienScore, int resistanceScore))handler;
 - (void)redeemReward:(NSString *)passcode completionHandler:(void (^)(BOOL accepted, NSString *response))handler;
 - (void)loadNumberOfInvitesWithCompletionHandler:(void (^)(int numberOfInvites))handler;
+- (void)inviteUserWithEmail:(NSString *)email completionHandler:(void (^)(NSString *errorStr, int numberOfInvites))handler;
 - (void)fireXMP:(XMP *)xmpItem completionHandler:(void (^)(NSString *errorStr, NSDictionary *damages))handler;
 - (void)validateNickname:(NSString *)nickname completionHandler:(void (^)(NSString *errorStr))handler;
 - (void)persistNickname:(NSString *)nickname completionHandler:(void (^)(NSString *errorStr))handler;

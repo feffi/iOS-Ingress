@@ -77,14 +77,30 @@
 	
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 	
-	
-	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+	__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
 	HUD.userInteractionEnabled = NO;
-	HUD.labelText = @"No invites remaining!";
-	HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+	//HUD.labelText = @"Loading...";
+	//HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
 	[self.view addSubview:HUD];
 	[HUD show:YES];
-	[HUD hide:YES afterDelay:3];
+	
+	[[API sharedInstance] inviteUserWithEmail:email completionHandler:^(NSString *errorStr, int numberOfInvites) {
+		
+		[HUD hide:YES];
+		
+		[inviteLabel setText:[NSString stringWithFormat:@"%d invites remaining", numberOfInvites]];
+		
+//		HUD = [[MBProgressHUD alloc] initWithView:self.view];
+//		HUD.userInteractionEnabled = NO;
+//		HUD.mode = MBProgressHUDModeCustomView;
+//		HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+//		HUD.labelText = errorStr;
+//		HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+//		[self.view addSubview:HUD];
+//		[HUD show:YES];
+//		[HUD hide:YES afterDelay:3];
+		
+	}];
 	
 }
 
