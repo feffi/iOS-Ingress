@@ -90,15 +90,15 @@
 		
 		[inviteLabel setText:[NSString stringWithFormat:@"%d invites remaining", numberOfInvites]];
 		
-//		HUD = [[MBProgressHUD alloc] initWithView:self.view];
-//		HUD.userInteractionEnabled = NO;
-//		HUD.mode = MBProgressHUDModeCustomView;
-//		HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-//		HUD.labelText = errorStr;
-//		HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
-//		[self.view addSubview:HUD];
-//		[HUD show:YES];
-//		[HUD hide:YES afterDelay:3];
+		HUD = [[MBProgressHUD alloc] initWithView:self.view];
+		HUD.userInteractionEnabled = NO;
+		HUD.mode = MBProgressHUDModeCustomView;
+		HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+		HUD.labelText = errorStr;
+		HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+		[self.view addSubview:HUD];
+		[HUD show:YES];
+		[HUD hide:YES afterDelay:3];
 		
 	}];
 	

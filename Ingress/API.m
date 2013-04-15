@@ -1388,7 +1388,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #pragma mark - Send Request
 
 - (void)sendRequest:(NSString *)requestName params:(id)params completionHandler:(void (^)(id responseObj))handler {
-	NSLog(@"sendRequest: %@", requestName);
+//	NSLog(@"sendRequest: %@", requestName);
 	
 	if ([params isKindOfClass:[NSDictionary class]]) {
 		
