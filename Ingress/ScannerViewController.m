@@ -84,6 +84,20 @@
 
 }
 
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+	
+//	CALayer *layer = _mapView.layer;
+//	CATransform3D transform = CATransform3DIdentity;
+//	transform.m34 = -0.002;
+//	transform = CATransform3DRotate(transform, 45 * M_PI / 180, 1, 0, 0);
+//	transform = CATransform3DTranslate(transform, 0, 0, 100);
+//	transform = CATransform3DScale(transform, 2, 2, 2);
+//	layer.transform = transform;
+//	layer.shouldRasterize = YES;
+	
+}
+
 - (void)viewDidDisappear:(BOOL)animated {
 	[super viewDidDisappear:animated];
 	

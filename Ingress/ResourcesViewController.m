@@ -41,7 +41,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 3;
+    return 4;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -62,6 +62,12 @@
 			ResourceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RarityItemCell" forIndexPath:indexPath];
 			cell.itemImageView.image = [UIImage imageNamed:@"shield@2x.png"];
 			cell.itemType = ItemTypePortalShield;
+			return cell;
+		}
+		case 3: {
+			ResourceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LevelsItemCell" forIndexPath:indexPath];
+			cell.itemImageView.image = [UIImage imageNamed:@"powerCube@2x.png"];
+			cell.itemType = ItemTypePowerCube;
 			return cell;
 		}
 		default:

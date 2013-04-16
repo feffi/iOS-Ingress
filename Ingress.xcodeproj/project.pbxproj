@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		FA008E17171D310500176C3D /* PowerCube.m in Sources */ = {isa = PBXBuildFile; fileRef = FA008E16171D310500176C3D /* PowerCube.m */; };
+		FA008E19171D334700176C3D /* powerCube@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA008E18171D334700176C3D /* powerCube@2x.png */; };
 		FA13CDA416A038D7003C9962 /* CommTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA13CDA316A038D7003C9962 /* CommTableViewCell.m */; };
 		FA143F7A16D526450007330F /* DeployedResonatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA143F7916D526450007330F /* DeployedResonatorView.m */; };
 		FA1739F716A827660004EE10 /* resonator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1739F616A827660004EE10 /* resonator@2x.png */; };
@@ -207,6 +209,9 @@
 
 /* Begin PBXFileReference section */
 		5C870F10D9D44E74AE2DBDF7 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FA008E15171D310500176C3D /* PowerCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PowerCube.h; path = CoreData/PowerCube.h; sourceTree = "<group>"; };
+		FA008E16171D310500176C3D /* PowerCube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PowerCube.m; path = CoreData/PowerCube.m; sourceTree = "<group>"; };
+		FA008E18171D334700176C3D /* powerCube@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "powerCube@2x.png"; sourceTree = "<group>"; };
 		FA13CDA216A038D7003C9962 /* CommTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommTableViewCell.h; sourceTree = "<group>"; };
 		FA13CDA316A038D7003C9962 /* CommTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommTableViewCell.m; sourceTree = "<group>"; };
 		FA143F7816D526440007330F /* DeployedResonatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeployedResonatorView.h; sourceTree = "<group>"; };
@@ -606,6 +611,7 @@
 				FA47817D16AC8FE00041FDFB /* enl_res_energy_fill@2x.png */,
 				FA47817E16AC8FE00041FDFB /* hum_res_energy_fill@2x.png */,
 				FAE6FB6816ADC28E00FE188C /* resonatorFromTop@2x.png */,
+				FA008E18171D334700176C3D /* powerCube@2x.png */,
 				FA4D43AB16A8335500B98C1F /* shield@2x.png */,
 				FA1739F616A827660004EE10 /* resonator@2x.png */,
 				FA1739F916A82CA30004EE10 /* xmp@2x.png */,
@@ -834,6 +840,7 @@
 		FAC23D7B16B16F5A000C17DD /* DB */ = {
 			isa = PBXGroup;
 			children = (
+				FAC23D7816B16F44000C17DD /* Ingress.xcdatamodeld */,
 				FAC23D6F16B16EB6000C17DD /* DB.h */,
 				FAC23D7016B16EB6000C17DD /* DB.m */,
 			);
@@ -882,6 +889,8 @@
 				FAC23E1F16B18758000C17DD /* DeployedMod.m */,
 				FAC23E2716B18759000C17DD /* DeployedShield.h */,
 				FAC23E2816B18759000C17DD /* DeployedShield.m */,
+				FA008E15171D310500176C3D /* PowerCube.h */,
+				FA008E16171D310500176C3D /* PowerCube.m */,
 			);
 			name = NSManagedObjects;
 			sourceTree = "<group>";
@@ -1103,7 +1112,6 @@
 				FAEA584B169C7E7500E2F502 /* AppDelegate.m */,
 				FAEA5853169C7E7500E2F502 /* MainStoryboard_iPhone.storyboard */,
 				FAEA5856169C7E7500E2F502 /* MainStoryboard_iPad.storyboard */,
-				FAC23D7816B16F44000C17DD /* Ingress.xcdatamodeld */,
 			);
 			path = Ingress;
 			sourceTree = "<group>";
@@ -1327,6 +1335,7 @@
 				FAA0C30716B993B800DB57E8 /* default_btn@2x.png in Resources */,
 				FAA7E4FB16D805FE007EAE9A /* xmpTexture.png in Resources */,
 				FAA7E4FD16D806B8007EAE9A /* shieldTexture.png in Resources */,
+				FA008E19171D334700176C3D /* powerCube@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1404,6 +1413,7 @@
 				FAF618B416DBDA6700AF0742 /* WheelActivityIndicatorView.m in Sources */,
 				FAC6BBAE171B080900AA0600 /* ResourcesViewController.m in Sources */,
 				FAC6BBB1171B0FFF00AA0600 /* ResourceCell.m in Sources */,
+				FA008E17171D310500176C3D /* PowerCube.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

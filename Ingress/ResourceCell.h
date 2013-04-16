@@ -11,7 +11,8 @@
 typedef enum {
 	ItemTypeResonator,
 	ItemTypeXMP,
-	ItemTypePortalShield
+	ItemTypePortalShield,
+	ItemTypePowerCube
 } ItemType;
 
 @interface ResourceCell : UITableViewCell <UIActionSheetDelegate>
