@@ -1972,8 +1972,10 @@
                             <constraint firstItem="L77-A5-XYN" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="127" type="user" id="AhV-jL-8KP"/>
                             <constraint firstItem="tuj-pb-dGt" firstAttribute="trailing" secondItem="BGQ-ax-GRG" secondAttribute="trailing" type="default" id="EGq-Vr-c5p"/>
                             <constraint firstItem="3fD-vG-amo" firstAttribute="top" secondItem="auU-pM-4h0" secondAttribute="top" type="user" id="G7Y-CW-cOb"/>
+                            <constraint firstItem="tuj-pb-dGt" firstAttribute="baseline" secondItem="mMh-B8-j72" secondAttribute="baseline" type="default" id="GO6-Qd-UhP"/>
                             <constraint firstItem="Yi5-ja-2IB" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="20" symbolic="YES" type="default" id="GUO-Sb-jor"/>
                             <constraint firstItem="L77-A5-XYN" firstAttribute="leading" secondItem="6ts-Vu-ZgC" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="HGw-Bb-yjz"/>
+                            <constraint firstItem="BGQ-ax-GRG" firstAttribute="baseline" secondItem="Q5O-R5-Pic" secondAttribute="baseline" type="default" id="MIT-b1-k3x"/>
                             <constraint firstItem="Afx-ul-7bp" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="20" symbolic="YES" type="default" id="NRV-mw-Xt1"/>
                             <constraint firstItem="1aa-eF-7rd" firstAttribute="top" secondItem="Q5O-R5-Pic" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="RVc-st-m4h"/>
                             <constraint firstAttribute="bottom" secondItem="3fD-vG-amo" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="SAn-t5-9Th"/>
