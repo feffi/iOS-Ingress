@@ -19,8 +19,17 @@
 	self.imageView.contentMode = UIViewContentModeScaleAspectFill;
 	self.imageView.clipsToBounds = YES;
 
+	CGRect frame;
+
 	self.textLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:14];
+	frame = self.textLabel.frame;
+	frame.origin.y = 0;
+	self.textLabel.frame = frame;
+
 	self.detailTextLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:12];
+	frame = self.detailTextLabel.frame;
+	frame.origin.y = 18;
+	self.detailTextLabel.frame = frame;
 
 }
 
