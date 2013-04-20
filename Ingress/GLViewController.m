@@ -13,6 +13,8 @@
 #import "xmpResourceUnit.h"
 #import "shieldResourceUnit.h"
 
+#define IS_4_INCH ( fabs( ( double )[ [ UIScreen mainScreen ] bounds ].size.height - ( double )568 ) < DBL_EPSILON )
+
 @interface GLViewController ()
 
 @property (strong, nonatomic) EAGLContext *context;
@@ -252,8 +254,16 @@
 	
 	switch (self.modelID) {
 		case 1: {
-			
-			GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0, 0, -1.5);
+
+			float zTranslation;
+
+			if (IS_4_INCH) {
+				zTranslation = -1.5;
+			} else {
+				zTranslation = -1.25;
+			}
+
+			GLKMatrix4 modelViewMatrix = GLKMatrix4MakeTranslation(0, 0, zTranslation);
 			modelViewMatrix = GLKMatrix4Rotate(modelViewMatrix, _rotation, 0, 1, 0);
 			self.effect.transform.modelviewMatrix = modelViewMatrix;
 			
