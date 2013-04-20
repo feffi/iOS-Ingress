@@ -3,20 +3,20 @@ iOS Ingress
 
 Google's AR Game Ingress port for iOS
 
+Invite
+------
+
+I need few invitations for testing activation. If you have some, please send it to me. Thank you.
+
 Getting map data from API
 -------------------------
 
-I have big problems with this part. Ingress uses cell/tile IDs for getting data from API and I don't know how it works. Few examples from Czech republic are implemented by default in [API cellsAsHex]. Help with this would be nice.
-
-You can get cellsIDs by catching Android app's communication.
-
-Storyboard
-----------
-
-You need to install font **Coda-Regular.ttf** to open Storyboard.
+I have big problems with this part. Ingress uses cell/tile IDs for getting data from API and I don't know how it works. Few examples are implemented by default in [API cellsAsHex]. If somebody knows how it works, please contact me.
 
 Choosing faction
 ----------------
+
+Choosing faction is not yet implemented, but you can choose by calling this method:
 
     API
         - (void)chooseFaction:(NSString *)faction completionHandler:(void (^)(void))handler;
