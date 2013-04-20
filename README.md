@@ -3,10 +3,10 @@ iOS Ingress
 
 Google's AR Game Ingress port for iOS
 
-Invite
-------
+Help
+----
 
-I need few invitations for testing activation. If you have some, please send it to me. Thank you.
+I need few invitations for testing activation and power cubes. If you have some, please send me email at studnicka(at)aacode.cz. Thank you.
 
 Getting map data from API
 -------------------------
