@@ -497,19 +497,71 @@
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Usw-mp-C7y">
                                 <subviews>
-                                    <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Codename valid. Please confirm." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sGs-Pa-4lF">
+                                    <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="NOR-hO-fzw" customClass="TypeWriterLabel">
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="TGN-TC-APT"/>
+                                            <constraint firstAttribute="height" constant="50" id="I0U-8q-I9J"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
-                                        <color key="textColor" red="1" green="0.83921568627450982" blue="0.32156862745098036" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="xxxx" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NOR-hO-fzw">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hb-8u-Aew" customClass="StretchableBackgroundButton">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="9Fc-CW-gCQ"/>
+                                            <constraint firstAttribute="width" constant="80" id="Ooa-Ij-lh7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="2"/>
+                                        <state key="normal" title="Retry" backgroundImage="negative_btn_background_default.png">
+                                            <color key="titleColor" red="0.1764705882352941" green="0.93725490196078431" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled" backgroundImage="negative_btn_background_disabled.png"/>
+                                        <state key="highlighted" backgroundImage="negative_btn_background_pressed.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="codenameConfirmRetry" destination="fnb-Md-XrQ" eventType="touchUpInside" id="v6D-Qo-a5t"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QRj-QW-Tqd" customClass="StretchableBackgroundButton">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="OdB-H1-Gb4"/>
+                                            <constraint firstAttribute="width" constant="140" id="m9L-Lv-Ly1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="2"/>
+                                        <state key="normal" title="Confirm" backgroundImage="positive_btn_background_default.png">
+                                            <color key="titleColor" red="1" green="0.83921568629999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled" backgroundImage="positive_btn_background_disabled.png"/>
+                                        <state key="highlighted" backgroundImage="positive_btn_background_pressed.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="codenameConfirm" destination="fnb-Md-XrQ" eventType="touchUpInside" id="Aet-mY-dJT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="1hb-8u-Aew" firstAttribute="leading" secondItem="Usw-mp-C7y" secondAttribute="leading" constant="58" id="Q1l-fU-vda"/>
+                                    <constraint firstAttribute="centerY" secondItem="NOR-hO-fzw" secondAttribute="centerY" type="user" id="V1K-8C-3tQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="NOR-hO-fzw" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="VHT-Ul-fDX"/>
+                                    <constraint firstItem="QRj-QW-Tqd" firstAttribute="leading" secondItem="Usw-mp-C7y" secondAttribute="leading" constant="122" id="WfH-kE-Giz"/>
+                                    <constraint firstAttribute="bottom" secondItem="1hb-8u-Aew" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="gcQ-lE-00n"/>
+                                    <constraint firstItem="NOR-hO-fzw" firstAttribute="leading" secondItem="Usw-mp-C7y" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="nbh-mv-I51"/>
+                                    <constraint firstAttribute="bottom" secondItem="QRj-QW-Tqd" secondAttribute="bottom" constant="60" id="xLx-fK-fEv"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SxK-Of-qfq">
+                                <subviews>
+                                    <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="t40-vq-Kl2" customClass="TypeWriterLabel">
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="20" id="bP8-mb-xEf"/>
+                                            <constraint firstAttribute="height" constant="160" id="EqL-5g-sgr"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -518,22 +570,23 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="sGs-Pa-4lF" firstAttribute="leading" secondItem="Usw-mp-C7y" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="HyE-ek-CGH"/>
-                                    <constraint firstAttribute="centerY" secondItem="NOR-hO-fzw" secondAttribute="centerY" type="user" id="V1K-8C-3tQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="NOR-hO-fzw" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="VHT-Ul-fDX"/>
-                                    <constraint firstItem="NOR-hO-fzw" firstAttribute="top" secondItem="sGs-Pa-4lF" secondAttribute="bottom" type="user" id="kZG-2x-q7Q"/>
-                                    <constraint firstAttribute="trailing" secondItem="sGs-Pa-4lF" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="kep-Pz-7A2"/>
-                                    <constraint firstItem="NOR-hO-fzw" firstAttribute="leading" secondItem="Usw-mp-C7y" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="nbh-mv-I51"/>
+                                    <constraint firstItem="t40-vq-Kl2" firstAttribute="top" secondItem="SxK-Of-qfq" secondAttribute="top" constant="40" id="G8S-mL-qKk"/>
+                                    <constraint firstAttribute="trailing" secondItem="t40-vq-Kl2" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="LW3-Ee-BTb"/>
+                                    <constraint firstItem="t40-vq-Kl2" firstAttribute="leading" secondItem="SxK-Of-qfq" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ZsM-RW-Ewm"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="SxK-Of-qfq" firstAttribute="leading" secondItem="Wb5-yg-mPs" secondAttribute="leading" type="default" id="2KU-Nz-IbF"/>
+                            <constraint firstItem="SxK-Of-qfq" firstAttribute="trailing" secondItem="Wb5-yg-mPs" secondAttribute="trailing" type="default" id="2dO-6e-057"/>
                             <constraint firstAttribute="centerY" secondItem="aW5-e2-DbE" secondAttribute="centerY" type="user" id="5Ay-3O-MBe"/>
                             <constraint firstAttribute="trailing" secondItem="Tbw-Ja-rLt" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="6WS-rL-gJ9"/>
                             <constraint firstItem="hFV-9X-TaC" firstAttribute="trailing" secondItem="Wb5-yg-mPs" secondAttribute="trailing" type="default" id="6dQ-IZ-3qZ"/>
+                            <constraint firstItem="SxK-Of-qfq" firstAttribute="bottom" secondItem="Wb5-yg-mPs" secondAttribute="bottom" type="default" id="9nF-N6-YRA"/>
                             <constraint firstItem="Usw-mp-C7y" firstAttribute="leading" secondItem="Wb5-yg-mPs" secondAttribute="leading" type="default" id="DY3-Gz-NTP"/>
                             <constraint firstItem="hFV-9X-TaC" firstAttribute="top" secondItem="Wb5-yg-mPs" secondAttribute="top" type="default" id="FJN-gf-fxk"/>
+                            <constraint firstItem="SxK-Of-qfq" firstAttribute="top" secondItem="Wb5-yg-mPs" secondAttribute="top" type="default" id="MI3-wf-bTZ"/>
                             <constraint firstItem="hFV-9X-TaC" firstAttribute="leading" secondItem="Wb5-yg-mPs" secondAttribute="leading" type="default" id="MUT-Es-2oD"/>
                             <constraint firstItem="Usw-mp-C7y" firstAttribute="trailing" secondItem="Wb5-yg-mPs" secondAttribute="trailing" type="default" id="OjA-dz-k9l"/>
                             <constraint firstAttribute="centerX" secondItem="aW5-e2-DbE" secondAttribute="centerX" type="user" id="cYA-LU-ZNq"/>
@@ -551,8 +604,12 @@
                         <outlet property="activationCodeField" destination="UE4-B0-iFm" id="sId-tg-6lX"/>
                         <outlet property="activationErrorLabel" destination="RNY-Eo-l4E" id="Jyh-I1-ckz"/>
                         <outlet property="activationView" destination="hFV-9X-TaC" id="Ooq-le-Rbk"/>
-                        <outlet property="codenameConfirmLabel" destination="NOR-hO-fzw" id="Muk-RW-Qac"/>
+                        <outlet property="codenameConfirmButton" destination="QRj-QW-Tqd" id="fFp-ds-gfP"/>
+                        <outlet property="codenameConfirmLabel" destination="NOR-hO-fzw" id="WK7-fB-wDo"/>
+                        <outlet property="codenameConfirmRetryButton" destination="1hb-8u-Aew" id="587-mY-kfD"/>
                         <outlet property="codenameConfirmView" destination="Usw-mp-C7y" id="FWN-wo-VQR"/>
+                        <outlet property="codenameConfirmationLabel" destination="t40-vq-Kl2" id="2e4-VU-LFa"/>
+                        <outlet property="codenameConfirmationView" destination="SxK-Of-qfq" id="O3j-Eg-9Lt"/>
                         <outlet property="label" destination="Tbw-Ja-rLt" id="URu-Yt-x9Z"/>
                         <outlet property="wheelActivityIndicatorView" destination="aW5-e2-DbE" id="BOG-Vg-vYK"/>
                         <segue destination="GaO-I4-JTp" kind="modal" identifier="LoadingCompletedSegue" modalTransitionStyle="crossDissolve" id="Cdt-CO-p5s"/>
@@ -2070,7 +2127,6 @@
                             <constraint firstItem="auU-pM-4h0" firstAttribute="leading" secondItem="xob-Tu-pne" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="0xV-IL-48K"/>
                             <constraint firstItem="BGQ-ax-GRG" firstAttribute="top" secondItem="Q5O-R5-Pic" secondAttribute="top" type="default" id="1Td-r4-drb"/>
                             <constraint firstAttribute="trailing" secondItem="Yi5-ja-2IB" secondAttribute="trailing" constant="19" id="2KG-4G-82W"/>
-                            <constraint firstItem="mMh-B8-j72" firstAttribute="baseline" secondItem="tuj-pb-dGt" secondAttribute="baseline" type="default" id="3qc-vv-IpH"/>
                             <constraint firstItem="uYr-0g-eP5" firstAttribute="bottom" secondItem="Yi5-ja-2IB" secondAttribute="bottom" type="default" id="4qx-3s-EPr"/>
                             <constraint firstItem="zzz-ml-7Ag" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="20" symbolic="YES" type="default" id="4z7-q1-FOl"/>
                             <constraint firstItem="mMh-B8-j72" firstAttribute="top" secondItem="tuj-pb-dGt" secondAttribute="top" type="default" id="8fV-a7-yEW"/>
@@ -2086,7 +2142,6 @@
                             <constraint firstAttribute="bottom" secondItem="tuj-pb-dGt" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="SPt-xG-vKg"/>
                             <constraint firstItem="Afx-ul-7bp" firstAttribute="leading" secondItem="L77-A5-XYN" secondAttribute="leading" type="default" id="U0P-oE-9Pu"/>
                             <constraint firstItem="Afx-ul-7bp" firstAttribute="trailing" secondItem="L77-A5-XYN" secondAttribute="trailing" type="default" id="UW2-Qy-lV6"/>
-                            <constraint firstItem="BGQ-ax-GRG" firstAttribute="baseline" secondItem="Q5O-R5-Pic" secondAttribute="baseline" type="default" id="VxZ-cY-vCd"/>
                             <constraint firstItem="uYr-0g-eP5" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="20" symbolic="YES" type="default" id="WAO-H1-00V"/>
                             <constraint firstItem="Afx-ul-7bp" firstAttribute="bottom" secondItem="zzz-ml-7Ag" secondAttribute="bottom" type="default" id="Y4H-3p-7ST"/>
                             <constraint firstItem="BGQ-ax-GRG" firstAttribute="bottom" secondItem="Q5O-R5-Pic" secondAttribute="bottom" type="default" id="Y7n-I0-f0L"/>
@@ -2803,6 +2858,12 @@ Range: 0km</string>
         <image name="enl_res_energy_fill@2x.png" width="13" height="2"/>
         <image name="intel.png" width="26" height="17"/>
         <image name="items.png" width="26" height="20"/>
+        <image name="negative_btn_background_default.png" width="16" height="16"/>
+        <image name="negative_btn_background_disabled.png" width="16" height="16"/>
+        <image name="negative_btn_background_pressed.png" width="16" height="16"/>
+        <image name="positive_btn_background_default.png" width="16" height="16"/>
+        <image name="positive_btn_background_disabled.png" width="16" height="16"/>
+        <image name="positive_btn_background_pressed.png" width="16" height="16"/>
         <image name="profile.png" width="24" height="21"/>
         <image name="resonator_E@2x.png" width="135" height="77"/>
         <image name="resonator_N@2x.png" width="73" height="78"/>
@@ -2882,12 +2943,18 @@ Range: 0km</string>
             <source key="sourceIdentifier" type="project" relativePath="./Classes/LoadingViewController.h"/>
             <relationships>
                 <relationship kind="action" name="activate"/>
+                <relationship kind="action" name="codenameConfirm"/>
+                <relationship kind="action" name="codenameConfirmRetry"/>
                 <relationship kind="outlet" name="activationButton" candidateClass="UIButton"/>
                 <relationship kind="outlet" name="activationCodeField" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="activationErrorLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="activationView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="codenameConfirmLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="codenameConfirmButton" candidateClass="StretchableBackgroundButton"/>
+                <relationship kind="outlet" name="codenameConfirmLabel" candidateClass="TypeWriterLabel"/>
+                <relationship kind="outlet" name="codenameConfirmRetryButton" candidateClass="StretchableBackgroundButton"/>
                 <relationship kind="outlet" name="codenameConfirmView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="codenameConfirmationLabel" candidateClass="TypeWriterLabel"/>
+                <relationship kind="outlet" name="codenameConfirmationView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="label" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="wheelActivityIndicatorView" candidateClass="WheelActivityIndicatorView"/>
             </relationships>
@@ -2996,6 +3063,12 @@ Range: 0km</string>
         </class>
         <class className="ScoreViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/ScoreViewController.h"/>
+        </class>
+        <class className="StretchableBackgroundButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StretchableBackgroundButton.h"/>
+        </class>
+        <class className="TypeWriterLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TypeWriterLabel.h"/>
         </class>
         <class className="UIRefreshControl" superclassName="UIControl">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>

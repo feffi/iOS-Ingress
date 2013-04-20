@@ -10,6 +10,8 @@
 #import <QuartzCore/QuartzCore.h>
 #import <AVFoundation/AVFoundation.h>
 #import "WheelActivityIndicatorView.h"
+#import "StretchableBackgroundButton.h"
+#import "TypeWriterLabel.h"
 
 @interface LoadingViewController : UIViewController <UIWebViewDelegate, UITabBarControllerDelegate, UITextFieldDelegate> {
 	
@@ -23,8 +25,14 @@
 	__weak IBOutlet UITextField *activationCodeField;
 	__weak IBOutlet UIButton *activationButton;
 
+	NSString *codenameToConfirm;
 	__weak IBOutlet UIView *codenameConfirmView;
-	__weak IBOutlet UILabel *codenameConfirmLabel;
+	__weak IBOutlet TypeWriterLabel *codenameConfirmLabel;
+	__weak IBOutlet StretchableBackgroundButton *codenameConfirmButton;
+	__weak IBOutlet StretchableBackgroundButton *codenameConfirmRetryButton;
+
+	__weak IBOutlet UIView *codenameConfirmationView;
+	__weak IBOutlet TypeWriterLabel *codenameConfirmationLabel;
 	
 	__weak IBOutlet UILabel *label;
 //	__weak IBOutlet UIImageView *innerWheel;
@@ -37,5 +45,7 @@
 }
 
 - (IBAction)activate;
+- (IBAction)codenameConfirm;
+- (IBAction)codenameConfirmRetry;
 
 @end

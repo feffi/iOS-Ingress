@@ -18,7 +18,7 @@
 	characterIndex = 0;
 	newAttributedText = attributedText;
 	if (!characterTimer) {
-		characterTimer = [NSTimer scheduledTimerWithTimeInterval:0.1 target:self selector:@selector(addCharacter) userInfo:nil repeats:YES];
+		characterTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(addCharacter) userInfo:nil repeats:YES];
 	}
 }
 
@@ -27,7 +27,12 @@
 	NSAttributedString *currentChar = [newAttributedText attributedSubstringFromRange:NSMakeRange(0, characterIndex)];
 	
 	[super setAttributedText:currentChar];
-	
+
+	CGRect frame = self.frame;
+	frame.size.width = 280;
+	self.frame = frame;
+//	[self sizeToFit];
+
 	characterIndex++;
 	if (characterIndex > [newAttributedText length]) {
 		[characterTimer invalidate];

@@ -22,8 +22,14 @@
 	[activationCodeField.layer setBorderWidth:1];
 	[activationCodeField.layer setBorderColor:[[UIColor colorWithRed:116.0/255.0 green:251.0/255.0 blue:233.0/255.0 alpha:1.0] CGColor]];
 	[activationCodeField addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
+	[activationButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:18]];
 
-	[activationButton.titleLabel setFont:[UIFont fontWithName:@"Coda-Regular" size:18]];
+	double delayInSeconds = 2.0;
+	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
+	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+
+		
+	});
 
 	////////
 
@@ -44,8 +50,16 @@
 	
 	[SoundManager sharedManager].allowsBackgroundMusic = NO;
     [[SoundManager sharedManager] prepareToPlay];
-	
+
 	[self performHandshake];
+
+}
+
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
+
+	[codenameConfirmButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:28]];
+	[codenameConfirmRetryButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:22]];
 
 }
 
@@ -221,13 +235,14 @@
 					[alertView show];
 					
 				} else {
-					
-					UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Codename valid. Please confirm." message:textField.text delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:@"Confirm", nil];
-					[alertView setTag:5];
-					[alertView show];
 
-//					codenameConfirmView.hidden = NO;
-//					codenameConfirmLabel.text = @"test_codename";
+					codenameConfirmView.hidden = NO;
+					codenameToConfirm = textField.text;
+
+					NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Codename valid. Please confirm.\n%@", codenameToConfirm]];
+					[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:15], NSForegroundColorAttributeName : [UIColor colorWithRed:255.0/255.0 green:214.0/255.0 blue:82.0/255.0 alpha:1.0]} range:NSMakeRange(0, attrStr.length)];
+					[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:16], NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(32, codenameToConfirm.length)];
+					[codenameConfirmLabel setAttributedText:attrStr];
 
 				}
 				
@@ -240,33 +255,6 @@
 			
 			[self performHandshake];
 			
-			break;
-			
-		case 5:
-			
-			if (buttonIndex == 1) {
-				[[API sharedInstance] persistNickname:alertView.message completionHandler:^(NSString *errorStr) {
-				
-					if (errorStr) {
-						
-						UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Wrong codename" message:errorStr delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:nil];
-						[alertView setTag:4];
-						[alertView show];
-						
-					} else {
-						
-						[self performSegueWithIdentifier:@"LoadingCompletedSegue" sender:self];
-						
-					}
-					
-				}];
-			} else {
-				[self performHandshake];
-			}
-			
-			break;
-			
-		default:
 			break;
 	}
 	
@@ -296,6 +284,9 @@
 #pragma mark - IBActions
 
 - (IBAction)activate {
+	
+	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+	
 	activationStarted = YES;
 	[activationCodeField resignFirstResponder];
 	[jsonDict setValue:activationCodeField.text forKey:@"activationCode"];
@@ -304,6 +295,56 @@
 	activationView.hidden = YES;
 	activationCodeField.text = @"";
 	activationButton.enabled = NO;
+	
+}
+
+- (IBAction)codenameConfirm {
+	
+	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+
+	codenameConfirmView.hidden = YES;
+	codenameConfirmationView.hidden = NO;
+	
+	NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Creating encryption keys...\n\nID confirmed. %@ Access granted.\n\nProgram initiated...", codenameToConfirm]];
+	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:15], NSForegroundColorAttributeName : [UIColor colorWithRed:45.0/255.0 green:239.0/255.0 blue:249.0/255.0 alpha:1.0]} range:NSMakeRange(0, attrStr.length)];
+	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:16], NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(43, codenameToConfirm.length)];
+	[codenameConfirmationLabel setAttributedText:attrStr];
+
+	[[SoundManager sharedManager] playSound:@"Sound/sfx_typing.aif"];
+
+	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(((attrStr.length * 0.05) + 2) * NSEC_PER_SEC));
+	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+
+		[[API sharedInstance] persistNickname:codenameToConfirm completionHandler:^(NSString *errorStr) {
+
+			codenameToConfirm = nil;
+			codenameConfirmationView.hidden = YES;
+
+			if (errorStr) {
+
+				UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Wrong codename" message:errorStr delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:nil];
+				[alertView setTag:4];
+				[alertView show];
+
+			} else {
+				
+				[self performSegueWithIdentifier:@"LoadingCompletedSegue" sender:self];
+				
+			}
+			
+		}];
+
+	});
+
+}
+
+- (IBAction)codenameConfirmRetry {
+
+	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+
+	codenameConfirmView.hidden = YES;
+	[self performHandshake];
+	
 }
 
 #pragma mark - UITabBarControllerDelegate
