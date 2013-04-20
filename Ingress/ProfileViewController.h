@@ -28,7 +28,7 @@
 	
 	NSData *imageData;
 	
-	__weak IBOutlet UILabel *availabileEnergyLabel;
+	//__weak IBOutlet UILabel *availabileEnergyLabel;
 	__weak IBOutlet UILabel *energyCollectLabel;
 	__weak IBOutlet UIStepper *energyCollectStepper;
 	

@@ -14,25 +14,25 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	[self.navigationController.navigationBar setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:16]}];
+	//[self.navigationController.navigationBar setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:16]}];
 	
 	for (UINavigationController *navC in self.tabBarController.viewControllers) {
-		[navC.tabBarItem setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:10]} forState:UIControlStateNormal];
+//		[navC.tabBarItem setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:10]} forState:UIControlStateNormal];
 		navC.topViewController.view.hidden = NO;
 	}
-
-	NSDictionary *attributes = @{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:10]};
-	[[UIBarButtonItem appearance] setTitleTextAttributes:attributes forState:UIControlStateNormal];
 	
 	[self.tabBarController setSelectedIndex:2];
 	
 	[[SoundManager sharedManager] playMusic:@"Sound/sfx_ambient_scanner_base.aif" looping:YES];
+
+	apLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:13];
+	xmLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:13];
 	
-	passcodeTextField.font = [UIFont fontWithName:@"Coda-Regular" size:15];
-	submitPasscodeButton.titleLabel.font = [UIFont fontWithName:@"Coda-Regular" size:15];
+	passcodeTextField.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15];
+	submitPasscodeButton.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15];
 	
-	levelLabel.font = [UIFont fontWithName:@"Coda-Regular" size:32];
-	nicknameLabel.font = [UIFont fontWithName:@"Coda-Regular" size:20];
+	levelLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:32];
+	nicknameLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
 	
 //	xmIndicator.backgroundColor = self.view.backgroundColor;
 //	xmIndicator.frameColor = [UIColor colorWithRed:235./255. green:188./255. blue:74./255. alpha:1];
@@ -57,8 +57,7 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
-	[availabileEnergyLabel setText:[NSString stringWithFormat:@"%d", [DB sharedInstance].numberOfEnergyGlobs]];
-	[energyCollectLabel setText:[NSString stringWithFormat:@"%d", [API sharedInstance].numberOfEnergyToCollect]];
+	[energyCollectLabel setText:[NSString stringWithFormat:@"%d / %d", [API sharedInstance].numberOfEnergyToCollect, [DB sharedInstance].numberOfEnergyGlobs]];
 	[energyCollectStepper setValue:[API sharedInstance].numberOfEnergyToCollect];
 	[energyCollectStepper setMaximumValue:[DB sharedInstance].numberOfEnergyGlobs];
 	
@@ -196,7 +195,8 @@
 
 - (IBAction)energyCollectValueChanged:(UIStepper *)sender {
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-	[energyCollectLabel setText:[NSString stringWithFormat:@"%d", (int)(sender.value)]];
+	//[energyCollectLabel setText:[NSString stringWithFormat:@"%d", (int)(sender.value)]];
+	[energyCollectLabel setText:[NSString stringWithFormat:@"%d / %d", [API sharedInstance].numberOfEnergyToCollect, [DB sharedInstance].numberOfEnergyGlobs]];
 	[API sharedInstance].numberOfEnergyToCollect = sender.value;
 }
 

@@ -22,6 +22,9 @@
 	__weak IBOutlet UILabel *activationErrorLabel;
 	__weak IBOutlet UITextField *activationCodeField;
 	__weak IBOutlet UIButton *activationButton;
+
+	__weak IBOutlet UIView *codenameConfirmView;
+	__weak IBOutlet UILabel *codenameConfirmLabel;
 	
 	__weak IBOutlet UILabel *label;
 //	__weak IBOutlet UIImageView *innerWheel;

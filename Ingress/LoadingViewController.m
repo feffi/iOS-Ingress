@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	[label setFont:[UIFont fontWithName:label.font.fontName size:20]];
+	[label setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20]];
 
 	[activationCodeField.layer setBorderWidth:1];
 	[activationCodeField.layer setBorderColor:[[UIColor colorWithRed:116.0/255.0 green:251.0/255.0 blue:233.0/255.0 alpha:1.0] CGColor]];
@@ -134,6 +134,7 @@
 			NSString *jsonString = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerText"];
 			[[API sharedInstance] processHandshakeData:jsonString completionHandler:^(NSString *errorStr) {
 				if (!errorStr) {
+					[[SoundManager sharedManager] stopMusic:YES];
 					[self performSegueWithIdentifier:@"LoadingCompletedSegue" sender:self];
 				} else {
 					
@@ -224,7 +225,10 @@
 					UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Codename valid. Please confirm." message:textField.text delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:@"Confirm", nil];
 					[alertView setTag:5];
 					[alertView show];
-					
+
+//					codenameConfirmView.hidden = NO;
+//					codenameConfirmLabel.text = @"test_codename";
+
 				}
 				
 			}];
