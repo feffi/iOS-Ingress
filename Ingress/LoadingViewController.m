@@ -17,7 +17,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	[label setFont:[UIFont fontWithName:@"Coda-Regular" size:20]];
+	[label setFont:[UIFont fontWithName:label.font.fontName size:20]];
 
 	[activationCodeField.layer setBorderWidth:1];
 	[activationCodeField.layer setBorderColor:[[UIColor colorWithRed:116.0/255.0 green:251.0/255.0 blue:233.0/255.0 alpha:1.0] CGColor]];
