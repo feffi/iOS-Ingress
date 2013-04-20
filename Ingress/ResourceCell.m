@@ -10,27 +10,28 @@
 
 @implementation ResourceCell
 
-- (id)initWithCoder:(NSCoder *)aDecoder {
-	self = [super initWithCoder:aDecoder];
-	if (self) {
-		
-		for (UIView *view in self.subviews) {
-			if ([view isKindOfClass:[UIButton class]]) {
-				UIButton *button = (UIButton *)view;
-				button.titleLabel.font = [UIFont fontWithName:@"Coda-Regular" size:button.titleLabel.font.pointSize];
-			} else if ([view isKindOfClass:[UILabel class]]) {
-				UILabel *label = (UILabel *)view;
-				label.font = [UIFont fontWithName:@"Coda-Regular" size:label.font.pointSize];
-			}
-		}
-		
+- (void)layoutSubviews {
+	[super layoutSubviews];
+
+	CGFloat fontSize = 16;
+
+	if (self.itemType == ItemTypePortalShield) {
+		fontSize = 8;
 	}
-	return self;
+
+	for (UIView *view in self.contentView.subviews) {
+		if ([view isKindOfClass:[UIButton class]]) {
+			UIButton *button = (UIButton *)view;
+			button.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:fontSize];
+		}
+	}
+
 }
 
 #pragma mark - Set values
 
 - (void)setItemType:(ItemType)itemType {
+	_itemType = itemType;
 	
 	switch (itemType) {
 		case ItemTypeResonator: {
@@ -90,7 +91,7 @@
 			break;
 		}
 		case ItemTypePortalShield: {
-			
+
 			UILabel *label = (UILabel *)[self.contentView viewWithTag:1];
 			label.text = [NSString stringWithFormat:@"%d", [[DB sharedInstance] numberOfPortalShieldsOfRarity:PortalShieldRarityCommon]];
 			
@@ -104,8 +105,30 @@
 		}
 		case ItemTypePowerCube: {
 			
-			
-			
+			UILabel *label = (UILabel *)[self.contentView viewWithTag:1];
+			label.text = [NSString stringWithFormat:@"%d", [[DB sharedInstance] numberOfPowerCubesOfLevel:1]];
+
+			label = (UILabel *)[self.contentView viewWithTag:2];
+			label.text = [NSString stringWithFormat:@"%d", [[DB sharedInstance] numberOfPowerCubesOfLevel:2]];
+
+			label = (UILabel *)[self.contentView viewWithTag:3];
+			label.text = [NSString stringWithFormat:@"%d", [[DB sharedInstance] numberOfPowerCubesOfLevel:3]];
+
+			label = (UILabel *)[self.contentView viewWithTag:4];
+			label.text = [NSString stringWithFormat:@"%d", [[DB sharedInstance] numberOfPowerCubesOfLevel:4]];
+
+			label = (UILabel *)[self.contentView viewWithTag:5];
+			label.text = [NSString stringWithFormat:@"%d", [[DB sharedInstance] numberOfPowerCubesOfLevel:5]];
+
+			label = (UILabel *)[self.contentView viewWithTag:6];
+			label.text = [NSString stringWithFormat:@"%d", [[DB sharedInstance] numberOfPowerCubesOfLevel:6]];
+
+			label = (UILabel *)[self.contentView viewWithTag:7];
+			label.text = [NSString stringWithFormat:@"%d", [[DB sharedInstance] numberOfPowerCubesOfLevel:7]];
+
+			label = (UILabel *)[self.contentView viewWithTag:8];
+			label.text = [NSString stringWithFormat:@"%d", [[DB sharedInstance] numberOfPowerCubesOfLevel:8]];
+
 			break;
 		}
 	}

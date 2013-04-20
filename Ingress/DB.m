@@ -116,6 +116,10 @@
 	return [self numberOfObjectsForEntityName:@"DeployedResonator" withPredicate:@"portal = %@", portal];
 }
 
+- (NSInteger)numberOfPowerCubesOfLevel:(NSInteger)level {
+	return [self numberOfObjectsForEntityName:@"PowerCube" withPredicate:@"dropped = NO && level = %d", level];
+}
+
 #pragma mark - Getters
 
 - (Item *)getItemWithGuid:(NSString *)guid {

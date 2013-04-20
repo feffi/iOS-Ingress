@@ -23,6 +23,7 @@
 #import "EnergyGlob.h"
 #import "PortalLink.h"
 #import "ControlField.h"
+#import "PowerCube.h"
 
 #import "ColorOverlay.h"
 
@@ -61,6 +62,7 @@ typedef enum {
 - (NSInteger)numberOfPortalShieldsOfRarity:(PortalShieldRarity)rarity;
 - (NSInteger)numberOfMediaItems;
 - (NSInteger)numberOfResonatorsOfPortal:(Portal *)portal;
+- (NSInteger)numberOfPowerCubesOfLevel:(NSInteger)level;
 
 ////////////////////////
 

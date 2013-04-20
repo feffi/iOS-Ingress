@@ -1159,6 +1159,11 @@
                     </view>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Profile" id="w8S-RT-EVO">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="F4e-jq-sfP">
+                            <connections>
+                                <action selector="refreshInventory" destination="dyv-6N-1Hj" id="lAO-Uj-2Lx"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="EKD-pt-WSY">
                             <connections>
                                 <action selector="actionSheet" destination="dyv-6N-1Hj" id="f5a-9J-9Ue"/>
@@ -2939,9 +2944,9 @@ Range: 0km</string>
             <relationships>
                 <relationship kind="action" name="actionSheet"/>
                 <relationship kind="action" name="energyCollectValueChanged:" candidateClass="UIStepper"/>
+                <relationship kind="action" name="refreshInventory"/>
                 <relationship kind="action" name="submitPasscode"/>
                 <relationship kind="outlet" name="apLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="availabileEnergyLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="energyCollectLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="energyCollectStepper" candidateClass="UIStepper"/>
                 <relationship kind="outlet" name="levelImage" candidateClass="UIImageView"/>

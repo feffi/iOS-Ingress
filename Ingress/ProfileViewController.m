@@ -196,8 +196,8 @@
 - (IBAction)energyCollectValueChanged:(UIStepper *)sender {
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 	//[energyCollectLabel setText:[NSString stringWithFormat:@"%d", (int)(sender.value)]];
-	[energyCollectLabel setText:[NSString stringWithFormat:@"%d / %d", [API sharedInstance].numberOfEnergyToCollect, [DB sharedInstance].numberOfEnergyGlobs]];
 	[API sharedInstance].numberOfEnergyToCollect = sender.value;
+	[energyCollectLabel setText:[NSString stringWithFormat:@"%d / %d", [API sharedInstance].numberOfEnergyToCollect, [DB sharedInstance].numberOfEnergyGlobs]];
 }
 
 - (IBAction)actionSheet {
@@ -207,6 +207,27 @@
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Sign Out" otherButtonTitles:@"Submit Portal", nil];
 	[actionSheet showFromTabBar:self.tabBarController.tabBar];
 	
+}
+
+#pragma mark -
+
+- (IBAction)refreshInventory {
+
+	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+
+	__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+	HUD.userInteractionEnabled = YES;
+	HUD.dimBackground = YES;
+	HUD.mode = MBProgressHUDModeIndeterminate;
+	HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+	HUD.labelText = @"Loading inventory...";
+	[self.view addSubview:HUD];
+	[HUD show:YES];
+
+	[[API sharedInstance] getInventoryWithCompletionHandler:^{
+		[HUD hide:YES];
+	}];
+
 }
 
 #pragma mark - UITextFieldDelegate

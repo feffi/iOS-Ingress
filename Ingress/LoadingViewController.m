@@ -181,7 +181,7 @@
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error { 
-	[label setText:@"Connection Error"];
+	[label setText:@"Connection Error"]; //[error localizedDescription]
 }
 
 #pragma mark - UIAlertViewDelegate

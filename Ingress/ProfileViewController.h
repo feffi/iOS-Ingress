@@ -34,6 +34,8 @@
 	
 }
 
+- (IBAction)refreshInventory;
+
 - (IBAction)actionSheet;
 - (IBAction)submitPasscode;
 

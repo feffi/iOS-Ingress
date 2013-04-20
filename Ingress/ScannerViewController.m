@@ -125,19 +125,15 @@
 	[self.view addSubview:HUD];
 	[HUD show:YES];
 	
-	__block int done = 0;
-	
 	[[API sharedInstance] getObjectsWithCompletionHandler:^{
 		[[DB sharedInstance] addPortalsToMapView];
-		done++;
-		if (done == 2) { [HUD hide:YES]; }
+		[HUD hide:YES];
 	}];
-	
-	[[API sharedInstance] getInventoryWithCompletionHandler:^{
-		done++;
-		if (done == 2) { [HUD hide:YES]; }
-	}];
-	
+
+//	[[API sharedInstance] getInventoryWithCompletionHandler:^{
+//
+//	}];
+
 }
 
 - (void)refreshProfile {
