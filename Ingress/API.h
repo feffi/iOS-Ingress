@@ -28,6 +28,8 @@ typedef void (^SoundCompletionBlock)(void);
 @property (nonatomic, strong) NSOperationQueue *notificationQueue;
 @property (nonatomic, strong) NSString *xsrfToken;
 @property (nonatomic, strong) NSString *SACSID;
+@property (nonatomic, strong) NSString *intelcsrftoken;
+@property (nonatomic, strong) NSString *intelACSID;
 @property (nonatomic, strong) NSDictionary *playerInfo;
 @property (nonatomic) NSInteger numberOfEnergyToCollect;
 
@@ -81,5 +83,15 @@ typedef void (^SoundCompletionBlock)(void);
 - (void)rechargePortal:(Portal *)portal completionHandler:(void (^)(void))handler;
 
 - (void)cheatSetPlayerLevel;
+
+- (void)sendRequest:(NSString *)requestName params:(id)params completionHandler:(void (^)(id responseObj))handler;
+
+- (void)processInventory:(NSArray *)inventory;
+- (void)processGameEntities:(NSArray *)gameEntities;
+- (void)processPlayerEntity:(NSArray *)inventory;
+- (void)processEnergyGlobGuids:(NSArray *)energyGlobGuids;
+- (void)processAPGains:(NSArray *)apGains;
+- (void)processPlayerDamages:(NSArray *)playerDamages;
+- (void)processDeletedEntityGuids:(NSArray *)deletedEntityGuids;
 
 @end

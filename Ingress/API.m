@@ -11,25 +11,14 @@
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-@interface API ()
-
-- (void)sendRequest:(NSString *)requestName params:(id)params completionHandler:(void (^)(id responseObj))handler;
-
-- (void)processInventory:(NSArray *)inventory;
-- (void)processPlayerEntity:(NSArray *)inventory;
-- (void)processEnergyGlobGuids:(NSArray *)energyGlobGuids;
-- (void)processAPGains:(NSArray *)apGains;
-- (void)processPlayerDamages:(NSArray *)playerDamages;
-- (void)processDeletedEntityGuids:(NSArray *)deletedEntityGuids;
-
-@end
-
 @implementation API
 
 @synthesize networkQueue = _networkQueue;
 @synthesize notificationQueue = _notificationQueue;
 @synthesize xsrfToken = _xsrfToken;
 @synthesize SACSID = _SACSID;
+@synthesize intelcsrftoken = _intelcsrftoken;
+@synthesize intelACSID = _intelACSID;
 @synthesize playerInfo = _playerInfo;
 @synthesize numberOfEnergyToCollect = _numberOfEnergyToCollect;
 
@@ -1004,74 +993,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 - (void)getObjectsWithCompletionHandler:(void (^)(void))handler {
 
-//	NSString *CSRF = @"zDS0oE2jAO8hLaUeWDuc0U7vZwlcxOJ";
-//	NSString *ACSID = @"AJKiYcF-YiiRHjm3zLEaADIo_SNohi6leCWcbcXRyB5sc1008aHJA3vwzA7b9AkflaGJuLn1-PQIH2z37r6wPsJtrtPLCe6vSlP_gkT8bIl5vzJP24EJKEOtVVONHyxKmULQsPtDohavm55LLm5nwYZHi9kxi71BcvskxppKjRhktXlOAvVQN_q2RRn1H7e7AP8BvpCEf_pEm5Prjq4rPjiJIC7y1_Ts4V9ehY3WoTHCgqYiXecx9zyujEj7Nu29Vr5ouUHmlb8FUOefLKqYDFBFjZCuqBK3-QJ1_ms2TlVXhD8KoWy5Wo8246BvaLVGIwDb9WKmCAGUpU4HWP4yvz68fIspvrX1Z1XkJ6sG7U6G675D9P4uFs-dcY_IiwH7qBTSiF6Fx1Uk5n8i3mfKMQNZe3l0zHet1BIxqLnyVOryyDgia5XR3a3vi5qN4vuvGrHKIOQKNgiTba4SP_aqlLEiVbG--NvOYENRVyDHloiXKAKXvgCKyFJSsEpC_cUNflWaL_VH9lOjB5LVjmx7BYcpGVYJHNHBO8ONckGN6DBXbiZ7Pa5-KkWcUNRniO3dZJRgs9uoii_A";
-//
-//	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://www.ingress.com/rpc/dashboard.getThinnedEntitiesV2"]];
-//
-//	[request setHTTPMethod:@"POST"];
-//
-//	NSDictionary *headers = @{
-//		 @"Content-Type" : @"application/json;charset=UTF-8",
-//		 @"Accept-Encoding" : @"gzip",
-//		 @"User-Agent" : @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31",
-//		 @"X-CSRFToken" : ((CSRF) ? (CSRF) : @""),
-//		 @"Host" : @"www.ingress.com",
-//		 @"Connection" : @"Keep-Alive",
-//		 @"Cookie" : [NSString stringWithFormat:@"csrftoken=%@; ACSID=%@", ((CSRF) ? (CSRF) : @""), ((ACSID) ? (ACSID) : @"")],
-//	};
-//
-//	[request setAllHTTPHeaderFields:headers];
-//
-//	NSDictionary *params = @{
-//		@"method": @"dashboard.getThinnedEntitiesV2",
-//		@"minLevelOfDetail": @(-1),
-//		@"boundsParamsList": @[
-//			@{
-//				@"id":@"01202030010301",
-//				@"qk":@"01202030010301",
-//				@"minLatE6":@(52348763),
-//				@"minLngE6":@(6547852),
-//				@"maxLatE6":@(52375599),
-//				@"maxLngE6":@(6591797)
-//			},
-//			@{
-//				@"id":@"01202030010303",
-//				@"qk":@"01202030010303",
-//				@"minLatE6":@(52321911),
-//				@"minLngE6":@(6547852),
-//				@"maxLatE6":@(52348763),
-//				@"maxLngE6":@(6591797)
-//			}
-//		]
-//	};
-//
-//	NSError *error;
-//	[request setHTTPBody:[NSJSONSerialization dataWithJSONObject:params options:0 error:&error]];
-//	if (error) { NSLog(@"error: %@", error); }
-//
-//	[NSURLConnection sendAsynchronousRequest:request queue:self.networkQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-//
-//		if (error) { NSLog(@"NSURLConnection error: %@", error); }
-//
-//		NSError *jsonParseError;
-//		id responseObj;
-//		if (data) {
-//			responseObj = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParseError];
-//		}
-//		if (jsonParseError) {
-//			NSLog(@"jsonParseError: %@", jsonParseError);
-//			NSLog(@"text response: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-//		}
-//
-//		NSLog(@"getThinnedEntitiesV2: %@", responseObj);
-//		
-//		handler();
-//		
-//	}];
-//
-//	return;
-
 //	NSString *qk = @"0120212211103";
 //	
 //	CGPoint nePoint = CGPointMake(mapView.bounds.origin.x + mapView.bounds.size.width, mapView.bounds.origin.y);
@@ -1914,7 +1835,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 }
 
 - (void)processGameEntities:(NSArray *)gameEntities {
-	//NSLog(@"processGameEntities");
+	//NSLog(@"processGameEntities: %@", gameEntities);
 	
 	for (NSArray *gameEntity in gameEntities) {
 		NSDictionary *loc = gameEntity[2][@"locationE6"];

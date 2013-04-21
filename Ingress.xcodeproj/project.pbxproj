@@ -196,6 +196,8 @@
 		FAEA586F169CA1C300E2F502 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAEA586E169CA1C300E2F502 /* CoreLocation.framework */; };
 		FAF0E33716E3BA9D005B8147 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF0E33616E3BA9D005B8147 /* CoreMedia.framework */; };
 		FAF48EBA17233161000CEFEE /* StretchableBackgroundButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF48EB917233161000CEFEE /* StretchableBackgroundButton.m */; };
+		FAF48EBD17241FB5000CEFEE /* map_data_calc_tools.js in Sources */ = {isa = PBXBuildFile; fileRef = FAF48EBC17241FB5000CEFEE /* map_data_calc_tools.js */; };
+		FAF48EBE172422A8000CEFEE /* map_data_calc_tools.js in Resources */ = {isa = PBXBuildFile; fileRef = FAF48EBC17241FB5000CEFEE /* map_data_calc_tools.js */; };
 		FAF5A8EF16A73EEC00EB42CF /* resonators-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF5A8EE16A73EEC00EB42CF /* resonators-bg@2x.png */; };
 		FAF5A8F916A7449600EB42CF /* resonator_E@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF5A8F116A7449600EB42CF /* resonator_E@2x.png */; };
 		FAF5A8FA16A7449600EB42CF /* resonator_N@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF5A8F216A7449600EB42CF /* resonator_N@2x.png */; };
@@ -487,6 +489,7 @@
 		FAF0E33616E3BA9D005B8147 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		FAF48EB817233161000CEFEE /* StretchableBackgroundButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StretchableBackgroundButton.h; sourceTree = "<group>"; };
 		FAF48EB917233161000CEFEE /* StretchableBackgroundButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StretchableBackgroundButton.m; sourceTree = "<group>"; };
+		FAF48EBC17241FB5000CEFEE /* map_data_calc_tools.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = map_data_calc_tools.js; sourceTree = "<group>"; };
 		FAF5A8EE16A73EEC00EB42CF /* resonators-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "resonators-bg@2x.png"; sourceTree = "<group>"; };
 		FAF5A8F116A7449600EB42CF /* resonator_E@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "resonator_E@2x.png"; sourceTree = "<group>"; };
 		FAF5A8F216A7449600EB42CF /* resonator_N@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "resonator_N@2x.png"; sourceTree = "<group>"; };
@@ -1180,6 +1183,7 @@
 			children = (
 				FAEA5859169C7E7500E2F502 /* ScannerViewController.h */,
 				FAEA585A169C7E7500E2F502 /* ScannerViewController.m */,
+				FAF48EBC17241FB5000CEFEE /* map_data_calc_tools.js */,
 				FACD502016A441280077837F /* Portal Detail */,
 			);
 			name = Scanner;
@@ -1383,6 +1387,7 @@
 				FA82129D1722C21E0019E5FD /* positive_btn_background_default@2x.png in Resources */,
 				FA82129E1722C21E0019E5FD /* positive_btn_background_disabled@2x.png in Resources */,
 				FA82129F1722C21E0019E5FD /* positive_btn_background_pressed@2x.png in Resources */,
+				FAF48EBE172422A8000CEFEE /* map_data_calc_tools.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1464,6 +1469,7 @@
 				FA29CCF8171F05C6007FB43E /* TypeWriterLabel.m in Sources */,
 				FAAA6C5D172299650066D540 /* CustomBackgroundColorButton.m in Sources */,
 				FAF48EBA17233161000CEFEE /* StretchableBackgroundButton.m in Sources */,
+				FAF48EBD17241FB5000CEFEE /* map_data_calc_tools.js in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
