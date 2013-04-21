@@ -22,6 +22,7 @@
 	[[UINavigationBar appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:16]}];
 	[[UIBarButtonItem appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:10]} forState:UIControlStateNormal];
 	[[UITabBarItem appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:10]} forState:UIControlStateNormal];
+	[[UISegmentedControl appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:10]} forState:UIControlStateNormal];
 	[[UILabel appearance] setFont:[UIFont fontWithName:@"Coda-Regular" size:16.0]];
 	[[UIButton appearance] setFont:[UIFont fontWithName:@"Coda-Regular" size:16.0]];
 	[[UITextField appearance] setFont:[UIFont fontWithName:@"Coda-Regular" size:16.0]];

@@ -21,12 +21,34 @@
 
 @implementation ScannerViewController {
 	UIWebView *dataCalcWebView;
+	UIView *rangeCircleView;
+	CLLocationManager *locationManager;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
+
+	locationManager = [[CLLocationManager alloc] init];
+    locationManager.delegate = self;
+    locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+    [locationManager startUpdatingLocation];
+	[locationManager startUpdatingHeading];
+
 	[[AppDelegate instance] setMapView:_mapView];
+
+	rangeCircleView = [UIView new];
+	rangeCircleView.frame = CGRectMake(0, 0, 0, 0);
+	rangeCircleView.center = _mapView.center;
+	rangeCircleView.backgroundColor = [UIColor clearColor];
+	rangeCircleView.opaque = NO;
+	rangeCircleView.userInteractionEnabled = NO;
+	rangeCircleView.layer.cornerRadius = 0;
+	rangeCircleView.layer.masksToBounds = YES;
+	rangeCircleView.layer.borderWidth = 2;
+	rangeCircleView.layer.borderColor = [[[UIColor blueColor] colorWithAlphaComponent:0.25] CGColor];
+	[self.view addSubview:rangeCircleView];
+
+	[NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(updateCircle) userInfo:nil repeats:YES];
 
 	dataCalcWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
 	[dataCalcWebView setTag:2];
@@ -35,8 +57,16 @@
 	[self.view addSubview:dataCalcWebView];
 	[dataCalcWebView loadHTMLString:[NSString stringWithFormat:@"<html><head><script>%@</script></head><body></body></html>", [NSString stringWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"map_data_calc_tools" withExtension:@"js"] encoding:NSUTF8StringEncoding error:nil]] baseURL:nil];
 
-	//UILongPressGestureRecognizer *xmpLongPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(xmpLongPressGestureHandler:)];
-	//[fireXmpButton addGestureRecognizer:xmpLongPressGesture];
+//	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
+//		[_mapView setRegion:MKCoordinateRegionMakeWithDistance(_mapView.userLocation.location.coordinate, 150, 150) animated:NO];
+//		[_mapView setUserTrackingMode:MKUserTrackingModeFollow animated:NO];
+//		[_mapView setShowsUserLocation:YES];
+//	});
+
+	[[DB sharedInstance] addPortalsToMapView];
+
+//	UILongPressGestureRecognizer *xmpLongPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(xmpLongPressGestureHandler:)];
+//	[fireXmpButton addGestureRecognizer:xmpLongPressGesture];
 
 //	if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorized) {
 //#warning location
@@ -51,31 +81,10 @@
 //		[HUD show:YES];
 //	}
 	
-	//[mapView.userLocation addObserver:self forKeyPath:@"location" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:NULL];
-	
-	//[mapView setCenterCoordinate:CLLocationCoordinate2DMake(50.643389, 13.830139) animated:YES];
-	
-	
-//	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
-//		[_mapView setRegion:MKCoordinateRegionMakeWithDistance(_mapView.userLocation.location.coordinate, 150, 150) animated:YES]; //150m
-//	});
-//	
-//	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
-//		[_mapView setUserTrackingMode:MKUserTrackingModeFollowWithHeading animated:NO];
-//	});
-	
-	//[_mapView setRegion:MKCoordinateRegionMakeWithDistance(CLLocationCoordinate2DMake(0, 0), 150, 150) animated:NO];
-//	[_mapView setCenterCoordinate:CLLocationCoordinate2DMake(0, 0) zoomLevel:16 animated:NO];
-//	[_mapView setUserTrackingMode:MKUserTrackingModeFollow animated:NO];
-	
-	[[DB sharedInstance] addPortalsToMapView];
-	
-	//[self refresh];
+//	[mapView.userLocation addObserver:self forKeyPath:@"location" options:(NSKeyValueObservingOptionNew|NSKeyValueObservingOptionOld) context:NULL];
 	
 //	UITapGestureRecognizer *mapViewGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapTapped:)];
 //	[_mapView addGestureRecognizer:mapViewGestureRecognizer];
-
-//	[self refreshProfile];
 	
 }
 
@@ -89,7 +98,7 @@
 //		});
 //	}];
 	
-	[[DB sharedInstance] addPortalsToMapView];
+//	[[DB sharedInstance] addPortalsToMapView];
 
 }
 
@@ -122,6 +131,8 @@
 
 - (IBAction)refresh {
 
+	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+
 	if ([[API sharedInstance] intelcsrftoken] && [[API sharedInstance] intelACSID]) {
 
 		[[DB sharedInstance] removeAllPortals];
@@ -136,16 +147,14 @@
 		NSDictionary *tilesDict = [NSJSONSerialization JSONObjectWithData:[tilesDictStr dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
 		[tilesDict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
 
-			NSLog(@"enum");
-
 			NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://www.ingress.com/rpc/dashboard.getThinnedEntitiesV2"]];
 			[request setHTTPMethod:@"POST"];
 
 			NSDictionary *params = @{
-							@"method": @"dashboard.getThinnedEntitiesV2",
-	   @"minLevelOfDetail": @(-1),
-	   @"boundsParamsList": obj
-	   };
+				@"method": @"dashboard.getThinnedEntitiesV2",
+				@"minLevelOfDetail": @(-1),
+				@"boundsParamsList": obj
+			};
 
 			NSError *error;
 			NSData *HTTPData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
@@ -154,22 +163,22 @@
 			[request setHTTPBody:HTTPData];
 
 			NSDictionary *headers = @{
-							 @"Content-Type": @"application/json; charset=UTF-8",
-		@"Accept": @"application/json, text/javascript, */*; q=0.01",
-		@"Accept-Charset": @"windows-1250,utf-8;q=0.7,*;q=0.3",
-		@"Accept-Encoding": @"gzip,deflate,sdch",
-		@"Accept-Language": @"en,cs;q=0.8",
-		@"Connection": @"keep-alive",
-		@"User-Agent": @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31",
-		@"X-Requested-With": @"XMLHttpRequest",
-		@"Host" : @"www.ingress.com",
-		@"Origin": @"http://www.ingress.com",
-		@"Referer": @"http://www.ingress.com/intel",
-		@"Connection": @"Keep-Alive",
-		@"Content-Length": [NSString stringWithFormat:@"%d", HTTPData.length],
-		@"X-CSRFToken": [[API sharedInstance] intelcsrftoken],
-		@"Cookie": [NSString stringWithFormat:@"csrftoken=%@; ACSID=%@", [[API sharedInstance] intelcsrftoken], [[API sharedInstance] intelACSID]]
-		};
+				@"Content-Type": @"application/json; charset=UTF-8",
+				@"Accept": @"application/json, text/javascript, */*; q=0.01",
+				@"Accept-Charset": @"windows-1250,utf-8;q=0.7,*;q=0.3",
+				@"Accept-Encoding": @"gzip,deflate,sdch",
+				@"Accept-Language": @"en,cs;q=0.8",
+				@"Connection": @"keep-alive",
+				@"User-Agent": @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31",
+				@"X-Requested-With": @"XMLHttpRequest",
+				@"Host" : @"www.ingress.com",
+				@"Origin": @"http://www.ingress.com",
+				@"Referer": @"http://www.ingress.com/intel",
+				@"Connection": @"Keep-Alive",
+				@"Content-Length": [NSString stringWithFormat:@"%d", HTTPData.length],
+				@"X-CSRFToken": [[API sharedInstance] intelcsrftoken],
+				@"Cookie": [NSString stringWithFormat:@"csrftoken=%@; ACSID=%@", [[API sharedInstance] intelcsrftoken], [[API sharedInstance] intelACSID]]
+			};
 
 			[request setAllHTTPHeaderFields:headers];
 
@@ -265,91 +274,6 @@
 //		}];
 //
 //		NSLog(@"tilesArray: %@", tilesArray);
-//
-//		NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://www.ingress.com/rpc/dashboard.getThinnedEntitiesV2"]];
-//		[request setHTTPMethod:@"POST"];
-//
-//		NSDictionary *params = @{
-//			@"method": @"dashboard.getThinnedEntitiesV2",
-//			@"minLevelOfDetail": @(-1),
-//			@"boundsParamsList": 
-////			@[
-////				@{
-////					@"id": @"15_17642_11021",
-////  					@"maxLatE6": @(50645977),
-////  					@"maxLngE6": @(13831787),
-////  					@"minLatE6": @(50639010),
-////  					@"minLngE6": @(13820801),
-//// 					@"qk": @"15_17642_11021"
-////				},
-////				@{
-////					@"id": @"15_17641_11022",
-////					@"maxLatE6": @(50639010),
-////					@"maxLngE6": @(13820801),
-////					@"minLatE6": @(50632042),
-////					@"minLngE6": @(13809814),
-////					@"qk": @"15_17641_11022"
-////				}
-////			]
-//
-//			@[
-//				@{
-//					@"id": @"01202122111",
-//					@"qk": @"01202122111",
-//					@"minLatE6": @50513427,
-//					@"minLngE6": @13710938,
-//					@"maxLatE6": @50736455,
-//					@"maxLngE6": @14062500
-//				}
-//			]
-//
-//		};
-//
-//		NSError *error;
-//		NSData *HTTPData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
-//		if (error) { NSLog(@"error: %@", error); }
-//		
-//		[request setHTTPBody:HTTPData];
-//
-//		[request setTimeoutInterval:5];
-//
-//		NSDictionary *headers = @{
-//			 @"Content-Type": @"application/json; charset=UTF-8",
-//			 @"Accept": @"application/json, text/javascript, */*; q=0.01",
-//			 @"Accept-Charset": @"windows-1250,utf-8;q=0.7,*;q=0.3",
-//			 @"Accept-Encoding": @"gzip,deflate,sdch",
-//			 @"Accept-Language": @"en,cs;q=0.8",
-//			 @"Connection": @"keep-alive",
-//			 @"User-Agent": @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31",
-//			 @"X-Requested-With": @"XMLHttpRequest",
-//			 @"Host" : @"www.ingress.com",
-//			 @"Origin": @"http://www.ingress.com",
-//			 @"Referer": @"http://www.ingress.com/intel",
-//			 @"Connection": @"Keep-Alive",
-//			 @"Content-Length": [NSString stringWithFormat:@"%d", HTTPData.length],
-//			 @"X-CSRFToken": [[API sharedInstance] intelcsrftoken],
-//			 @"Cookie": [NSString stringWithFormat:@"csrftoken=%@; ACSID=%@", [[API sharedInstance] intelcsrftoken], [[API sharedInstance] intelACSID]]
-//		};
-//
-//		[request setAllHTTPHeaderFields:headers];
-//
-//		[NSURLConnection sendAsynchronousRequest:request queue:[[API sharedInstance] networkQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-//
-//			if (error) { NSLog(@"NSURLConnection error: %@", error); }
-//
-//			NSError *jsonParseError;
-//			id responseObj;
-//			if (data) {
-//				responseObj = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParseError];
-//			}
-//			if (jsonParseError) {
-////				NSLog(@"jsonParseError: %@", jsonParseError);
-//				NSLog(@"text response: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-//			}
-//
-//			NSLog(@"getThinnedEntitiesV2: %@", responseObj);
-//			
-//		}];
 
 	} else {
 		NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://www.ingress.com/intel"]];
@@ -361,11 +285,6 @@
 		[self.view addSubview:webView];
 	}
 
-//	[mapView setRegion:MKCoordinateRegionMakeWithDistance(mapView.centerCoordinate, 1000, 1000) animated:NO];
-//	[mapView setCenterCoordinate:mapView.userLocation.location.coordinate animated:YES];
-
-//	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-//	
 //	__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
 //	HUD.userInteractionEnabled = YES;
 //	HUD.dimBackground = YES;
@@ -452,20 +371,6 @@
 
 #pragma mark - UIWebViewDelegate
 
-//- (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
-//
-//    NSString *requestString = [[[request URL] absoluteString] stringByReplacingPercentEscapesUsingEncoding: NSUTF8StringEncoding];
-//
-//
-//    if ([requestString hasPrefix:@"ios-log:"]) {
-//        NSString* logString = [[requestString componentsSeparatedByString:@":#iOS#"] objectAtIndex:1];
-//		NSLog(@"UIWebView console: %@", logString);
-//        return NO;
-//    }
-//
-//    return YES;
-//}
-
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
 	if (webView.tag == 1) {
 		
@@ -490,55 +395,13 @@
 	}
 }
 
-#pragma mark -
+#pragma mark - Circle
 
-- (void)refreshProfile {
-	
-	return;
-	
-	API *api = [API sharedInstance];
-	
-	int ap = [api.playerInfo[@"ap"] intValue];
-	int level = [API levelForAp:ap];
-	int lvlImg = [API levelImageForAp:ap];
-	//int maxAp = [API maxApForLevel:level];
-	int energy = [api.playerInfo[@"energy"] intValue];
-	int maxEnergy = [API maxXmForLevel:level];
-	
-	NSMutableParagraphStyle *pStyle = [NSMutableParagraphStyle new];
-	pStyle.alignment = NSTextAlignmentRight;
-	
-	UIColor *teamColor;
-	
-	if ([api.playerInfo[@"team"] isEqualToString:@"ALIENS"]) {
-		
-		levelImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"ap_icon_enl_%d.png", lvlImg]];
-		teamColor = [UIColor colorWithRed:40./255. green:244./255. blue:40./255. alpha:1];
-		
-	} else {
-		
-		levelImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"ap_icon_hum_%d.png", lvlImg]];
-		teamColor = [UIColor colorWithRed:0 green:194./255. blue:1 alpha:1];
-		
-	}
-	
-	levelLabel.text = [NSString stringWithFormat:@"%d", level];
-	
-	nicknameLabel.textColor = teamColor;
-	nicknameLabel.text = api.playerInfo[@"nickname"];
-	
-	NSString *xmLabelStr = [NSString stringWithFormat:@"%d / %d XM", energy, maxEnergy];
-	NSMutableAttributedString *xmLabelAtrStr = [[NSMutableAttributedString alloc] initWithString:xmLabelStr attributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:235./255. green:188./255. blue:74./255. alpha:1], NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:13], NSParagraphStyleAttributeName: pStyle}];
-	[xmLabelAtrStr setAttributes:@{NSForegroundColorAttributeName: teamColor, NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:13], NSParagraphStyleAttributeName: pStyle} range:NSMakeRange(0, [[NSString stringWithFormat:@"%d", energy] length])];
-	xmLabel.attributedText = xmLabelAtrStr;
-	
-	//CGRect rect = xmIndicatorInner.frame;
-	//rect.size.width = (energy/maxEnergy) * (xmIndicatorOuter.frame.size.width-2);
-	//xmIndicatorInner.frame = rect;
-	
-	xmIndicator.progressTintColor = teamColor;
-	[xmIndicator setProgress:(energy/maxEnergy) animated:YES];
-	
+- (void)updateCircle {
+	CGFloat diameter = 300/((_mapView.region.span.latitudeDelta * 111200) / _mapView.bounds.size.width);
+	rangeCircleView.frame = CGRectMake(0, 0, diameter, diameter);
+	rangeCircleView.center = _mapView.center;
+	rangeCircleView.layer.cornerRadius = diameter/2;
 }
 
 //#pragma mark - KVO
@@ -556,33 +419,30 @@
 //	
 //}
 
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+	[_mapView setCenterCoordinate:newLocation.coordinate animated:YES];
+}
+
+- (BOOL)locationManagerShouldDisplayHeadingCalibration:(CLLocationManager *)manager {
+	return YES;
+}
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
+	CGAffineTransform transform = CGAffineTransformMakeRotation(newHeading.trueHeading*(M_PI/180));
+	playerArrowImage.transform = transform;
+}
+
 #pragma mark - MKMapViewDelegate
 
-//- (void)mapView:(MKMapView *)mapView didChangeUserTrackingMode:(MKUserTrackingMode)mode animated:(BOOL)animated {
-//	
-//}
-//
-//- (void)mapView:(MKMapView *)mapView regionWillChangeAnimated:(BOOL)animated {
-////	bgImage.alpha = 0;
-//}
-
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
-	//NSLog(@"regionDidChangeAnimated");
-	
-	return;
-	
-	if (mapView.zoomLevel < 15) {
-        [mapView setCenterCoordinate:mapView.centerCoordinate zoomLevel:15 animated:YES];
+
+	if (mapView.zoomLevel < 16) {
+        [mapView setCenterCoordinate:locationManager.location.coordinate zoomLevel:16 animated:NO];
 		return;
     }
-	
-	if (mapView.zoomLevel > 18) {
-        [mapView setCenterCoordinate:mapView.centerCoordinate zoomLevel:18 animated:YES];
-		return;
-    }
-	
-	[_mapView setUserTrackingMode:MKUserTrackingModeFollow animated:animated]; //WithHeading
-	
+
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
@@ -648,6 +508,8 @@
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
 	
 	if ([annotation isKindOfClass:[MKUserLocation class]]) {
+
+		return nil;
 		
 		return [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:nil];
 		
