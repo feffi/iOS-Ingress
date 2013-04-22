@@ -31,8 +31,8 @@
 	locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-    [locationManager startUpdatingLocation];
-	[locationManager startUpdatingHeading];
+//  [locationManager startUpdatingLocation];
+//	[locationManager startUpdatingHeading];
 
 	[[AppDelegate instance] setMapView:_mapView];
 
@@ -202,8 +202,10 @@
 
 				[map enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
 
-					[[API sharedInstance] processGameEntities:obj[@"gameEntities"]];
-					[[API sharedInstance] processDeletedEntityGuids:obj[@"deletedGameEntityGuids"]];
+					dispatch_async(dispatch_get_main_queue(), ^{
+						[[API sharedInstance] processGameEntities:obj[@"gameEntities"]];
+						[[API sharedInstance] processDeletedEntityGuids:obj[@"deletedGameEntityGuids"]];
+					});
 
 					dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
 					dispatch_after(popTime, dispatch_get_main_queue(), ^(void){

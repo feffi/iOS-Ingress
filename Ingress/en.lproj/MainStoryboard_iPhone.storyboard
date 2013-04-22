@@ -627,27 +627,27 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWm-XI-3eu">
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="tWm-XI-3eu">
                                 <connections>
                                     <outlet property="delegate" destination="2" id="5J6-tb-StI"/>
                                 </connections>
                             </mapView>
-                            <imageView hidden="YES" opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" image="scanner-bg@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="rgS-1f-mzM"/>
-                            <view hidden="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgi-T7-zUO">
+                            <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" image="scanner-bg@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="rgS-1f-mzM"/>
+                            <view userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgi-T7-zUO">
                                 <color key="backgroundColor" red="0.89411764709999997" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" type="user" id="XNi-Sr-s2v"/>
                                     <constraint firstAttribute="width" constant="2" type="user" id="rJh-IU-5vj"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L6j-EY-QT4">
+                            <view userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L6j-EY-QT4">
                                 <color key="backgroundColor" red="0.89411764709999997" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" type="user" id="XqU-Tk-Gtb"/>
                                     <constraint firstAttribute="height" constant="2" type="user" id="gk1-fc-D8v"/>
                                 </constraints>
                             </view>
-                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="playerArrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="BX0-yd-s1M">
+                            <imageView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="playerArrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="BX0-yd-s1M">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="7lC-bf-Unj"/>
@@ -2139,7 +2139,6 @@
                             <constraint firstAttribute="trailing" secondItem="Yi5-ja-2IB" secondAttribute="trailing" constant="19" id="2KG-4G-82W"/>
                             <constraint firstItem="uYr-0g-eP5" firstAttribute="bottom" secondItem="Yi5-ja-2IB" secondAttribute="bottom" type="default" id="4qx-3s-EPr"/>
                             <constraint firstItem="zzz-ml-7Ag" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="20" symbolic="YES" type="default" id="4z7-q1-FOl"/>
-                            <constraint firstItem="Q5O-R5-Pic" firstAttribute="baseline" secondItem="BGQ-ax-GRG" secondAttribute="baseline" type="default" id="5CY-yc-ck9"/>
                             <constraint firstItem="mMh-B8-j72" firstAttribute="top" secondItem="tuj-pb-dGt" secondAttribute="top" type="default" id="8fV-a7-yEW"/>
                             <constraint firstItem="L77-A5-XYN" firstAttribute="leading" secondItem="3fD-vG-amo" secondAttribute="leading" type="default" id="8uo-Br-YMH"/>
                             <constraint firstItem="L77-A5-XYN" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="127" type="user" id="AhV-jL-8KP"/>
@@ -2176,7 +2175,6 @@
                             <constraint firstItem="uYr-0g-eP5" firstAttribute="bottom" secondItem="Afx-ul-7bp" secondAttribute="bottom" type="default" id="u6o-nZ-AnQ"/>
                             <constraint firstItem="BGQ-ax-GRG" firstAttribute="trailing" secondItem="Yi5-ja-2IB" secondAttribute="trailing" type="default" id="v92-Mx-A2b"/>
                             <constraint firstItem="6ts-Vu-ZgC" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="126" id="vUH-fW-0mD"/>
-                            <constraint firstItem="tuj-pb-dGt" firstAttribute="baseline" secondItem="mMh-B8-j72" secondAttribute="baseline" type="default" id="zfR-qr-ejt"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
