@@ -400,7 +400,7 @@
 #pragma mark - Circle
 
 - (void)updateCircle {
-	CGFloat diameter = 300/((_mapView.region.span.latitudeDelta * 111200) / _mapView.bounds.size.width);
+	CGFloat diameter = 100/((_mapView.region.span.latitudeDelta * 111200) / _mapView.bounds.size.width);
 	rangeCircleView.frame = CGRectMake(0, 0, diameter, diameter);
 	rangeCircleView.center = _mapView.center;
 	rangeCircleView.layer.cornerRadius = diameter/2;
