@@ -11,7 +11,7 @@ I need few invitations for testing activation and also some power cubes. If you 
 Getting map data from API
 -------------------------
 
-**This is temporary fixed by loading data from intel instead of API, so IITC's script can be used. But still needs to be fixed, because this solution is super slow and doesn't load dropped items.**
+**This is temporary fixed by loading data from intel instead of API, so IITC's script can be used. But still needs to be fixed, because this solution is super slow and doesn't load XM and dropped items.**
 
 I have big problems with this part. Ingress uses cell/tile IDs for getting data from API and I don't know how it works. If somebody knows how it works, please contact me at studnicka(at)aacode.cz. Thank you.
 
