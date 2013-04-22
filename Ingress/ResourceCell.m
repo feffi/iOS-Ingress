@@ -149,10 +149,70 @@
 //		actionResource = 3;
 //		actionLevel = sender.tag-60+1;
 //	}
+
+	if (self.itemType == ItemTypePowerCube) {
+		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Drop" otherButtonTitles:@"Use", nil];
+		//	[actionSheet showFromTabBar:self.tabBarController.tabBar];
+		[actionSheet showInView:self];
+	} else {
+		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Drop" otherButtonTitles:nil];
+		//	[actionSheet showFromTabBar:self.tabBarController.tabBar];
+		[actionSheet showInView:self];
+	}
 	
-	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Drop" otherButtonTitles:nil];
-//	[actionSheet showFromTabBar:self.tabBarController.tabBar];
-	[actionSheet showInView:self];
+}
+
+#pragma mark - Actions
+
+- (void)dropItem {
+
+	NSLog(@"Drop item");
+
+//	NSString *guid;
+//
+//	switch (actionResource) {
+//		case 1: {
+//			guid = [[DB sharedInstance] getRandomResonatorOfLevel:actionLevel].guid;
+//			break;
+//		}
+//		case 2: {
+//			guid = [[DB sharedInstance] getRandomXMPOfLevel:actionLevel].guid;
+//			break;
+//		}
+//		case 3: {
+//			PortalShieldRarity rarity = [API shieldRarityFromInt:actionLevel];
+//			guid = [[DB sharedInstance] getRandomShieldOfRarity:rarity].guid;
+//			break;
+//		}
+//	}
+//
+//	actionResource = 0;
+//	actionLevel = 0;
+//
+//	if (!guid) { break; }
+//
+//	__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+//	HUD.userInteractionEnabled = YES;
+//	HUD.mode = MBProgressHUDModeIndeterminate;
+//	HUD.dimBackground = YES;
+//	HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+//	HUD.labelText = @"Dropping Item...";
+//	[[AppDelegate instance].window addSubview:HUD];
+//	[HUD show:YES];
+//
+//	[[SoundManager sharedManager] playSound:@"Sound/sfx_drop_resource.aif"];
+//
+//	[[API sharedInstance] dropItemWithGuid:guid completionHandler:^(void) {
+//
+//		[HUD hide:YES];
+//		
+//	}];
+
+}
+
+- (void)usePowerCube {
+
+	NSLog(@"Use power cube");
 	
 }
 
@@ -162,52 +222,15 @@
 	
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 	
-	switch (buttonIndex) {
-		case 0: {
-			
-			NSLog(@"Drop resource");
-			
-//			NSString *guid;
-//			
-//			switch (actionResource) {
-//				case 1: {
-//					guid = [[DB sharedInstance] getRandomResonatorOfLevel:actionLevel].guid;
-//					break;
-//				}
-//				case 2: {
-//					guid = [[DB sharedInstance] getRandomXMPOfLevel:actionLevel].guid;
-//					break;
-//				}
-//				case 3: {
-//					PortalShieldRarity rarity = [API shieldRarityFromInt:actionLevel];
-//					guid = [[DB sharedInstance] getRandomShieldOfRarity:rarity].guid;
-//					break;
-//				}
-//			}
-//			
-//			actionResource = 0;
-//			actionLevel = 0;
-//			
-//			if (!guid) { break; }
-//			
-//			__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-//			HUD.userInteractionEnabled = YES;
-//			HUD.mode = MBProgressHUDModeIndeterminate;
-//			HUD.dimBackground = YES;
-//			HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
-//			HUD.labelText = @"Dropping Item...";
-//			[[AppDelegate instance].window addSubview:HUD];
-//			[HUD show:YES];
-//			
-//			[[SoundManager sharedManager] playSound:@"Sound/sfx_drop_resource.aif"];
-//			
-//			[[API sharedInstance] dropItemWithGuid:guid completionHandler:^(void) {
-//				
-//				[HUD hide:YES];
-//				
-//			}];
-			
-			break;
+	if (self.itemType == ItemTypePowerCube) {
+		if (buttonIndex == 0) {
+			[self dropItem];
+		} else if (buttonIndex == 1) {
+			[self usePowerCube];
+		}
+	} else {
+		if (buttonIndex == 0) {
+			[self dropItem];
 		}
 	}
 	
