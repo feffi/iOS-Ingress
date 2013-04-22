@@ -213,7 +213,13 @@
 - (void)usePowerCube {
 
 	NSLog(@"Use power cube");
-	
+
+	//https://m-dot-betaspike.appspot.com/rpc/gameplay/dischargePowerCube
+
+	//{"params":{"clientBasket":{"clientBlob":"7ilfDOYVSFJ3aq/FgNNh+ymD9siLb9vKzZ3BjIwWG3zFLCycIsdU/thb33WQbajK17h9Vbcl4eDs65LZomt58ObXTQkxhix2euAJfUbCBXp688iOE7wRyz6gj10pc5fR51ifZXUTvb7DMZxolNCdXu7wYBTFp7RhVDLWzv83nwe67u8zAsIFxGsAyJEvoEd5RrFT3ZV2yLkMrv17bMcyGdQQQFwsdJyBlTvMQyJyxWphx7XmRsUXb9coQRMnM470rg7GzdAeg/GlyPcMsImTEjvXBJWmumK+M52GFCUFnbX2AyVBKLzLAKaloOb48JX3FLOnAI6JQhumtYDA4y7MYw"},"energyGlobGuids":[],"itemGuid":"dc932f61ced445aaad9c1c98acb7510d.5","knobSyncTimestamp":1366652448744,"playerLocation":"0304bb16,00d2f918"}}
+
+	//{"result":{"xmGained":2000},"gameBasket":{"gameEntities":[],"playerEntity":["25e5ce861b2f418398c03aa3cb1a85d5.c",1366652497434,{"playerPersonal":{"ap":"187627","energy":5336,"allowNicknameEdit":false,"allowFactionChoice":false,"clientLevel":22,"mediaHighWaterMarks":{"RESISTANCE":2,"ALIENS":6,"General":65},"energyState":"XM_OK","notificationSettings":{"shouldSendEmail":true,"maySendPromoEmail":true}},"controllingTeam":{"team":"ALIENS"}}],"apGains":[],"inventory":[],"deletedEntityGuids":["dc932f61ced445aaad9c1c98acb7510d.5"]}}
+
 }
 
 #pragma mark - UIActionSheetDelegate
