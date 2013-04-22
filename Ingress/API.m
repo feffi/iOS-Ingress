@@ -1796,15 +1796,12 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		if ([resourceType isEqualToString:@"EMITTER_A"]) {
 			Resonator *resonator = (Resonator *)[[DB sharedInstance] getOrCreateItemWithGuid:item[0] classStr:@"Resonator"];
 			resonator.level = [item[2][@"resourceWithLevels"][@"level"] integerValue];
-			[[DB sharedInstance] saveContext];
 		} else if ([resourceType isEqualToString:@"EMP_BURSTER"]) {
 			XMP *xmp = (XMP *)[[DB sharedInstance] getOrCreateItemWithGuid:item[0] classStr:@"XMP"];
 			xmp.level = [item[2][@"resourceWithLevels"][@"level"] integerValue];
-			[[DB sharedInstance] saveContext];
 		} else if ([resourceType isEqualToString:@"RES_SHIELD"]) {
 			Shield *shield = (Shield *)[[DB sharedInstance] getOrCreateItemWithGuid:item[0] classStr:@"Shield"];
 			shield.rarity = [API shieldRarityFromString:item[2][@"modResource"][@"rarity"]];
-			[[DB sharedInstance] saveContext];
 		} else if ([resourceType isEqualToString:@"PORTAL_LINK_KEY"]) {
 			Portal *portal = (Portal *)[[DB sharedInstance] getOrCreateItemWithGuid:item[2][@"portalCoupler"][@"portalGuid"] classStr:@"Portal"];
 			portal.imageURL = item[2][@"portalCoupler"][@"portalImageUrl"];
@@ -1813,22 +1810,24 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 			
 			PortalKey *portalKey = (PortalKey *)[[DB sharedInstance] getOrCreateItemWithGuid:item[0] classStr:@"PortalKey"];
 			portalKey.portal = portal;
-			[[DB sharedInstance] saveContext];
 		} else if ([resourceType isEqualToString:@"MEDIA"]) {
 			Media *media = (Media *)[[DB sharedInstance] getOrCreateItemWithGuid:item[0] classStr:@"Media"];
 			media.name = item[2][@"storyItem"][@"shortDescription"];
 			media.url = item[2][@"storyItem"][@"primaryUrl"];
 			media.level = [item[2][@"resourceWithLevels"][@"level"] integerValue];
 			media.imageURL = item[2][@"imageByUrl"][@"imageUrl"];
-			[[DB sharedInstance] saveContext];
+		} else if ([resourceType isEqualToString:@"POWER_CUBE"]) {
+			PowerCube *powerCube = (PowerCube *)[[DB sharedInstance] getOrCreateItemWithGuid:item[0] classStr:@"PowerCube"];
+			powerCube.level = [item[2][@"resourceWithLevels"][@"level"] integerValue];
 		} else {
 			NSLog(@"Unknown Item");
 			//Item *itemObj =
 			[[DB sharedInstance] getOrCreateItemWithGuid:item[0] classStr:@"Item"];
-			[[DB sharedInstance] saveContext];
 		}
 
 	}
+	
+	[[DB sharedInstance] saveContext];
 
 	//[[NSNotificationCenter defaultCenter] postNotificationName:@"InventoryUpdatedNotification" object:nil];
 	
