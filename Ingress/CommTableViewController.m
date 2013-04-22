@@ -62,7 +62,7 @@
 	
 	CGRect rect = [atrstr boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:NULL];
 	
-	//CGSize size = [atrstr.string sizeWithFont:[UIFont fontWithName:@"Coda-Regular" size:15] constrainedToSize:CGSizeMake(width, (unsigned int)-1)];
+	//CGSize size = [atrstr.string sizeWithFont:[UIFont fontWithName:@"Coda-Regular" size:16] constrainedToSize:CGSizeMake(width, (unsigned int)-1)];
 	
 	return rect.size.height;
 	

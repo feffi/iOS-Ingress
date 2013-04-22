@@ -16,7 +16,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-	[viewSegmentedControl setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:10]} forState:UIControlStateNormal];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

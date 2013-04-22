@@ -18,14 +18,15 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-	
+
 	[[UINavigationBar appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:16]}];
 	[[UIBarButtonItem appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:10]} forState:UIControlStateNormal];
 	[[UITabBarItem appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:10]} forState:UIControlStateNormal];
 	[[UISegmentedControl appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:10]} forState:UIControlStateNormal];
-	[[UILabel appearance] setFont:[UIFont fontWithName:@"Coda-Regular" size:16.0]];
-	[[UIButton appearance] setFont:[UIFont fontWithName:@"Coda-Regular" size:16.0]];
-	[[UITextField appearance] setFont:[UIFont fontWithName:@"Coda-Regular" size:16.0]];
+	[[UILabel appearance] setFont:[UIFont fontWithName:@"Coda-Regular" size:16]];
+	[[UIButton appearance] setFont:[UIFont fontWithName:@"Coda-Regular" size:16]];
+	[[UIButton appearanceWhenContainedIn:[UIActionSheet class], nil] setFont:[UIFont fontWithName:@"Coda-Regular" size:18]];
+	[[UITextField appearance] setFont:[UIFont fontWithName:@"Coda-Regular" size:16]];
 
     return YES;
 }
