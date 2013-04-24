@@ -73,6 +73,8 @@ Screenshots
 ![Screenshot 3](http://i.imgur.com/FIYe6bm.png)
 ![Screenshot 4](http://i.imgur.com/V1r6eER.png)
 ![Screenshot 5](http://i.imgur.com/Joik8Qe.png)
+![Screenshot 6](http://i.imgur.com/hLajkw3.png)
+![Screenshot 7](http://i.imgur.com/uC9hXxk.png)
 
 Attribution & License
 ---------------------
