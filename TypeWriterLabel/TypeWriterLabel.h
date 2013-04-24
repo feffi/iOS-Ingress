@@ -10,6 +10,7 @@
 
 @interface TypeWriterLabel : UILabel
 
+@property (nonatomic) float delayBetweenCharacters;
 @property (nonatomic) BOOL autoResizes;
 
 @end

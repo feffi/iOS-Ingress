@@ -56,7 +56,7 @@
 
 - (IBAction)activate;
 - (IBAction)createCodename;
-- (IBAction)codenameConfirm;
 - (IBAction)codenameConfirmRetry;
+- (IBAction)codenameConfirm;
 
 @end

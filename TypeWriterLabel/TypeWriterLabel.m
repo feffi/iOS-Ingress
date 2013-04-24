@@ -14,11 +14,27 @@
 	int characterIndex;
 }
 
+- (id)init {
+    self = [super init];
+    if (self) {
+        self.delayBetweenCharacters = 0.05;
+    }
+    return self;
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder {
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.delayBetweenCharacters = 0.05;
+    }
+    return self;
+}
+
 - (void)setAttributedText:(NSAttributedString *)attributedText {
 	characterIndex = 0;
 	newAttributedText = attributedText;
 	if (!characterTimer) {
-		characterTimer = [NSTimer scheduledTimerWithTimeInterval:0.05 target:self selector:@selector(addCharacter) userInfo:nil repeats:YES];
+		characterTimer = [NSTimer scheduledTimerWithTimeInterval:self.delayBetweenCharacters target:self selector:@selector(addCharacter) userInfo:nil repeats:YES];
 	}
 }
 

@@ -14,6 +14,7 @@
 
 @implementation LoadingViewController {
 	NSMutableDictionary *jsonDict;
+	NSTimer *introScrollerTimer;
 }
 
 - (void)viewDidLoad {
@@ -34,9 +35,7 @@
 	[createCodenameButton.layer setBorderColor:[[UIColor colorWithRed:255.0/255.0 green:214.0/255.0 blue:82.0/255.0 alpha:1.0] CGColor]];
 	[createCodenameButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:18]];
 
-	[createCodenameScrollview addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
-		
-	}];
+	[createCodenameScrollview addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) { }];
 
 	GLViewController *glVC = self.childViewControllers[0];
 	[glVC.view setBackgroundColor:[UIColor blackColor]];
@@ -68,15 +67,6 @@
 
 - (void)viewDidAppear:(BOOL)animated {
 	[super viewDidAppear:animated];
-
-	[codenameConfirmButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:28]];
-	[codenameConfirmRetryButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:22]];
-
-//	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC));
-//	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-//		[NSTimer scheduledTimerWithTimeInterval:(0.04) target:self selector:@selector(autoscrollTimerFired) userInfo:nil repeats:YES];
-//		[[SoundManager sharedManager] playSound:@"Sound/speech_zoomdown_intro.aif"];
-//	});
 
 }
 
@@ -194,11 +184,14 @@
 						
 					} else if ([errorStr isEqualToString:@"allowNicknameEdit"]) {
 
+						[[SoundManager sharedManager] stopMusic:NO];
+						[[SoundManager sharedManager] playSound:@"Sound/sfx_typing.aif"];
+
 						createCodenameScrollview.hidden = NO;
 
 						NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:@"Niantic software online.\nIncoming text transmission detected.\nOpening channel...\n\n> I need you help. The world needs your help. This chat is not secure.\n\nI need you to create a unique codename so that I can call you on a secure line.\n\nThis is the name other agents will know you by."];
-						[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:14], NSForegroundColorAttributeName : [UIColor colorWithRed:45.0/255.0 green:239.0/255.0 blue:249.0/255.0 alpha:1.0]} range:NSMakeRange(0, 80)];
-						[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:14], NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(80, 202)];
+						[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:45.0/255.0 green:239.0/255.0 blue:249.0/255.0 alpha:1.0]} range:NSMakeRange(0, 80)];
+						[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:16], NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(80, 202)];
 
 						[createCodenameScrollview setContentSize:self.view.frame.size];
 
@@ -206,12 +199,13 @@
 						createCodenameAnimatedLabel.backgroundColor = [UIColor blackColor];
 						createCodenameAnimatedLabel.opaque = YES;
 						createCodenameAnimatedLabel.numberOfLines = 0;
-						createCodenameAnimatedLabel.frame = CGRectMake(20, 40, 280, 264);
+						createCodenameAnimatedLabel.frame = CGRectMake(20, 20, 280, 385);
 						[createCodenameScrollview addSubview:createCodenameAnimatedLabel];
 						[createCodenameAnimatedLabel setAutoResizes:YES];
+						[createCodenameAnimatedLabel setDelayBetweenCharacters:0.03];
 						[createCodenameAnimatedLabel setAttributedText:attrStr];
 
-						dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(292 * 0.05 * NSEC_PER_SEC));
+						dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)((attrStr.length + 10) * 0.03 * NSEC_PER_SEC));
 						dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 							[createCodenameLabel setHidden:NO];
 							[createCodenameField setHidden:NO];
@@ -321,45 +315,49 @@
 	
 }
 
-- (IBAction)codenameConfirm {
-	
+- (IBAction)createCodename {
+
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 
-	codenameConfirmView.hidden = YES;
-	codenameConfirmationView.hidden = NO;
-	
-	NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Creating encryption keys...\n\nID confirmed. %@ Access granted.\n\nProgram initiated...", codenameToConfirm]];
-	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:14], NSForegroundColorAttributeName : [UIColor colorWithRed:45.0/255.0 green:239.0/255.0 blue:249.0/255.0 alpha:1.0]} range:NSMakeRange(0, attrStr.length)];
-	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:14], NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(43, codenameToConfirm.length)];
-	[codenameConfirmationLabel setAutoResizes:YES];
-	[codenameConfirmationLabel setAttributedText:attrStr];
+	[createCodenameField resignFirstResponder];
+	createCodenameScrollview.hidden = YES;
 
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_typing.aif"];
+	[[SoundManager sharedManager] playMusic:@"Sound/sfx_throbbing_wheels.aif" looping:YES fadeIn:NO];
 
-	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(((attrStr.length * 0.05) + 2) * NSEC_PER_SEC));
-	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+	[[API sharedInstance] validateNickname:createCodenameField.text completionHandler:^(NSString *errorStr) {
 
-		[[API sharedInstance] persistNickname:codenameToConfirm completionHandler:^(NSString *errorStr) {
+		[[SoundManager sharedManager] stopMusic:NO];
 
-			codenameToConfirm = nil;
-			codenameConfirmationView.hidden = YES;
+		if (!errorStr) {
 
-			if (errorStr) {
+#warning createCodename errorStr
 
-				UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Wrong codename" message:errorStr delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:nil];
-				[alertView setTag:4];
-				[alertView show];
+			createCodenameScrollview.hidden = NO;
+			createCodenameLabel.hidden = NO;
+			createCodenameField.hidden = NO;
+			createCodenameButton.hidden = NO;
+			createCodenameField.text = @"";
+			createCodenameButton.enabled = NO;
+			[createCodenameField becomeFirstResponder];
 
-			} else {
-				
-				[self performSegueWithIdentifier:@"LoadingCompletedSegue" sender:self];
-				
-			}
+		} else {
+
+			codenameConfirmLabel.text = @"";
+			[codenameConfirmButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:28]];
+			[codenameConfirmRetryButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:22]];
+
+			codenameConfirmView.hidden = NO;
+			codenameToConfirm = createCodenameField.text;
+
+			NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Codename valid. Please confirm.\n%@", codenameToConfirm]];
+			[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:255.0/255.0 green:214.0/255.0 blue:82.0/255.0 alpha:1.0]} range:NSMakeRange(0, attrStr.length)];
+			[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:16], NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(32, codenameToConfirm.length)];
+			[codenameConfirmLabel setAttributedText:attrStr];
 			
-		}];
-
-	});
-
+		}
+		
+	}];
+	
 }
 
 - (IBAction)codenameConfirmRetry {
@@ -375,37 +373,64 @@
 	createCodenameField.text = @"";
 	createCodenameButton.enabled = NO;
 	[createCodenameField becomeFirstResponder];
-
-//	[self performHandshake];
-
+	
 }
 
-- (IBAction)createCodename {
-
+- (IBAction)codenameConfirm {
+	
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 
-	[createCodenameField resignFirstResponder];
-	createCodenameScrollview.hidden = YES;
+	codenameConfirmView.hidden = YES;
 
-	[[API sharedInstance] validateNickname:createCodenameField.text completionHandler:^(NSString *errorStr) {
+	[[SoundManager sharedManager] playMusic:@"Sound/sfx_throbbing_wheels.aif" looping:YES fadeIn:NO];
 
-		if (errorStr) {
+	[[API sharedInstance] persistNickname:codenameToConfirm completionHandler:^(NSString *errorStr) {
 
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Wrong codename" message:errorStr delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:nil];
-			[alertView setTag:4];
-			[alertView show];
+		[[SoundManager sharedManager] stopMusic:NO];
+
+		if (!errorStr) {
+
+#warning createCodename errorStr
+
+			createCodenameScrollview.hidden = NO;
+			createCodenameLabel.hidden = NO;
+			createCodenameField.hidden = NO;
+			createCodenameButton.hidden = NO;
+			createCodenameField.text = @"";
+			createCodenameButton.enabled = NO;
+			[createCodenameField becomeFirstResponder];
 
 		} else {
 
-			codenameConfirmView.hidden = NO;
-			codenameToConfirm = createCodenameField.text;
+			codenameConfirmationView.hidden = NO;
 
-			NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Codename valid. Please confirm.\n%@", codenameToConfirm]];
-			[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:14], NSForegroundColorAttributeName : [UIColor colorWithRed:255.0/255.0 green:214.0/255.0 blue:82.0/255.0 alpha:1.0]} range:NSMakeRange(0, attrStr.length)];
-			[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:14], NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(32, codenameToConfirm.length)];
-			[codenameConfirmLabel setAttributedText:attrStr];
+			NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Creating encryption keys...\n\nID confirmed. %@ Access granted.\n\nProgram initiated...", codenameToConfirm]];
+			[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:45.0/255.0 green:239.0/255.0 blue:249.0/255.0 alpha:1.0]} range:NSMakeRange(0, attrStr.length)];
+			[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:16], NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(43, codenameToConfirm.length)];
+			[codenameConfirmationLabel setAutoResizes:YES];
+			[codenameConfirmationLabel setAttributedText:attrStr];
 
+			dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(((attrStr.length * 0.05) + 2) * NSEC_PER_SEC));
+			dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+				introView.hidden = NO;
+			});
+
+			popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(((attrStr.length * 0.05) + 3) * NSEC_PER_SEC));
+			dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+				introScrollerTimer = [NSTimer scheduledTimerWithTimeInterval:(0.04) target:self selector:@selector(autoscrollTimerFired) userInfo:nil repeats:YES];
+				[[SoundManager sharedManager] playSound:@"Sound/speech_zoomdown_intro.aif"];
+			});
+
+			popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(((attrStr.length * 0.05) + 3) + 40 * NSEC_PER_SEC));
+			dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+				[introScrollerTimer invalidate];
+				introScrollerTimer = nil;
+				[self performSegueWithIdentifier:@"LoadingCompletedSegue" sender:self];
+			});
+			
 		}
+
+		codenameToConfirm = nil;
 
 	}];
 

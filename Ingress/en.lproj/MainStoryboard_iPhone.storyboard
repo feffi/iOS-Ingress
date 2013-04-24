@@ -494,86 +494,6 @@
                                     <constraint firstAttribute="trailing" secondItem="hHD-Es-Bxa" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="xK4-NH-mP6"/>
                                 </constraints>
                             </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Usw-mp-C7y">
-                                <subviews>
-                                    <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="NOR-hO-fzw" customClass="TypeWriterLabel">
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="50" id="I0U-8q-I9J"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hb-8u-Aew" customClass="StretchableBackgroundButton">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="45" id="9Fc-CW-gCQ"/>
-                                            <constraint firstAttribute="width" constant="80" id="Ooa-Ij-lh7"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="2"/>
-                                        <state key="normal" title="Retry" backgroundImage="negative_btn_background_default.png">
-                                            <color key="titleColor" red="0.1764705882352941" green="0.93725490196078431" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="disabled" backgroundImage="negative_btn_background_disabled.png"/>
-                                        <state key="highlighted" backgroundImage="negative_btn_background_pressed.png">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="codenameConfirmRetry" destination="fnb-Md-XrQ" eventType="touchUpInside" id="v6D-Qo-a5t"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QRj-QW-Tqd" customClass="StretchableBackgroundButton">
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="60" id="OdB-H1-Gb4"/>
-                                            <constraint firstAttribute="width" constant="140" id="m9L-Lv-Ly1"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="24"/>
-                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="2"/>
-                                        <state key="normal" title="Confirm" backgroundImage="positive_btn_background_default.png">
-                                            <color key="titleColor" red="1" green="0.83921568629999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="disabled" backgroundImage="positive_btn_background_disabled.png"/>
-                                        <state key="highlighted" backgroundImage="positive_btn_background_pressed.png">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="codenameConfirm" destination="fnb-Md-XrQ" eventType="touchUpInside" id="Aet-mY-dJT"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="1hb-8u-Aew" firstAttribute="leading" secondItem="Usw-mp-C7y" secondAttribute="leading" constant="58" id="Q1l-fU-vda"/>
-                                    <constraint firstAttribute="centerY" secondItem="NOR-hO-fzw" secondAttribute="centerY" type="user" id="V1K-8C-3tQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="NOR-hO-fzw" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="VHT-Ul-fDX"/>
-                                    <constraint firstItem="QRj-QW-Tqd" firstAttribute="leading" secondItem="Usw-mp-C7y" secondAttribute="leading" constant="122" id="WfH-kE-Giz"/>
-                                    <constraint firstAttribute="bottom" secondItem="1hb-8u-Aew" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="gcQ-lE-00n"/>
-                                    <constraint firstItem="NOR-hO-fzw" firstAttribute="leading" secondItem="Usw-mp-C7y" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="nbh-mv-I51"/>
-                                    <constraint firstAttribute="bottom" secondItem="QRj-QW-Tqd" secondAttribute="bottom" constant="60" id="xLx-fK-fEv"/>
-                                </constraints>
-                            </view>
-                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SxK-Of-qfq">
-                                <subviews>
-                                    <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="t40-vq-Kl2" customClass="TypeWriterLabel">
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="160" id="EqL-5g-sgr"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstItem="t40-vq-Kl2" firstAttribute="top" secondItem="SxK-Of-qfq" secondAttribute="top" constant="40" id="G8S-mL-qKk"/>
-                                    <constraint firstAttribute="trailing" secondItem="t40-vq-Kl2" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="LW3-Ee-BTb"/>
-                                    <constraint firstItem="t40-vq-Kl2" firstAttribute="leading" secondItem="SxK-Of-qfq" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ZsM-RW-Ewm"/>
-                                </constraints>
-                            </view>
                             <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="qSC-Ci-qZc" customClass="TPKeyboardAvoidingScrollView">
                                 <subviews>
                                     <label hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Create your agent codename." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zI6-xc-Ioe">
@@ -626,16 +546,96 @@
                                 <constraints>
                                     <constraint firstItem="zI6-xc-Ioe" firstAttribute="centerX" secondItem="qSC-Ci-qZc" secondAttribute="centerX" type="default" id="3PK-RH-vwx"/>
                                     <constraint firstAttribute="trailing" secondItem="zI6-xc-Ioe" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="6g6-jo-VVZ"/>
+                                    <constraint firstItem="zI6-xc-Ioe" firstAttribute="top" secondItem="qSC-Ci-qZc" secondAttribute="top" constant="375" id="Mdi-uO-ctm"/>
                                     <constraint firstItem="HW8-94-PhW" firstAttribute="leading" secondItem="qSC-Ci-qZc" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="OQU-t9-YW2"/>
-                                    <constraint firstItem="zI6-xc-Ioe" firstAttribute="top" secondItem="qSC-Ci-qZc" secondAttribute="top" constant="324" id="P17-VC-acW"/>
-                                    <constraint firstItem="HW8-94-PhW" firstAttribute="top" secondItem="zI6-xc-Ioe" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="TwC-l0-Opk"/>
+                                    <constraint firstItem="PTP-Fi-mrs" firstAttribute="top" secondItem="zI6-xc-Ioe" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Wif-0M-338"/>
                                     <constraint firstItem="zI6-xc-Ioe" firstAttribute="leading" secondItem="qSC-Ci-qZc" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="bVt-1k-NVV"/>
-                                    <constraint firstItem="PTP-Fi-mrs" firstAttribute="top" secondItem="zI6-xc-Ioe" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="gfQ-n6-ffk"/>
+                                    <constraint firstAttribute="bottom" secondItem="HW8-94-PhW" secondAttribute="bottom" constant="115" id="dqE-lO-JYI"/>
                                     <constraint firstItem="PTP-Fi-mrs" firstAttribute="bottom" secondItem="HW8-94-PhW" secondAttribute="bottom" type="default" id="iPL-Dl-XSb"/>
-                                    <constraint firstAttribute="bottom" secondItem="HW8-94-PhW" secondAttribute="bottom" constant="166" id="ikC-5C-a2h"/>
+                                    <constraint firstItem="HW8-94-PhW" firstAttribute="top" secondItem="zI6-xc-Ioe" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="m5u-3y-30s"/>
                                     <constraint firstAttribute="trailing" secondItem="PTP-Fi-mrs" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="qHz-l3-dfm"/>
                                 </constraints>
                             </scrollView>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Usw-mp-C7y">
+                                <subviews>
+                                    <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="NOR-hO-fzw" customClass="TypeWriterLabel">
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="I0U-8q-I9J"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hb-8u-Aew" customClass="StretchableBackgroundButton">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="45" id="9Fc-CW-gCQ"/>
+                                            <constraint firstAttribute="width" constant="80" id="Ooa-Ij-lh7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="2"/>
+                                        <state key="normal" title="Retry" backgroundImage="negative_btn_background_default.png">
+                                            <color key="titleColor" red="0.1764705882352941" green="0.93725490196078431" blue="0.97647058823529409" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled" backgroundImage="negative_btn_background_disabled.png"/>
+                                        <state key="highlighted" backgroundImage="negative_btn_background_pressed.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="codenameConfirmRetry" destination="fnb-Md-XrQ" eventType="touchUpInside" id="v6D-Qo-a5t"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QRj-QW-Tqd" customClass="StretchableBackgroundButton">
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="60" id="OdB-H1-Gb4"/>
+                                            <constraint firstAttribute="width" constant="140" id="m9L-Lv-Ly1"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="2"/>
+                                        <state key="normal" title="Confirm" backgroundImage="positive_btn_background_default.png">
+                                            <color key="titleColor" red="1" green="0.83921568629999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled" backgroundImage="positive_btn_background_disabled.png"/>
+                                        <state key="highlighted" backgroundImage="positive_btn_background_pressed.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="codenameConfirm" destination="fnb-Md-XrQ" eventType="touchUpInside" id="Aet-mY-dJT"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="1hb-8u-Aew" firstAttribute="leading" secondItem="Usw-mp-C7y" secondAttribute="leading" constant="58" id="Q1l-fU-vda"/>
+                                    <constraint firstAttribute="centerY" secondItem="NOR-hO-fzw" secondAttribute="centerY" type="user" id="V1K-8C-3tQ"/>
+                                    <constraint firstAttribute="trailing" secondItem="NOR-hO-fzw" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="VHT-Ul-fDX"/>
+                                    <constraint firstItem="QRj-QW-Tqd" firstAttribute="leading" secondItem="Usw-mp-C7y" secondAttribute="leading" constant="122" id="WfH-kE-Giz"/>
+                                    <constraint firstAttribute="bottom" secondItem="1hb-8u-Aew" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="gcQ-lE-00n"/>
+                                    <constraint firstItem="NOR-hO-fzw" firstAttribute="leading" secondItem="Usw-mp-C7y" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="nbh-mv-I51"/>
+                                    <constraint firstAttribute="bottom" secondItem="QRj-QW-Tqd" secondAttribute="bottom" constant="60" id="xLx-fK-fEv"/>
+                                </constraints>
+                            </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SxK-Of-qfq">
+                                <subviews>
+                                    <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="t40-vq-Kl2" customClass="TypeWriterLabel">
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="160" id="EqL-5g-sgr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="t40-vq-Kl2" firstAttribute="top" secondItem="SxK-Of-qfq" secondAttribute="top" constant="40" id="G8S-mL-qKk"/>
+                                    <constraint firstAttribute="trailing" secondItem="t40-vq-Kl2" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="LW3-Ee-BTb"/>
+                                    <constraint firstItem="t40-vq-Kl2" firstAttribute="leading" secondItem="SxK-Of-qfq" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ZsM-RW-Ewm"/>
+                                </constraints>
+                            </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mgf-0f-U51">
                                 <subviews>
                                     <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wEL-Xl-8K3">
