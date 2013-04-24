@@ -23,9 +23,9 @@ function calculateR(convCenterLat, zoom) {
 }
 
 function convertLatLngToPoint(latlng, magic, R) {
-	var x = (magic/2 + latlng.lng * magic / 360)*R;
+	var x = (magic + latlng.lng * magic / 180)*R;
 	var l = Math.sin(latlng.lat * DEG2RAD);
-	var y =  (magic/2 + 0.5*Math.log((1+l)/(1-l)) * -(magic / (2*Math.PI)))*R;
+	var y =  (magic + Math.log((1+l)/(1-l)) * -(magic / (2*Math.PI)))*R;
 	return {x: Math.floor(x/magic), y: Math.floor(y/magic)};
 }
 
@@ -35,13 +35,13 @@ function convertPointToLatLng(x, y, magic, R) {
 		// orig function put together from all over the place
 		// lat: (2 * Math.atan(Math.exp((((y + 1) * magic / R) - (magic/ 2)) / (-1*(magic / (2 * Math.PI))))) - Math.PI / 2) / (Math.PI / 180),
 		// shortened version by your favorite algebra program.
-    lat: (360*Math.atan(Math.exp(Math.PI - 2*Math.PI*(y+1)/R)))/Math.PI - 90,
-    lng: 360*x/R-180
+    lat: (360*Math.atan(Math.exp(Math.PI - Math.PI*(y+1)/R)))/Math.PI - 90,
+    lng: 180*x/R-180
 	};
 	e.ne = {
 		//lat: (2 * Math.atan(Math.exp(((y * magic / R) - (magic/ 2)) / (-1*(magic / (2 * Math.PI))))) - Math.PI / 2) / (Math.PI / 180),
-    lat: (360*Math.atan(Math.exp(Math.PI - 2*Math.PI*y/R)))/Math.PI - 90,
-    lng: 360*(x+1)/R-180
+    lat: (360*Math.atan(Math.exp(Math.PI - Math.PI*y/R)))/Math.PI - 90,
+    lng: 180*(x+1)/R-180
 	};
 	return e;
 }
