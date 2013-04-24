@@ -18,10 +18,6 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
 
-		[self setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-		[self setTitleColor:[UIColor blackColor] forState:UIControlStateHighlighted];
-		[self setTitleColor:[UIColor blackColor] forState:UIControlStateDisabled];
-
 		normalColor = [UIColor colorWithRed:114.0/255.0 green:247.0/255.0 blue:229.0/255.0 alpha:1.0];
 		highlightedColor = [UIColor colorWithRed:219.0/255.0 green:251.0/255.0 blue:247.0/255.0 alpha:1.0];
 		disabledColor = [UIColor colorWithRed:30.0/255.0 green:69.0/255.0 blue:76.0/255.0 alpha:1.0];

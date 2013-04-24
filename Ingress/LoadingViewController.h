@@ -12,6 +12,8 @@
 #import "WheelActivityIndicatorView.h"
 #import "StretchableBackgroundButton.h"
 #import "TypeWriterLabel.h"
+#import "CustomBackgroundColorButton.h"
+#import "TPKeyboardAvoidingScrollView.h"
 
 @interface LoadingViewController : UIViewController <UIWebViewDelegate, UITabBarControllerDelegate, UITextFieldDelegate> {
 	
@@ -23,13 +25,18 @@
 	__weak IBOutlet UIView *activationView;
 	__weak IBOutlet UILabel *activationErrorLabel;
 	__weak IBOutlet UITextField *activationCodeField;
-	__weak IBOutlet UIButton *activationButton;
+	__weak IBOutlet CustomBackgroundColorButton *activationButton;
 
 	NSString *codenameToConfirm;
 	__weak IBOutlet UIView *codenameConfirmView;
 	__weak IBOutlet TypeWriterLabel *codenameConfirmLabel;
 	__weak IBOutlet StretchableBackgroundButton *codenameConfirmButton;
 	__weak IBOutlet StretchableBackgroundButton *codenameConfirmRetryButton;
+
+	__weak IBOutlet TPKeyboardAvoidingScrollView *createCodenameScrollview;
+	__weak IBOutlet UILabel *createCodenameLabel;
+	__weak IBOutlet UITextField *createCodenameField;
+	__weak IBOutlet CustomBackgroundColorButton *createCodenameButton;
 
 	__weak IBOutlet UIView *codenameConfirmationView;
 	__weak IBOutlet TypeWriterLabel *codenameConfirmationLabel;
@@ -45,6 +52,7 @@
 }
 
 - (IBAction)activate;
+- (IBAction)createCodename;
 - (IBAction)codenameConfirm;
 - (IBAction)codenameConfirmRetry;
 

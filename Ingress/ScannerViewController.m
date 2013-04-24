@@ -31,7 +31,7 @@
 	locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-//  [locationManager startUpdatingLocation];
+//	[locationManager startUpdatingLocation];
 //	[locationManager startUpdatingHeading];
 
 	[[AppDelegate instance] setMapView:_mapView];

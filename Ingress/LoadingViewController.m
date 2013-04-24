@@ -9,6 +9,7 @@
 #import <objc/objc.h>
 
 #import "LoadingViewController.h"
+#import "DAKeyboardControl.h"
 
 @implementation LoadingViewController {
 	NSMutableDictionary *jsonDict;
@@ -24,12 +25,17 @@
 	[activationCodeField addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
 	[activationButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:18]];
 
-	double delayInSeconds = 2.0;
-	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(delayInSeconds * NSEC_PER_SEC));
-	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+	createCodenameLabel.font = [UIFont fontWithName:@"Coda-Regular" size:14];
+	[createCodenameField.layer setBorderWidth:1];
+	[createCodenameField.layer setBorderColor:[[UIColor colorWithRed:255.0/255.0 green:214.0/255.0 blue:82.0/255.0 alpha:1.0] CGColor]];
+	[createCodenameField addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
+	[createCodenameButton.layer setBorderWidth:1];
+	[createCodenameButton.layer setBorderColor:[[UIColor colorWithRed:255.0/255.0 green:214.0/255.0 blue:82.0/255.0 alpha:1.0] CGColor]];
+	[createCodenameButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:18]];
 
+	[createCodenameScrollview addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
 		
-	});
+	}];
 
 	////////
 
@@ -171,12 +177,30 @@
 						[alertView show];
 						
 					} else if ([errorStr isEqualToString:@"allowNicknameEdit"]) {
-						
-						UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Enter a codename" message:@"Niantic software online.\nIncoming text transmission detected.\nOpening channel...\n\n> I need you help. The world needs your help. This chat is not secure.\n\nI need you to create a unique codename so that I can call you on a secure line.\n\nThis is the name other agents will know you by." delegate:self cancelButtonTitle:nil otherButtonTitles:@"Transmit", nil];
-						[alertView setAlertViewStyle:UIAlertViewStylePlainTextInput];
-						[alertView setTag:3];
-						[alertView show];
-						
+
+						NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:@"Niantic software online.\nIncoming text transmission detected.\nOpening channel...\n\n> I need you help. The world needs your help. This chat is not secure.\n\nI need you to create a unique codename so that I can call you on a secure line.\n\nThis is the name other agents will know you by."];
+						[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:14], NSForegroundColorAttributeName : [UIColor colorWithRed:45.0/255.0 green:239.0/255.0 blue:249.0/255.0 alpha:1.0]} range:NSMakeRange(0, 80)];
+						[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:14], NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(80, 202)];
+
+						[createCodenameScrollview setContentSize:self.view.frame.size];
+
+						TypeWriterLabel *createCodenameAnimatedLabel = [TypeWriterLabel new];
+						createCodenameAnimatedLabel.backgroundColor = [UIColor blackColor];
+						createCodenameAnimatedLabel.opaque = YES;
+						createCodenameAnimatedLabel.numberOfLines = 0;
+						createCodenameAnimatedLabel.frame = CGRectMake(20, 40, 280, 264);
+						[createCodenameScrollview addSubview:createCodenameAnimatedLabel];
+						[createCodenameAnimatedLabel setAutoResizes:YES];
+						[createCodenameAnimatedLabel setAttributedText:attrStr];
+
+						dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(292 * 0.05 * NSEC_PER_SEC));
+						dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+							[createCodenameLabel setHidden:NO];
+							[createCodenameField setHidden:NO];
+							[createCodenameButton setHidden:NO];
+							[createCodenameField becomeFirstResponder];
+						});
+
 					} else {
 						[label setText:errorStr];
 					}
@@ -223,34 +247,6 @@
 			
 			break;
 			
-		case 3: {
-			
-			UITextField *textField = [alertView textFieldAtIndex:0];
-			[[API sharedInstance] validateNickname:textField.text completionHandler:^(NSString *errorStr) {
-				
-				if (errorStr) {
-					
-					UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Wrong codename" message:errorStr delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:nil];
-					[alertView setTag:4];
-					[alertView show];
-					
-				} else {
-
-					codenameConfirmView.hidden = NO;
-					codenameToConfirm = textField.text;
-
-					NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Codename valid. Please confirm.\n%@", codenameToConfirm]];
-					[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:15], NSForegroundColorAttributeName : [UIColor colorWithRed:255.0/255.0 green:214.0/255.0 blue:82.0/255.0 alpha:1.0]} range:NSMakeRange(0, attrStr.length)];
-					[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:16], NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(32, codenameToConfirm.length)];
-					[codenameConfirmLabel setAttributedText:attrStr];
-
-				}
-				
-			}];
-			
-			break;
-		}
-			
 		case 4:
 			
 			[self performHandshake];
@@ -266,6 +262,9 @@
 	if ([textField isEqual:activationCodeField]) {
 		[self activate];
 		return NO;
+	} else if ([textField isEqual:createCodenameField]) {
+		[self createCodename];
+		return NO;
 	}
 	return NO;
 }
@@ -277,6 +276,12 @@
 			[activationButton setEnabled:YES];
 		} else {
 			[activationButton setEnabled:NO];
+		}
+	} else if ([textField isEqual:createCodenameField]) {
+		if (textField.text.length > 0) {
+			[createCodenameButton setEnabled:YES];
+		} else {
+			[createCodenameButton setEnabled:NO];
 		}
 	}
 }
@@ -343,8 +348,48 @@
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 
 	codenameConfirmView.hidden = YES;
-	[self performHandshake];
-	
+
+	createCodenameScrollview.hidden = NO;
+	createCodenameLabel.hidden = NO;
+	createCodenameField.hidden = NO;
+	createCodenameButton.hidden = NO;
+	createCodenameField.text = @"";
+	createCodenameButton.enabled = NO;
+	[createCodenameField becomeFirstResponder];
+
+//	[self performHandshake];
+
+}
+
+- (IBAction)createCodename {
+
+	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+
+	[createCodenameField resignFirstResponder];
+	createCodenameScrollview.hidden = YES;
+
+	[[API sharedInstance] validateNickname:createCodenameField.text completionHandler:^(NSString *errorStr) {
+
+		if (errorStr) {
+
+			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Wrong codename" message:errorStr delegate:self cancelButtonTitle:@"Retry" otherButtonTitles:nil];
+			[alertView setTag:4];
+			[alertView show];
+
+		} else {
+
+			codenameConfirmView.hidden = NO;
+			codenameToConfirm = createCodenameField.text;
+
+			NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Codename valid. Please confirm.\n%@", codenameToConfirm]];
+			[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:15], NSForegroundColorAttributeName : [UIColor colorWithRed:255.0/255.0 green:214.0/255.0 blue:82.0/255.0 alpha:1.0]} range:NSMakeRange(0, attrStr.length)];
+			[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:16], NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(32, codenameToConfirm.length)];
+			[codenameConfirmLabel setAttributedText:attrStr];
+
+		}
+
+	}];
+
 }
 
 #pragma mark - UITabBarControllerDelegate

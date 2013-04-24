@@ -31,7 +31,9 @@
 	CGRect frame = self.frame;
 	frame.size.width = 280;
 	self.frame = frame;
-//	[self sizeToFit];
+	if (self.autoResizes) {
+		[self sizeToFit];
+	}
 
 	characterIndex++;
 	if (characterIndex > [newAttributedText length]) {

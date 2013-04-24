@@ -10,4 +10,6 @@
 
 @interface TypeWriterLabel : UILabel
 
+@property (nonatomic) BOOL autoResizes;
+
 @end

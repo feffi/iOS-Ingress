@@ -17,6 +17,7 @@
 		FA32E883169F2D9F00D30E90 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E882169F2D9F00D30E90 /* API.m */; };
 		FA32E888169F657400D30E90 /* CommViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E887169F657400D30E90 /* CommViewController.m */; };
 		FA32E88B169F661500D30E90 /* CommTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E88A169F661500D30E90 /* CommTableViewController.m */; };
+		FA3E8AEC17267F6700673665 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3E8AEB17267F6700673665 /* TPKeyboardAvoidingScrollView.m */; };
 		FA47817F16AC8FE00041FDFB /* enl_res_energy_fill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA47817D16AC8FE00041FDFB /* enl_res_energy_fill@2x.png */; };
 		FA47818016AC8FE00041FDFB /* hum_res_energy_fill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA47817E16AC8FE00041FDFB /* hum_res_energy_fill@2x.png */; };
 		FA4D43AC16A8335500B98C1F /* shield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA4D43AB16A8335500B98C1F /* shield@2x.png */; };
@@ -238,6 +239,8 @@
 		FA32E887169F657400D30E90 /* CommViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommViewController.m; sourceTree = "<group>"; };
 		FA32E889169F661500D30E90 /* CommTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommTableViewController.h; sourceTree = "<group>"; };
 		FA32E88A169F661500D30E90 /* CommTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommTableViewController.m; sourceTree = "<group>"; };
+		FA3E8AEA17267F6700673665 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
+		FA3E8AEB17267F6700673665 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		FA47817D16AC8FE00041FDFB /* enl_res_energy_fill@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "enl_res_energy_fill@2x.png"; sourceTree = "<group>"; };
 		FA47817E16AC8FE00041FDFB /* hum_res_energy_fill@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hum_res_energy_fill@2x.png"; sourceTree = "<group>"; };
 		FA4D43AB16A8335500B98C1F /* shield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shield@2x.png"; sourceTree = "<group>"; };
@@ -574,6 +577,15 @@
 			);
 			name = Comm;
 			path = Ingress;
+			sourceTree = "<group>";
+		};
+		FA3E8AE617267EF400673665 /* TPKeyboardAvoidingScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				FA3E8AEA17267F6700673665 /* TPKeyboardAvoidingScrollView.h */,
+				FA3E8AEB17267F6700673665 /* TPKeyboardAvoidingScrollView.m */,
+			);
+			path = TPKeyboardAvoidingScrollView;
 			sourceTree = "<group>";
 		};
 		FA4D43B316A8609D00B98C1F /* Resources */ = {
@@ -1064,6 +1076,7 @@
 		FAE6AC7616A0E27B0082BBB5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FA3E8AE617267EF400673665 /* TPKeyboardAvoidingScrollView */,
 				FA29CCF5171F05BB007FB43E /* TypeWriterLabel */,
 				FA7AC9D516D14C5400505404 /* SoundManager */,
 				FA92A0AF16C2E11A00E6E3AE /* MKMapView+ZoomLevel */,
@@ -1390,8 +1403,8 @@
 				FA82129D1722C21E0019E5FD /* positive_btn_background_default@2x.png in Resources */,
 				FA82129E1722C21E0019E5FD /* positive_btn_background_disabled@2x.png in Resources */,
 				FA82129F1722C21E0019E5FD /* positive_btn_background_pressed@2x.png in Resources */,
-				FAF48EBE172422A8000CEFEE /* map_data_calc_tools.js in Resources */,
 				FAF48EC0172446B9000CEFEE /* playerArrow@2x.png in Resources */,
+				FAF48EBE172422A8000CEFEE /* map_data_calc_tools.js in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1474,6 +1487,7 @@
 				FAAA6C5D172299650066D540 /* CustomBackgroundColorButton.m in Sources */,
 				FAF48EBA17233161000CEFEE /* StretchableBackgroundButton.m in Sources */,
 				FAF48EBD17241FB5000CEFEE /* map_data_calc_tools.js in Sources */,
+				FA3E8AEC17267F6700673665 /* TPKeyboardAvoidingScrollView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
