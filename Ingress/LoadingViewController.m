@@ -59,6 +59,34 @@
 
 	[self performHandshake];
 
+//	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC));
+//	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//		createCodenameScrollview.hidden = NO;
+//
+//		NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:@"Niantic software online.\nIncoming text transmission detected.\nOpening channel...\n\n> I need you help. The world needs your help. This chat is not secure.\n\nI need you to create a unique codename so that I can call you on a secure line.\n\nThis is the name other agents will know you by."];
+//		[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:14], NSForegroundColorAttributeName : [UIColor colorWithRed:45.0/255.0 green:239.0/255.0 blue:249.0/255.0 alpha:1.0]} range:NSMakeRange(0, 80)];
+//		[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:14], NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(80, 202)];
+//
+//		[createCodenameScrollview setContentSize:self.view.frame.size];
+//
+//		TypeWriterLabel *createCodenameAnimatedLabel = [TypeWriterLabel new];
+//		createCodenameAnimatedLabel.backgroundColor = [UIColor blackColor];
+//		createCodenameAnimatedLabel.opaque = YES;
+//		createCodenameAnimatedLabel.numberOfLines = 0;
+//		createCodenameAnimatedLabel.frame = CGRectMake(20, 40, 280, 264);
+//		[createCodenameScrollview addSubview:createCodenameAnimatedLabel];
+//		[createCodenameAnimatedLabel setAutoResizes:YES];
+//		[createCodenameAnimatedLabel setAttributedText:attrStr];
+//
+//		dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(292 * 0.05 * NSEC_PER_SEC));
+//		dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//			[createCodenameLabel setHidden:NO];
+//			[createCodenameField setHidden:NO];
+//			[createCodenameButton setHidden:NO];
+//			[createCodenameField becomeFirstResponder];
+//		});
+//	});
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -177,6 +205,8 @@
 						[alertView show];
 						
 					} else if ([errorStr isEqualToString:@"allowNicknameEdit"]) {
+
+						createCodenameScrollview.hidden = NO;
 
 						NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:@"Niantic software online.\nIncoming text transmission detected.\nOpening channel...\n\n> I need you help. The world needs your help. This chat is not secure.\n\nI need you to create a unique codename so that I can call you on a secure line.\n\nThis is the name other agents will know you by."];
 						[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:14], NSForegroundColorAttributeName : [UIColor colorWithRed:45.0/255.0 green:239.0/255.0 blue:249.0/255.0 alpha:1.0]} range:NSMakeRange(0, 80)];
