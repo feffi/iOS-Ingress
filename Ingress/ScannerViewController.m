@@ -152,7 +152,7 @@
 
 			NSDictionary *params = @{
 				@"method": @"dashboard.getThinnedEntitiesV2",
-				@"minLevelOfDetail": @(-1),
+				@"zoom": @(_mapView.zoomLevel),
 				@"boundsParamsList": obj
 			};
 
