@@ -10,6 +10,7 @@
 
 #import "LoadingViewController.h"
 #import "DAKeyboardControl.h"
+#import "GLViewController.h"
 
 @implementation LoadingViewController {
 	NSMutableDictionary *jsonDict;
@@ -36,6 +37,10 @@
 	[createCodenameScrollview addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
 		
 	}];
+
+	GLViewController *glVC = self.childViewControllers[0];
+	[glVC.view setBackgroundColor:[UIColor blackColor]];
+	introTextView.font = [UIFont fontWithName:@"Coda-Regular" size:22];
 
 	////////
 
@@ -67,6 +72,17 @@
 	[codenameConfirmButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:28]];
 	[codenameConfirmRetryButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:22]];
 
+//	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC));
+//	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//		[NSTimer scheduledTimerWithTimeInterval:(0.04) target:self selector:@selector(autoscrollTimerFired) userInfo:nil repeats:YES];
+//		[[SoundManager sharedManager] playSound:@"Sound/speech_zoomdown_intro.aif"];
+//	});
+
+}
+
+- (void)autoscrollTimerFired {
+	CGPoint scrollPoint = introTextView.contentOffset;
+    [introTextView setContentOffset:CGPointMake(scrollPoint.x, scrollPoint.y + 1) animated:NO];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {

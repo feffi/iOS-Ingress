@@ -40,7 +40,10 @@
 
 	__weak IBOutlet UIView *codenameConfirmationView;
 	__weak IBOutlet TypeWriterLabel *codenameConfirmationLabel;
-	
+
+	__weak IBOutlet UIView *introView;
+	__weak IBOutlet UITextView *introTextView;
+
 	__weak IBOutlet UILabel *label;
 //	__weak IBOutlet UIImageView *innerWheel;
 //	__weak IBOutlet UIImageView *outerWheel;

@@ -312,12 +312,16 @@
 
 	@synchronized([GLViewController class]) {
 		[EAGLContext setCurrentContext:self.context];
-	
+
+		CGFloat r, g, b, a;
+		[self.view.backgroundColor getRed:&r green:&g blue:&b alpha:&a];
+		NSLog(@"BG: %@", self.view.backgroundColor);
+
+		glClearColor(r, g, b, a);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 		switch (self.modelID) {
 			case 1: {
-				
-				glClearColor(16./255., 32./255., 34./255., 1);
-				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 				
 				[self.effect prepareToDraw];
 				
@@ -326,9 +330,6 @@
 				break;
 			}
 			case 2: {
-				
-				glClearColor(16./255., 32./255., 34./255., 1);
-				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 				
 				[self.effect prepareToDraw];
 				
@@ -340,9 +341,6 @@
 			}
 			case 3: {
 				
-				glClearColor(16./255., 32./255., 34./255., 1);
-				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-				
 				[self.effect prepareToDraw];
 				
 				glDrawArrays(GL_TRIANGLES, 0, xmpResourceUnitNumVerts);
@@ -351,9 +349,6 @@
 			}
 			case 4: {
 				
-				glClearColor(16./255., 32./255., 34./255., 1);
-				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-				
 				[self.effect prepareToDraw];
 				
 				glDrawArrays(GL_TRIANGLES, 0, shieldResourceUnitNumVerts);
@@ -361,9 +356,6 @@
 				break;
 			}
 			default: {
-
-				glClearColor(16./255., 32./255., 34./255., 1);
-				glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 				
 				break;
 			}
