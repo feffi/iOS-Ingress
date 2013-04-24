@@ -296,10 +296,10 @@
 //	[self.view addSubview:HUD];
 //	[HUD show:YES];
 //	
-//	[[API sharedInstance] getObjectsWithCompletionHandler:^{
+	[[API sharedInstance] getObjectsWithCompletionHandler:^{
 //		[[DB sharedInstance] addPortalsToMapView];
 //		[HUD hide:YES];
-//	}];
+	}];
 //
 //	[[API sharedInstance] getInventoryWithCompletionHandler:^{
 //

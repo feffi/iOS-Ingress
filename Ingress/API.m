@@ -993,6 +993,59 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 - (void)getObjectsWithCompletionHandler:(void (^)(void))handler {
 
+	[[DB sharedInstance] removeAllEnergyGlobs];
+
+	NSArray *cellsAsHex = [self cellsAsHex];
+
+	NSMutableArray *dates = [NSMutableArray arrayWithCapacity:cellsAsHex.count];
+	for (int i = 0; i < cellsAsHex.count; i++) {
+		[dates addObject:@0];
+	}
+
+	NSDictionary *dict = @{
+	  @"playerLocation": [self currentE6Location],
+	  @"knobSyncTimestamp": @(0),
+	  //@"energyGlobGuids": @[],
+	  @"cellsAsHex": cellsAsHex,
+	  @"dates": dates
+	};
+
+	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"https://m-dot-betaspike.appspot.com/rpc/getObjectsInCells"]];
+
+	NSDictionary *headers = @{
+		 @"Content-Type" : @"application/json;charset=UTF-8",
+		 @"Accept-Encoding" : @"gzip",
+		 @"User-Agent" : @"Nemesis (gzip)",
+		 @"X-XsrfToken" : ((self.xsrfToken) ? (self.xsrfToken) : @""),
+		 @"Host" : @"m-dot-betaspike.appspot.com",
+		 @"Connection" : @"Keep-Alive",
+		 @"Cookie" : [NSString stringWithFormat:@"SACSID=%@", ((self.SACSID) ? (self.SACSID) : @"")],
+	};
+
+	[request setAllHTTPHeaderFields:headers];
+	[request setHTTPMethod:@"POST"];
+	[request setHTTPBody:[NSJSONSerialization dataWithJSONObject:@{@"params": dict} options:0 error:nil]];
+
+	[NSURLConnection sendAsynchronousRequest:request queue:self.networkQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+
+		if (error) { NSLog(@"NSURLConnection error: %@", error); }
+
+		NSError *jsonParseError;
+		id responseObj;
+		if (data) {
+			responseObj = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParseError];
+		}
+
+		if (responseObj[@"gameBasket"][@"energyGlobGuids"]) {
+			[self processEnergyGlobGuids:responseObj[@"gameBasket"][@"energyGlobGuids"]];
+		}
+
+		handler();
+		
+	}];
+
+	return;
+
 //	NSString *qk = @"0120212211103";
 //	
 //	CGPoint nePoint = CGPointMake(mapView.bounds.origin.x + mapView.bounds.size.width, mapView.bounds.origin.y);
