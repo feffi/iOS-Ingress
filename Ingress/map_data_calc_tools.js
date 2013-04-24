@@ -49,20 +49,21 @@ function convertPointToLatLng(x, y, magic, R) {
 // calculates the quad key for a given point. The point is not(!) in
 // lat/lng format.
 function pointToQuadKey(x, y, zoom) {
-	var quadkey = [];
-	for(var c = zoom; c > 0; c--) {
-		//  +-------+   quadrants are probably ordered like this
-		//  | 0 | 1 |
-		//  |---|---|
-		//  | 2 | 3 |
-		//  |---|---|
-		var quadrant = 0;
-		var e = 1 << c - 1;
-		(x & e) != 0 && quadrant++;               // push right
-		(y & e) != 0 && (quadrant++, quadrant++); // push down
-		quadkey.push(quadrant);
-	}
-	return quadkey.join("");
+	return zoom + "_" + x + "_" + y;;
+//	var quadkey = [];
+//	for(var c = zoom; c > 0; c--) {
+//		//  +-------+   quadrants are probably ordered like this
+//		//  | 0 | 1 |
+//		//  |---|---|
+//		//  | 2 | 3 |
+//		//  |---|---|
+//		var quadrant = 0;
+//		var e = 1 << c - 1;
+//		(x & e) != 0 && quadrant++;               // push right
+//		(y & e) != 0 && (quadrant++, quadrant++); // push down
+//		quadkey.push(quadrant);
+//	}
+//	return quadkey.join("");
 }
 
 // given quadkey and bounds, returns the format as required by the
