@@ -1098,46 +1098,46 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 //
 //	}];
 	
-	[[DB sharedInstance] removeAllPortals];
-	[[DB sharedInstance] removeAllEnergyGlobs];
-	
-	NSArray *cellsAsHex = [self cellsAsHex];
-
-	NSMutableArray *dates = [NSMutableArray arrayWithCapacity:cellsAsHex.count];
-	for (int i = 0; i < cellsAsHex.count; i++) {
-		[dates addObject:@0];
-	}
-	
-	NSDictionary *dict = @{
-		@"playerLocation": [self currentE6Location],
-		@"knobSyncTimestamp": @(0),
-		//@"energyGlobGuids": @[],
-		@"cellsAsHex": cellsAsHex,
-		@"dates": dates
-	};
-	
-	//NSLog(@"dict energyGlobGuids count: %d", [dict[@"energyGlobGuids"] count]);
-	
+//	[[DB sharedInstance] removeAllPortals];
+//	[[DB sharedInstance] removeAllEnergyGlobs];
+//	
+//	NSArray *cellsAsHex = [self cellsAsHex];
+//
+//	NSMutableArray *dates = [NSMutableArray arrayWithCapacity:cellsAsHex.count];
+//	for (int i = 0; i < cellsAsHex.count; i++) {
+//		[dates addObject:@0];
+//	}
+//	
 //	NSDictionary *dict = @{
-//	@"playerLocation": @"0304b588,00d2f0b1",
-//	@"knobSyncTimestamp": @(0), //(int)([[NSDate date] timeIntervalSince1970])
-//	@"energyGlobGuids": @[],
-//	@"cellsAsHex": @[
-//	@"AEEE89D32301",
-//	],
-//	@"dates": @[@0]
+//		@"playerLocation": [self currentE6Location],
+//		@"knobSyncTimestamp": @(0),
+//		//@"energyGlobGuids": @[],
+//		@"cellsAsHex": cellsAsHex,
+//		@"dates": dates
 //	};
+//	
+//	//NSLog(@"dict energyGlobGuids count: %d", [dict[@"energyGlobGuids"] count]);
+//	
+////	NSDictionary *dict = @{
+////	@"playerLocation": @"0304b588,00d2f0b1",
+////	@"knobSyncTimestamp": @(0), //(int)([[NSDate date] timeIntervalSince1970])
+////	@"energyGlobGuids": @[],
+////	@"cellsAsHex": @[
+////	@"AEEE89D32301",
+////	],
+////	@"dates": @[@0]
+////	};
+//
+//	[self sendRequest:@"gameplay/getObjectsInCells" params:dict completionHandler:^(id responseObj) {
+//
+//		//NSLog(@"getObjectsInCells responseObj: %@", responseObj);
+//
+//		dispatch_async(dispatch_get_main_queue(), ^{
+//			handler();
+//		});
+//		
+//	}];
 
-	[self sendRequest:@"gameplay/getObjectsInCells" params:dict completionHandler:^(id responseObj) {
-
-		//NSLog(@"getObjectsInCells responseObj: %@", responseObj);
-
-		dispatch_async(dispatch_get_main_queue(), ^{
-			handler();
-		});
-		
-	}];
-	
 }
 
 - (void)loadCommunicationForFactionOnly:(BOOL)factionOnly completionHandler:(void (^)(NSArray *messages))handler {
