@@ -14,6 +14,7 @@
 #import "TypeWriterLabel.h"
 #import "CustomBackgroundColorButton.h"
 #import "TPKeyboardAvoidingScrollView.h"
+#import "SelectingButton.h"
 
 @interface LoadingViewController : UIViewController <UIWebViewDelegate, UITabBarControllerDelegate, UITextFieldDelegate> {
 	
@@ -27,6 +28,13 @@
 	__weak IBOutlet UITextField *activationCodeField;
 	__weak IBOutlet CustomBackgroundColorButton *activationButton;
 
+	__weak IBOutlet UIView *termsView;
+	__weak IBOutlet UILabel *termsWarningLabel;
+	__weak IBOutlet UILabel *termsDescriptionLabel;
+	__weak IBOutlet UILabel *termsLabel;
+	__weak IBOutlet SelectingButton *termsCheckboxButton;
+	__weak IBOutlet StretchableBackgroundButton *termsConfirmButton;
+
 	NSString *codenameToConfirm;
 	__weak IBOutlet UIView *codenameConfirmView;
 	__weak IBOutlet TypeWriterLabel *codenameConfirmLabel;
@@ -38,8 +46,8 @@
 	__weak IBOutlet UITextField *createCodenameField;
 	__weak IBOutlet CustomBackgroundColorButton *createCodenameButton;
 
-	__weak IBOutlet UIView *codenameConfirmationView;
-	__weak IBOutlet TypeWriterLabel *codenameConfirmationLabel;
+	__weak IBOutlet UIView *typewriterView;
+	__weak IBOutlet TypeWriterLabel *typewriterLabel;
 
 	__weak IBOutlet UIView *introView;
 	__weak IBOutlet UITextView *introTextView;
@@ -55,6 +63,8 @@
 }
 
 - (IBAction)activate;
+- (IBAction)termsCheckboxChanged;
+- (IBAction)termsConfirm;
 - (IBAction)createCodename;
 - (IBAction)codenameConfirmRetry;
 - (IBAction)codenameConfirm;

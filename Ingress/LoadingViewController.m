@@ -15,11 +15,12 @@
 @implementation LoadingViewController {
 	NSMutableDictionary *jsonDict;
 	NSTimer *introScrollerTimer;
+	NSString *versionString;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
+
 	[label setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20]];
 
 	[activationCodeField.layer setBorderWidth:1];
@@ -27,7 +28,7 @@
 	[activationCodeField addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
 	[activationButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:18]];
 
-	createCodenameLabel.font = [UIFont fontWithName:@"Coda-Regular" size:14];
+	createCodenameLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:14];
 	[createCodenameField.layer setBorderWidth:1];
 	[createCodenameField.layer setBorderColor:[[UIColor colorWithRed:255.0/255.0 green:214.0/255.0 blue:82.0/255.0 alpha:1.0] CGColor]];
 	[createCodenameField addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
@@ -39,7 +40,11 @@
 
 	GLViewController *glVC = self.childViewControllers[0];
 	[glVC.view setBackgroundColor:[UIColor blackColor]];
-	introTextView.font = [UIFont fontWithName:@"Coda-Regular" size:22];
+	introTextView.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName]  size:22];
+
+	termsWarningLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:16];
+	termsDescriptionLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:16];
+	termsLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:16];
 
 	////////
 
@@ -50,6 +55,8 @@
 				@"nemesisSoftwareVersion": @"2013-04-08T20:23:14Z 10b76085f06d opt",		// 1.23.1
 				@"deviceSoftwareVersion": @"4.1.1",
 				} mutableCopy];
+
+	versionString = @"1.23.1";
 	
 }
 
@@ -61,7 +68,7 @@
 	[SoundManager sharedManager].allowsBackgroundMusic = NO;
     [[SoundManager sharedManager] prepareToPlay];
 
-	[self performHandshake];
+//	[self performHandshake];
 
 }
 
@@ -89,7 +96,7 @@
 - (void)performHandshake {
 
 	[[SoundManager sharedManager] playMusic:@"Sound/sfx_throbbing_wheels.aif" looping:YES fadeIn:NO];
-	[label setText:@"v1.23.1"]; //Loading...
+	[label setText:versionString]; //Loading...
 	
 	NSError *error;
 	NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDict options:0 error:&error];
@@ -178,9 +185,20 @@
 
 					} else if ([errorStr isEqualToString:@"USER_MUST_ACCEPT_TOS"]) {
 
-						UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Terms of Service" message:@"Ingress Terms of Service\n\nLast Modified: November 14, 2012\n\nBy downloading, installing, or using the Ingress software, accessing or using the Ingress website (together, the \"Products\" or \"Services\"), or accessing or using any of the content available within the Products, you agree to be bound by the following: (1) the Google Terms of Service (the \"Universal Terms\"); (2) the Ingress Community Guidelines, both incorporated herein by reference, and; (3) the additional terms and conditions set forth below (the \"Additional Terms\"). You should read each of these three documents, as together they form a binding agreement between you and Google Inc. regarding your use of the Products. Collectively, the Universal Terms, the Community Guidelines, and the Additional Terms are referred to as the \"Terms.\"\n\n1. Ability to Accept the Terms. \nYou affirm that you are either more than 18 years of age, or an emancipated minor, and are fully able and competent to enter into the terms, conditions, obligations, affirmations, representations, and warranties set forth in these Terms, and to abide by and comply with these Terms. If you are not 18 years old, do not use the Products.\n\n2. Privacy \nAs a condition of downloading, accessing, or using the Products, you also agree to the terms of the Google Privacy Policy, incorporated here by reference. You understand and agree that by using the Products, you will be transmitting your device location to Google, and that location will be shared publicly with other users through the game along with your submitted screen name (your code name). For example, your code name and location will be shared with all other users when you visit certain locations, similar to a check in.\n\n3. Use of the Products - Permissions and Restrictions. \nSubject to these Terms, Google grants you a personal, non-commercial, non-exclusive, non-transferable license to download and use the Ingress mobile application software, to access and use the Ingress website and service, and to access the Content (as defined below) within the Products for your use.\n\n“Content” means the text, software, scripts, graphics, photos, sounds, music, videos, audiovisual combinations, interactive features and other materials you may view on, access through, or contribute to the Products, including content supplied by Google, its suppliers, or users.\n\nIn addition to the restrictions set out in the Google Terms of Service, unless you have received prior written authorization from Google (or, as applicable, from the provider of particular Content), you shall not:\n\n(a) copy, translate, modify, or make derivative works of the Products, the Content or any part thereof; \n(b) redistribute, sublicense, publish, sell, or in any other way make the Products or Content available to third parties; \n(c) access the Product or Content through any technology or means other than those provided by Google (including without limitation automation software, bots, spiders, or hacks or devices of any kind); \n(d) extract, scrape, or index the Products or Content (including information about users or game play); \n(e) create or maintain any unauthorized connection to the Products, including but not limited to any server that emulates or attempts to emulate the Products; \n(f) delete, obscure, or in any manner alter any attribution, warning, or link that appears in the Products or the Content; or \n(g) use the Products for any commercial purpose, including but not limited to (i) gathering in-Product items or resources for sale outside the Products, or (ii) performing services in the Products in exchange for payment outside the Product.\n\n4. Appropriate Conduct; Compliance with Law and Google Policies. You agree that you are responsible for your own conduct and content while using the Products, and for any consequences thereof. You agree to use the Products only for purposes that are lawful, proper and in accordance with the Terms, including the Community Guidelines, and any applicable policies or guidelines Google may make available.\n\nBy way of example, and not as a limitation, you agree that when using the Products or the Content, you shall not:\n\n(a) defame, abuse, harass, stalk, threaten or otherwise violate the legal rights (including the rights of privacy and publicity) of others; \n(b) upload, post, email, transmit or otherwise make available any unlawful, inappropriate, defamatory or obscene content or message; \n(c) trespass, or in any manner attempt to gain or gain access to any property or location where you do not have a right or permission to be; \n(d) upload, post, or otherwise make available commercial messages or advertisements, pyramid schemes, or other disruptive notices; \n(e) impersonate another person or entity; \n(f) promote or provide instructional information about illegal activities; \n(g) promote physical harm or injury against any group or individual; or \n(h) transmit any viruses, worms, defects, Trojan horses, or any items of a destructive nature.\n\n5. Content in the Products.\n\nYou understand and agree to the following:\n\n(a) Content, including location data, provided in the products is provided to you AS IS. It is intended for for entertainment and game play purposes only, and is not guaranteed to be accurate. You should exercise judgment in your use of the Products and Content. \n(b) You understand that when using the Products, you will be exposed to Content from a variety of sources, including other users, and that Google is not responsible for the accuracy, usefulness, safety, or intellectual property rights of or relating to the Content. \n(c) You may submit Content to the Products, including user comments. You understand that the Content will be displayed within the Product, and that Google does not guarantee confidentiality with respect to any Content you submit. You shall be solely responsible for your own Content.\n\n6. DISCLAIMER OF WARRANTIES\n\n(a) YOU AGREE THAT YOUR USE OF THE PRODUCTS SHALL BE AT YOUR SOLE RISK. GOOGLE MAKES NO WARRANTIES OR REPRESENTATIONS ABOUT THE ACCURACY OR COMPLETENESS OF THE PRODUCTS OR THE CONTENT. \n(b) TO THE FULLEST EXTENT PERMITTED BY LAW, GOOGLE, ITS OFFICERS, DIRECTORS, EMPLOYEES, AGENTS AND LICENSORS DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, IN CONNECTION WITH THE PRODUCTS, THE CONTENT AND YOUR USE THEREOF. \n(c) AS WITH THE PURCHASE OR USE OF A PRODUCT OR SERVICE THROUGH ANY MEDIUM OR IN ANY ENVIRONMENT, YOU SHOULD USE YOUR BEST JUDGMENT AND EXERCISE CAUTION WHERE APPROPRIATE.\n\n7. Limitation of Liability\n\nIN NO EVENT SHALL GOOGLE, ITS OFFICERS, DIRECTORS, EMPLOYEES OR AGENTS, OR LICENSORS BE LIABLE TO YOU FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, PUNITIVE, OR CONSEQUENTIAL DAMAGES WHATSOEVER RESULTING FROM ANY (i) ERRORS, MISTAKES, OR INACCURACIES OF CONTENT, (ii) PERSONAL INJURY OR PROPERTY DAMAGE, OF ANY NATURE WHATSOEVER, RESULTING FROM YOUR ACCESS TO AND USE OF THE PRODUCTS OR CONTENT, (iii) ANY UNAUTHORIZED ACCESS TO OR USE OF OUR SECURE SERVERS AND/OR ANY AND ALL PERSONAL INFORMATION STORED THEREIN, or (iv) ANY ERRORS OR OMISSIONS IN ANY PRODUCTS OR CONTENT OR FOR ANY LOSS OR DAMAGE OF ANY KIND INCURRED AS A RESULT OF YOUR USE OF THE PRODUCTS OR CONTENT WHETHER BASED ON WARRANTY, CONTRACT, TORT, OR ANY OTHER LEGAL THEORY, AND WHETHER OR NOT THE COMPANY IS ADVISED OF THE POSSIBILITY OF SUCH DAMAGES. THE FOREGOING LIMITATION OF LIABILITY SHALL APPLY TO THE FULLEST EXTENT PERMITTED BY LAW IN THE APPLICABLE JURISDICTION." delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Accept", nil];
-						[alertView setTag:2];
-						[alertView show];
+						typewriterView.hidden = NO;
+
+						NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Booting Niantic Software %@.....\n\n*\n*\n*\n*\nJMP 0x1F\nPOPL %%ESI\nMOVL %%ESI,0x8(%%ESI)\nXORL %%EAX,%%EAX\nMOVB %%EAX,0x7(%%ESI)\nMOVL %%EAX,0xC(%%ESI)\nMOVB $0xB,%%AL\nMOVL %%ESI,&EBX\nLEAL 0x8(%%ESI),%%ECX\n*\n*\n*\n*", versionString]];
+						[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:14], NSForegroundColorAttributeName : [UIColor colorWithRed:45.0/255.0 green:239.0/255.0 blue:249.0/255.0 alpha:1.0]} range:NSMakeRange(0, versionString.length+30)];
+						[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:14], NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(versionString.length+30, attrStr.length-(versionString.length+30))];
+						[typewriterLabel setAutoResizes:YES];
+						[typewriterLabel setAttributedText:attrStr];
+
+						dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(((attrStr.length * 0.05) + 2) * NSEC_PER_SEC));
+						dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+							termsView.hidden = NO;
+							typewriterView.hidden = YES;
+							termsConfirmButton.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:28];
+						});
 						
 					} else if ([errorStr isEqualToString:@"allowNicknameEdit"]) {
 
@@ -234,40 +252,6 @@
 	[label setText:@"Connection Error"]; //[error localizedDescription]
 }
 
-#pragma mark - UIAlertViewDelegate
-
-- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView {
-	if (alertView.alertViewStyle == UIAlertViewStylePlainTextInput) {
-		UITextField *textField = [alertView textFieldAtIndex:0];
-		return textField.text.length;
-	}
-	return YES;
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-	
-	switch (alertView.tag) {
-		case 2:
-			
-			if (buttonIndex == 1) {
-				[jsonDict setValue:@"1" forKey:@"tosAccepted"];
-				[self performHandshake];
-				[jsonDict setValue:nil forKey:@"tosAccepted"];
-			} else {
-				[label setText:@"You must accept TOS"];
-			}
-			
-			break;
-			
-		case 4:
-			
-			[self performHandshake];
-			
-			break;
-	}
-	
-}
-
 #pragma mark - UITextFieldDelegate
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -313,6 +297,24 @@
 	activationCodeField.text = @"";
 	activationButton.enabled = NO;
 	
+}
+
+- (IBAction)termsCheckboxChanged {
+	termsConfirmButton.enabled = termsCheckboxButton.selected;
+}
+
+- (IBAction)termsConfirm {
+
+	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+
+	[jsonDict setValue:@"1" forKey:@"tosAccepted"];
+	[self performHandshake];
+	[jsonDict setValue:nil forKey:@"tosAccepted"];
+
+	termsView.hidden = YES;
+	termsCheckboxButton.selected = NO;
+	termsConfirmButton.enabled = NO;
+
 }
 
 - (IBAction)createCodename {
@@ -402,17 +404,18 @@
 
 		} else {
 
-			codenameConfirmationView.hidden = NO;
+			typewriterView.hidden = NO;
 
 			NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Creating encryption keys...\n\nID confirmed. %@ Access granted.\n\nProgram initiated...", codenameToConfirm]];
 			[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:45.0/255.0 green:239.0/255.0 blue:249.0/255.0 alpha:1.0]} range:NSMakeRange(0, attrStr.length)];
 			[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:16], NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(43, codenameToConfirm.length)];
-			[codenameConfirmationLabel setAutoResizes:YES];
-			[codenameConfirmationLabel setAttributedText:attrStr];
+			[typewriterLabel setAutoResizes:YES];
+			[typewriterLabel setAttributedText:attrStr];
 
 			dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(((attrStr.length * 0.05) + 2) * NSEC_PER_SEC));
 			dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 				introView.hidden = NO;
+				typewriterView.hidden = YES;
 			});
 
 			popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(((attrStr.length * 0.05) + 3) * NSEC_PER_SEC));

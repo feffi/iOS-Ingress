@@ -494,6 +494,93 @@
                                     <constraint firstAttribute="trailing" secondItem="hHD-Es-Bxa" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="xK4-NH-mP6"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FZM-OK-SsE">
+                                <subviews>
+                                    <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="kyf-8v-Vub">
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="140" id="LgG-Oj-aj0"/>
+                                        </constraints>
+                                        <string key="text">Warning! Saving the world is dangerous. If you do not want to assume this risk, now is your chance to go close this app and go back to your normal life</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="1" green="0.29411764705882354" blue="0.29411764705882354" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="0Fm-IH-xk3">
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="140" id="pwN-gI-7fp"/>
+                                        </constraints>
+                                        <string key="text">Your location will be collected by Google and shared with other users of the product. Read the full Terms of Service before accepting these terms and conditions.</string>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="0.16470588235294117" green="0.8901960784313725" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4A-e1-PMT" customClass="SelectingButton">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="IVx-4K-NE7"/>
+                                            <constraint firstAttribute="height" constant="30" id="OXN-6O-zNh"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                        <state key="normal" title="◻">
+                                            <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="selected" title="🔳"/>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="termsCheckboxChanged" destination="fnb-Md-XrQ" eventType="touchUpInside" id="RKv-wz-5N9"/>
+                                        </connections>
+                                    </button>
+                                    <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="I accept the Terms of Service for this app" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="242" translatesAutoresizingMaskIntoConstraints="NO" id="ohh-fC-iBo">
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="50" id="kJW-CP-CfW"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <color key="textColor" red="1" green="0.83921568629999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0dt-CF-hvy" customClass="StretchableBackgroundButton">
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="140" id="Qix-bl-IDy"/>
+                                            <constraint firstAttribute="height" constant="60" id="xrP-1U-Sen"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="28"/>
+                                        <inset key="titleEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="2"/>
+                                        <state key="normal" title="Confirm" backgroundImage="positive_btn_background_default.png">
+                                            <color key="titleColor" red="1" green="0.83921568629999999" blue="0.32156862749999998" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="disabled" backgroundImage="positive_btn_background_disabled.png"/>
+                                        <state key="highlighted" backgroundImage="positive_btn_background_pressed.png">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="termsConfirm" destination="fnb-Md-XrQ" eventType="touchUpInside" id="PHm-fX-IgO"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="M4A-e1-PMT" firstAttribute="leading" secondItem="FZM-OK-SsE" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="10Y-eL-VLI"/>
+                                    <constraint firstAttribute="trailing" secondItem="0dt-CF-hvy" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="3nJ-jb-EmC"/>
+                                    <constraint firstAttribute="bottom" secondItem="ohh-fC-iBo" secondAttribute="bottom" constant="93" id="D1p-a7-1pe"/>
+                                    <constraint firstItem="kyf-8v-Vub" firstAttribute="leading" secondItem="FZM-OK-SsE" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Eks-fh-aTH"/>
+                                    <constraint firstItem="M4A-e1-PMT" firstAttribute="centerY" secondItem="ohh-fC-iBo" secondAttribute="centerY" type="default" id="Gxq-tw-Jru"/>
+                                    <constraint firstItem="kyf-8v-Vub" firstAttribute="top" secondItem="FZM-OK-SsE" secondAttribute="top" constant="20" symbolic="YES" type="default" id="LWv-YV-1oi"/>
+                                    <constraint firstAttribute="trailing" secondItem="ohh-fC-iBo" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Nnz-rQ-Fkh"/>
+                                    <constraint firstAttribute="bottom" secondItem="0dt-CF-hvy" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="Qzt-kn-012"/>
+                                    <constraint firstItem="0Fm-IH-xk3" firstAttribute="top" secondItem="kyf-8v-Vub" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Ug1-dP-Gnv"/>
+                                    <constraint firstItem="0Fm-IH-xk3" firstAttribute="leading" secondItem="FZM-OK-SsE" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="ZAb-wR-wuL"/>
+                                    <constraint firstItem="ohh-fC-iBo" firstAttribute="baseline" secondItem="M4A-e1-PMT" secondAttribute="baseline" type="default" id="g2b-0D-xDD"/>
+                                    <constraint firstAttribute="trailing" secondItem="kyf-8v-Vub" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="i7u-Hp-myf"/>
+                                    <constraint firstItem="ohh-fC-iBo" firstAttribute="leading" secondItem="M4A-e1-PMT" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="lm7-QT-aZa"/>
+                                    <constraint firstAttribute="trailing" secondItem="0Fm-IH-xk3" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="wgq-b4-Gzo"/>
+                                </constraints>
+                            </view>
                             <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="qSC-Ci-qZc" customClass="TPKeyboardAvoidingScrollView">
                                 <subviews>
                                     <label hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Create your agent codename." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zI6-xc-Ioe">
@@ -691,14 +778,17 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="FZM-OK-SsE" firstAttribute="bottom" secondItem="Wb5-yg-mPs" secondAttribute="bottom" type="default" id="14Z-1f-8yn"/>
                             <constraint firstItem="SxK-Of-qfq" firstAttribute="leading" secondItem="Wb5-yg-mPs" secondAttribute="leading" type="default" id="2KU-Nz-IbF"/>
                             <constraint firstItem="SxK-Of-qfq" firstAttribute="trailing" secondItem="Wb5-yg-mPs" secondAttribute="trailing" type="default" id="2dO-6e-057"/>
                             <constraint firstAttribute="centerY" secondItem="aW5-e2-DbE" secondAttribute="centerY" type="user" id="5Ay-3O-MBe"/>
                             <constraint firstAttribute="trailing" secondItem="Tbw-Ja-rLt" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="6WS-rL-gJ9"/>
                             <constraint firstItem="hFV-9X-TaC" firstAttribute="trailing" secondItem="Wb5-yg-mPs" secondAttribute="trailing" type="default" id="6dQ-IZ-3qZ"/>
+                            <constraint firstItem="FZM-OK-SsE" firstAttribute="trailing" secondItem="Wb5-yg-mPs" secondAttribute="trailing" type="default" id="86q-8H-udP"/>
                             <constraint firstItem="SxK-Of-qfq" firstAttribute="bottom" secondItem="Wb5-yg-mPs" secondAttribute="bottom" type="default" id="9nF-N6-YRA"/>
                             <constraint firstItem="Usw-mp-C7y" firstAttribute="leading" secondItem="Wb5-yg-mPs" secondAttribute="leading" type="default" id="DY3-Gz-NTP"/>
                             <constraint firstItem="hFV-9X-TaC" firstAttribute="top" secondItem="Wb5-yg-mPs" secondAttribute="top" type="default" id="FJN-gf-fxk"/>
+                            <constraint firstItem="FZM-OK-SsE" firstAttribute="leading" secondItem="Wb5-yg-mPs" secondAttribute="leading" type="default" id="I1r-gl-DFO"/>
                             <constraint firstItem="qSC-Ci-qZc" firstAttribute="leading" secondItem="Wb5-yg-mPs" secondAttribute="leading" type="default" id="Kiv-rq-lz4"/>
                             <constraint firstItem="SxK-Of-qfq" firstAttribute="top" secondItem="Wb5-yg-mPs" secondAttribute="top" type="default" id="MI3-wf-bTZ"/>
                             <constraint firstItem="hFV-9X-TaC" firstAttribute="leading" secondItem="Wb5-yg-mPs" secondAttribute="leading" type="default" id="MUT-Es-2oD"/>
@@ -708,6 +798,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="mgf-0f-U51" firstAttribute="bottom" secondItem="Wb5-yg-mPs" secondAttribute="bottom" type="default" id="axO-p6-umf"/>
                             <constraint firstItem="mgf-0f-U51" firstAttribute="top" secondItem="Wb5-yg-mPs" secondAttribute="top" type="default" id="bWN-MH-cPc"/>
                             <constraint firstAttribute="centerX" secondItem="aW5-e2-DbE" secondAttribute="centerX" type="user" id="cYA-LU-ZNq"/>
+                            <constraint firstItem="FZM-OK-SsE" firstAttribute="top" secondItem="Wb5-yg-mPs" secondAttribute="top" type="default" id="d4g-OT-MRJ"/>
                             <constraint firstItem="hFV-9X-TaC" firstAttribute="bottom" secondItem="Wb5-yg-mPs" secondAttribute="bottom" type="default" id="dpz-iT-J57"/>
                             <constraint firstItem="Tbw-Ja-rLt" firstAttribute="leading" secondItem="Wb5-yg-mPs" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="iN7-xV-Raw"/>
                             <constraint firstItem="Usw-mp-C7y" firstAttribute="bottom" secondItem="Wb5-yg-mPs" secondAttribute="bottom" type="default" id="lPC-56-GZh"/>
@@ -729,8 +820,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                         <outlet property="codenameConfirmLabel" destination="NOR-hO-fzw" id="WK7-fB-wDo"/>
                         <outlet property="codenameConfirmRetryButton" destination="1hb-8u-Aew" id="587-mY-kfD"/>
                         <outlet property="codenameConfirmView" destination="Usw-mp-C7y" id="FWN-wo-VQR"/>
-                        <outlet property="codenameConfirmationLabel" destination="t40-vq-Kl2" id="2e4-VU-LFa"/>
-                        <outlet property="codenameConfirmationView" destination="SxK-Of-qfq" id="O3j-Eg-9Lt"/>
                         <outlet property="createCodenameButton" destination="PTP-Fi-mrs" id="riW-l0-1PJ"/>
                         <outlet property="createCodenameField" destination="HW8-94-PhW" id="udy-qk-nbd"/>
                         <outlet property="createCodenameLabel" destination="zI6-xc-Ioe" id="uk7-gi-3RO"/>
@@ -738,6 +827,14 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                         <outlet property="introTextView" destination="N5u-xc-GD2" id="4wD-z9-n9H"/>
                         <outlet property="introView" destination="mgf-0f-U51" id="cbg-9v-4w6"/>
                         <outlet property="label" destination="Tbw-Ja-rLt" id="URu-Yt-x9Z"/>
+                        <outlet property="termsCheckboxButton" destination="M4A-e1-PMT" id="yCk-ru-pXp"/>
+                        <outlet property="termsConfirmButton" destination="0dt-CF-hvy" id="y4I-2y-Jmw"/>
+                        <outlet property="termsDescriptionLabel" destination="0Fm-IH-xk3" id="XSJ-Gi-mEP"/>
+                        <outlet property="termsLabel" destination="ohh-fC-iBo" id="1eb-P0-ExY"/>
+                        <outlet property="termsView" destination="FZM-OK-SsE" id="aZk-vw-hN0"/>
+                        <outlet property="termsWarningLabel" destination="kyf-8v-Vub" id="7wd-QQ-xy4"/>
+                        <outlet property="typewriterLabel" destination="t40-vq-Kl2" id="h7Z-cn-vtp"/>
+                        <outlet property="typewriterView" destination="SxK-Of-qfq" id="RdM-AB-UMF"/>
                         <outlet property="wheelActivityIndicatorView" destination="aW5-e2-DbE" id="BOG-Vg-vYK"/>
                         <segue destination="GaO-I4-JTp" kind="modal" identifier="LoadingCompletedSegue" modalTransitionStyle="crossDissolve" id="Cdt-CO-p5s"/>
                     </connections>
@@ -2263,6 +2360,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                         <constraints>
                             <constraint firstItem="auU-pM-4h0" firstAttribute="leading" secondItem="xob-Tu-pne" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="0xV-IL-48K"/>
                             <constraint firstItem="BGQ-ax-GRG" firstAttribute="top" secondItem="Q5O-R5-Pic" secondAttribute="top" type="default" id="1Td-r4-drb"/>
+                            <constraint firstItem="mMh-B8-j72" firstAttribute="baseline" secondItem="tuj-pb-dGt" secondAttribute="baseline" type="default" id="1sh-JQ-vRQ"/>
                             <constraint firstAttribute="trailing" secondItem="Yi5-ja-2IB" secondAttribute="trailing" constant="19" id="2KG-4G-82W"/>
                             <constraint firstItem="uYr-0g-eP5" firstAttribute="bottom" secondItem="Yi5-ja-2IB" secondAttribute="bottom" type="default" id="4qx-3s-EPr"/>
                             <constraint firstItem="zzz-ml-7Ag" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="20" symbolic="YES" type="default" id="4z7-q1-FOl"/>
@@ -2279,6 +2377,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstAttribute="bottom" secondItem="tuj-pb-dGt" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="SPt-xG-vKg"/>
                             <constraint firstItem="Afx-ul-7bp" firstAttribute="leading" secondItem="L77-A5-XYN" secondAttribute="leading" type="default" id="U0P-oE-9Pu"/>
                             <constraint firstItem="Afx-ul-7bp" firstAttribute="trailing" secondItem="L77-A5-XYN" secondAttribute="trailing" type="default" id="UW2-Qy-lV6"/>
+                            <constraint firstItem="BGQ-ax-GRG" firstAttribute="baseline" secondItem="Q5O-R5-Pic" secondAttribute="baseline" type="default" id="W7Q-dB-JXo"/>
                             <constraint firstItem="uYr-0g-eP5" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="20" symbolic="YES" type="default" id="WAO-H1-00V"/>
                             <constraint firstItem="Afx-ul-7bp" firstAttribute="bottom" secondItem="zzz-ml-7Ag" secondAttribute="bottom" type="default" id="Y4H-3p-7ST"/>
                             <constraint firstItem="BGQ-ax-GRG" firstAttribute="bottom" secondItem="Q5O-R5-Pic" secondAttribute="bottom" type="default" id="Y7n-I0-f0L"/>
