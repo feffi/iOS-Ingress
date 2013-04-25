@@ -131,6 +131,7 @@
 		FAA7E4FD16D806B8007EAE9A /* shieldTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA7E4FC16D806B8007EAE9A /* shieldTexture.png */; };
 		FAAA6C5D172299650066D540 /* CustomBackgroundColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAA6C5C172299650066D540 /* CustomBackgroundColorButton.m */; };
 		FAADA23A17291564001865D9 /* SelectingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FAADA23917291564001865D9 /* SelectingButton.m */; };
+		FAADA24017297DD9001865D9 /* MDCParallaxView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAADA23F17297DD9001865D9 /* MDCParallaxView.m */; };
 		FAB5A2CD16AA165D00176C34 /* LevelChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB5A2CC16AA165D00176C34 /* LevelChooserViewController.m */; };
 		FAC23D7116B16EB6000C17DD /* DB.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23D7016B16EB6000C17DD /* DB.m */; };
 		FAC23D7716B16F31000C17DD /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC23D7616B16F31000C17DD /* CoreData.framework */; };
@@ -390,6 +391,8 @@
 		FAAA6C5C172299650066D540 /* CustomBackgroundColorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBackgroundColorButton.m; sourceTree = "<group>"; };
 		FAADA23817291564001865D9 /* SelectingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectingButton.h; sourceTree = "<group>"; };
 		FAADA23917291564001865D9 /* SelectingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectingButton.m; sourceTree = "<group>"; };
+		FAADA23E17297DD9001865D9 /* MDCParallaxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDCParallaxView.h; path = MDCParallaxView/MDCParallaxView.h; sourceTree = "<group>"; };
+		FAADA23F17297DD9001865D9 /* MDCParallaxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDCParallaxView.m; path = MDCParallaxView/MDCParallaxView.m; sourceTree = "<group>"; };
 		FAB5A2CB16AA165D00176C34 /* LevelChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelChooserViewController.h; sourceTree = "<group>"; };
 		FAB5A2CC16AA165D00176C34 /* LevelChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelChooserViewController.m; sourceTree = "<group>"; };
 		FAC23D6F16B16EB6000C17DD /* DB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB.h; sourceTree = "<group>"; };
@@ -890,6 +893,15 @@
 			name = "MKMapView+ZoomLevel";
 			sourceTree = "<group>";
 		};
+		FAADA23D17297D99001865D9 /* MDCParallaxView */ = {
+			isa = PBXGroup;
+			children = (
+				FAADA23E17297DD9001865D9 /* MDCParallaxView.h */,
+				FAADA23F17297DD9001865D9 /* MDCParallaxView.m */,
+			);
+			name = MDCParallaxView;
+			sourceTree = "<group>";
+		};
 		FAB5A2C916AA164900176C34 /* Level Buttons */ = {
 			isa = PBXGroup;
 			children = (
@@ -1081,6 +1093,7 @@
 		FAE6AC7616A0E27B0082BBB5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FAADA23D17297D99001865D9 /* MDCParallaxView */,
 				FA3E8AE617267EF400673665 /* TPKeyboardAvoidingScrollView */,
 				FA29CCF5171F05BB007FB43E /* TypeWriterLabel */,
 				FA7AC9D516D14C5400505404 /* SoundManager */,
@@ -1494,6 +1507,7 @@
 				FAF48EBD17241FB5000CEFEE /* map_data_calc_tools.js in Sources */,
 				FA3E8AEC17267F6700673665 /* TPKeyboardAvoidingScrollView.m in Sources */,
 				FAADA23A17291564001865D9 /* SelectingButton.m in Sources */,
+				FAADA24017297DD9001865D9 /* MDCParallaxView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
