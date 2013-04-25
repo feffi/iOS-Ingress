@@ -68,7 +68,7 @@
 	[SoundManager sharedManager].allowsBackgroundMusic = NO;
     [[SoundManager sharedManager] prepareToPlay];
 
-//	[self performHandshake];
+	[self performHandshake];
 
 }
 
