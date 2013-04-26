@@ -13,4 +13,8 @@
 
 @dynamic level;
 
+- (NSString *)description {
+	return [NSString stringWithFormat:@"L%d Power Cube", self.level];
+}
+
 @end
