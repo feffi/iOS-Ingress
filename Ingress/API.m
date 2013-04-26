@@ -1444,7 +1444,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	
 }
 
-- (void)hackPortal:(Portal *)portal completionHandler:(void (^)(NSString *errorStr, NSArray *acquiredItems))handler {
+- (void)hackPortal:(Portal *)portal completionHandler:(void (^)(NSString *errorStr, NSArray *acquiredItems, int secondsRemaining))handler {
 	
 	NSDictionary *dict = @{
 	@"itemGuid": portal.guid,
@@ -1460,7 +1460,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		if ([responseObj[@"error"] isEqualToString:@"TOO_SOON_BIG"]) {
 			
 			dispatch_async(dispatch_get_main_queue(), ^{
-				handler(@"Portal running hot! Unsafe to acquire items. Estimated time to cooldown: 300 seconds", nil);
+				handler(@"Portal running hot! Unsafe to acquire items. Estimated time to cooldown: 300 seconds", nil, 300);
 			});
 			
 		} else if ([responseObj[@"error"] hasPrefix:@"TOO_SOON_"]) {
@@ -1474,31 +1474,31 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 			//[responseObj[@"error"] substringWithRange:NSMakeRange(9, 3)]
 
 			dispatch_async(dispatch_get_main_queue(), ^{
-				handler([NSString stringWithFormat:@"Portal running hot! Unsafe to acquire items. Estimated time to cooldown: %d seconds", seconds], nil);
+				handler([NSString stringWithFormat:@"Portal running hot! Unsafe to acquire items. Estimated time to cooldown: %d seconds", seconds], nil, seconds);
 			});
 			
 		} else if ([responseObj[@"error"] isEqualToString:@"TOO_OFTEN"]) {
 			
 			dispatch_async(dispatch_get_main_queue(), ^{
-				handler(@"Portal burned out! It may take significant time for the Portal to reset", nil);
+				handler(@"Portal burned out! It may take significant time for the Portal to reset", nil, 0);
 			});
 			
 		} else if ([responseObj[@"error"] isEqualToString:@"OUT_OF_RANGE"]) {
 			
 			dispatch_async(dispatch_get_main_queue(), ^{
-				handler(@"Portal is out of range", nil);
+				handler(@"Portal is out of range", nil, 0);
 			});
 			
 		} else if ([responseObj[@"error"] isEqualToString:@"NEED_MORE_ENERGY"]) {
 			
 			dispatch_async(dispatch_get_main_queue(), ^{
-				handler(@"You don't have enough XM", nil);
+				handler(@"You don't have enough XM", nil, 0);
 			});
 			
 		} else {
 			
 			dispatch_async(dispatch_get_main_queue(), ^{
-				handler(nil, responseObj[@"result"][@"addedGuids"]);
+				handler(nil, responseObj[@"result"][@"addedGuids"], 0);
 			});
 			
 		}

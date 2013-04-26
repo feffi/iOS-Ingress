@@ -74,7 +74,7 @@ typedef void (^SoundCompletionBlock)(void);
 - (void)validateNickname:(NSString *)nickname completionHandler:(void (^)(NSString *errorStr))handler;
 - (void)persistNickname:(NSString *)nickname completionHandler:(void (^)(NSString *errorStr))handler;
 - (void)chooseFaction:(NSString *)faction completionHandler:(void (^)(void))handler;
-- (void)hackPortal:(Portal *)portal completionHandler:(void (^)(NSString *errorStr, NSArray *acquiredItems))handler;
+- (void)hackPortal:(Portal *)portal completionHandler:(void (^)(NSString *errorStr, NSArray *acquiredItems, int secondsRemaining))handler;
 - (void)deployResonator:(Resonator *)resonatorItem toPortal:(Portal *)portal toSlot:(int)slot completionHandler:(void (^)(NSString *errorStr))handler;
 - (void)upgradeResonator:(Resonator *)resonatorItem toPortal:(Portal *)portal toSlot:(int)slot completionHandler:(void (^)(NSString *errorStr))handler;
 - (void)addMod:(Item *)modItem toItem:(Item *)modableItem toSlot:(int)slot completionHandler:(void (^)(NSString *errorStr))handler;

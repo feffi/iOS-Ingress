@@ -134,7 +134,7 @@
 		[[SoundManager sharedManager] playSound:@"Sound/sfx_portal_hacking_neutral.aif"];
 	}
 	
-	[[API sharedInstance] hackPortal:self.portal completionHandler:^(NSString *errorStr, NSArray *acquiredItems) {
+	[[API sharedInstance] hackPortal:self.portal completionHandler:^(NSString *errorStr, NSArray *acquiredItems, int secondsRemaining) {
 		
 		[HUD hide:YES];
 		
