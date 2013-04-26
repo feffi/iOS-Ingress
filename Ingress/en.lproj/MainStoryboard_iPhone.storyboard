@@ -999,22 +999,12 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                     <segue destination="lf3-Qp-xx8" kind="embed" id="npX-J8-mgb"/>
                                 </connections>
                             </containerView>
-                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="be9-7m-4Nc">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="733-kg-l6A" kind="embed" id="WOL-fk-vtn"/>
-                                </connections>
-                            </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="VS8-NI-iC5" firstAttribute="centerX" secondItem="be9-7m-4Nc" secondAttribute="centerX" type="default" id="9XV-a6-7LF"/>
                             <constraint firstItem="VS8-NI-iC5" firstAttribute="bottom" secondItem="ROn-sT-oc0" secondAttribute="bottom" type="default" id="F8s-ck-UYg"/>
                             <constraint firstItem="VS8-NI-iC5" firstAttribute="trailing" secondItem="ROn-sT-oc0" secondAttribute="trailing" type="default" id="N3N-bj-dbk"/>
-                            <constraint firstItem="be9-7m-4Nc" firstAttribute="top" secondItem="ROn-sT-oc0" secondAttribute="top" type="default" id="Nhj-GR-gZW"/>
                             <constraint firstItem="VS8-NI-iC5" firstAttribute="top" secondItem="ROn-sT-oc0" secondAttribute="top" type="default" id="SCN-hY-c23"/>
-                            <constraint firstItem="be9-7m-4Nc" firstAttribute="bottom" secondItem="ROn-sT-oc0" secondAttribute="bottom" type="default" id="SGd-Vg-YXG"/>
-                            <constraint firstItem="be9-7m-4Nc" firstAttribute="leading" secondItem="ROn-sT-oc0" secondAttribute="leading" type="default" id="XDH-xn-QBn"/>
                             <constraint firstItem="VS8-NI-iC5" firstAttribute="leading" secondItem="ROn-sT-oc0" secondAttribute="leading" type="default" id="l9i-PO-cLN"/>
                         </constraints>
                     </view>
@@ -1035,7 +1025,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                         </segmentedControl>
                     </navigationItem>
                     <connections>
-                        <outlet property="infoContainerView" destination="be9-7m-4Nc" id="j7n-fe-2ZU"/>
                         <outlet property="upgradeContainerView" destination="VS8-NI-iC5" id="JNI-fn-p8h"/>
                         <outlet property="viewSegmentedControl" destination="nfG-qs-m47" id="7cY-aB-uHH"/>
                     </connections>
@@ -1820,7 +1809,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
             <objects>
                 <tableViewController id="pnd-0d-rSp" customClass="PortalKeysViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="V5K-Z3-PLK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="278"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -2360,7 +2349,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                         <constraints>
                             <constraint firstItem="auU-pM-4h0" firstAttribute="leading" secondItem="xob-Tu-pne" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="0xV-IL-48K"/>
                             <constraint firstItem="BGQ-ax-GRG" firstAttribute="top" secondItem="Q5O-R5-Pic" secondAttribute="top" type="default" id="1Td-r4-drb"/>
-                            <constraint firstItem="mMh-B8-j72" firstAttribute="baseline" secondItem="tuj-pb-dGt" secondAttribute="baseline" type="default" id="1sh-JQ-vRQ"/>
                             <constraint firstAttribute="trailing" secondItem="Yi5-ja-2IB" secondAttribute="trailing" constant="19" id="2KG-4G-82W"/>
                             <constraint firstItem="uYr-0g-eP5" firstAttribute="bottom" secondItem="Yi5-ja-2IB" secondAttribute="bottom" type="default" id="4qx-3s-EPr"/>
                             <constraint firstItem="zzz-ml-7Ag" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="20" symbolic="YES" type="default" id="4z7-q1-FOl"/>
@@ -2377,7 +2365,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstAttribute="bottom" secondItem="tuj-pb-dGt" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="SPt-xG-vKg"/>
                             <constraint firstItem="Afx-ul-7bp" firstAttribute="leading" secondItem="L77-A5-XYN" secondAttribute="leading" type="default" id="U0P-oE-9Pu"/>
                             <constraint firstItem="Afx-ul-7bp" firstAttribute="trailing" secondItem="L77-A5-XYN" secondAttribute="trailing" type="default" id="UW2-Qy-lV6"/>
-                            <constraint firstItem="BGQ-ax-GRG" firstAttribute="baseline" secondItem="Q5O-R5-Pic" secondAttribute="baseline" type="default" id="W7Q-dB-JXo"/>
                             <constraint firstItem="uYr-0g-eP5" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="20" symbolic="YES" type="default" id="WAO-H1-00V"/>
                             <constraint firstItem="Afx-ul-7bp" firstAttribute="bottom" secondItem="zzz-ml-7Ag" secondAttribute="bottom" type="default" id="Y4H-3p-7ST"/>
                             <constraint firstItem="BGQ-ax-GRG" firstAttribute="bottom" secondItem="Q5O-R5-Pic" secondAttribute="bottom" type="default" id="Y7n-I0-f0L"/>
@@ -2392,8 +2379,10 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="Yi5-ja-2IB" firstAttribute="leading" secondItem="uYr-0g-eP5" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="eVI-hY-HZb"/>
                             <constraint firstItem="Q5O-R5-Pic" firstAttribute="leading" secondItem="L77-A5-XYN" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="elD-dE-8oD"/>
                             <constraint firstItem="Afx-ul-7bp" firstAttribute="leading" secondItem="zzz-ml-7Ag" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="ew6-Ei-OX4"/>
+                            <constraint firstItem="BGQ-ax-GRG" firstAttribute="baseline" secondItem="Q5O-R5-Pic" secondAttribute="baseline" type="default" id="g7X-6G-1aD"/>
                             <constraint firstItem="6ts-Vu-ZgC" firstAttribute="leading" secondItem="xob-Tu-pne" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="gKp-HY-UDp"/>
                             <constraint firstItem="L77-A5-XYN" firstAttribute="top" secondItem="Q5O-R5-Pic" secondAttribute="top" type="default" id="gu8-ii-TtL"/>
+                            <constraint firstItem="mMh-B8-j72" firstAttribute="baseline" secondItem="tuj-pb-dGt" secondAttribute="baseline" type="default" id="h6L-yq-PV9"/>
                             <constraint firstItem="3fD-vG-amo" firstAttribute="leading" secondItem="auU-pM-4h0" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="jaY-27-NBd"/>
                             <constraint firstItem="Q5O-R5-Pic" firstAttribute="baseline" secondItem="L77-A5-XYN" secondAttribute="baseline" type="default" id="rID-gU-yOv"/>
                             <constraint firstItem="mMh-B8-j72" firstAttribute="leading" secondItem="3fD-vG-amo" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="rJb-4g-rbZ"/>
@@ -2412,15 +2401,15 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
         <!--Portal Info View Controller-->
         <scene sceneID="9Yb-wm-wMW">
             <objects>
-                <viewController id="733-kg-l6A" customClass="PortalInfoViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PortalInfoViewController" id="733-kg-l6A" customClass="PortalInfoViewController" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="kOm-3f-HtD">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="278"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="136" translatesAutoresizingMaskIntoConstraints="NO" id="Act-Ua-pfK">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="59" id="PnG-4F-MaZ"/>
-                                    <constraint firstAttribute="width" constant="136" id="pOg-Fk-sdw"/>
+                                    <constraint firstAttribute="height" constant="59" type="user" id="PnG-4F-MaZ"/>
+                                    <constraint firstAttribute="width" constant="136" type="user" id="pOg-Fk-sdw"/>
                                 </constraints>
                                 <attributedString key="attributedText">
                                     <fragment>
@@ -2443,17 +2432,20 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="136" translatesAutoresizingMaskIntoConstraints="NO" id="62b-zG-XxU">
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="59" type="user" id="Be7-ha-6GO"/>
+                                    <constraint firstAttribute="width" constant="136" type="user" id="Cqo-L5-84g"/>
+                                </constraints>
                                 <string key="text">Energy: 0k (0%)
 Range: 0km</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" red="0.56470588235294117" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="TxM-ge-WEr"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XXe-e8-QSL" customClass="GUIButton">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="632-rg-LAf"/>
+                                    <constraint firstAttribute="height" constant="44" type="user" id="632-rg-LAf"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" type="user" id="Pl9-iM-8Ok"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
@@ -2474,7 +2466,7 @@ Range: 0km</string>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VzY-Vf-EiF" customClass="GUIButton">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="AMh-2o-FLo"/>
+                                    <constraint firstAttribute="height" constant="44" type="user" id="AMh-2o-FLo"/>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" type="user" id="bo8-Qg-OuX"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
@@ -2513,10 +2505,9 @@ Range: 0km</string>
                                     <action selector="link:" destination="733-kg-l6A" eventType="touchUpInside" id="YT3-Uc-fOl"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" hidesWhenStopped="YES" animating="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="wSu-9r-K9V"/>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="[Untitled]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onv-iS-2c6">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="W2X-rH-LPC"/>
+                                    <constraint firstAttribute="height" constant="24" type="user" id="W2X-rH-LPC"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -2525,37 +2516,31 @@ Range: 0km</string>
                         </subviews>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="XXe-e8-QSL" firstAttribute="top" secondItem="62b-zG-XxU" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="17F-aI-9nT"/>
                             <constraint firstAttribute="trailing" secondItem="VzY-Vf-EiF" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="1Ez-pj-9nC"/>
+                            <constraint firstItem="Act-Ua-pfK" firstAttribute="baseline" secondItem="62b-zG-XxU" secondAttribute="baseline" type="user" id="1Gv-r3-aed"/>
+                            <constraint firstItem="Act-Ua-pfK" firstAttribute="top" secondItem="kOm-3f-HtD" secondAttribute="top" constant="44" id="2i3-pX-Q5f"/>
                             <constraint firstItem="onv-iS-2c6" firstAttribute="leading" secondItem="kOm-3f-HtD" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="4dy-Ym-mws"/>
                             <constraint firstAttribute="trailing" secondItem="XXe-e8-QSL" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="5A6-QH-x4j"/>
-                            <constraint firstItem="62b-zG-XxU" firstAttribute="top" secondItem="onv-iS-2c6" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="6RR-IW-qgP"/>
-                            <constraint firstItem="onv-iS-2c6" firstAttribute="top" secondItem="TxM-ge-WEr" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="72O-Tc-FXZ"/>
-                            <constraint firstItem="62b-zG-XxU" firstAttribute="leading" secondItem="Act-Ua-pfK" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="BYp-FB-wk7"/>
-                            <constraint firstItem="Act-Ua-pfK" firstAttribute="leading" secondItem="kOm-3f-HtD" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="CD7-4M-tev"/>
+                            <constraint firstItem="wif-aO-m2O" firstAttribute="top" secondItem="VzY-Vf-EiF" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="8F9-bo-KKo"/>
+                            <constraint firstItem="62b-zG-XxU" firstAttribute="leading" secondItem="Act-Ua-pfK" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="BYp-FB-wk7"/>
+                            <constraint firstItem="Act-Ua-pfK" firstAttribute="leading" secondItem="kOm-3f-HtD" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="CD7-4M-tev"/>
                             <constraint firstItem="VzY-Vf-EiF" firstAttribute="leading" secondItem="kOm-3f-HtD" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="EG0-xM-bYk"/>
-                            <constraint firstItem="VzY-Vf-EiF" firstAttribute="top" secondItem="XXe-e8-QSL" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="F4k-dB-V0B"/>
-                            <constraint firstItem="TxM-ge-WEr" firstAttribute="trailing" secondItem="kOm-3f-HtD" secondAttribute="trailing" type="default" id="ISN-sc-U4k"/>
+                            <constraint firstItem="Act-Ua-pfK" firstAttribute="top" secondItem="62b-zG-XxU" secondAttribute="top" type="user" id="Fba-i1-mcV"/>
+                            <constraint firstItem="onv-iS-2c6" firstAttribute="top" secondItem="kOm-3f-HtD" secondAttribute="top" constant="11" id="IWc-Vo-Pfn"/>
                             <constraint firstItem="XXe-e8-QSL" firstAttribute="leading" secondItem="kOm-3f-HtD" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Ohy-cT-XaE"/>
-                            <constraint firstItem="wSu-9r-K9V" firstAttribute="top" secondItem="kOm-3f-HtD" secondAttribute="top" constant="71" id="RMT-DQ-Wcj"/>
                             <constraint firstItem="wif-aO-m2O" firstAttribute="leading" secondItem="kOm-3f-HtD" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="WBN-2H-OTd"/>
-                            <constraint firstAttribute="bottom" secondItem="wif-aO-m2O" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="XEH-kv-BKK"/>
                             <constraint firstAttribute="trailing" secondItem="wif-aO-m2O" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="Y5N-tF-GaF"/>
-                            <constraint firstItem="62b-zG-XxU" firstAttribute="bottom" secondItem="Act-Ua-pfK" secondAttribute="bottom" type="default" id="aIe-1W-hYf"/>
-                            <constraint firstItem="TxM-ge-WEr" firstAttribute="top" secondItem="kOm-3f-HtD" secondAttribute="top" type="default" id="bTB-bG-Wgr"/>
-                            <constraint firstItem="TxM-ge-WEr" firstAttribute="leading" secondItem="kOm-3f-HtD" secondAttribute="leading" type="default" id="byn-iU-j4b"/>
-                            <constraint firstItem="Act-Ua-pfK" firstAttribute="top" secondItem="onv-iS-2c6" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="d58-7y-jfW"/>
-                            <constraint firstItem="wif-aO-m2O" firstAttribute="top" secondItem="VzY-Vf-EiF" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="j35-wq-Lu0"/>
-                            <constraint firstAttribute="trailing" secondItem="62b-zG-XxU" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="ud1-6e-KN1"/>
+                            <constraint firstItem="VzY-Vf-EiF" firstAttribute="top" secondItem="XXe-e8-QSL" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="aAy-Hg-xTG"/>
+                            <constraint firstItem="XXe-e8-QSL" firstAttribute="top" secondItem="Act-Ua-pfK" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="d5f-GT-jXd"/>
+                            <constraint firstAttribute="trailing" secondItem="62b-zG-XxU" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="ud1-6e-KN1"/>
                             <constraint firstAttribute="trailing" secondItem="onv-iS-2c6" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="vtk-fQ-5xr"/>
-                            <constraint firstItem="wSu-9r-K9V" firstAttribute="centerX" secondItem="onv-iS-2c6" secondAttribute="centerX" type="default" id="wPC-rK-xVK"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="hackButton" destination="XXe-e8-QSL" id="RVM-OM-vyF"/>
-                        <outlet property="imageActivityIndicator" destination="wSu-9r-K9V" id="2ZV-Gt-sXw"/>
-                        <outlet property="imageView" destination="TxM-ge-WEr" id="5gV-ww-6G4"/>
                         <outlet property="infoLabel1" destination="Act-Ua-pfK" id="MrH-R8-srl"/>
                         <outlet property="infoLabel2" destination="62b-zG-XxU" id="fTn-zz-Z0l"/>
                         <outlet property="linkButton" destination="wif-aO-m2O" id="Jx4-BC-mND"/>

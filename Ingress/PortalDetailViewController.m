@@ -12,10 +12,30 @@
 
 @implementation PortalDetailViewController
 
+@synthesize portalInfoVC = _portalInfoVC;
+
 @synthesize portal = _portal;
+@synthesize mapCenterCoordinate = _mapCenterCoordinate;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+
+	UIImage *backgroundImage = [UIImage imageNamed:@"missing_image.png"];
+	CGRect backgroundRect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+	UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:backgroundRect];
+	backgroundImageView.image = backgroundImage;
+	backgroundImageView.contentMode = UIViewContentModeScaleAspectFit;
+
+	infoContainerView = [[MDCParallaxView alloc] initWithBackgroundView:backgroundImageView foregroundView:self.portalInfoVC.view];
+	infoContainerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
+	infoContainerView.backgroundColor = [UIColor colorWithRed:16.0/255.0 green:32.0/255.0 blue:34.0/255.0 alpha:1];
+	infoContainerView.backgroundHeight = 200;
+	infoContainerView.scrollView.scrollsToTop = YES;
+	infoContainerView.backgroundInteractionEnabled = NO;
+
+	[self addChildViewController:self.portalInfoVC];
+	[self.view addSubview:infoContainerView];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -28,10 +48,19 @@
 //		}
 //	}];
 	
-	PortalInfoViewController *vc1 = (PortalInfoViewController *)[self childViewControllerWithClass:[PortalInfoViewController class]];
-	vc1.portal = self.portal;
-	vc1.mapCenterCoordinate = self.mapCenterCoordinate;
-	
+//	PortalInfoViewController *vc1 = (PortalInfoViewController *)[self childViewControllerWithClass:[PortalInfoViewController class]];
+//	vc1.portal = self.portal;
+//	vc1.mapCenterCoordinate = self.mapCenterCoordinate;
+
+	infoContainerView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+
+	self.portalInfoVC.portal = self.portal;
+	self.portalInfoVC.mapCenterCoordinate = self.mapCenterCoordinate;
+	self.portalInfoVC.view.frame = CGRectMake(0, 0, self.view.frame.size.width, 280);
+
+	CGPoint bottomOffset = CGPointMake(0, infoContainerView.scrollView.contentSize.height - infoContainerView.scrollView.bounds.size.height);
+	[infoContainerView.scrollView setContentOffset:bottomOffset animated:NO];
+
 	PortalUpgradeViewController *vc2 = (PortalUpgradeViewController *)[self childViewControllerWithClass:[PortalUpgradeViewController class]];
 	vc2.portal = self.portal;
 	vc2.mapCenterCoordinate = self.mapCenterCoordinate;
@@ -55,6 +84,16 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - Portal Info View Controller
+
+- (PortalInfoViewController *)portalInfoVC {
+	if (!_portalInfoVC) {
+		UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+		_portalInfoVC = [storyboard instantiateViewControllerWithIdentifier:@"PortalInfoViewController"];
+	}
+	return _portalInfoVC;
 }
 
 #pragma mark -
