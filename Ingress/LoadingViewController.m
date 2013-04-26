@@ -56,7 +56,7 @@
 				@"deviceSoftwareVersion": @"4.1.1",
 				} mutableCopy];
 
-	versionString = @"1.23.1";
+	versionString = @"v1.23.1";
 	
 }
 
