@@ -155,11 +155,11 @@
 
 	if ([[API sharedInstance] intelcsrftoken] && [[API sharedInstance] intelACSID]) {
 
-//		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
-//		HUD.userInteractionEnabled = NO;
-//		HUD.mode = MBProgressHUDModeIndeterminate;
-//		[self.view addSubview:HUD];
-//		[HUD show:YES];
+		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+		HUD.userInteractionEnabled = NO;
+		HUD.mode = MBProgressHUDModeIndeterminate;
+		[self.view addSubview:HUD];
+		[HUD show:YES];
 
 		[[DB sharedInstance] removeAllMapData];
 
@@ -208,7 +208,7 @@
 
 			[request setAllHTTPHeaderFields:headers];
 			
-			NSLog(@"START");
+//			NSLog(@"START");
 
 			[NSURLConnection sendAsynchronousRequest:request queue:[[API sharedInstance] networkQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
 
@@ -239,12 +239,12 @@
 
 				numOfRequests--;
 				if (numOfRequests <= 0) {
-					NSLog(@"LOADED");
+//					NSLog(@"LOADED");
 					dispatch_async(dispatch_get_main_queue(), ^{
 						[[DB sharedInstance] addPortalsToMapView];
-						NSLog(@"DONE");
+						[HUD hide:YES];
+//						NSLog(@"DONE");
 					});
-//					[HUD hide:YES];
 				}
 
 			}];
