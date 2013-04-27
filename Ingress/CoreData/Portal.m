@@ -53,6 +53,14 @@
 	return 160 * (powf([self averageResonatorLevel], 4));
 }
 
+- (float)energy {
+	float totalEnergy = 0;
+	for (DeployedResonator *resonator in self.resonators) {
+		totalEnergy += resonator.energy;
+	}
+	return totalEnergy;
+}
+
 - (MKMapRect)boundingMapRect {
     MKMapPoint upperLeft = MKMapPointForCoordinate(self.coordinate);
 	double pointsPerMeter = MKMapPointsPerMeterAtLatitude(self.coordinate.latitude);
