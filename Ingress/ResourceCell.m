@@ -8,7 +8,9 @@
 
 #import "ResourceCell.h"
 
-@implementation ResourceCell
+@implementation ResourceCell {
+	int actionLevel;
+}
 
 - (void)layoutSubviews {
 	[super layoutSubviews];
@@ -138,17 +140,8 @@
 #pragma mark - Action
 
 - (IBAction)action:(UIButton *)sender {
-	
-//	if ((sender.tag - 40) >= 0 && (sender.tag - 40) < 10) {
-//		actionResource = 1;
-//		actionLevel = sender.tag-40+1;
-//	} else if ((sender.tag - 50) >= 0 && (sender.tag - 50) < 10) {
-//		actionResource = 2;
-//		actionLevel = sender.tag-50+1;
-//	} else if ((sender.tag - 60) >= 0 && (sender.tag - 60) < 10) {
-//		actionResource = 3;
-//		actionLevel = sender.tag-60+1;
-//	}
+
+	actionLevel = sender.tag;
 
 	if (self.itemType == ItemTypePowerCube) {
 		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Drop" otherButtonTitles:@"Use", nil];
@@ -166,59 +159,99 @@
 
 - (void)dropItem {
 
-	NSLog(@"Drop item");
+	NSString *guid;
 
-//	NSString *guid;
-//
-//	switch (actionResource) {
-//		case 1: {
-//			guid = [[DB sharedInstance] getRandomResonatorOfLevel:actionLevel].guid;
-//			break;
-//		}
-//		case 2: {
-//			guid = [[DB sharedInstance] getRandomXMPOfLevel:actionLevel].guid;
-//			break;
-//		}
-//		case 3: {
-//			PortalShieldRarity rarity = [API shieldRarityFromInt:actionLevel];
-//			guid = [[DB sharedInstance] getRandomShieldOfRarity:rarity].guid;
-//			break;
-//		}
-//	}
-//
-//	actionResource = 0;
-//	actionLevel = 0;
-//
-//	if (!guid) { break; }
-//
-//	__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-//	HUD.userInteractionEnabled = YES;
-//	HUD.mode = MBProgressHUDModeIndeterminate;
-//	HUD.dimBackground = YES;
-//	HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
-//	HUD.labelText = @"Dropping Item...";
-//	[[AppDelegate instance].window addSubview:HUD];
-//	[HUD show:YES];
-//
-//	[[SoundManager sharedManager] playSound:@"Sound/sfx_drop_resource.aif"];
-//
-//	[[API sharedInstance] dropItemWithGuid:guid completionHandler:^(void) {
-//
-//		[HUD hide:YES];
-//		
-//	}];
+	switch (self.itemType) {
+		case ItemTypeResonator: {
+			guid = [[DB sharedInstance] getRandomResonatorOfLevel:actionLevel].guid;
+			break;
+		}
+		case ItemTypeXMP: {
+			guid = [[DB sharedInstance] getRandomXMPOfLevel:actionLevel].guid;
+			break;
+		}
+		case ItemTypePortalShield: {
+			PortalShieldRarity rarity = [API shieldRarityFromInt:actionLevel];
+			guid = [[DB sharedInstance] getRandomShieldOfRarity:rarity].guid;
+			break;
+		}
+		case ItemTypePowerCube: {
+			guid = [[DB sharedInstance] getRandomPowerCubeOfLevel:actionLevel].guid;
+			break;
+		}
+	}
+
+	actionLevel = 0;
+
+	if (guid) {
+
+		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.userInteractionEnabled = YES;
+		HUD.mode = MBProgressHUDModeIndeterminate;
+		HUD.dimBackground = YES;
+		HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+		HUD.labelText = @"Dropping Item...";
+		[[AppDelegate instance].window addSubview:HUD];
+		[HUD show:YES];
+
+		[[API sharedInstance] playSound:@"SFX_DROP_RESOURCE"];
+
+		[[API sharedInstance] dropItemWithGuid:guid completionHandler:^(void) {
+			[HUD hide:YES];
+		}];
+
+	} else {
+
+		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.userInteractionEnabled = YES;
+		HUD.dimBackground = YES;
+		HUD.mode = MBProgressHUDModeCustomView;
+		HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+		HUD.detailsLabelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+		HUD.detailsLabelText = @"No Item";
+		[[AppDelegate instance].window addSubview:HUD];
+		[HUD show:YES];
+		[HUD hide:YES afterDelay:3];
+		
+	}
 
 }
 
 - (void)usePowerCube {
 
-	NSLog(@"Use power cube");
+	PowerCube *powerCube = [[DB sharedInstance] getRandomPowerCubeOfLevel:actionLevel];
 
-	//https://m-dot-betaspike.appspot.com/rpc/gameplay/dischargePowerCube
+	if (powerCube) {
 
-	//{"params":{"clientBasket":{"clientBlob":"7ilfDOYVSFJ3aq/FgNNh+ymD9siLb9vKzZ3BjIwWG3zFLCycIsdU/thb33WQbajK17h9Vbcl4eDs65LZomt58ObXTQkxhix2euAJfUbCBXp688iOE7wRyz6gj10pc5fR51ifZXUTvb7DMZxolNCdXu7wYBTFp7RhVDLWzv83nwe67u8zAsIFxGsAyJEvoEd5RrFT3ZV2yLkMrv17bMcyGdQQQFwsdJyBlTvMQyJyxWphx7XmRsUXb9coQRMnM470rg7GzdAeg/GlyPcMsImTEjvXBJWmumK+M52GFCUFnbX2AyVBKLzLAKaloOb48JX3FLOnAI6JQhumtYDA4y7MYw"},"energyGlobGuids":[],"itemGuid":"dc932f61ced445aaad9c1c98acb7510d.5","knobSyncTimestamp":1366652448744,"playerLocation":"0304bb16,00d2f918"}}
+		actionLevel = 0;
 
-	//{"result":{"xmGained":2000},"gameBasket":{"gameEntities":[],"playerEntity":["25e5ce861b2f418398c03aa3cb1a85d5.c",1366652497434,{"playerPersonal":{"ap":"187627","energy":5336,"allowNicknameEdit":false,"allowFactionChoice":false,"clientLevel":22,"mediaHighWaterMarks":{"RESISTANCE":2,"ALIENS":6,"General":65},"energyState":"XM_OK","notificationSettings":{"shouldSendEmail":true,"maySendPromoEmail":true}},"controllingTeam":{"team":"ALIENS"}}],"apGains":[],"inventory":[],"deletedEntityGuids":["dc932f61ced445aaad9c1c98acb7510d.5"]}}
+		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.userInteractionEnabled = YES;
+		HUD.mode = MBProgressHUDModeIndeterminate;
+		HUD.dimBackground = YES;
+		HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+		HUD.labelText = @"Using Power Cube...";
+		[[AppDelegate instance].window addSubview:HUD];
+		[HUD show:YES];
+
+		[[API sharedInstance] usePowerCube:powerCube completionHandler:^{
+			[HUD hide:YES];
+		}];
+		
+	} else {
+
+		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.userInteractionEnabled = YES;
+		HUD.dimBackground = YES;
+		HUD.mode = MBProgressHUDModeCustomView;
+		HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+		HUD.detailsLabelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+		HUD.detailsLabelText = @"No Item";
+		[[AppDelegate instance].window addSubview:HUD];
+		[HUD show:YES];
+		[HUD hide:YES afterDelay:3];
+		
+	}
 
 }
 
