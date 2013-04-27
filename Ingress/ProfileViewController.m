@@ -147,7 +147,7 @@
 	//xmIndicatorInner.frame = rect;
 	
 	xmIndicator.progressTintColor = teamColor;
-	[xmIndicator setProgress:(energy/maxEnergy) animated:YES];
+	[xmIndicator setProgress:(energy/maxEnergy) animated:NO];
 	
 }
 
