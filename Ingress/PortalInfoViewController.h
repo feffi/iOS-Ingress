@@ -11,7 +11,7 @@
 
 @interface PortalInfoViewController : UIViewController {
 	
-	__weak IBOutlet UIImageView *imageView;
+//	__weak IBOutlet UIImageView *imageView;
 	__weak IBOutlet UIActivityIndicatorView *imageActivityIndicator;
 	__weak IBOutlet UILabel *portalTitleLabel;
 	
@@ -26,6 +26,7 @@
 
 @property (nonatomic, assign) Portal *portal;
 @property (nonatomic, assign) CLLocationCoordinate2D mapCenterCoordinate;
+@property (nonatomic, assign) UIImageView *imageView;
 
 - (IBAction)hack:(GUIButton *)sender;
 - (IBAction)recharge:(GUIButton *)sender;

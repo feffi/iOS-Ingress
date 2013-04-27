@@ -57,7 +57,12 @@
 - (void)refresh {
 	
 	[imageActivityIndicator stopAnimating];
-	imageView.image = [UIImage imageNamed:@"missing_image"];
+
+	if (self.portal.imageData) {
+		
+	} else {
+		self.imageView.image = [UIImage imageNamed:@"missing_image"];
+	}
 	
 //	[imageActivityIndicator startAnimating];
 //	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.portal.imageURL]];

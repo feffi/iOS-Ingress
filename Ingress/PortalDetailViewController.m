@@ -20,10 +20,9 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	UIImage *backgroundImage = [UIImage imageNamed:@"missing_image.png"];
 	CGRect backgroundRect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
 	UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:backgroundRect];
-	backgroundImageView.image = backgroundImage;
+	backgroundImageView.image = [UIImage imageNamed:@"missing_image"];
 	backgroundImageView.contentMode = UIViewContentModeScaleAspectFit;
 
 	infoContainerView = [[MDCParallaxView alloc] initWithBackgroundView:backgroundImageView foregroundView:self.portalInfoVC.view];
@@ -32,6 +31,8 @@
 	infoContainerView.backgroundHeight = 200;
 	infoContainerView.scrollView.scrollsToTop = YES;
 	infoContainerView.backgroundInteractionEnabled = NO;
+
+	self.portalInfoVC.imageView = backgroundImageView;
 
 	[self addChildViewController:self.portalInfoVC];
 	[self.view addSubview:infoContainerView];
