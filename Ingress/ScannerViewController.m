@@ -24,10 +24,15 @@
 	UIView *rangeCircleView;
 	CLLocationManager *locationManager;
 	CLLocation *lastLocation;
+	BOOL firstRefreshProfile;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+	levelLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:32];
+	nicknameLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
+	firstRefreshProfile = YES;
 
 	locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
@@ -119,6 +124,8 @@
 //	}];
 	
 //	[[DB sharedInstance] addPortalsToMapView];
+
+	[self refreshProfile];
 
 }
 
@@ -412,6 +419,41 @@
 //		@"maxLngE6": @(round([bounds[1] coordinate].longitude * 1E6))
 //	};
 //}
+
+
+
+- (void)refreshProfile {
+
+	NSDictionary *playerInfo = [[API sharedInstance] playerInfo];
+
+	int ap = [playerInfo[@"ap"] intValue];
+	int level = [API levelForAp:ap];
+	int lvlImg = [API levelImageForAp:ap];
+	float energy = [playerInfo[@"energy"] floatValue];
+	float maxEnergy = [API maxXmForLevel:level];
+
+	NSMutableParagraphStyle *pStyle = [NSMutableParagraphStyle new];
+    pStyle.alignment = NSTextAlignmentRight;
+
+	UIColor *teamColor = [API colorForFaction:playerInfo[@"team"]];
+
+	if ([playerInfo[@"team"] isEqualToString:@"ALIENS"]) {
+		levelImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"ap_icon_enl_%d.png", lvlImg]];
+	} else {
+		levelImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"ap_icon_hum_%d.png", lvlImg]];
+	}
+
+	levelLabel.text = [NSString stringWithFormat:@"%d", level];
+
+	nicknameLabel.textColor = teamColor;
+	nicknameLabel.text = playerInfo[@"nickname"];
+
+	xmIndicator.progressTintColor = teamColor;
+	[xmIndicator setProgress:(energy/maxEnergy) animated:!firstRefreshProfile];
+
+	firstRefreshProfile = NO;
+
+}
 
 #pragma mark - UIWebViewDelegate
 

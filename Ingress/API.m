@@ -1900,8 +1900,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 }
 
 - (void)dropItemWithGuid:(NSString *)guid completionHandler:(void (^)(void))handler {
-	NSLog(@"dropItemWithGuid: %@", guid);
-	
+//	NSLog(@"dropItemWithGuid: %@", guid);
+
 	NSDictionary *dict = @{
 	@"knobSyncTimestamp": @(0),
 	@"playerLocation": [self currentE6Location],
