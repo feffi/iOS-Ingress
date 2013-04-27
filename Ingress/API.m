@@ -2392,7 +2392,12 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		[sounds addObject:@"SPEECH_XM_LEVELS"];
 		[sounds addObjectsFromArray:[API soundsForNumber:xm]];
 		[sounds addObject:@"SPEECH_PERCENT"];
-		[self playSounds:sounds];
+
+		dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
+		dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+			[self playSounds:sounds];
+		});
+
 	}
 	
 	self.playerInfo = @{
