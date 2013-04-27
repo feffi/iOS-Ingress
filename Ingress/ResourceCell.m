@@ -141,7 +141,7 @@
 
 - (IBAction)action:(UIButton *)sender {
 
-	actionLevel = sender.tag;
+	actionLevel = sender.tag-10;
 
 	if (self.itemType == ItemTypePowerCube) {
 		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Drop" otherButtonTitles:@"Use", nil];
