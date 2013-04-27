@@ -481,9 +481,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 }
 
 - (void)playSound:(NSString *)soundName {
-//	NSString *soundFile = [NSString stringWithFormat:@"Sound/%@", [API sounds][soundName][@"file"]];
-//	[[SoundManager sharedManager] playSound:soundFile];
-//	[self playSounds:@[soundName]];
 	[soundsQueue addObject:soundName];
 	[self checkSoundQueue];
 }
@@ -491,20 +488,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 - (void)playSounds:(NSArray *)soundNames {
 	[soundsQueue addObjectsFromArray:soundNames];
 	[self checkSoundQueue];
-//	for (NSString *soundName in soundNames) {
-//		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, soundStart * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
-//			[[SoundManager sharedManager] playSound:soundFile];
-//		});
-//		float duration = [API durationOfSound:soundName];
-//		soundStart += duration;
-//		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, soundStart + duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
-//			soundStart -= duration;
-//		});
-//	}
 }
 
 - (void)checkSoundQueue {
-
 	if (!isSoundPlaying && soundsQueue.count > 0) {
 
 		NSString *soundName = soundsQueue[0];
@@ -519,7 +505,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		});
 		
 	}
-
 }
 
 #pragma mark - Location
