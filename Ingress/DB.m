@@ -258,10 +258,26 @@
 //	}
 }
 
-- (void)removeAllPortals {
+- (void)removeAllMapData {
 	NSArray *fetchedPortals = [self fetchObjectsForEntityName:@"Portal" withPredicate:nil];
 	for (Portal *portal in fetchedPortals) {
 		[self.managedObjectContext deleteObject:portal];
+	}
+	NSArray *fetchedLinks = [self fetchObjectsForEntityName:@"PortalLink" withPredicate:nil];
+	for (PortalLink *portalLink in fetchedLinks) {
+		[self.managedObjectContext deleteObject:portalLink];
+	}
+	NSArray *fetchedFields = [self fetchObjectsForEntityName:@"ControlField" withPredicate:nil];
+	for (ControlField *controlField in fetchedFields) {
+		[self.managedObjectContext deleteObject:controlField];
+	}
+	NSArray *fetchedDeployedResonators = [self fetchObjectsForEntityName:@"DeployedResonator" withPredicate:nil];
+	for (DeployedResonator *deployedResonator in fetchedDeployedResonators) {
+		[self.managedObjectContext deleteObject:deployedResonator];
+	}
+	NSArray *fetchedDroppedItems = [self fetchObjectsForEntityName:@"Item" withPredicate:@"dropped = YES"];
+	for (DeployedResonator *item in fetchedDroppedItems) {
+		[self.managedObjectContext deleteObject:item];
 	}
 }
 
@@ -294,34 +310,44 @@
 	
 	NSArray *fetchedFields = [self fetchObjectsForEntityName:@"ControlField" withPredicate:nil];
 	for (ControlField *controlField in fetchedFields) {
-		[mapView addOverlay:controlField.polygon];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[mapView addOverlay:controlField.polygon];
+		});
 	}
 	
 	NSArray *fetchedLinks = [self fetchObjectsForEntityName:@"PortalLink" withPredicate:nil];
 	for (PortalLink *portalLink in fetchedLinks) {
-		[mapView addOverlay:portalLink.polyline];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[mapView addOverlay:portalLink.polyline];
+		});
 	}
 	
 	NSArray *fetchedItems = [self fetchObjectsForEntityName:@"Item" withPredicate:@"dropped = YES"];
 	for (Item *item in fetchedItems) {
 		//NSLog(@"adding item to map: %@ (%f, %f)", item, item.latitude, item.longitude);
 		if (item.coordinate.latitude == 0 && item.coordinate.longitude == 0) { continue; }
-		[mapView addAnnotation:item];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[mapView addAnnotation:item];
+		});
 	}
 	
 	NSArray *fetchedPortals = [self fetchObjectsForEntityName:@"Portal" withPredicate:@"completeInfo = YES"];
 	for (Portal *portal in fetchedPortals) {
 		//NSLog(@"adding portal to map: %@ (%f, %f)", portal.subtitle, portal.latitude, portal.longitude);
 		if (portal.coordinate.latitude == 0 && portal.coordinate.longitude == 0) { continue; }
-		[mapView addAnnotation:portal];
-		//[mapView addOverlay:portal];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[mapView addAnnotation:portal];
+			//[mapView addOverlay:portal];
+		});
 	}
 	
 	NSArray *fetchedResonators = [self fetchObjectsForEntityName:@"DeployedResonator" withPredicate:nil];
 	for (DeployedResonator *resonator in fetchedResonators) {
 		//NSLog(@"adding resonator to map: %@ (%f, %f)", resonator, resonator.coordinate.latitude, resonator.coordinate.longitude);
 		if (resonator.portal.coordinate.latitude == 0 && resonator.portal.coordinate.longitude == 0) { continue; }
-		[mapView addOverlay:resonator.circle];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[mapView addOverlay:resonator.circle];
+		});
 	}
 	
 }

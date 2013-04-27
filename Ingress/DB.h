@@ -87,7 +87,7 @@ typedef enum {
 ////////////////////////
 
 - (void)removeItemWithGuid:(NSString *)guid;
-- (void)removeAllPortals;
+- (void)removeAllMapData;
 - (void)removeAllEnergyGlobs;
 
 ////////////////////////

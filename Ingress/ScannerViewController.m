@@ -23,6 +23,7 @@
 	UIWebView *dataCalcWebView;
 	UIView *rangeCircleView;
 	CLLocationManager *locationManager;
+	CLLocation *lastLocation;
 }
 
 - (void)viewDidLoad {
@@ -74,7 +75,7 @@
 //		[_mapView setShowsUserLocation:YES];
 //	});
 
-	[[DB sharedInstance] addPortalsToMapView];
+//	[[DB sharedInstance] addPortalsToMapView];
 
 //	UILongPressGestureRecognizer *xmpLongPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(xmpLongPressGestureHandler:)];
 //	[fireXmpButton addGestureRecognizer:xmpLongPressGesture];
@@ -96,7 +97,15 @@
 	
 //	UITapGestureRecognizer *mapViewGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapTapped:)];
 //	[_mapView addGestureRecognizer:mapViewGestureRecognizer];
-	
+
+	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://www.ingress.com/intel"]];
+	UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
+	[webView setTag:1];
+	[webView setHidden:YES];
+	[webView setDelegate:self];
+	[webView loadRequest:request];
+	[self.view addSubview:webView];
+
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -142,12 +151,17 @@
 
 - (IBAction)refresh {
 
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+//	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 
 	if ([[API sharedInstance] intelcsrftoken] && [[API sharedInstance] intelACSID]) {
 
-		[[DB sharedInstance] removeAllPortals];
-		[[DB sharedInstance] removeAllEnergyGlobs];
+//		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+//		HUD.userInteractionEnabled = NO;
+//		HUD.mode = MBProgressHUDModeIndeterminate;
+//		[self.view addSubview:HUD];
+//		[HUD show:YES];
+
+		[[DB sharedInstance] removeAllMapData];
 
 		CGPoint nePoint = CGPointMake(_mapView.bounds.origin.x + _mapView.bounds.size.width, _mapView.bounds.origin.y);
 		CGPoint swPoint = CGPointMake((_mapView.bounds.origin.x), (_mapView.bounds.origin.y + _mapView.bounds.size.height));
@@ -156,6 +170,7 @@
 
 		NSString *tilesDictStr = [dataCalcWebView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"test(%d, %g, %g, %g, %g, %g);", _mapView.zoomLevel, _mapView.centerCoordinate.latitude, swCoord.latitude, swCoord.longitude, neCoord.latitude, neCoord.longitude]];
 		NSDictionary *tilesDict = [NSJSONSerialization JSONObjectWithData:[tilesDictStr dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+		__block int numOfRequests = tilesDict.allKeys.count;
 		[tilesDict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
 
 			NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://www.ingress.com/rpc/dashboard.getThinnedEntitiesV2"]];
@@ -192,6 +207,8 @@
 			};
 
 			[request setAllHTTPHeaderFields:headers];
+			
+			NSLog(@"START");
 
 			[NSURLConnection sendAsynchronousRequest:request queue:[[API sharedInstance] networkQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
 
@@ -218,13 +235,18 @@
 						[[API sharedInstance] processDeletedEntityGuids:obj[@"deletedGameEntityGuids"]];
 					});
 
-					dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
-					dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-						[[DB sharedInstance] addPortalsToMapView];
-					});
-
 				}];
-				
+
+				numOfRequests--;
+				if (numOfRequests <= 0) {
+					NSLog(@"LOADED");
+					dispatch_async(dispatch_get_main_queue(), ^{
+						[[DB sharedInstance] addPortalsToMapView];
+						NSLog(@"DONE");
+					});
+//					[HUD hide:YES];
+				}
+
 			}];
 			
 		}];
@@ -288,33 +310,41 @@
 //
 //		NSLog(@"tilesArray: %@", tilesArray);
 
-	} else {
-		NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://www.ingress.com/intel"]];
-		UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
-		[webView setTag:1];
-		[webView setHidden:YES];
-		[webView setDelegate:self];
-		[webView loadRequest:request];
-		[self.view addSubview:webView];
-	}
+//		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+//		HUD.userInteractionEnabled = YES;
+//		HUD.dimBackground = YES;
+//		HUD.mode = MBProgressHUDModeIndeterminate;
+//		HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+//		HUD.labelText = @"Loading...";
+//		[self.view addSubview:HUD];
+//		[HUD show:YES];
 
-//	__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
-//	HUD.userInteractionEnabled = YES;
-//	HUD.dimBackground = YES;
-//	HUD.mode = MBProgressHUDModeIndeterminate;
-//	HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
-//	HUD.labelText = @"Loading...";
-//	[self.view addSubview:HUD];
-//	[HUD show:YES];
-//	
-	[[API sharedInstance] getObjectsWithCompletionHandler:^{
-//		[[DB sharedInstance] addPortalsToMapView];
-//		[HUD hide:YES];
-	}];
+		[[DB sharedInstance] removeAllEnergyGlobs];
+		
+		[[API sharedInstance] getObjectsWithCompletionHandler:^{
+//			[[DB sharedInstance] addPortalsToMapView];
+//			[HUD hide:YES];
+		}];
+
+//		[[API sharedInstance] getInventoryWithCompletionHandler:^{
 //
-//	[[API sharedInstance] getInventoryWithCompletionHandler:^{
-//
-//	}];
+//		}];
+
+	} else {
+		
+		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+		HUD.userInteractionEnabled = NO;
+		HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+		HUD.detailsLabelFont = [UIFont fontWithName:@"Coda-Regular" size:12];
+		HUD.mode = MBProgressHUDModeCustomView;
+		HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+		HUD.detailsLabelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+		HUD.detailsLabelText = @"Error logging in to Intel";
+		[self.view addSubview:HUD];
+		[HUD show:YES];
+		[HUD hide:YES afterDelay:3];
+
+	}
 
 }
 
@@ -470,6 +500,15 @@
         [mapView setCenterCoordinate:_mapView.centerCoordinate zoomLevel:16 animated:NO];
 		return;
     }
+
+	if ([[API sharedInstance] intelcsrftoken] && [[API sharedInstance] intelACSID]) {
+		CLLocation *mapLocation = [[CLLocation alloc] initWithLatitude:_mapView.centerCoordinate.latitude longitude:_mapView.centerCoordinate.longitude];
+		CLLocationDistance meters = [mapLocation distanceFromLocation:lastLocation];
+		if (meters == -1 || meters >= 10) {
+			lastLocation = mapLocation;
+			[self refresh];
+		}
+	}
 
 }
 

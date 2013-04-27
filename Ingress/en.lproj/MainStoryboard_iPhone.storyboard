@@ -970,11 +970,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 </connections>
                             </button>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="37i-pb-VXZ">
-                            <connections>
-                                <action selector="refresh" destination="2" id="kPl-62-0Wp"/>
-                            </connections>
-                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="_mapView" destination="tWm-XI-3eu" id="TYM-6X-0Mj"/>
