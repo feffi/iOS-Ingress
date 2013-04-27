@@ -33,7 +33,7 @@
     locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
 	
 	[locationManager startUpdatingLocation];
-	[locationManager startUpdatingHeading];
+//	[locationManager startUpdatingHeading];
 
 	if (YES) { // TODO: Free moving allowed for debug only
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){

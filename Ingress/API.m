@@ -1199,10 +1199,11 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 			
 			NSArray *markups = message[2][@"plext"][@"markup"];
 			BOOL isMessage = NO;
+			int start = 0;
 			for (NSArray *markup in markups) {
 				//NSLog(@"%@: %@", markup[0], markup[1][@"plain"]);
 				
-				NSRange range = [str rangeOfString:markup[1][@"plain"] options:0 range:NSMakeRange(0, str.length)];
+				NSRange range = [str rangeOfString:markup[1][@"plain"] options:0 range:NSMakeRange(start, str.length-start)];
 				
 				if ([markup[0] isEqualToString:@"PLAYER"] || [markup[0] isEqualToString:@"SENDER"]) {
 					
@@ -1230,6 +1231,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 					}
 					
 				}
+
+				start += range.length;
 			}
 
 			[messages addObject:@{@"date": date, @"message": atrstr}];
