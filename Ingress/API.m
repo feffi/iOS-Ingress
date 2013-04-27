@@ -452,7 +452,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	};
 }
 
-- (float)durationOfSound:(NSString *)soundName {
++ (float)durationOfSound:(NSString *)soundName {
 	return [[API sounds][soundName][@"duration"] floatValue]/1000.;
 }
 
@@ -468,7 +468,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, start * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
 			[[SoundManager sharedManager] playSound:soundFile];
 		});
-		start += [self durationOfSound:soundName];
+		start += [API durationOfSound:soundName];
 	}
 }
 
