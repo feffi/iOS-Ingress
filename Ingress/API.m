@@ -11,7 +11,10 @@
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-@implementation API
+@implementation API {
+	BOOL isSoundPlaying;
+	NSMutableArray *soundsQueue;
+}
 
 @synthesize networkQueue = _networkQueue;
 @synthesize notificationQueue = _notificationQueue;
@@ -37,6 +40,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 - (id)init {
     self = [super init];
 	if (self) {
+		soundsQueue = [NSMutableArray array];
 		self.networkQueue = [NSOperationQueue new];
         self.notificationQueue = [NSOperationQueue new];
 		self.numberOfEnergyToCollect = 0;
@@ -456,20 +460,66 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	return [[API sounds][soundName][@"duration"] floatValue]/1000.;
 }
 
++ (NSArray *)soundsForNumber:(int)number {
+
+	if (number > 0 && number < 10) {
+		return @[[NSString stringWithFormat:@"SPEECH_NUMBER_00%d", number]];
+	} else if (number >= 10 && number <= 20) {
+		return @[[NSString stringWithFormat:@"SPEECH_NUMBER_0%d", number]];
+	} else if (number == 25 || number == 30 || number == 40 || number == 50 || number == 60 || number == 70 || number == 75 || number == 80 || number == 90) {
+		return @[[NSString stringWithFormat:@"SPEECH_NUMBER_0%d", number]];
+	} else if (number == 100 || number == 200 || number == 300 || number == 400 || number == 500 || number == 600 || number == 700 || number == 800 || number == 900) {
+		return @[[NSString stringWithFormat:@"SPEECH_NUMBER_%d", number]];
+	} else if (number > 20 && number < 100) {
+		int tens = (int)(number/10)*10;
+		int units = number-tens;
+		return @[[NSString stringWithFormat:@"SPEECH_NUMBER_0%d", tens], [NSString stringWithFormat:@"SPEECH_NUMBER_00%d", units]];
+	}
+
+	return @[];
+
+}
+
 - (void)playSound:(NSString *)soundName {
-	NSString *soundFile = [NSString stringWithFormat:@"Sound/%@", [API sounds][soundName][@"file"]];
-	[[SoundManager sharedManager] playSound:soundFile];
+//	NSString *soundFile = [NSString stringWithFormat:@"Sound/%@", [API sounds][soundName][@"file"]];
+//	[[SoundManager sharedManager] playSound:soundFile];
+//	[self playSounds:@[soundName]];
+	[soundsQueue addObject:soundName];
+	[self checkSoundQueue];
 }
 
 - (void)playSounds:(NSArray *)soundNames {
-	float start = 0;
-	for (NSString *soundName in soundNames) {
-		NSString *soundFile = [NSString stringWithFormat:@"Sound/%@", [API sounds][soundName][@"file"]];
-		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, start * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
-			[[SoundManager sharedManager] playSound:soundFile];
+	[soundsQueue addObjectsFromArray:soundNames];
+	[self checkSoundQueue];
+//	for (NSString *soundName in soundNames) {
+//		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, soundStart * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
+//			[[SoundManager sharedManager] playSound:soundFile];
+//		});
+//		float duration = [API durationOfSound:soundName];
+//		soundStart += duration;
+//		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, soundStart + duration * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
+//			soundStart -= duration;
+//		});
+//	}
+}
+
+- (void)checkSoundQueue {
+
+	if (!isSoundPlaying && soundsQueue.count > 0) {
+
+		NSString *soundName = soundsQueue[0];
+		[[SoundManager sharedManager] playSound:[NSString stringWithFormat:@"Sound/%@", [API sounds][soundName][@"file"]]];
+		isSoundPlaying = YES;
+
+		dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)([API durationOfSound:soundName] * NSEC_PER_SEC));
+		dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+			[soundsQueue removeObject:soundName];
+			isSoundPlaying = NO;
+			[self checkSoundQueue];
 		});
-		start += [API durationOfSound:soundName];
+		
 	}
+
 }
 
 #pragma mark - Location
@@ -2348,6 +2398,16 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	
 	if ([self.playerInfo[@"ap"] intValue] != 0 && newLevel > oldLevel) {
 		[[SoundManager sharedManager] playSound:@"Sound/sfx_player_level_up.aif"];
+	}
+
+	if ([self.playerInfo[@"energy"] intValue] != [playerEntity[2][@"playerPersonal"][@"energy"] intValue]) {
+		int xm = (int)round(([playerEntity[2][@"playerPersonal"][@"energy"] floatValue]/[API maxXmForLevel:newLevel])*100);
+
+		NSMutableArray *sounds = [NSMutableArray arrayWithCapacity:4];
+		[sounds addObject:@"SPEECH_XM_LEVELS"];
+		[sounds addObjectsFromArray:[API soundsForNumber:xm]];
+		[sounds addObject:@"SPEECH_PERCENT"];
+		[self playSounds:sounds];
 	}
 	
 	self.playerInfo = @{

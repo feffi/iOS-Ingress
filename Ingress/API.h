@@ -54,6 +54,8 @@ typedef void (^SoundCompletionBlock)(void);
 + (UIColor *)colorForFaction:(NSString *)faction;
 
 + (NSDictionary *)sounds;
++ (float)durationOfSound:(NSString *)soundName;
++ (NSArray *)soundsForNumber:(int)number;
 //- (void)playBackgroundMusic;
 //- (void)playSoundNamed:(NSString *)name completionHandler:(void (^)(void))handler;
 - (void)playSound:(NSString *)soundName;
