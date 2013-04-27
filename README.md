@@ -68,7 +68,7 @@ Choosing faction is not yet implemented, but you can choose by calling this meth
 Screenshots
 -----------
 
-![Screenshot 1](http://i.imgur.com/Od5sVxh.jpg)
+![Screenshot 1](http://i.imgur.com/XJLt6wn.png)
 ![Screenshot 2](http://i.imgur.com/r21wnTc.png)
 ![Screenshot 3](http://i.imgur.com/FIYe6bm.png)
 ![Screenshot 4](http://i.imgur.com/V1r6eER.png)
