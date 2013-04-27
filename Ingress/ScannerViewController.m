@@ -31,10 +31,18 @@
 	locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+
+	// TODO: Free moving allowed for debug only
+
 //	[locationManager startUpdatingLocation];
 //	[locationManager startUpdatingHeading];
+	
+	[_mapView setScrollEnabled:YES];
 
 	[[AppDelegate instance] setMapView:_mapView];
+
+	UIPinchGestureRecognizer *recognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
+	[_mapView addGestureRecognizer:recognizer];
 
 	rangeCircleView = [UIView new];
 	rangeCircleView.frame = CGRectMake(0, 0, 0, 0);
@@ -395,6 +403,21 @@
 		}
 		
 	}
+}
+
+#pragma mark - Pinch Gesture
+
+- (void)handlePinch:(UIPinchGestureRecognizer*)recognizer {
+    static MKCoordinateRegion originalRegion;
+    if (recognizer.state == UIGestureRecognizerStateBegan) {
+        originalRegion = _mapView.region;
+    }
+
+    double latdelta = originalRegion.span.latitudeDelta / recognizer.scale;
+    double londelta = originalRegion.span.longitudeDelta / recognizer.scale;
+    MKCoordinateSpan span = MKCoordinateSpanMake(latdelta, londelta);
+
+    [_mapView setRegion:MKCoordinateRegionMake(originalRegion.center, span) animated:NO];
 }
 
 #pragma mark - Circle
