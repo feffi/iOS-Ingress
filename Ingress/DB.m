@@ -245,6 +245,14 @@
 	return nil;
 }
 
+- (PowerCube *)getRandomPowerCubeOfLevel:(NSInteger)level {
+	NSArray *fetched = [self fetchObjectsForEntityName:@"PowerCube" withPredicate:@"dropped = NO && level = %d", level];
+	if (fetched.count > 0) {
+		return fetched[0];
+	}
+	return nil;
+}
+
 #pragma mark - Deleting
 
 - (void)removeItemWithGuid:(NSString *)guid {

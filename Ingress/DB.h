@@ -83,6 +83,7 @@ typedef enum {
 - (Resonator *)getRandomResonatorOfLevel:(NSInteger)level;
 - (XMP *)getRandomXMPOfLevel:(NSInteger)level;
 - (Shield *)getRandomShieldOfRarity:(PortalShieldRarity)rarity;
+- (PowerCube *)getRandomPowerCubeOfLevel:(NSInteger)level;
 
 ////////////////////////
 
