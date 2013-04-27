@@ -1949,6 +1949,26 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	
 }
 
+- (void)usePowerCube:(PowerCube *)powerCube completionHandler:(void (^)(void))handler {
+
+	NSDictionary *dict = @{
+	  @"knobSyncTimestamp": @(0),
+	  @"playerLocation": [self currentE6Location],
+	  @"itemGuid": powerCube.guid
+	};
+
+	[self sendRequest:@"gameplay/dischargePowerCube" params:dict completionHandler:^(id responseObj) {
+
+		//NSLog(@"dischargePowerCube responseObj: %@", responseObj);
+
+		dispatch_async(dispatch_get_main_queue(), ^{
+			handler();
+		});
+		
+	}];
+
+}
+
 - (void)rechargePortal:(Portal *)portal completionHandler:(void (^)(void))handler {
 	
 	//{"params":{"energyGlobGuids":[],"knobSyncTimestamp":1358000897501,"location":"0304bb25,00d2f8f0","portalGuid":"3e7788cf535745a29461dffcad2c8711.12","portalKeyGuid":null,"resonatorSlots":[0,5,6,7]}}
