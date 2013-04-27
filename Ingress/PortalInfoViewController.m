@@ -97,7 +97,7 @@
 
 	////////////////////////////
 
-	infoLabel2.text = [NSString stringWithFormat:@"Energy: %.1fk\nRange: %.1fkm", self.portal.energy/1000, self.portal.range/1000];
+	infoLabel2.text = [NSString stringWithFormat:@"Energy: %.1fk\nRange: %.1fkm", self.portal.energy/1000., self.portal.range/1000.];
 	
 //	attrStr = [[NSMutableAttributedString alloc] initWithString:str];
 //	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:15], NSForegroundColorAttributeName : [UIColor colorWithRed:.56 green:1 blue:1 alpha:1]} range:NSMakeRange(0, str.length)];
