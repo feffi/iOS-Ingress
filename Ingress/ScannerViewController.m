@@ -156,7 +156,8 @@
 	if ([[API sharedInstance] intelcsrftoken] && [[API sharedInstance] intelACSID]) {
 
 		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
-		HUD.userInteractionEnabled = NO;
+		HUD.userInteractionEnabled = YES;
+		HUD.dimBackground = YES;
 		HUD.mode = MBProgressHUDModeIndeterminate;
 		[self.view addSubview:HUD];
 		[HUD show:YES];
