@@ -56,6 +56,7 @@ typedef void (^SoundCompletionBlock)(void);
 + (NSDictionary *)sounds;
 //- (void)playBackgroundMusic;
 //- (void)playSoundNamed:(NSString *)name completionHandler:(void (^)(void))handler;
+- (void)playSound:(NSString *)soundName;
 - (void)playSounds:(NSArray *)soundNames;
 
 - (NSString *)currentE6Location;

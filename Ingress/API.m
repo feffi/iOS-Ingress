@@ -456,6 +456,11 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	return [[API sounds][soundName][@"duration"] floatValue]/1000.;
 }
 
+- (void)playSound:(NSString *)soundName {
+	NSString *soundFile = [NSString stringWithFormat:@"Sound/%@", [API sounds][soundName][@"file"]];
+	[[SoundManager sharedManager] playSound:soundFile];
+}
+
 - (void)playSounds:(NSArray *)soundNames {
 	float start = 0;
 	for (NSString *soundName in soundNames) {
