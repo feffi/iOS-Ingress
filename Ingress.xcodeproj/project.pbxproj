@@ -197,6 +197,7 @@
 		FAEA586B169C844400E2F502 /* Icon-72.png in Resources */ = {isa = PBXBuildFile; fileRef = FAEA586A169C844400E2F502 /* Icon-72.png */; };
 		FAEA586D169C858400E2F502 /* Icon-114.png in Resources */ = {isa = PBXBuildFile; fileRef = FAEA586C169C858400E2F502 /* Icon-114.png */; };
 		FAEA586F169CA1C300E2F502 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAEA586E169CA1C300E2F502 /* CoreLocation.framework */; };
+		FAEFAF4B172BC97C007D3F0B /* map_target_visual@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAEFAF4A172BC97C007D3F0B /* map_target_visual@2x.png */; };
 		FAF0E33716E3BA9D005B8147 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAF0E33616E3BA9D005B8147 /* CoreMedia.framework */; };
 		FAF48EBA17233161000CEFEE /* StretchableBackgroundButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF48EB917233161000CEFEE /* StretchableBackgroundButton.m */; };
 		FAF48EBD17241FB5000CEFEE /* map_data_calc_tools.js in Sources */ = {isa = PBXBuildFile; fileRef = FAF48EBC17241FB5000CEFEE /* map_data_calc_tools.js */; };
@@ -496,6 +497,7 @@
 		FAEA586A169C844400E2F502 /* Icon-72.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-72.png"; path = "../Icon-72.png"; sourceTree = "<group>"; };
 		FAEA586C169C858400E2F502 /* Icon-114.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon-114.png"; path = "../Icon-114.png"; sourceTree = "<group>"; };
 		FAEA586E169CA1C300E2F502 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		FAEFAF4A172BC97C007D3F0B /* map_target_visual@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "map_target_visual@2x.png"; sourceTree = "<group>"; };
 		FAF0E33616E3BA9D005B8147 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
 		FAF48EB817233161000CEFEE /* StretchableBackgroundButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StretchableBackgroundButton.h; sourceTree = "<group>"; };
 		FAF48EB917233161000CEFEE /* StretchableBackgroundButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StretchableBackgroundButton.m; sourceTree = "<group>"; };
@@ -648,6 +650,7 @@
 			children = (
 				FACD4FFC16A428A80077837F /* marker_images */,
 				FAF5A90116A7449C00EB42CF /* Resonators */,
+				FAEFAF4A172BC97C007D3F0B /* map_target_visual@2x.png */,
 				FAF48EBF172446B9000CEFEE /* playerArrow@2x.png */,
 				FA8212941722C21E0019E5FD /* negative_btn_background_default@2x.png */,
 				FA8212951722C21E0019E5FD /* negative_btn_background_disabled@2x.png */,
@@ -1423,6 +1426,7 @@
 				FA82129F1722C21E0019E5FD /* positive_btn_background_pressed@2x.png in Resources */,
 				FAF48EC0172446B9000CEFEE /* playerArrow@2x.png in Resources */,
 				FAF48EBE172422A8000CEFEE /* map_data_calc_tools.js in Resources */,
+				FAEFAF4B172BC97C007D3F0B /* map_target_visual@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
