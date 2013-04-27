@@ -453,21 +453,18 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 }
 
 - (float)durationOfSound:(NSString *)soundName {
-	AVAsset *audioAsset = [AVAsset assetWithURL:[[NSBundle mainBundle] URLForResource:soundName withExtension:@"aif" subdirectory:@"Sound"]];
-	CMTime audioDuration = audioAsset.duration;
-	return CMTimeGetSeconds(audioDuration);
+	return [[API sounds][soundName][@"duration"] floatValue]/1000.;
 }
 
 - (void)playSounds:(NSArray *)soundNames {
-	
-	int i = 0;
+	float start = 0;
 	for (NSString *soundName in soundNames) {
-		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, i * ([self durationOfSound:soundName]+.1) * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
-			[[SoundManager sharedManager] playSound:[NSString stringWithFormat:@"Sound/%@.aif", soundName]];
+		NSString *soundFile = [NSString stringWithFormat:@"Sound/%@", [API sounds][soundName][@"file"]];
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, start * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
+			[[SoundManager sharedManager] playSound:soundFile];
 		});
-		i++;
+		start += [self durationOfSound:soundName];
 	}
-	
 }
 
 #pragma mark - Location
@@ -580,7 +577,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 			
 			/////
 			
-			[[API sharedInstance] playSounds:@[@"speech_zoom_acquiring", @"speech_zoom_lockon", @"speech_zoom_downloading"]];
+			[[API sharedInstance] playSounds:@[@"SPEECH_ZOOM_ACQUIRING", @"SPEECH_ZOOM_LOCKON", @"SPEECH_ZOOM_DOWNLOADING"]];
 			
 //			[[SoundManager sharedManager] playSound:@"Sound/speech_zoom_acquiring.aif"];
 //			

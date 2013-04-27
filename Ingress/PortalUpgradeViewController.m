@@ -339,7 +339,7 @@
 			[HUD hide:YES afterDelay:3];
 		} else {
 			
-			[[API sharedInstance] playSounds:@[@"speech_shield", @"speech_deployed"]];
+			[[API sharedInstance] playSounds:@[@"SPEECH_SHIELD", @"SPEECH_DEPLOYED"]];
 			
 		}
 		

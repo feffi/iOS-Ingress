@@ -155,8 +155,20 @@
 			HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
 			HUD.detailsLabelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
 			HUD.detailsLabelText = errorStr;
-			
-			[[API sharedInstance] playSounds:@[@"speech_hacking", @"speech_unsuccessful"]];
+
+			NSMutableArray *sounds = [NSMutableArray arrayWithObjects:@"SPEECH_HACKING", @"SPEECH_UNSUCCESSFUL", nil];
+
+			if (secondsRemaining > 0) {
+				[sounds addObject:@"SPEECH_COOLDOWN_ACTIVE"];
+			}
+
+			if (secondsRemaining == 300) {
+				[sounds addObject:@"SPEECH_NUMBER_005"];
+				[sounds addObject:@"SPEECH_MINUTES"];
+				[sounds addObject:@"SPEECH_REMAINING"];
+			}
+
+			[[API sharedInstance] playSounds:sounds];
 		} else {
 			HUD.mode = MBProgressHUDModeText;
 			if (acquiredItems.count > 0) {
@@ -175,7 +187,7 @@
 			} else {
 				HUD.labelText = @"Hack acquired no items";
 				
-				[[API sharedInstance] playSounds:@[@"speech_hacking", @"speech_unsuccessful"]];
+				[[API sharedInstance] playSounds:@[@"SPEECH_HACKING", @"SPEECH_UNSUCCESSFUL"]];
 			}
 		}
 		
