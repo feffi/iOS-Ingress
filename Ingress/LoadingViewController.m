@@ -396,7 +396,9 @@
 
 		} else {
 
-			[[[API sharedInstance] playerInfo] setValue:codenameToConfirm forKey:@"nickname"];
+			[API sharedInstance].playerInfo = @{@"nickname": codenameToConfirm};
+			
+			typewriterLabel.text = @"";
 
 			typewriterView.hidden = NO;
 
