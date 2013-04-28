@@ -3,11 +3,6 @@ iOS Ingress
 
 Google's AR Game Ingress port for iOS
 
-Help
-----
-
-I need few invitations for testing activation. If you have some, please contact me at studnicka(at)aacode.cz. Thank you.
-
 Video
 -----
 
