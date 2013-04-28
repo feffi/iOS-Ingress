@@ -35,16 +35,20 @@
 	__weak IBOutlet SelectingButton *termsCheckboxButton;
 	__weak IBOutlet StretchableBackgroundButton *termsConfirmButton;
 
+	__weak IBOutlet TPKeyboardAvoidingScrollView *createCodenameScrollview;
+	__weak IBOutlet UILabel *createCodenameLabel;
+	__weak IBOutlet UITextField *createCodenameField;
+	__weak IBOutlet CustomBackgroundColorButton *createCodenameButton;
+
+	__weak IBOutlet UIView *codenameErrorView;
+	__weak IBOutlet UILabel *codenameErrorLabel;
+	__weak IBOutlet StretchableBackgroundButton *codenameErrorRetryButton;
+
 	NSString *codenameToConfirm;
 	__weak IBOutlet UIView *codenameConfirmView;
 	__weak IBOutlet TypeWriterLabel *codenameConfirmLabel;
 	__weak IBOutlet StretchableBackgroundButton *codenameConfirmButton;
 	__weak IBOutlet StretchableBackgroundButton *codenameConfirmRetryButton;
-
-	__weak IBOutlet TPKeyboardAvoidingScrollView *createCodenameScrollview;
-	__weak IBOutlet UILabel *createCodenameLabel;
-	__weak IBOutlet UITextField *createCodenameField;
-	__weak IBOutlet CustomBackgroundColorButton *createCodenameButton;
 
 	__weak IBOutlet UIView *typewriterView;
 	__weak IBOutlet TypeWriterLabel *typewriterLabel;
@@ -66,7 +70,7 @@
 - (IBAction)termsCheckboxChanged;
 - (IBAction)termsConfirm;
 - (IBAction)createCodename;
-- (IBAction)codenameConfirmRetry;
+- (IBAction)codenameRetry;
 - (IBAction)codenameConfirm;
 
 @end

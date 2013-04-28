@@ -1659,7 +1659,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		//NSLog(@"validateNickname: %@", responseObj);
 		
 		dispatch_async(dispatch_get_main_queue(), ^{
-			handler(responseObj[@"error"]); //INVALID_CHARACTERS, TOO_SHORT, BAD_WORDS, NOT_UNIQUE
+			handler(responseObj[@"error"]); //INVALID_CHARACTERS, TOO_SHORT, BAD_WORDS, NOT_UNIQUE, CANNOT_EDIT
 		});
 		
 	}];

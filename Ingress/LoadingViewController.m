@@ -46,6 +46,8 @@
 	termsDescriptionLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:16];
 	termsLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:16];
 
+	codenameErrorLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:16];
+
 	////////
 
 	jsonDict = [@{
@@ -330,17 +332,20 @@
 
 		[[SoundManager sharedManager] stopMusic:NO];
 
-		if (!errorStr) {
+		if (errorStr) {
 
-#warning createCodename errorStr
-
-			createCodenameScrollview.hidden = NO;
-			createCodenameLabel.hidden = NO;
-			createCodenameField.hidden = NO;
-			createCodenameButton.hidden = NO;
-			createCodenameField.text = @"";
-			createCodenameButton.enabled = NO;
-			[createCodenameField becomeFirstResponder];
+			[codenameErrorRetryButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:22]];
+			if ([errorStr isEqualToString:@"CANNOT_EDIT"]) {
+				[codenameErrorRetryButton setTitle:@"Skip" forState:UIControlStateNormal];
+				[codenameErrorRetryButton removeTarget:self	action:@selector(codenameRetry) forControlEvents:UIControlEventTouchUpInside];
+				[codenameErrorRetryButton addTarget:self action:@selector(playIntro) forControlEvents:UIControlEventTouchUpInside];
+			} else {
+				[codenameErrorRetryButton setTitle:@"Retry" forState:UIControlStateNormal];
+				[codenameErrorRetryButton removeTarget:self action:@selector(playIntro) forControlEvents:UIControlEventTouchUpInside];
+				[codenameErrorRetryButton addTarget:self action:@selector(codenameRetry) forControlEvents:UIControlEventTouchUpInside];
+			}
+			codenameErrorLabel.text = errorStr;
+			codenameErrorView.hidden = NO;
 
 		} else {
 
@@ -362,22 +367,6 @@
 	
 }
 
-- (IBAction)codenameConfirmRetry {
-
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-
-	codenameConfirmView.hidden = YES;
-
-	createCodenameScrollview.hidden = NO;
-	createCodenameLabel.hidden = NO;
-	createCodenameField.hidden = NO;
-	createCodenameButton.hidden = NO;
-	createCodenameField.text = @"";
-	createCodenameButton.enabled = NO;
-	[createCodenameField becomeFirstResponder];
-	
-}
-
 - (IBAction)codenameConfirm {
 	
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
@@ -390,19 +379,24 @@
 
 		[[SoundManager sharedManager] stopMusic:NO];
 
-		if (!errorStr) {
+		if (errorStr) {
 
-#warning createCodename errorStr
-
-			createCodenameScrollview.hidden = NO;
-			createCodenameLabel.hidden = NO;
-			createCodenameField.hidden = NO;
-			createCodenameButton.hidden = NO;
-			createCodenameField.text = @"";
-			createCodenameButton.enabled = NO;
-			[createCodenameField becomeFirstResponder];
+			[codenameErrorRetryButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:22]];
+			if ([errorStr isEqualToString:@"CANNOT_EDIT"]) {
+				[codenameErrorRetryButton setTitle:@"Skip" forState:UIControlStateNormal];
+				[codenameErrorRetryButton removeTarget:self	action:@selector(codenameRetry) forControlEvents:UIControlEventTouchUpInside];
+				[codenameErrorRetryButton addTarget:self action:@selector(playIntro) forControlEvents:UIControlEventTouchUpInside];
+			} else {
+				[codenameErrorRetryButton setTitle:@"Retry" forState:UIControlStateNormal];
+				[codenameErrorRetryButton removeTarget:self action:@selector(playIntro) forControlEvents:UIControlEventTouchUpInside];
+				[codenameErrorRetryButton addTarget:self action:@selector(codenameRetry) forControlEvents:UIControlEventTouchUpInside];
+			}
+			codenameErrorLabel.text = errorStr;
+			codenameErrorView.hidden = NO;
 
 		} else {
+
+			[[[API sharedInstance] playerInfo] setValue:codenameToConfirm forKey:@"nickname"];
 
 			typewriterView.hidden = NO;
 
@@ -414,28 +408,73 @@
 
 			dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(((attrStr.length * 0.05) + 2) * NSEC_PER_SEC));
 			dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-				introView.hidden = NO;
-				typewriterView.hidden = YES;
+				[self playIntro];
 			});
 
-			popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(((attrStr.length * 0.05) + 3) * NSEC_PER_SEC));
-			dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-				introScrollerTimer = [NSTimer scheduledTimerWithTimeInterval:(0.04) target:self selector:@selector(autoscrollTimerFired) userInfo:nil repeats:YES];
-				[[SoundManager sharedManager] playSound:@"Sound/speech_zoomdown_intro.aif"];
-			});
+//			popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(((attrStr.length * 0.05) + 3) * NSEC_PER_SEC));
+//			dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//				introScrollerTimer = [NSTimer scheduledTimerWithTimeInterval:(0.04) target:self selector:@selector(autoscrollTimerFired) userInfo:nil repeats:YES];
+//				[[SoundManager sharedManager] playSound:@"Sound/speech_zoomdown_intro.aif"];
+//			});
+//
+//			popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(((attrStr.length * 0.05) + 3) + 40 * NSEC_PER_SEC));
+//			dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+//				[introScrollerTimer invalidate];
+//				introScrollerTimer = nil;
+//				//introView.hidden = YES;
+//				[self performSegueWithIdentifier:@"LoadingCompletedSegue" sender:self];
+//			});
 
-			popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(((attrStr.length * 0.05) + 3) + 40 * NSEC_PER_SEC));
-			dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-				[introScrollerTimer invalidate];
-				introScrollerTimer = nil;
-				[self performSegueWithIdentifier:@"LoadingCompletedSegue" sender:self];
-			});
-			
 		}
 
 		codenameToConfirm = nil;
 
 	}];
+
+}
+
+- (IBAction)codenameRetry {
+
+	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+
+	codenameConfirmView.hidden = YES;
+	codenameErrorView.hidden = YES;
+
+	createCodenameScrollview.hidden = NO;
+	createCodenameLabel.hidden = NO;
+	createCodenameField.hidden = NO;
+	createCodenameButton.hidden = NO;
+	createCodenameLabel.text = @"Try a different codename.";
+	createCodenameField.text = @"";
+	createCodenameButton.enabled = NO;
+	[createCodenameField becomeFirstResponder];
+	
+}
+
+#pragma mark - Intro
+
+- (void)playIntro {
+
+	introView.hidden = NO;
+
+	createCodenameScrollview.hidden = YES;
+	codenameConfirmButton.hidden = YES;
+	codenameErrorView.hidden = YES;
+	typewriterView.hidden = YES;
+
+	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC));
+	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+		introScrollerTimer = [NSTimer scheduledTimerWithTimeInterval:(0.04) target:self selector:@selector(autoscrollTimerFired) userInfo:nil repeats:YES];
+		[[SoundManager sharedManager] playSound:@"Sound/speech_zoomdown_intro.aif"];
+	});
+
+	popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 + 40 * NSEC_PER_SEC));
+	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+		[introScrollerTimer invalidate];
+		introScrollerTimer = nil;
+		//introView.hidden = YES;
+		[self performSegueWithIdentifier:@"LoadingCompletedSegue" sender:self];
+	});
 
 }
 

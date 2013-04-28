@@ -20,13 +20,13 @@
 		
 		UIImage *bgImage;
 		
-		bgImage = [[UIImage imageNamed:@"default_btn"] stretchableImageWithLeftCapWidth:3 topCapHeight:12];
+		bgImage = [[UIImage imageNamed:@"default_btn"] stretchableImageWithLeftCapWidth:2 topCapHeight:12];
 		[self setBackgroundImage:bgImage forState:UIControlStateNormal];
 		
-		bgImage = [[UIImage imageNamed:@"default_btn_down"] stretchableImageWithLeftCapWidth:3 topCapHeight:12];
+		bgImage = [[UIImage imageNamed:@"default_btn_down"] stretchableImageWithLeftCapWidth:2 topCapHeight:12];
 		[self setBackgroundImage:bgImage forState:UIControlStateHighlighted];
 		
-		bgImage = [[UIImage imageNamed:@"default_btn_disabled"] stretchableImageWithLeftCapWidth:3 topCapHeight:12];
+		bgImage = [[UIImage imageNamed:@"default_btn_disabled"] stretchableImageWithLeftCapWidth:2 topCapHeight:12];
 		[self setBackgroundImage:bgImage forState:UIControlStateApplication];
 		
 		[self setTitleColor:[UIColor colorWithRed:144./255. green:1 blue:1 alpha:1] forState:UIControlStateNormal];
