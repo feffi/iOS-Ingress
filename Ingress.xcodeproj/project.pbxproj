@@ -101,6 +101,9 @@
 		FA54DF0416A1C784006A92E0 /* items@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA54DF0216A1C784006A92E0 /* items@2x.png */; };
 		FA54DF0816A1D882006A92E0 /* Coda-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA54DF0616A1D870006A92E0 /* Coda-Regular.ttf */; };
 		FA6EF951172D11790004905F /* GlowingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6EF950172D11790004905F /* GlowingLabel.m */; };
+		FA6EF957172D1C490004905F /* trackImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EF956172D1C490004905F /* trackImage@2x.png */; };
+		FA6EF960172D2D360004905F /* progressImage-aliens@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EF95E172D2D350004905F /* progressImage-aliens@2x.png */; };
+		FA6EF961172D2D360004905F /* progressImage-resistance@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EF95F172D2D360004905F /* progressImage-resistance@2x.png */; };
 		FA779AAB16A55FC40080B62A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA779AAA16A55FC40080B62A /* AVFoundation.framework */; };
 		FA7AC9D216D0116800505404 /* Sound in Resources */ = {isa = PBXBuildFile; fileRef = FA7AC9D116D0116800505404 /* Sound */; };
 		FA7AC9D816D14C5400505404 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7AC9D716D14C5400505404 /* SoundManager.m */; };
@@ -347,6 +350,9 @@
 		FA54DF0616A1D870006A92E0 /* Coda-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Coda-Regular.ttf"; path = "Ingress/Coda-Regular.ttf"; sourceTree = "<group>"; };
 		FA6EF94F172D11790004905F /* GlowingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlowingLabel.h; path = GlowingLabel/GlowingLabel.h; sourceTree = "<group>"; };
 		FA6EF950172D11790004905F /* GlowingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlowingLabel.m; path = GlowingLabel/GlowingLabel.m; sourceTree = "<group>"; };
+		FA6EF956172D1C490004905F /* trackImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackImage@2x.png"; sourceTree = "<group>"; };
+		FA6EF95E172D2D350004905F /* progressImage-aliens@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progressImage-aliens@2x.png"; sourceTree = "<group>"; };
+		FA6EF95F172D2D360004905F /* progressImage-resistance@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progressImage-resistance@2x.png"; sourceTree = "<group>"; };
 		FA779AAA16A55FC40080B62A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FA7AC9D116D0116800505404 /* Sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Sound; path = Ingress/Sound; sourceTree = "<group>"; };
 		FA7AC9D616D14C5400505404 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
@@ -653,6 +659,9 @@
 			children = (
 				FACD4FFC16A428A80077837F /* marker_images */,
 				FAF5A90116A7449C00EB42CF /* Resonators */,
+				FA6EF956172D1C490004905F /* trackImage@2x.png */,
+				FA6EF95E172D2D350004905F /* progressImage-aliens@2x.png */,
+				FA6EF95F172D2D360004905F /* progressImage-resistance@2x.png */,
 				FAEFAF4A172BC97C007D3F0B /* map_target_visual@2x.png */,
 				FAF48EBF172446B9000CEFEE /* playerArrow@2x.png */,
 				FA8212941722C21E0019E5FD /* negative_btn_background_default@2x.png */,
@@ -1440,6 +1449,9 @@
 				FAF48EC0172446B9000CEFEE /* playerArrow@2x.png in Resources */,
 				FAF48EBE172422A8000CEFEE /* map_data_calc_tools.js in Resources */,
 				FAEFAF4B172BC97C007D3F0B /* map_target_visual@2x.png in Resources */,
+				FA6EF957172D1C490004905F /* trackImage@2x.png in Resources */,
+				FA6EF960172D2D360004905F /* progressImage-aliens@2x.png in Resources */,
+				FA6EF961172D2D360004905F /* progressImage-resistance@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

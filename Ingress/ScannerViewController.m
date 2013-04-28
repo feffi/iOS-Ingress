@@ -34,6 +34,9 @@
 	nicknameLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
 	firstRefreshProfile = YES;
 
+	[xmIndicator setProgressImage:[[UIImage imageNamed:@"progressImage-aliens.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(7, 7, 7, 7)]];
+	[xmIndicator setTrackImage:[[UIImage imageNamed:@"trackImage.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(2, 2, 2, 2)]];
+
 	locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
@@ -448,7 +451,12 @@
 	nicknameLabel.textColor = teamColor;
 	nicknameLabel.text = playerInfo[@"nickname"];
 
-	xmIndicator.progressTintColor = teamColor;
+	if ([[API sharedInstance].playerInfo[@"team"] isEqualToString:@"RESISTANCE"]) {
+		[xmIndicator setProgressImage:[[UIImage imageNamed:@"progressImage-resistance.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(7, 7, 7, 7)]];
+	} else {
+		[xmIndicator setProgressImage:[[UIImage imageNamed:@"progressImage-aliens.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(7, 7, 7, 7)]];
+	}
+
 	[xmIndicator setProgress:(energy/maxEnergy) animated:!firstRefreshProfile];
 
 	firstRefreshProfile = NO;
