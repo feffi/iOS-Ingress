@@ -3,21 +3,14 @@ iOS Ingress
 
 Google's AR Game Ingress port for iOS
 
-Video
------
+TODO
+----
 
-Video of codename creating and intro which have been recently finished
-
-http://youtu.be/jRi8PuquP50
-
-Getting map data from API
--------------------------
-
-**Got it now, it's s2-geometry-library (https://code.google.com/p/s2-geometry-library-java/)**
-
-**This is temporary fixed by loading data from intel instead of API, so IITC's script can be used. But still needs to be fixed, because this solution is super slow and doesn't load XM and dropped items.**
-
-~~I have big problems with this part. Ingress uses cell/tile IDs for getting data from API and I don't know how it works.~~
+- choosing faction (+GUI)
+- better XM collecting
+- speed and memory optimalization
+- GUI improvements (3.5" screen)
+- linking portals
 
 Choosing faction
 ----------------
@@ -29,6 +22,13 @@ Choosing faction is not yet implemented, but you can choose by calling this meth
         
         "ALIENS"        = enlightened
         "RESISTANCE"    = resistance
+
+Video
+-----
+
+Video of codename creating and intro which have been recently finished
+
+http://youtu.be/jRi8PuquP50
 
 Screenshots
 -----------
