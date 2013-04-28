@@ -12,7 +12,7 @@
 #import <CoreImage/CoreImage.h>
 #import "LevelChooserViewController.h"
 
-@interface ScannerViewController : UIViewController <MKMapViewDelegate, UIWebViewDelegate, CLLocationManagerDelegate> {
+@interface ScannerViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate> {
 	
 	__weak IBOutlet MKMapView *_mapView;
 	__weak IBOutlet UIImageView *playerArrowImage;

@@ -28,8 +28,6 @@ typedef void (^SoundCompletionBlock)(void);
 @property (nonatomic, strong) NSOperationQueue *notificationQueue;
 @property (nonatomic, strong) NSString *xsrfToken;
 @property (nonatomic, strong) NSString *SACSID;
-@property (nonatomic, strong) NSString *intelcsrftoken;
-@property (nonatomic, strong) NSString *intelACSID;
 @property (nonatomic, strong) NSDictionary *playerInfo;
 @property (nonatomic) NSInteger numberOfEnergyToCollect;
 

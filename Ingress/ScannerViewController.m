@@ -20,7 +20,6 @@
 #import "ColorOverlayView.h"
 
 @implementation ScannerViewController {
-	UIWebView *dataCalcWebView;
 	UIView *rangeCircleView;
 	CLLocationManager *locationManager;
 	CLLocation *lastLocation;
@@ -70,13 +69,6 @@
 //
 //	[NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(updateCircle) userInfo:nil repeats:YES];
 
-	dataCalcWebView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
-	[dataCalcWebView setTag:2];
-	[dataCalcWebView setHidden:YES];
-	[dataCalcWebView setDelegate:self];
-	[self.view addSubview:dataCalcWebView];
-	[dataCalcWebView loadHTMLString:[NSString stringWithFormat:@"<html><head><script>%@</script></head><body></body></html>", [NSString stringWithContentsOfURL:[[NSBundle mainBundle] URLForResource:@"map_data_calc_tools" withExtension:@"js"] encoding:NSUTF8StringEncoding error:nil]] baseURL:nil];
-
 //	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
 //		[_mapView setRegion:MKCoordinateRegionMakeWithDistance(_mapView.userLocation.location.coordinate, 150, 150) animated:NO];
 //		[_mapView setUserTrackingMode:MKUserTrackingModeFollow animated:NO];
@@ -105,14 +97,6 @@
 	
 //	UITapGestureRecognizer *mapViewGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapTapped:)];
 //	[_mapView addGestureRecognizer:mapViewGestureRecognizer];
-
-	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://www.ingress.com/intel"]];
-	UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 1, 1)];
-	[webView setTag:1];
-	[webView setHidden:YES];
-	[webView setDelegate:self];
-	[webView loadRequest:request];
-	[self.view addSubview:webView];
 
 }
 
@@ -163,199 +147,17 @@
 
 //	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 
-	if ([[API sharedInstance] intelcsrftoken] && [[API sharedInstance] intelACSID]) {
-
-		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
-		HUD.userInteractionEnabled = YES;
-		HUD.dimBackground = YES;
-		HUD.mode = MBProgressHUDModeIndeterminate;
-		[self.view addSubview:HUD];
-		[HUD show:YES];
-
-		[[DB sharedInstance] removeAllMapData];
-
-		CGPoint nePoint = CGPointMake(_mapView.bounds.origin.x + _mapView.bounds.size.width, _mapView.bounds.origin.y);
-		CGPoint swPoint = CGPointMake((_mapView.bounds.origin.x), (_mapView.bounds.origin.y + _mapView.bounds.size.height));
-		CLLocationCoordinate2D neCoord = [_mapView convertPoint:nePoint toCoordinateFromView:_mapView];
-		CLLocationCoordinate2D swCoord = [_mapView convertPoint:swPoint toCoordinateFromView:_mapView];
-
-		NSString *tilesDictStr = [dataCalcWebView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"test(%d, %g, %g, %g, %g, %g);", _mapView.zoomLevel, _mapView.centerCoordinate.latitude, swCoord.latitude, swCoord.longitude, neCoord.latitude, neCoord.longitude]];
-		NSDictionary *tilesDict = [NSJSONSerialization JSONObjectWithData:[tilesDictStr dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
-		__block int numOfRequests = tilesDict.allKeys.count;
-		[tilesDict enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-
-			NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:@"http://www.ingress.com/rpc/dashboard.getThinnedEntitiesV2"]];
-			[request setHTTPMethod:@"POST"];
-
-			NSDictionary *params = @{
-				@"method": @"dashboard.getThinnedEntitiesV2",
-				@"zoom": @(_mapView.zoomLevel),
-				@"boundsParamsList": obj
-			};
-
-			NSError *error;
-			NSData *HTTPData = [NSJSONSerialization dataWithJSONObject:params options:0 error:&error];
-			if (error) { NSLog(@"error: %@", error); }
-
-			[request setHTTPBody:HTTPData];
-
-			NSDictionary *headers = @{
-				@"Content-Type": @"application/json; charset=UTF-8",
-				@"Accept": @"application/json, text/javascript, */*; q=0.01",
-				@"Accept-Charset": @"windows-1250,utf-8;q=0.7,*;q=0.3",
-				@"Accept-Encoding": @"gzip,deflate,sdch",
-				@"Accept-Language": @"en,cs;q=0.8",
-				@"Connection": @"keep-alive",
-				@"User-Agent": @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_3) AppleWebKit/537.31 (KHTML, like Gecko) Chrome/26.0.1410.65 Safari/537.31",
-				@"X-Requested-With": @"XMLHttpRequest",
-				@"Host" : @"www.ingress.com",
-				@"Origin": @"http://www.ingress.com",
-				@"Referer": @"http://www.ingress.com/intel",
-				@"Connection": @"Keep-Alive",
-				@"Content-Length": [NSString stringWithFormat:@"%d", HTTPData.length],
-				@"X-CSRFToken": [[API sharedInstance] intelcsrftoken],
-				@"Cookie": [NSString stringWithFormat:@"csrftoken=%@; ACSID=%@", [[API sharedInstance] intelcsrftoken], [[API sharedInstance] intelACSID]]
-			};
-
-			[request setAllHTTPHeaderFields:headers];
-			
-//			NSLog(@"START");
-
-			[NSURLConnection sendAsynchronousRequest:request queue:[[API sharedInstance] networkQueue] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-
-				if (error) { NSLog(@"NSURLConnection error: %@", error); }
-
-				NSError *jsonParseError;
-				id responseObj;
-				if (data) {
-					responseObj = [NSJSONSerialization JSONObjectWithData:data options:0 error:&jsonParseError];
-				}
-				if (jsonParseError) {
-					NSLog(@"jsonParseError: %@", jsonParseError);
-					NSLog(@"text response: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-				}
-
-				//NSLog(@"getThinnedEntitiesV2: %@", responseObj);
-
-				NSDictionary *map = responseObj[@"result"][@"map"];
-
-				[map enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-
-					dispatch_async(dispatch_get_main_queue(), ^{
-						[[API sharedInstance] processGameEntities:obj[@"gameEntities"]];
-						[[API sharedInstance] processDeletedEntityGuids:obj[@"deletedGameEntityGuids"]];
-					});
-
-				}];
-
-				numOfRequests--;
-				if (numOfRequests <= 0) {
-//					NSLog(@"LOADED");
-					dispatch_async(dispatch_get_main_queue(), ^{
-						[[DB sharedInstance] addPortalsToMapView];
-						[HUD hide:YES];
-//						NSLog(@"DONE");
-					});
-				}
-
-			}];
-			
-		}];
-
-//		double magic = [self convertCenterLat:_mapView.centerCoordinate.latitude];
-//		double R = [self calculateR:magic];
-//		CGPoint nePoint = CGPointMake(_mapView.bounds.origin.x + _mapView.bounds.size.width, _mapView.bounds.origin.y);
-//		CGPoint swPoint = CGPointMake((_mapView.bounds.origin.x), (_mapView.bounds.origin.y + _mapView.bounds.size.height));
-//		CLLocationCoordinate2D neCoord = [_mapView convertPoint:nePoint toCoordinateFromView:_mapView];
-//		CLLocationCoordinate2D swCoord = [_mapView convertPoint:swPoint toCoordinateFromView:_mapView];
-//
-//		// convert to point values
-//		CGPoint topRight = [self convertLatLngToPoint:neCoord magic:magic R:R];
-//		CGPoint bottomLeft = [self convertLatLngToPoint:swCoord magic:magic R:R];
-//
-////		NSLog(@"%d_%.0f_%.0f", _mapView.zoomLevel-1, topRight.x, topRight.y);
-//
-//		// how many quadrants intersect the current view?
-//		int quadsX = ABS(bottomLeft.x - topRight.x);
-//		int quadsY = ABS(bottomLeft.y - topRight.y);
-//
-//		// will group requests by second-last quad-key quadrant
-//		NSMutableDictionary *tiles = [NSMutableDictionary dictionary];
-//
-//		// walk in x-direction, starts right goes left
-//		for (int i = 0; i <= quadsX; i++) {
-//			int x = ABS(topRight.x - i);
-//			NSString *qk = [self pointToQuadKey:CGPointMake(x, topRight.y)];
-//			NSArray *bnds = [self convertPointToLatLng:CGPointMake(x, topRight.y) magic:magic R:R];
-//
-//			if (qk.length > 0) {
-//				NSString *slice = [qk substringWithRange:NSMakeRange(0, 1)];
-//				if (![tiles objectForKey:slice]) {
-//					[tiles setObject:[NSMutableArray array] forKey:slice];
-//				}
-//				NSMutableArray *sliceArray = [tiles objectForKey:slice];
-//				[sliceArray addObject:[self generateBoundsParams:qk bounds:bnds]];
-//			}
-//
-//			// walk in y-direction, starts top, goes down
-//			for (int j = 1; j <= quadsY; j++) {
-//				NSString *qk = [self pointToQuadKey:CGPointMake(x, topRight.y + j)];
-//				NSArray *bnds = [self convertPointToLatLng:CGPointMake(x, topRight.y + j) magic:magic R:R];
-//
-//				if (qk.length > 0) {
-//					NSString *slice = [qk substringWithRange:NSMakeRange(0, 1)];
-//					if (![tiles objectForKey:slice]) {
-//						[tiles setObject:[NSMutableArray array] forKey:slice];
-//					}
-//					NSMutableArray *sliceArray = [tiles objectForKey:slice];
-//					[sliceArray addObject:[self generateBoundsParams:qk bounds:bnds]];
-//				}
-//
-//			}
-//		}
-//
-//		NSMutableArray *tilesArray = [NSMutableArray array];
-//		[tiles enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-//			[tilesArray addObject:obj];
-//		}];
-//
-//		NSLog(@"tilesArray: %@", tilesArray);
-
-//		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
-//		HUD.userInteractionEnabled = YES;
-//		HUD.dimBackground = YES;
-//		HUD.mode = MBProgressHUDModeIndeterminate;
-//		HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
-//		HUD.labelText = @"Loading...";
-//		[self.view addSubview:HUD];
-//		[HUD show:YES];
-
-		[[DB sharedInstance] removeAllEnergyGlobs];
-		
-		[[API sharedInstance] getObjectsWithCompletionHandler:^{
-//			[[DB sharedInstance] addPortalsToMapView];
-//			[HUD hide:YES];
-		}];
-
-//		[[API sharedInstance] getInventoryWithCompletionHandler:^{
-//
-//		}];
-
-	} else {
-		
-		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
-		HUD.userInteractionEnabled = NO;
-		HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
-		HUD.detailsLabelFont = [UIFont fontWithName:@"Coda-Regular" size:12];
-		HUD.mode = MBProgressHUDModeCustomView;
-		HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-		HUD.detailsLabelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
-		HUD.detailsLabelText = @"Error logging in to Intel";
-		[self.view addSubview:HUD];
-		[HUD show:YES];
-		[HUD hide:YES afterDelay:3];
-
-	}
+	__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+	HUD.userInteractionEnabled = YES;
+	HUD.dimBackground = YES;
+	HUD.mode = MBProgressHUDModeIndeterminate;
+	[self.view addSubview:HUD];
+	[HUD show:YES];
+	
+	[[API sharedInstance] getObjectsWithCompletionHandler:^{
+		[[DB sharedInstance] addPortalsToMapView];
+		[HUD hide:YES];
+	}];
 
 }
 
@@ -463,32 +265,6 @@
 
 }
 
-#pragma mark - UIWebViewDelegate
-
-- (void)webViewDidFinishLoad:(UIWebView *)webView {
-	if (webView.tag == 1) {
-		
-		NSString *url =  [webView stringByEvaluatingJavaScriptFromString:@"document.getElementsByClassName('button_link')[0].href;"];
-		if (url && url.length > 0) {
-			[webView stringByEvaluatingJavaScriptFromString:[NSString stringWithFormat:@"location.href = '%@';", url]];
-		} else {
-			NSHTTPCookieStorage *sharedHTTPCookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-			NSArray *cookies = [sharedHTTPCookieStorage cookiesForURL:webView.request.URL];
-			for (NSHTTPCookie *cookie in cookies) {
-				if ([cookie.name isEqualToString:@"csrftoken"]) {
-					[[API sharedInstance] setIntelcsrftoken:cookie.value];
-				} else if ([cookie.name isEqualToString:@"ACSID"]) {
-					[[API sharedInstance] setIntelACSID:cookie.value];
-				}
-			}
-			[self refresh];
-			[webView removeFromSuperview];
-			webView = nil;
-		}
-		
-	}
-}
-
 #pragma mark - Pinch Gesture
 
 - (void)handlePinch:(UIPinchGestureRecognizer*)recognizer {
@@ -552,13 +328,11 @@
 		return;
     }
 
-	if ([[API sharedInstance] intelcsrftoken] && [[API sharedInstance] intelACSID]) {
-		CLLocation *mapLocation = [[CLLocation alloc] initWithLatitude:_mapView.centerCoordinate.latitude longitude:_mapView.centerCoordinate.longitude];
-		CLLocationDistance meters = [mapLocation distanceFromLocation:lastLocation];
-		if (meters == -1 || meters >= 10) {
-			lastLocation = mapLocation;
-			[self refresh];
-		}
+	CLLocation *mapLocation = [[CLLocation alloc] initWithLatitude:_mapView.centerCoordinate.latitude longitude:_mapView.centerCoordinate.longitude];
+	CLLocationDistance meters = [mapLocation distanceFromLocation:lastLocation];
+	if (meters == -1 || meters >= 10) {
+		lastLocation = mapLocation;
+		[self refresh];
 	}
 
 }
