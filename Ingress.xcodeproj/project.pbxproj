@@ -181,6 +181,7 @@
 		FAC47515172DB2A000AAFFC0 /* s2regionintersection.cc in Sources */ = {isa = PBXBuildFile; fileRef = FAC474DA172DB2A000AAFFC0 /* s2regionintersection.cc */; settings = {COMPILER_FLAGS = "-w"; }; };
 		FAC47516172DB2A000AAFFC0 /* s2regionunion.cc in Sources */ = {isa = PBXBuildFile; fileRef = FAC474DC172DB2A000AAFFC0 /* s2regionunion.cc */; settings = {COMPILER_FLAGS = "-w"; }; };
 		FAC475C4172DB3E900AAFFC0 /* libssl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC475C2172DB3E900AAFFC0 /* libssl.a */; };
+		FAC475C7172DB8B100AAFFC0 /* S2Geometry.mm in Sources */ = {isa = PBXBuildFile; fileRef = FAC475C6172DB8B100AAFFC0 /* S2Geometry.mm */; };
 		FAC6BBAE171B080900AA0600 /* ResourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC6BBAD171B080900AA0600 /* ResourcesViewController.m */; };
 		FAC6BBB1171B0FFF00AA0600 /* ResourceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC6BBB0171B0FFF00AA0600 /* ResourceCell.m */; };
 		FACD502316A441400077837F /* PortalDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FACD502216A441400077837F /* PortalDetailViewController.m */; };
@@ -627,6 +628,8 @@
 		FAC475BF172DB3E900AAFFC0 /* x509v3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = x509v3.h; sourceTree = "<group>"; };
 		FAC475C1172DB3E900AAFFC0 /* libcrypto.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libcrypto.a; sourceTree = "<group>"; };
 		FAC475C2172DB3E900AAFFC0 /* libssl.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libssl.a; sourceTree = "<group>"; };
+		FAC475C5172DB8B100AAFFC0 /* S2Geometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = S2Geometry.h; sourceTree = "<group>"; };
+		FAC475C6172DB8B100AAFFC0 /* S2Geometry.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = S2Geometry.mm; sourceTree = "<group>"; };
 		FAC6BBAC171B080900AA0600 /* ResourcesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourcesViewController.h; sourceTree = "<group>"; };
 		FAC6BBAD171B080900AA0600 /* ResourcesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourcesViewController.m; sourceTree = "<group>"; };
 		FAC6BBAF171B0FFE00AA0600 /* ResourceCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResourceCell.h; sourceTree = "<group>"; };
@@ -743,6 +746,61 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA0B4DA6172DB905001B025D /* s2-geomtery-library */ = {
+			isa = PBXGroup;
+			children = (
+				FAC4749E172DB2A000AAFFC0 /* base */,
+				FAC474E1172DB2A000AAFFC0 /* strings */,
+				FAC474E7172DB2A000AAFFC0 /* util */,
+				FAC474B0172DB2A000AAFFC0 /* byteswap.h */,
+				FAC474B2172DB2A000AAFFC0 /* exactfloat.cc */,
+				FAC474B3172DB2A000AAFFC0 /* r1interval.h */,
+				FAC474B4172DB2A000AAFFC0 /* s1angle.cc */,
+				FAC474B5172DB2A000AAFFC0 /* s1angle.h */,
+				FAC474B6172DB2A000AAFFC0 /* s1interval.cc */,
+				FAC474B7172DB2A000AAFFC0 /* s1interval.h */,
+				FAC474B8172DB2A000AAFFC0 /* s2.cc */,
+				FAC474B9172DB2A000AAFFC0 /* s2.h */,
+				FAC474BA172DB2A000AAFFC0 /* s2cap.cc */,
+				FAC474BB172DB2A000AAFFC0 /* s2cap.h */,
+				FAC474BC172DB2A000AAFFC0 /* s2cell.cc */,
+				FAC474BD172DB2A000AAFFC0 /* s2cell.h */,
+				FAC474BE172DB2A000AAFFC0 /* s2cellid.cc */,
+				FAC474BF172DB2A000AAFFC0 /* s2cellid.h */,
+				FAC474C0172DB2A000AAFFC0 /* s2cellunion.cc */,
+				FAC474C1172DB2A000AAFFC0 /* s2cellunion.h */,
+				FAC474C2172DB2A000AAFFC0 /* s2edgeindex.cc */,
+				FAC474C3172DB2A000AAFFC0 /* s2edgeindex.h */,
+				FAC474C4172DB2A000AAFFC0 /* s2edgeutil.cc */,
+				FAC474C5172DB2A000AAFFC0 /* s2edgeutil.h */,
+				FAC474C6172DB2A000AAFFC0 /* s2latlng.cc */,
+				FAC474C7172DB2A000AAFFC0 /* s2latlng.h */,
+				FAC474C8172DB2A000AAFFC0 /* s2latlngrect.cc */,
+				FAC474C9172DB2A000AAFFC0 /* s2latlngrect.h */,
+				FAC474CA172DB2A000AAFFC0 /* s2loop.cc */,
+				FAC474CB172DB2A000AAFFC0 /* s2loop.h */,
+				FAC474CC172DB2A000AAFFC0 /* s2pointregion.cc */,
+				FAC474CD172DB2A000AAFFC0 /* s2pointregion.h */,
+				FAC474CE172DB2A000AAFFC0 /* s2polygon.cc */,
+				FAC474CF172DB2A000AAFFC0 /* s2polygon.h */,
+				FAC474D0172DB2A000AAFFC0 /* s2polygonbuilder.cc */,
+				FAC474D1172DB2A000AAFFC0 /* s2polygonbuilder.h */,
+				FAC474D2172DB2A000AAFFC0 /* s2polyline.cc */,
+				FAC474D3172DB2A000AAFFC0 /* s2polyline.h */,
+				FAC474D4172DB2A000AAFFC0 /* s2r2rect.cc */,
+				FAC474D5172DB2A000AAFFC0 /* s2r2rect.h */,
+				FAC474D6172DB2A000AAFFC0 /* s2region.cc */,
+				FAC474D7172DB2A000AAFFC0 /* s2region.h */,
+				FAC474D8172DB2A000AAFFC0 /* s2regioncoverer.cc */,
+				FAC474D9172DB2A000AAFFC0 /* s2regioncoverer.h */,
+				FAC474DA172DB2A000AAFFC0 /* s2regionintersection.cc */,
+				FAC474DB172DB2A000AAFFC0 /* s2regionintersection.h */,
+				FAC474DC172DB2A000AAFFC0 /* s2regionunion.cc */,
+				FAC474DD172DB2A000AAFFC0 /* s2regionunion.h */,
+			);
+			name = "s2-geomtery-library";
+			sourceTree = "<group>";
+		};
 		FA29CCF5171F05BB007FB43E /* TypeWriterLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1211,54 +1269,9 @@
 		FAC4749C172DB2A000AAFFC0 /* s2-geometry */ = {
 			isa = PBXGroup;
 			children = (
-				FAC4749E172DB2A000AAFFC0 /* base */,
-				FAC474B0172DB2A000AAFFC0 /* byteswap.h */,
-				FAC474B2172DB2A000AAFFC0 /* exactfloat.cc */,
-				FAC474B3172DB2A000AAFFC0 /* r1interval.h */,
-				FAC474B4172DB2A000AAFFC0 /* s1angle.cc */,
-				FAC474B5172DB2A000AAFFC0 /* s1angle.h */,
-				FAC474B6172DB2A000AAFFC0 /* s1interval.cc */,
-				FAC474B7172DB2A000AAFFC0 /* s1interval.h */,
-				FAC474B8172DB2A000AAFFC0 /* s2.cc */,
-				FAC474B9172DB2A000AAFFC0 /* s2.h */,
-				FAC474BA172DB2A000AAFFC0 /* s2cap.cc */,
-				FAC474BB172DB2A000AAFFC0 /* s2cap.h */,
-				FAC474BC172DB2A000AAFFC0 /* s2cell.cc */,
-				FAC474BD172DB2A000AAFFC0 /* s2cell.h */,
-				FAC474BE172DB2A000AAFFC0 /* s2cellid.cc */,
-				FAC474BF172DB2A000AAFFC0 /* s2cellid.h */,
-				FAC474C0172DB2A000AAFFC0 /* s2cellunion.cc */,
-				FAC474C1172DB2A000AAFFC0 /* s2cellunion.h */,
-				FAC474C2172DB2A000AAFFC0 /* s2edgeindex.cc */,
-				FAC474C3172DB2A000AAFFC0 /* s2edgeindex.h */,
-				FAC474C4172DB2A000AAFFC0 /* s2edgeutil.cc */,
-				FAC474C5172DB2A000AAFFC0 /* s2edgeutil.h */,
-				FAC474C6172DB2A000AAFFC0 /* s2latlng.cc */,
-				FAC474C7172DB2A000AAFFC0 /* s2latlng.h */,
-				FAC474C8172DB2A000AAFFC0 /* s2latlngrect.cc */,
-				FAC474C9172DB2A000AAFFC0 /* s2latlngrect.h */,
-				FAC474CA172DB2A000AAFFC0 /* s2loop.cc */,
-				FAC474CB172DB2A000AAFFC0 /* s2loop.h */,
-				FAC474CC172DB2A000AAFFC0 /* s2pointregion.cc */,
-				FAC474CD172DB2A000AAFFC0 /* s2pointregion.h */,
-				FAC474CE172DB2A000AAFFC0 /* s2polygon.cc */,
-				FAC474CF172DB2A000AAFFC0 /* s2polygon.h */,
-				FAC474D0172DB2A000AAFFC0 /* s2polygonbuilder.cc */,
-				FAC474D1172DB2A000AAFFC0 /* s2polygonbuilder.h */,
-				FAC474D2172DB2A000AAFFC0 /* s2polyline.cc */,
-				FAC474D3172DB2A000AAFFC0 /* s2polyline.h */,
-				FAC474D4172DB2A000AAFFC0 /* s2r2rect.cc */,
-				FAC474D5172DB2A000AAFFC0 /* s2r2rect.h */,
-				FAC474D6172DB2A000AAFFC0 /* s2region.cc */,
-				FAC474D7172DB2A000AAFFC0 /* s2region.h */,
-				FAC474D8172DB2A000AAFFC0 /* s2regioncoverer.cc */,
-				FAC474D9172DB2A000AAFFC0 /* s2regioncoverer.h */,
-				FAC474DA172DB2A000AAFFC0 /* s2regionintersection.cc */,
-				FAC474DB172DB2A000AAFFC0 /* s2regionintersection.h */,
-				FAC474DC172DB2A000AAFFC0 /* s2regionunion.cc */,
-				FAC474DD172DB2A000AAFFC0 /* s2regionunion.h */,
-				FAC474E1172DB2A000AAFFC0 /* strings */,
-				FAC474E7172DB2A000AAFFC0 /* util */,
+				FAC475C5172DB8B100AAFFC0 /* S2Geometry.h */,
+				FAC475C6172DB8B100AAFFC0 /* S2Geometry.mm */,
+				FA0B4DA6172DB905001B025D /* s2-geomtery-library */,
 			);
 			path = "s2-geometry";
 			sourceTree = "<group>";
@@ -1562,8 +1575,8 @@
 		FAE6AC7616A0E27B0082BBB5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				FAC47572172DB3E900AAFFC0 /* openssl */,
 				FAC4749C172DB2A000AAFFC0 /* s2-geometry */,
+				FAC47572172DB3E900AAFFC0 /* openssl */,
 				FA6EF94E172D115F0004905F /* GlowingLabel */,
 				FAADA23D17297D99001865D9 /* MDCParallaxView */,
 				FA3E8AE617267EF400673665 /* TPKeyboardAvoidingScrollView */,
@@ -2006,6 +2019,7 @@
 				FAC47514172DB2A000AAFFC0 /* s2regioncoverer.cc in Sources */,
 				FAC47515172DB2A000AAFFC0 /* s2regionintersection.cc in Sources */,
 				FAC47516172DB2A000AAFFC0 /* s2regionunion.cc in Sources */,
+				FAC475C7172DB8B100AAFFC0 /* S2Geometry.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
