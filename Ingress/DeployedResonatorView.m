@@ -7,7 +7,7 @@
 //
 
 #import "DeployedResonatorView.h"
-#import "MKCircle+DeployedResonator.h"
+#import "MKCircle+Ingress.h"
 
 @implementation DeployedResonatorView
 

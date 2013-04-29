@@ -137,6 +137,14 @@
 	}
 	Item *item = [NSEntityDescription insertNewObjectForEntityForName:classStr inManagedObjectContext:self.managedObjectContext];
 	item.guid = guid;
+	if ([classStr isEqualToString:@"EnergyGlob"]) {
+		NSScanner *scanner = [NSScanner scannerWithString:[guid substringToIndex:16]]; //19
+		unsigned long long numCellId;
+		[scanner scanHexLongLong:&numCellId];
+		CLLocationCoordinate2D coord = [S2Geometry coordinateForCellId:numCellId];
+		item.latitude = coord.latitude;
+		item.longitude = coord.longitude;
+	}
 	//[self saveContext];
 	return item;
 }
@@ -336,6 +344,15 @@
 		if (item.coordinate.latitude == 0 && item.coordinate.longitude == 0) { continue; }
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[mapView addAnnotation:item];
+		});
+	}
+
+	NSArray *fetchedXM = [self fetchObjectsForEntityName:@"EnergyGlob" withPredicate:nil];
+	for (EnergyGlob *xm in fetchedXM) {
+		//NSLog(@"adding item to map: %@ (%f, %f)", item, item.latitude, item.longitude);
+		if (xm.coordinate.latitude == 0 && xm.coordinate.longitude == 0) { continue; }
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[mapView addOverlay:xm.circle];
 		});
 	}
 	

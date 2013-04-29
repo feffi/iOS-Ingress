@@ -13,5 +13,6 @@
 
 @interface EnergyGlob : Item
 
+- (MKCircle *)circle;
 
 @end

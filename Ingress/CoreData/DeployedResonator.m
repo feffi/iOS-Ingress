@@ -9,7 +9,7 @@
 #import "DeployedResonator.h"
 #import "Portal.h"
 #import "User.h"
-#import "MKCircle+DeployedResonator.h"
+#import "MKCircle+Ingress.h"
 
 const CLLocationDegrees kLatLonEarthRadius = 6371.0;
 

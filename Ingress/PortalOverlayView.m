@@ -60,71 +60,9 @@
 	CGPoint portalCenterPoint = [self pointForMapPoint:portalCenter];
 	
 	CGFloat portalSize = 400;
-	CGFloat resonatorSize = 50;
-	
+
     CGContextDrawImage(context, CGRectMake(portalCenterPoint.x-portalSize/2, portalCenterPoint.y-portalSize/2, portalSize, portalSize), portalImage);
-	
-	return;
-	
-	NSArray *resonators = [[[DB sharedInstance] deployedResonatorsForPortal:portal] copy];
-	
-	for (DeployedResonator *resonator in resonators) {
-		
-		NSLog(@"slot: %d, level: %d, distance: %d", resonator.slot, resonator.level, resonator.distanceToPortal);
-		
-		int slot = resonator.slot;
-		int level = resonator.level;
-		int distance = resonator.distanceToPortal;
-		
-		MKMapPoint portalCenter = MKMapPointForCoordinate(self.overlay.coordinate);
-		double pointsPerMeter = MKMapPointsPerMeterAtLatitude(self.overlay.coordinate.latitude);
-		
-		switch (slot) {
-			case 0: //E
-				portalCenter.x += distance * pointsPerMeter;
-				break;
-			case 1: //SE
-				portalCenter.x += (distance * pointsPerMeter)/sqrtf(2);
-				portalCenter.y -= (distance * pointsPerMeter)/sqrtf(2);
-				break;
-			case 2: //S
-				portalCenter.y -= distance * pointsPerMeter;
-				break;
-			case 3: //SW
-				portalCenter.x -= (distance * pointsPerMeter)/sqrtf(2);
-				portalCenter.y -= (distance * pointsPerMeter)/sqrtf(2);
-				break;
-			case 4: //W
-				portalCenter.x -= distance * pointsPerMeter;
-				break;
-			case 5: //NW
-				portalCenter.x -= (distance * pointsPerMeter)/sqrtf(2);
-				portalCenter.y += (distance * pointsPerMeter)/sqrtf(2);
-				break;
-			case 6: //N
-				portalCenter.y += distance * pointsPerMeter;
-				break;
-			case 7: //NE
-				portalCenter.x += (distance * pointsPerMeter)/sqrtf(2);
-				portalCenter.y += (distance * pointsPerMeter)/sqrtf(2);
-				break;
-		}
-		
-		CGPoint resonatorCenterPoint = [self pointForMapPoint:portalCenter];
-		
-		//		CGContextSetStrokeColorWithColor(context, [API colorForFaction:portal.controllingTeam].CGColor);
-		//		CGContextSetLineWidth(context, 6);
-		//		CGContextMoveToPoint(context, portalCenterPoint.x, portalCenterPoint.y);
-		//		CGContextAddLineToPoint(context, resonatorCenterPoint.x, resonatorCenterPoint.y);
-		//		CGContextStrokePath(context);
-		
-		CGContextSetFillColorWithColor(context, [API colorForLevel:level].CGColor);
-		CGContextFillEllipseInRect(context, CGRectMake(resonatorCenterPoint.x-resonatorSize/2, resonatorCenterPoint.y-resonatorSize/2, resonatorSize, resonatorSize));
-		
-		//		CGContextDrawImage(context, CGRectMake(resonatorCenterPoint.x-resonatorSize/2, resonatorCenterPoint.y-resonatorSize/2, resonatorSize, resonatorSize), resonatorImage);
-		
-	}
-	
+
 }
 
 @end

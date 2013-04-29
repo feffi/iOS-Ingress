@@ -13,8 +13,9 @@
 #import "PortalOverlayView.h"
 #import "MKPolyline+PortalLink.h"
 #import "MKPolygon+ControlField.h"
-#import "MKCircle+DeployedResonator.h"
+#import "MKCircle+Ingress.h"
 #import "DeployedResonatorView.h"
+#import "XMOverlayView.h"
 
 #import "ColorOverlay.h"
 #import "ColorOverlayView.h"
@@ -477,11 +478,20 @@
 		polygonView.alpha = .1;
 		return polygonView;
 	} else if ([overlay isKindOfClass:[MKCircle class]]) {
+		
 		MKCircle *circle = (MKCircle *)overlay;
-		DeployedResonatorView *circleView = [[DeployedResonatorView alloc] initWithCircle:circle];
-		circleView.fillColor = [API colorForLevel:circle.deployedResonator.level];
-		//circleView.alpha = .1;
-		return circleView;
+
+		if (circle.deployedResonator) {
+			DeployedResonatorView *circleView = [[DeployedResonatorView alloc] initWithCircle:circle];
+			circleView.fillColor = [API colorForLevel:circle.deployedResonator.level];
+			//circleView.alpha = .1;
+			return circleView;
+		} else if (circle.energyGlob) {
+			XMOverlayView *circleView = [[XMOverlayView alloc] initWithCircle:circle];
+			circleView.fillColor = [UIColor whiteColor];
+			return circleView;
+		}
+
 	} else if ([overlay isKindOfClass:[ColorOverlay class]]) {
 		ColorOverlayView *overlayView = [[ColorOverlayView alloc] initWithOverlay:overlay];
 		return overlayView;
