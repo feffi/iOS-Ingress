@@ -10,6 +10,7 @@
 		FA008E17171D310500176C3D /* PowerCube.m in Sources */ = {isa = PBXBuildFile; fileRef = FA008E16171D310500176C3D /* PowerCube.m */; };
 		FA008E19171D334700176C3D /* powerCube@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA008E18171D334700176C3D /* powerCube@2x.png */; };
 		FA0A3FE9172EC61F00BBBA3D /* XMOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0A3FE8172EC61F00BBBA3D /* XMOverlayView.m */; };
+		FA0A3FEA172ED90D00BBBA3D /* Sound in Resources */ = {isa = PBXBuildFile; fileRef = FA7AC9D116D0116800505404 /* Sound */; };
 		FA13CDA416A038D7003C9962 /* CommTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA13CDA316A038D7003C9962 /* CommTableViewCell.m */; };
 		FA143F7A16D526450007330F /* DeployedResonatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA143F7916D526450007330F /* DeployedResonatorView.m */; };
 		FA1739F716A827660004EE10 /* resonator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1739F616A827660004EE10 /* resonator@2x.png */; };
@@ -106,7 +107,6 @@
 		FA6EF960172D2D360004905F /* progressImage-aliens@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EF95E172D2D350004905F /* progressImage-aliens@2x.png */; };
 		FA6EF961172D2D360004905F /* progressImage-resistance@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EF95F172D2D360004905F /* progressImage-resistance@2x.png */; };
 		FA779AAB16A55FC40080B62A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA779AAA16A55FC40080B62A /* AVFoundation.framework */; };
-		FA7AC9D216D0116800505404 /* Sound in Resources */ = {isa = PBXBuildFile; fileRef = FA7AC9D116D0116800505404 /* Sound */; };
 		FA7AC9D816D14C5400505404 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7AC9D716D14C5400505404 /* SoundManager.m */; };
 		FA7BCEDE16B535B0007636C8 /* MKCircle+Ingress.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7BCEDD16B535B0007636C8 /* MKCircle+Ingress.m */; };
 		FA7E1AB016AC6D3900C8F949 /* PortalOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7E1AAF16AC6D3900C8F949 /* PortalOverlayView.m */; };
@@ -1795,7 +1795,7 @@
 				FAEA5852169C7E7500E2F502 /* Default-568h@2x.png in Resources */,
 				FAEA5855169C7E7500E2F502 /* MainStoryboard_iPhone.storyboard in Resources */,
 				FAEA5858169C7E7500E2F502 /* MainStoryboard_iPad.storyboard in Resources */,
-				FA7AC9D216D0116800505404 /* Sound in Resources */,
+				FA0A3FEA172ED90D00BBBA3D /* Sound in Resources */,
 				FAEA5869169C842D00E2F502 /* Icon-57.png in Resources */,
 				FAEA586B169C844400E2F502 /* Icon-72.png in Resources */,
 				FAEA586D169C858400E2F502 /* Icon-114.png in Resources */,
@@ -2125,7 +2125,7 @@
 					"\"$(SRCROOT)/s2-geometry\"",
 					"\"$(SRCROOT)/openssl/lib\"",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -2152,7 +2152,7 @@
 					"\"$(SRCROOT)/s2-geometry\"",
 					"\"$(SRCROOT)/openssl/lib\"",
 				);
-				ONLY_ACTIVE_ARCH = YES;
+				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
