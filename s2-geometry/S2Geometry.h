@@ -10,8 +10,7 @@
 
 @interface S2Geometry : NSObject
 
-+ (S2Geometry *)sharedInstance;
-
-- (NSArray *)cellsForMapView:(MKMapView *)mapView;
++ (NSArray *)cellsForMapView:(MKMapView *)mapView;
++ (CLLocationCoordinate2D)coordinateForCellId:(unsigned long long)numCellId;
 
 @end

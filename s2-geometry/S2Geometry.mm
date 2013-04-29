@@ -16,16 +16,7 @@
 
 @implementation S2Geometry
 
-+ (S2Geometry *)sharedInstance {
-    static dispatch_once_t onceToken;
-    static S2Geometry * __sharedInstance = nil;
-    dispatch_once(&onceToken, ^{
-        __sharedInstance = [self new];
-    });
-    return __sharedInstance;
-}
-
-- (NSArray *)cellsForMapView:(MKMapView *)mapView {
++ (NSArray *)cellsForMapView:(MKMapView *)mapView {
 
 	CGPoint nePoint = CGPointMake(mapView.bounds.origin.x + mapView.bounds.size.width, mapView.bounds.origin.y);
 	CGPoint swPoint = CGPointMake((mapView.bounds.origin.x), (mapView.bounds.origin.y + mapView.bounds.size.height));
@@ -49,6 +40,13 @@
 	}
 
 	return cellsArray;
+
+}
+
++ (CLLocationCoordinate2D)coordinateForCellId:(unsigned long long)numCellId {
+	S2CellId cellId = S2CellId(numCellId);
+	S2LatLng latLng = cellId.ToLatLng();
+	return CLLocationCoordinate2DMake(latLng.lat().degrees(), latLng.lng().degrees());
 
 }
 

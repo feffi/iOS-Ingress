@@ -658,7 +658,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	[[DB sharedInstance] removeAllMapData];
 	[[DB sharedInstance] removeAllEnergyGlobs];
 	
-	NSArray *cellsAsHex = [[S2Geometry sharedInstance] cellsForMapView:[AppDelegate instance].mapView];
+	NSArray *cellsAsHex = [S2Geometry cellsForMapView:[AppDelegate instance].mapView];
 
 	NSMutableArray *dates = [NSMutableArray arrayWithCapacity:cellsAsHex.count];
 	for (int i = 0; i < cellsAsHex.count; i++) {
@@ -1541,9 +1541,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 //			portal.mods = mods;
 			
 			//[[Portals sharedInstance] addPortal:portal];
-			
-			[[DB sharedInstance] saveContext];
-			
+
 		} else if (loc && gameEntity[2][@"resource"]) {
 			
 			NSString *resourceType;
@@ -1568,21 +1566,18 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 				resonator.latitude = [loc[@"latE6"] intValue]/1E6;
 				resonator.longitude = [loc[@"lngE6"] intValue]/1E6;
 				resonator.level = [gameEntity[2][@"resourceWithLevels"][@"level"] integerValue];
-				[[DB sharedInstance] saveContext];
 			} else if ([resourceType isEqualToString:@"EMP_BURSTER"]) {
 				XMP *xmp = (XMP *)[[DB sharedInstance] getOrCreateItemWithGuid:gameEntity[0] classStr:@"XMP"];
 				xmp.dropped = YES;
 				xmp.latitude = [loc[@"latE6"] intValue]/1E6;
 				xmp.longitude = [loc[@"lngE6"] intValue]/1E6;
 				xmp.level = [gameEntity[2][@"resourceWithLevels"][@"level"] integerValue];
-				[[DB sharedInstance] saveContext];
 			} else if ([resourceType isEqualToString:@"RES_SHIELD"]) {
 				Shield *shield = (Shield *)[[DB sharedInstance] getOrCreateItemWithGuid:gameEntity[0] classStr:@"Shield"];
 				shield.dropped = YES;
 				shield.latitude = [loc[@"latE6"] intValue]/1E6;
 				shield.longitude = [loc[@"lngE6"] intValue]/1E6;
 				shield.rarity = [API shieldRarityFromString:gameEntity[2][@"modResource"][@"rarity"]];
-				[[DB sharedInstance] saveContext];
 			} else if ([resourceType isEqualToString:@"PORTAL_LINK_KEY"]) {
 				Portal *portal = (Portal *)[[DB sharedInstance] getOrCreateItemWithGuid:gameEntity[2][@"portalCoupler"][@"portalGuid"] classStr:@"Portal"];
 				portal.imageURL = gameEntity[2][@"portalCoupler"][@"portalImageUrl"];
@@ -1594,7 +1589,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 				portalKey.latitude = [loc[@"latE6"] intValue]/1E6;
 				portalKey.longitude = [loc[@"lngE6"] intValue]/1E6;
 				portalKey.portal = portal;
-				[[DB sharedInstance] saveContext];
 			} else if ([resourceType isEqualToString:@"MEDIA"]) {
 				Media *media = (Media *)[[DB sharedInstance] getOrCreateItemWithGuid:gameEntity[0] classStr:@"Media"];
 				media.dropped = YES;
@@ -1604,14 +1598,12 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 				media.url = gameEntity[2][@"storyItem"][@"primaryUrl"];
 				media.level = [gameEntity[2][@"resourceWithLevels"][@"level"] integerValue];
 				media.imageURL = gameEntity[2][@"imageByUrl"][@"imageUrl"];
-				[[DB sharedInstance] saveContext];
 			} else {
 				NSLog(@"Unknown Dropped Item");
 				Item *itemObj = [[DB sharedInstance] getOrCreateItemWithGuid:gameEntity[0] classStr:@"Item"];
 				itemObj.dropped = YES;
 				itemObj.latitude = [loc[@"latE6"] intValue]/1E6;
 				itemObj.longitude = [loc[@"lngE6"] intValue]/1E6;
-				[[DB sharedInstance] saveContext];
 			}
 			
 			//DroppedItem *droppedItem = [[DB sharedInstance] getOrCreateItemWithGuid:gameEntity[0] classStr:@"DroppedItem"];
@@ -1713,8 +1705,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	for (NSString *energyGlobGuid in energyGlobGuids) {
 		//[[DB sharedInstance] addEnergyGlobWithGuid:energyGlobGuid];
 		[[DB sharedInstance] getOrCreateItemWithGuid:energyGlobGuid classStr:@"EnergyGlob"];
-		[[DB sharedInstance] saveContext];
 	}
+	[[DB sharedInstance] saveContext];
 }
 
 - (void)processAPGains:(NSArray *)apGains {
@@ -1747,6 +1739,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	for (NSString *deletedGuid in deletedEntityGuids) {
 		[[DB sharedInstance] removeItemWithGuid:deletedGuid];
 	}
+	[[DB sharedInstance] saveContext];
 }
 
 @end
