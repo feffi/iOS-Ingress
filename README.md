@@ -1,7 +1,10 @@
 iOS Ingress
 ===========
 
-Google's AR Game Ingress port for iOS
+Fully playable Google's AR Game Ingress port for iOS
+
+Newest IPA can be downloaded here: https://www.dropbox.com/s/q28f2bj2bgt2vxj/Ingress.ipa
+You need to be developer or have jailbreak to install it.
 
 TODO
 ----
