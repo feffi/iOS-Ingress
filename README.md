@@ -29,6 +29,10 @@ Choosing faction is not yet implemented, but you can choose by calling this meth
 Video
 -----
 
+Gameplay video
+
+http://youtu.be/Jewu0rpKrrU
+
 Video of codename creating and intro which have been recently finished
 
 http://youtu.be/jRi8PuquP50
