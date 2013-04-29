@@ -2381,10 +2381,12 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="auU-pM-4h0" firstAttribute="leading" secondItem="xob-Tu-pne" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="0xV-IL-48K"/>
+                            <constraint firstItem="mMh-B8-j72" firstAttribute="baseline" secondItem="tuj-pb-dGt" secondAttribute="baseline" type="default" id="1Cw-h5-4FW"/>
                             <constraint firstItem="BGQ-ax-GRG" firstAttribute="top" secondItem="Q5O-R5-Pic" secondAttribute="top" type="default" id="1Td-r4-drb"/>
                             <constraint firstAttribute="trailing" secondItem="Yi5-ja-2IB" secondAttribute="trailing" constant="19" id="2KG-4G-82W"/>
                             <constraint firstItem="uYr-0g-eP5" firstAttribute="bottom" secondItem="Yi5-ja-2IB" secondAttribute="bottom" type="default" id="4qx-3s-EPr"/>
                             <constraint firstItem="zzz-ml-7Ag" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="20" symbolic="YES" type="default" id="4z7-q1-FOl"/>
+                            <constraint firstItem="BGQ-ax-GRG" firstAttribute="baseline" secondItem="Q5O-R5-Pic" secondAttribute="baseline" type="default" id="6og-K9-Jdj"/>
                             <constraint firstItem="mMh-B8-j72" firstAttribute="top" secondItem="tuj-pb-dGt" secondAttribute="top" type="default" id="8fV-a7-yEW"/>
                             <constraint firstItem="L77-A5-XYN" firstAttribute="leading" secondItem="3fD-vG-amo" secondAttribute="leading" type="default" id="8uo-Br-YMH"/>
                             <constraint firstItem="L77-A5-XYN" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="127" type="user" id="AhV-jL-8KP"/>
@@ -2412,11 +2414,9 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="Yi5-ja-2IB" firstAttribute="leading" secondItem="uYr-0g-eP5" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="eVI-hY-HZb"/>
                             <constraint firstItem="Q5O-R5-Pic" firstAttribute="leading" secondItem="L77-A5-XYN" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="elD-dE-8oD"/>
                             <constraint firstItem="Afx-ul-7bp" firstAttribute="leading" secondItem="zzz-ml-7Ag" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="ew6-Ei-OX4"/>
-                            <constraint firstItem="tuj-pb-dGt" firstAttribute="baseline" secondItem="mMh-B8-j72" secondAttribute="baseline" type="default" id="g8b-39-EjZ"/>
                             <constraint firstItem="6ts-Vu-ZgC" firstAttribute="leading" secondItem="xob-Tu-pne" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="gKp-HY-UDp"/>
                             <constraint firstItem="L77-A5-XYN" firstAttribute="top" secondItem="Q5O-R5-Pic" secondAttribute="top" type="default" id="gu8-ii-TtL"/>
                             <constraint firstItem="3fD-vG-amo" firstAttribute="leading" secondItem="auU-pM-4h0" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="jaY-27-NBd"/>
-                            <constraint firstItem="BGQ-ax-GRG" firstAttribute="baseline" secondItem="Q5O-R5-Pic" secondAttribute="baseline" type="default" id="kkW-4x-pZ1"/>
                             <constraint firstItem="Q5O-R5-Pic" firstAttribute="baseline" secondItem="L77-A5-XYN" secondAttribute="baseline" type="default" id="rID-gU-yOv"/>
                             <constraint firstItem="mMh-B8-j72" firstAttribute="leading" secondItem="3fD-vG-amo" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="rJb-4g-rbZ"/>
                             <constraint firstItem="1aa-eF-7rd" firstAttribute="centerX" secondItem="xob-Tu-pne" secondAttribute="centerX" type="user" id="rRy-lj-hh1"/>

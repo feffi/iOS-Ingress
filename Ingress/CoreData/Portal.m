@@ -19,7 +19,6 @@
 @dynamic name;
 @dynamic address;
 @dynamic imageURL;
-@dynamic imageData;
 @dynamic capturedBy;
 @dynamic portalKeys;
 @dynamic mods;

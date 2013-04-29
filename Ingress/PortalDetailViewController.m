@@ -23,7 +23,7 @@
 	CGRect backgroundRect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
 	UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:backgroundRect];
 	backgroundImageView.image = [UIImage imageNamed:@"missing_image"];
-	backgroundImageView.contentMode = UIViewContentModeScaleAspectFit;
+	backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
 
 	infoContainerView = [[MDCParallaxView alloc] initWithBackgroundView:backgroundImageView foregroundView:self.portalInfoVC.view];
 	infoContainerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;

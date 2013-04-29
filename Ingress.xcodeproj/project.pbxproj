@@ -11,6 +11,8 @@
 		FA008E19171D334700176C3D /* powerCube@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA008E18171D334700176C3D /* powerCube@2x.png */; };
 		FA0A3FE9172EC61F00BBBA3D /* XMOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0A3FE8172EC61F00BBBA3D /* XMOverlayView.m */; };
 		FA0A3FEA172ED90D00BBBA3D /* Sound in Resources */ = {isa = PBXBuildFile; fileRef = FA7AC9D116D0116800505404 /* Sound */; };
+		FA0A4012172EF78700BBBA3D /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0A4011172EF78600BBBA3D /* SDWebImage.framework */; };
+		FA0A4014172EF79600BBBA3D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0A4013172EF79500BBBA3D /* ImageIO.framework */; };
 		FA13CDA416A038D7003C9962 /* CommTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA13CDA316A038D7003C9962 /* CommTableViewCell.m */; };
 		FA143F7A16D526450007330F /* DeployedResonatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA143F7916D526450007330F /* DeployedResonatorView.m */; };
 		FA1739F716A827660004EE10 /* resonator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1739F616A827660004EE10 /* resonator@2x.png */; };
@@ -257,6 +259,8 @@
 		FA008E18171D334700176C3D /* powerCube@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "powerCube@2x.png"; sourceTree = "<group>"; };
 		FA0A3FE7172EC61F00BBBA3D /* XMOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMOverlayView.h; sourceTree = "<group>"; };
 		FA0A3FE8172EC61F00BBBA3D /* XMOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMOverlayView.m; sourceTree = "<group>"; };
+		FA0A4011172EF78600BBBA3D /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
+		FA0A4013172EF79500BBBA3D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
 		FA13CDA216A038D7003C9962 /* CommTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommTableViewCell.h; sourceTree = "<group>"; };
 		FA13CDA316A038D7003C9962 /* CommTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommTableViewCell.m; sourceTree = "<group>"; };
 		FA143F7816D526440007330F /* DeployedResonatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeployedResonatorView.h; sourceTree = "<group>"; };
@@ -724,6 +728,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAC475C4172DB3E900AAFFC0 /* libssl.a in Frameworks */,
 				FAF0E33716E3BA9D005B8147 /* CoreMedia.framework in Frameworks */,
 				FAE797DC16B49CDA00A57316 /* OpenGLES.framework in Frameworks */,
 				FAE797D716B49BFB00A57316 /* GLKit.framework in Frameworks */,
@@ -740,7 +745,8 @@
 				FAEA583C169C7E7500E2F502 /* UIKit.framework in Frameworks */,
 				FAEA583E169C7E7500E2F502 /* Foundation.framework in Frameworks */,
 				FAEA5840169C7E7500E2F502 /* CoreGraphics.framework in Frameworks */,
-				FAC475C4172DB3E900AAFFC0 /* libssl.a in Frameworks */,
+				FA0A4014172EF79600BBBA3D /* ImageIO.framework in Frameworks */,
+				FA0A4012172EF78700BBBA3D /* SDWebImage.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1650,6 +1656,8 @@
 		FAEA583A169C7E7500E2F502 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA0A4013172EF79500BBBA3D /* ImageIO.framework */,
+				FA0A4011172EF78600BBBA3D /* SDWebImage.framework */,
 				FAF0E33616E3BA9D005B8147 /* CoreMedia.framework */,
 				FAE797DB16B49CDA00A57316 /* OpenGLES.framework */,
 				FAE797D616B49BFB00A57316 /* GLKit.framework */,
@@ -2112,6 +2120,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ingress/Ingress-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2126,6 +2138,7 @@
 					"\"$(SRCROOT)/openssl/lib\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
@@ -2139,6 +2152,10 @@
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)\"",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Ingress/Ingress-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -2153,6 +2170,7 @@
 					"\"$(SRCROOT)/openssl/lib\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";

@@ -50,7 +50,6 @@
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="completeInfo" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="controllingTeam" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="imageData" optional="YES" transient="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="capturedBy" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="capturedPortals" inverseEntity="User" syncable="YES"/>
@@ -101,13 +100,13 @@
         <element name="Item" positionX="-4635" positionY="-1629" width="128" height="103"/>
         <element name="Media" positionX="-4464" positionY="-1638" width="128" height="118"/>
         <element name="Player" positionX="-4221" positionY="-1134" width="128" height="118"/>
-        <element name="Portal" positionX="-4401" positionY="-1498" width="128" height="238"/>
+        <element name="Portal" positionX="-4401" positionY="-1498" width="128" height="223"/>
         <element name="PortalKey" positionX="-4725" positionY="-1381" width="128" height="58"/>
         <element name="PortalLink" positionX="-4041" positionY="-1558" width="128" height="118"/>
+        <element name="PowerCube" positionX="-4833" positionY="-1660" width="128" height="58"/>
         <element name="Resonator" positionX="-4806" positionY="-1503" width="128" height="58"/>
         <element name="Shield" positionX="-4853" positionY="-1575" width="128" height="58"/>
         <element name="User" positionX="-4221" positionY="-1296" width="128" height="148"/>
         <element name="XMP" positionX="-4637" positionY="-1503" width="128" height="58"/>
-        <element name="PowerCube" positionX="-4833" positionY="-1660" width="128" height="58"/>
     </elements>
 </model>

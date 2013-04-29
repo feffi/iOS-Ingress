@@ -7,6 +7,7 @@
 //
 
 #import "MediaItemsViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation MediaItemsViewController
 
@@ -116,7 +117,7 @@
 	cell.textLabel.text = [NSString stringWithFormat:@"L%d %@", media.level, media.name];
 	cell.detailTextLabel.text = media.url; //[media.url substringFromIndex:49];
 	
-	cell.imageView.image = [UIImage imageNamed:@"missing_image"];
+//	cell.imageView.image = [UIImage imageNamed:@"missing_image"];
 	
 //	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:media.imageURL]];
 //	[NSURLConnection sendAsynchronousRequest:request queue:[API sharedInstance].networkQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
@@ -124,6 +125,8 @@
 //			cell.imageView.image =  [UIImage imageWithData:data];
 //		});
 //	}];
+
+	[cell.imageView setImageWithURL:[NSURL URLWithString:media.imageURL] placeholderImage:[UIImage imageNamed:@"missing_image"]];
 
     return cell;
 	

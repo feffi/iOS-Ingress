@@ -7,6 +7,7 @@
 //
 
 #import "PortalKeysViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation PortalKeysViewController
 
@@ -136,7 +137,9 @@
     cell.textLabel.text = [NSString stringWithFormat:@"%dx %@", numberOfPortals, portal.subtitle];
 	cell.detailTextLabel.text = portal.address;
 	
-	cell.imageView.image = [UIImage imageNamed:@"missing_image"];
+//	cell.imageView.image = [UIImage imageNamed:@"missing_image"];
+
+	[cell.imageView setImageWithURL:[NSURL URLWithString:portal.imageURL] placeholderImage:[UIImage imageNamed:@"missing_image"]];
 	
 	if (!portal) {
 		NSLog(@"not portal: %@", sectionInfo.name);

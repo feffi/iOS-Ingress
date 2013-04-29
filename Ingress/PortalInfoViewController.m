@@ -7,6 +7,7 @@
 //
 
 #import "PortalInfoViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation PortalInfoViewController
 
@@ -23,6 +24,8 @@
 	hackButton.titleLabel.font = [UIFont fontWithName:@"Coda-Regular" size:16];
 	rechargeButton.titleLabel.font = [UIFont fontWithName:@"Coda-Regular" size:16];
 	linkButton.titleLabel.font = [UIFont fontWithName:@"Coda-Regular" size:16];
+
+	self.imageView.image = [UIImage imageNamed:@"missing_image"];
 
 }
 
@@ -58,11 +61,7 @@
 	
 	[imageActivityIndicator stopAnimating];
 
-	if (self.portal.imageData) {
-		
-	} else {
-		self.imageView.image = [UIImage imageNamed:@"missing_image"];
-	}
+	[self.imageView setImageWithURL:[NSURL URLWithString:self.portal.imageURL] placeholderImage:[UIImage imageNamed:@"missing_image"]];
 	
 //	[imageActivityIndicator startAnimating];
 //	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.portal.imageURL]];

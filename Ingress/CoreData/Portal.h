@@ -18,7 +18,6 @@
 @property (nonatomic, retain) NSString * name;
 @property (nonatomic, retain) NSString * address;
 @property (nonatomic, retain) NSString * imageURL;
-@property (nonatomic, retain) NSData * imageData;
 @property (nonatomic, retain) User *capturedBy;
 @property (nonatomic, retain) NSSet *portalKeys;
 @property (nonatomic, retain) NSSet *mods;
