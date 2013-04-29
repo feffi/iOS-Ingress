@@ -23,12 +23,12 @@
 
 	self.textLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:14];
 	frame = self.textLabel.frame;
-	frame.origin.y = 0;
+	frame.origin.y = 2;
 	self.textLabel.frame = frame;
 
 	self.detailTextLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:12];
 	frame = self.detailTextLabel.frame;
-	frame.origin.y = 18;
+	frame.origin.y = 20;
 	self.detailTextLabel.frame = frame;
 
 }
