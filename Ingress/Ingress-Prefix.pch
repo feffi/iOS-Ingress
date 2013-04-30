@@ -17,7 +17,7 @@
 #import "MTStatusBarOverlay.h"
 #import "SoundManager.h"
 
-#define MR_SHORTHAND
+#define MR_ENABLE_ACTIVE_RECORD_LOGGING 0
 #import "CoreData+MagicalRecord.h"
 
 #import "AppDelegate.h"

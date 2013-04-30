@@ -1415,40 +1415,47 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		//NSLog(@"resourceType: %@", resourceType);
 		
 		if ([resourceType isEqualToString:@"EMITTER_A"]) {
-			Resonator *resonator = (Resonator *)[[DB sharedInstance] getOrCreateItemWithGuid:item[0] classStr:@"Resonator"];
+			Resonator *resonator = [Resonator MR_findFirstByAttribute:@"guid" withValue:item[0]];
+			if (!resonator) { resonator = [Resonator MR_createEntity]; }
 			resonator.level = [item[2][@"resourceWithLevels"][@"level"] integerValue];
 		} else if ([resourceType isEqualToString:@"EMP_BURSTER"]) {
-			XMP *xmp = (XMP *)[[DB sharedInstance] getOrCreateItemWithGuid:item[0] classStr:@"XMP"];
+			XMP *xmp = [XMP MR_findFirstByAttribute:@"guid" withValue:item[0]];
+			if (!xmp) { xmp = [XMP MR_createEntity]; }
 			xmp.level = [item[2][@"resourceWithLevels"][@"level"] integerValue];
 		} else if ([resourceType isEqualToString:@"RES_SHIELD"]) {
-			Shield *shield = (Shield *)[[DB sharedInstance] getOrCreateItemWithGuid:item[0] classStr:@"Shield"];
+			Shield *shield = [Shield MR_findFirstByAttribute:@"guid" withValue:item[0]];
+			if (!shield) { shield = [Shield MR_createEntity]; }
 			shield.rarity = [API shieldRarityFromString:item[2][@"modResource"][@"rarity"]];
 		} else if ([resourceType isEqualToString:@"PORTAL_LINK_KEY"]) {
-			Portal *portal = (Portal *)[[DB sharedInstance] getOrCreateItemWithGuid:item[2][@"portalCoupler"][@"portalGuid"] classStr:@"Portal"];
+			Portal *portal = [Portal MR_findFirstByAttribute:@"guid" withValue:item[2][@"portalCoupler"][@"portalGuid"]];
+			if (!portal) { portal = [Portal MR_createEntity]; }
 			portal.imageURL = item[2][@"portalCoupler"][@"portalImageUrl"];
 			portal.name = item[2][@"portalCoupler"][@"portalTitle"];
 			portal.address = item[2][@"portalCoupler"][@"portalAddress"];
 			
-			PortalKey *portalKey = (PortalKey *)[[DB sharedInstance] getOrCreateItemWithGuid:item[0] classStr:@"PortalKey"];
+			PortalKey *portalKey = [PortalKey MR_findFirstByAttribute:@"guid" withValue:item[0]];
+			if (!portalKey) { portalKey = [PortalKey MR_createEntity]; }
 			portalKey.portal = portal;
 		} else if ([resourceType isEqualToString:@"MEDIA"]) {
-			Media *media = (Media *)[[DB sharedInstance] getOrCreateItemWithGuid:item[0] classStr:@"Media"];
+			Media *media = [Media MR_findFirstByAttribute:@"guid" withValue:item[0]];
+			if (!media) { media = [Media MR_createEntity]; }
 			media.name = item[2][@"storyItem"][@"shortDescription"];
 			media.url = item[2][@"storyItem"][@"primaryUrl"];
 			media.level = [item[2][@"resourceWithLevels"][@"level"] integerValue];
 			media.imageURL = item[2][@"imageByUrl"][@"imageUrl"];
 		} else if ([resourceType isEqualToString:@"POWER_CUBE"]) {
-			PowerCube *powerCube = (PowerCube *)[[DB sharedInstance] getOrCreateItemWithGuid:item[0] classStr:@"PowerCube"];
+			PowerCube *powerCube = [PowerCube MR_findFirstByAttribute:@"guid" withValue:item[0]];
+			if (!powerCube) { powerCube = [PowerCube MR_createEntity]; }
 			powerCube.level = [item[2][@"resourceWithLevels"][@"level"] integerValue];
 		} else {
 			NSLog(@"Unknown Item");
-			//Item *itemObj =
-			[[DB sharedInstance] getOrCreateItemWithGuid:item[0] classStr:@"Item"];
+			Item *itemObj = [Item MR_findFirstByAttribute:@"guid" withValue:item[0]];
+			if (!itemObj) { itemObj = [Item MR_createEntity]; }
 		}
 
 	}
-	
-	[[DB sharedInstance] saveContext];
+
+	[[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
 
 	//[[NSNotificationCenter defaultCenter] postNotificationName:@"InventoryUpdatedNotification" object:nil];
 	

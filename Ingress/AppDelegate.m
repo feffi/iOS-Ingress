@@ -19,6 +19,8 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
 
+	[MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Ingress"];
+
 	[[UINavigationBar appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:16]}];
 	[[UIBarButtonItem appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:10]} forState:UIControlStateNormal];
 	[[UITabBarItem appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:10]} forState:UIControlStateNormal];
@@ -40,6 +42,8 @@
 	// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
 	// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 	[[DB sharedInstance] saveContext];
+	[[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
+	[MagicalRecord cleanUp];
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
@@ -55,6 +59,8 @@
 	
 	// Saves changes in the application's managed object context before the application terminates.
 	[[DB sharedInstance] saveContext];
+	[[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
+	[MagicalRecord cleanUp];
 }
 
 @end
