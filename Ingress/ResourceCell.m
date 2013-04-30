@@ -55,7 +55,7 @@
 	if (itemType == ItemTypePortalShield) {
 		for (int i = 1; i <= 3; i++) {
 			UILabel *label = (UILabel *)[self.contentView viewWithTag:i];
-			label.text = [NSString stringWithFormat:@"%d", [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", i]]];
+			label.text = [NSString stringWithFormat:@"%d", [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", i-1]]];
 		}
 	} else {
 		for (int i = 1; i <= 8; i++) {
