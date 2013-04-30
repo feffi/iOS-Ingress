@@ -1469,19 +1469,21 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		NSDictionary *loc = gameEntity[2][@"locationE6"];
 		if (loc && gameEntity[2][@"portalV2"]) {
 
-			//Portal *portal = [[DB sharedInstance] portalWithGuid:gameEntity[0]];
-//			Portal *portal = (Portal *)[[DB sharedInstance] getOrCreateItemWithGuid:gameEntity[0] classStr:@"Portal"];
 			Portal *portal = [Portal MR_findFirstByAttribute:@"guid" withValue:gameEntity[0]];
 			if (!portal) { portal = [Portal MR_createEntity]; }
 			portal.latitude = [loc[@"latE6"] intValue]/1E6;
 			portal.longitude = [loc[@"lngE6"] intValue]/1E6;
 			portal.controllingTeam = gameEntity[2][@"controllingTeam"][@"team"];
-			portal.capturedBy = [[DB sharedInstance] userWithGuid:gameEntity[2][@"captured"][@"capturingPlayerId"] shouldCreate:YES];
 			portal.imageURL = gameEntity[2][@"imageByUrl"][@"imageUrl"];
 			portal.name = gameEntity[2][@"portalV2"][@"descriptiveText"][@"TITLE"];
 			portal.address = gameEntity[2][@"portalV2"][@"descriptiveText"][@"ADDRESS"];
 			portal.completeInfo = YES;
-			
+
+			User *creator = [User MR_findFirstByAttribute:@"guid" withValue:gameEntity[2][@"captured"][@"capturingPlayerId"]];
+			if (!creator) { creator = [User MR_createEntity]; }
+			creator.guid = gameEntity[2][@"captured"][@"capturingPlayerId"];
+			portal.capturedBy = creator;
+
 			for (int i = 0; i < 8; i++) {
 				
 				NSDictionary *resonatorDict = gameEntity[2][@"resonatorArray"][@"resonators"][i];
@@ -1502,9 +1504,14 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 					resonator.portal = portal;
 					resonator.slot = i;
 					resonator.energy = [resonatorDict[@"energyTotal"] intValue];
-					resonator.owner = [[DB sharedInstance] userWithGuid:resonatorDict[@"ownerGuid"] shouldCreate:YES];
 					resonator.distanceToPortal = [resonatorDict[@"distanceToPortal"] intValue];
 					resonator.level = [resonatorDict[@"level"] intValue];
+
+					User *owner = [User MR_findFirstByAttribute:@"guid" withValue:resonatorDict[@"ownerGuid"]];
+					if (!owner) { owner = [User MR_createEntity]; }
+					owner.guid = resonatorDict[@"ownerGuid"];
+					resonator.owner = owner;
+
 					[portal addResonatorsObject:resonator];
 					
 				}
@@ -1536,7 +1543,12 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 						shield.slot = i;
 						shield.mitigation = [modDict[@"stats"][@"MITIGATION"] intValue];
 						shield.rarity = [API shieldRarityFromString:modDict[@"rarity"]];
-						shield.owner = [[DB sharedInstance] userWithGuid:modDict[@"installingUser"] shouldCreate:YES];
+
+						User *owner = [User MR_findFirstByAttribute:@"guid" withValue:modDict[@"installingUser"]];
+						if (!owner) { owner = [User MR_createEntity]; }
+						owner.guid = modDict[@"installingUser"];
+						shield.owner = owner;
+
 						[portal addModsObject:shield];
 						
 					} else {
