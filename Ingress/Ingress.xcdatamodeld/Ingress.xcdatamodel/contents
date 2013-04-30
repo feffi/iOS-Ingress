@@ -61,6 +61,7 @@
         <relationship name="vertexForControlFields" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="ControlField" inverseName="portals" inverseEntity="ControlField" syncable="YES"/>
     </entity>
     <entity name="PortalKey" representedClassName="PortalKey" parentEntity="Item" syncable="YES">
+        <attribute name="portalGuid" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="portal" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Portal" inverseName="portalKeys" inverseEntity="Portal" syncable="YES"/>
     </entity>
     <entity name="PortalLink" representedClassName="PortalLink" syncable="YES">
@@ -101,7 +102,7 @@
         <element name="Media" positionX="-4464" positionY="-1638" width="128" height="118"/>
         <element name="Player" positionX="-4221" positionY="-1134" width="128" height="118"/>
         <element name="Portal" positionX="-4401" positionY="-1498" width="128" height="223"/>
-        <element name="PortalKey" positionX="-4725" positionY="-1381" width="128" height="58"/>
+        <element name="PortalKey" positionX="-4725" positionY="-1381" width="128" height="73"/>
         <element name="PortalLink" positionX="-4041" positionY="-1558" width="128" height="118"/>
         <element name="PowerCube" positionX="-4833" positionY="-1660" width="128" height="58"/>
         <element name="Resonator" positionX="-4806" positionY="-1503" width="128" height="58"/>

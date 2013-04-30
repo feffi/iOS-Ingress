@@ -15,15 +15,10 @@
 	[super viewDidLoad];
 }
 
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-	
-	NSError *error;
-	if (![[self fetchedResultsController] performFetch:&error]) {
-		// Update to handle the error appropriately.
-		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-		exit(-1);  // Fail
-	}
+- (void)didReceiveMemoryWarning {
+	[super didReceiveMemoryWarning];
+
+	self.fetchedResultsController = nil;
 }
 
 - (void)dealloc {
@@ -33,23 +28,11 @@
 #pragma mark - NSFetchedResultsController & NSFetchedResultsControllerDelegate
 
 - (NSFetchedResultsController *)fetchedResultsController {
-	
 	if (_fetchedResultsController != nil) {
 		return _fetchedResultsController;
 	}
-	
-	NSFetchRequest *fetchRequest = [NSFetchRequest new];
-	NSEntityDescription *entity = [NSEntityDescription entityForName:@"PortalKey" inManagedObjectContext:[[DB sharedInstance] managedObjectContext]];
-	[fetchRequest setEntity:entity];
-	
-	NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"portal.guid" ascending:NO];
-	[fetchRequest setSortDescriptors:@[sortDescriptor1]];
-	
-	_fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[[DB sharedInstance] managedObjectContext] sectionNameKeyPath:@"portal.guid" cacheName:@"PortalKeys"];
-	_fetchedResultsController.delegate = self;
-	
+	_fetchedResultsController = [PortalKey MR_fetchAllSortedBy:@"portalGuid" ascending:NO withPredicate:nil groupBy:@"portalGuid" delegate:self];
 	return _fetchedResultsController;
-	
 }
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
@@ -132,6 +115,7 @@
 	
 	PortalKey *portalKey = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	Portal *portal = portalKey.portal;
+
 	id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:indexPath.section];
 	int numberOfPortals = sectionInfo.numberOfObjects;
     cell.textLabel.text = [NSString stringWithFormat:@"%dx %@", numberOfPortals, portal.subtitle];

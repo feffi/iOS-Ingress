@@ -2,7 +2,7 @@
 //  PortalKey.m
 //  Ingress
 //
-//  Created by Alex Studnicka on 24.01.13.
+//  Created by Alex Studnička on 30.04.13.
 //  Copyright (c) 2013 A&A Code. All rights reserved.
 //
 
@@ -12,17 +12,7 @@
 
 @implementation PortalKey
 
+@dynamic portalGuid;
 @dynamic portal;
-
-- (NSString *)description {
-	return @"Portal Key";
-}
-
-- (NSString *)subtitle {
-	if (self.portal.subtitle) {
-		return self.portal.subtitle;
-	}
-	return nil;
-}
 
 @end

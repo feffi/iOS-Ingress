@@ -13,13 +13,12 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
-	NSError *error;
-	if (![[self fetchedResultsController] performFetch:&error]) {
-		// Update to handle the error appropriately.
-		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-		exit(-1);  // Fail
-	}
+}
+
+- (void)didReceiveMemoryWarning {
+	[super didReceiveMemoryWarning];
+
+	self.fetchedResultsController = nil;
 }
 
 - (void)dealloc {
@@ -29,23 +28,11 @@
 #pragma mark - NSFetchedResultsController & NSFetchedResultsControllerDelegate
 
 - (NSFetchedResultsController *)fetchedResultsController {
-	
 	if (_fetchedResultsController != nil) {
 		return _fetchedResultsController;
 	}
-	
-	NSFetchRequest *fetchRequest = [NSFetchRequest new];
-	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Media" inManagedObjectContext:[[DB sharedInstance] managedObjectContext]];
-	[fetchRequest setEntity:entity];
-	
-	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"level" ascending:NO];
-	[fetchRequest setSortDescriptors:@[sortDescriptor]];
-	
-	_fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[[DB sharedInstance] managedObjectContext] sectionNameKeyPath:nil cacheName:@"PortalKeys"];
-	_fetchedResultsController.delegate = self;
-	
+	_fetchedResultsController = [Media MR_fetchAllSortedBy:@"level" ascending:NO withPredicate:nil groupBy:nil delegate:self];
 	return _fetchedResultsController;
-	
 }
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {

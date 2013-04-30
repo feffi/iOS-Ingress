@@ -162,6 +162,7 @@
 		FAA9C46817304B6A000C2638 /* MagicalRecord+Setup.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA9C44A17304B6A000C2638 /* MagicalRecord+Setup.m */; };
 		FAA9C46917304B6A000C2638 /* MagicalRecord+ShorthandSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA9C44C17304B6A000C2638 /* MagicalRecord+ShorthandSupport.m */; };
 		FAA9C46A17304B6A000C2638 /* MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA9C44E17304B6A000C2638 /* MagicalRecord.m */; };
+		FAA9C47317306EB9000C2638 /* PortalKey.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA9C47217306EB8000C2638 /* PortalKey.m */; };
 		FAAA6C5D172299650066D540 /* CustomBackgroundColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAA6C5C172299650066D540 /* CustomBackgroundColorButton.m */; };
 		FAADA23A17291564001865D9 /* SelectingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FAADA23917291564001865D9 /* SelectingButton.m */; };
 		FAADA24017297DD9001865D9 /* MDCParallaxView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAADA23F17297DD9001865D9 /* MDCParallaxView.m */; };
@@ -175,7 +176,6 @@
 		FAC23E1716B18757000C17DD /* XMP.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E1616B18757000C17DD /* XMP.m */; };
 		FAC23E1D16B18758000C17DD /* DeployedResonator.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E1C16B18758000C17DD /* DeployedResonator.m */; };
 		FAC23E2016B18758000C17DD /* DeployedMod.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E1F16B18758000C17DD /* DeployedMod.m */; };
-		FAC23E2316B18759000C17DD /* PortalKey.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E2216B18758000C17DD /* PortalKey.m */; };
 		FAC23E2616B18759000C17DD /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E2516B18759000C17DD /* Player.m */; };
 		FAC23E2916B18759000C17DD /* DeployedShield.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E2816B18759000C17DD /* DeployedShield.m */; };
 		FAC23E2C16B18759000C17DD /* Resonator.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E2B16B18759000C17DD /* Resonator.m */; };
@@ -506,6 +506,8 @@
 		FAA9C44E17304B6A000C2638 /* MagicalRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagicalRecord.m; sourceTree = "<group>"; };
 		FAA9C44F17304B6A000C2638 /* MagicalRecordShorthand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalRecordShorthand.h; sourceTree = "<group>"; };
 		FAA9C45017304B6A000C2638 /* CoreData+MagicalRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreData+MagicalRecord.h"; sourceTree = "<group>"; };
+		FAA9C47117306EB8000C2638 /* PortalKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PortalKey.h; path = CoreData/PortalKey.h; sourceTree = "<group>"; };
+		FAA9C47217306EB8000C2638 /* PortalKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PortalKey.m; path = CoreData/PortalKey.m; sourceTree = "<group>"; };
 		FAAA6C5B172299650066D540 /* CustomBackgroundColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBackgroundColorButton.h; sourceTree = "<group>"; };
 		FAAA6C5C172299650066D540 /* CustomBackgroundColorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBackgroundColorButton.m; sourceTree = "<group>"; };
 		FAADA23817291564001865D9 /* SelectingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectingButton.h; sourceTree = "<group>"; };
@@ -530,8 +532,6 @@
 		FAC23E1C16B18758000C17DD /* DeployedResonator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeployedResonator.m; path = CoreData/DeployedResonator.m; sourceTree = "<group>"; };
 		FAC23E1E16B18758000C17DD /* DeployedMod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeployedMod.h; path = CoreData/DeployedMod.h; sourceTree = "<group>"; };
 		FAC23E1F16B18758000C17DD /* DeployedMod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeployedMod.m; path = CoreData/DeployedMod.m; sourceTree = "<group>"; };
-		FAC23E2116B18758000C17DD /* PortalKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PortalKey.h; path = CoreData/PortalKey.h; sourceTree = "<group>"; };
-		FAC23E2216B18758000C17DD /* PortalKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PortalKey.m; path = CoreData/PortalKey.m; sourceTree = "<group>"; };
 		FAC23E2416B18759000C17DD /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = CoreData/Player.h; sourceTree = "<group>"; };
 		FAC23E2516B18759000C17DD /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Player.m; path = CoreData/Player.m; sourceTree = "<group>"; };
 		FAC23E2716B18759000C17DD /* DeployedShield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeployedShield.h; path = CoreData/DeployedShield.h; sourceTree = "<group>"; };
@@ -1405,8 +1405,6 @@
 				FAC23E2516B18759000C17DD /* Player.m */,
 				FAC23E0F16B18756000C17DD /* Portal.h */,
 				FAC23E1016B18756000C17DD /* Portal.m */,
-				FAC23E2116B18758000C17DD /* PortalKey.h */,
-				FAC23E2216B18758000C17DD /* PortalKey.m */,
 				FAC23E3716B1CEEB000C17DD /* PortalLink.h */,
 				FAC23E3816B1CEEC000C17DD /* PortalLink.m */,
 				FAC23E3D16B1CEEF000C17DD /* ControlField.h */,
@@ -1419,6 +1417,8 @@
 				FAC23E2816B18759000C17DD /* DeployedShield.m */,
 				FA008E15171D310500176C3D /* PowerCube.h */,
 				FA008E16171D310500176C3D /* PowerCube.m */,
+				FAA9C47117306EB8000C2638 /* PortalKey.h */,
+				FAA9C47217306EB8000C2638 /* PortalKey.m */,
 			);
 			name = NSManagedObjects;
 			sourceTree = "<group>";
@@ -2153,7 +2153,6 @@
 				FAC23E1716B18757000C17DD /* XMP.m in Sources */,
 				FAC23E1D16B18758000C17DD /* DeployedResonator.m in Sources */,
 				FAC23E2016B18758000C17DD /* DeployedMod.m in Sources */,
-				FAC23E2316B18759000C17DD /* PortalKey.m in Sources */,
 				FAC23E2616B18759000C17DD /* Player.m in Sources */,
 				FAC23E2916B18759000C17DD /* DeployedShield.m in Sources */,
 				FAC23E2C16B18759000C17DD /* Resonator.m in Sources */,
@@ -2238,6 +2237,7 @@
 				FAA9C46817304B6A000C2638 /* MagicalRecord+Setup.m in Sources */,
 				FAA9C46917304B6A000C2638 /* MagicalRecord+ShorthandSupport.m in Sources */,
 				FAA9C46A17304B6A000C2638 /* MagicalRecord.m in Sources */,
+				FAA9C47317306EB9000C2638 /* PortalKey.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

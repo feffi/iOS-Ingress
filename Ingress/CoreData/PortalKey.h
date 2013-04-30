@@ -2,7 +2,7 @@
 //  PortalKey.h
 //  Ingress
 //
-//  Created by Alex Studnicka on 24.01.13.
+//  Created by Alex Studnička on 30.04.13.
 //  Copyright (c) 2013 A&A Code. All rights reserved.
 //
 
@@ -14,6 +14,7 @@
 
 @interface PortalKey : Item
 
+@property (nonatomic, retain) NSString * portalGuid;
 @property (nonatomic, retain) Portal *portal;
 
 @end

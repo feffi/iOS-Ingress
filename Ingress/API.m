@@ -1436,6 +1436,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 			PortalKey *portalKey = [PortalKey MR_findFirstByAttribute:@"guid" withValue:item[0]];
 			if (!portalKey) { portalKey = [PortalKey MR_createEntity]; }
 			portalKey.portal = portal;
+			portalKey.portalGuid = item[2][@"portalCoupler"][@"portalGuid"];
 		} else if ([resourceType isEqualToString:@"MEDIA"]) {
 			Media *media = [Media MR_findFirstByAttribute:@"guid" withValue:item[0]];
 			if (!media) { media = [Media MR_createEntity]; }
