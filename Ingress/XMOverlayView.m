@@ -17,7 +17,7 @@
 	CGFloat xmSize = 20;
 
     CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
-    CGFloat comps[] = {1.0,1.0,1.0,1.0,  1.0,1.0,1.0,0.75,  0.4,0.5,0.7,0.0};
+    CGFloat comps[] = {1.0,1.0,1.0,1.0,  1.0,1.0,1.0,0.75,  0.7,1.0,1.0,0.0};
     CGFloat locs[] = {0,0.3,1};
     CGGradientRef g = CGGradientCreateWithColorComponents(space, comps, locs, 3);
     CGContextDrawRadialGradient(context, g, xmCenterPoint, 1, xmCenterPoint, xmSize, 0);
