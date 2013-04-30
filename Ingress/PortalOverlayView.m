@@ -46,7 +46,7 @@
     CGImageRef portalImage;
 	//CGImageRef resonatorImage = [UIImage imageNamed:@"resonatorFromTop.png"].CGImage;
 
-	if ([[DB sharedInstance] numberOfResonatorsOfPortal:portal] > 0) {
+	if ([DeployedResonator MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"portal = %@", portal]] > 0) {
 		if ([portal.controllingTeam isEqualToString:@"ALIENS"]) {
 			portalImage = [UIImage imageNamed:@"portal_aliens.png"].CGImage;
 		} else {

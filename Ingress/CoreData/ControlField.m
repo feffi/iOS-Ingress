@@ -21,7 +21,7 @@
 
 - (MKPolygon *)polygon {
 	
-	NSArray *portals = [[DB sharedInstance] portalsForControlField:self];
+	NSArray *portals = [Portal MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"ANY vertexForControlFields = %@", self]];
 
     CLLocationCoordinate2D coordinates[3];
 	coordinates[0] = [portals[0] coordinate];

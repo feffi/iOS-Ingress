@@ -57,9 +57,9 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
-	[energyCollectLabel setText:[NSString stringWithFormat:@"%d / %d", [API sharedInstance].numberOfEnergyToCollect, [DB sharedInstance].numberOfEnergyGlobs]];
+	[energyCollectLabel setText:[NSString stringWithFormat:@"%d / %d", [API sharedInstance].numberOfEnergyToCollect, [EnergyGlob MR_countOfEntities]]];
 	[energyCollectStepper setValue:[API sharedInstance].numberOfEnergyToCollect];
-	[energyCollectStepper setMaximumValue:[DB sharedInstance].numberOfEnergyGlobs];
+	[energyCollectStepper setMaximumValue:[EnergyGlob MR_countOfEntities]];
 	
 //	[[NSNotificationCenter defaultCenter] addObserverForName:@"ProfileUpdatedNotification" object:nil queue:[[API sharedInstance] notificationQueue] usingBlock:^(NSNotification *note) {
 //		//NSLog(@"ProfileUpdatedNotification");
@@ -197,7 +197,7 @@
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 	//[energyCollectLabel setText:[NSString stringWithFormat:@"%d", (int)(sender.value)]];
 	[API sharedInstance].numberOfEnergyToCollect = sender.value;
-	[energyCollectLabel setText:[NSString stringWithFormat:@"%d / %d", [API sharedInstance].numberOfEnergyToCollect, [DB sharedInstance].numberOfEnergyGlobs]];
+	[energyCollectLabel setText:[NSString stringWithFormat:@"%d / %d", [API sharedInstance].numberOfEnergyToCollect, [EnergyGlob MR_countOfEntities]]];
 }
 
 - (IBAction)actionSheet {

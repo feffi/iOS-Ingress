@@ -48,35 +48,10 @@ typedef enum {
 
 ////////////////////////
 
-//- (void)addEnergyGlobWithGuid:(NSString *)guid;
-//- (void)addResonatorWithGUID:(NSString *)guid level:(NSInteger)level;
-//- (void)addXMPWithGUID:(NSString *)guid level:(NSInteger)level;
-//- (void)addPortalShieldWithGUID:(NSString *)guid rarity:(PortalShieldRarity)rarity;
-//- (void)addPortalKeyWithGUID:(NSString *)guid forPortal:(Portal *)portal;
-
-////////////////////////
-
-- (NSInteger)numberOfEnergyGlobs;
-- (NSInteger)numberOfResonatorsOfLevel:(NSInteger)level;
-- (NSInteger)numberOfXMPsOfLevel:(NSInteger)level;
-- (NSInteger)numberOfPortalShieldsOfRarity:(PortalShieldRarity)rarity;
-- (NSInteger)numberOfMediaItems;
-- (NSInteger)numberOfResonatorsOfPortal:(Portal *)portal;
-- (NSInteger)numberOfPowerCubesOfLevel:(NSInteger)level;
-
-////////////////////////
-
 - (Item *)getItemWithGuid:(NSString *)guid;
 - (Item *)getOrCreateItemWithGuid:(NSString *)guid classStr:(NSString *)classStr;
 
-//- (Portal *)portalWithGuid:(NSString *)guid;
-- (DeployedResonator *)deployedResonatorForPortal:(Portal *)portal atSlot:(int)slot shouldCreate:(BOOL)shouldCreate;
-- (DeployedMod *)deployedModPortal:(Portal *)portal ofClass:(NSString *)classStr atSlot:(int)slot shouldCreate:(BOOL)shouldCreate;
-- (NSArray *)deployedResonatorsForPortal:(Portal *)portal;
 - (NSArray *)getEnergyGlobs:(int)count;
-- (User *)userWithGuid:(NSString *)guid shouldCreate:(BOOL)shouldCreate;
-- (User *)userWhoCapturedPortal:(Portal *)portal;
-- (NSArray *)portalsForControlField:(ControlField *)controlField;
 
 ////////////////////////
 

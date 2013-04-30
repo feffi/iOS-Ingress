@@ -637,8 +637,8 @@
 			NSMutableString *damagesStr = [NSMutableString string];
 			
 			[damages enumerateKeysAndObjectsUsingBlock:^(NSString *portalGUID, NSArray *damagesArray, BOOL *stop) {
-				
-				Portal *portal = (Portal *)[[DB sharedInstance] getItemWithGuid:portalGUID];
+
+				Portal *portal = [Portal MR_findFirstByAttribute:@"guid" withValue:portalGUID];
 				[damagesStr appendFormat:@"%@:\n", portal.subtitle];
 				
 				for (NSDictionary *damage in damagesArray) {
@@ -651,7 +651,7 @@
 						[[SoundManager sharedManager] playSound:@"Sound/sfx_explode_resonator.aif"];
 					}
 					
-					DeployedResonator *resonator = [[DB sharedInstance] deployedResonatorForPortal:portal atSlot:slot shouldCreate:NO];
+					DeployedResonator *resonator = [DeployedResonator MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"portal = %@ && slot = %d", portal, slot]];
 					int level = resonator.level;
 					int maxEnergy = [API maxEnergyForResonatorLevel:level];
 					

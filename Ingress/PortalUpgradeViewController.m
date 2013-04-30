@@ -100,10 +100,10 @@
 		button.titleLabel.numberOfLines = 0;
 		button.titleLabel.font = [UIFont fontWithName:@"Coda-Regular" size:10];
 
-		DeployedShield *shield = (DeployedShield *)[[DB sharedInstance] deployedModPortal:self.portal ofClass:@"DeployedShield" atSlot:i shouldCreate:NO];
+		DeployedMod *mod = [DeployedMod MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"portal = %@ && slot = %d", self.portal, i]];
 		
-		if (shield) {
-			[button setTitle:[shield.rarityStr stringByAppendingString:@"\nShield"] forState:UIControlStateNormal];
+		if ([mod isKindOfClass:[DeployedShield class]]) {
+			[button setTitle:[[(DeployedShield *)mod rarityStr] stringByAppendingString:@"\nShield"] forState:UIControlStateNormal];
 		} else {
 			[button setTitle:@"-" forState:UIControlStateNormal];
 		}

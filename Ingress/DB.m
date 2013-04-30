@@ -39,87 +39,6 @@
     return self;
 }
 
-//#pragma mark - Adding
-//
-//- (void)addEnergyGlobWithGuid:(NSString *)guid {
-//	NSArray *fetched = [self fetchObjectsForEntityName:@"EnergyGlob" withPredicate:@"guid = %@", guid];
-//	if (fetched.count == 0) {
-//		EnergyGlob *energyGlob = [NSEntityDescription insertNewObjectForEntityForName:@"EnergyGlob" inManagedObjectContext:self.managedObjectContext];
-//		energyGlob.guid = guid;
-//		[self saveContext];
-//	}
-//}
-//
-//- (void)addResonatorWithGUID:(NSString *)guid level:(NSInteger)level dropped:(BOOL)dropped {
-//	NSArray *fetched = [self fetchObjectsForEntityName:@"Resonator" withPredicate:@"guid = %@", guid];
-//	if (fetched.count == 0) {
-//		Resonator *resonator = [NSEntityDescription insertNewObjectForEntityForName:@"Resonator" inManagedObjectContext:self.managedObjectContext];
-//		resonator.guid = guid;
-//		resonator.level = level;
-//		[self saveContext];
-//	}
-//}
-//
-//- (void)addXMPWithGUID:(NSString *)guid level:(NSInteger)level dropped:(BOOL)dropped {
-//	NSArray *fetched = [self fetchObjectsForEntityName:@"XMP" withPredicate:@"guid = %@", guid];
-//	if (fetched.count == 0) {
-//		XMP *xmp = [NSEntityDescription insertNewObjectForEntityForName:@"XMP" inManagedObjectContext:self.managedObjectContext];
-//		xmp.guid = guid;
-//		xmp.level = level;
-//		[self saveContext];
-//	}
-//}
-//
-//- (void)addPortalShieldWithGUID:(NSString *)guid rarity:(PortalShieldRarity)rarity dropped:(BOOL)dropped {
-//	int count = [self numberOfObjectsForEntityName:@"Shield" withPredicate:@"guid = %@", guid];
-//	if (count == 0) {
-//		Shield *shield = [NSEntityDescription insertNewObjectForEntityForName:@"Shield" inManagedObjectContext:self.managedObjectContext];
-//		shield.guid = guid;
-//		shield.rarity = rarity;
-//		[self saveContext];
-//	}
-//}
-//
-//- (void)addPortalKeyWithGUID:(NSString *)guid forPortal:(Portal *)portal dropped:(BOOL)dropped {
-//	int count = [self numberOfObjectsForEntityName:@"PortalKey" withPredicate:@"guid = %@", guid];
-//	if (count == 0) {
-//		PortalKey *portalKey = [NSEntityDescription insertNewObjectForEntityForName:@"PortalKey" inManagedObjectContext:self.managedObjectContext];
-//		portalKey.guid = guid;
-//		portalKey.portal = portal;
-//		[self saveContext];
-//	}
-//}
-
-#pragma mark - Count
-
-- (NSInteger)numberOfEnergyGlobs {
-	return [self numberOfObjectsForEntityName:@"EnergyGlob" withPredicate:nil];
-}
-
-- (NSInteger)numberOfResonatorsOfLevel:(NSInteger)level {
-	return [self numberOfObjectsForEntityName:@"Resonator" withPredicate:@"dropped = NO && level = %d", level];
-}
-
-- (NSInteger)numberOfXMPsOfLevel:(NSInteger)level {
-	return [self numberOfObjectsForEntityName:@"XMP" withPredicate:@"dropped = NO && level = %d", level];
-}
-
-- (NSInteger)numberOfPortalShieldsOfRarity:(PortalShieldRarity)rarity {
-	return [self numberOfObjectsForEntityName:@"Shield" withPredicate:@"dropped = NO && rarity = %d", rarity];
-}
-
-- (NSInteger)numberOfMediaItems {
-	return [self numberOfObjectsForEntityName:@"Media" withPredicate:@"dropped = NO"];
-}
-
-- (NSInteger)numberOfResonatorsOfPortal:(Portal *)portal {
-	return [self numberOfObjectsForEntityName:@"DeployedResonator" withPredicate:@"portal = %@", portal];
-}
-
-- (NSInteger)numberOfPowerCubesOfLevel:(NSInteger)level {
-	return [self numberOfObjectsForEntityName:@"PowerCube" withPredicate:@"dropped = NO && level = %d", level];
-}
-
 #pragma mark - Getters
 
 - (Item *)getItemWithGuid:(NSString *)guid {
@@ -149,41 +68,6 @@
 	return item;
 }
 
-- (DeployedResonator *)deployedResonatorForPortal:(Portal *)portal atSlot:(int)slot shouldCreate:(BOOL)shouldCreate {
-	NSArray *fetched = [self fetchObjectsForEntityName:@"DeployedResonator" withPredicate:@"portal = %@ && slot = %d", portal, slot];
-	if (fetched.count > 0) {
-		return fetched[0];
-	}
-	if (shouldCreate) {
-		DeployedResonator *resonator = [NSEntityDescription insertNewObjectForEntityForName:@"DeployedResonator" inManagedObjectContext:self.managedObjectContext];
-		resonator.portal = portal;
-		resonator.slot = slot;
-		[self saveContext];
-		return resonator;
-	}
-	return nil;
-}
-
-- (DeployedMod *)deployedModPortal:(Portal *)portal ofClass:(NSString *)classStr atSlot:(int)slot shouldCreate:(BOOL)shouldCreate {
-	NSArray *fetched = [self fetchObjectsForEntityName:@"DeployedMod" withPredicate:@"portal = %@ && slot = %d", portal, slot];
-	if (fetched.count > 0) {
-		return fetched[0];
-	}
-	if (shouldCreate) {
-		DeployedMod *mod = [NSEntityDescription insertNewObjectForEntityForName:(classStr ? classStr : @"DeployedMod") inManagedObjectContext:self.managedObjectContext];
-		mod.portal = portal;
-		mod.slot = slot;
-		[self saveContext];
-		return mod;
-	}
-	return nil;
-}
-
-- (NSArray *)deployedResonatorsForPortal:(Portal *)portal {
-	NSArray *fetched = [self fetchObjectsForEntityName:@"DeployedResonator" withPredicate:@"portal = %@", portal];
-	return fetched;
-}
-
 - (NSArray *)getEnergyGlobs:(int)count {
 	//return nil;
 	NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"EnergyGlob"];
@@ -198,33 +82,6 @@
 		results = [results subarrayWithRange:NSMakeRange(0, count)];
 	}
 	return results;
-}
-
-- (User *)userWithGuid:(NSString *)guid shouldCreate:(BOOL)shouldCreate {
-	NSArray *fetched = [self fetchObjectsForEntityName:@"User" withPredicate:@"guid = %@", guid];
-	if (fetched.count > 0) {
-		return fetched[0];
-	}
-	if (shouldCreate) {
-		User *user = [NSEntityDescription insertNewObjectForEntityForName:@"User" inManagedObjectContext:self.managedObjectContext];
-		user.guid = guid;
-		[self saveContext];
-		return user;
-	}
-	return nil;
-}
-
-- (User *)userWhoCapturedPortal:(Portal *)portal {
-	NSArray *fetched = [self fetchObjectsForEntityName:@"User" withPredicate:@"ANY capturedPortals = %@", portal];
-	if (fetched.count > 0) {
-		return fetched[0];
-	}
-	return nil;
-}
-
-- (NSArray *)portalsForControlField:(ControlField *)controlField {
-	NSArray *fetched = [self fetchObjectsForEntityName:@"Portal" withPredicate:@"ANY vertexForControlFields = %@", controlField];
-	return fetched;
 }
 
 #pragma mark - Random
