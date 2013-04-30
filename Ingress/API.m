@@ -1697,25 +1697,25 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 			creator.guid = gameEntity[2][@"creator"][@"creatorGuid"];
 			controlField.creator = creator;
 			
-			Portal *portalA = [Portal MR_findFirstByAttribute:@"guid" withValue:gameEntity[2][@"capturedRegion"][@"vertexA"]];
+			Portal *portalA = [Portal MR_findFirstByAttribute:@"guid" withValue:gameEntity[2][@"capturedRegion"][@"vertexA"][@"guid"]];
 			if (!portalA) { portalA = [Portal MR_createEntity]; }
-			portalA.guid = gameEntity[2][@"capturedRegion"][@"vertexA"];
+			portalA.guid = gameEntity[2][@"capturedRegion"][@"vertexA"][@"guid"];
 			portalA.controllingTeam = gameEntity[2][@"controllingTeam"][@"team"];
 			portalA.latitude = [gameEntity[2][@"capturedRegion"][@"vertexA"][@"location"][@"latE6"] intValue]/1E6;
 			portalA.longitude = [gameEntity[2][@"capturedRegion"][@"vertexA"][@"location"][@"lngE6"] intValue]/1E6;
 			[controlField addPortalsObject:portalA];
 			
-			Portal *portalB = [Portal MR_findFirstByAttribute:@"guid" withValue:gameEntity[2][@"capturedRegion"][@"vertexB"]];
+			Portal *portalB = [Portal MR_findFirstByAttribute:@"guid" withValue:gameEntity[2][@"capturedRegion"][@"vertexB"][@"guid"]];
 			if (!portalB) { portalB = [Portal MR_createEntity]; }
-			portalB.guid = gameEntity[2][@"capturedRegion"][@"vertexB"];
+			portalB.guid = gameEntity[2][@"capturedRegion"][@"vertexB"][@"guid"];
 			portalB.controllingTeam = gameEntity[2][@"controllingTeam"][@"team"];
 			portalB.latitude = [gameEntity[2][@"capturedRegion"][@"vertexB"][@"location"][@"latE6"] intValue]/1E6;
 			portalB.longitude = [gameEntity[2][@"capturedRegion"][@"vertexB"][@"location"][@"lngE6"] intValue]/1E6;
 			[controlField addPortalsObject:portalB];
 			
-			Portal *portalC = [Portal MR_findFirstByAttribute:@"guid" withValue:gameEntity[2][@"capturedRegion"][@"vertexC"]];
+			Portal *portalC = [Portal MR_findFirstByAttribute:@"guid" withValue:gameEntity[2][@"capturedRegion"][@"vertexC"][@"guid"]];
 			if (!portalC) { portalC = [Portal MR_createEntity]; }
-			portalC.guid = gameEntity[2][@"capturedRegion"][@"vertexC"];
+			portalC.guid = gameEntity[2][@"capturedRegion"][@"vertexC"][@"guid"];
 			portalC.controllingTeam = gameEntity[2][@"controllingTeam"][@"team"];
 			portalC.latitude = [gameEntity[2][@"capturedRegion"][@"vertexC"][@"location"][@"latE6"] intValue]/1E6;
 			portalC.longitude = [gameEntity[2][@"capturedRegion"][@"vertexC"][@"location"][@"lngE6"] intValue]/1E6;
