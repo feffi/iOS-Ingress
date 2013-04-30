@@ -42,11 +42,14 @@
 			[[self childViewControllerWithClass:[ResourcesViewController class]] viewWillAppear:NO];
 			[resourcesContainerView setHidden:NO];
 			[[self childViewControllerWithClass:[ResourcesViewController class]] viewDidAppear:NO];
-			
+			[[(UITableViewController *)[self childViewControllerWithClass:[ResourcesViewController class]] tableView] setScrollsToTop:YES];
+
+			[[(UITableViewController *)[self childViewControllerWithClass:[PortalKeysViewController class]] tableView] setScrollsToTop:NO];
 			[[self childViewControllerWithClass:[PortalKeysViewController class]] viewWillDisappear:NO];
 			[portalKeysContainerView setHidden:YES];
 			[[self childViewControllerWithClass:[PortalKeysViewController class]] viewDidDisappear:NO];
-			
+
+			[[(UITableViewController *)[self childViewControllerWithClass:[MediaItemsViewController class]] tableView] setScrollsToTop:NO];
 			[[self childViewControllerWithClass:[MediaItemsViewController class]] viewWillDisappear:NO];
 			[mediaContainerView setHidden:YES];
 			[[self childViewControllerWithClass:[MediaItemsViewController class]] viewDidDisappear:NO];
@@ -57,7 +60,9 @@
 			[[self childViewControllerWithClass:[ResourcesViewController class]] viewWillDisappear:NO];
 			[resourcesContainerView setHidden:YES];
 			[[self childViewControllerWithClass:[ResourcesViewController class]] viewDidDisappear:NO];
-			
+			[[(UITableViewController *)[self childViewControllerWithClass:[ResourcesViewController class]] tableView] setScrollsToTop:NO];
+
+			[[(UITableViewController *)[self childViewControllerWithClass:[PortalKeysViewController class]] tableView] setScrollsToTop:YES];
 			[[self childViewControllerWithClass:[PortalKeysViewController class]] viewWillAppear:NO];
 			[portalKeysContainerView setHidden:NO];
 			[[self childViewControllerWithClass:[PortalKeysViewController class]] viewDidAppear:NO];
@@ -65,14 +70,17 @@
 			[[self childViewControllerWithClass:[MediaItemsViewController class]] viewWillDisappear:NO];
 			[mediaContainerView setHidden:YES];
 			[[self childViewControllerWithClass:[MediaItemsViewController class]] viewDidDisappear:NO];
+			[[(UITableViewController *)[self childViewControllerWithClass:[MediaItemsViewController class]] tableView] setScrollsToTop:NO];
 			
 			break;
 		case 2:
-			
+
+			[[(UITableViewController *)[self childViewControllerWithClass:[ResourcesViewController class]] tableView] setScrollsToTop:NO];
 			[[self childViewControllerWithClass:[ResourcesViewController class]] viewWillDisappear:NO];
 			[resourcesContainerView setHidden:YES];
 			[[self childViewControllerWithClass:[ResourcesViewController class]] viewDidDisappear:NO];
-			
+
+			[[(UITableViewController *)[self childViewControllerWithClass:[PortalKeysViewController class]] tableView] setScrollsToTop:NO];
 			[[self childViewControllerWithClass:[PortalKeysViewController class]] viewWillDisappear:NO];
 			[portalKeysContainerView setHidden:YES];
 			[[self childViewControllerWithClass:[PortalKeysViewController class]] viewDidDisappear:NO];
@@ -80,6 +88,7 @@
 			[[self childViewControllerWithClass:[MediaItemsViewController class]] viewWillAppear:NO];
 			[mediaContainerView setHidden:NO];
 			[[self childViewControllerWithClass:[MediaItemsViewController class]] viewDidAppear:NO];
+			[[(UITableViewController *)[self childViewControllerWithClass:[MediaItemsViewController class]] tableView] setScrollsToTop:YES];
 			
 			break;
 	}
