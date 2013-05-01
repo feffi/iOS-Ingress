@@ -76,8 +76,6 @@
 //		[_mapView setShowsUserLocation:YES];
 //	});
 
-//	[[DB sharedInstance] addPortalsToMapView];
-
 //	UILongPressGestureRecognizer *xmpLongPressGesture = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(xmpLongPressGestureHandler:)];
 //	[fireXmpButton addGestureRecognizer:xmpLongPressGesture];
 
@@ -154,10 +152,76 @@
 	HUD.mode = MBProgressHUDModeIndeterminate;
 	[self.view addSubview:HUD];
 	[HUD show:YES];
-	
+
 	[[API sharedInstance] getObjectsWithCompletionHandler:^{
-		[[DB sharedInstance] addPortalsToMapView];
+
+		////////////////////////
+
+		NSMutableArray *annotationsToRemove = [_mapView.annotations mutableCopy];
+		[annotationsToRemove removeObject:_mapView.userLocation];
+		[_mapView removeAnnotations:annotationsToRemove];
+
+		[_mapView removeOverlays:_mapView.overlays];
+
+		////////////////////////
+
+		//[mapView addOverlay:[ColorOverlay new]];
+
+		NSArray *fetchedFields = [ControlField MR_findAll];
+		for (ControlField *controlField in fetchedFields) {
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[_mapView addOverlay:controlField.polygon];
+			});
+		}
+
+		NSArray *fetchedLinks = [PortalLink MR_findAll];
+		for (PortalLink *portalLink in fetchedLinks) {
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[_mapView addOverlay:portalLink.polyline];
+			});
+		}
+
+		NSArray *fetchedItems = [Item MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"dropped = YES"]];
+		for (Item *item in fetchedItems) {
+			//NSLog(@"adding item to map: %@ (%f, %f)", item, item.latitude, item.longitude);
+			if (item.coordinate.latitude == 0 && item.coordinate.longitude == 0) { continue; }
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[_mapView addAnnotation:item];
+			});
+		}
+
+		NSArray *fetchedXM = [EnergyGlob MR_findAll];
+		for (EnergyGlob *xm in fetchedXM) {
+			//NSLog(@"adding item to map: %@ (%f, %f)", item, item.latitude, item.longitude);
+			if (xm.coordinate.latitude == 0 && xm.coordinate.longitude == 0) { continue; }
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[_mapView addOverlay:xm.circle];
+			});
+		}
+
+		NSArray *fetchedPortals = [Portal MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"completeInfo = YES"]];
+		for (Portal *portal in fetchedPortals) {
+			//NSLog(@"adding portal to map: %@ (%f, %f)", portal.subtitle, portal.latitude, portal.longitude);
+			if (portal.coordinate.latitude == 0 && portal.coordinate.longitude == 0) { continue; }
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[_mapView addAnnotation:portal];
+				//[_mapView addOverlay:portal];
+			});
+		}
+
+		NSArray *fetchedResonators = [DeployedResonator MR_findAll];
+		for (DeployedResonator *resonator in fetchedResonators) {
+			//NSLog(@"adding resonator to map: %@ (%f, %f)", resonator, resonator.coordinate.latitude, resonator.coordinate.longitude);
+			if (resonator.portal.coordinate.latitude == 0 && resonator.portal.coordinate.longitude == 0) { continue; }
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[_mapView addOverlay:resonator.circle];
+			});
+		}
+
+		////////////////////////
+
 		[HUD hide:YES];
+
 	}];
 
 }
@@ -369,7 +433,8 @@
 			item.latitude = 0;
 			item.longitude = 0;
 			item.dropped = NO;
-			[[DB sharedInstance] saveContext];
+
+			[[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
 			
 			if (errorStr) {
 				
@@ -580,8 +645,8 @@
 
 - (void)fireXMPOfLevel:(int)level {
 	
-	XMP *xmpItem = [[DB sharedInstance] getRandomXMPOfLevel:level];
-	
+	XMP *xmpItem = [XMP MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", level] andRetrieveAttributes:@[@"guid"]];
+
 	NSLog(@"Firing: %@", xmpItem);
 	
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_emp_power_up.aif"];
@@ -605,7 +670,7 @@
 	HUD.userInteractionEnabled = YES;
 	HUD.dimBackground = YES;
 	HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
-	HUD.labelText = [NSString stringWithFormat:@"Firing XMP of level: %d", xmpItem.level];
+	HUD.labelText = [NSString stringWithFormat:@"Firing XMP of level: %d", level];
 	[[AppDelegate instance].window addSubview:HUD];
 	[HUD show:YES];
 	

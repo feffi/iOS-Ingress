@@ -25,54 +25,9 @@
 #import "ControlField.h"
 #import "PowerCube.h"
 
-#import "ColorOverlay.h"
-
 typedef enum {
 	PortalShieldRarityCommon,
 	PortalShieldRarityRare,
 	PortalShieldRarityVeryRare,
 	PortalShieldRarityUnknown
 } PortalShieldRarity;
-
-@interface DB : NSObject
-
-@property (readonly, strong, nonatomic) NSManagedObjectContext *managedObjectContext;
-@property (readonly, strong, nonatomic) NSManagedObjectModel *managedObjectModel;
-@property (readonly, strong, nonatomic) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-
-+ (NSURL *)applicationDocumentsDirectory;
-
-+ (DB *)sharedInstance;
-
-- (void)saveContext;
-
-////////////////////////
-
-- (Item *)getItemWithGuid:(NSString *)guid;
-- (Item *)getOrCreateItemWithGuid:(NSString *)guid classStr:(NSString *)classStr;
-
-- (NSArray *)getEnergyGlobs:(int)count;
-
-////////////////////////
-
-- (Resonator *)getRandomResonatorOfLevel:(NSInteger)level;
-- (XMP *)getRandomXMPOfLevel:(NSInteger)level;
-- (Shield *)getRandomShieldOfRarity:(PortalShieldRarity)rarity;
-- (PowerCube *)getRandomPowerCubeOfLevel:(NSInteger)level;
-
-////////////////////////
-
-- (void)removeItemWithGuid:(NSString *)guid;
-- (void)removeAllMapData;
-- (void)removeAllEnergyGlobs;
-
-////////////////////////
-
-- (void)addPortalsToMapView;
-
-////////////////////////
-
-- (NSArray *)fetchObjectsForEntityName:(NSString *)newEntityName withPredicate:(id)stringOrPredicate, ...;
-- (NSUInteger)numberOfObjectsForEntityName:(NSString *)newEntityName withPredicate:(id)stringOrPredicate, ...;
-
-@end

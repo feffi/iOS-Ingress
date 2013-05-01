@@ -655,8 +655,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 - (void)getObjectsWithCompletionHandler:(void (^)(void))handler {
 
-	[[DB sharedInstance] removeAllMapData];
-	[[DB sharedInstance] removeAllEnergyGlobs];
+//	[[DB sharedInstance] removeAllMapData];
 
 	MKMapView *mapView = [AppDelegate instance].mapView;
 	CGPoint nePoint = CGPointMake(mapView.bounds.origin.x + mapView.bounds.size.width, mapView.bounds.origin.y);
@@ -1278,9 +1277,14 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	if ([params isKindOfClass:[NSDictionary class]]) {
 		
 		NSMutableDictionary *mutableParams = [params mutableCopy];
-	
+
+		NSArray *energyGlobs = [EnergyGlob MR_findAll];
+		if (energyGlobs.count > [API sharedInstance].numberOfEnergyToCollect) {
+			energyGlobs = [energyGlobs subarrayWithRange:NSMakeRange(0, [API sharedInstance].numberOfEnergyToCollect)];
+		}
+		
 		NSMutableArray *collectedEnergyGuids = [NSMutableArray array];
-		for (EnergyGlob *energyGlob in [[DB sharedInstance] getEnergyGlobs:[API sharedInstance].numberOfEnergyToCollect]) {
+		for (EnergyGlob *energyGlob in energyGlobs) {
 			[collectedEnergyGuids addObject:energyGlob.guid];
 		}
 		mutableParams[@"energyGlobGuids"] = collectedEnergyGuids;
@@ -1767,10 +1771,18 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 - (void)processEnergyGlobGuids:(NSArray *)energyGlobGuids {
 	//NSLog(@"processEnergyGlobGuids: %d", energyGlobGuids.count);
 	for (NSString *energyGlobGuid in energyGlobGuids) {
-		//[[DB sharedInstance] addEnergyGlobWithGuid:energyGlobGuid];
-		[[DB sharedInstance] getOrCreateItemWithGuid:energyGlobGuid classStr:@"EnergyGlob"];
+		EnergyGlob *energyGlob = [EnergyGlob MR_findFirstByAttribute:@"guid" withValue:energyGlobGuid];
+		if (!energyGlob) { energyGlob = [EnergyGlob MR_createEntity]; }
+		energyGlob.guid = energyGlobGuid;
+
+		NSScanner *scanner = [NSScanner scannerWithString:[energyGlobGuid substringToIndex:16]]; //19
+		unsigned long long numCellId;
+		[scanner scanHexLongLong:&numCellId];
+		CLLocationCoordinate2D coord = [S2Geometry coordinateForCellId:numCellId];
+		energyGlob.latitude = coord.latitude;
+		energyGlob.longitude = coord.longitude;
 	}
-	[[DB sharedInstance] saveContext];
+	[[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
 }
 
 - (void)processAPGains:(NSArray *)apGains {
@@ -1801,9 +1813,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	//NSLog(@"processDeletedEntityGuids: %d", deletedEntityGuids.count);
 	
 	for (NSString *deletedGuid in deletedEntityGuids) {
-		[[DB sharedInstance] removeItemWithGuid:deletedGuid];
+		Item *item = [Item MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"guid = %@", deletedGuid] andRetrieveAttributes:@[@"guid"]];
+		[item MR_deleteEntity];
 	}
-	[[DB sharedInstance] saveContext];
+	[[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
 }
 
 @end

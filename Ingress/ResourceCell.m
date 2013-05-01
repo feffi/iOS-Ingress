@@ -36,7 +36,6 @@
 	_itemType = itemType;
 
 	Class objectClass = [NSManagedObject class];
-
 	switch (itemType) {
 		case ItemTypeResonator:
 			objectClass = [Resonator class];
@@ -88,26 +87,29 @@
 
 - (void)dropItem {
 
+	Class objectClass = [NSManagedObject class];
+	switch (self.itemType) {
+		case ItemTypeResonator:
+			objectClass = [Resonator class];
+			break;
+		case ItemTypeXMP:
+			objectClass = [XMP class];
+			break;
+		case ItemTypePortalShield:
+			objectClass = [Shield class];
+			break;
+		case ItemTypePowerCube:
+			objectClass = [PowerCube class];
+			break;
+	}
+
 	NSString *guid;
 
-	switch (self.itemType) {
-		case ItemTypeResonator: {
-			guid = [[DB sharedInstance] getRandomResonatorOfLevel:actionLevel].guid;
-			break;
-		}
-		case ItemTypeXMP: {
-			guid = [[DB sharedInstance] getRandomXMPOfLevel:actionLevel].guid;
-			break;
-		}
-		case ItemTypePortalShield: {
-			PortalShieldRarity rarity = [API shieldRarityFromInt:actionLevel];
-			guid = [[DB sharedInstance] getRandomShieldOfRarity:rarity].guid;
-			break;
-		}
-		case ItemTypePowerCube: {
-			guid = [[DB sharedInstance] getRandomPowerCubeOfLevel:actionLevel].guid;
-			break;
-		}
+	if (self.itemType == ItemTypePortalShield) {
+		PortalShieldRarity rarity = [API shieldRarityFromInt:actionLevel];
+		guid = [[objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity] andRetrieveAttributes:@[@"guid"]] guid];
+	} else {
+		guid = [[objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", actionLevel] andRetrieveAttributes:@[@"guid"]] guid];
 	}
 
 	actionLevel = 0;
@@ -148,7 +150,7 @@
 
 - (void)usePowerCube {
 
-	PowerCube *powerCube = [[DB sharedInstance] getRandomPowerCubeOfLevel:actionLevel];
+	PowerCube *powerCube = [PowerCube MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", actionLevel] andRetrieveAttributes:@[@"guid"]];
 
 	if (powerCube) {
 

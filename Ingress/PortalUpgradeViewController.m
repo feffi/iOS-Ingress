@@ -197,8 +197,8 @@
 		HUD.labelText = [NSString stringWithFormat:@"Deploying resonator of level: %d", level];
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
-		
-		Resonator *resonatorItem = [[DB sharedInstance] getRandomResonatorOfLevel:level];
+
+		Resonator *resonatorItem = [Resonator MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", level] andRetrieveAttributes:@[@"guid"]];
 		
 		if (!resonatorItem) {
 			NSLog(@"No resonator of that level remaining!");
@@ -242,7 +242,7 @@
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
 		
-		Resonator *resonatorItem = [[DB sharedInstance] getRandomResonatorOfLevel:level];
+		Resonator *resonatorItem = [Resonator MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", level] andRetrieveAttributes:@[@"guid"]];
 		
 		if (!resonatorItem) {
 			NSLog(@"No resonator of that level remaining!");
@@ -314,8 +314,8 @@
 	HUD.detailsLabelText = @"Deploying shield...";
 	[[AppDelegate instance].window addSubview:HUD];
 	[HUD show:YES];
-	
-	Shield *shieldItem = [[DB sharedInstance] getRandomShieldOfRarity:rarity];
+
+	Shield *shieldItem = [Shield MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity] andRetrieveAttributes:@[@"guid"]];
 	
 	if (!shieldItem) {
 		NSLog(@"No shield of that rarity remaining!");

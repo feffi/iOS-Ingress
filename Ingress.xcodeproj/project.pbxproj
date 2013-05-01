@@ -167,7 +167,6 @@
 		FAADA23A17291564001865D9 /* SelectingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FAADA23917291564001865D9 /* SelectingButton.m */; };
 		FAADA24017297DD9001865D9 /* MDCParallaxView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAADA23F17297DD9001865D9 /* MDCParallaxView.m */; };
 		FAB5A2CD16AA165D00176C34 /* LevelChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB5A2CC16AA165D00176C34 /* LevelChooserViewController.m */; };
-		FAC23D7116B16EB6000C17DD /* DB.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23D7016B16EB6000C17DD /* DB.m */; };
 		FAC23D7716B16F31000C17DD /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC23D7616B16F31000C17DD /* CoreData.framework */; };
 		FAC23D7A16B16F44000C17DD /* Ingress.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAC23D7816B16F44000C17DD /* Ingress.xcdatamodeld */; };
 		FAC23E0B16B18755000C17DD /* Shield.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E0A16B18755000C17DD /* Shield.m */; };
@@ -517,7 +516,6 @@
 		FAB5A2CB16AA165D00176C34 /* LevelChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelChooserViewController.h; sourceTree = "<group>"; };
 		FAB5A2CC16AA165D00176C34 /* LevelChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelChooserViewController.m; sourceTree = "<group>"; };
 		FAC23D6F16B16EB6000C17DD /* DB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB.h; sourceTree = "<group>"; };
-		FAC23D7016B16EB6000C17DD /* DB.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DB.m; sourceTree = "<group>"; };
 		FAC23D7616B16F31000C17DD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FAC23D7916B16F44000C17DD /* Ingress.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ingress.xcdatamodel; sourceTree = "<group>"; };
 		FAC23E0916B18755000C17DD /* Shield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shield.h; path = CoreData/Shield.h; sourceTree = "<group>"; };
@@ -1370,7 +1368,6 @@
 			children = (
 				FAC23D7816B16F44000C17DD /* Ingress.xcdatamodeld */,
 				FAC23D6F16B16EB6000C17DD /* DB.h */,
-				FAC23D7016B16EB6000C17DD /* DB.m */,
 			);
 			name = DB;
 			sourceTree = "<group>";
@@ -2145,7 +2142,6 @@
 				FAD9D7C616AC640A006553E0 /* PortalInfoViewController.m in Sources */,
 				FAD9D7C916AC6414006553E0 /* PortalUpgradeViewController.m in Sources */,
 				FA7E1AB016AC6D3900C8F949 /* PortalOverlayView.m in Sources */,
-				FAC23D7116B16EB6000C17DD /* DB.m in Sources */,
 				FAC23D7A16B16F44000C17DD /* Ingress.xcdatamodeld in Sources */,
 				FAC23E0B16B18755000C17DD /* Shield.m in Sources */,
 				FAC23E1116B18756000C17DD /* Portal.m in Sources */,
