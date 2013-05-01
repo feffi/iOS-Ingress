@@ -1813,8 +1813,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	//NSLog(@"processDeletedEntityGuids: %d", deletedEntityGuids.count);
 	
 	for (NSString *deletedGuid in deletedEntityGuids) {
-		Item *item = [Item MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"guid = %@", deletedGuid] andRetrieveAttributes:@[@"guid"]];
-		[item MR_deleteEntity];
+		Item *item = [Item MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"guid = %@", deletedGuid]];
+		if (item) {
+			[item MR_deleteEntity];
+		}
 	}
 	[[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
 }
