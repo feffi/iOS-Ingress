@@ -178,7 +178,11 @@
 				
 				for (NSString *guid in acquiredItems) {
 					Item *item = [Item MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"guid = %@", guid]];
-					[acquiredItemsStr appendFormat:@"%@\n", item];
+					if (item) {
+						[acquiredItemsStr appendFormat:@"%@\n", item];
+					} else {
+						[acquiredItemsStr appendString:@"Unknown Item\n"];
+					}
 				}
 				
 				HUD.labelText = @"Items acquired";
