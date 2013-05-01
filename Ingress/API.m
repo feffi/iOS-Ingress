@@ -1411,29 +1411,35 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		if ([resourceType isEqualToString:@"EMITTER_A"]) {
 			Resonator *resonator = [Resonator MR_findFirstByAttribute:@"guid" withValue:item[0]];
 			if (!resonator) { resonator = [Resonator MR_createEntity]; }
+			resonator.guid = item[0];
 			resonator.level = [item[2][@"resourceWithLevels"][@"level"] integerValue];
 		} else if ([resourceType isEqualToString:@"EMP_BURSTER"]) {
 			XMP *xmp = [XMP MR_findFirstByAttribute:@"guid" withValue:item[0]];
 			if (!xmp) { xmp = [XMP MR_createEntity]; }
+			xmp.guid = item[0];
 			xmp.level = [item[2][@"resourceWithLevels"][@"level"] integerValue];
 		} else if ([resourceType isEqualToString:@"RES_SHIELD"]) {
 			Shield *shield = [Shield MR_findFirstByAttribute:@"guid" withValue:item[0]];
 			if (!shield) { shield = [Shield MR_createEntity]; }
+			shield.guid = item[0];
 			shield.rarity = [API shieldRarityFromString:item[2][@"modResource"][@"rarity"]];
 		} else if ([resourceType isEqualToString:@"PORTAL_LINK_KEY"]) {
 			Portal *portal = [Portal MR_findFirstByAttribute:@"guid" withValue:item[2][@"portalCoupler"][@"portalGuid"]];
 			if (!portal) { portal = [Portal MR_createEntity]; }
+			portal.guid = item[2][@"portalCoupler"][@"portalGuid"];
 			portal.imageURL = item[2][@"portalCoupler"][@"portalImageUrl"];
 			portal.name = item[2][@"portalCoupler"][@"portalTitle"];
 			portal.address = item[2][@"portalCoupler"][@"portalAddress"];
 			
 			PortalKey *portalKey = [PortalKey MR_findFirstByAttribute:@"guid" withValue:item[0]];
 			if (!portalKey) { portalKey = [PortalKey MR_createEntity]; }
+			portalKey.guid = item[0];
 			portalKey.portal = portal;
 			portalKey.portalGuid = item[2][@"portalCoupler"][@"portalGuid"];
 		} else if ([resourceType isEqualToString:@"MEDIA"]) {
 			Media *media = [Media MR_findFirstByAttribute:@"guid" withValue:item[0]];
 			if (!media) { media = [Media MR_createEntity]; }
+			media.guid = item[0];
 			media.name = item[2][@"storyItem"][@"shortDescription"];
 			media.url = item[2][@"storyItem"][@"primaryUrl"];
 			media.level = [item[2][@"resourceWithLevels"][@"level"] integerValue];
@@ -1441,11 +1447,13 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		} else if ([resourceType isEqualToString:@"POWER_CUBE"]) {
 			PowerCube *powerCube = [PowerCube MR_findFirstByAttribute:@"guid" withValue:item[0]];
 			if (!powerCube) { powerCube = [PowerCube MR_createEntity]; }
+			powerCube.guid = item[0];
 			powerCube.level = [item[2][@"resourceWithLevels"][@"level"] integerValue];
 		} else {
 			NSLog(@"Unknown Item");
 			Item *itemObj = [Item MR_findFirstByAttribute:@"guid" withValue:item[0]];
 			if (!itemObj) { itemObj = [Item MR_createEntity]; }
+			itemObj.guid = item[0];
 		}
 
 	}
