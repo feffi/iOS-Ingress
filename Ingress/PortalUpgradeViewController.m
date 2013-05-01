@@ -52,7 +52,7 @@
 	for (int i = 0; i < 8; i++) {
 		
 		UILabel *levelLabel = (UILabel *)[self.view viewWithTag:10+i];
-		levelLabel.font = [UIFont fontWithName:@"Coda-Regular" size:14];
+		levelLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:14];
 		levelLabel.text = @"";
 		
 		//		UIProgressView *progressIndicator = (UIProgressView *)[self.view viewWithTag:20+i];
@@ -84,7 +84,7 @@
 		
 		UIButton *button = (UIButton *)[self.view viewWithTag:50+i];
 		if (self.portal.controllingTeam && ([self.portal.controllingTeam isEqualToString:[API sharedInstance].playerInfo[@"team"]] || [self.portal.controllingTeam isEqualToString:@"NEUTRAL"])) {
-			button.titleLabel.font = [UIFont fontWithName:@"Coda-Regular" size:10];
+			button.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:10];
 			[button setTitle:@"DEPLOY" forState:UIControlStateNormal];
 			tmpResonators[i] = @0;
 		} else {
@@ -98,7 +98,7 @@
 		UIButton *button = (UIButton *)[self.view viewWithTag:100+i];
 		
 		button.titleLabel.numberOfLines = 0;
-		button.titleLabel.font = [UIFont fontWithName:@"Coda-Regular" size:10];
+		button.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:10];
 
 		DeployedMod *mod = [DeployedMod MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"portal = %@ && slot = %d", self.portal, i]];
 		
@@ -193,7 +193,7 @@
 		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 		HUD.userInteractionEnabled = YES;
 		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 		HUD.labelText = [NSString stringWithFormat:@"Deploying resonator of level: %d", level];
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
@@ -215,7 +215,7 @@
 				HUD.dimBackground = YES;
 				HUD.mode = MBProgressHUDModeCustomView;
 				HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-				HUD.detailsLabelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+				HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 				HUD.detailsLabelText = errorStr;
 				[[AppDelegate instance].window addSubview:HUD];
 				[HUD show:YES];
@@ -237,7 +237,7 @@
 		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 		HUD.userInteractionEnabled = YES;
 		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 		HUD.labelText = [NSString stringWithFormat:@"Upgrading resonator to level: %d", level];
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
@@ -258,7 +258,7 @@
 				HUD.dimBackground = YES;
 				HUD.mode = MBProgressHUDModeCustomView;
 				HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-				HUD.detailsLabelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+				HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 				HUD.detailsLabelText = errorStr;
 				[[AppDelegate instance].window addSubview:HUD];
 				[HUD show:YES];
@@ -310,7 +310,7 @@
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 	HUD.userInteractionEnabled = YES;
 	HUD.dimBackground = YES;
-	HUD.detailsLabelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+	HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 	HUD.detailsLabelText = @"Deploying shield...";
 	[[AppDelegate instance].window addSubview:HUD];
 	[HUD show:YES];
@@ -332,7 +332,7 @@
 			HUD.dimBackground = YES;
 			HUD.mode = MBProgressHUDModeCustomView;
 			HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-			HUD.detailsLabelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+			HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 			HUD.detailsLabelText = errorStr;
 			[[AppDelegate instance].window addSubview:HUD];
 			[HUD show:YES];

@@ -1207,7 +1207,7 @@
 			name = 3D;
 			sourceTree = "<group>";
 		};
-		FA8C24D516B3257D000C8738 /* CustomButton */ = {
+		FA8C24D516B3257D000C8738 /* Custom Buttons */ = {
 			isa = PBXGroup;
 			children = (
 				FACF89DF16BBFD410071A03D /* GUIButton.h */,
@@ -1221,6 +1221,7 @@
 				FAADA23817291564001865D9 /* SelectingButton.h */,
 				FAADA23917291564001865D9 /* SelectingButton.m */,
 			);
+			name = "Custom Buttons";
 			path = CustomButton;
 			sourceTree = "<group>";
 		};
@@ -1772,7 +1773,7 @@
 				FA7AC9D516D14C5400505404 /* SoundManager */,
 				FA92A0AF16C2E11A00E6E3AE /* MKMapView+ZoomLevel */,
 				FAE797D516B49BEB00A57316 /* OpenGL */,
-				FA8C24D516B3257D000C8738 /* CustomButton */,
+				FA8C24D516B3257D000C8738 /* Custom Buttons */,
 				FA52008416A9AB24004AFE4D /* EXIF */,
 				FA4D43D116A8AB1300B98C1F /* MTStatusBarOverlay */,
 				FA4FB3C716A71FFB00FD989C /* iCarousel */,

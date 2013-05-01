@@ -153,7 +153,7 @@
 		HUD.userInteractionEnabled = YES;
 		HUD.mode = MBProgressHUDModeIndeterminate;
 		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 		HUD.labelText = @"Dropping Portal Key...";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];

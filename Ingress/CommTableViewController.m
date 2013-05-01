@@ -62,7 +62,7 @@
 	
 	CGRect rect = [atrstr boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:NULL];
 	
-	//CGSize size = [atrstr.string sizeWithFont:[UIFont fontWithName:@"Coda-Regular" size:16] constrainedToSize:CGSizeMake(width, (unsigned int)-1)];
+	//CGSize size = [atrstr.string sizeWithFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16] constrainedToSize:CGSizeMake(width, (unsigned int)-1)];
 	
 	return rect.size.height;
 	
@@ -74,10 +74,10 @@
 	
 	//NSLog(@"messages[indexPath.row]: %@", messages[indexPath.row]);
 
-	cell.timeLabel.font = [UIFont fontWithName:@"Coda-Regular" size:12];
+	cell.timeLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:12];
 	cell.timeLabel.text = [dateFormatter stringFromDate:_messages[indexPath.row][@"date"]];
 	
-	//cell.messageLabel.font = [UIFont fontWithName:@"Coda-Regular" size:15];
+	//cell.messageLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15];
 	cell.messageLabel.attributedText = _messages[indexPath.row][@"message"];
 	cell.messageLabel.numberOfLines = 0;
 	

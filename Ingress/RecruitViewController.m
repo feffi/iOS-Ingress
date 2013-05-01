@@ -15,9 +15,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	inviteTextField.font = [UIFont fontWithName:@"Coda-Regular" size:15];
-	inviteButton.titleLabel.font = [UIFont fontWithName:@"Coda-Regular" size:15];
-	inviteLabel.font = [UIFont fontWithName:@"Coda-Regular" size:12];
+	inviteTextField.font = [UIFont fontWithName:[[[UITextField appearance] font] fontName] size:15];
+	inviteButton.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:15];
+	inviteLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:12];
 	
 	__weak typeof(self) weakSelf = self;
 	__weak typeof(inviteContainerView) weakInviteContainerView = inviteContainerView;
@@ -50,7 +50,7 @@
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
 	HUD.userInteractionEnabled = NO;
 	//HUD.labelText = @"Loading...";
-	//HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+	//HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 	[self.view addSubview:HUD];
 	[HUD show:YES];
 	
@@ -80,7 +80,7 @@
 	__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
 	HUD.userInteractionEnabled = NO;
 	//HUD.labelText = @"Loading...";
-	//HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+	//HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 	[self.view addSubview:HUD];
 	[HUD show:YES];
 	
@@ -96,7 +96,7 @@
 			HUD.mode = MBProgressHUDModeCustomView;
 			HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
 			HUD.labelText = errorStr;
-			HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+			HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 			[self.view addSubview:HUD];
 			[HUD show:YES];
 			[HUD hide:YES afterDelay:3];

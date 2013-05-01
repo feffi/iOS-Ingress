@@ -27,8 +27,8 @@
 	pieChart.alpha = .25;
 	[self.view addSubview:pieChart];
 	
-	//pieChart.titleFont = [UIFont fontWithName:@"Coda-Regular" size:10];
-	//pieChart.percentageFont = [UIFont fontWithName:@"Coda-Regular" size:20];
+	//pieChart.titleFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:10];
+	//pieChart.percentageFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
 	
 	PCPieComponent *component1 = [PCPieComponent pieComponentWithTitle:@"Enlightened" value:1.001];
 	[component1 setColour:[API colorForFaction:@"ALIENS"]];
@@ -63,7 +63,7 @@
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
 	HUD.userInteractionEnabled = NO;
 	//HUD.labelText = @"Loading...";
-	//HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+	//HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 	[self.view addSubview:HUD];
 	[HUD show:YES];
 	

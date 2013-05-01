@@ -37,10 +37,10 @@
 	for (UIView *view in self.view.subviews) {
 		if ([view isKindOfClass:[UILabel class]]) {
 			UILabel *label = (UILabel *)view;
-			label.font = [UIFont fontWithName:@"Coda-Regular" size:label.font.pointSize];
+			label.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:label.font.pointSize];
 		} else if ([view isKindOfClass:[UIButton class]]) {
 			UIButton *button = (UIButton *)view;
-			button.titleLabel.font = [UIFont fontWithName:@"Coda-Regular" size:button.titleLabel.font.pointSize];
+			button.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:button.titleLabel.font.pointSize];
 		}
 	}
 	

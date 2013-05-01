@@ -87,7 +87,7 @@
 //		HUD.mode = MBProgressHUDModeCustomView;
 //		HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
 //		HUD.labelText = @"Please allow location services";
-//		HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+//		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 //		[self.view addSubview:HUD];
 //		[HUD show:YES];
 //	}
@@ -420,7 +420,7 @@
 		HUD.userInteractionEnabled = YES;
 		HUD.mode = MBProgressHUDModeIndeterminate;
 		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 		HUD.labelText = @"Picking up...";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
@@ -441,11 +441,10 @@
 				HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 				HUD.userInteractionEnabled = YES;
 				HUD.dimBackground = YES;
-				HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
-				HUD.detailsLabelFont = [UIFont fontWithName:@"Coda-Regular" size:12];
+				HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 				HUD.mode = MBProgressHUDModeCustomView;
 				HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-				HUD.detailsLabelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+				HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 				HUD.detailsLabelText = errorStr;
 				[[AppDelegate instance].window addSubview:HUD];
 				[HUD show:YES];
@@ -655,10 +654,10 @@
 		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 		HUD.userInteractionEnabled = YES;
 		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 		HUD.mode = MBProgressHUDModeCustomView;
 		HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-		HUD.detailsLabelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+		HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 		HUD.detailsLabelText = @"No XMP remaining!";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
@@ -669,7 +668,7 @@
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 	HUD.userInteractionEnabled = YES;
 	HUD.dimBackground = YES;
-	HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+	HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 	HUD.labelText = [NSString stringWithFormat:@"Firing XMP of level: %d", level];
 	[[AppDelegate instance].window addSubview:HUD];
 	[HUD show:YES];
@@ -681,13 +680,13 @@
 		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 		HUD.userInteractionEnabled = YES;
 		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 		
 		if (damages) {
 			
 //			HUD.mode = MBProgressHUDModeText;
 //			HUD.labelText = @"Damages";
-//			HUD.detailsLabelFont = [UIFont fontWithName:@"Coda-Regular" size:10];
+//			HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:10];
 			
 			UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 240, 320)];
 			textView.editable = NO;
@@ -744,7 +743,7 @@
 			
 			HUD.mode = MBProgressHUDModeCustomView;
 			HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-			HUD.detailsLabelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+			HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 			
 			if (errorStr) {
 				HUD.detailsLabelText = errorStr;

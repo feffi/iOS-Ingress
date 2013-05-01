@@ -120,7 +120,7 @@
 		HUD.userInteractionEnabled = YES;
 		HUD.mode = MBProgressHUDModeIndeterminate;
 		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 		HUD.labelText = @"Dropping Item...";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
@@ -138,7 +138,7 @@
 		HUD.dimBackground = YES;
 		HUD.mode = MBProgressHUDModeCustomView;
 		HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-		HUD.detailsLabelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+		HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 		HUD.detailsLabelText = @"No Item";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
@@ -160,7 +160,7 @@
 		HUD.userInteractionEnabled = YES;
 		HUD.mode = MBProgressHUDModeIndeterminate;
 		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 		HUD.labelText = @"Using Power Cube...";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
@@ -176,7 +176,7 @@
 		HUD.dimBackground = YES;
 		HUD.mode = MBProgressHUDModeCustomView;
 		HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-		HUD.detailsLabelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+		HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 		HUD.detailsLabelText = @"No Item";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];

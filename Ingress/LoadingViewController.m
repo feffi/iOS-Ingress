@@ -28,7 +28,7 @@
 	[activationCodeField addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
 	[activationButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:18]];
 
-	createCodenameLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:14];
+	createCodenameLabel.font = [UIFont fontWithName:[[[UITextField appearance] font] fontName] size:14];
 	[createCodenameField.layer setBorderWidth:1];
 	[createCodenameField.layer setBorderColor:[[UIColor colorWithRed:255.0/255.0 green:214.0/255.0 blue:82.0/255.0 alpha:1.0] CGColor]];
 	[createCodenameField addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
@@ -40,13 +40,13 @@
 
 	GLViewController *glVC = self.childViewControllers[0];
 	[glVC.view setBackgroundColor:[UIColor blackColor]];
-	introTextView.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName]  size:22];
+	introTextView.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName]  size:22];
 
-	termsWarningLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:16];
-	termsDescriptionLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:16];
-	termsLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:16];
+	termsWarningLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+	termsDescriptionLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+	termsLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 
-	codenameErrorLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:16];
+	codenameErrorLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 
 	////////
 
@@ -190,8 +190,8 @@
 						typewriterView.hidden = NO;
 
 						NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Booting Niantic Software %@.....\n\n*\n*\n*\n*\nJMP 0x1F\nPOPL %%ESI\nMOVL %%ESI,0x8(%%ESI)\nXORL %%EAX,%%EAX\nMOVB %%EAX,0x7(%%ESI)\nMOVL %%EAX,0xC(%%ESI)\nMOVB $0xB,%%AL\nMOVL %%ESI,&EBX\nLEAL 0x8(%%ESI),%%ECX\n*\n*\n*\n*", versionString]];
-						[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:14], NSForegroundColorAttributeName : [UIColor colorWithRed:45.0/255.0 green:239.0/255.0 blue:249.0/255.0 alpha:1.0]} range:NSMakeRange(0, versionString.length+30)];
-						[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:14], NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(versionString.length+30, attrStr.length-(versionString.length+30))];
+						[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:14], NSForegroundColorAttributeName : [UIColor colorWithRed:45.0/255.0 green:239.0/255.0 blue:249.0/255.0 alpha:1.0]} range:NSMakeRange(0, versionString.length+30)];
+						[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:14], NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(versionString.length+30, attrStr.length-(versionString.length+30))];
 						[typewriterLabel setAutoResizes:YES];
 						[typewriterLabel setAttributedText:attrStr];
 
@@ -210,8 +210,8 @@
 						createCodenameScrollview.hidden = NO;
 
 						NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:@"Niantic software online.\nIncoming text transmission detected.\nOpening channel...\n\n> I need you help. The world needs your help. This chat is not secure.\n\nI need you to create a unique codename so that I can call you on a secure line.\n\nThis is the name other agents will know you by."];
-						[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:45.0/255.0 green:239.0/255.0 blue:249.0/255.0 alpha:1.0]} range:NSMakeRange(0, 80)];
-						[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:16], NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(80, 202)];
+						[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:45.0/255.0 green:239.0/255.0 blue:249.0/255.0 alpha:1.0]} range:NSMakeRange(0, 80)];
+						[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(80, 202)];
 
 						[createCodenameScrollview setContentSize:self.view.frame.size];
 
@@ -357,8 +357,8 @@
 			codenameToConfirm = createCodenameField.text;
 
 			NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Codename valid. Please confirm.\n%@", codenameToConfirm]];
-			[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:255.0/255.0 green:214.0/255.0 blue:82.0/255.0 alpha:1.0]} range:NSMakeRange(0, attrStr.length)];
-			[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:16], NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(32, codenameToConfirm.length)];
+			[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:255.0/255.0 green:214.0/255.0 blue:82.0/255.0 alpha:1.0]} range:NSMakeRange(0, attrStr.length)];
+			[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(32, codenameToConfirm.length)];
 			[codenameConfirmLabel setAttributedText:attrStr];
 			
 		}
@@ -403,8 +403,8 @@
 			typewriterView.hidden = NO;
 
 			NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Creating encryption keys...\n\nID confirmed. %@ Access granted.\n\nProgram initiated...", codenameToConfirm]];
-			[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:45.0/255.0 green:239.0/255.0 blue:249.0/255.0 alpha:1.0]} range:NSMakeRange(0, attrStr.length)];
-			[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:16], NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(43, codenameToConfirm.length)];
+			[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:45.0/255.0 green:239.0/255.0 blue:249.0/255.0 alpha:1.0]} range:NSMakeRange(0, attrStr.length)];
+			[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor whiteColor]} range:NSMakeRange(43, codenameToConfirm.length)];
 			[typewriterLabel setAutoResizes:YES];
 			[typewriterLabel setAttributedText:attrStr];
 

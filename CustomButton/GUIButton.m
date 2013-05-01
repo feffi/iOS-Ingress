@@ -11,12 +11,14 @@
 @implementation GUIButton
 
 @synthesize disabled = _disabled;
+@synthesize errorString = _errorString;
 
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
 		
 		_disabled = NO;
+		_errorString = nil;
 		
 		UIImage *bgImage;
 		
@@ -32,8 +34,8 @@
 		[self setTitleColor:[UIColor colorWithRed:144./255. green:1 blue:1 alpha:1] forState:UIControlStateNormal];
 		[self setTitleColor:[UIColor colorWithRed:144./255. green:1 blue:1 alpha:1] forState:UIControlStateHighlighted];
 		[self setTitleColor:[UIColor lightGrayColor] forState:UIControlStateApplication];
-		
-		[self addTarget:self action:@selector(playSound) forControlEvents:UIControlEventTouchUpInside];
+
+		[self addTarget:self action:@selector(touchUp) forControlEvents:UIControlEventTouchUpInside];
 
     }
     return self;
@@ -61,11 +63,26 @@
 //	}
 //}
 
-- (void)playSound {
+- (void)touchUp {
 	if (!self.disabled) {
 		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 	} else {
 		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_fail.aif"];
+
+		if (self.errorString && ![[self titleColorForState:UIControlStateApplication] isEqual:[UIColor redColor]]) {
+			__block UIColor *oldColor = [self titleColorForState:UIControlStateApplication];
+			__block NSString *oldTitle = [self titleForState:UIControlStateApplication];
+
+			[self setTitleColor: [UIColor redColor] forState:UIControlStateApplication];
+			[self setTitle:self.errorString forState:UIControlStateApplication];
+
+			dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC));
+			dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+				[self setTitleColor:oldColor forState:UIControlStateApplication];
+				[self setTitle:oldTitle forState:UIControlStateApplication];
+			});
+		}
+
 	}
 }
 

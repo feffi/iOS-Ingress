@@ -16,10 +16,10 @@
 	// Do any additional setup after loading the view.
 	commTableVC =  self.childViewControllers[0];
 	
-	[groupSegments setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:12]} forState:UIControlStateNormal];
+	[groupSegments setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:12]} forState:UIControlStateNormal];
 	
-	transmitTextField.font = [UIFont fontWithName:@"Coda-Regular" size:15];
-	transmitButton.titleLabel.font = [UIFont fontWithName:@"Coda-Regular" size:15];
+	transmitTextField.font = [UIFont fontWithName:[[[UITextField appearance] font] fontName] size:15];
+	transmitButton.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:15];
 	
 	__weak typeof(self) weakSelf = self;
 	__weak typeof(transmitContainerView) weakTransmitContainerView = transmitContainerView;

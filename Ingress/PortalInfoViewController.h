@@ -18,9 +18,9 @@
 	__weak IBOutlet UILabel *infoLabel1;
 	__weak IBOutlet UILabel *infoLabel2;
 	
-	__weak IBOutlet UIButton *hackButton;
-	__weak IBOutlet UIButton *rechargeButton;
-	__weak IBOutlet UIButton *linkButton;
+	__weak IBOutlet GUIButton *hackButton;
+	__weak IBOutlet GUIButton *rechargeButton;
+	__weak IBOutlet GUIButton *linkButton;
 
 }
 

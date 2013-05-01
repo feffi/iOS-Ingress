@@ -14,10 +14,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	//[self.navigationController.navigationBar setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:16]}];
-	
 	for (UINavigationController *navC in self.tabBarController.viewControllers) {
-//		[navC.tabBarItem setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:10]} forState:UIControlStateNormal];
 		navC.topViewController.view.hidden = NO;
 	}
 	
@@ -127,19 +124,19 @@
 	NSArray *apLabelStrComps = @[[NSString stringWithFormat:@"%d AP\n", ap], @"[ ", [NSString stringWithFormat:@"%d AP", maxAp], [NSString stringWithFormat:@" required for level %d ]", level+1]];
 	NSString *apLabelStr = [apLabelStrComps componentsJoinedByString:@""];
 	
-	NSMutableAttributedString *apLabelAtrStr = [[NSMutableAttributedString alloc] initWithString:apLabelStr attributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:13], NSForegroundColorAttributeName: [UIColor colorWithRed:235./255. green:188./255. blue:74./255. alpha:1], NSParagraphStyleAttributeName: pStyle}];
+	NSMutableAttributedString *apLabelAtrStr = [[NSMutableAttributedString alloc] initWithString:apLabelStr attributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:13], NSForegroundColorAttributeName: [UIColor colorWithRed:235./255. green:188./255. blue:74./255. alpha:1], NSParagraphStyleAttributeName: pStyle}];
 	
 	NSRange range = [apLabelAtrStr.string rangeOfString:apLabelStrComps[0] options:0 range:NSMakeRange(0, apLabelStr.length)];
-	[apLabelAtrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:13], NSForegroundColorAttributeName: teamColor, NSParagraphStyleAttributeName: pStyle} range:range];
+	[apLabelAtrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:13], NSForegroundColorAttributeName: teamColor, NSParagraphStyleAttributeName: pStyle} range:range];
 	
 	range = [apLabelAtrStr.string rangeOfString:apLabelStrComps[2] options:0 range:NSMakeRange(0, apLabelStr.length)];
-	[apLabelAtrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:13], NSForegroundColorAttributeName: teamColor, NSParagraphStyleAttributeName: pStyle} range:range];
+	[apLabelAtrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:13], NSForegroundColorAttributeName: teamColor, NSParagraphStyleAttributeName: pStyle} range:range];
 	
 	apLabel.attributedText = apLabelAtrStr;
 	
 	NSString *xmLabelStr = [NSString stringWithFormat:@"%d / %d XM", energy, maxEnergy];
-	NSMutableAttributedString *xmLabelAtrStr = [[NSMutableAttributedString alloc] initWithString:xmLabelStr attributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:235./255. green:188./255. blue:74./255. alpha:1], NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:13], NSParagraphStyleAttributeName: pStyle}];
-	[xmLabelAtrStr setAttributes:@{NSForegroundColorAttributeName: teamColor, NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:13], NSParagraphStyleAttributeName: pStyle} range:NSMakeRange(0, [[NSString stringWithFormat:@"%d", energy] length])];
+	NSMutableAttributedString *xmLabelAtrStr = [[NSMutableAttributedString alloc] initWithString:xmLabelStr attributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:235./255. green:188./255. blue:74./255. alpha:1], NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:13], NSParagraphStyleAttributeName: pStyle}];
+	[xmLabelAtrStr setAttributes:@{NSForegroundColorAttributeName: teamColor, NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:13], NSParagraphStyleAttributeName: pStyle} range:NSMakeRange(0, [[NSString stringWithFormat:@"%d", energy] length])];
 	xmLabel.attributedText = xmLabelAtrStr;
 	
 	//CGRect rect = xmIndicatorInner.frame;
@@ -167,7 +164,7 @@
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view.window];
 	HUD.userInteractionEnabled = NO;
 	HUD.labelText = @"Redeeming...";
-	HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+	HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 	[self.view.window addSubview:HUD];
 	[HUD show:YES];
 	
@@ -184,7 +181,7 @@
 			HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
 		}
 		HUD.labelText = response;
-		HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 		[self.view.window addSubview:HUD];
 		[HUD show:YES];
 		[HUD hide:YES afterDelay:2];
@@ -219,7 +216,7 @@
 	HUD.userInteractionEnabled = YES;
 	HUD.dimBackground = YES;
 	HUD.mode = MBProgressHUDModeIndeterminate;
-	HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+	HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 	HUD.labelText = @"Loading inventory...";
 	[self.view addSubview:HUD];
 	[HUD show:YES];
@@ -248,7 +245,7 @@
 - (void)willPresentActionSheet:(UIActionSheet *)actionSheet {
     for (UIView *_currentView in actionSheet.subviews) {
         if ([_currentView isKindOfClass:[UILabel class]]) {
-            ((UILabel *)_currentView).font = [UIFont fontWithName:@"Coda-Regular" size:16];
+            ((UILabel *)_currentView).font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
         }
     }
 }

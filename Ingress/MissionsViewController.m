@@ -43,7 +43,7 @@
     
 	UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
 	
-	cell.textLabel.font = [UIFont fontWithName:@"Coda-Regular" size:18];
+	cell.textLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:18];
     
     return cell;
 }

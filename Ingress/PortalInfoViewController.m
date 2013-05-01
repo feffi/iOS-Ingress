@@ -16,14 +16,14 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
-	portalTitleLabel.font = [UIFont fontWithName:@"Coda-Regular" size:18];
+	portalTitleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:18];
 	
-	infoLabel1.font = [UIFont fontWithName:@"Coda-Regular" size:14];
-	infoLabel2.font = [UIFont fontWithName:@"Coda-Regular" size:14];
+	infoLabel1.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:14];
+	infoLabel2.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:14];
 	
-	hackButton.titleLabel.font = [UIFont fontWithName:@"Coda-Regular" size:16];
-	rechargeButton.titleLabel.font = [UIFont fontWithName:@"Coda-Regular" size:16];
-	linkButton.titleLabel.font = [UIFont fontWithName:@"Coda-Regular" size:16];
+	hackButton.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:16];
+	rechargeButton.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:16];
+	linkButton.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:16];
 
 	self.imageView.image = [UIImage imageNamed:@"missing_image"];
 
@@ -88,9 +88,21 @@
 
 	NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:str];
 
-	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:15], NSForegroundColorAttributeName : [UIColor colorWithRed:.56 green:1 blue:1 alpha:1]} range:NSMakeRange(0, str.length)];
-	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:16], NSForegroundColorAttributeName : [API colorForLevel:self.portal.level]} range:NSMakeRange(7, 2)];
-	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:16], NSForegroundColorAttributeName : [API colorForFaction:self.portal.controllingTeam]} range:NSMakeRange(str.length-(nickname.length), nickname.length)];
+	NSShadow *shadow = [NSShadow new];
+	shadow.shadowOffset = CGSizeZero;
+	shadow.shadowBlurRadius = 16/5;
+
+	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15], NSForegroundColorAttributeName : [UIColor colorWithRed:.56 green:1 blue:1 alpha:1]} range:NSMakeRange(0, str.length)];
+	shadow.shadowColor = [UIColor colorWithRed:.56 green:1 blue:1 alpha:1];
+	[attrStr setAttributes:@{NSShadowAttributeName: shadow} range:NSMakeRange(0, str.length)];
+	
+	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [API colorForLevel:self.portal.level]} range:NSMakeRange(7, 2)];
+	shadow.shadowColor = [API colorForLevel:self.portal.level];
+	[attrStr setAttributes:@{NSShadowAttributeName: shadow} range:NSMakeRange(7, 2)];
+	
+	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [API colorForFaction:self.portal.controllingTeam]} range:NSMakeRange(str.length-(nickname.length), nickname.length)];
+	shadow.shadowColor = [API colorForFaction:self.portal.controllingTeam];
+	[attrStr setAttributes:@{NSShadowAttributeName: shadow} range:NSMakeRange(str.length-(nickname.length), nickname.length)];
 
 	infoLabel1.attributedText = attrStr;
 
@@ -99,8 +111,8 @@
 	infoLabel2.text = [NSString stringWithFormat:@"Energy: %.1fk\nRange: %.1fkm", self.portal.energy/1000., self.portal.range/1000.];
 	
 //	attrStr = [[NSMutableAttributedString alloc] initWithString:str];
-//	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:15], NSForegroundColorAttributeName : [UIColor colorWithRed:.56 green:1 blue:1 alpha:1]} range:NSMakeRange(0, str.length)];
-//	//[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:@"Coda-Regular" size:16], NSForegroundColorAttributeName : [API colorForFaction:self.portal.controllingTeam]} range:NSMakeRange(part1len+7, attrStr.length-(7+part1len))];
+//	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15], NSForegroundColorAttributeName : [UIColor colorWithRed:.56 green:1 blue:1 alpha:1]} range:NSMakeRange(0, str.length)];
+//	//[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [API colorForFaction:self.portal.controllingTeam]} range:NSMakeRange(part1len+7, attrStr.length-(7+part1len))];
 //	infoLabel2.attributedText = attrStr;
 	
 	////////////////////////////
@@ -108,9 +120,13 @@
 	if (self.portal.controllingTeam && [self.portal.controllingTeam isEqualToString:[API sharedInstance].playerInfo[@"team"]]) {
 		rechargeButton.enabled = YES;
 		linkButton.enabled = YES;
+		rechargeButton.errorString = nil;
+		linkButton.errorString = nil;
 	} else {
 		rechargeButton.enabled = NO;
 		linkButton.enabled = NO;
+		rechargeButton.errorString = @"Enemy Portal";
+		linkButton.errorString = @"Enemy Portal";
 	}
 	
 }
@@ -125,7 +141,7 @@
 	HUD.userInteractionEnabled = YES;
 	HUD.mode = MBProgressHUDModeIndeterminate;
 	HUD.dimBackground = YES;
-	HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+	HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 	HUD.labelText = @"Hacking...";
 	[[AppDelegate instance].window addSubview:HUD];
 	[HUD show:YES];
@@ -145,14 +161,14 @@
 		HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 		HUD.userInteractionEnabled = YES;
 		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
-		HUD.detailsLabelFont = [UIFont fontWithName:@"Coda-Regular" size:12];
+		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+		HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:12];
 		//HUD.showCloseButton = YES;
 		
 		if (errorStr) {
 			HUD.mode = MBProgressHUDModeCustomView;
 			HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-			HUD.detailsLabelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+			HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 			HUD.detailsLabelText = errorStr;
 
 			NSMutableArray *sounds = [NSMutableArray arrayWithObjects:@"SPEECH_HACKING", @"SPEECH_UNSUCCESSFUL", nil];
@@ -211,7 +227,7 @@
 	HUD.userInteractionEnabled = YES;
 	HUD.mode = MBProgressHUDModeIndeterminate;
 	HUD.dimBackground = YES;
-	HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+	HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 	HUD.labelText = @"Recharging...";
 	[[AppDelegate instance].window addSubview:HUD];
 	[HUD show:YES];
