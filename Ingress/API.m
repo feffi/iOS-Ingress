@@ -978,10 +978,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 - (void)hackPortal:(Portal *)portal completionHandler:(void (^)(NSString *errorStr, NSArray *acquiredItems, int secondsRemaining))handler {
 	
 	NSDictionary *dict = @{
-	@"itemGuid": portal.guid,
-	@"playerLocation": [self currentE6Location],
-	@"knobSyncTimestamp": @(0),
-	//@"energyGlobGuids": @[]
+		@"itemGuid": portal.guid,
+		@"playerLocation": [self currentE6Location],
+		@"knobSyncTimestamp": @(0),
+		//@"energyGlobGuids": @[]
 	};
 	
 	[self sendRequest:@"gameplay/collectItemsFromPortal" params:dict completionHandler:^(id responseObj) {
@@ -1465,6 +1465,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 			Portal *portal = [Portal MR_findFirstByAttribute:@"guid" withValue:gameEntity[0]];
 			if (!portal) { portal = [Portal MR_createEntity]; }
+			portal.guid = gameEntity[0];
 			portal.latitude = [loc[@"latE6"] intValue]/1E6;
 			portal.longitude = [loc[@"lngE6"] intValue]/1E6;
 			portal.controllingTeam = gameEntity[2][@"controllingTeam"][@"team"];
