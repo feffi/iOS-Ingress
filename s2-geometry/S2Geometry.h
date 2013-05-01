@@ -10,7 +10,7 @@
 
 @interface S2Geometry : NSObject
 
-+ (NSArray *)cellsForMapView:(MKMapView *)mapView;
++ (NSArray *)cellsForNeCoord:(CLLocationCoordinate2D)neCoord swCoord:(CLLocationCoordinate2D)swCoord minZoomLevel:(int)minZoomLevel maxZoomLevel:(int)maxZoomLevel;
 + (CLLocationCoordinate2D)coordinateForCellId:(unsigned long long)numCellId;
 
 @end

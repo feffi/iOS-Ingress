@@ -16,18 +16,13 @@
 
 @implementation S2Geometry
 
-+ (NSArray *)cellsForMapView:(MKMapView *)mapView {
-
-	CGPoint nePoint = CGPointMake(mapView.bounds.origin.x + mapView.bounds.size.width, mapView.bounds.origin.y);
-	CGPoint swPoint = CGPointMake((mapView.bounds.origin.x), (mapView.bounds.origin.y + mapView.bounds.size.height));
-	CLLocationCoordinate2D neCoord = [mapView convertPoint:nePoint toCoordinateFromView:mapView];
-	CLLocationCoordinate2D swCoord = [mapView convertPoint:swPoint toCoordinateFromView:mapView];
++ (NSArray *)cellsForNeCoord:(CLLocationCoordinate2D)neCoord swCoord:(CLLocationCoordinate2D)swCoord minZoomLevel:(int)minZoomLevel maxZoomLevel:(int)maxZoomLevel {
 
 	S2LatLngRect rect = S2LatLngRect(S2LatLng::FromDegrees(MIN(neCoord.latitude, swCoord.latitude), MIN(neCoord.longitude, swCoord.longitude)), S2LatLng::FromDegrees(MAX(neCoord.latitude, swCoord.latitude), MAX(neCoord.longitude, swCoord.longitude)));
 
     S2RegionCoverer coverer;
-	coverer.set_min_level(16);
-	coverer.set_max_level(16);
+	coverer.set_min_level(minZoomLevel);
+	coverer.set_max_level(maxZoomLevel);
 
 	vector<S2CellId> covering;
 	coverer.GetCovering(rect, &covering);

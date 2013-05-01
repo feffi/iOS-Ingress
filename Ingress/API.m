@@ -657,8 +657,13 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 	[[DB sharedInstance] removeAllMapData];
 	[[DB sharedInstance] removeAllEnergyGlobs];
-	
-	NSArray *cellsAsHex = [S2Geometry cellsForMapView:[AppDelegate instance].mapView];
+
+	MKMapView *mapView = [AppDelegate instance].mapView;
+	CGPoint nePoint = CGPointMake(mapView.bounds.origin.x + mapView.bounds.size.width, mapView.bounds.origin.y);
+	CGPoint swPoint = CGPointMake((mapView.bounds.origin.x), (mapView.bounds.origin.y + mapView.bounds.size.height));
+	CLLocationCoordinate2D neCoord = [mapView convertPoint:nePoint toCoordinateFromView:mapView];
+	CLLocationCoordinate2D swCoord = [mapView convertPoint:swPoint toCoordinateFromView:mapView];
+	NSArray *cellsAsHex = [S2Geometry cellsForNeCoord:neCoord swCoord:swCoord minZoomLevel:16 maxZoomLevel:16];
 
 	NSMutableArray *dates = [NSMutableArray arrayWithCapacity:cellsAsHex.count];
 	for (int i = 0; i < cellsAsHex.count; i++) {
@@ -686,43 +691,28 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 }
 
 - (void)loadCommunicationForFactionOnly:(BOOL)factionOnly completionHandler:(void (^)(NSArray *messages))handler {
-	
 	//NSLog(@"loadCommunicationWithCompletionHandler");
 
-	//NSArray *cellsAsHex = [self cellsAsHex];
+	MKMapView *mapView = [AppDelegate instance].mapView;
+	MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(mapView.centerCoordinate, 20000, 20000);
+	CLLocationCoordinate2D neCoord, swCoord;
+	neCoord.latitude  = region.center.latitude  + (region.span.latitudeDelta  / 2.0);
+	neCoord.longitude = region.center.longitude + (region.span.longitudeDelta / 2.0);
+	swCoord.latitude  = region.center.latitude  - (region.span.latitudeDelta  / 2.0);
+	swCoord.longitude = region.center.longitude - (region.span.longitudeDelta / 2.0);
+	NSArray *cellsAsHex = [S2Geometry cellsForNeCoord:neCoord swCoord:swCoord minZoomLevel:8 maxZoomLevel:12];
 	
 	NSDictionary *dict = @{
-	//@"cellsAsHex": cellsAsHex,
-	@"cellsAsHex": @[
-
-		 // Teplice
-		@"4709900000000000",
-		@"4709ec0000000000",
-		@"4709f40000000000",
-		@"470a1f0000000000",
-		@"470a210000000000",
-		@"470a270000000000",
-		@"470a290000000000",
-		@"470a2a4000000000",
-
-		 // Almelo, Netherlands
-//		@"47b7f8c000000000",
-//		@"47b7ff0000000000",
-//		@"47b8100000000000",
-//		@"47c7f00000000000",
-//		@"47c8040000000000",
-
-	],
-	@"minTimestampMs": @(-1),
-	@"maxTimestampMs":@(-1),
-	@"desiredNumItems": @50,
-	@"factionOnly": @(factionOnly),
-	@"ascendingTimestampOrder": @NO
+		@"cellsAsHex": cellsAsHex,
+		@"minTimestampMs": @(-1),
+		@"maxTimestampMs":@(-1),
+		@"desiredNumItems": @50,
+		@"factionOnly": @(factionOnly),
+		@"ascendingTimestampOrder": @NO
 	};
 	
 	[self sendRequest:@"playerUndecorated/getPaginatedPlexts" params:dict completionHandler:^(id responseObj) {
-		
-		//NSLog(@"comm responseObj: %@", responseObj);
+		//NSLog(@"getPaginatedPlexts responseObj: %@", responseObj);
 		
 		NSMutableArray *messages = [NSMutableArray array];
 		NSArray *tmpMessages = responseObj[@"result"];
