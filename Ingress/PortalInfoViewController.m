@@ -18,8 +18,8 @@
 	
 	portalTitleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:18];
 	
-	infoLabel1.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:14];
-	infoLabel2.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:14];
+	infoLabel1.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15];
+	infoLabel2.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15];
 	
 	hackButton.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:16];
 	rechargeButton.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:16];
@@ -90,19 +90,21 @@
 
 	NSShadow *shadow = [NSShadow new];
 	shadow.shadowOffset = CGSizeZero;
-	shadow.shadowBlurRadius = 16/5;
-
-	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15], NSForegroundColorAttributeName : [UIColor colorWithRed:.56 green:1 blue:1 alpha:1]} range:NSMakeRange(0, str.length)];
+	shadow.shadowBlurRadius = 15/5;
 	shadow.shadowColor = [UIColor colorWithRed:.56 green:1 blue:1 alpha:1];
-	[attrStr setAttributes:@{NSShadowAttributeName: shadow} range:NSMakeRange(0, str.length)];
-	
-	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [API colorForLevel:self.portal.level]} range:NSMakeRange(7, 2)];
+	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15], NSForegroundColorAttributeName : [UIColor colorWithRed:.56 green:1 blue:1 alpha:1], NSShadowAttributeName: shadow} range:NSMakeRange(0, str.length)];
+
+	shadow = [NSShadow new];
+	shadow.shadowOffset = CGSizeZero;
+	shadow.shadowBlurRadius = 15/5;
 	shadow.shadowColor = [API colorForLevel:self.portal.level];
-	[attrStr setAttributes:@{NSShadowAttributeName: shadow} range:NSMakeRange(7, 2)];
-	
-	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [API colorForFaction:self.portal.controllingTeam]} range:NSMakeRange(str.length-(nickname.length), nickname.length)];
+	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15], NSForegroundColorAttributeName : [API colorForLevel:self.portal.level], NSShadowAttributeName: shadow} range:NSMakeRange(7, 2)];
+
+	shadow = [NSShadow new];
+	shadow.shadowOffset = CGSizeZero;
+	shadow.shadowBlurRadius = 15/5;
 	shadow.shadowColor = [API colorForFaction:self.portal.controllingTeam];
-	[attrStr setAttributes:@{NSShadowAttributeName: shadow} range:NSMakeRange(str.length-(nickname.length), nickname.length)];
+	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15], NSForegroundColorAttributeName : [API colorForFaction:self.portal.controllingTeam], NSShadowAttributeName: shadow} range:NSMakeRange(str.length-(nickname.length), nickname.length)];
 
 	infoLabel1.attributedText = attrStr;
 

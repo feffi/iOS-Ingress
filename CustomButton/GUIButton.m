@@ -35,6 +35,13 @@
 		[self setTitleColor:[UIColor colorWithRed:144./255. green:1 blue:1 alpha:1] forState:UIControlStateHighlighted];
 		[self setTitleColor:[UIColor lightGrayColor] forState:UIControlStateApplication];
 
+		self.titleLabel.layer.shadowColor = [self titleColorForState:UIControlStateNormal].CGColor;
+		self.titleLabel.layer.shadowOffset = CGSizeZero;
+		self.titleLabel.layer.shadowRadius = 16/5;
+		self.titleLabel.layer.shadowOpacity = 1;
+		self.titleLabel.layer.shouldRasterize = YES;
+		self.titleLabel.layer.masksToBounds = NO;
+
 		[self addTarget:self action:@selector(touchUp) forControlEvents:UIControlEventTouchUpInside];
 
     }
@@ -75,11 +82,13 @@
 
 			[self setTitleColor: [UIColor redColor] forState:UIControlStateApplication];
 			[self setTitle:self.errorString forState:UIControlStateApplication];
+			self.titleLabel.layer.shadowColor = [UIColor redColor].CGColor;
 
 			dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC));
 			dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 				[self setTitleColor:oldColor forState:UIControlStateApplication];
 				[self setTitle:oldTitle forState:UIControlStateApplication];
+				self.titleLabel.layer.shadowColor = [self titleColorForState:UIControlStateNormal].CGColor;
 			});
 		}
 
