@@ -25,29 +25,12 @@
 	apLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:13];
 	xmLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:13];
 	
-	passcodeTextField.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15];
-	submitPasscodeButton.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15];
-	
 	levelLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:32];
 	nicknameLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
 	
 //	xmIndicator.backgroundColor = self.view.backgroundColor;
 //	xmIndicator.frameColor = [UIColor colorWithRed:235./255. green:188./255. blue:74./255. alpha:1];
 //	xmIndicator.foregroundColor = [UIColor colorWithRed:40./255. green:244./255. blue:40./255. alpha:1];
-	
-	__weak typeof(self) weakSelf = self;
-	__weak typeof(passcodeContainerView) weakPasscodeContainerView = passcodeContainerView;
-	
-	[self.view setKeyboardTriggerOffset:32];
-	[self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
-		CGRect passcodeContainerViewFrame = weakPasscodeContainerView.frame;
-		if (keyboardFrameInView.origin.y > weakSelf.view.frame.size.height) {
-			passcodeContainerViewFrame.origin.y = weakSelf.view.frame.size.height - passcodeContainerViewFrame.size.height;
-		} else {
-			passcodeContainerViewFrame.origin.y = keyboardFrameInView.origin.y - passcodeContainerViewFrame.size.height;
-		}
-		weakPasscodeContainerView.frame = passcodeContainerViewFrame;
-	}];
 	
 }
 
@@ -159,48 +142,6 @@
 	
 }
 
-- (IBAction)submitPasscode {
-	
-	NSString *passcode = passcodeTextField.text;
-	passcodeTextField.text = @"";
-	[passcodeTextField resignFirstResponder];
-	
-	if (!passcode || passcode.length < 1) {
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_fail.aif"];
-		return;
-	}
-	
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-	
-	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view.window];
-	HUD.userInteractionEnabled = NO;
-	HUD.labelText = @"Redeeming...";
-	HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-	[self.view.window addSubview:HUD];
-	[HUD show:YES];
-	
-	[[API sharedInstance] redeemReward:passcode completionHandler:^(BOOL accepted, NSString *response) {
-		
-		[HUD hide:YES];
-		
-		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view.window];
-		HUD.userInteractionEnabled = NO;
-		HUD.mode = MBProgressHUDModeCustomView;
-		if (accepted) {
-			HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check.png"]];
-		} else {
-			HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-		}
-		HUD.labelText = response;
-		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		[self.view.window addSubview:HUD];
-		[HUD show:YES];
-		[HUD hide:YES afterDelay:2];
-		
-	}];
-
-}
-
 - (IBAction)energyCollectValueChanged:(UIStepper *)sender {
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 	//[energyCollectLabel setText:[NSString stringWithFormat:@"%d", (int)(sender.value)]];
@@ -217,7 +158,7 @@
 	
 }
 
-#pragma mark -
+#pragma mark - Refresh Inventory
 
 - (IBAction)refreshInventory {
 
@@ -236,19 +177,6 @@
 		[HUD hide:YES];
 	}];
 
-}
-
-#pragma mark - UITextFieldDelegate
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-	
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-	
-}
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField {
-	[self submitPasscode];
-	return NO;
 }
 
 #pragma mark - UIActionSheetDelegate

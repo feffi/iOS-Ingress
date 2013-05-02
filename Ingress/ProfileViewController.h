@@ -13,7 +13,7 @@
 #import "EXF.h"
 #import "EXFUtils.h"
 
-@interface ProfileViewController : UIViewController <UITextFieldDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIAlertViewDelegate, MFMailComposeViewControllerDelegate> {
+@interface ProfileViewController : UIViewController <UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIAlertViewDelegate, MFMailComposeViewControllerDelegate> {
 	
 	__weak IBOutlet UILabel *levelLabel;
 	__weak IBOutlet UIImageView *levelImage;
@@ -21,10 +21,6 @@
 	__weak IBOutlet UILabel *apLabel;
 	__weak IBOutlet UILabel *xmLabel;
 	__weak IBOutlet UIProgressView *xmIndicator;
-	
-	__weak IBOutlet UIView *passcodeContainerView;
-	__weak IBOutlet UITextField *passcodeTextField;
-	__weak IBOutlet UIButton *submitPasscodeButton;
 	
 	NSData *imageData;
 	
@@ -37,7 +33,6 @@
 - (IBAction)refreshInventory;
 
 - (IBAction)actionSheet;
-- (IBAction)submitPasscode;
 
 - (IBAction)energyCollectValueChanged:(UIStepper *)sender;
 

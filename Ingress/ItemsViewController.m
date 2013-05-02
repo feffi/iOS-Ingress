@@ -7,15 +7,33 @@
 //
 
 #import "ItemsViewController.h"
-//#import "ResourcesViewController.h"
 #import "ResourcesViewController.h"
 #import "PortalKeysViewController.h"
 #import "MediaItemsViewController.h"
+#import "DAKeyboardControl.h"
 
 @implementation ItemsViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+	passcodeTextField.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15];
+	submitPasscodeButton.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15];
+
+	__weak typeof(self) weakSelf = self;
+	__weak typeof(passcodeContainerView) weakPasscodeContainerView = passcodeContainerView;
+
+	[self.view setKeyboardTriggerOffset:32];
+	[self.view addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) {
+		CGRect passcodeContainerViewFrame = weakPasscodeContainerView.frame;
+		if (keyboardFrameInView.origin.y > weakSelf.view.frame.size.height) {
+			passcodeContainerViewFrame.origin.y = weakSelf.view.frame.size.height - passcodeContainerViewFrame.size.height;
+		} else {
+			passcodeContainerViewFrame.origin.y = keyboardFrameInView.origin.y - passcodeContainerViewFrame.size.height;
+		}
+		weakPasscodeContainerView.frame = passcodeContainerViewFrame;
+	}];
+	
 }
 
 - (void)didReceiveMemoryWarning {
@@ -95,5 +113,61 @@
 	
 }
 
+#pragma mark - UITextFieldDelegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+
+	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	[self submitPasscode];
+	return NO;
+}
+
+#pragma mark - Passcode
+
+- (IBAction)submitPasscode {
+
+	NSString *passcode = passcodeTextField.text;
+	passcodeTextField.text = @"";
+	[passcodeTextField resignFirstResponder];
+
+	if (!passcode || passcode.length < 1) {
+		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_fail.aif"];
+		return;
+	}
+
+	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+
+	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view.window];
+	HUD.userInteractionEnabled = NO;
+	HUD.labelText = @"Redeeming...";
+	HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+	[self.view.window addSubview:HUD];
+	[HUD show:YES];
+
+	[[API sharedInstance] redeemReward:passcode completionHandler:^(BOOL accepted, NSString *response) {
+
+		[HUD hide:YES];
+
+		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view.window];
+		HUD.userInteractionEnabled = NO;
+		HUD.mode = MBProgressHUDModeCustomView;
+		if (accepted) {
+			HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"check.png"]];
+		} else {
+			HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+		}
+		HUD.labelText = response;
+		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+		[self.view.window addSubview:HUD];
+		[HUD show:YES];
+		[HUD hide:YES afterDelay:2];
+
+	}];
+
+}
 
 @end

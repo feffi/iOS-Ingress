@@ -8,16 +8,22 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ItemsViewController : UIViewController {
+@interface ItemsViewController : UIViewController <UITextFieldDelegate> {
 	
 	__weak IBOutlet UISegmentedControl *viewSegmentedControl;
 	
 	__weak IBOutlet UIView *resourcesContainerView;
 	__weak IBOutlet UIView *portalKeysContainerView;
 	__weak IBOutlet UIView *mediaContainerView;
+
+	__weak IBOutlet UIView *passcodeContainerView;
+	__weak IBOutlet UITextField *passcodeTextField;
+	__weak IBOutlet UIButton *submitPasscodeButton;
 	
 }
 
 - (IBAction)viewSegmentedControlChanged;
+
+- (IBAction)submitPasscode;
 
 @end

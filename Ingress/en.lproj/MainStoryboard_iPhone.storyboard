@@ -72,21 +72,76 @@
                                     <segue destination="zM3-Tr-bQA" kind="embed" id="tyX-qQ-MTl"/>
                                 </connections>
                             </containerView>
+                            <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N61-HA-Nsl">
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="99s-Xd-4gS">
+                                        <color key="backgroundColor" red="0.043137254899999998" green="0.047058823530000002" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter passcode" adjustsFontSizeToFit="NO" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="d9U-0E-Aok">
+                                        <color key="backgroundColor" red="0.043137254899999998" green="0.047058823530000002" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="jfz-qD-ho1"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="send"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="UPB-vb-vXl" id="hbn-UJ-fn6"/>
+                                        </connections>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhn-Ji-4wC">
+                                        <color key="backgroundColor" red="0.0" green="0.30980392159999998" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" type="user" id="rGe-EG-woD"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <state key="normal" title="Submit">
+                                            <color key="titleColor" red="0.34901960780000002" green="0.98431372549999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <state key="highlighted">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="submitPasscode" destination="dyv-6N-1Hj" eventType="touchUpInside" id="LAa-uS-TEg"/>
+                                            <action selector="submitPasscode" destination="UPB-vb-vXl" eventType="touchUpInside" id="tfC-hb-AZ2"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.34901960780000002" green="0.98431372549999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="d9U-0E-Aok" firstAttribute="leading" secondItem="N61-HA-Nsl" secondAttribute="leading" constant="6" type="user" id="21y-8d-9Jy"/>
+                                    <constraint firstItem="99s-Xd-4gS" firstAttribute="bottom" secondItem="d9U-0E-Aok" secondAttribute="bottom" type="default" id="2cA-Pj-947"/>
+                                    <constraint firstAttribute="trailing" secondItem="d9U-0E-Aok" secondAttribute="trailing" constant="87" type="user" id="3iy-hi-F67"/>
+                                    <constraint firstItem="99s-Xd-4gS" firstAttribute="top" secondItem="d9U-0E-Aok" secondAttribute="top" type="default" id="3kC-wo-UJE"/>
+                                    <constraint firstItem="d9U-0E-Aok" firstAttribute="centerX" secondItem="99s-Xd-4gS" secondAttribute="centerX" type="user" id="H3B-03-e5z"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lhn-Ji-4wC" secondAttribute="trailing" constant="1" type="user" id="Ivx-Ht-2fh"/>
+                                    <constraint firstAttribute="trailing" secondItem="99s-Xd-4gS" secondAttribute="trailing" constant="82" type="user" id="MT1-Li-zgi"/>
+                                    <constraint firstAttribute="height" constant="32" type="user" id="Rw7-T0-QDf"/>
+                                    <constraint firstItem="Lhn-Ji-4wC" firstAttribute="centerY" secondItem="N61-HA-Nsl" secondAttribute="centerY" type="user" id="T7y-Dy-N5f"/>
+                                    <constraint firstItem="d9U-0E-Aok" firstAttribute="top" secondItem="Lhn-Ji-4wC" secondAttribute="top" type="default" id="qip-t1-ML7"/>
+                                    <constraint firstItem="d9U-0E-Aok" firstAttribute="bottom" secondItem="Lhn-Ji-4wC" secondAttribute="bottom" type="default" id="rQF-Si-NoM"/>
+                                    <constraint firstItem="99s-Xd-4gS" firstAttribute="leading" secondItem="N61-HA-Nsl" secondAttribute="leading" constant="1" type="user" id="tgl-NT-A4f"/>
+                                </constraints>
+                            </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.043137254899999998" green="0.047058823530000002" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="J2r-07-Rea" firstAttribute="leading" secondItem="TF2-3t-Eaf" secondAttribute="leading" type="default" id="0vc-DG-11m"/>
+                            <constraint firstItem="N61-HA-Nsl" firstAttribute="leading" secondItem="TF2-3t-Eaf" secondAttribute="leading" type="default" id="7tW-u7-UIa"/>
                             <constraint firstItem="uci-DX-bmM" firstAttribute="leading" secondItem="TF2-3t-Eaf" secondAttribute="leading" type="default" id="9Bi-4N-KCY"/>
                             <constraint firstItem="8dp-ed-Hho" firstAttribute="leading" secondItem="TF2-3t-Eaf" secondAttribute="leading" type="default" id="ENE-fY-Sw4"/>
-                            <constraint firstItem="J2r-07-Rea" firstAttribute="bottom" secondItem="TF2-3t-Eaf" secondAttribute="bottom" type="default" id="Fdx-uS-Mbb"/>
-                            <constraint firstItem="uci-DX-bmM" firstAttribute="bottom" secondItem="TF2-3t-Eaf" secondAttribute="bottom" type="default" id="MNM-bf-mnv"/>
+                            <constraint firstAttribute="bottom" secondItem="J2r-07-Rea" secondAttribute="bottom" constant="32" id="Ewu-Qh-jiK"/>
+                            <constraint firstItem="J2r-07-Rea" firstAttribute="bottom" secondItem="uci-DX-bmM" secondAttribute="bottom" type="default" id="Omm-bJ-YIY"/>
                             <constraint firstItem="8dp-ed-Hho" firstAttribute="trailing" secondItem="TF2-3t-Eaf" secondAttribute="trailing" type="default" id="UQl-c5-AIH"/>
+                            <constraint firstItem="N61-HA-Nsl" firstAttribute="trailing" secondItem="TF2-3t-Eaf" secondAttribute="trailing" type="default" id="WFb-O4-4Jb"/>
                             <constraint firstItem="uci-DX-bmM" firstAttribute="top" secondItem="TF2-3t-Eaf" secondAttribute="top" type="default" id="Xwl-MX-4c6"/>
                             <constraint firstItem="uci-DX-bmM" firstAttribute="trailing" secondItem="TF2-3t-Eaf" secondAttribute="trailing" type="default" id="ZvP-Fr-huv"/>
                             <constraint firstItem="J2r-07-Rea" firstAttribute="top" secondItem="TF2-3t-Eaf" secondAttribute="top" type="default" id="aHe-5n-ewe"/>
                             <constraint firstItem="J2r-07-Rea" firstAttribute="trailing" secondItem="TF2-3t-Eaf" secondAttribute="trailing" type="default" id="ngM-Mb-p4F"/>
+                            <constraint firstItem="J2r-07-Rea" firstAttribute="bottom" secondItem="8dp-ed-Hho" secondAttribute="bottom" type="default" id="s19-Os-IkL"/>
+                            <constraint firstItem="N61-HA-Nsl" firstAttribute="bottom" secondItem="TF2-3t-Eaf" secondAttribute="bottom" type="default" id="tAd-m3-orB"/>
                             <constraint firstItem="8dp-ed-Hho" firstAttribute="top" secondItem="TF2-3t-Eaf" secondAttribute="top" type="default" id="wB9-Ta-l2O"/>
-                            <constraint firstItem="8dp-ed-Hho" firstAttribute="bottom" secondItem="TF2-3t-Eaf" secondAttribute="bottom" type="default" id="wfe-gW-hNa"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="nSf-Ye-rbc">
@@ -107,8 +162,11 @@
                     </navigationItem>
                     <connections>
                         <outlet property="mediaContainerView" destination="8dp-ed-Hho" id="G7l-UO-0ge"/>
+                        <outlet property="passcodeContainerView" destination="N61-HA-Nsl" id="MfQ-58-azL"/>
+                        <outlet property="passcodeTextField" destination="d9U-0E-Aok" id="Q2x-dl-UeW"/>
                         <outlet property="portalKeysContainerView" destination="uci-DX-bmM" id="GXN-Qf-AE0"/>
                         <outlet property="resourcesContainerView" destination="J2r-07-Rea" id="w1k-Lm-oTP"/>
+                        <outlet property="submitPasscodeButton" destination="Lhn-Ji-4wC" id="n1X-vU-9sM"/>
                         <outlet property="viewSegmentedControl" destination="dyi-6J-WUy" id="wNJ-bT-hBg"/>
                     </connections>
                 </viewController>
@@ -342,7 +400,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="glz-RR-AOj">
+                                        <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="glz-RR-AOj">
+                                            <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="26" id="VfN-0M-oDL"/>
                                                 <constraint firstAttribute="width" constant="70" type="user" id="kO4-cP-OKv"/>
@@ -351,7 +410,8 @@
                                             <color key="textColor" red="0.0" green="0.52941176470588236" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="246" translatesAutoresizingMaskIntoConstraints="NO" id="mGy-8S-Zh1">
+                                        <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="246" translatesAutoresizingMaskIntoConstraints="NO" id="mGy-8S-Zh1">
+                                            <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -359,6 +419,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="glz-RR-AOj" firstAttribute="top" secondItem="mXl-aT-oTE" secondAttribute="top" type="default" id="1Na-nX-l38"/>
                                     <constraint firstItem="mGy-8S-Zh1" firstAttribute="top" secondItem="mXl-aT-oTE" secondAttribute="top" type="user" id="7Hn-4S-xlB"/>
@@ -901,28 +962,18 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                     <outlet property="delegate" destination="2" id="5J6-tb-StI"/>
                                 </connections>
                             </mapView>
-                            <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" image="scanner-bg@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="rgS-1f-mzM"/>
-                            <view hidden="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bgi-T7-zUO">
-                                <color key="backgroundColor" red="0.89411764709999997" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" image="scanner-bg@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="rgS-1f-mzM">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="44" type="user" id="XNi-Sr-s2v"/>
-                                    <constraint firstAttribute="width" constant="2" type="user" id="rJh-IU-5vj"/>
+                                    <constraint firstAttribute="height" constant="456" id="dhQ-ba-zJY"/>
                                 </constraints>
-                            </view>
-                            <view hidden="YES" userInteractionEnabled="NO" alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="L6j-EY-QT4">
-                                <color key="backgroundColor" red="0.89411764709999997" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="44" type="user" id="XqU-Tk-Gtb"/>
-                                    <constraint firstAttribute="height" constant="2" type="user" id="gk1-fc-D8v"/>
-                                </constraints>
-                            </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="map_target_visual@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="mt2-lW-sE5">
+                            </imageView>
+                            <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="map_target_visual@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="mt2-lW-sE5">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="225" id="LsD-7i-iNP"/>
                                     <constraint firstAttribute="width" constant="225" id="NyL-SK-Wc8"/>
                                 </constraints>
                             </imageView>
-                            <imageView hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="playerArrow@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="BX0-yd-s1M">
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="center" image="playerArrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="BX0-yd-s1M">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="7lC-bf-Unj"/>
@@ -956,29 +1007,24 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="tWm-XI-3eu" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="01z-S8-sqW"/>
+                            <constraint firstItem="tWm-XI-3eu" firstAttribute="centerX" secondItem="BX0-yd-s1M" secondAttribute="centerX" type="default" id="0Uw-Yu-fXE"/>
+                            <constraint firstItem="mt2-lW-sE5" firstAttribute="centerY" secondItem="3" secondAttribute="centerY" type="default" id="1AE-cd-V9M"/>
                             <constraint firstItem="vWW-24-44t" firstAttribute="top" secondItem="7MI-jq-NjA" secondAttribute="top" type="default" id="68p-IC-LtA"/>
                             <constraint firstItem="rgS-1f-mzM" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="7re-Hc-PwY"/>
-                            <constraint firstAttribute="centerY" secondItem="bgi-T7-zUO" secondAttribute="centerY" type="user" id="Atd-lt-gsi"/>
-                            <constraint firstItem="mt2-lW-sE5" firstAttribute="centerY" secondItem="bgi-T7-zUO" secondAttribute="centerY" type="default" id="ITh-u1-en3"/>
                             <constraint firstItem="p8g-KV-tR1" firstAttribute="leading" secondItem="7MI-jq-NjA" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="O6i-KI-e8L"/>
-                            <constraint firstAttribute="centerX" secondItem="L6j-EY-QT4" secondAttribute="centerX" type="user" id="TUg-My-ZbK"/>
-                            <constraint firstItem="BX0-yd-s1M" firstAttribute="centerY" secondItem="L6j-EY-QT4" secondAttribute="centerY" type="default" id="Thb-GR-6XZ"/>
                             <constraint firstItem="p8g-KV-tR1" firstAttribute="top" secondItem="3" secondAttribute="top" constant="10" id="Vk0-fr-IQH"/>
-                            <constraint firstAttribute="centerY" secondItem="L6j-EY-QT4" secondAttribute="centerY" type="user" id="Wgf-xx-Oos"/>
                             <constraint firstItem="rgS-1f-mzM" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="YHS-V2-4sP"/>
                             <constraint firstItem="tWm-XI-3eu" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="a0b-6Q-wAf"/>
                             <constraint firstItem="tWm-XI-3eu" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="bKF-3v-Fiw"/>
                             <constraint firstItem="p8g-KV-tR1" firstAttribute="leading" secondItem="vWW-24-44t" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="cJh-us-hEh"/>
-                            <constraint firstItem="BX0-yd-s1M" firstAttribute="centerX" secondItem="L6j-EY-QT4" secondAttribute="centerX" type="default" id="fjY-7R-yvq"/>
+                            <constraint firstItem="BX0-yd-s1M" firstAttribute="centerY" secondItem="rgS-1f-mzM" secondAttribute="centerY" type="default" id="gXd-cV-kkb"/>
                             <constraint firstItem="rgS-1f-mzM" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="hxy-H6-Nta"/>
                             <constraint firstItem="mt2-lW-sE5" firstAttribute="centerX" secondItem="BX0-yd-s1M" secondAttribute="centerX" type="default" id="j5i-Yr-mHt"/>
                             <constraint firstItem="vWW-24-44t" firstAttribute="leading" secondItem="7MI-jq-NjA" secondAttribute="leading" type="default" id="kuk-iz-jyG"/>
-                            <constraint firstItem="tWm-XI-3eu" firstAttribute="centerY" secondItem="BX0-yd-s1M" secondAttribute="centerY" type="default" id="pOK-jH-lcU"/>
                             <constraint firstItem="p8g-KV-tR1" firstAttribute="top" secondItem="7MI-jq-NjA" secondAttribute="top" type="default" id="qrv-le-bnD"/>
                             <constraint firstAttribute="trailing" secondItem="p8g-KV-tR1" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="rHi-Il-E28"/>
                             <constraint firstItem="oVe-o2-Lr5" firstAttribute="centerY" secondItem="vWW-24-44t" secondAttribute="centerY" type="default" id="tpl-XX-73m"/>
                             <constraint firstAttribute="trailing" secondItem="oVe-o2-Lr5" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="u22-us-K8J"/>
-                            <constraint firstAttribute="centerX" secondItem="bgi-T7-zUO" secondAttribute="centerX" type="user" id="wXA-rl-93o"/>
                             <constraint firstItem="rgS-1f-mzM" firstAttribute="bottom" secondItem="tWm-XI-3eu" secondAttribute="bottom" type="default" id="wxg-cM-e4M"/>
                             <constraint firstItem="oVe-o2-Lr5" firstAttribute="leading" secondItem="vWW-24-44t" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="zuX-I2-w2U"/>
                         </constraints>
@@ -1389,57 +1435,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KPJ-63-N2A">
-                                <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kdi-zJ-Nyy">
-                                        <color key="backgroundColor" red="0.043137254899999998" green="0.047058823530000002" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
-                                    </view>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter passcode" adjustsFontSizeToFit="NO" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="t4x-qd-qcn">
-                                        <color key="backgroundColor" red="0.043137254899999998" green="0.047058823530000002" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="Tuf-3P-vjW"/>
-                                        </constraints>
-                                        <color key="textColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                        <textInputTraits key="textInputTraits" keyboardAppearance="alert" returnKeyType="send"/>
-                                        <connections>
-                                            <outlet property="delegate" destination="dyv-6N-1Hj" id="85t-4V-n9A"/>
-                                        </connections>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OgC-Ac-WsW">
-                                        <color key="backgroundColor" red="0.0" green="0.30980392159999998" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="80" type="user" id="hyg-lO-ugk"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <state key="normal" title="Submit">
-                                            <color key="titleColor" red="0.34901960780000002" green="0.98431372549999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
-                                            <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <state key="highlighted">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="submitPasscode" destination="dyv-6N-1Hj" eventType="touchUpInside" id="ww9-Sd-7wB"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" red="0.34901960780000002" green="0.98431372549999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="kdi-zJ-Nyy" secondAttribute="trailing" constant="82" type="user" id="1zJ-Pf-BJB"/>
-                                    <constraint firstItem="kdi-zJ-Nyy" firstAttribute="bottom" secondItem="t4x-qd-qcn" secondAttribute="bottom" type="default" id="KCq-f5-ReQ"/>
-                                    <constraint firstAttribute="trailing" secondItem="OgC-Ac-WsW" secondAttribute="trailing" constant="1" type="user" id="NKZ-Jl-02Z"/>
-                                    <constraint firstAttribute="trailing" secondItem="t4x-qd-qcn" secondAttribute="trailing" constant="87" type="user" id="Ojm-Td-v8j"/>
-                                    <constraint firstItem="t4x-qd-qcn" firstAttribute="top" secondItem="OgC-Ac-WsW" secondAttribute="top" type="default" id="R0y-PV-0xo"/>
-                                    <constraint firstItem="kdi-zJ-Nyy" firstAttribute="leading" secondItem="KPJ-63-N2A" secondAttribute="leading" constant="1" type="user" id="ZGo-w3-gYj"/>
-                                    <constraint firstItem="t4x-qd-qcn" firstAttribute="leading" secondItem="KPJ-63-N2A" secondAttribute="leading" constant="6" type="user" id="ZOf-gq-hwn"/>
-                                    <constraint firstItem="OgC-Ac-WsW" firstAttribute="centerY" secondItem="KPJ-63-N2A" secondAttribute="centerY" type="user" id="ZUw-7T-nlP"/>
-                                    <constraint firstAttribute="height" constant="32" type="user" id="dN6-C3-I5u"/>
-                                    <constraint firstItem="kdi-zJ-Nyy" firstAttribute="top" secondItem="t4x-qd-qcn" secondAttribute="top" type="default" id="prf-Gc-OR2"/>
-                                    <constraint firstItem="t4x-qd-qcn" firstAttribute="bottom" secondItem="OgC-Ac-WsW" secondAttribute="bottom" type="default" id="scL-h4-Mzl"/>
-                                    <constraint firstItem="t4x-qd-qcn" firstAttribute="centerX" secondItem="kdi-zJ-Nyy" secondAttribute="centerX" type="user" id="yQN-d4-yD4"/>
-                                </constraints>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
@@ -1449,21 +1444,18 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="7oQ-ac-iPy" firstAttribute="centerY" secondItem="emx-DC-TUh" secondAttribute="centerY" type="default" id="7uM-et-vMy"/>
                             <constraint firstItem="9cZ-8N-0dy" firstAttribute="baseline" secondItem="7oQ-ac-iPy" secondAttribute="baseline" type="default" id="91V-aS-vq8"/>
                             <constraint firstItem="GJZ-UT-ZcL" firstAttribute="top" secondItem="nVt-vF-Uuv" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Api-rT-zVf"/>
-                            <constraint firstItem="KPJ-63-N2A" firstAttribute="leading" secondItem="1Jf-WK-mME" secondAttribute="leading" type="user" id="Ek6-oa-fDZ"/>
                             <constraint firstItem="Jef-hb-mBy" firstAttribute="leading" secondItem="1Jf-WK-mME" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="FZU-Xn-i9V"/>
                             <constraint firstItem="nVt-vF-Uuv" firstAttribute="top" secondItem="1Jf-WK-mME" secondAttribute="top" constant="20" symbolic="YES" type="default" id="KFE-rS-Lxt"/>
                             <constraint firstAttribute="trailing" secondItem="Jef-hb-mBy" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="LdG-0T-EUj"/>
                             <constraint firstItem="9cZ-8N-0dy" firstAttribute="leading" secondItem="1Jf-WK-mME" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="MYo-rF-fDy"/>
                             <constraint firstItem="GJZ-UT-ZcL" firstAttribute="leading" secondItem="1Jf-WK-mME" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Myt-sq-X1q"/>
                             <constraint firstItem="GJZ-UT-ZcL" firstAttribute="top" secondItem="h2h-V3-C2k" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="N50-iU-Wkc"/>
-                            <constraint firstItem="KPJ-63-N2A" firstAttribute="bottom" secondItem="1Jf-WK-mME" secondAttribute="bottom" type="user" id="NBt-X4-7WS"/>
                             <constraint firstAttribute="trailing" secondItem="h2h-V3-C2k" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="QSO-x8-Hfx"/>
                             <constraint firstItem="emx-DC-TUh" firstAttribute="leading" secondItem="9cZ-8N-0dy" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="RpP-Dz-xa4"/>
                             <constraint firstAttribute="trailing" secondItem="GJZ-UT-ZcL" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="S02-Ur-aX6"/>
                             <constraint firstItem="N48-y0-y8U" firstAttribute="leading" secondItem="1Jf-WK-mME" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Vjc-dD-ODh"/>
                             <constraint firstItem="gmY-4A-Tbw" firstAttribute="top" secondItem="1Jf-WK-mME" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Y3K-Id-TZm"/>
                             <constraint firstItem="emx-DC-TUh" firstAttribute="top" secondItem="1Jf-WK-mME" secondAttribute="top" constant="131" id="bYG-7v-PB9"/>
-                            <constraint firstItem="KPJ-63-N2A" firstAttribute="trailing" secondItem="1Jf-WK-mME" secondAttribute="trailing" type="user" id="c0L-CF-UoT"/>
                             <constraint firstItem="nVt-vF-Uuv" firstAttribute="leading" secondItem="1Jf-WK-mME" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="cHu-yl-DW4"/>
                             <constraint firstItem="h2h-V3-C2k" firstAttribute="leading" secondItem="N48-y0-y8U" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="ehz-cP-g2A"/>
                             <constraint firstItem="gmY-4A-Tbw" firstAttribute="leading" secondItem="N48-y0-y8U" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="gq6-1J-NtW"/>
@@ -1490,9 +1482,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                         <outlet property="levelImage" destination="nVt-vF-Uuv" id="lK8-dC-YZj"/>
                         <outlet property="levelLabel" destination="N48-y0-y8U" id="mS0-5s-Fn4"/>
                         <outlet property="nicknameLabel" destination="gmY-4A-Tbw" id="fpn-W6-aVE"/>
-                        <outlet property="passcodeContainerView" destination="KPJ-63-N2A" id="khP-VP-nsd"/>
-                        <outlet property="passcodeTextField" destination="t4x-qd-qcn" id="6hf-aa-hR9"/>
-                        <outlet property="submitPasscodeButton" destination="OgC-Ac-WsW" id="jTn-uA-x0g"/>
                         <outlet property="xmIndicator" destination="GJZ-UT-ZcL" id="Ntf-BV-Fyg"/>
                         <outlet property="xmLabel" destination="Jef-hb-mBy" id="dRc-Dn-j1l"/>
                         <segue destination="afs-tY-SlD" kind="modal" identifier="ImagePickerSegue" id="mJw-WW-9vi"/>
@@ -1842,7 +1831,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
             <objects>
                 <tableViewController id="pnd-0d-rSp" customClass="PortalKeysViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="V5K-Z3-PLK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="278"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="423"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -1884,7 +1873,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
             <objects>
                 <tableViewController id="KTC-Mi-HZa" customClass="MediaItemsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tAe-Bj-Duz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="423"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="MediaItemCell" textLabel="tlY-cT-uad" detailTextLabel="g5d-Dn-amK" style="IBUITableViewCellStyleSubtitle" id="HPn-yT-cdw" customClass="PortalKeyCell">
@@ -2688,7 +2677,7 @@ Range: 0km</string>
             <objects>
                 <tableViewController id="zM3-Tr-bQA" customClass="ResourcesViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="150" sectionHeaderHeight="22" sectionFooterHeight="22" id="Xvr-fT-iuU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="423"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="LevelsItemCell" rowHeight="150" id="s20-Or-aZK" customClass="ResourceCell">
@@ -3113,7 +3102,7 @@ Range: 0km</string>
         <image name="negative_btn_background_default.png" width="16" height="16"/>
         <image name="negative_btn_background_disabled.png" width="16" height="16"/>
         <image name="negative_btn_background_pressed.png" width="16" height="16"/>
-        <image name="playerArrow@2x.png" width="100" height="100"/>
+        <image name="playerArrow.png" width="16" height="16"/>
         <image name="positive_btn_background_default.png" width="16" height="16"/>
         <image name="positive_btn_background_disabled.png" width="16" height="16"/>
         <image name="positive_btn_background_pressed.png" width="16" height="16"/>
@@ -3138,6 +3127,6 @@ Range: 0km</string>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="7q6-q9-DTR"/>
-        <segue reference="s91-lu-tu1"/>
+        <segue reference="Hzu-Lp-GfO"/>
     </inferredMetricsTieBreakers>
 </document>
