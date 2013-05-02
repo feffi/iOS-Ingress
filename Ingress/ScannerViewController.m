@@ -687,7 +687,7 @@
 
 - (void)fireXMPOfLevel:(int)level {
 	
-	XMP *xmpItem = [XMP MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", level] andRetrieveAttributes:@[@"guid"]];
+	XMP *xmpItem = [XMP MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", level]];
 
 	NSLog(@"Firing: %@", xmpItem);
 	

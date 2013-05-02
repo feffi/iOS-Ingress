@@ -198,7 +198,7 @@
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
 
-		Resonator *resonatorItem = [Resonator MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", level] andRetrieveAttributes:@[@"guid"]];
+		Resonator *resonatorItem = [Resonator MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", level]];
 		
 		if (!resonatorItem) {
 			NSLog(@"No resonator of that level remaining!");
@@ -315,7 +315,7 @@
 	[[AppDelegate instance].window addSubview:HUD];
 	[HUD show:YES];
 
-	Shield *shieldItem = [Shield MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity] andRetrieveAttributes:@[@"guid"]];
+	Shield *shieldItem = [Shield MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
 	
 	if (!shieldItem) {
 		NSLog(@"No shield of that rarity remaining!");
