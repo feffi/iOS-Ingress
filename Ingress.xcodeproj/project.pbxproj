@@ -231,6 +231,7 @@
 		FAE6FB6616AD391800FE188C /* UIBlackCloseButtonPressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE6FB6216AD391800FE188C /* UIBlackCloseButtonPressed@2x.png */; };
 		FAE6FB6916ADC28E00FE188C /* resonatorFromTop@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE6FB6816ADC28E00FE188C /* resonatorFromTop@2x.png */; };
 		FAE6FB7716AFEDFA00FE188C /* scanner-bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE6FB7616AFEDFA00FE188C /* scanner-bg@2x.png */; };
+		FAE71C2F1732ACC100742071 /* DeviceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE71C2E1732ACC100742071 /* DeviceViewController.m */; };
 		FAE797CB16B4873C00A57316 /* UIImage+ColorReplace.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE797CA16B4873C00A57316 /* UIImage+ColorReplace.m */; };
 		FAE797D316B49B8A00A57316 /* borders.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE797D216B49B8A00A57316 /* borders.png */; };
 		FAE797D716B49BFB00A57316 /* GLKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAE797D616B49BFB00A57316 /* GLKit.framework */; };
@@ -746,6 +747,8 @@
 		FAE6FB6216AD391800FE188C /* UIBlackCloseButtonPressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UIBlackCloseButtonPressed@2x.png"; sourceTree = "<group>"; };
 		FAE6FB6816ADC28E00FE188C /* resonatorFromTop@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "resonatorFromTop@2x.png"; sourceTree = "<group>"; };
 		FAE6FB7616AFEDFA00FE188C /* scanner-bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "scanner-bg@2x.png"; sourceTree = "<group>"; };
+		FAE71C2D1732ACC100742071 /* DeviceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeviceViewController.h; sourceTree = "<group>"; };
+		FAE71C2E1732ACC100742071 /* DeviceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeviceViewController.m; sourceTree = "<group>"; };
 		FAE797C916B4873C00A57316 /* UIImage+ColorReplace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+ColorReplace.h"; path = "ColorReplace/UIImage+ColorReplace.h"; sourceTree = "<group>"; };
 		FAE797CA16B4873C00A57316 /* UIImage+ColorReplace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+ColorReplace.m"; path = "ColorReplace/UIImage+ColorReplace.m"; sourceTree = "<group>"; };
 		FAE797D216B49B8A00A57316 /* borders.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = borders.png; sourceTree = "<group>"; };
@@ -1786,6 +1789,16 @@
 			name = Extensions;
 			sourceTree = "<group>";
 		};
+		FAE71C2C1732ACA900742071 /* Device */ = {
+			isa = PBXGroup;
+			children = (
+				FAE71C2D1732ACC100742071 /* DeviceViewController.h */,
+				FAE71C2E1732ACC100742071 /* DeviceViewController.m */,
+			);
+			name = Device;
+			path = Ingress;
+			sourceTree = "<group>";
+		};
 		FAE797CD16B4874100A57316 /* UIImage+ColorReplace */ = {
 			isa = PBXGroup;
 			children = (
@@ -1811,9 +1824,10 @@
 				FAEA5841169C7E7500E2F502 /* Ingress */,
 				FAC37C46169DE2EB000F88AB /* Loading View Controller */,
 				FA54DEFA16A19BAE006A92E0 /* Intel */,
-				FAEA5861169C7E8500E2F502 /* Scanner */,
 				FA54DEF216A1970A006A92E0 /* Items */,
+				FAEA5861169C7E8500E2F502 /* Scanner */,
 				FA32E885169F655E00D30E90 /* Comm */,
+				FAE71C2C1732ACA900742071 /* Device */,
 				FAB5A2C916AA164900176C34 /* Level Buttons */,
 				FAA9C4781732A3DD000C2638 /* XM Collect */,
 				FA32E871169EC13900D30E90 /* Model */,
@@ -2235,6 +2249,7 @@
 				FAA9C46A17304B6A000C2638 /* MagicalRecord.m in Sources */,
 				FAA9C47317306EB9000C2638 /* PortalKey.m in Sources */,
 				FAA9C47B1732A3FB000C2638 /* XMCollectViewController.m in Sources */,
+				FAE71C2F1732ACC100742071 /* DeviceViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

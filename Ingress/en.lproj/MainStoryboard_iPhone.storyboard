@@ -7,7 +7,6 @@
         <!--Tab Bar Controller-->
         <scene sceneID="kFv-Sh-Lkm">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="g0y-By-HTu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController definesPresentationContext="YES" id="GaO-I4-JTp" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="F4L-Rt-vFw">
@@ -24,8 +23,9 @@
                         <segue destination="jM8-0Z-aAW" kind="relationship" relationship="viewControllers" id="Xfu-21-dMA"/>
                     </connections>
                 </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g0y-By-HTu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-872" y="-313"/>
+            <point key="canvasLocation" x="-280" y="-521"/>
         </scene>
         <!--Navigation Controller - Items-->
         <scene sceneID="ofL-4x-hGT">
@@ -44,7 +44,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G9V-gS-9V5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-170" y="19"/>
+            <point key="canvasLocation" x="422" y="-189"/>
         </scene>
         <!--Items View Controller-->
         <scene sceneID="hKS-7Z-ZNQ">
@@ -171,7 +171,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HcJ-Uy-RZc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="275" y="19"/>
+            <point key="canvasLocation" x="867" y="-189"/>
         </scene>
         <!--Navigation Controller - Scanner-->
         <scene sceneID="80z-Xa-7dV">
@@ -190,7 +190,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Pv-rg-qeQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-170" y="-695"/>
+            <point key="canvasLocation" x="422" y="-903"/>
         </scene>
         <!--Intel View Controller-->
         <scene sceneID="QxF-5D-TQB">
@@ -260,7 +260,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pzc-8t-E1D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="275" y="-1372"/>
+            <point key="canvasLocation" x="867" y="-1580"/>
         </scene>
         <!--Navigation Controller - Comm-->
         <scene sceneID="FZF-To-TPP">
@@ -279,7 +279,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hqx-PB-BGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-170" y="721"/>
+            <point key="canvasLocation" x="422" y="513"/>
         </scene>
         <!--Comm View Controller-->
         <scene sceneID="qvd-LH-EQa">
@@ -382,35 +382,65 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IBw-gp-6Ds" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="275" y="721"/>
+            <point key="canvasLocation" x="867" y="513"/>
         </scene>
-        <!--Table View Controller - Device-->
+        <!--Device View Controller - Device-->
         <scene sceneID="e6j-6Z-d3P">
             <objects>
-                <tableViewController id="Pcn-Hn-MnN" sceneMemberID="viewController">
+                <tableViewController id="Pcn-Hn-MnN" customClass="DeviceViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="LbP-3h-9Ro">
                         <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
-                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="s7i-w8-vdA">
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DeviceCell" textLabel="7sB-r7-PVx" style="IBUITableViewCellStyleDefault" id="s7i-w8-vdA">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7sB-r7-PVx">
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </label>
+                                    </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
+                                <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                             </tableViewCell>
                         </prototypes>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Device" id="qY5-jF-5EJ"/>
+                    <navigationItem key="navigationItem" title="Device" id="qY5-jF-5EJ">
+                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="CXp-Yz-b6J">
+                            <connections>
+                                <action selector="refreshInventory" destination="Pcn-Hn-MnN" id="Xqr-Ea-Uwc"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="k3p-Gg-UMR">
+                            <connections>
+                                <action selector="actionSheet" destination="Pcn-Hn-MnN" id="oWG-10-IbY"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <connections>
+                        <segue destination="3q1-04-OzW" kind="modal" identifier="ImagePickerSegue" id="Il2-uq-hnI"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="auy-s1-FIL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="275" y="1395"/>
+            <point key="canvasLocation" x="867" y="1187"/>
+        </scene>
+        <!--Image Picker Controller-->
+        <scene sceneID="iFq-xW-tFQ">
+            <objects>
+                <viewController id="3q1-04-OzW" customClass="UIImagePickerController" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sh3-Kv-xPZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1324" y="1187"/>
         </scene>
         <!--Navigation Controller - Device-->
         <scene sceneID="c9s-VD-gZs">
@@ -429,7 +459,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LJf-5Y-N8C" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-170" y="1395"/>
+            <point key="canvasLocation" x="422" y="1187"/>
         </scene>
         <!--Comm Table View Controller-->
         <scene sceneID="gb3-d6-LgV">
@@ -492,7 +522,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="57d-Q6-hJv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="732" y="793"/>
+            <point key="canvasLocation" x="1324" y="585"/>
         </scene>
         <!--Loading View Controller-->
         <scene sceneID="uMM-3C-hgZ">
@@ -993,7 +1023,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="49k-TZ-SO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1357" y="-313"/>
+            <point key="canvasLocation" x="-765" y="-521"/>
         </scene>
         <!--Scanner View Controller - Scanner-->
         <scene sceneID="5">
@@ -1100,7 +1130,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="275" y="-695"/>
+            <point key="canvasLocation" x="867" y="-903"/>
         </scene>
         <!--Portal Detail View Controller-->
         <scene sceneID="tKq-tx-ryc">
@@ -1148,7 +1178,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mac-VV-Wvp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="732" y="-695"/>
+            <point key="canvasLocation" x="1324" y="-903"/>
         </scene>
         <!--Level Chooser View Controller-->
         <scene sceneID="gD5-7r-ULd">
@@ -1358,7 +1388,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MfC-oC-0gb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1067" y="919"/>
+            <point key="canvasLocation" x="-475" y="711"/>
         </scene>
         <!--Navigation Controller - Intel-->
         <scene sceneID="Ela-fL-e9c">
@@ -1377,7 +1407,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="apv-Ml-OCy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-170" y="-1372"/>
+            <point key="canvasLocation" x="422" y="-1580"/>
         </scene>
         <!--Score View Controller-->
         <scene sceneID="tJs-a1-kIX">
@@ -1406,7 +1436,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nVe-S6-2yC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="732" y="-1316"/>
+            <point key="canvasLocation" x="1324" y="-1524"/>
         </scene>
         <!--GLKit View Controller-->
         <scene sceneID="Mce-9E-pGk">
@@ -1423,7 +1453,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </glkViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iHK-dZ-ie3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1155" y="-1932"/>
+            <point key="canvasLocation" x="1747" y="-2140"/>
         </scene>
         <!--Missions View Controller-->
         <scene sceneID="kB9-mT-YOn">
@@ -1605,7 +1635,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </label>
             </objects>
-            <point key="canvasLocation" x="1155" y="-1316"/>
+            <point key="canvasLocation" x="1747" y="-1524"/>
         </scene>
         <!--Recruit View Controller-->
         <scene sceneID="C2I-yU-jlK">
@@ -1696,7 +1726,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Zn-ex-Sku" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1567" y="-1316"/>
+            <point key="canvasLocation" x="2159" y="-1524"/>
         </scene>
         <!--Portal Keys View Controller-->
         <scene sceneID="pOX-u1-cSZ">
@@ -1738,7 +1768,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="esV-93-vjs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1155" y="75"/>
+            <point key="canvasLocation" x="1747" y="-133"/>
         </scene>
         <!--Media Items View Controller-->
         <scene sceneID="985-dd-AQF">
@@ -1780,7 +1810,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1r5-qZ-6pz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1567" y="75"/>
+            <point key="canvasLocation" x="2159" y="-133"/>
         </scene>
         <!--Portal Upgrade View Controller-->
         <scene sceneID="Eh4-m3-S9L">
@@ -2250,7 +2280,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="L77-A5-XYN" firstAttribute="leading" secondItem="3fD-vG-amo" secondAttribute="leading" type="default" id="8uo-Br-YMH"/>
                             <constraint firstItem="L77-A5-XYN" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="127" type="user" id="AhV-jL-8KP"/>
                             <constraint firstItem="tuj-pb-dGt" firstAttribute="trailing" secondItem="BGQ-ax-GRG" secondAttribute="trailing" type="default" id="EGq-Vr-c5p"/>
-                            <constraint firstItem="Q5O-R5-Pic" firstAttribute="baseline" secondItem="BGQ-ax-GRG" secondAttribute="baseline" type="default" id="EeM-MO-kD3"/>
                             <constraint firstItem="3fD-vG-amo" firstAttribute="top" secondItem="auU-pM-4h0" secondAttribute="top" type="user" id="G7Y-CW-cOb"/>
                             <constraint firstItem="Yi5-ja-2IB" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="20" symbolic="YES" type="default" id="GUO-Sb-jor"/>
                             <constraint firstItem="L77-A5-XYN" firstAttribute="leading" secondItem="6ts-Vu-ZgC" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="HGw-Bb-yjz"/>
@@ -2281,7 +2310,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="mMh-B8-j72" firstAttribute="leading" secondItem="3fD-vG-amo" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="rJb-4g-rbZ"/>
                             <constraint firstItem="1aa-eF-7rd" firstAttribute="centerX" secondItem="xob-Tu-pne" secondAttribute="centerX" type="user" id="rRy-lj-hh1"/>
                             <constraint firstItem="uYr-0g-eP5" firstAttribute="bottom" secondItem="Afx-ul-7bp" secondAttribute="bottom" type="default" id="u6o-nZ-AnQ"/>
-                            <constraint firstItem="tuj-pb-dGt" firstAttribute="baseline" secondItem="mMh-B8-j72" secondAttribute="baseline" type="default" id="v5O-H7-9WD"/>
                             <constraint firstItem="BGQ-ax-GRG" firstAttribute="trailing" secondItem="Yi5-ja-2IB" secondAttribute="trailing" type="default" id="v92-Mx-A2b"/>
                             <constraint firstItem="6ts-Vu-ZgC" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="126" id="vUH-fW-0mD"/>
                         </constraints>
@@ -2290,7 +2318,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tVf-gE-chp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1567" y="-639"/>
+            <point key="canvasLocation" x="2159" y="-847"/>
         </scene>
         <!--Portal Info View Controller-->
         <scene sceneID="9Yb-wm-wMW">
@@ -2444,7 +2472,7 @@ Range: 0km</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UeV-Oi-m2q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1155" y="-639"/>
+            <point key="canvasLocation" x="1747" y="-847"/>
         </scene>
         <!--Level Chooser View Controller-->
         <scene sceneID="OoB-0g-DNW">
@@ -2544,7 +2572,7 @@ Range: 0km</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ePh-OW-Egj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1067" y="1121"/>
+            <point key="canvasLocation" x="-475" y="913"/>
         </scene>
         <!--Collect View Controller-->
         <scene sceneID="dSv-g1-fQ7">
@@ -2595,7 +2623,7 @@ Range: 0km</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wIG-QS-RlU" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1072" y="1301"/>
+            <point key="canvasLocation" x="-480" y="1093"/>
         </scene>
         <!--Resources View Controller-->
         <scene sceneID="aha-5f-TD9">
@@ -3014,7 +3042,7 @@ Range: 0km</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sb2-Ma-HN8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="732" y="75"/>
+            <point key="canvasLocation" x="1324" y="-133"/>
         </scene>
     </scenes>
     <resources>
@@ -3045,6 +3073,232 @@ Range: 0km</string>
         <image name="scanner.png" width="27" height="27"/>
         <image name="zap.png" width="12" height="24"/>
     </resources>
+    <classes>
+        <class className="CommTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CommTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="messageLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CommTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CommTableViewController.h"/>
+        </class>
+        <class className="CommViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CommViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="groupChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="action" name="transmit"/>
+                <relationship kind="outlet" name="groupSegments" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="transmitButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="transmitContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="transmitTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CustomBackgroundColorButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomBackgroundColorButton.h"/>
+        </class>
+        <class className="DarkPressedBackgroundButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DarkPressedBackgroundButton.h"/>
+        </class>
+        <class className="DeviceViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DeviceViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="actionSheet"/>
+                <relationship kind="action" name="refreshInventory"/>
+            </relationships>
+        </class>
+        <class className="GLViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GLViewController.h"/>
+        </class>
+        <class className="GUIButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GUIButton.h"/>
+        </class>
+        <class className="GlowingLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GlowingLabel.h"/>
+        </class>
+        <class className="IntelViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/IntelViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="viewSegmentedControlChanged"/>
+                <relationship kind="outlet" name="missionsContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="recruitContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="scoreContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="viewSegmentedControl" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="ItemsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ItemsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="submitPasscode"/>
+                <relationship kind="action" name="viewSegmentedControlChanged"/>
+                <relationship kind="outlet" name="mediaContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="passcodeContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="passcodeTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="portalKeysContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="resourcesContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="submitPasscodeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="viewSegmentedControl" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="LevelChooserViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LevelChooserViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="action:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="LoadingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoadingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="activate"/>
+                <relationship kind="action" name="codenameConfirm"/>
+                <relationship kind="action" name="codenameRetry"/>
+                <relationship kind="action" name="createCodename"/>
+                <relationship kind="action" name="termsCheckboxChanged"/>
+                <relationship kind="action" name="termsConfirm"/>
+                <relationship kind="outlet" name="activationButton" candidateClass="CustomBackgroundColorButton"/>
+                <relationship kind="outlet" name="activationCodeField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="activationErrorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="activationView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="codenameConfirmButton" candidateClass="StretchableBackgroundButton"/>
+                <relationship kind="outlet" name="codenameConfirmLabel" candidateClass="TypeWriterLabel"/>
+                <relationship kind="outlet" name="codenameConfirmRetryButton" candidateClass="StretchableBackgroundButton"/>
+                <relationship kind="outlet" name="codenameConfirmView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="codenameErrorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="codenameErrorRetryButton" candidateClass="StretchableBackgroundButton"/>
+                <relationship kind="outlet" name="codenameErrorView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="createCodenameButton" candidateClass="CustomBackgroundColorButton"/>
+                <relationship kind="outlet" name="createCodenameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="createCodenameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="createCodenameScrollview" candidateClass="TPKeyboardAvoidingScrollView"/>
+                <relationship kind="outlet" name="introTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="introView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="termsCheckboxButton" candidateClass="SelectingButton"/>
+                <relationship kind="outlet" name="termsConfirmButton" candidateClass="StretchableBackgroundButton"/>
+                <relationship kind="outlet" name="termsDescriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="termsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="termsView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="termsWarningLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="typewriterLabel" candidateClass="TypeWriterLabel"/>
+                <relationship kind="outlet" name="typewriterView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="wheelActivityIndicatorView" candidateClass="WheelActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="MediaItemsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MediaItemsViewController.h"/>
+        </class>
+        <class className="MissionsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MissionsViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="PortalDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="viewSegmentedControlChanged"/>
+                <relationship kind="outlet" name="upgradeContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="viewSegmentedControl" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="PortalInfoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalInfoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="hack:" candidateClass="GUIButton"/>
+                <relationship kind="action" name="link:" candidateClass="GUIButton"/>
+                <relationship kind="action" name="recharge:" candidateClass="GUIButton"/>
+                <relationship kind="outlet" name="hackButton" candidateClass="GUIButton"/>
+                <relationship kind="outlet" name="imageActivityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="infoLabel1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="infoLabel2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="linkButton" candidateClass="GUIButton"/>
+                <relationship kind="outlet" name="portalTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="rechargeButton" candidateClass="GUIButton"/>
+            </relationships>
+        </class>
+        <class className="PortalKeyCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalKeyCell.h"/>
+        </class>
+        <class className="PortalKeysViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalKeysViewController.h"/>
+        </class>
+        <class className="PortalUpgradeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalUpgradeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="resonatorButtonPressed:" candidateClass="GUIButton"/>
+                <relationship kind="action" name="shieldButtonPressed:" candidateClass="GUIButton"/>
+            </relationships>
+        </class>
+        <class className="RecruitViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecruitViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="invite"/>
+                <relationship kind="outlet" name="inviteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="inviteContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="inviteLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="inviteTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ResourceCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ResourceCell.h"/>
+            <relationships>
+                <relationship kind="action" name="action:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="itemImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="ResourcesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ResourcesViewController.h"/>
+        </class>
+        <class className="ScannerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScannerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="collectXM"/>
+                <relationship kind="action" name="fireXMP"/>
+                <relationship kind="action" name="refresh"/>
+                <relationship kind="outlet" name="_mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="bgImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="fireXmpButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="levelImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="levelLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nicknameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="playerArrowImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="xmIndicator" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="xmLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ScoreViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScoreViewController.h"/>
+        </class>
+        <class className="SelectingButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectingButton.h"/>
+        </class>
+        <class className="StretchableBackgroundButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StretchableBackgroundButton.h"/>
+        </class>
+        <class className="TPKeyboardAvoidingScrollView" superclassName="UIScrollView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TPKeyboardAvoidingScrollView.h"/>
+        </class>
+        <class className="TypeWriterLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TypeWriterLabel.h"/>
+        </class>
+        <class className="UIRefreshControl" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
+        </class>
+        <class className="WheelActivityIndicatorView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WheelActivityIndicatorView.h"/>
+        </class>
+        <class className="XMCollectViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/XMCollectViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="energyCollectValueChanged:" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="energyCollectLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="energyCollectNumberLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="energyCollectStepper" candidateClass="UIStepper"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
