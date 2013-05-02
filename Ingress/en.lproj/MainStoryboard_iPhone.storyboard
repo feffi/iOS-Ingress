@@ -1050,7 +1050,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 </constraints>
                             </imageView>
                             <imageView opaque="NO" userInteractionEnabled="NO" contentMode="center" image="playerArrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="BX0-yd-s1M">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="1" green="0.29411764709999999" blue="0.29411764709999999" alpha="0.5" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" id="7lC-bf-Unj"/>
                                     <constraint firstAttribute="height" constant="50" id="U7H-jJ-vg1"/>

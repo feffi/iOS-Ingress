@@ -146,6 +146,13 @@
 
 //	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 
+	[ControlField MR_truncateAll];
+	[PortalLink MR_truncateAll];
+	[Item MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"dropped = YES"]];
+	[EnergyGlob MR_truncateAll];
+	[DeployedResonator MR_truncateAll];
+	[DeployedMod MR_truncateAll];
+
 	__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
 	HUD.userInteractionEnabled = YES;
 	HUD.dimBackground = YES;
