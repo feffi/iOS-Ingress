@@ -7,6 +7,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="kFv-Sh-Lkm">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="g0y-By-HTu" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tabBarController definesPresentationContext="YES" id="GaO-I4-JTp" sceneMemberID="viewController">
                     <nil key="simulatedBottomBarMetrics"/>
                     <tabBar key="tabBar" contentMode="scaleToFill" id="F4L-Rt-vFw">
@@ -16,16 +17,15 @@
                         <color key="selectedImageTintColor" red="0.0" green="0.72941176470588232" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="Qon-zT-HG1" kind="relationship" relationship="viewControllers" id="RWx-QC-qst"/>
                         <segue destination="0Yz-ju-TH7" kind="relationship" relationship="viewControllers" id="mQg-iy-wbf"/>
-                        <segue destination="uov-Gq-D3V" kind="relationship" relationship="viewControllers" id="JNv-4Y-Dgd"/>
                         <segue destination="037-Ag-kxy" kind="relationship" relationship="viewControllers" id="xvx-iO-JCy"/>
+                        <segue destination="uov-Gq-D3V" kind="relationship" relationship="viewControllers" id="JNv-4Y-Dgd"/>
                         <segue destination="itQ-wA-Fj4" kind="relationship" relationship="viewControllers" id="Giz-l6-G1E"/>
+                        <segue destination="jM8-0Z-aAW" kind="relationship" relationship="viewControllers" id="Xfu-21-dMA"/>
                     </connections>
                 </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="g0y-By-HTu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="280" y="-1279"/>
+            <point key="canvasLocation" x="-872" y="-313"/>
         </scene>
         <!--Navigation Controller - Items-->
         <scene sceneID="ofL-4x-hGT">
@@ -44,7 +44,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="G9V-gS-9V5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="726" y="-565"/>
+            <point key="canvasLocation" x="-170" y="19"/>
         </scene>
         <!--Items View Controller-->
         <scene sceneID="hKS-7Z-ZNQ">
@@ -103,7 +103,6 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="submitPasscode" destination="dyv-6N-1Hj" eventType="touchUpInside" id="LAa-uS-TEg"/>
                                             <action selector="submitPasscode" destination="UPB-vb-vXl" eventType="touchUpInside" id="tfC-hb-AZ2"/>
                                         </connections>
                                     </button>
@@ -172,7 +171,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HcJ-Uy-RZc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1171" y="-565"/>
+            <point key="canvasLocation" x="275" y="19"/>
         </scene>
         <!--Navigation Controller - Scanner-->
         <scene sceneID="80z-Xa-7dV">
@@ -191,7 +190,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6Pv-rg-qeQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="726" y="-1279"/>
+            <point key="canvasLocation" x="-170" y="-695"/>
         </scene>
         <!--Intel View Controller-->
         <scene sceneID="QxF-5D-TQB">
@@ -261,7 +260,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pzc-8t-E1D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1171" y="-1956"/>
+            <point key="canvasLocation" x="275" y="-1372"/>
         </scene>
         <!--Navigation Controller - Comm-->
         <scene sceneID="FZF-To-TPP">
@@ -280,7 +279,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hqx-PB-BGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="726" y="137"/>
+            <point key="canvasLocation" x="-170" y="721"/>
         </scene>
         <!--Comm View Controller-->
         <scene sceneID="qvd-LH-EQa">
@@ -383,7 +382,54 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IBw-gp-6Ds" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1171" y="137"/>
+            <point key="canvasLocation" x="275" y="721"/>
+        </scene>
+        <!--Table View Controller - Device-->
+        <scene sceneID="e6j-6Z-d3P">
+            <objects>
+                <tableViewController id="Pcn-Hn-MnN" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="LbP-3h-9Ro">
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="s7i-w8-vdA">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                            </tableViewCell>
+                        </prototypes>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Device" id="qY5-jF-5EJ"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="auy-s1-FIL" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="275" y="1395"/>
+        </scene>
+        <!--Navigation Controller - Device-->
+        <scene sceneID="c9s-VD-gZs">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="jM8-0Z-aAW" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Device" image="UIBlackCloseButton.png" id="C2g-Qi-MJZ"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="TFE-M3-MmX">
+                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Pcn-Hn-MnN" kind="relationship" relationship="rootViewController" id="BVe-FL-4HR"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LJf-5Y-N8C" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-170" y="1395"/>
         </scene>
         <!--Comm Table View Controller-->
         <scene sceneID="gb3-d6-LgV">
@@ -446,7 +492,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="57d-Q6-hJv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1628" y="209"/>
+            <point key="canvasLocation" x="732" y="793"/>
         </scene>
         <!--Loading View Controller-->
         <scene sceneID="uMM-3C-hgZ">
@@ -947,7 +993,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="49k-TZ-SO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-205" y="-1279"/>
+            <point key="canvasLocation" x="-1357" y="-313"/>
         </scene>
         <!--Scanner View Controller - Scanner-->
         <scene sceneID="5">
@@ -1030,28 +1076,20 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Scanner" id="jRf-fb-O9l">
-                        <barButtonItem key="leftBarButtonItem" id="Sc4-8d-BZ2">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="I58-Rl-JXR">
-                                <rect key="frame" x="5" y="7" width="30" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" image="zap.png">
-                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="fireXMP" destination="2" eventType="touchUpInside" id="C98-oz-T3V"/>
-                                </connections>
-                            </button>
+                        <barButtonItem key="leftBarButtonItem" image="zap.png" id="NPf-Pa-les">
+                            <connections>
+                                <action selector="fireXMP" destination="2" id="nEj-jJ-Bqe"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="XM" id="bYz-Bo-FiU">
+                            <connections>
+                                <action selector="collectXM" destination="2" id="Ekr-2H-6Ie"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="_mapView" destination="tWm-XI-3eu" id="TYM-6X-0Mj"/>
                         <outlet property="bgImage" destination="rgS-1f-mzM" id="0oU-xG-bLH"/>
-                        <outlet property="fireXmpButton" destination="I58-Rl-JXR" id="IrP-EH-EqH"/>
                         <outlet property="levelImage" destination="vWW-24-44t" id="nci-Lv-w7L"/>
                         <outlet property="levelLabel" destination="7MI-jq-NjA" id="hjb-HK-2sK"/>
                         <outlet property="nicknameLabel" destination="oVe-o2-Lr5" id="vpD-9Y-GZW"/>
@@ -1062,7 +1100,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1171" y="-1279"/>
+            <point key="canvasLocation" x="275" y="-695"/>
         </scene>
         <!--Portal Detail View Controller-->
         <scene sceneID="tKq-tx-ryc">
@@ -1110,7 +1148,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mac-VV-Wvp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1628" y="-1279"/>
+            <point key="canvasLocation" x="732" y="-695"/>
         </scene>
         <!--Level Chooser View Controller-->
         <scene sceneID="gD5-7r-ULd">
@@ -1320,26 +1358,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MfC-oC-0gb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2861" y="-1025"/>
-        </scene>
-        <!--Navigation Controller - Profile-->
-        <scene sceneID="jPt-4t-f2o">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="Qon-zT-HG1" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" image="profile.png" id="jFl-Hg-dbf"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="cY0-cl-ShG">
-                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="dyv-6N-1Hj" kind="relationship" relationship="rootViewController" id="VnG-0h-WY1"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lwn-ZL-sdd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="726" y="-2629"/>
+            <point key="canvasLocation" x="-1067" y="919"/>
         </scene>
         <!--Navigation Controller - Intel-->
         <scene sceneID="Ela-fL-e9c">
@@ -1358,153 +1377,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="apv-Ml-OCy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="726" y="-1956"/>
-        </scene>
-        <!--Profile View Controller - Profile-->
-        <scene sceneID="sxJ-hi-bPF">
-            <objects>
-                <viewController wantsFullScreenLayout="YES" id="dyv-6N-1Hj" customClass="ProfileViewController" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="1Jf-WK-mME">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="ap_icon_enl_0.png" translatesAutoresizingMaskIntoConstraints="NO" id="nVt-vF-Uuv"/>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nickname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="gmY-4A-Tbw" customClass="GlowingLabel">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="20" id="NTx-jv-TMl"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.15686274510000001" green="0.95686274510000002" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.043137254899999998" green="0.047058823530000002" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <size key="shadowOffset" width="-1" height="-1"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="211" translatesAutoresizingMaskIntoConstraints="NO" id="h2h-V3-C2k" customClass="GlowingLabel">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="lux-c6-pub"/>
-                                </constraints>
-                                <string key="text">0 AP
-[0 AP required for level 0]</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" red="0.15686274510000001" green="0.95686274510000002" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.043137254899999998" green="0.047058823530000002" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <size key="shadowOffset" width="-1" height="-1"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0 / 0 XM" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jef-hb-mBy" customClass="GlowingLabel">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="18" id="SGA-gq-Chs"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
-                                <color key="textColor" red="0.15686274510000001" green="0.95686274510000002" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                                <color key="shadowColor" red="0.043137254899999998" green="0.047058823530000002" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <size key="shadowOffset" width="-1" height="-1"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="32" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="61" translatesAutoresizingMaskIntoConstraints="NO" id="N48-y0-y8U" customClass="GlowingLabel">
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="61" id="L1T-dx-eX5"/>
-                                    <constraint firstAttribute="width" constant="61" id="zmr-rm-Ko3"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="32"/>
-                                <color key="textColor" red="0.92156862750000001" green="0.73725490199999999" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <progressView opaque="NO" contentMode="scaleToFill" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="GJZ-UT-ZcL">
-                                <color key="progressTintColor" red="0.15686274510000001" green="0.95686274510000002" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <color key="trackTintColor" red="0.043137254899999998" green="0.047058823530000002" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
-                            </progressView>
-                            <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="emx-DC-TUh">
-                                <connections>
-                                    <action selector="energyCollectValueChanged:" destination="dyv-6N-1Hj" eventType="valueChanged" id="Mi4-4h-zEi"/>
-                                </connections>
-                            </stepper>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Collect XM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9cZ-8N-0dy" customClass="GlowingLabel">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="yRk-R3-RJR"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0 / 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7oQ-ac-iPy" customClass="GlowingLabel">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="MA4-Dq-Twf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="N48-y0-y8U" firstAttribute="top" secondItem="1Jf-WK-mME" secondAttribute="top" constant="20" symbolic="YES" type="default" id="0a9-7f-51c"/>
-                            <constraint firstAttribute="trailing" secondItem="7oQ-ac-iPy" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="2t8-vc-R8y"/>
-                            <constraint firstItem="emx-DC-TUh" firstAttribute="top" secondItem="Jef-hb-mBy" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="5Qp-8Q-lCi"/>
-                            <constraint firstItem="7oQ-ac-iPy" firstAttribute="centerY" secondItem="emx-DC-TUh" secondAttribute="centerY" type="default" id="7uM-et-vMy"/>
-                            <constraint firstItem="9cZ-8N-0dy" firstAttribute="baseline" secondItem="7oQ-ac-iPy" secondAttribute="baseline" type="default" id="91V-aS-vq8"/>
-                            <constraint firstItem="GJZ-UT-ZcL" firstAttribute="top" secondItem="nVt-vF-Uuv" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Api-rT-zVf"/>
-                            <constraint firstItem="Jef-hb-mBy" firstAttribute="leading" secondItem="1Jf-WK-mME" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="FZU-Xn-i9V"/>
-                            <constraint firstItem="nVt-vF-Uuv" firstAttribute="top" secondItem="1Jf-WK-mME" secondAttribute="top" constant="20" symbolic="YES" type="default" id="KFE-rS-Lxt"/>
-                            <constraint firstAttribute="trailing" secondItem="Jef-hb-mBy" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="LdG-0T-EUj"/>
-                            <constraint firstItem="9cZ-8N-0dy" firstAttribute="leading" secondItem="1Jf-WK-mME" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="MYo-rF-fDy"/>
-                            <constraint firstItem="GJZ-UT-ZcL" firstAttribute="leading" secondItem="1Jf-WK-mME" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Myt-sq-X1q"/>
-                            <constraint firstItem="GJZ-UT-ZcL" firstAttribute="top" secondItem="h2h-V3-C2k" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="N50-iU-Wkc"/>
-                            <constraint firstAttribute="trailing" secondItem="h2h-V3-C2k" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="QSO-x8-Hfx"/>
-                            <constraint firstItem="emx-DC-TUh" firstAttribute="leading" secondItem="9cZ-8N-0dy" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="RpP-Dz-xa4"/>
-                            <constraint firstAttribute="trailing" secondItem="GJZ-UT-ZcL" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="S02-Ur-aX6"/>
-                            <constraint firstItem="N48-y0-y8U" firstAttribute="leading" secondItem="1Jf-WK-mME" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Vjc-dD-ODh"/>
-                            <constraint firstItem="gmY-4A-Tbw" firstAttribute="top" secondItem="1Jf-WK-mME" secondAttribute="top" constant="20" symbolic="YES" type="default" id="Y3K-Id-TZm"/>
-                            <constraint firstItem="emx-DC-TUh" firstAttribute="top" secondItem="1Jf-WK-mME" secondAttribute="top" constant="131" id="bYG-7v-PB9"/>
-                            <constraint firstItem="nVt-vF-Uuv" firstAttribute="leading" secondItem="1Jf-WK-mME" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="cHu-yl-DW4"/>
-                            <constraint firstItem="h2h-V3-C2k" firstAttribute="leading" secondItem="N48-y0-y8U" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="ehz-cP-g2A"/>
-                            <constraint firstItem="gmY-4A-Tbw" firstAttribute="leading" secondItem="N48-y0-y8U" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="gq6-1J-NtW"/>
-                            <constraint firstAttribute="trailing" secondItem="gmY-4A-Tbw" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="tea-WQ-kZl"/>
-                        </constraints>
-                    </view>
-                    <toolbarItems/>
-                    <navigationItem key="navigationItem" title="Profile" id="w8S-RT-EVO">
-                        <barButtonItem key="leftBarButtonItem" systemItem="refresh" id="F4e-jq-sfP">
-                            <connections>
-                                <action selector="refreshInventory" destination="dyv-6N-1Hj" id="lAO-Uj-2Lx"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="EKD-pt-WSY">
-                            <connections>
-                                <action selector="actionSheet" destination="dyv-6N-1Hj" id="f5a-9J-9Ue"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
-                    <connections>
-                        <outlet property="apLabel" destination="h2h-V3-C2k" id="rVn-OQ-hQZ"/>
-                        <outlet property="energyCollectLabel" destination="7oQ-ac-iPy" id="ePo-p4-OTc"/>
-                        <outlet property="energyCollectStepper" destination="emx-DC-TUh" id="dGz-Bt-MNQ"/>
-                        <outlet property="levelImage" destination="nVt-vF-Uuv" id="lK8-dC-YZj"/>
-                        <outlet property="levelLabel" destination="N48-y0-y8U" id="mS0-5s-Fn4"/>
-                        <outlet property="nicknameLabel" destination="gmY-4A-Tbw" id="fpn-W6-aVE"/>
-                        <outlet property="xmIndicator" destination="GJZ-UT-ZcL" id="Ntf-BV-Fyg"/>
-                        <outlet property="xmLabel" destination="Jef-hb-mBy" id="dRc-Dn-j1l"/>
-                        <segue destination="afs-tY-SlD" kind="modal" identifier="ImagePickerSegue" id="mJw-WW-9vi"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wg8-dk-58X" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1171" y="-2629"/>
-        </scene>
-        <!--Image Picker Controller-->
-        <scene sceneID="EH3-ao-CtM">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="afs-tY-SlD" customClass="UIImagePickerController" sceneMemberID="viewController">
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="Zu4-GW-Hay">
-                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="lUz-Hp-AHd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1628" y="-2629"/>
+            <point key="canvasLocation" x="-170" y="-1372"/>
         </scene>
         <!--Score View Controller-->
         <scene sceneID="tJs-a1-kIX">
@@ -1533,14 +1406,14 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nVe-S6-2yC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1628" y="-1900"/>
+            <point key="canvasLocation" x="732" y="-1316"/>
         </scene>
         <!--GLKit View Controller-->
         <scene sceneID="Mce-9E-pGk">
             <objects>
                 <glkViewController autoresizesArchivedViewToFullSize="NO" preferredFramesPerSecond="30" id="vZR-4F-H2Z" customClass="GLViewController" sceneMemberID="viewController">
                     <glkView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" id="Ild-u8-Olh">
-                        <rect key="frame" x="0.0" y="0.0" width="280" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
@@ -1550,7 +1423,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </glkViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iHK-dZ-ie3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2051" y="-2516"/>
+            <point key="canvasLocation" x="1155" y="-1932"/>
         </scene>
         <!--Missions View Controller-->
         <scene sceneID="kB9-mT-YOn">
@@ -1732,7 +1605,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </label>
             </objects>
-            <point key="canvasLocation" x="2051" y="-1900"/>
+            <point key="canvasLocation" x="1155" y="-1316"/>
         </scene>
         <!--Recruit View Controller-->
         <scene sceneID="C2I-yU-jlK">
@@ -1784,7 +1657,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                         </state>
                                         <connections>
                                             <action selector="invite" destination="ed9-zl-POU" eventType="touchUpInside" id="BHq-Wp-EnV"/>
-                                            <action selector="submitPasscode" destination="dyv-6N-1Hj" eventType="touchUpInside" id="m4H-S9-keG"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1824,14 +1696,14 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Zn-ex-Sku" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2463" y="-1900"/>
+            <point key="canvasLocation" x="1567" y="-1316"/>
         </scene>
         <!--Portal Keys View Controller-->
         <scene sceneID="pOX-u1-cSZ">
             <objects>
                 <tableViewController id="pnd-0d-rSp" customClass="PortalKeysViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="V5K-Z3-PLK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="423"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="278"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -1866,7 +1738,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="esV-93-vjs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2051" y="-509"/>
+            <point key="canvasLocation" x="1155" y="75"/>
         </scene>
         <!--Media Items View Controller-->
         <scene sceneID="985-dd-AQF">
@@ -1908,7 +1780,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1r5-qZ-6pz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2463" y="-509"/>
+            <point key="canvasLocation" x="1567" y="75"/>
         </scene>
         <!--Portal Upgrade View Controller-->
         <scene sceneID="Eh4-m3-S9L">
@@ -2378,6 +2250,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="L77-A5-XYN" firstAttribute="leading" secondItem="3fD-vG-amo" secondAttribute="leading" type="default" id="8uo-Br-YMH"/>
                             <constraint firstItem="L77-A5-XYN" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="127" type="user" id="AhV-jL-8KP"/>
                             <constraint firstItem="tuj-pb-dGt" firstAttribute="trailing" secondItem="BGQ-ax-GRG" secondAttribute="trailing" type="default" id="EGq-Vr-c5p"/>
+                            <constraint firstItem="Q5O-R5-Pic" firstAttribute="baseline" secondItem="BGQ-ax-GRG" secondAttribute="baseline" type="default" id="EeM-MO-kD3"/>
                             <constraint firstItem="3fD-vG-amo" firstAttribute="top" secondItem="auU-pM-4h0" secondAttribute="top" type="user" id="G7Y-CW-cOb"/>
                             <constraint firstItem="Yi5-ja-2IB" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="20" symbolic="YES" type="default" id="GUO-Sb-jor"/>
                             <constraint firstItem="L77-A5-XYN" firstAttribute="leading" secondItem="6ts-Vu-ZgC" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="HGw-Bb-yjz"/>
@@ -2408,6 +2281,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="mMh-B8-j72" firstAttribute="leading" secondItem="3fD-vG-amo" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="rJb-4g-rbZ"/>
                             <constraint firstItem="1aa-eF-7rd" firstAttribute="centerX" secondItem="xob-Tu-pne" secondAttribute="centerX" type="user" id="rRy-lj-hh1"/>
                             <constraint firstItem="uYr-0g-eP5" firstAttribute="bottom" secondItem="Afx-ul-7bp" secondAttribute="bottom" type="default" id="u6o-nZ-AnQ"/>
+                            <constraint firstItem="tuj-pb-dGt" firstAttribute="baseline" secondItem="mMh-B8-j72" secondAttribute="baseline" type="default" id="v5O-H7-9WD"/>
                             <constraint firstItem="BGQ-ax-GRG" firstAttribute="trailing" secondItem="Yi5-ja-2IB" secondAttribute="trailing" type="default" id="v92-Mx-A2b"/>
                             <constraint firstItem="6ts-Vu-ZgC" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="126" id="vUH-fW-0mD"/>
                         </constraints>
@@ -2416,7 +2290,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tVf-gE-chp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2463" y="-1223"/>
+            <point key="canvasLocation" x="1567" y="-639"/>
         </scene>
         <!--Portal Info View Controller-->
         <scene sceneID="9Yb-wm-wMW">
@@ -2570,7 +2444,7 @@ Range: 0km</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UeV-Oi-m2q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2051" y="-1223"/>
+            <point key="canvasLocation" x="1155" y="-639"/>
         </scene>
         <!--Level Chooser View Controller-->
         <scene sceneID="OoB-0g-DNW">
@@ -2670,7 +2544,58 @@ Range: 0km</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ePh-OW-Egj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2861" y="-823"/>
+            <point key="canvasLocation" x="-1067" y="1121"/>
+        </scene>
+        <!--Collect View Controller-->
+        <scene sceneID="dSv-g1-fQ7">
+            <objects>
+                <viewController storyboardIdentifier="XMCollectViewController" id="G7I-sY-ZCP" customClass="XMCollectViewController" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="uTY-uv-T8m">
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="60"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="vVN-uF-ki8">
+                                <connections>
+                                    <action selector="energyCollectValueChanged:" destination="G7I-sY-ZCP" eventType="valueChanged" id="fmI-6V-w26"/>
+                                </connections>
+                            </stepper>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Collect XM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fhj-GP-c7U" customClass="GlowingLabel">
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0 / 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROl-vf-cdg" customClass="GlowingLabel">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="90" id="NxJ-D6-2Yy"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="vVN-uF-ki8" firstAttribute="leading" secondItem="uTY-uv-T8m" secondAttribute="leading" constant="24" id="8OL-e6-h5s"/>
+                            <constraint firstItem="Fhj-GP-c7U" firstAttribute="trailing" secondItem="uTY-uv-T8m" secondAttribute="trailing" type="default" id="GAl-J1-WbL"/>
+                            <constraint firstItem="Fhj-GP-c7U" firstAttribute="leading" secondItem="uTY-uv-T8m" secondAttribute="leading" type="default" id="eHb-Ce-ANg"/>
+                            <constraint firstItem="ROl-vf-cdg" firstAttribute="leading" secondItem="vVN-uF-ki8" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="fDC-iP-jMr"/>
+                            <constraint firstItem="vVN-uF-ki8" firstAttribute="top" secondItem="Fhj-GP-c7U" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="lxl-zy-3ME"/>
+                            <constraint firstItem="Fhj-GP-c7U" firstAttribute="top" secondItem="uTY-uv-T8m" secondAttribute="top" type="default" id="mRh-H3-cgr"/>
+                            <constraint firstAttribute="bottom" secondItem="ROl-vf-cdg" secondAttribute="bottom" constant="8" id="mj2-ps-WN1"/>
+                        </constraints>
+                    </view>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="energyCollectLabel" destination="Fhj-GP-c7U" id="7wt-5N-ILv"/>
+                        <outlet property="energyCollectNumberLabel" destination="ROl-vf-cdg" id="P9D-F5-TQ4"/>
+                        <outlet property="energyCollectStepper" destination="vVN-uF-ki8" id="uC1-Pi-7Fr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wIG-QS-RlU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1072" y="1301"/>
         </scene>
         <!--Resources View Controller-->
         <scene sceneID="aha-5f-TD9">
@@ -3089,10 +3014,11 @@ Range: 0km</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sb2-Ma-HN8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1628" y="-509"/>
+            <point key="canvasLocation" x="732" y="75"/>
         </scene>
     </scenes>
     <resources>
+        <image name="UIBlackCloseButton.png" width="29" height="29"/>
         <image name="ap_icon_enl_0.png" width="61" height="62"/>
         <image name="comm.png" width="24" height="22"/>
         <image name="enl_res_energy_fill@2x.png" width="13" height="2"/>
@@ -3106,7 +3032,6 @@ Range: 0km</string>
         <image name="positive_btn_background_default.png" width="16" height="16"/>
         <image name="positive_btn_background_disabled.png" width="16" height="16"/>
         <image name="positive_btn_background_pressed.png" width="16" height="16"/>
-        <image name="profile.png" width="24" height="21"/>
         <image name="resonator_E@2x.png" width="135" height="77"/>
         <image name="resonator_N@2x.png" width="73" height="78"/>
         <image name="resonator_NE@2x.png" width="111" height="71"/>
@@ -3126,7 +3051,7 @@ Range: 0km</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="7q6-q9-DTR"/>
-        <segue reference="Hzu-Lp-GfO"/>
+        <segue reference="uLU-Dv-S4x"/>
+        <segue reference="s91-lu-tu1"/>
     </inferredMetricsTieBreakers>
 </document>

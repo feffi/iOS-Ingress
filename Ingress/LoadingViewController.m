@@ -521,7 +521,17 @@
 	if ([segue.identifier isEqualToString:@"LoadingCompletedSegue"]) {
 		_tabBarController = (UITabBarController *)segue.destinationViewController;
 		_tabBarController.delegate = self;
+
 //		[self addTabBarArrow];
+
+		for (UINavigationController *navC in _tabBarController.viewControllers) {
+			navC.topViewController.view.hidden = NO;
+		}
+
+		[_tabBarController setSelectedIndex:2];
+
+		[[SoundManager sharedManager] playMusic:@"Sound/sfx_ambient_scanner_base.aif" looping:YES];
+		
 	}
 }
 

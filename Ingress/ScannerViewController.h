@@ -11,6 +11,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <CoreImage/CoreImage.h>
 #import "LevelChooserViewController.h"
+#import "XMCollectViewController.h"
 
 @interface ScannerViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate> {
 	
@@ -20,6 +21,7 @@
 	
 	__weak IBOutlet UIButton *fireXmpButton;
 	LevelChooserViewController *_levelChooser;
+	XMCollectViewController *_xmCollectView;
 	
 	__weak IBOutlet UIImageView *bgImage;
 	
@@ -33,5 +35,6 @@
 
 - (IBAction)refresh;
 - (IBAction)fireXMP;
+- (IBAction)collectXM;
 
 @end

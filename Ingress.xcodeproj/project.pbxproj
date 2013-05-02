@@ -87,7 +87,6 @@
 		FA512D6216A0B0EB00C8A81C /* ap_icon_hum_5.png in Resources */ = {isa = PBXBuildFile; fileRef = FA512D5216A0B0EB00C8A81C /* ap_icon_hum_5.png */; };
 		FA512D6316A0B0EB00C8A81C /* ap_icon_hum_6.png in Resources */ = {isa = PBXBuildFile; fileRef = FA512D5316A0B0EB00C8A81C /* ap_icon_hum_6.png */; };
 		FA512D6416A0B0EB00C8A81C /* ap_icon_hum_7.png in Resources */ = {isa = PBXBuildFile; fileRef = FA512D5416A0B0EB00C8A81C /* ap_icon_hum_7.png */; };
-		FA512D6916A0BDD700C8A81C /* ProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA512D6816A0BDD700C8A81C /* ProfileViewController.m */; };
 		FA52007016A99AB0004AFE4D /* PortalKeysViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA52006F16A99AB0004AFE4D /* PortalKeysViewController.m */; };
 		FA52007216A99C98004AFE4D /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4FB3CA16A7200D00FD989C /* iCarousel.m */; };
 		FA52007416A9A607004AFE4D /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA52007316A9A607004AFE4D /* AssetsLibrary.framework */; };
@@ -163,6 +162,7 @@
 		FAA9C46917304B6A000C2638 /* MagicalRecord+ShorthandSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA9C44C17304B6A000C2638 /* MagicalRecord+ShorthandSupport.m */; };
 		FAA9C46A17304B6A000C2638 /* MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA9C44E17304B6A000C2638 /* MagicalRecord.m */; };
 		FAA9C47317306EB9000C2638 /* PortalKey.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA9C47217306EB8000C2638 /* PortalKey.m */; };
+		FAA9C47B1732A3FB000C2638 /* XMCollectViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA9C47A1732A3FB000C2638 /* XMCollectViewController.m */; };
 		FAAA6C5D172299650066D540 /* CustomBackgroundColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAA6C5C172299650066D540 /* CustomBackgroundColorButton.m */; };
 		FAADA23A17291564001865D9 /* SelectingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FAADA23917291564001865D9 /* SelectingButton.m */; };
 		FAADA24017297DD9001865D9 /* MDCParallaxView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAADA23F17297DD9001865D9 /* MDCParallaxView.m */; };
@@ -371,8 +371,6 @@
 		FA512D5216A0B0EB00C8A81C /* ap_icon_hum_5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ap_icon_hum_5.png; sourceTree = "<group>"; };
 		FA512D5316A0B0EB00C8A81C /* ap_icon_hum_6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ap_icon_hum_6.png; sourceTree = "<group>"; };
 		FA512D5416A0B0EB00C8A81C /* ap_icon_hum_7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ap_icon_hum_7.png; sourceTree = "<group>"; };
-		FA512D6716A0BDD700C8A81C /* ProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ProfileViewController.h; sourceTree = "<group>"; };
-		FA512D6816A0BDD700C8A81C /* ProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ProfileViewController.m; sourceTree = "<group>"; };
 		FA52006E16A99AB0004AFE4D /* PortalKeysViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortalKeysViewController.h; sourceTree = "<group>"; };
 		FA52006F16A99AB0004AFE4D /* PortalKeysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalKeysViewController.m; sourceTree = "<group>"; };
 		FA52007316A9A607004AFE4D /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
@@ -507,6 +505,8 @@
 		FAA9C45017304B6A000C2638 /* CoreData+MagicalRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CoreData+MagicalRecord.h"; sourceTree = "<group>"; };
 		FAA9C47117306EB8000C2638 /* PortalKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PortalKey.h; path = CoreData/PortalKey.h; sourceTree = "<group>"; };
 		FAA9C47217306EB8000C2638 /* PortalKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PortalKey.m; path = CoreData/PortalKey.m; sourceTree = "<group>"; };
+		FAA9C4791732A3FB000C2638 /* XMCollectViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMCollectViewController.h; sourceTree = "<group>"; };
+		FAA9C47A1732A3FB000C2638 /* XMCollectViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMCollectViewController.m; sourceTree = "<group>"; };
 		FAAA6C5B172299650066D540 /* CustomBackgroundColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBackgroundColorButton.h; sourceTree = "<group>"; };
 		FAAA6C5C172299650066D540 /* CustomBackgroundColorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBackgroundColorButton.m; sourceTree = "<group>"; };
 		FAADA23817291564001865D9 /* SelectingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectingButton.h; sourceTree = "<group>"; };
@@ -1081,16 +1081,6 @@
 			path = Ingress/ap;
 			sourceTree = "<group>";
 		};
-		FA512D6616A0BDBE00C8A81C /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				FA512D6716A0BDD700C8A81C /* ProfileViewController.h */,
-				FA512D6816A0BDD700C8A81C /* ProfileViewController.m */,
-			);
-			name = Profile;
-			path = Ingress;
-			sourceTree = "<group>";
-		};
 		FA52008416A9AB24004AFE4D /* EXIF */ = {
 			isa = PBXGroup;
 			children = (
@@ -1343,6 +1333,16 @@
 				FAA9C44F17304B6A000C2638 /* MagicalRecordShorthand.h */,
 			);
 			path = Core;
+			sourceTree = "<group>";
+		};
+		FAA9C4781732A3DD000C2638 /* XM Collect */ = {
+			isa = PBXGroup;
+			children = (
+				FAA9C4791732A3FB000C2638 /* XMCollectViewController.h */,
+				FAA9C47A1732A3FB000C2638 /* XMCollectViewController.m */,
+			);
+			name = "XM Collect";
+			path = Ingress;
 			sourceTree = "<group>";
 		};
 		FAADA23D17297D99001865D9 /* MDCParallaxView */ = {
@@ -1810,12 +1810,12 @@
 			children = (
 				FAEA5841169C7E7500E2F502 /* Ingress */,
 				FAC37C46169DE2EB000F88AB /* Loading View Controller */,
-				FA512D6616A0BDBE00C8A81C /* Profile */,
 				FA54DEFA16A19BAE006A92E0 /* Intel */,
 				FAEA5861169C7E8500E2F502 /* Scanner */,
 				FA54DEF216A1970A006A92E0 /* Items */,
 				FA32E885169F655E00D30E90 /* Comm */,
 				FAB5A2C916AA164900176C34 /* Level Buttons */,
+				FAA9C4781732A3DD000C2638 /* XM Collect */,
 				FA32E871169EC13900D30E90 /* Model */,
 				FA512D1C16A0A2AA00C8A81C /* Resources */,
 				FAE6AC7616A0E27B0082BBB5 /* Extensions */,
@@ -2119,7 +2119,6 @@
 				FA32E888169F657400D30E90 /* CommViewController.m in Sources */,
 				FA32E88B169F661500D30E90 /* CommTableViewController.m in Sources */,
 				FA13CDA416A038D7003C9962 /* CommTableViewCell.m in Sources */,
-				FA512D6916A0BDD700C8A81C /* ProfileViewController.m in Sources */,
 				FAE6AC7416A0E2700082BBB5 /* DAKeyboardControl.m in Sources */,
 				FA54DEF916A19B47006A92E0 /* MBProgressHUD.m in Sources */,
 				FA54DEFD16A19BD8006A92E0 /* IntelViewController.m in Sources */,
@@ -2235,6 +2234,7 @@
 				FAA9C46917304B6A000C2638 /* MagicalRecord+ShorthandSupport.m in Sources */,
 				FAA9C46A17304B6A000C2638 /* MagicalRecord.m in Sources */,
 				FAA9C47317306EB9000C2638 /* PortalKey.m in Sources */,
+				FAA9C47B1732A3FB000C2638 /* XMCollectViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

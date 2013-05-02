@@ -548,6 +548,24 @@
 	}
 }
 
+#pragma mark - Collecting XM
+
+- (IBAction)collectXM {
+
+	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+	
+	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+	HUD.userInteractionEnabled = YES;
+	HUD.mode = MBProgressHUDModeCustomView;
+	HUD.dimBackground = YES;
+	HUD.showCloseButton = YES;
+	_xmCollectView = [XMCollectViewController xmCollectView];
+	HUD.customView = _xmCollectView.view;
+	[[AppDelegate instance].window addSubview:HUD];
+	[HUD show:YES];
+
+}
+
 #pragma mark - Firing XMP
 
 - (IBAction)fireXMP {
