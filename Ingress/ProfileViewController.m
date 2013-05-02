@@ -123,20 +123,31 @@
 
 	NSArray *apLabelStrComps = @[[NSString stringWithFormat:@"%d AP\n", ap], @"[ ", [NSString stringWithFormat:@"%d AP", maxAp], [NSString stringWithFormat:@" required for level %d ]", level+1]];
 	NSString *apLabelStr = [apLabelStrComps componentsJoinedByString:@""];
-	
-	NSMutableAttributedString *apLabelAtrStr = [[NSMutableAttributedString alloc] initWithString:apLabelStr attributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:13], NSForegroundColorAttributeName: [UIColor colorWithRed:235./255. green:188./255. blue:74./255. alpha:1], NSParagraphStyleAttributeName: pStyle}];
-	
+
+	NSShadow *normalShadow = [NSShadow new];
+	normalShadow.shadowOffset = CGSizeZero;
+	normalShadow.shadowBlurRadius = 13/5;
+	normalShadow.shadowColor = [UIColor colorWithRed:235./255. green:188./255. blue:74./255. alpha:1];
+
+	NSShadow *teamShadow = [NSShadow new];
+	teamShadow.shadowOffset = CGSizeZero;
+	teamShadow.shadowBlurRadius = 13/5;
+	teamShadow.shadowColor = teamColor;
+
+	NSMutableAttributedString *apLabelAtrStr = [[NSMutableAttributedString alloc] initWithString:apLabelStr attributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:13], NSForegroundColorAttributeName: [UIColor colorWithRed:235./255. green:188./255. blue:74./255. alpha:1], NSParagraphStyleAttributeName: pStyle, NSShadowAttributeName: normalShadow}];
+
 	NSRange range = [apLabelAtrStr.string rangeOfString:apLabelStrComps[0] options:0 range:NSMakeRange(0, apLabelStr.length)];
-	[apLabelAtrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:13], NSForegroundColorAttributeName: teamColor, NSParagraphStyleAttributeName: pStyle} range:range];
+	[apLabelAtrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:13], NSForegroundColorAttributeName: teamColor, NSParagraphStyleAttributeName: pStyle, NSShadowAttributeName: teamShadow} range:range];
 	
 	range = [apLabelAtrStr.string rangeOfString:apLabelStrComps[2] options:0 range:NSMakeRange(0, apLabelStr.length)];
-	[apLabelAtrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:13], NSForegroundColorAttributeName: teamColor, NSParagraphStyleAttributeName: pStyle} range:range];
+	[apLabelAtrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:13], NSForegroundColorAttributeName: teamColor, NSParagraphStyleAttributeName: pStyle, NSShadowAttributeName: teamShadow} range:range];
 	
 	apLabel.attributedText = apLabelAtrStr;
 	
 	NSString *xmLabelStr = [NSString stringWithFormat:@"%d / %d XM", energy, maxEnergy];
-	NSMutableAttributedString *xmLabelAtrStr = [[NSMutableAttributedString alloc] initWithString:xmLabelStr attributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:235./255. green:188./255. blue:74./255. alpha:1], NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:13], NSParagraphStyleAttributeName: pStyle}];
-	[xmLabelAtrStr setAttributes:@{NSForegroundColorAttributeName: teamColor, NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:13], NSParagraphStyleAttributeName: pStyle} range:NSMakeRange(0, [[NSString stringWithFormat:@"%d", energy] length])];
+	NSMutableAttributedString *xmLabelAtrStr = [[NSMutableAttributedString alloc] initWithString:xmLabelStr attributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:235./255. green:188./255. blue:74./255. alpha:1], NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:13], NSParagraphStyleAttributeName: pStyle, NSShadowAttributeName: normalShadow}];
+
+	[xmLabelAtrStr setAttributes:@{NSForegroundColorAttributeName: teamColor, NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:13], NSParagraphStyleAttributeName: pStyle, NSShadowAttributeName: teamShadow} range:NSMakeRange(0, [[NSString stringWithFormat:@"%d", energy] length])];
 	xmLabel.attributedText = xmLabelAtrStr;
 	
 	//CGRect rect = xmIndicatorInner.frame;
