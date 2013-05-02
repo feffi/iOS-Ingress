@@ -42,7 +42,7 @@
     locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
 	
 	[locationManager startUpdatingLocation];
-//	[locationManager startUpdatingHeading];
+	[locationManager startUpdatingHeading];
 
 	if (YES) { // TODO: Free moving allowed for debug only
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
@@ -56,19 +56,19 @@
 	UIPinchGestureRecognizer *recognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
 	[_mapView addGestureRecognizer:recognizer];
 
-//	rangeCircleView = [UIView new];
-//	rangeCircleView.frame = CGRectMake(0, 0, 0, 0);
-//	rangeCircleView.center = _mapView.center;
-//	rangeCircleView.backgroundColor = [UIColor clearColor];
-//	rangeCircleView.opaque = NO;
-//	rangeCircleView.userInteractionEnabled = NO;
-//	rangeCircleView.layer.cornerRadius = 0;
-//	rangeCircleView.layer.masksToBounds = YES;
-//	rangeCircleView.layer.borderWidth = 2;
-//	rangeCircleView.layer.borderColor = [[[UIColor blueColor] colorWithAlphaComponent:0.25] CGColor];
-//	[self.view addSubview:rangeCircleView];
-//
-//	[NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(updateCircle) userInfo:nil repeats:YES];
+	rangeCircleView = [UIView new];
+	rangeCircleView.frame = CGRectMake(0, 0, 0, 0);
+	rangeCircleView.center = _mapView.center;
+	rangeCircleView.backgroundColor = [UIColor clearColor];
+	rangeCircleView.opaque = NO;
+	rangeCircleView.userInteractionEnabled = NO;
+	rangeCircleView.layer.cornerRadius = 0;
+	rangeCircleView.layer.masksToBounds = YES;
+	rangeCircleView.layer.borderWidth = 2;
+	rangeCircleView.layer.borderColor = [[[UIColor blueColor] colorWithAlphaComponent:0.25] CGColor];
+	[self.view addSubview:rangeCircleView];
+
+	[NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(updateCircle) userInfo:nil repeats:YES];
 
 //	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
 //		[_mapView setRegion:MKCoordinateRegionMakeWithDistance(_mapView.userLocation.location.coordinate, 150, 150) animated:NO];
@@ -345,14 +345,14 @@
     [_mapView setRegion:MKCoordinateRegionMake(originalRegion.center, span) animated:NO];
 }
 
-//#pragma mark - Circle
-//
-//- (void)updateCircle {
-//	CGFloat diameter = 100/((_mapView.region.span.latitudeDelta * 111200) / _mapView.bounds.size.width);
-//	rangeCircleView.frame = CGRectMake(0, 0, diameter, diameter);
-//	rangeCircleView.center = _mapView.center;
-//	rangeCircleView.layer.cornerRadius = diameter/2;
-//}
+#pragma mark - Circle
+
+- (void)updateCircle {
+	CGFloat diameter = 100/((_mapView.region.span.latitudeDelta * 111200) / _mapView.bounds.size.width);
+	rangeCircleView.frame = CGRectMake(0, 0, diameter, diameter);
+	rangeCircleView.center = _mapView.center;
+	rangeCircleView.layer.cornerRadius = diameter/2;
+}
 
 //#pragma mark - KVO
 //
@@ -376,7 +376,7 @@
 }
 
 - (BOOL)locationManagerShouldDisplayHeadingCalibration:(CLLocationManager *)manager {
-	return YES;
+	return NO;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
