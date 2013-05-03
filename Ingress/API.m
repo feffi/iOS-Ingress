@@ -1215,6 +1215,25 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	
 }
 
+- (void)recycleItem:(Item *)item completionHandler:(void (^)(void))handler {
+
+	NSDictionary *dict = @{
+	  @"knobSyncTimestamp": @(0),
+	  @"playerLocation": [self currentE6Location],
+	  @"itemGuid": item.guid
+	};
+
+	[self sendRequest:@"gameplay/recycleItem" params:dict completionHandler:^(id responseObj) {
+		NSLog(@"recycleItem responseObj: %@", responseObj);
+
+		dispatch_async(dispatch_get_main_queue(), ^{
+			handler();
+		});
+		
+	}];
+
+}
+
 - (void)usePowerCube:(PowerCube *)powerCube completionHandler:(void (^)(void))handler {
 
 	NSDictionary *dict = @{

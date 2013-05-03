@@ -82,6 +82,7 @@ typedef void (^SoundCompletionBlock)(void);
 - (void)addMod:(Item *)modItem toItem:(Item *)modableItem toSlot:(int)slot completionHandler:(void (^)(NSString *errorStr))handler;
 - (void)dropItemWithGuid:(NSString *)guid completionHandler:(void (^)(void))handler;
 - (void)pickUpItemWithGuid:(NSString *)guid completionHandler:(void (^)(NSString *errorStr))handler;
+- (void)recycleItem:(Item *)item completionHandler:(void (^)(void))handler;
 - (void)usePowerCube:(PowerCube *)powerCube completionHandler:(void (^)(void))handler;
 - (void)rechargePortal:(Portal *)portal completionHandler:(void (^)(void))handler;
 

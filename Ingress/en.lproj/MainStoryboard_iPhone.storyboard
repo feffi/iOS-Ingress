@@ -2286,6 +2286,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="tuj-pb-dGt" firstAttribute="trailing" secondItem="BGQ-ax-GRG" secondAttribute="trailing" type="default" id="EGq-Vr-c5p"/>
                             <constraint firstItem="3fD-vG-amo" firstAttribute="top" secondItem="auU-pM-4h0" secondAttribute="top" type="user" id="G7Y-CW-cOb"/>
                             <constraint firstItem="Yi5-ja-2IB" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="20" symbolic="YES" type="default" id="GUO-Sb-jor"/>
+                            <constraint firstItem="Q5O-R5-Pic" firstAttribute="baseline" secondItem="BGQ-ax-GRG" secondAttribute="baseline" type="default" id="GtA-p7-PSP"/>
                             <constraint firstItem="L77-A5-XYN" firstAttribute="leading" secondItem="6ts-Vu-ZgC" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="HGw-Bb-yjz"/>
                             <constraint firstItem="Afx-ul-7bp" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="20" symbolic="YES" type="default" id="NRV-mw-Xt1"/>
                             <constraint firstItem="1aa-eF-7rd" firstAttribute="top" secondItem="Q5O-R5-Pic" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="RVc-st-m4h"/>
@@ -2300,6 +2301,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="Q5O-R5-Pic" firstAttribute="leading" secondItem="mMh-B8-j72" secondAttribute="leading" type="default" id="YmG-KF-Tvt"/>
                             <constraint firstItem="BGQ-ax-GRG" firstAttribute="leading" secondItem="tuj-pb-dGt" secondAttribute="leading" type="default" id="Z5a-jl-f1d"/>
                             <constraint firstAttribute="bottom" secondItem="mMh-B8-j72" secondAttribute="bottom" constant="20" symbolic="YES" type="default" id="Z7B-Q3-Uc0"/>
+                            <constraint firstItem="tuj-pb-dGt" firstAttribute="baseline" secondItem="mMh-B8-j72" secondAttribute="baseline" type="default" id="ZzX-eU-c1b"/>
                             <constraint firstItem="Q5O-R5-Pic" firstAttribute="trailing" secondItem="mMh-B8-j72" secondAttribute="trailing" type="default" id="abf-dZ-8QO"/>
                             <constraint firstItem="Yi5-ja-2IB" firstAttribute="leading" secondItem="BGQ-ax-GRG" secondAttribute="leading" type="default" id="bCM-7O-PcN"/>
                             <constraint firstItem="mMh-B8-j72" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="bfm-hx-A0T"/>

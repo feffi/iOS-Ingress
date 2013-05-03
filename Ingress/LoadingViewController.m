@@ -54,11 +54,12 @@
 				//@"nemesisSoftwareVersion": @"2013-01-15T22:12:53Z ae145d098fc5 op",
 				//@"nemesisSoftwareVersion": @"2013-01-24T11:26:38Z bfb6a817656f opt",
 				//@"nemesisSoftwareVersion": @"2013-03-13T22:49:05Z 40d223faeed9 opt",		// 1.21.3
-				@"nemesisSoftwareVersion": @"2013-04-08T20:23:14Z 10b76085f06d opt",		// 1.23.1
+				//@"nemesisSoftwareVersion": @"2013-04-08T20:23:14Z 10b76085f06d opt",		// 1.23.1
+				@"nemesisSoftwareVersion": @"2013-05-03T01:34:37Z 2293ce1e3f44 opt",										// 1.25.1
 				@"deviceSoftwareVersion": @"4.1.1",
 				} mutableCopy];
 
-	versionString = @"v1.23.1";
+	versionString = @"v1.25.1";
 	
 }
 

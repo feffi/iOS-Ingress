@@ -72,11 +72,11 @@
 	actionLevel = sender.tag-10;
 
 	if (self.itemType == ItemTypePowerCube) {
-		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Drop" otherButtonTitles:@"Use", nil];
+		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Drop" otherButtonTitles:@"Use", @"Recycle", nil];
 		//	[actionSheet showFromTabBar:self.tabBarController.tabBar];
 		[actionSheet showInView:self];
 	} else {
-		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Drop" otherButtonTitles:nil];
+		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Drop" otherButtonTitles:@"Recycle", nil];
 		//	[actionSheet showFromTabBar:self.tabBarController.tabBar];
 		[actionSheet showInView:self];
 	}
@@ -107,9 +107,9 @@
 
 	if (self.itemType == ItemTypePortalShield) {
 		PortalShieldRarity rarity = [API shieldRarityFromInt:actionLevel];
-		guid = [[objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity] andRetrieveAttributes:@[@"guid"]] guid];
+		guid = [[objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]] guid];
 	} else {
-		guid = [[objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", actionLevel] andRetrieveAttributes:@[@"guid"]] guid];
+		guid = [[objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", actionLevel]] guid];
 	}
 
 	actionLevel = 0;
@@ -148,9 +148,70 @@
 
 }
 
+- (void)recycleItem {
+
+	Class objectClass = [NSManagedObject class];
+	switch (self.itemType) {
+		case ItemTypeResonator:
+			objectClass = [Resonator class];
+			break;
+		case ItemTypeXMP:
+			objectClass = [XMP class];
+			break;
+		case ItemTypePortalShield:
+			objectClass = [Shield class];
+			break;
+		case ItemTypePowerCube:
+			objectClass = [PowerCube class];
+			break;
+	}
+
+	Item *item;
+
+	if (self.itemType == ItemTypePortalShield) {
+		PortalShieldRarity rarity = [API shieldRarityFromInt:actionLevel];
+		item = [objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
+	} else {
+		item = [objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", actionLevel]];
+	}
+
+	actionLevel = 0;
+
+	if (item) {
+
+		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.userInteractionEnabled = YES;
+		HUD.mode = MBProgressHUDModeIndeterminate;
+		HUD.dimBackground = YES;
+		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+		HUD.labelText = @"Recycling Item...";
+		[[AppDelegate instance].window addSubview:HUD];
+		[HUD show:YES];
+
+		[[API sharedInstance] recycleItem:item completionHandler:^{
+			[HUD hide:YES];
+		}];
+
+	} else {
+
+		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.userInteractionEnabled = YES;
+		HUD.dimBackground = YES;
+		HUD.mode = MBProgressHUDModeCustomView;
+		HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+		HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+		HUD.detailsLabelText = @"No Item";
+		[[AppDelegate instance].window addSubview:HUD];
+		[HUD show:YES];
+		[HUD hide:YES afterDelay:3];
+		
+	}
+
+}
+
 - (void)usePowerCube {
 
-	PowerCube *powerCube = [PowerCube MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", actionLevel] andRetrieveAttributes:@[@"guid"]];
+	PowerCube *powerCube = [PowerCube MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", actionLevel]];
 
 	if (powerCube) {
 
@@ -197,10 +258,14 @@
 			[self dropItem];
 		} else if (buttonIndex == 1) {
 			[self usePowerCube];
+		} else if (buttonIndex == 2) {
+			[self recycleItem];
 		}
 	} else {
 		if (buttonIndex == 0) {
 			[self dropItem];
+		} else if (buttonIndex == 1) {
+			[self recycleItem];
 		}
 	}
 	

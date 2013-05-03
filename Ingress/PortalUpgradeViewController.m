@@ -242,7 +242,7 @@
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
 		
-		Resonator *resonatorItem = [Resonator MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", level] andRetrieveAttributes:@[@"guid"]];
+		Resonator *resonatorItem = [Resonator MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", level]];
 		
 		if (!resonatorItem) {
 			NSLog(@"No resonator of that level remaining!");
