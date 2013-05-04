@@ -48,7 +48,7 @@ http://youtu.be/jRi8PuquP50
 Screenshots
 -----------
 
-![Screenshot 1](http://i.imgur.com/iQusU9d.png)
+![Screenshot 1](http://i.imgur.com/H9Nrgux.png)
 ![Screenshot 2](http://i.imgur.com/aTKqOS7.png)
 ![Screenshot 3](http://i.imgur.com/FIYe6bm.png)
 ![Screenshot 4](http://i.imgur.com/V1r6eER.png)
