@@ -8,9 +8,10 @@ Download
 
 You need to be developer or have jailbreak to install it.
 
+New ipa (5/4/2013)
+
 - https://www.dropbox.com/s/q28f2bj2bgt2vxj/Ingress.ipa
-- https://docs.google.com/file/d/0B8rmzjJD-xnSUnF0VnFaMzR3dTA/edit?usp=sharing
-- https://mega.co.nz/#!7FJW0SoZ!YXxnU1IWOKRYO3mxlcpAVRkwhSx_tcKgcf4JHt_ituY
+- https://docs.google.com/file/d/0B8rmzjJD-xnSaVZxemdDcFE3c00/edit?usp=sharing
 
 TODO
 ----
