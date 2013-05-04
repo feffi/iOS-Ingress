@@ -21,6 +21,7 @@
 		FA32E883169F2D9F00D30E90 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E882169F2D9F00D30E90 /* API.m */; };
 		FA32E888169F657400D30E90 /* CommViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E887169F657400D30E90 /* CommViewController.m */; };
 		FA32E88B169F661500D30E90 /* CommTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E88A169F661500D30E90 /* CommTableViewController.m */; };
+		FA3BD746173514D5004F5ED5 /* nudge_callout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3BD745173514D5004F5ED5 /* nudge_callout@2x.png */; };
 		FA3E8AEC17267F6700673665 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3E8AEB17267F6700673665 /* TPKeyboardAvoidingScrollView.m */; };
 		FA47817F16AC8FE00041FDFB /* enl_res_energy_fill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA47817D16AC8FE00041FDFB /* enl_res_energy_fill@2x.png */; };
 		FA47818016AC8FE00041FDFB /* hum_res_energy_fill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA47817E16AC8FE00041FDFB /* hum_res_energy_fill@2x.png */; };
@@ -301,6 +302,7 @@
 		FA32E887169F657400D30E90 /* CommViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommViewController.m; sourceTree = "<group>"; };
 		FA32E889169F661500D30E90 /* CommTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommTableViewController.h; sourceTree = "<group>"; };
 		FA32E88A169F661500D30E90 /* CommTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommTableViewController.m; sourceTree = "<group>"; };
+		FA3BD745173514D5004F5ED5 /* nudge_callout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nudge_callout@2x.png"; sourceTree = "<group>"; };
 		FA3E8AEA17267F6700673665 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
 		FA3E8AEB17267F6700673665 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		FA47817D16AC8FE00041FDFB /* enl_res_energy_fill@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "enl_res_energy_fill@2x.png"; sourceTree = "<group>"; };
@@ -988,6 +990,7 @@
 			children = (
 				FACD4FFC16A428A80077837F /* marker_images */,
 				FAF5A90116A7449C00EB42CF /* Resonators */,
+				FA3BD745173514D5004F5ED5 /* nudge_callout@2x.png */,
 				FA6EF956172D1C490004905F /* trackImage@2x.png */,
 				FA6EF95E172D2D350004905F /* progressImage-aliens@2x.png */,
 				FA6EF95F172D2D360004905F /* progressImage-resistance@2x.png */,
@@ -2115,6 +2118,7 @@
 				FA6EF957172D1C490004905F /* trackImage@2x.png in Resources */,
 				FA6EF960172D2D360004905F /* progressImage-aliens@2x.png in Resources */,
 				FA6EF961172D2D360004905F /* progressImage-resistance@2x.png in Resources */,
+				FA3BD746173514D5004F5ED5 /* nudge_callout@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

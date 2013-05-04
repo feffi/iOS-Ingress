@@ -477,8 +477,8 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="glz-RR-AOj">
-                                            <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="right" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="glz-RR-AOj">
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="26" id="VfN-0M-oDL"/>
                                                 <constraint firstAttribute="width" constant="70" type="user" id="kO4-cP-OKv"/>
@@ -3080,6 +3080,232 @@ Range: 0km</string>
         <image name="scanner.png" width="27" height="27"/>
         <image name="zap.png" width="12" height="24"/>
     </resources>
+    <classes>
+        <class className="CommTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CommTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="messageLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CommTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CommTableViewController.h"/>
+        </class>
+        <class className="CommViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CommViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="groupChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="action" name="transmit"/>
+                <relationship kind="outlet" name="groupSegments" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="transmitButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="transmitContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="transmitTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CustomBackgroundColorButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomBackgroundColorButton.h"/>
+        </class>
+        <class className="DarkPressedBackgroundButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DarkPressedBackgroundButton.h"/>
+        </class>
+        <class className="DeviceViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DeviceViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="actionSheet"/>
+                <relationship kind="action" name="refreshInventory"/>
+            </relationships>
+        </class>
+        <class className="GLViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GLViewController.h"/>
+        </class>
+        <class className="GUIButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GUIButton.h"/>
+        </class>
+        <class className="GlowingLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GlowingLabel.h"/>
+        </class>
+        <class className="IntelViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/IntelViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="viewSegmentedControlChanged"/>
+                <relationship kind="outlet" name="missionsContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="recruitContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="scoreContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="viewSegmentedControl" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="ItemsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ItemsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="submitPasscode"/>
+                <relationship kind="action" name="viewSegmentedControlChanged"/>
+                <relationship kind="outlet" name="mediaContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="passcodeContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="passcodeTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="portalKeysContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="resourcesContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="submitPasscodeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="viewSegmentedControl" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="LevelChooserViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LevelChooserViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="action:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="LoadingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoadingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="activate"/>
+                <relationship kind="action" name="codenameConfirm"/>
+                <relationship kind="action" name="codenameRetry"/>
+                <relationship kind="action" name="createCodename"/>
+                <relationship kind="action" name="termsCheckboxChanged"/>
+                <relationship kind="action" name="termsConfirm"/>
+                <relationship kind="outlet" name="activationButton" candidateClass="CustomBackgroundColorButton"/>
+                <relationship kind="outlet" name="activationCodeField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="activationErrorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="activationView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="codenameConfirmButton" candidateClass="StretchableBackgroundButton"/>
+                <relationship kind="outlet" name="codenameConfirmLabel" candidateClass="TypeWriterLabel"/>
+                <relationship kind="outlet" name="codenameConfirmRetryButton" candidateClass="StretchableBackgroundButton"/>
+                <relationship kind="outlet" name="codenameConfirmView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="codenameErrorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="codenameErrorRetryButton" candidateClass="StretchableBackgroundButton"/>
+                <relationship kind="outlet" name="codenameErrorView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="createCodenameButton" candidateClass="CustomBackgroundColorButton"/>
+                <relationship kind="outlet" name="createCodenameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="createCodenameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="createCodenameScrollview" candidateClass="TPKeyboardAvoidingScrollView"/>
+                <relationship kind="outlet" name="introTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="introView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="label" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="termsCheckboxButton" candidateClass="SelectingButton"/>
+                <relationship kind="outlet" name="termsConfirmButton" candidateClass="StretchableBackgroundButton"/>
+                <relationship kind="outlet" name="termsDescriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="termsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="termsView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="termsWarningLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="typewriterLabel" candidateClass="TypeWriterLabel"/>
+                <relationship kind="outlet" name="typewriterView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="wheelActivityIndicatorView" candidateClass="WheelActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="MediaItemsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MediaItemsViewController.h"/>
+        </class>
+        <class className="MissionsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MissionsViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="PortalDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="viewSegmentedControlChanged"/>
+                <relationship kind="outlet" name="upgradeContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="viewSegmentedControl" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="PortalInfoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalInfoViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="hack:" candidateClass="GUIButton"/>
+                <relationship kind="action" name="link:" candidateClass="GUIButton"/>
+                <relationship kind="action" name="recharge:" candidateClass="GUIButton"/>
+                <relationship kind="outlet" name="hackButton" candidateClass="GUIButton"/>
+                <relationship kind="outlet" name="imageActivityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="infoLabel1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="infoLabel2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="linkButton" candidateClass="GUIButton"/>
+                <relationship kind="outlet" name="portalTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="rechargeButton" candidateClass="GUIButton"/>
+            </relationships>
+        </class>
+        <class className="PortalKeyCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalKeyCell.h"/>
+        </class>
+        <class className="PortalKeysViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalKeysViewController.h"/>
+        </class>
+        <class className="PortalUpgradeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalUpgradeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="resonatorButtonPressed:" candidateClass="GUIButton"/>
+                <relationship kind="action" name="shieldButtonPressed:" candidateClass="GUIButton"/>
+            </relationships>
+        </class>
+        <class className="RecruitViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecruitViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="invite"/>
+                <relationship kind="outlet" name="inviteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="inviteContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="inviteLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="inviteTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ResourceCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ResourceCell.h"/>
+            <relationships>
+                <relationship kind="action" name="action:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="itemImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="ResourcesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ResourcesViewController.h"/>
+        </class>
+        <class className="ScannerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScannerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="collectXM"/>
+                <relationship kind="action" name="fireXMP"/>
+                <relationship kind="action" name="refresh"/>
+                <relationship kind="outlet" name="_mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="bgImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="fireXmpButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="levelImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="levelLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nicknameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="playerArrowImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="xmIndicator" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="xmLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ScoreViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScoreViewController.h"/>
+        </class>
+        <class className="SelectingButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectingButton.h"/>
+        </class>
+        <class className="StretchableBackgroundButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StretchableBackgroundButton.h"/>
+        </class>
+        <class className="TPKeyboardAvoidingScrollView" superclassName="UIScrollView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TPKeyboardAvoidingScrollView.h"/>
+        </class>
+        <class className="TypeWriterLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TypeWriterLabel.h"/>
+        </class>
+        <class className="UIRefreshControl" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
+        </class>
+        <class className="WheelActivityIndicatorView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WheelActivityIndicatorView.h"/>
+        </class>
+        <class className="XMCollectViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/XMCollectViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="energyCollectValueChanged:" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="energyCollectLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="energyCollectNumberLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="energyCollectStepper" candidateClass="UIStepper"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

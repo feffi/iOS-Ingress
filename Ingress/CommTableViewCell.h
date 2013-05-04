@@ -13,4 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
 @property (weak, nonatomic) IBOutlet UILabel *messageLabel;
 
+- (void)setMentionsYou:(BOOL)mentionsYou;
+
 @end

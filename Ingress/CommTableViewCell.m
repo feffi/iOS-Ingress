@@ -8,6 +8,31 @@
 
 #import "CommTableViewCell.h"
 
-@implementation CommTableViewCell
+@implementation CommTableViewCell {
+	UIImageView *nudgeImageView;
+}
+
+- (void)setMentionsYou:(BOOL)mentionsYou {
+
+	if (mentionsYou) {
+		if (!nudgeImageView) {
+			nudgeImageView = [UIImageView new];
+			nudgeImageView.opaque = NO;
+			nudgeImageView.image = [[UIImage imageNamed:@"nudge_callout.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(7, 2, 9, 8)];
+		}
+		nudgeImageView.frame = CGRectMake(2, 2, self.timeLabel.frame.size.width, self.timeLabel.frame.size.height-4);
+		[self.contentView insertSubview:nudgeImageView belowSubview:self.timeLabel];
+
+		self.timeLabel.textColor = [UIColor colorWithRed:0.965 green:0.800 blue:0.302 alpha:1.000];
+	} else {
+		if (nudgeImageView) {
+			[nudgeImageView removeFromSuperview];
+			nudgeImageView = nil;
+		}
+
+		self.timeLabel.textColor = [UIColor colorWithRed:0.561 green:0.576 blue:0.584 alpha:1.000];
+	}
+
+}
 
 @end
