@@ -23,11 +23,17 @@
 	
 	NSArray *portals = [Portal MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"ANY vertexForControlFields = %@", self]];
 
-    CLLocationCoordinate2D coordinates[3];
-	coordinates[0] = [portals[0] coordinate];
-	coordinates[1] = [portals[1] coordinate];
-	coordinates[2] = [portals[2] coordinate];
-	
+	CLLocationCoordinate2D coordinates[3];
+	if (portals.count > 0) {
+		coordinates[0] = [portals[0] coordinate];
+		coordinates[1] = [portals[1] coordinate];
+		coordinates[2] = [portals[2] coordinate];
+	} else {
+		coordinates[0] = CLLocationCoordinate2DMake(0, 0);
+		coordinates[1] = CLLocationCoordinate2DMake(0, 0);
+		coordinates[2] = CLLocationCoordinate2DMake(0, 0);
+	}
+
     MKPolygon *polygon = [MKPolygon polygonWithCoordinates:coordinates count:3];
 	polygon.controlField = self;
 	return polygon;
