@@ -15,4 +15,8 @@
 @dynamic portalGuid;
 @dynamic portal;
 
+- (NSString *)description {
+	return [NSString stringWithFormat:@"Portal Key"];
+}
+
 @end

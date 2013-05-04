@@ -30,4 +30,8 @@
 	return self.description;
 }
 
+- (NSString *)description {
+	return [NSString stringWithFormat:@"Unknown Item"];
+}
+
 @end
