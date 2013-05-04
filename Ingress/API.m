@@ -1226,7 +1226,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	};
 
 	[self sendRequest:@"gameplay/recycleItem" params:dict completionHandler:^(id responseObj) {
-		NSLog(@"recycleItem responseObj: %@", responseObj);
+		//NSLog(@"recycleItem responseObj: %@", responseObj);
 
 		dispatch_async(dispatch_get_main_queue(), ^{
 			handler();
