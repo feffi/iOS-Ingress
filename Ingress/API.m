@@ -211,7 +211,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 + (UIColor *)colorForFaction:(NSString *)faction {
 	if ([faction isEqualToString:@"ALIENS"]) {
-		return [UIColor colorWithRed:40./255. green:244./255. blue:40./255. alpha:1];
+		return [UIColor colorWithRed:0.000 green:0.945 blue:0.439 alpha:1.000];
 	} else if ([faction isEqualToString:@"RESISTANCE"]) {
 		return [UIColor colorWithRed:0 green:194./255. blue:1 alpha:1];
 	} else {
