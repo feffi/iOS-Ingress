@@ -85,8 +85,8 @@
 //		[HUD show:YES];
 //	}
 
-	UITapGestureRecognizer *mapViewTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapTapped:)];
-	[_mapView addGestureRecognizer:mapViewTapGestureRecognizer];
+//	UITapGestureRecognizer *mapViewTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapTapped:)];
+//	[_mapView addGestureRecognizer:mapViewTapGestureRecognizer];
 
 	UILongPressGestureRecognizer *mapViewLognPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(mapLongPress:)];
 	[_mapView addGestureRecognizer:mapViewLognPressGestureRecognizer];
@@ -321,7 +321,7 @@
 		if ([object isKindOfClass:[Portal class]]) {
 			Portal *portal = (Portal *)object;
 			[_mapView addOverlay:portal];
-//			[_mapView addAnnotation:portal];
+			[_mapView addAnnotation:portal];
 		} else if ([object isKindOfClass:[EnergyGlob class]]) {
 			EnergyGlob *xm = (EnergyGlob *)object;
 			[_mapView addOverlay:xm.circle];
@@ -345,7 +345,7 @@
 		if ([object isKindOfClass:[Portal class]]) {
 			Portal *portal = (Portal *)object;
 			[_mapView addOverlay:portal];
-//			[_mapView addAnnotation:portal];
+			[_mapView addAnnotation:portal];
 		} else if ([object isKindOfClass:[EnergyGlob class]]) {
 			EnergyGlob *xm = (EnergyGlob *)object;
 			[_mapView addOverlay:xm.circle];
@@ -497,8 +497,6 @@
 		} else {
 			annotationView.annotation = annotation;
 		}
-
-//		annotationView.image = nil;
 		
 		Portal *portal = (Portal *)annotation;
 		annotationView.image = [[API sharedInstance] iconForPortal:portal];
@@ -566,7 +564,7 @@
 	return nil;
 }
 
-#pragma mark - 
+#pragma mark - Zoom Level
 
 - (NSUInteger)zoomLevelForRegion:(MKCoordinateRegion)region {
     double centerPixelX = [MKMapView longitudeToPixelSpaceX: region.center.longitude];
@@ -598,33 +596,33 @@
     
 }
 
-- (void)mapTapped:(UITapGestureRecognizer *)recognizer {
-	MKMapView *mapView = (MKMapView *)recognizer.view;
-	id<MKOverlay> tappedOverlay = nil;
-	for (id<MKOverlay> overlay in mapView.overlays) {
-		if (![overlay isKindOfClass:[Portal class]]) { continue; }
-		MKOverlayView *view = [mapView viewForOverlay:overlay];
-		if (view) {
-			// Get view frame rect in the mapView's coordinate system
-			CGRect viewFrameInMapView = [view.superview convertRect:view.frame toView:mapView];
-			// Get touch point in the mapView's coordinate system
-			CGPoint point = [recognizer locationInView:mapView];
-			// Check if the touch is within the view bounds
-			if (CGRectContainsPoint(viewFrameInMapView, point)) {
-				tappedOverlay = overlay;
-				break;
-			}
-		}
-	}
-
-//	NSLog(@"Tapped overlay: %@", tappedOverlay);
-//	NSLog(@"Tapped view: %@", [mapView viewForOverlay:tappedOverlay]);
-
-	if ([tappedOverlay isKindOfClass:[Portal class]]) {
-		currentPortal = (Portal *)tappedOverlay;
-		[self performSegueWithIdentifier:@"PortalDetailSegue" sender:self];
-	}
-}
+//- (void)mapTapped:(UITapGestureRecognizer *)recognizer {
+//	MKMapView *mapView = (MKMapView *)recognizer.view;
+//	id<MKOverlay> tappedOverlay = nil;
+//	for (id<MKOverlay> overlay in mapView.overlays) {
+//		if (![overlay isKindOfClass:[Portal class]]) { continue; }
+//		MKOverlayView *view = [mapView viewForOverlay:overlay];
+//		if (view) {
+//			// Get view frame rect in the mapView's coordinate system
+//			CGRect viewFrameInMapView = [view.superview convertRect:view.frame toView:mapView];
+//			// Get touch point in the mapView's coordinate system
+//			CGPoint point = [recognizer locationInView:mapView];
+//			// Check if the touch is within the view bounds
+//			if (CGRectContainsPoint(viewFrameInMapView, point)) {
+//				tappedOverlay = overlay;
+//				break;
+//			}
+//		}
+//	}
+//
+////	NSLog(@"Tapped overlay: %@", tappedOverlay);
+////	NSLog(@"Tapped view: %@", [mapView viewForOverlay:tappedOverlay]);
+//
+//	if ([tappedOverlay isKindOfClass:[Portal class]]) {
+//		currentPortal = (Portal *)tappedOverlay;
+//		[self performSegueWithIdentifier:@"PortalDetailSegue" sender:self];
+//	}
+//}
 
 - (void)mapLongPress:(UILongPressGestureRecognizer *)recognizer {
 	if (recognizer.state == UIGestureRecognizerStateBegan) {
