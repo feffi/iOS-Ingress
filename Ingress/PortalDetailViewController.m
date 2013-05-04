@@ -28,8 +28,8 @@
 	infoContainerView = [[MDCParallaxView alloc] initWithBackgroundView:backgroundImageView foregroundView:self.portalInfoVC.view];
 	infoContainerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	infoContainerView.backgroundColor = [UIColor colorWithRed:16.0/255.0 green:32.0/255.0 blue:34.0/255.0 alpha:1];
-	infoContainerView.backgroundHeight = 200;
 	infoContainerView.scrollView.scrollsToTop = YES;
+	infoContainerView.scrollView.alwaysBounceVertical = YES;
 	infoContainerView.backgroundInteractionEnabled = NO;
 
 	self.portalInfoVC.imageView = backgroundImageView;
@@ -53,14 +53,15 @@
 //	vc1.portal = self.portal;
 //	vc1.mapCenterCoordinate = self.mapCenterCoordinate;
 
-	infoContainerView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+	infoContainerView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-44);
+	infoContainerView.backgroundHeight = self.view.frame.size.height-44-280;
 
 	self.portalInfoVC.portal = self.portal;
 	self.portalInfoVC.mapCenterCoordinate = self.mapCenterCoordinate;
 	self.portalInfoVC.view.frame = CGRectMake(0, 0, self.view.frame.size.width, 280);
 
-	CGPoint bottomOffset = CGPointMake(0, infoContainerView.scrollView.contentSize.height - infoContainerView.scrollView.bounds.size.height);
-	[infoContainerView.scrollView setContentOffset:bottomOffset animated:NO];
+//	CGPoint bottomOffset = CGPointMake(0, infoContainerView.scrollView.contentSize.height - infoContainerView.scrollView.bounds.size.height);
+//	[infoContainerView.scrollView setContentOffset:bottomOffset animated:NO];
 
 	PortalUpgradeViewController *vc2 = (PortalUpgradeViewController *)[self childViewControllerWithClass:[PortalUpgradeViewController class]];
 	vc2.portal = self.portal;

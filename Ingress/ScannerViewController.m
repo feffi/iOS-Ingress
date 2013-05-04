@@ -105,7 +105,7 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 
-	[self.navigationController setNavigationBarHidden:YES animated:NO];
+	[self.navigationController setNavigationBarHidden:YES animated:YES];
 	
 	[[NSNotificationCenter defaultCenter] addObserverForName:@"ProfileUpdatedNotification" object:nil queue:[[API sharedInstance] notificationQueue] usingBlock:^(NSNotification *note) {
 		dispatch_async(dispatch_get_main_queue(), ^{
@@ -129,6 +129,12 @@
 //	layer.transform = transform;
 //	layer.shouldRasterize = YES;
 	
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+	[super viewWillDisappear:animated];
+
+	[self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -420,21 +426,6 @@
 	rangeCircleView.center = _mapView.center;
 	rangeCircleView.layer.cornerRadius = diameter/2;
 }
-
-//#pragma mark - KVO
-//
-//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-//	
-//	if ([object isEqual:_mapView.userLocation] && [keyPath isEqualToString:@"location"]) {
-//		MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(_mapView.centerCoordinate, 200, 200);
-//		if (!isnan(region.center.latitude)) {
-//			[_mapView setCenterCoordinate:_mapView.userLocation.location.coordinate animated:YES];
-//			[_mapView setRegion:region animated:YES];
-//			[_mapView.userLocation removeObserver:self forKeyPath:@"location"];
-//		}
-//	}
-//	
-//}
 
 #pragma mark - CLLocationManagerDelegate
 
@@ -870,8 +861,6 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:@"PortalDetailSegue"]) {
 		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-
-		[self.navigationController setNavigationBarHidden:NO animated:YES];
 		
 		PortalDetailViewController *vc = segue.destinationViewController;
 		vc.portal = currentPortal;
