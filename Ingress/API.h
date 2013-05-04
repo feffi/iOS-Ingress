@@ -29,7 +29,7 @@ typedef void (^SoundCompletionBlock)(void);
 @property (nonatomic, strong) NSString *xsrfToken;
 @property (nonatomic, strong) NSString *SACSID;
 @property (nonatomic, strong) NSDictionary *playerInfo;
-@property (nonatomic) NSInteger numberOfEnergyToCollect;
+@property (nonatomic, strong) NSMutableArray *energyToCollect;
 
 @property (nonatomic) SystemSoundID ui_success_sound;
 @property (nonatomic) SystemSoundID ui_fail_sound;

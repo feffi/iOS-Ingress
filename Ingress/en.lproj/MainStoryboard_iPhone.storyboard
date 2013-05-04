@@ -447,7 +447,7 @@
         <scene sceneID="c9s-VD-gZs">
             <objects>
                 <navigationController definesPresentationContext="YES" id="jM8-0Z-aAW" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Device" image="UIBlackCloseButton.png" id="C2g-Qi-MJZ"/>
+                    <tabBarItem key="tabBarItem" title="Device" image="device.png" id="C2g-Qi-MJZ"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="TFE-M3-MmX">
@@ -1064,14 +1064,14 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             </progressView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nickname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="oVe-o2-Lr5" customClass="GlowingLabel">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="20" type="user" id="x7M-gW-8EY"/>
+                                    <constraint firstAttribute="height" constant="22" type="user" id="MJY-Uk-C7S"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                 <color key="textColor" red="0.15686274510000001" green="0.95686274510000002" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
-                            <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DmM-Ra-LBw" customClass="APView">
+                            <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DmM-Ra-LBw" customClass="APView">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="32" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="64" translatesAutoresizingMaskIntoConstraints="NO" id="7MI-jq-NjA" customClass="GlowingLabel">
@@ -1090,38 +1090,27 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="mt2-lW-sE5" firstAttribute="centerY" secondItem="3" secondAttribute="centerY" type="default" id="1AE-cd-V9M"/>
                             <constraint firstItem="p8g-KV-tR1" firstAttribute="leading" secondItem="7MI-jq-NjA" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="2wc-un-YRm"/>
                             <constraint firstItem="rgS-1f-mzM" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="7re-Hc-PwY"/>
+                            <constraint firstItem="DmM-Ra-LBw" firstAttribute="top" secondItem="3" secondAttribute="top" constant="10" id="Ab3-RZ-eVc"/>
                             <constraint firstItem="DmM-Ra-LBw" firstAttribute="top" secondItem="7MI-jq-NjA" secondAttribute="top" type="default" id="I6f-wn-3S7"/>
-                            <constraint firstItem="p8g-KV-tR1" firstAttribute="top" secondItem="7MI-jq-NjA" secondAttribute="top" type="default" id="KHx-YL-wyQ"/>
+                            <constraint firstItem="DmM-Ra-LBw" firstAttribute="top" secondItem="p8g-KV-tR1" secondAttribute="top" type="default" id="JRB-je-kCv"/>
                             <constraint firstItem="tWm-XI-3eu" firstAttribute="centerX" secondItem="mt2-lW-sE5" secondAttribute="centerX" type="default" id="LyO-1y-5LR"/>
                             <constraint firstItem="p8g-KV-tR1" firstAttribute="leading" secondItem="DmM-Ra-LBw" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="VnJ-6F-oDK"/>
                             <constraint firstItem="rgS-1f-mzM" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="default" id="YHS-V2-4sP"/>
                             <constraint firstItem="tWm-XI-3eu" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="default" id="a0b-6Q-wAf"/>
                             <constraint firstItem="tWm-XI-3eu" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="bKF-3v-Fiw"/>
+                            <constraint firstItem="oVe-o2-Lr5" firstAttribute="leading" secondItem="7MI-jq-NjA" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="bQP-rp-AZs"/>
                             <constraint firstItem="DmM-Ra-LBw" firstAttribute="leading" secondItem="7MI-jq-NjA" secondAttribute="leading" type="default" id="dKe-kg-wpr"/>
-                            <constraint firstItem="7MI-jq-NjA" firstAttribute="top" secondItem="3" secondAttribute="top" constant="10" id="dkk-dr-j5V"/>
                             <constraint firstItem="7MI-jq-NjA" firstAttribute="bottom" secondItem="DmM-Ra-LBw" secondAttribute="bottom" type="default" id="gil-I0-e1f"/>
-                            <constraint firstItem="oVe-o2-Lr5" firstAttribute="top" secondItem="3" secondAttribute="top" constant="31" type="user" id="hxi-1N-W5A"/>
                             <constraint firstItem="rgS-1f-mzM" firstAttribute="top" secondItem="3" secondAttribute="top" type="default" id="hxy-H6-Nta"/>
                             <constraint firstItem="mt2-lW-sE5" firstAttribute="centerX" secondItem="BX0-yd-s1M" secondAttribute="centerX" type="default" id="j5i-Yr-mHt"/>
                             <constraint firstItem="tWm-XI-3eu" firstAttribute="centerY" secondItem="BX0-yd-s1M" secondAttribute="centerY" type="default" id="pCJ-hl-C42"/>
                             <constraint firstAttribute="trailing" secondItem="p8g-KV-tR1" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="rHi-Il-E28"/>
                             <constraint firstAttribute="trailing" secondItem="oVe-o2-Lr5" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="u22-us-K8J"/>
-                            <constraint firstItem="oVe-o2-Lr5" firstAttribute="leading" secondItem="DmM-Ra-LBw" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="vj1-qu-c0Y"/>
                             <constraint firstItem="rgS-1f-mzM" firstAttribute="bottom" secondItem="tWm-XI-3eu" secondAttribute="bottom" type="default" id="wxg-cM-e4M"/>
+                            <constraint firstItem="oVe-o2-Lr5" firstAttribute="centerY" secondItem="7MI-jq-NjA" secondAttribute="centerY" type="user" id="yUX-Tf-CYR"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Scanner" id="jRf-fb-O9l">
-                        <barButtonItem key="leftBarButtonItem" image="zap.png" id="NPf-Pa-les">
-                            <connections>
-                                <action selector="fireXMP" destination="2" id="nEj-jJ-Bqe"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="XM" id="bYz-Bo-FiU">
-                            <connections>
-                                <action selector="collectXM" destination="2" id="Ekr-2H-6Ie"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" title="Scanner" id="jRf-fb-O9l"/>
                     <connections>
                         <outlet property="_mapView" destination="tWm-XI-3eu" id="TYM-6X-0Mj"/>
                         <outlet property="apView" destination="DmM-Ra-LBw" id="cHq-Ib-9hU"/>
@@ -2582,57 +2571,6 @@ Range: 0km</string>
             </objects>
             <point key="canvasLocation" x="-475" y="913"/>
         </scene>
-        <!--Collect View Controller-->
-        <scene sceneID="dSv-g1-fQ7">
-            <objects>
-                <viewController storyboardIdentifier="XMCollectViewController" id="G7I-sY-ZCP" customClass="XMCollectViewController" sceneMemberID="viewController">
-                    <view key="view" opaque="NO" contentMode="scaleToFill" id="uTY-uv-T8m">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="60"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="vVN-uF-ki8">
-                                <connections>
-                                    <action selector="energyCollectValueChanged:" destination="G7I-sY-ZCP" eventType="valueChanged" id="fmI-6V-w26"/>
-                                </connections>
-                            </stepper>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Collect XM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Fhj-GP-c7U" customClass="GlowingLabel">
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0 / 0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ROl-vf-cdg" customClass="GlowingLabel">
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="90" id="NxJ-D6-2Yy"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="vVN-uF-ki8" firstAttribute="leading" secondItem="uTY-uv-T8m" secondAttribute="leading" constant="24" id="8OL-e6-h5s"/>
-                            <constraint firstItem="Fhj-GP-c7U" firstAttribute="trailing" secondItem="uTY-uv-T8m" secondAttribute="trailing" type="default" id="GAl-J1-WbL"/>
-                            <constraint firstItem="Fhj-GP-c7U" firstAttribute="leading" secondItem="uTY-uv-T8m" secondAttribute="leading" type="default" id="eHb-Ce-ANg"/>
-                            <constraint firstItem="ROl-vf-cdg" firstAttribute="leading" secondItem="vVN-uF-ki8" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="fDC-iP-jMr"/>
-                            <constraint firstItem="vVN-uF-ki8" firstAttribute="top" secondItem="Fhj-GP-c7U" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="lxl-zy-3ME"/>
-                            <constraint firstItem="Fhj-GP-c7U" firstAttribute="top" secondItem="uTY-uv-T8m" secondAttribute="top" type="default" id="mRh-H3-cgr"/>
-                            <constraint firstAttribute="bottom" secondItem="ROl-vf-cdg" secondAttribute="bottom" constant="8" id="mj2-ps-WN1"/>
-                        </constraints>
-                    </view>
-                    <nil key="simulatedStatusBarMetrics"/>
-                    <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <connections>
-                        <outlet property="energyCollectLabel" destination="Fhj-GP-c7U" id="7wt-5N-ILv"/>
-                        <outlet property="energyCollectNumberLabel" destination="ROl-vf-cdg" id="P9D-F5-TQ4"/>
-                        <outlet property="energyCollectStepper" destination="vVN-uF-ki8" id="uC1-Pi-7Fr"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="wIG-QS-RlU" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-480" y="1093"/>
-        </scene>
         <!--Resources View Controller-->
         <scene sceneID="aha-5f-TD9">
             <objects>
@@ -3055,8 +2993,8 @@ Range: 0km</string>
         </scene>
     </scenes>
     <resources>
-        <image name="UIBlackCloseButton.png" width="29" height="29"/>
         <image name="comm.png" width="24" height="22"/>
+        <image name="device.png" width="16" height="28"/>
         <image name="enl_res_energy_fill@2x.png" width="13" height="2"/>
         <image name="intel.png" width="26" height="17"/>
         <image name="items.png" width="26" height="20"/>
@@ -3079,7 +3017,6 @@ Range: 0km</string>
         <image name="resonators-bg@2x.png" width="234" height="464"/>
         <image name="scanner-bg@2x.png" width="640" height="910"/>
         <image name="scanner.png" width="27" height="27"/>
-        <image name="zap.png" width="12" height="24"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>

@@ -21,13 +21,14 @@
 
 - (MKPolygon *)polygon {
 	
-	NSArray *portals = [Portal MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"ANY vertexForControlFields = %@", self]];
+//	NSArray *portals = [Portal MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"ANY vertexForControlFields = %@", self]];
 
 	CLLocationCoordinate2D coordinates[3];
-	if (portals.count > 0) {
-		coordinates[0] = [portals[0] coordinate];
-		coordinates[1] = [portals[1] coordinate];
-		coordinates[2] = [portals[2] coordinate];
+	if (self.portals.count > 0) {
+		NSArray *portalsArray = [self.portals allObjects];
+		coordinates[0] = [portalsArray[0] coordinate];
+		coordinates[1] = [portalsArray[1] coordinate];
+		coordinates[2] = [portalsArray[2] coordinate];
 	} else {
 		coordinates[0] = CLLocationCoordinate2DMake(0, 0);
 		coordinates[1] = CLLocationCoordinate2DMake(0, 0);

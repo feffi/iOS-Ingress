@@ -48,13 +48,14 @@ http://youtu.be/jRi8PuquP50
 Screenshots
 -----------
 
-![Screenshot 1](http://i.imgur.com/XJLt6wn.png)
-![Screenshot 2](http://i.imgur.com/r21wnTc.png)
+![Screenshot 1](http://i.imgur.com/iQusU9d.png)
+![Screenshot 2](http://i.imgur.com/aTKqOS7.png)
 ![Screenshot 3](http://i.imgur.com/FIYe6bm.png)
 ![Screenshot 4](http://i.imgur.com/V1r6eER.png)
 ![Screenshot 5](http://i.imgur.com/Joik8Qe.png)
 ![Screenshot 6](http://i.imgur.com/hLajkw3.png)
-![Screenshot 7](http://i.imgur.com/uC9hXxk.png)
+![Screenshot 7](http://i.imgur.com/MzJn807.png)
+![Screenshot 8](http://i.imgur.com/uC9hXxk.png)
 
 Attribution & License
 ---------------------
