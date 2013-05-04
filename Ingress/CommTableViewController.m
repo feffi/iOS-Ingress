@@ -74,8 +74,14 @@
 	
 	//NSLog(@"messages[indexPath.row]: %@", messages[indexPath.row]);
 
-	cell.timeLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:12];
+	cell.timeLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:10];
 	cell.timeLabel.text = [dateFormatter stringFromDate:_messages[indexPath.row][@"date"]];
+
+	if ([_messages[indexPath.row][@"mentionsYou"] boolValue]) {
+		cell.timeLabel.backgroundColor = [UIColor colorWithRed:1.000 green:0.839 blue:0.322 alpha:1.000];
+	} else {
+		cell.timeLabel.backgroundColor = [UIColor colorWithRed:0.063 green:0.125 blue:0.133 alpha:1.000];
+	}
 	
 	//cell.messageLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15];
 	cell.messageLabel.attributedText = _messages[indexPath.row][@"message"];

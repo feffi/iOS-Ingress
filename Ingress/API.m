@@ -727,22 +727,28 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 			
 			NSArray *markups = message[2][@"plext"][@"markup"];
 			BOOL isMessage = NO;
+			BOOL mentionsYou = NO;
 			int start = 0;
 			for (NSArray *markup in markups) {
 				//NSLog(@"%@: %@", markup[0], markup[1][@"plain"]);
 				
 				NSRange range = [str rangeOfString:markup[1][@"plain"] options:0 range:NSMakeRange(start, str.length-start)];
 				
-				if ([markup[0] isEqualToString:@"PLAYER"] || [markup[0] isEqualToString:@"SENDER"]) {
+				if ([markup[0] isEqualToString:@"PLAYER"] || [markup[0] isEqualToString:@"SENDER"] || [markup[0] isEqualToString:@"AT_PLAYER"]) {
 					
 					if ([markup[0] isEqualToString:@"SENDER"]) {
 						isMessage = YES;
 					}
-					
-					if ([markup[1][@"team"] isEqualToString:@"ALIENS"]) {
-						[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:40./255. green:244./255. blue:40./255. alpha:1]} range:range];
+
+					if ([markup[0] isEqualToString:@"AT_PLAYER"] && [[markup[1][@"plain"] substringFromIndex:1] isEqualToString:self.playerInfo[@"nickname"]]) {
+							[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:1.000 green:0.839 blue:0.322 alpha:1.000]} range:range];
+						mentionsYou = YES;
 					} else {
-						[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:0 green:194./255. blue:1 alpha:1]} range:range];
+						if ([markup[1][@"team"] isEqualToString:@"ALIENS"]) {
+							[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:40./255. green:244./255. blue:40./255. alpha:1]} range:range];
+						} else {
+							[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:0 green:194./255. blue:1 alpha:1]} range:range];
+						}
 					}
 					
 				} else if ([markup[0] isEqualToString:@"PORTAL"]) {
@@ -763,7 +769,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 				start += range.length;
 			}
 
-			[messages addObject:@{@"date": date, @"message": atrstr}];
+			[messages addObject:@{@"date": date, @"message": atrstr, @"mentionsYou": @(mentionsYou)}];
 			
 		}
 		
