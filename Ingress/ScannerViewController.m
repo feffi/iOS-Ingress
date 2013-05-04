@@ -30,12 +30,37 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+	[[AppDelegate instance] setMapView:_mapView];
+
 	levelLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:32];
 	nicknameLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
+	apLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
+	xmLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
+
+	apLabel.hidden = YES;
+	xmLabel.hidden = YES;
+	apLabel.alpha = 0;
+	xmLabel.alpha = 0;
+
 	firstRefreshProfile = YES;
 
 	[xmIndicator setProgressImage:[[UIImage imageNamed:@"progressImage-aliens.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(7, 7, 7, 7)]];
 	[xmIndicator setTrackImage:[[UIImage imageNamed:@"trackImage.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(2, 2, 2, 2)]];
+
+	rangeCircleView = [UIView new];
+	rangeCircleView.frame = CGRectMake(0, 0, 0, 0);
+	rangeCircleView.center = _mapView.center;
+	rangeCircleView.backgroundColor = [UIColor clearColor];
+	rangeCircleView.opaque = NO;
+	rangeCircleView.userInteractionEnabled = NO;
+	rangeCircleView.layer.cornerRadius = 0;
+	rangeCircleView.layer.masksToBounds = YES;
+	rangeCircleView.layer.borderWidth = 2;
+	rangeCircleView.layer.borderColor = [[[UIColor blueColor] colorWithAlphaComponent:0.25] CGColor];
+	[self.view addSubview:rangeCircleView];
+
+	[NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(updateCircle) userInfo:nil repeats:YES];
+
 
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(managedObjectContextObjectsDidChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:nil];
 
@@ -53,25 +78,6 @@
 		});
 	}
 
-	[[AppDelegate instance] setMapView:_mapView];
-
-	UIPinchGestureRecognizer *recognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
-	[_mapView addGestureRecognizer:recognizer];
-
-	rangeCircleView = [UIView new];
-	rangeCircleView.frame = CGRectMake(0, 0, 0, 0);
-	rangeCircleView.center = _mapView.center;
-	rangeCircleView.backgroundColor = [UIColor clearColor];
-	rangeCircleView.opaque = NO;
-	rangeCircleView.userInteractionEnabled = NO;
-	rangeCircleView.layer.cornerRadius = 0;
-	rangeCircleView.layer.masksToBounds = YES;
-	rangeCircleView.layer.borderWidth = 2;
-	rangeCircleView.layer.borderColor = [[[UIColor blueColor] colorWithAlphaComponent:0.25] CGColor];
-	[self.view addSubview:rangeCircleView];
-
-	[NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(updateCircle) userInfo:nil repeats:YES];
-
 //	if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorized) {
 //#warning location
 //		[_mapView setHidden:YES];
@@ -85,6 +91,9 @@
 //		[HUD show:YES];
 //	}
 
+	UIPinchGestureRecognizer *recognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
+	[_mapView addGestureRecognizer:recognizer];
+
 //	UITapGestureRecognizer *mapViewTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapTapped:)];
 //	[_mapView addGestureRecognizer:mapViewTapGestureRecognizer];
 
@@ -95,14 +104,14 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
+
+	[self.navigationController setNavigationBarHidden:YES animated:NO];
 	
 	[[NSNotificationCenter defaultCenter] addObserverForName:@"ProfileUpdatedNotification" object:nil queue:[[API sharedInstance] notificationQueue] usingBlock:^(NSNotification *note) {
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[self refreshProfile];
 		});
 	}];
-
-//	[[DB sharedInstance] addPortalsToMapView];
 
 	[self refreshProfile];
 
@@ -125,7 +134,7 @@
 - (void)viewDidDisappear:(BOOL)animated {
 	[super viewDidDisappear:animated];
 	
-//	[[NSNotificationCenter defaultCenter] removeObserver:self];
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -262,6 +271,9 @@
 	float energy = [playerInfo[@"energy"] floatValue];
 	float maxEnergy = [API maxXmForLevel:level];
 
+	[apLabel setText:[NSString stringWithFormat:@"%d AP", ap]];
+	[xmLabel setText:[NSString stringWithFormat:@"%d XM", (int)energy]];
+
 	NSMutableParagraphStyle *pStyle = [NSMutableParagraphStyle new];
     pStyle.alignment = NSTextAlignmentRight;
 
@@ -286,6 +298,40 @@
 
 	firstRefreshProfile = NO;
 
+}
+
+#pragma mark - IBActions
+
+- (IBAction)showAP {
+	if (apLabel.hidden) {
+		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+		
+		[apLabel setHidden:NO];
+		[UIView animateWithDuration:.5 animations:^{
+			[apLabel setAlpha:1];
+		}];
+		[UIView animateWithDuration:.5 delay:2 options:0 animations:^{
+			[apLabel setAlpha:0];
+		} completion:^(BOOL finished) {
+			[apLabel setHidden:YES];
+		}];
+	}
+}
+
+- (IBAction)showXM {
+	if (xmLabel.hidden) {
+		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+
+		[xmLabel setHidden:NO];
+		[UIView animateWithDuration:.5 animations:^{
+			[xmLabel setAlpha:1];
+		}];
+		[UIView animateWithDuration:.5 delay:2 options:0 animations:^{
+			[xmLabel setAlpha:0];
+		} completion:^(BOOL finished) {
+			[xmLabel setHidden:YES];
+		}];
+	}
 }
 
 #pragma mark - NSManagedObjectContext Did Change
@@ -824,6 +870,8 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:@"PortalDetailSegue"]) {
 		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+
+		[self.navigationController setNavigationBarHidden:NO animated:YES];
 		
 		PortalDetailViewController *vc = segue.destinationViewController;
 		vc.portal = currentPortal;

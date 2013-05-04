@@ -29,6 +29,7 @@
 		FA3BD7891735308A004F5ED5 /* ap_stroke_resistance@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3BD7871735308A004F5ED5 /* ap_stroke_resistance@2x.png */; };
 		FA3BD78C17356424004F5ED5 /* device.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3BD78A17356424004F5ED5 /* device.png */; };
 		FA3BD78D17356424004F5ED5 /* device@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3BD78B17356424004F5ED5 /* device@2x.png */; };
+		FA3BD78F1735B704004F5ED5 /* blue_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3BD78E1735B704004F5ED5 /* blue_bg@2x.png */; };
 		FA3E8AEC17267F6700673665 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3E8AEB17267F6700673665 /* TPKeyboardAvoidingScrollView.m */; };
 		FA47817F16AC8FE00041FDFB /* enl_res_energy_fill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA47817D16AC8FE00041FDFB /* enl_res_energy_fill@2x.png */; };
 		FA47818016AC8FE00041FDFB /* hum_res_energy_fill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA47817E16AC8FE00041FDFB /* hum_res_energy_fill@2x.png */; };
@@ -301,6 +302,7 @@
 		FA3BD7871735308A004F5ED5 /* ap_stroke_resistance@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ap_stroke_resistance@2x.png"; sourceTree = "<group>"; };
 		FA3BD78A17356424004F5ED5 /* device.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = device.png; sourceTree = "<group>"; };
 		FA3BD78B17356424004F5ED5 /* device@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "device@2x.png"; sourceTree = "<group>"; };
+		FA3BD78E1735B704004F5ED5 /* blue_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue_bg@2x.png"; sourceTree = "<group>"; };
 		FA3E8AEA17267F6700673665 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
 		FA3E8AEB17267F6700673665 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		FA47817D16AC8FE00041FDFB /* enl_res_energy_fill@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "enl_res_energy_fill@2x.png"; sourceTree = "<group>"; };
@@ -979,6 +981,7 @@
 			children = (
 				FACD4FFC16A428A80077837F /* marker_images */,
 				FAF5A90116A7449C00EB42CF /* Resonators */,
+				FA3BD78E1735B704004F5ED5 /* blue_bg@2x.png */,
 				FA3BD745173514D5004F5ED5 /* nudge_callout@2x.png */,
 				FA3BD78217352DCE004F5ED5 /* ap_fill_aliens@2x.png */,
 				FA3BD78317352DCE004F5ED5 /* ap_stroke_aliens@2x.png */,
@@ -2069,6 +2072,7 @@
 				FA3BD7891735308A004F5ED5 /* ap_stroke_resistance@2x.png in Resources */,
 				FA3BD78C17356424004F5ED5 /* device.png in Resources */,
 				FA3BD78D17356424004F5ED5 /* device@2x.png in Resources */,
+				FA3BD78F1735B704004F5ED5 /* blue_bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
