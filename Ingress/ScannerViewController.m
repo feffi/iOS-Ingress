@@ -429,7 +429,7 @@
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
-	[view setSelected:NO animated:YES];
+	[_mapView deselectAnnotation:view.annotation animated:NO];
 	if ([view.annotation isKindOfClass:[Portal class]]) {
 		currentPortal = (Portal *)view.annotation;
 		[self performSegueWithIdentifier:@"PortalDetailSegue" sender:self];
