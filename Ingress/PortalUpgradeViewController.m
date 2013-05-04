@@ -189,92 +189,116 @@
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_resonator_power_up.aif"];
 	
 	if ([_resonators[slot] intValue] == 0) {
-		
-		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-		HUD.userInteractionEnabled = YES;
-		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		HUD.labelText = [NSString stringWithFormat:@"Deploying resonator of level: %d", level];
-		[[AppDelegate instance].window addSubview:HUD];
-		[HUD show:YES];
 
 		Resonator *resonatorItem = [Resonator MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", level]];
 		
 		if (!resonatorItem) {
-			NSLog(@"No resonator of that level remaining!");
-			return;
-		}
-		
-		[[API sharedInstance] deployResonator:resonatorItem toPortal:self.portal toSlot:slot completionHandler:^(NSString *errorStr) {
-			
-			[HUD hide:YES];
 
-			if (errorStr) {
-				MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-				HUD.userInteractionEnabled = YES;
-				HUD.dimBackground = YES;
-				HUD.mode = MBProgressHUDModeCustomView;
-				HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-				HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-				HUD.detailsLabelText = errorStr;
-				[[AppDelegate instance].window addSubview:HUD];
-				[HUD show:YES];
-				[HUD hide:YES afterDelay:3];
-			} else {
+			MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+			HUD.userInteractionEnabled = YES;
+			HUD.dimBackground = YES;
+			HUD.mode = MBProgressHUDModeCustomView;
+			HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+			HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+			HUD.detailsLabelText = @"No resonator of that level remaining!";
+			[[AppDelegate instance].window addSubview:HUD];
+			[HUD show:YES];
+			[HUD hide:YES afterDelay:3];
+
+		} else {
+
+			MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+			HUD.userInteractionEnabled = YES;
+			HUD.dimBackground = YES;
+			HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+			HUD.labelText = [NSString stringWithFormat:@"Deploying resonator of level: %d", level];
+			[[AppDelegate instance].window addSubview:HUD];
+			[HUD show:YES];
+
+			[[API sharedInstance] deployResonator:resonatorItem toPortal:self.portal toSlot:slot completionHandler:^(NSString *errorStr) {
+
+				[HUD hide:YES];
+
+				if (errorStr) {
+					MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+					HUD.userInteractionEnabled = YES;
+					HUD.dimBackground = YES;
+					HUD.mode = MBProgressHUDModeCustomView;
+					HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+					HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+					HUD.detailsLabelText = errorStr;
+					[[AppDelegate instance].window addSubview:HUD];
+					[HUD show:YES];
+					[HUD hide:YES afterDelay:3];
+				} else {
+
+					[[SoundManager sharedManager] playSound:@"Sound/speech_resonator.aif"];
+
+					dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .75 * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
+						[[SoundManager sharedManager] playSound:@"Sound/speech_deployed.aif"];
+					});
+					
+				}
 				
-				[[SoundManager sharedManager] playSound:@"Sound/speech_resonator.aif"];
-				
-				dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .75 * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
-					[[SoundManager sharedManager] playSound:@"Sound/speech_deployed.aif"];
-				});
-				
-			}
-			
-		}];
+			}];
+
+		}
 		
 	} else if ([_resonators[slot] intValue] == 1) {
 		
-		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-		HUD.userInteractionEnabled = YES;
-		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		HUD.labelText = [NSString stringWithFormat:@"Upgrading resonator to level: %d", level];
-		[[AppDelegate instance].window addSubview:HUD];
-		[HUD show:YES];
-		
 		Resonator *resonatorItem = [Resonator MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", level]];
 		
 		if (!resonatorItem) {
-			NSLog(@"No resonator of that level remaining!");
-			return;
-		}
-		
-		[[API sharedInstance] upgradeResonator:resonatorItem toPortal:self.portal toSlot:slot completionHandler:^(NSString *errorStr) {
-			[HUD hide:YES];
-			
-			if (errorStr) {
-				MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-				HUD.userInteractionEnabled = YES;
-				HUD.dimBackground = YES;
-				HUD.mode = MBProgressHUDModeCustomView;
-				HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-				HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-				HUD.detailsLabelText = errorStr;
-				[[AppDelegate instance].window addSubview:HUD];
-				[HUD show:YES];
-				[HUD hide:YES afterDelay:3];
-			} else {
 
-				[[SoundManager sharedManager] playSound:@"Sound/speech_resonator.aif"];
+			MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+			HUD.userInteractionEnabled = YES;
+			HUD.dimBackground = YES;
+			HUD.mode = MBProgressHUDModeCustomView;
+			HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+			HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+			HUD.detailsLabelText = @"No resonator of that level remaining!";
+			[[AppDelegate instance].window addSubview:HUD];
+			[HUD show:YES];
+			[HUD hide:YES afterDelay:3];
+
+		} else {
+
+			MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+			HUD.userInteractionEnabled = YES;
+			HUD.dimBackground = YES;
+			HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+			HUD.labelText = [NSString stringWithFormat:@"Upgrading resonator to level: %d", level];
+			[[AppDelegate instance].window addSubview:HUD];
+			[HUD show:YES];
+
+			[[API sharedInstance] upgradeResonator:resonatorItem toPortal:self.portal toSlot:slot completionHandler:^(NSString *errorStr) {
+				[HUD hide:YES];
+
+				if (errorStr) {
+					MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+					HUD.userInteractionEnabled = YES;
+					HUD.dimBackground = YES;
+					HUD.mode = MBProgressHUDModeCustomView;
+					HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+					HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+					HUD.detailsLabelText = errorStr;
+					[[AppDelegate instance].window addSubview:HUD];
+					[HUD show:YES];
+					[HUD hide:YES afterDelay:3];
+				} else {
+
+					[[SoundManager sharedManager] playSound:@"Sound/speech_resonator.aif"];
+
+					dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .75 * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
+						[[SoundManager sharedManager] playSound:@"Sound/speech_upgraded.aif"];
+					});
+					
+				}
 				
-				dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .75 * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
-					[[SoundManager sharedManager] playSound:@"Sound/speech_upgraded.aif"];
-				});
-				
-			}
-			
-		}];
-		
+			}];
+
+		}
+
 	}
 	
 }
@@ -306,44 +330,56 @@
 - (void)deployShieldOfRarity:(PortalShieldRarity)rarity toSlot:(int)slot {
 	
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_mod_power_up.aif"];
-	
-	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-	HUD.userInteractionEnabled = YES;
-	HUD.dimBackground = YES;
-	HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-	HUD.detailsLabelText = @"Deploying shield...";
-	[[AppDelegate instance].window addSubview:HUD];
-	[HUD show:YES];
 
 	Shield *shieldItem = [Shield MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
 	
 	if (!shieldItem) {
-		NSLog(@"No shield of that rarity remaining!");
-		return;
+		
+		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.userInteractionEnabled = YES;
+		HUD.dimBackground = YES;
+		HUD.mode = MBProgressHUDModeCustomView;
+		HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+		HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+		HUD.detailsLabelText = @"No shield of that rarity remaining!";
+		[[AppDelegate instance].window addSubview:HUD];
+		[HUD show:YES];
+		[HUD hide:YES afterDelay:3];
+		
+	} else {
+		
+		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.userInteractionEnabled = YES;
+		HUD.dimBackground = YES;
+		HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+		HUD.detailsLabelText = @"Deploying shield...";
+		[[AppDelegate instance].window addSubview:HUD];
+		[HUD show:YES];
+
+		[[API sharedInstance] addMod:shieldItem toItem:self.portal toSlot:slot completionHandler:^(NSString *errorStr) {
+
+			[HUD hide:YES];
+
+			if (errorStr) {
+				MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+				HUD.userInteractionEnabled = YES;
+				HUD.dimBackground = YES;
+				HUD.mode = MBProgressHUDModeCustomView;
+				HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+				HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+				HUD.detailsLabelText = errorStr;
+				[[AppDelegate instance].window addSubview:HUD];
+				[HUD show:YES];
+				[HUD hide:YES afterDelay:3];
+			} else {
+
+				[[API sharedInstance] playSounds:@[@"SPEECH_SHIELD", @"SPEECH_DEPLOYED"]];
+				
+			}
+			
+		}];
+		
 	}
-	
-	[[API sharedInstance] addMod:shieldItem toItem:self.portal toSlot:slot completionHandler:^(NSString *errorStr) {
-		
-		[HUD hide:YES];
-		
-		if (errorStr) {
-			MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-			HUD.userInteractionEnabled = YES;
-			HUD.dimBackground = YES;
-			HUD.mode = MBProgressHUDModeCustomView;
-			HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-			HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-			HUD.detailsLabelText = errorStr;
-			[[AppDelegate instance].window addSubview:HUD];
-			[HUD show:YES];
-			[HUD hide:YES afterDelay:3];
-		} else {
-			
-			[[API sharedInstance] playSounds:@[@"SPEECH_SHIELD", @"SPEECH_DEPLOYED"]];
-			
-		}
-		
-	}];
 		
 }
 
