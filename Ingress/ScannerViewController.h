@@ -12,6 +12,7 @@
 #import <CoreImage/CoreImage.h>
 #import "LevelChooserViewController.h"
 #import "XMCollectViewController.h"
+#import "APView.h"
 
 @interface ScannerViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate> {
 	
@@ -26,7 +27,8 @@
 	__weak IBOutlet UIImageView *bgImage;
 	
 	__weak IBOutlet UILabel *levelLabel;
-	__weak IBOutlet UIImageView *levelImage;
+//	__weak IBOutlet UIImageView *levelImage;
+	__weak IBOutlet APView *apView;
 	__weak IBOutlet UILabel *nicknameLabel;
 	__weak IBOutlet UILabel *xmLabel;
 	__weak IBOutlet UIProgressView *xmIndicator;

@@ -116,16 +116,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	
 }
 
-+ (int)levelImageForAp:(int)ap {
-	int level = [API levelForAp:ap];
-	float max = (float)[API maxApForLevel:level];
-	NSArray *maxAPs = @[@0, @10000, @30000, @70000, @150000, @300000, @600000, @1200000];
-	int lvlImg = max == 0 ? 0 : floorf(8 * ((ap - [maxAPs[level - 1] floatValue]) / ([maxAPs[level] floatValue] - [maxAPs[level - 1] floatValue])));
-	return lvlImg;
-}
-
 + (int)maxApForLevel:(int)level {
-	return (level > 0 && level < 8) ? [@[@0, @10000, @30000, @70000, @150000, @300000, @600000, @1200000][level] intValue] : 0;
+	return (level > 0 && level < 8) ? [@[@0, @10000, @30000, @70000, @150000, @300000, @600000, @1200000, @(INFINITY)][level] intValue] : 0;
 }
 
 + (int)maxXmForLevel:(int)level {

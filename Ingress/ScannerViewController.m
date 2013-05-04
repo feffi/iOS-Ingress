@@ -239,7 +239,7 @@
 
 	int ap = [playerInfo[@"ap"] intValue];
 	int level = [API levelForAp:ap];
-	int lvlImg = [API levelImageForAp:ap];
+	int maxAp = [API maxApForLevel:level];
 	float energy = [playerInfo[@"energy"] floatValue];
 	float maxEnergy = [API maxXmForLevel:level];
 
@@ -247,12 +247,10 @@
     pStyle.alignment = NSTextAlignmentRight;
 
 	UIColor *teamColor = [API colorForFaction:playerInfo[@"team"]];
-
-	if ([playerInfo[@"team"] isEqualToString:@"ALIENS"]) {
-		levelImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"ap_icon_enl_%d.png", lvlImg]];
-	} else {
-		levelImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"ap_icon_hum_%d.png", lvlImg]];
-	}
+	
+	[apView setFaction:playerInfo[@"team"]];
+	NSArray *maxAPs = @[@0, @10000, @30000, @70000, @150000, @300000, @600000, @1200000, @(INFINITY)];
+	[apView setProgress:(maxAp == 0 ? 0 : ((ap - [maxAPs[level - 1] floatValue]) / ([maxAPs[level] floatValue] - [maxAPs[level - 1] floatValue])))];
 
 	levelLabel.text = [NSString stringWithFormat:@"%d", level];
 

@@ -41,7 +41,6 @@ typedef void (^SoundCompletionBlock)(void);
 + (NSString *)shieldRarityStrFromRarity:(PortalShieldRarity)shieldRarity;
 
 + (int)levelForAp:(int)ap;
-+ (int)levelImageForAp:(int)ap;
 + (int)maxApForLevel:(int)level;
 + (int)maxXmForLevel:(int)level;
 + (int)maxEnergyForResonatorLevel:(int)level;
