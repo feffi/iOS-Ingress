@@ -393,7 +393,7 @@
 
 		} else {
 
-			[API sharedInstance].playerInfo = @{@"nickname": codenameToConfirm};
+			[API sharedInstance].playerInfo = [@{@"nickname": codenameToConfirm} mutableCopy];
 			
 			typewriterLabel.text = @"";
 

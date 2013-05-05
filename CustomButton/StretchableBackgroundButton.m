@@ -18,6 +18,13 @@
 		[self setBackgroundImage:[[self backgroundImageForState:UIControlStateHighlighted] stretchableImageWithLeftCapWidth:22 topCapHeight:12] forState:UIControlStateHighlighted];
 		[self setBackgroundImage:[[self backgroundImageForState:UIControlStateDisabled] stretchableImageWithLeftCapWidth:22 topCapHeight:12] forState:UIControlStateDisabled];
 
+		self.titleLabel.layer.shadowColor = [self titleColorForState:UIControlStateNormal].CGColor;
+		self.titleLabel.layer.shadowOffset = CGSizeZero;
+		self.titleLabel.layer.shadowRadius = self.titleLabel.font.pointSize/5;
+		self.titleLabel.layer.shadowOpacity = 1;
+		self.titleLabel.layer.shouldRasterize = YES;
+		self.titleLabel.layer.masksToBounds = NO;
+
     }
     return self;
 }

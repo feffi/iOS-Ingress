@@ -31,6 +31,9 @@
 		FA3BD78D17356424004F5ED5 /* device@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3BD78B17356424004F5ED5 /* device@2x.png */; };
 		FA3BD78F1735B704004F5ED5 /* blue_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3BD78E1735B704004F5ED5 /* blue_bg@2x.png */; };
 		FA3E8AEC17267F6700673665 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3E8AEB17267F6700673665 /* TPKeyboardAvoidingScrollView.m */; };
+		FA3FC30E173656AC009CD94A /* MissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3FC30D173656AC009CD94A /* MissionViewController.m */; };
+		FA3FC3111736603B009CD94A /* ScrollTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3FC3101736603B009CD94A /* ScrollTextView.m */; };
+		FA3FC31317369E4D009CD94A /* green_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3FC31217369E4D009CD94A /* green_bg@2x.png */; };
 		FA47817F16AC8FE00041FDFB /* enl_res_energy_fill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA47817D16AC8FE00041FDFB /* enl_res_energy_fill@2x.png */; };
 		FA47818016AC8FE00041FDFB /* hum_res_energy_fill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA47817E16AC8FE00041FDFB /* hum_res_energy_fill@2x.png */; };
 		FA4D43AC16A8335500B98C1F /* shield@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA4D43AB16A8335500B98C1F /* shield@2x.png */; };
@@ -305,6 +308,11 @@
 		FA3BD78E1735B704004F5ED5 /* blue_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue_bg@2x.png"; sourceTree = "<group>"; };
 		FA3E8AEA17267F6700673665 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
 		FA3E8AEB17267F6700673665 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		FA3FC30C173656AC009CD94A /* MissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MissionViewController.h; sourceTree = "<group>"; };
+		FA3FC30D173656AC009CD94A /* MissionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MissionViewController.m; sourceTree = "<group>"; };
+		FA3FC30F1736603B009CD94A /* ScrollTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollTextView.h; sourceTree = "<group>"; };
+		FA3FC3101736603B009CD94A /* ScrollTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollTextView.m; sourceTree = "<group>"; };
+		FA3FC31217369E4D009CD94A /* green_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green_bg@2x.png"; sourceTree = "<group>"; };
 		FA47817D16AC8FE00041FDFB /* enl_res_energy_fill@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "enl_res_energy_fill@2x.png"; sourceTree = "<group>"; };
 		FA47817E16AC8FE00041FDFB /* hum_res_energy_fill@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hum_res_energy_fill@2x.png"; sourceTree = "<group>"; };
 		FA4D43AB16A8335500B98C1F /* shield@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shield@2x.png"; sourceTree = "<group>"; };
@@ -873,13 +881,15 @@
 			name = "s2-geomtery-library";
 			sourceTree = "<group>";
 		};
-		FA29CCF5171F05BB007FB43E /* TypeWriterLabel */ = {
+		FA29CCF5171F05BB007FB43E /* Text Views */ = {
 			isa = PBXGroup;
 			children = (
 				FA29CCF6171F05C6007FB43E /* TypeWriterLabel.h */,
 				FA29CCF7171F05C6007FB43E /* TypeWriterLabel.m */,
+				FA3FC30F1736603B009CD94A /* ScrollTextView.h */,
+				FA3FC3101736603B009CD94A /* ScrollTextView.m */,
 			);
-			name = TypeWriterLabel;
+			name = "Text Views";
 			sourceTree = "<group>";
 		};
 		FA32E871169EC13900D30E90 /* Model */ = {
@@ -925,6 +935,16 @@
 				FA3E8AEB17267F6700673665 /* TPKeyboardAvoidingScrollView.m */,
 			);
 			path = TPKeyboardAvoidingScrollView;
+			sourceTree = "<group>";
+		};
+		FA3FC30B1736569B009CD94A /* Mission */ = {
+			isa = PBXGroup;
+			children = (
+				FA3FC30C173656AC009CD94A /* MissionViewController.h */,
+				FA3FC30D173656AC009CD94A /* MissionViewController.m */,
+			);
+			name = Mission;
+			path = Ingress;
 			sourceTree = "<group>";
 		};
 		FA4D43B316A8609D00B98C1F /* Resources */ = {
@@ -982,6 +1002,7 @@
 				FACD4FFC16A428A80077837F /* marker_images */,
 				FAF5A90116A7449C00EB42CF /* Resonators */,
 				FA3BD78E1735B704004F5ED5 /* blue_bg@2x.png */,
+				FA3FC31217369E4D009CD94A /* green_bg@2x.png */,
 				FA3BD745173514D5004F5ED5 /* nudge_callout@2x.png */,
 				FA3BD78217352DCE004F5ED5 /* ap_fill_aliens@2x.png */,
 				FA3BD78317352DCE004F5ED5 /* ap_stroke_aliens@2x.png */,
@@ -1733,17 +1754,17 @@
 			isa = PBXGroup;
 			children = (
 				FA3BD77E17352C5B004F5ED5 /* APView */,
+				FA29CCF5171F05BB007FB43E /* Text Views */,
+				FA8C24D516B3257D000C8738 /* Custom Buttons */,
 				FAA9C41517304B6A000C2638 /* MagicalRecord */,
 				FAC4749C172DB2A000AAFFC0 /* s2-geometry */,
 				FAC47572172DB3E900AAFFC0 /* openssl */,
 				FA6EF94E172D115F0004905F /* GlowingLabel */,
 				FAADA23D17297D99001865D9 /* MDCParallaxView */,
 				FA3E8AE617267EF400673665 /* TPKeyboardAvoidingScrollView */,
-				FA29CCF5171F05BB007FB43E /* TypeWriterLabel */,
 				FA7AC9D516D14C5400505404 /* SoundManager */,
 				FA92A0AF16C2E11A00E6E3AE /* MKMapView+ZoomLevel */,
 				FAE797D516B49BEB00A57316 /* OpenGL */,
-				FA8C24D516B3257D000C8738 /* Custom Buttons */,
 				FA52008416A9AB24004AFE4D /* EXIF */,
 				FA4D43D116A8AB1300B98C1F /* MTStatusBarOverlay */,
 				FA4FB3C716A71FFB00FD989C /* iCarousel */,
@@ -1791,6 +1812,7 @@
 				FAEA5841169C7E7500E2F502 /* Ingress */,
 				FAC37C46169DE2EB000F88AB /* Loading View Controller */,
 				FA54DEFA16A19BAE006A92E0 /* Intel */,
+				FA3FC30B1736569B009CD94A /* Mission */,
 				FA54DEF216A1970A006A92E0 /* Items */,
 				FAEA5861169C7E8500E2F502 /* Scanner */,
 				FA32E885169F655E00D30E90 /* Comm */,
@@ -2073,6 +2095,7 @@
 				FA3BD78C17356424004F5ED5 /* device.png in Resources */,
 				FA3BD78D17356424004F5ED5 /* device@2x.png in Resources */,
 				FA3BD78F1735B704004F5ED5 /* blue_bg@2x.png in Resources */,
+				FA3FC31317369E4D009CD94A /* green_bg@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2208,6 +2231,8 @@
 				FAA9C47317306EB9000C2638 /* PortalKey.m in Sources */,
 				FAE71C2F1732ACC100742071 /* DeviceViewController.m in Sources */,
 				FA3BD78117352C5B004F5ED5 /* APView.m in Sources */,
+				FA3FC30E173656AC009CD94A /* MissionViewController.m in Sources */,
+				FA3FC3111736603B009CD94A /* ScrollTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

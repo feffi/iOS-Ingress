@@ -28,7 +28,7 @@ typedef void (^SoundCompletionBlock)(void);
 @property (nonatomic, strong) NSOperationQueue *notificationQueue;
 @property (nonatomic, strong) NSString *xsrfToken;
 @property (nonatomic, strong) NSString *SACSID;
-@property (nonatomic, strong) NSDictionary *playerInfo;
+@property (nonatomic, strong) NSMutableDictionary *playerInfo;
 @property (nonatomic, strong) NSMutableArray *energyToCollect;
 
 @property (nonatomic) SystemSoundID ui_success_sound;
@@ -74,7 +74,7 @@ typedef void (^SoundCompletionBlock)(void);
 - (void)fireXMP:(XMP *)xmpItem completionHandler:(void (^)(NSString *errorStr, NSDictionary *damages))handler;
 - (void)validateNickname:(NSString *)nickname completionHandler:(void (^)(NSString *errorStr))handler;
 - (void)persistNickname:(NSString *)nickname completionHandler:(void (^)(NSString *errorStr))handler;
-- (void)chooseFaction:(NSString *)faction completionHandler:(void (^)(void))handler;
+- (void)chooseFaction:(NSString *)faction completionHandler:(void (^)(NSString *errorStr))handler;
 - (void)hackPortal:(Portal *)portal completionHandler:(void (^)(NSString *errorStr, NSArray *acquiredItems, int secondsRemaining))handler;
 - (void)deployResonator:(Resonator *)resonatorItem toPortal:(Portal *)portal toSlot:(int)slot completionHandler:(void (^)(NSString *errorStr))handler;
 - (void)upgradeResonator:(Resonator *)resonatorItem toPortal:(Portal *)portal toSlot:(int)slot completionHandler:(void (^)(NSString *errorStr))handler;

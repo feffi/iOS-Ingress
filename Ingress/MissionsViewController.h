@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MissionsViewController : UITableViewController
+@interface MissionsViewController : UITableViewController <UIActionSheetDelegate>
 
 @end

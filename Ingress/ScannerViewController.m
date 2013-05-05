@@ -8,6 +8,7 @@
 
 #import "ScannerViewController.h"
 #import "PortalDetailViewController.h"
+#import "MissionViewController.h"
 #import "MKMapView+ZoomLevel.h"
 
 #import "PortalOverlayView.h"
@@ -25,6 +26,7 @@
 	CLLocationManager *locationManager;
 	CLLocation *lastLocation;
 	BOOL firstRefreshProfile;
+	BOOL firstLocationUpdate;
 }
 
 - (void)viewDidLoad {
@@ -43,6 +45,7 @@
 	xmLabel.alpha = 0;
 
 	firstRefreshProfile = YES;
+	firstLocationUpdate = YES;
 
 	[xmIndicator setProgressImage:[[UIImage imageNamed:@"progressImage-aliens.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(7, 7, 7, 7)]];
 	[xmIndicator setTrackImage:[[UIImage imageNamed:@"trackImage.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(2, 2, 2, 2)]];
@@ -112,6 +115,8 @@
 		});
 	}];
 
+	[self refreshProfile];
+
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -125,13 +130,17 @@
 //	transform = CATransform3DScale(transform, 2, 2, 2);
 //	layer.transform = transform;
 //	layer.shouldRasterize = YES;
+
+	if ([[[API sharedInstance] playerInfo][@"allowFactionChoice"] boolValue]) {
+		[self performSegueWithIdentifier:@"FactionChooseSegue" sender:self];
+	}
 	
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
 
-	[self.navigationController setNavigationBarHidden:NO animated:YES];
+	
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -427,7 +436,8 @@
 #pragma mark - CLLocationManagerDelegate
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
-	[_mapView setCenterCoordinate:newLocation.coordinate animated:YES];
+	[_mapView setCenterCoordinate:newLocation.coordinate animated:!firstLocationUpdate];
+	if (firstLocationUpdate) firstLocationUpdate = NO;
 }
 
 - (BOOL)locationManagerShouldDisplayHeadingCalibration:(CLLocationManager *)manager {
@@ -858,11 +868,16 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:@"PortalDetailSegue"]) {
 		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+
+		[self.navigationController setNavigationBarHidden:NO animated:YES];
 		
 		PortalDetailViewController *vc = segue.destinationViewController;
 		vc.portal = currentPortal;
 		vc.mapCenterCoordinate = _mapView.centerCoordinate;
 		currentPortal = nil;
+	} else if ([segue.identifier isEqualToString:@"FactionChooseSegue"]) {
+		MissionViewController *vc = segue.destinationViewController;
+		vc.factionChoose = YES;
 	}
 }
 

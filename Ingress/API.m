@@ -594,7 +594,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 //			[[API sharedInstance] chooseFaction:@"ALIENS/RESISTANCE" completionHandler:^{ }];
 		}
 		
-		self.playerInfo = @{
+		self.playerInfo = [@{
 			@"nickname": jsonObject[@"result"][@"nickname"],
 			@"team": jsonObject[@"result"][@"playerEntity"][2][@"controllingTeam"][@"team"],
 			@"ap": jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"ap"],
@@ -603,7 +603,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 			@"allowFactionChoice": jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"allowFactionChoice"],
 			@"shouldSendEmail": jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"notificationSettings"][@"shouldSendEmail"],
 			@"maySendPromoEmail": jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"notificationSettings"][@"maySendPromoEmail"],
-		};
+		} mutableCopy];
 
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"ProfileUpdatedNotification" object:nil];
 
@@ -612,8 +612,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 			
 			/////
 			
-			[[API sharedInstance] playSounds:@[@"SPEECH_ZOOM_ACQUIRING", @"SPEECH_ZOOM_LOCKON", @"SPEECH_ZOOM_DOWNLOADING"]];
-			
+//			[[API sharedInstance] playSounds:@[@"SPEECH_ZOOM_ACQUIRING", @"SPEECH_ZOOM_LOCKON", @"SPEECH_ZOOM_DOWNLOADING"]];
+
 //			[[SoundManager sharedManager] playSound:@"Sound/speech_zoom_acquiring.aif"];
 //			
 //			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 1.5 * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
@@ -936,7 +936,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 - (void)persistNickname:(NSString *)nickname completionHandler:(void (^)(NSString *errorStr))handler {
 	
 	[self sendRequest:@"playerUndecorated/persistNickname" params:@[nickname] completionHandler:^(id responseObj) {
-		
 		//NSLog(@"persistNickname: %@", responseObj);
 		
 		dispatch_async(dispatch_get_main_queue(), ^{
@@ -947,14 +946,13 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	
 }
 
-- (void)chooseFaction:(NSString *)faction completionHandler:(void (^)(void))handler {
+- (void)chooseFaction:(NSString *)faction completionHandler:(void (^)(NSString *errorStr))handler {
 
 	[self sendRequest:@"playerUndecorated/chooseFaction" params:@[faction] completionHandler:^(id responseObj) {
-		
-		NSLog(@"chooseFaction: %@", responseObj);
+		//NSLog(@"chooseFaction: %@", responseObj);
 		
 		dispatch_async(dispatch_get_main_queue(), ^{
-			handler();
+			handler(responseObj[@"error"]);
 		});
 		
 	}];
@@ -1780,7 +1778,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 	}
 
-	self.playerInfo = @{
+	self.playerInfo = [@{
 		@"nickname": self.playerInfo[@"nickname"],
 		@"team": playerEntity[2][@"controllingTeam"][@"team"],
 		@"ap": playerEntity[2][@"playerPersonal"][@"ap"],
@@ -1789,7 +1787,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		@"allowFactionChoice": playerEntity[2][@"playerPersonal"][@"allowFactionChoice"],
 		@"shouldSendEmail": playerEntity[2][@"playerPersonal"][@"notificationSettings"][@"shouldSendEmail"],
 		@"maySendPromoEmail": playerEntity[2][@"playerPersonal"][@"notificationSettings"][@"maySendPromoEmail"],
-	};
+	} mutableCopy];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"ProfileUpdatedNotification" object:nil];
 	

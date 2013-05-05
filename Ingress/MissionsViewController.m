@@ -7,6 +7,7 @@
 //
 
 #import "MissionsViewController.h"
+#import "MissionViewController.h"
 
 @implementation MissionsViewController
 
@@ -88,14 +89,91 @@
 */
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	UIActionSheet *actionSheet = nil;
+	switch (indexPath.row) {
+		case 0: {
+
+			actionSheet = [[UIActionSheet alloc] initWithTitle:@"First contact from ADA." delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+
+			break;
+		}
+		case 1: {
+
+			actionSheet = [[UIActionSheet alloc] initWithTitle:@"Charge your Scanner by collecting XM around you" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+
+			break;
+		}
+		case 2: {
+
+			actionSheet = [[UIActionSheet alloc] initWithTitle:@"Walk to a Portal and hack it for supplies" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+
+			break;
+		}
+		case 3: {
+
+			actionSheet = [[UIActionSheet alloc] initWithTitle:@"Attack an enemy Portal with an XMP" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+
+			break;
+		}
+		case 4: {
+
+			actionSheet = [[UIActionSheet alloc] initWithTitle:@"Bind Portal by deploying Resonator" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+
+			break;
+		}
+		case 5: {
+
+			actionSheet = [[UIActionSheet alloc] initWithTitle:@"Preparing a Portal for linking" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+
+			break;
+		}
+		case 6: {
+
+			actionSheet = [[UIActionSheet alloc] initWithTitle:@"Link two Portals" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+
+			break;
+		}
+		case 7: {
+
+			actionSheet = [[UIActionSheet alloc] initWithTitle:@"Create a Field" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+
+			break;
+		}
+	}
+	if (actionSheet) {
+		[actionSheet setTag:indexPath.row+1];
+		[actionSheet showFromTabBar:self.tabBarController.tabBar];
+	}
+}
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+	switch (actionSheet.tag) {
+		case 1:
+			if (buttonIndex == 0) {
+				[self performSegueWithIdentifier:@"MissionSegue" sender:self];
+			}
+			break;
+
+		default:
+			break;
+	}
+}
+
+#pragma mark - Storyboard
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:@"MissionSegue"]) {
+		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+
+		MissionViewController *vc = segue.destinationViewController;
+		vc.factionChoose = NO;
+
+	}
 }
 
 @end

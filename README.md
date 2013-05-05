@@ -16,30 +16,21 @@ New ipa (5/4/2013)
 TODO
 ----
 
-- choosing faction (+GUI)
-- better XM collecting
+- linking portals
 - speed and memory optimalizations
 - GUI improvements (mainly 3.5" screen optimalization)
-- linking portals
-- maybe 3D Scanner?
+- maybe 3D Scanner
 
-Choosing faction
-----------------
-
-Choosing faction is not yet implemented, but you can choose by calling this method:
-
-    API
-        - (void)chooseFaction:(NSString *)faction completionHandler:(void (^)(void))handler;
-        
-        "ALIENS"        = enlightened
-        "RESISTANCE"    = resistance
-
-Video
------
+Videos
+------
 
 Gameplay video
 
 http://youtu.be/Jewu0rpKrrU
+
+Faction Choosing
+
+http://youtu.be/nrfMyHPbIPc
 
 Video of codename creating and intro which have been recently finished
 

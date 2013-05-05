@@ -11,6 +11,7 @@
 #import <AVFoundation/AVFoundation.h>
 #import "WheelActivityIndicatorView.h"
 #import "StretchableBackgroundButton.h"
+#import "GlowingLabel.h"
 #import "TypeWriterLabel.h"
 #import "CustomBackgroundColorButton.h"
 #import "TPKeyboardAvoidingScrollView.h"
@@ -56,7 +57,7 @@
 	__weak IBOutlet UIView *introView;
 	__weak IBOutlet UITextView *introTextView;
 
-	__weak IBOutlet UILabel *label;
+	__weak IBOutlet GlowingLabel *label;
 //	__weak IBOutlet UIImageView *innerWheel;
 //	__weak IBOutlet UIImageView *outerWheel;
 	__weak IBOutlet WheelActivityIndicatorView *wheelActivityIndicatorView;
