@@ -20,7 +20,9 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	CGRect backgroundRect = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+	CGSize screenSize = [UIScreen mainScreen].bounds.size;
+
+	CGRect backgroundRect = CGRectMake(0, 0, screenSize.width, screenSize.height-113);
 	UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:backgroundRect];
 	backgroundImageView.image = [UIImage imageNamed:@"missing_image"];
 	backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
@@ -31,6 +33,13 @@
 	infoContainerView.scrollView.scrollsToTop = YES;
 	infoContainerView.scrollView.alwaysBounceVertical = YES;
 	infoContainerView.backgroundInteractionEnabled = NO;
+
+	infoContainerView.frame = CGRectMake(0, 0, screenSize.width, screenSize.height-113);
+	infoContainerView.backgroundHeight = screenSize.height-113-280;
+
+	self.portalInfoVC.portal = self.portal;
+	self.portalInfoVC.mapCenterCoordinate = self.mapCenterCoordinate;
+	self.portalInfoVC.view.frame = CGRectMake(0, 0, screenSize.width, 280);
 
 	self.portalInfoVC.imageView = backgroundImageView;
 
@@ -53,12 +62,7 @@
 //	vc1.portal = self.portal;
 //	vc1.mapCenterCoordinate = self.mapCenterCoordinate;
 
-	infoContainerView.frame = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height-44);
-	infoContainerView.backgroundHeight = self.view.frame.size.height-44-280;
 
-	self.portalInfoVC.portal = self.portal;
-	self.portalInfoVC.mapCenterCoordinate = self.mapCenterCoordinate;
-	self.portalInfoVC.view.frame = CGRectMake(0, 0, self.view.frame.size.width, 280);
 
 //	CGPoint bottomOffset = CGPointMake(0, infoContainerView.scrollView.contentSize.height - infoContainerView.scrollView.bounds.size.height);
 //	[infoContainerView.scrollView setContentOffset:bottomOffset animated:NO];

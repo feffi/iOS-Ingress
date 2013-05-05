@@ -1143,7 +1143,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="YsP-qD-cUK" firstAttribute="bottom" secondItem="DmM-Ra-LBw" secondAttribute="bottom" type="default" id="8q8-us-2lI"/>
                             <constraint firstItem="BX0-yd-s1M" firstAttribute="top" secondItem="3" secondAttribute="top" constant="225" id="Gag-mw-fGa"/>
                             <constraint firstItem="MGD-pG-MhS" firstAttribute="leading" secondItem="7MI-jq-NjA" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="HJd-x2-u8O"/>
-                            <constraint firstItem="Z0t-4M-3D3" firstAttribute="top" secondItem="3" secondAttribute="top" constant="56" id="ICl-eg-H70"/>
                             <constraint firstItem="YsP-qD-cUK" firstAttribute="leading" secondItem="DmM-Ra-LBw" secondAttribute="leading" type="default" id="IZI-NA-rdZ"/>
                             <constraint firstAttribute="trailing" secondItem="Z0t-4M-3D3" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="IgT-54-2o2"/>
                             <constraint firstItem="p8g-KV-tR1" firstAttribute="top" secondItem="7MI-jq-NjA" secondAttribute="top" type="default" id="NqH-YW-U6f"/>
@@ -1163,10 +1162,11 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="YsP-qD-cUK" firstAttribute="top" secondItem="7MI-jq-NjA" secondAttribute="top" type="default" id="oyo-G5-rrB"/>
                             <constraint firstAttribute="trailing" secondItem="p8g-KV-tR1" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="rHi-Il-E28"/>
                             <constraint firstAttribute="trailing" secondItem="oVe-o2-Lr5" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="u22-us-K8J"/>
-                            <constraint firstItem="Z0t-4M-3D3" firstAttribute="leading" secondItem="7MI-jq-NjA" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="uGE-NC-sE1"/>
                             <constraint firstItem="stx-mu-7c3" firstAttribute="top" secondItem="MGD-pG-MhS" secondAttribute="top" type="default" id="ueR-bc-ewZ"/>
                             <constraint firstItem="tWm-XI-3eu" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="default" id="waX-mK-319"/>
+                            <constraint firstItem="Z0t-4M-3D3" firstAttribute="leading" secondItem="YsP-qD-cUK" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="xMI-DS-RW1"/>
                             <constraint firstItem="stx-mu-7c3" firstAttribute="bottom" secondItem="MGD-pG-MhS" secondAttribute="bottom" type="default" id="yBT-OK-6Hn"/>
+                            <constraint firstItem="Z0t-4M-3D3" firstAttribute="bottom" secondItem="YsP-qD-cUK" secondAttribute="bottom" type="default" id="yOy-dF-4fK"/>
                             <constraint firstItem="oVe-o2-Lr5" firstAttribute="centerY" secondItem="7MI-jq-NjA" secondAttribute="centerY" type="user" id="yUX-Tf-CYR"/>
                             <constraint firstItem="stx-mu-7c3" firstAttribute="top" secondItem="3" secondAttribute="top" constant="8" id="yZ1-Rb-YNb"/>
                         </constraints>

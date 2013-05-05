@@ -61,9 +61,6 @@
 
 	[NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(updateCircle) userInfo:nil repeats:YES];
 
-
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(managedObjectContextObjectsDidChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:nil];
-
 	locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
@@ -106,14 +103,14 @@
 	[super viewWillAppear:animated];
 
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
+
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(managedObjectContextObjectsDidChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:nil];
 	
 	[[NSNotificationCenter defaultCenter] addObserverForName:@"ProfileUpdatedNotification" object:nil queue:[[API sharedInstance] notificationQueue] usingBlock:^(NSNotification *note) {
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[self refreshProfile];
 		});
 	}];
-
-	[self refreshProfile];
 
 }
 
