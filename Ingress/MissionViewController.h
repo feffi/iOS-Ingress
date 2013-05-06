@@ -43,6 +43,7 @@
 }
 
 @property (nonatomic) BOOL factionChoose;
+@property (nonatomic) int mission;
 
 - (IBAction)join:(id)sender;
 

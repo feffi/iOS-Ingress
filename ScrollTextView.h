@@ -11,6 +11,7 @@
 @interface ScrollTextView : UITextView
 
 @property (nonatomic) NSTimeInterval scrollInterval;
+@property (nonatomic) BOOL glowing;
 
 - (void)startScrolling;
 - (void)stopScrolling;

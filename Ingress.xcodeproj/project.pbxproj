@@ -208,6 +208,7 @@
 		FAC6BBAE171B080900AA0600 /* ResourcesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC6BBAD171B080900AA0600 /* ResourcesViewController.m */; };
 		FAC6BBB1171B0FFF00AA0600 /* ResourceCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC6BBB0171B0FFF00AA0600 /* ResourceCell.m */; };
 		FACD502316A441400077837F /* PortalDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FACD502216A441400077837F /* PortalDetailViewController.m */; };
+		FACEE6171737E9D3006A9912 /* NSShadow+Initilalizer.m in Sources */ = {isa = PBXBuildFile; fileRef = FACEE6161737E9D3006A9912 /* NSShadow+Initilalizer.m */; };
 		FACF89E116BBFD410071A03D /* GUIButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FACF89E016BBFD410071A03D /* GUIButton.m */; };
 		FAD5EEFE16A1F1CA00182F6B /* warning.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD5EEFC16A1F1CA00182F6B /* warning.png */; };
 		FAD5EEFF16A1F1CA00182F6B /* warning@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD5EEFD16A1F1CA00182F6B /* warning@2x.png */; };
@@ -713,6 +714,8 @@
 		FAC6BBB0171B0FFF00AA0600 /* ResourceCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResourceCell.m; sourceTree = "<group>"; };
 		FACD502116A441400077837F /* PortalDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortalDetailViewController.h; sourceTree = "<group>"; };
 		FACD502216A441400077837F /* PortalDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalDetailViewController.m; sourceTree = "<group>"; };
+		FACEE6151737E9D3006A9912 /* NSShadow+Initilalizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSShadow+Initilalizer.h"; path = "NSShadow+Initializer/NSShadow+Initilalizer.h"; sourceTree = "<group>"; };
+		FACEE6161737E9D3006A9912 /* NSShadow+Initilalizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSShadow+Initilalizer.m"; path = "NSShadow+Initializer/NSShadow+Initilalizer.m"; sourceTree = "<group>"; };
 		FACF89DF16BBFD410071A03D /* GUIButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GUIButton.h; sourceTree = "<group>"; };
 		FACF89E016BBFD410071A03D /* GUIButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GUIButton.m; sourceTree = "<group>"; };
 		FAD5EEFC16A1F1CA00182F6B /* warning.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = warning.png; sourceTree = "<group>"; };
@@ -1714,6 +1717,15 @@
 			name = "Portal Detail";
 			sourceTree = "<group>";
 		};
+		FACEE6141737E9AB006A9912 /* NSShadow+Initializer */ = {
+			isa = PBXGroup;
+			children = (
+				FACEE6151737E9D3006A9912 /* NSShadow+Initilalizer.h */,
+				FACEE6161737E9D3006A9912 /* NSShadow+Initilalizer.m */,
+			);
+			name = "NSShadow+Initializer";
+			sourceTree = "<group>";
+		};
 		FAD5EF1516A2081B00182F6B /* iOSPlot */ = {
 			isa = PBXGroup;
 			children = (
@@ -1753,6 +1765,7 @@
 		FAE6AC7616A0E27B0082BBB5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FACEE6141737E9AB006A9912 /* NSShadow+Initializer */,
 				FA3BD77E17352C5B004F5ED5 /* APView */,
 				FA29CCF5171F05BB007FB43E /* Text Views */,
 				FA8C24D516B3257D000C8738 /* Custom Buttons */,
@@ -2233,6 +2246,7 @@
 				FA3BD78117352C5B004F5ED5 /* APView.m in Sources */,
 				FA3FC30E173656AC009CD94A /* MissionViewController.m in Sources */,
 				FA3FC3111736603B009CD94A /* ScrollTextView.m in Sources */,
+				FACEE6171737E9D3006A9912 /* NSShadow+Initilalizer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

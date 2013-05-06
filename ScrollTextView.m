@@ -13,17 +13,12 @@
 }
 
 @synthesize scrollInterval = _scrollInterval;
+@synthesize glowing = _glowing;
 
 - (id)init {
     self = [super init];
     if (self) {
 		self.scrollInterval = 0.04;
-		
-		self.layer.shadowColor = self.textColor.CGColor;
-		self.layer.shadowOffset = CGSizeZero;
-		self.layer.shadowRadius = self.font.pointSize/5;
-		self.layer.shadowOpacity = 1;
-		self.layer.masksToBounds = YES;
     }
     return self;
 }
@@ -32,14 +27,23 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
 		self.scrollInterval = 0.04;
-		
+    }
+    return self;
+}
+
+- (void)setGlowing:(BOOL)glowing {
+	_glowing = glowing;
+
+	if (_glowing) {
 		self.layer.shadowColor = self.textColor.CGColor;
 		self.layer.shadowOffset = CGSizeZero;
 		self.layer.shadowRadius = self.font.pointSize/5;
 		self.layer.shadowOpacity = 1;
 		self.layer.masksToBounds = YES;
-    }
-    return self;
+	} else {
+		self.layer.shadowRadius = 0;
+		self.layer.shadowOpacity = 0;
+	}
 }
 
 - (void)startScrolling {
@@ -53,6 +57,10 @@
 
 - (void)autoscrollTimerFired {
     [self setContentOffset:CGPointMake(self.contentOffset.x, self.contentOffset.y + 1) animated:NO];
+}
+
+- (BOOL)canBecomeFirstResponder {
+    return NO;
 }
 
 @end

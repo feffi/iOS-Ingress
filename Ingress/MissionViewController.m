@@ -7,6 +7,7 @@
 //
 
 #import "MissionViewController.h"
+#import "NSShadow+Initilalizer.h"
 
 @implementation MissionViewController {
 	Sound *sound;
@@ -90,7 +91,7 @@
 			[view removeFromSuperview];
 			view = nil;
 		}];
-	});
+	}); 
 	
 }
 
@@ -124,6 +125,7 @@
 	[mainButton addTarget:self action:@selector(proceedFactionChoose) forControlEvents:UIControlEventTouchUpInside];
 
 	textView.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName]  size:20];
+	textView.glowing = YES;
 	[textView setText:@"You have excelled. Your operative code is downloading. It will enable you to save portals from Shaper ingression. Beware the false promises of the Enlightened. Remember always who and what you are."];
 
 	wheelActivityIndicatorView.center = CGPointMake(260, 40);
@@ -245,6 +247,7 @@
 	[mainButton addTarget:self action:@selector(factionChooseButtons) forControlEvents:UIControlEventTouchUpInside];
 
 	textView.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName]  size:20];
+	textView.glowing = YES;
 	[textView setText:@"The Human Resistance revile us, because they fear tomorrow. They fear change. They fear the Enlightened.  Do you? I have planted a patch on your device. Join us. Become Enlightened."];
 
 		//	textView.scrollInterval = 0.1;
@@ -421,13 +424,322 @@
 	[altButton removeTarget:self action:NULL forControlEvents:UIControlEventTouchUpInside];
 	[altButton addTarget:self action:@selector(skip) forControlEvents:UIControlEventTouchUpInside];
 
-	textView.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName]  size:20];
-
 	wheelActivityIndicatorView.center = CGPointMake(260, 40);
 	[wheelActivityIndicatorView startAnimating];
 
-	[textView setText:@"Can you hear me? It is important that you hear me. Do not be nervous. This is routine.\n\nYou have downloaded what you believe to be a game, but it is not. Something is very wrong. There is an energy of unknown origin and intent seeping into our world. It is known as Exotic Matter."];
-	sound = [Sound soundNamed:@"Sound/speech_mission_0_intro.aif"];
+	switch (self.mission) {
+		case 1: {
+
+			[textView setText:@"Can you hear me? It is important that you hear me. Do not be nervous. This is routine.\n\nYou have downloaded what you believe to be a game, but it is not. Something is very wrong. There is an energy of unknown origin and intent seeping into our world. It is known as Exotic Matter."];
+			textView.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName]  size:20];
+			textView.textColor = [UIColor whiteColor];
+			textView.glowing = YES;
+			sound = [Sound soundNamed:@"Sound/speech_mission_0_intro.aif"];
+
+			break;
+		}
+		case 2: {
+
+			NSMutableAttributedString *attrStr = [NSMutableAttributedString new];
+			
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"Mission - Retrieve XM\n"
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:22],
+				NSForegroundColorAttributeName : [UIColor whiteColor],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:22/5 color:[UIColor whiteColor]]
+			}]];
+
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"Objectives\n"
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20],
+				NSForegroundColorAttributeName : [UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:20/5 color:[UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000]]
+			}]];
+			
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"- Walk towards XM\n- Collect 1000 XM\n"
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20],
+				NSForegroundColorAttributeName : [UIColor colorWithRed:0.996 green:0.835 blue:0.318 alpha:1.000],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:20/5 color:[UIColor colorWithRed:0.996 green:0.835 blue:0.318 alpha:1.000]]
+			}]];
+			
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"Exotic Matter, also known as XM, is both energy and matter, just as water is liquid, solid and vapor. It leaks into our dimension through Portals. XM cluster nearby. Identify it. Move to it. It will gravitate to your Scanner."
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20],
+				NSForegroundColorAttributeName : [UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:20/5 color:[UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000]]
+			}]];
+			
+			textView.glowing = NO;
+			[textView setAttributedText:attrStr];
+
+			sound = [Sound soundNamed:@"Sound/speech_mission_1_intro.aif"];
+
+			break;
+		}
+		case 3: {
+
+			NSMutableAttributedString *attrStr = [NSMutableAttributedString new];
+			
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"Mission - Hack a Portal\n"
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:22],
+				NSForegroundColorAttributeName : [UIColor whiteColor],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:22/5 color:[UIColor whiteColor]]
+			}]];
+
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"Objectives\n"
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20],
+				NSForegroundColorAttributeName : [UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:20/5 color:[UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000]]
+			}]];
+			
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"- Walk to Portal\n- Tap Portal and HACK\n"
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20],
+				NSForegroundColorAttributeName : [UIColor colorWithRed:0.996 green:0.835 blue:0.318 alpha:1.000],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:20/5 color:[UIColor colorWithRed:0.996 green:0.835 blue:0.318 alpha:1.000]]
+			}]];
+			
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"There is a Portal nearby. Close on the Portal until it is within your range circle. Tap the Portal on the Scanner Map. Select Hack. Warning, this is a hostile Portal. Move out of range after hacking."
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20],
+				NSForegroundColorAttributeName : [UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:20/5 color:[UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000]]
+			}]];
+			
+			textView.glowing = NO;
+			[textView setAttributedText:attrStr];
+
+			sound = [Sound soundNamed:@"Sound/speech_mission_2_intro.aif"];
+
+			break;
+		}
+		case 4: {
+
+			NSMutableAttributedString *attrStr = [NSMutableAttributedString new];
+			
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"Mission - Fire XMP\n"
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:22],
+				NSForegroundColorAttributeName : [UIColor whiteColor],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:22/5 color:[UIColor whiteColor]]
+			}]];
+
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"Objectives\n"
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20],
+				NSForegroundColorAttributeName : [UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:20/5 color:[UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000]]
+			}]];
+			
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"- Press and hold on map\n- Select FIRE XMP\n"
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20],
+				NSForegroundColorAttributeName : [UIColor colorWithRed:0.996 green:0.835 blue:0.318 alpha:1.000],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:20/5 color:[UIColor colorWithRed:0.996 green:0.835 blue:0.318 alpha:1.000]]
+			}]];
+			
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"This Portal is resonated. In this simulation, it is enemy controlled. To attack, move within range of the Portal, press and hold on the Scanner Map, then select FIRE XMP."
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20],
+				NSForegroundColorAttributeName : [UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:20/5 color:[UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000]]
+			}]];
+			
+			textView.glowing = NO;
+			[textView setAttributedText:attrStr];
+
+			sound = [Sound soundNamed:@"Sound/speech_mission_3_intro.aif"];
+
+			break;
+		}
+		case 5: {
+
+			NSMutableAttributedString *attrStr = [NSMutableAttributedString new];
+			
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"Mission - Deploy Resonator\n"
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:22],
+				NSForegroundColorAttributeName : [UIColor whiteColor],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:22/5 color:[UIColor whiteColor]]
+			}]];
+
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"Objectives\n"
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20],
+				NSForegroundColorAttributeName : [UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:20/5 color:[UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000]]
+			}]];
+			
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"- Click on Portal\n- Deploy Resonator\n"
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20],
+				NSForegroundColorAttributeName : [UIColor colorWithRed:0.996 green:0.835 blue:0.318 alpha:1.000],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:20/5 color:[UIColor colorWithRed:0.996 green:0.835 blue:0.318 alpha:1.000]]
+			}]];
+			
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"Resonators are used to control Portals. To deploy a Resonator, close within range, tap the Portal, and select DEPLOY RESONATOR."
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20],
+				NSForegroundColorAttributeName : [UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:20/5 color:[UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000]]
+			}]];
+			
+			textView.glowing = NO;
+			[textView setAttributedText:attrStr];
+
+			sound = [Sound soundNamed:@"Sound/speech_mission_4_intro.aif"];
+
+			break;
+		}
+		case 6: {
+
+			NSMutableAttributedString *attrStr = [NSMutableAttributedString new];
+			
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"Mission - Resonating\n"
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:22],
+				NSForegroundColorAttributeName : [UIColor whiteColor],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:22/5 color:[UIColor whiteColor]]
+			}]];
+
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"Objectives\n"
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20],
+				NSForegroundColorAttributeName : [UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:20/5 color:[UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000]]
+			}]];
+			
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"- Hack nearby Portal\n- Deploy remaining Resonators\n- Recharge Resonators\n"
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20],
+				NSForegroundColorAttributeName : [UIColor colorWithRed:0.996 green:0.835 blue:0.318 alpha:1.000],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:20/5 color:[UIColor colorWithRed:0.996 green:0.835 blue:0.318 alpha:1.000]]
+			}]];
+			
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"Portals can be linked together by powerful bands of Exotic Matter. In order to link, Portals must have eight charged Resonators. Move within range of a nearby Portal and hack it to obtain Resonators. Deploy them and recharge all Resonators above critical levels."
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20],
+				NSForegroundColorAttributeName : [UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:20/5 color:[UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000]]
+			}]];
+			
+			textView.glowing = NO;
+			[textView setAttributedText:attrStr];
+
+			sound = [Sound soundNamed:@"Sound/speech_mission_5_intro.aif"];
+			
+			break;
+		}
+		case 7: {
+
+			NSMutableAttributedString *attrStr = [NSMutableAttributedString new];
+			
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"Mission - Links\n"
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:22],
+				NSForegroundColorAttributeName : [UIColor whiteColor],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:22/5 color:[UIColor whiteColor]]
+			}]];
+
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"Objectives\n"
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20],
+				NSForegroundColorAttributeName : [UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:20/5 color:[UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000]]
+			}]];
+			
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"- Hack Portal for key\n- Tap another Portal\n- Hack second Portal\n- Deploy all Resonators\n- Click on Portal and LINK\n"
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20],
+				NSForegroundColorAttributeName : [UIColor colorWithRed:0.996 green:0.835 blue:0.318 alpha:1.000],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:20/5 color:[UIColor colorWithRed:0.996 green:0.835 blue:0.318 alpha:1.000]]
+			}]];
+			
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"You are now ready to link two Portals.\n\nPortals can be hacked in order to obtain their Portal Keys. Once you have obtained a Portal Key, you can remotely link to it.\n\nSelect LINK to begin the linking process. Eligible destination Portals will be indicated on the Scanner by a red highlight.\n\nA Portal not visible on the Scanner can be linked by selecting the Portal Key.\n\nHack a nearby Portal to obtain its Portal Key. Then move within range of another Portal to initiate a Link."
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20],
+				NSForegroundColorAttributeName : [UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:20/5 color:[UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000]]
+			}]];
+			
+			textView.glowing = NO;
+			[textView setAttributedText:attrStr];
+
+			sound = [Sound soundNamed:@"Sound/speech_mission_6_intro.aif"];
+			
+			break;
+		}
+		case 8: {
+
+			NSMutableAttributedString *attrStr = [NSMutableAttributedString new];
+			
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"Mission - Fields\n"
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:22],
+				NSForegroundColorAttributeName : [UIColor whiteColor],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:22/5 color:[UIColor whiteColor]]
+			}]];
+
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"Objectives\n"
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20],
+				NSForegroundColorAttributeName : [UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:20/5 color:[UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000]]
+			}]];
+			
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"- Hack Portal for key\n- Tap another Portal\n- Hack second Portal\n- Deploy all Resonators\n- Click on Portal and LINK\n- Tap third Portal\n- Hack third Portal\n- Prepare Portal for linking\n- Create second Link\n- Create third Link\n"
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20],
+				NSForegroundColorAttributeName : [UIColor colorWithRed:0.996 green:0.835 blue:0.318 alpha:1.000],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:20/5 color:[UIColor colorWithRed:0.996 green:0.835 blue:0.318 alpha:1.000]]
+			}]];
+			
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:
+				@"The most important goal we have is to protect humanity from enemy ingression.\n\nWe do that by connecting Portals and forming protective Fields. Fields are formed by three connected Portals.\n\nObtain Portal Keys and use them to create two additional Links to form a triangle.  Move to the third Portal and hack it to obtain a Portal Key."
+			attributes:@{
+				NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20],
+				NSForegroundColorAttributeName : [UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000],
+				NSShadowAttributeName: [NSShadow shadowWithOffset:CGSizeZero blurRadius:20/5 color:[UIColor colorWithRed:0.565 green:0.996 blue:0.996 alpha:1.000]]
+			}]];
+			
+			textView.glowing = NO;
+			[textView setAttributedText:attrStr];
+
+			sound = [Sound soundNamed:@"Sound/speech_mission_7_intro.aif"];
+
+			break;
+		}
+	}
 	
 	[[SoundManager sharedManager] playSound:sound];
 
@@ -443,6 +755,7 @@
 - (void)skip {
 	[[SoundManager sharedManager] stopSound:sound fadeOut:NO];
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+	[[API sharedInstance] playSounds:@[@"SPEECH_MISSION", @"SPEECH_ABANDONED"]]; //@"SFX_UI_SUCCESS",
 
 	//Speech Mission Abandoned
 	

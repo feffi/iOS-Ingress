@@ -9,7 +9,9 @@
 #import "MissionsViewController.h"
 #import "MissionViewController.h"
 
-@implementation MissionsViewController
+@implementation MissionsViewController {
+	int selectedMission;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -101,43 +103,43 @@
 		}
 		case 1: {
 
-			actionSheet = [[UIActionSheet alloc] initWithTitle:@"Charge your Scanner by collecting XM around you" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+			actionSheet = [[UIActionSheet alloc] initWithTitle:@"Charge your Scanner by collecting XM around you" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"View Briefing", nil];
 
 			break;
 		}
 		case 2: {
 
-			actionSheet = [[UIActionSheet alloc] initWithTitle:@"Walk to a Portal and hack it for supplies" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+			actionSheet = [[UIActionSheet alloc] initWithTitle:@"Walk to a Portal and hack it for supplies" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"View Briefing", nil];
 
 			break;
 		}
 		case 3: {
 
-			actionSheet = [[UIActionSheet alloc] initWithTitle:@"Attack an enemy Portal with an XMP" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+			actionSheet = [[UIActionSheet alloc] initWithTitle:@"Attack an enemy Portal with an XMP" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"View Briefing", nil];
 
 			break;
 		}
 		case 4: {
 
-			actionSheet = [[UIActionSheet alloc] initWithTitle:@"Bind Portal by deploying Resonator" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+			actionSheet = [[UIActionSheet alloc] initWithTitle:@"Bind Portal by deploying Resonator" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"View Briefing", nil];
 
 			break;
 		}
 		case 5: {
 
-			actionSheet = [[UIActionSheet alloc] initWithTitle:@"Preparing a Portal for linking" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+			actionSheet = [[UIActionSheet alloc] initWithTitle:@"Preparing a Portal for linking" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"View Briefing", nil];
 
 			break;
 		}
 		case 6: {
 
-			actionSheet = [[UIActionSheet alloc] initWithTitle:@"Link two Portals" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+			actionSheet = [[UIActionSheet alloc] initWithTitle:@"Link two Portals" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"View Briefing", nil];
 
 			break;
 		}
 		case 7: {
 
-			actionSheet = [[UIActionSheet alloc] initWithTitle:@"Create a Field" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+			actionSheet = [[UIActionSheet alloc] initWithTitle:@"Create a Field" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"View Briefing", nil];
 
 			break;
 		}
@@ -152,15 +154,9 @@
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-	switch (actionSheet.tag) {
-		case 1:
-			if (buttonIndex == 0) {
-				[self performSegueWithIdentifier:@"MissionSegue" sender:self];
-			}
-			break;
-
-		default:
-			break;
+	if (actionSheet.tag >= 1 && actionSheet.tag <= 8 && buttonIndex == 0) {
+		selectedMission = actionSheet.tag;
+		[self performSegueWithIdentifier:@"MissionSegue" sender:self];
 	}
 }
 
@@ -172,7 +168,7 @@
 
 		MissionViewController *vc = segue.destinationViewController;
 		vc.factionChoose = NO;
-
+		vc.mission = selectedMission;
 	}
 }
 

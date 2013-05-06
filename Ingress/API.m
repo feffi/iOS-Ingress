@@ -1243,7 +1243,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	};
 
 	[self sendRequest:@"gameplay/dischargePowerCube" params:dict completionHandler:^(id responseObj) {
-
 		//NSLog(@"dischargePowerCube responseObj: %@", responseObj);
 
 		dispatch_async(dispatch_get_main_queue(), ^{
