@@ -81,8 +81,7 @@
 	
 	//int part1len = str.length;
 	
-	User *user = nil;
-//	User *user = [[DB sharedInstance] userWhoCapturedPortal:self.portal];
+	User *user = self.portal.capturedBy;
 	NSString *nickname = user.nickname;
 	if (!nickname) { nickname = [API factionStrForFaction:self.portal.controllingTeam]; }
 	[str appendFormat:@"%@", nickname];

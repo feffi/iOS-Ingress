@@ -246,7 +246,7 @@
 		if (energy < maxEnergy) {
 //			NSMutableArray *energyToCollect = [NSMutableArray array];
 			for (EnergyGlob *xm in [EnergyGlob MR_findAll]) {
-				if ([xm distanceFromCoordinate:_mapView.centerCoordinate] <= 50) {
+				if ([xm distanceFromCoordinate:_mapView.centerCoordinate] <= 25) {
 //					[energyToCollect addObject:xm];
 					[[[API sharedInstance] energyToCollect] addObject:xm];
 				}
