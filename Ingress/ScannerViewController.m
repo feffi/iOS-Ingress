@@ -27,6 +27,7 @@
 	CLLocation *lastLocation;
 	BOOL firstRefreshProfile;
 	BOOL firstLocationUpdate;
+	BOOL portalDetailSegue;
 }
 
 - (void)viewDidLoad {
@@ -140,7 +141,9 @@
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
 
-	
+	if (portalDetailSegue) {
+		[self.navigationController setNavigationBarHidden:NO animated:YES];
+	}
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -869,13 +872,15 @@
 	if ([segue.identifier isEqualToString:@"PortalDetailSegue"]) {
 		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 
-		[self.navigationController setNavigationBarHidden:NO animated:YES];
+		portalDetailSegue = YES;
 		
 		PortalDetailViewController *vc = segue.destinationViewController;
 		vc.portal = currentPortal;
 		vc.mapCenterCoordinate = _mapView.centerCoordinate;
 		currentPortal = nil;
 	} else if ([segue.identifier isEqualToString:@"FactionChooseSegue"]) {
+		portalDetailSegue = NO;
+
 		MissionViewController *vc = segue.destinationViewController;
 		vc.factionChoose = YES;
 	}
