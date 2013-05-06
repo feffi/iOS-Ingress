@@ -651,8 +651,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 - (void)getObjectsWithCompletionHandler:(void (^)(void))handler {
 
-//	[[DB sharedInstance] removeAllMapData];
-
 	MKMapView *mapView = [AppDelegate instance].mapView;
 	CGPoint nePoint = CGPointMake(mapView.bounds.origin.x + mapView.bounds.size.width, mapView.bounds.origin.y);
 	CGPoint swPoint = CGPointMake((mapView.bounds.origin.x), (mapView.bounds.origin.y + mapView.bounds.size.height));
@@ -1706,8 +1704,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 				itemObj.latitude = [loc[@"latE6"] intValue]/1E6;
 				itemObj.longitude = [loc[@"lngE6"] intValue]/1E6;
 			}
-
-				//DroppedItem *droppedItem = [[DB sharedInstance] getOrCreateItemWithGuid:gameEntity[0] classStr:@"DroppedItem"];
 
 		} else if (gameEntity[2][@"edge"]) {
 
