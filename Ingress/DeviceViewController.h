@@ -13,9 +13,6 @@
 #import "EXF.h"
 #import "EXFUtils.h"
 
-@interface DeviceViewController : UITableViewController <UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
-
-- (IBAction)refreshInventory;
-- (IBAction)actionSheet;
+@interface DeviceViewController : UITableViewController <UIImagePickerControllerDelegate, UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
 
 @end
