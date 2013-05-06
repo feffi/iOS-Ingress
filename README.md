@@ -8,7 +8,13 @@ Download
 
 You need to be developer or have jailbreak to install it.
 
+<<<<<<< HEAD
 **New ipa (5/6/2013):** Implemented Faction Choosing, but it's untested and may crash and be unplayable
+=======
+New ipa (5/6/2013)
+
+- Implemented Faction Choosing, but it's untested and may crash and be unplayable
+>>>>>>> Update README.md
 
 - https://www.dropbox.com/s/q28f2bj2bgt2vxj/Ingress.ipa
 - https://docs.google.com/file/d/0B8rmzjJD-xnScWE4MXh5RTlta28/edit?usp=sharing
