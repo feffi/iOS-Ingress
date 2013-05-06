@@ -13,6 +13,6 @@
 #import "EXF.h"
 #import "EXFUtils.h"
 
-@interface DeviceViewController : UITableViewController <UIImagePickerControllerDelegate, UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
+@interface DeviceViewController : UITableViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
 
 @end

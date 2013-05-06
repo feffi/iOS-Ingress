@@ -10,6 +10,7 @@
 
 @interface PortalKeysViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
-@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic, strong, readonly) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic) Portal *linkingPortal;
 
 @end

@@ -8,6 +8,7 @@
 
 #import "PortalInfoViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "PortalKeysViewController.h"
 
 @implementation PortalInfoViewController
 
@@ -256,6 +257,15 @@
 	
 	[self performSegueWithIdentifier:@"PortalLinkPushKeysSegue" sender:self];
 	
+}
+
+#pragma mark - Storyboard
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:@"PortalLinkPushKeysSegue"]) {
+		PortalKeysViewController *vc = segue.destinationViewController;
+		vc.linkingPortal = self.portal;
+	}
 }
 
 @end

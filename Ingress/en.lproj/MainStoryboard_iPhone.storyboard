@@ -1092,12 +1092,12 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                     <constraint firstAttribute="width" constant="218" id="VsI-gs-sGf"/>
                                 </constraints>
                             </progressView>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Nickname" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="oVe-o2-Lr5" customClass="GlowingLabel">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="UNKNOWN_AGENT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="oVe-o2-Lr5" customClass="GlowingLabel">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" type="user" id="MJY-Uk-C7S"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="20"/>
-                                <color key="textColor" red="0.15686274510000001" green="0.95686274510000002" blue="0.15686274510000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
@@ -3402,10 +3402,6 @@ Range: 0km</string>
         </class>
         <class className="DeviceViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/DeviceViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="actionSheet"/>
-                <relationship kind="action" name="refreshInventory"/>
-            </relationships>
         </class>
         <class className="GLViewController" superclassName="GLKViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/GLViewController.h"/>
@@ -3619,7 +3615,7 @@ Range: 0km</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="fPf-WR-TNV"/>
+        <segue reference="zJ1-yC-6tR"/>
         <segue reference="7q6-q9-DTR"/>
         <segue reference="s91-lu-tu1"/>
     </inferredMetricsTieBreakers>

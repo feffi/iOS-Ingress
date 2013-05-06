@@ -11,18 +11,29 @@
 
 @implementation PortalKeysViewController
 
+@synthesize fetchedResultsController = _fetchedResultsController;
+@synthesize linkingPortal = _linkingPortal;
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+
+	if (self.linkingPortal) {
+		self.navigationItem.title = @"Select Portal Key";
+	}
 }
 
 - (void)didReceiveMemoryWarning {
 	[super didReceiveMemoryWarning];
 
-	self.fetchedResultsController = nil;
+	_fetchedResultsController = nil;
 }
 
 - (void)dealloc {
-	self.fetchedResultsController = nil;
+	_fetchedResultsController = nil;
 }
 
 #pragma mark - NSFetchedResultsController & NSFetchedResultsControllerDelegate
@@ -169,6 +180,69 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+	if (self.linkingPortal) {
+
+		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.userInteractionEnabled = YES;
+		HUD.dimBackground = YES;
+		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+		HUD.labelText = @"Querying Linkability...";
+		[[AppDelegate instance].window addSubview:HUD];
+		[HUD show:YES];
+
+		PortalKey *portalKey = [self.fetchedResultsController objectAtIndexPath:indexPath];
+		
+		[[API sharedInstance] queryLinkabilityForPortal:self.linkingPortal portalKey:portalKey completionHandler:^(NSString *errorStr) {
+
+			[HUD hide:YES];
+
+			if (errorStr) {
+				HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+				HUD.userInteractionEnabled = YES;
+				HUD.dimBackground = YES;
+				HUD.mode = MBProgressHUDModeCustomView;
+				HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+				HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+				HUD.detailsLabelText = errorStr;
+				[[AppDelegate instance].window addSubview:HUD];
+				[HUD show:YES];
+				[HUD hide:YES afterDelay:3];
+			} else {
+
+				HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+				HUD.userInteractionEnabled = YES;
+				HUD.dimBackground = YES;
+				HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+				HUD.labelText = @"Linking Portal...";
+				[[AppDelegate instance].window addSubview:HUD];
+				[HUD show:YES];
+
+				[[API sharedInstance] linkPortal:self.linkingPortal withPortalKey:portalKey completionHandler:^(NSString *errorStr) {
+
+					[HUD hide:YES];
+
+					if (errorStr) {
+						HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+						HUD.userInteractionEnabled = YES;
+						HUD.dimBackground = YES;
+						HUD.mode = MBProgressHUDModeCustomView;
+						HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+						HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+						HUD.detailsLabelText = errorStr;
+						[[AppDelegate instance].window addSubview:HUD];
+						[HUD show:YES];
+						[HUD hide:YES afterDelay:3];
+					}
+					
+				}];
+
+			}
+
+		}];
+		
+	}
+
 }
 
 @end

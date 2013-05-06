@@ -16,7 +16,6 @@ New ipa (5/4/2013)
 TODO
 ----
 
-- linking portals
 - speed and memory optimalizations
 - GUI improvements (mainly 3.5" screen optimalization)
 - maybe 3D Scanner

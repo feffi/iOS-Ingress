@@ -30,6 +30,7 @@ typedef void (^SoundCompletionBlock)(void);
 @property (nonatomic, strong) NSString *SACSID;
 @property (nonatomic, strong) NSMutableDictionary *playerInfo;
 @property (nonatomic, strong) NSMutableArray *energyToCollect;
+@property (nonatomic, readonly) long long knobSyncTimestamp;
 
 @property (nonatomic) SystemSoundID ui_success_sound;
 @property (nonatomic) SystemSoundID ui_fail_sound;
@@ -84,6 +85,8 @@ typedef void (^SoundCompletionBlock)(void);
 - (void)recycleItem:(Item *)item completionHandler:(void (^)(void))handler;
 - (void)usePowerCube:(PowerCube *)powerCube completionHandler:(void (^)(void))handler;
 - (void)rechargePortal:(Portal *)portal completionHandler:(void (^)(void))handler;
+- (void)queryLinkabilityForPortal:(Portal *)portal portalKey:(PortalKey *)portalKey completionHandler:(void (^)(NSString *errorStr))handler;
+- (void)linkPortal:(Portal *)portal withPortalKey:(PortalKey *)portalKey completionHandler:(void (^)(NSString *errorStr))handler;
 
 - (void)cheatSetPlayerLevel;
 

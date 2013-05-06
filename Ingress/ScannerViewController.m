@@ -73,18 +73,13 @@
 	[locationManager startUpdatingLocation];
 //	[locationManager startUpdatingHeading];
 
-	if (YES) { // TODO: Free moving allowed for debug only
-		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
-			[locationManager stopUpdatingLocation];
-			[_mapView setScrollEnabled:YES];
-		});
-	}
-
 	UIPinchGestureRecognizer *recognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
 	[_mapView addGestureRecognizer:recognizer];
 
-//	UITapGestureRecognizer *mapViewTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapTapped:)];
-//	[_mapView addGestureRecognizer:mapViewTapGestureRecognizer];
+#warning Manual scrolling for debug purposes only!
+	UITapGestureRecognizer *mapViewTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapTapped:)];
+	mapViewTapGestureRecognizer.numberOfTapsRequired = 2;
+	[_mapView addGestureRecognizer:mapViewTapGestureRecognizer];
 
 	UILongPressGestureRecognizer *mapViewLognPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(mapLongPress:)];
 	[_mapView addGestureRecognizer:mapViewLognPressGestureRecognizer];
@@ -418,8 +413,9 @@
 #pragma mark - Update
 
 - (void)updateCircle {
-	
-	if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorized) {
+
+	//[CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorized
+	if (![CLLocationManager locationServicesEnabled]) {
 		if (!locationAllowHUD) {
 			_mapView.hidden = YES;
 			rangeCircleView.hidden = YES;
@@ -487,6 +483,10 @@
 		[self refresh];
 	}
 
+}
+
+- (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
+    [EAGLContext setCurrentContext:nil];
 }
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKAnnotationView *)view {
@@ -661,7 +661,16 @@
     
 }
 
-//- (void)mapTapped:(UITapGestureRecognizer *)recognizer {
+- (void)mapTapped:(UITapGestureRecognizer *)recognizer {
+
+	if (_mapView.scrollEnabled) {
+		[locationManager startUpdatingLocation];
+		[_mapView setScrollEnabled:NO];
+	} else {
+		[locationManager stopUpdatingLocation];
+		[_mapView setScrollEnabled:YES];
+	}
+
 //	MKMapView *mapView = (MKMapView *)recognizer.view;
 //	id<MKOverlay> tappedOverlay = nil;
 //	for (id<MKOverlay> overlay in mapView.overlays) {
@@ -687,7 +696,8 @@
 //		currentPortal = (Portal *)tappedOverlay;
 //		[self performSegueWithIdentifier:@"PortalDetailSegue" sender:self];
 //	}
-//}
+	
+}
 
 - (void)mapLongPress:(UILongPressGestureRecognizer *)recognizer {
 	if (recognizer.state == UIGestureRecognizerStateBegan) {
