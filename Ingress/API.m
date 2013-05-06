@@ -984,7 +984,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	};
 	
 	[self sendRequest:@"gameplay/collectItemsFromPortal" params:dict completionHandler:^(id responseObj) {
-		
 		//NSLog(@"hackPortal responseObj: %@", responseObj);
 		
 		if ([responseObj[@"error"] isEqualToString:@"TOO_SOON_BIG"]) {
@@ -1047,9 +1046,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		@"preferredSlot": @(slot)
 	};
 	
-	[self sendRequest:@"gameplay/deployResonatorV2" params:dict completionHandler:^(id responseObj) {
-		
-		//NSLog(@"deployResonator responseObj: %@", responseObj);
+	[self sendRequest:@"gameplay/deployResonatorV2" params:dict completionHandler:^(id responseObj) {		
 
 		if ([responseObj[@"error"] isEqualToString:@"PORTAL_OUT_OF_RANGE"]) {
 			
@@ -1070,6 +1067,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 			});
 			
 		} else {
+			//NSLog(@"deployResonator responseObj: %@", responseObj);
 			
 			dispatch_async(dispatch_get_main_queue(), ^{
 				handler(nil);
@@ -1082,9 +1080,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 }
 
 - (void)upgradeResonator:(Resonator *)resonatorItem toPortal:(Portal *)portal toSlot:(int)slot completionHandler:(void (^)(NSString *errorStr))handler {
-	
-	//{"params":{"energyGlobGuids":[],"itemGuids":["365e07c2f4bd4ca3ba11f13355b3cfc9.5"],"knobSyncTimestamp":1358000897501,"location":"0304bb25,00d2f8f0","portalGuid":"3e7788cf535745a29461dffcad2c8711.12","preferredSlot":255}}
-	
+
 	NSDictionary *dict = @{
 		@"knobSyncTimestamp": @(self.knobSyncTimestamp),
 		@"emitterGuid": resonatorItem.guid,
@@ -1114,7 +1110,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 			});
 
 		} else {
-			
 			//NSLog(@"upgradeResonator responseObj: %@", responseObj);
 			
 			dispatch_async(dispatch_get_main_queue(), ^{
