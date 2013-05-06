@@ -34,10 +34,16 @@
 	altButton.hidden = YES;
 	choosingLabel.hidden = YES;
 
-	self.factionChoose = NO;
-
 	wheelActivityIndicatorView = [[WheelActivityIndicatorView alloc] initWithFrame:CGRectZero];
 	[self.view addSubview:wheelActivityIndicatorView];
+
+	dispatch_async(dispatch_get_main_queue(), ^{
+		if (self.factionChoose) {
+			[self setupFactionChooseIntro];
+		} else {
+			[self setupIntro];
+		}
+	});
 
 }
 
@@ -57,19 +63,6 @@
 	[wheelActivityIndicatorView stopAnimating];
 
 	[[SoundManager sharedManager] stopSound:sound fadeOut:NO];
-}
-
-- (void)setFactionChoose:(BOOL)factionChoose {
-	_factionChoose = factionChoose;
-
-	dispatch_async(dispatch_get_main_queue(), ^{
-		if (self.factionChoose) {
-			[self setupFactionChooseIntro];
-		} else {
-			[self setupIntro];
-		}
-	});
-	
 }
 
 #pragma mark - Faction Choose
@@ -379,9 +372,12 @@
 	[mainButton addTarget:self action:@selector(accept) forControlEvents:UIControlEventTouchUpInside];
 
 	[altButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:22]];
- 
-	wheelActivityIndicatorView.center = backgroundImageView.center;
+
 	[wheelActivityIndicatorView startAnimating];
+
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
+		wheelActivityIndicatorView.center = backgroundImageView.center;
+	});
 
 	[[SoundManager sharedManager] playSound:@"Sound/speech_incoming_message.aif"];
 
@@ -426,32 +422,29 @@
 	[altButton addTarget:self action:@selector(skip) forControlEvents:UIControlEventTouchUpInside];
 
 	textView.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName]  size:20];
-	[textView setText:@"Can you hear me? It is important that you hear me. Do not be nervous. This is routine.\n\nYou have downloaded what you believe to be a game, but it is not. Something is very wrong. There is an energy of unknown origin and intent seeping into our world. It is known as Exotic Matter.\n\n"];
 
 	wheelActivityIndicatorView.center = CGPointMake(260, 40);
 	[wheelActivityIndicatorView startAnimating];
 
-//	textView.scrollInterval = 0.1;
-//	[textView startScrolling];
-
+	[textView setText:@"Can you hear me? It is important that you hear me. Do not be nervous. This is routine.\n\nYou have downloaded what you believe to be a game, but it is not. Something is very wrong. There is an energy of unknown origin and intent seeping into our world. It is known as Exotic Matter."];
 	sound = [Sound soundNamed:@"Sound/speech_mission_0_intro.aif"];
+	
 	[[SoundManager sharedManager] playSound:sound];
-
-//	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(18 * NSEC_PER_SEC));
-//	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-//		[textView stopScrolling];
-//	});
 
 }
 
 - (void)proceed {
+	[[SoundManager sharedManager] stopSound:sound fadeOut:NO];
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 	
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)skip {
+	[[SoundManager sharedManager] stopSound:sound fadeOut:NO];
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+
+	//Speech Mission Abandoned
 	
 	[self dismissViewControllerAnimated:YES completion:nil];
 }

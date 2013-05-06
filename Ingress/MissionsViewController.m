@@ -95,7 +95,7 @@
 	switch (indexPath.row) {
 		case 0: {
 
-			actionSheet = [[UIActionSheet alloc] initWithTitle:@"First contact from ADA." delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:nil];
+			actionSheet = [[UIActionSheet alloc] initWithTitle:@"First contact from ADA." delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"View Briefing", nil];
 
 			break;
 		}
