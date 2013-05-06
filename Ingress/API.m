@@ -1331,9 +1331,12 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		}
 		mutableParams[@"energyGlobGuids"] = collectedEnergyGuids;
 		[self.energyToCollect removeAllObjects];
-		[self playSound:@"sfx_xm_pickup"];
-		
+
 		params = mutableParams;
+		
+		if (collectedEnergyGuids.count > 0) {
+			[[API sharedInstance] playSound:@"SFX_XM_PICKUP"];
+		}
 		
 	}
 
@@ -1344,13 +1347,13 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	[request setHTTPMethod:@"POST"];
 	
 	NSDictionary *headers = @{
-	@"Content-Type" : @"application/json;charset=UTF-8",
-	@"Accept-Encoding" : @"gzip",
-	@"User-Agent" : @"Nemesis (gzip)",
-	@"X-XsrfToken" : ((self.xsrfToken) ? (self.xsrfToken) : @""),
-	@"Host" : @"m-dot-betaspike.appspot.com",
-	@"Connection" : @"Keep-Alive",
-	@"Cookie" : [NSString stringWithFormat:@"SACSID=%@", ((self.SACSID) ? (self.SACSID) : @"")],
+		@"Content-Type" : @"application/json;charset=UTF-8",
+		@"Accept-Encoding" : @"gzip",
+		@"User-Agent" : @"Nemesis (gzip)",
+		@"X-XsrfToken" : ((self.xsrfToken) ? (self.xsrfToken) : @""),
+		@"Host" : @"m-dot-betaspike.appspot.com",
+		@"Connection" : @"Keep-Alive",
+		@"Cookie" : [NSString stringWithFormat:@"SACSID=%@", ((self.SACSID) ? (self.SACSID) : @"")],
 	};
 	
 	[request setAllHTTPHeaderFields:headers];

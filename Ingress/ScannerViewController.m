@@ -76,10 +76,10 @@
 	UIPinchGestureRecognizer *recognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
 	[_mapView addGestureRecognizer:recognizer];
 
-#warning Manual scrolling for debug purposes only!
-	UITapGestureRecognizer *mapViewTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapTapped:)];
-	mapViewTapGestureRecognizer.numberOfTapsRequired = 2;
-	[_mapView addGestureRecognizer:mapViewTapGestureRecognizer];
+//#warning Manual scrolling for debug purposes only!
+//	UITapGestureRecognizer *mapViewTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapTapped:)];
+//	mapViewTapGestureRecognizer.numberOfTapsRequired = 2;
+//	[_mapView addGestureRecognizer:mapViewTapGestureRecognizer];
 
 	UILongPressGestureRecognizer *mapViewLognPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(mapLongPress:)];
 	[_mapView addGestureRecognizer:mapViewLognPressGestureRecognizer];
@@ -174,20 +174,6 @@
 	[HUD show:YES];
 
 	[[API sharedInstance] getObjectsWithCompletionHandler:^{
-		
-		NSDictionary *playerInfo = [[API sharedInstance] playerInfo];
-		int ap = [playerInfo[@"ap"] intValue];
-		int level = [API levelForAp:ap];
-		float energy = [playerInfo[@"energy"] floatValue];
-		float maxEnergy = [API maxXmForLevel:level];
-		
-		if (energy < maxEnergy) {
-			for (EnergyGlob *xm in [EnergyGlob MR_findAll]) {
-				if ([xm distanceFromCoordinate:_mapView.centerCoordinate] <= 25) {
-					[[[API sharedInstance] energyToCollect] addObject:xm];
-				}
-			}
-		}
 
 		[HUD hide:YES];
 
@@ -411,6 +397,22 @@
         [mapView setCenterCoordinate:_mapView.centerCoordinate zoomLevel:16 animated:NO];
 		return;
     }
+
+	NSDictionary *playerInfo = [[API sharedInstance] playerInfo];
+	int ap = [playerInfo[@"ap"] intValue];
+	int level = [API levelForAp:ap];
+	float energy = [playerInfo[@"energy"] floatValue];
+	float maxEnergy = [API maxXmForLevel:level];
+
+	if (energy < maxEnergy) {
+		[[[API sharedInstance] energyToCollect] removeAllObjects];
+		for (EnergyGlob *xm in [EnergyGlob MR_findAll]) {
+			if ([xm distanceFromCoordinate:_mapView.centerCoordinate] <= 25) {
+				[[[API sharedInstance] energyToCollect] addObject:xm];
+			}
+		}
+		//NSLog(@"Collecting %d XM", [[[API sharedInstance] energyToCollect] count]);
+	}
 
 	CLLocation *mapLocation = [[CLLocation alloc] initWithLatitude:_mapView.centerCoordinate.latitude longitude:_mapView.centerCoordinate.longitude];
 	CLLocationDistance meters = [mapLocation distanceFromLocation:lastLocation];
