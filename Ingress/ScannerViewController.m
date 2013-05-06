@@ -28,6 +28,7 @@
 	BOOL firstRefreshProfile;
 	BOOL firstLocationUpdate;
 	BOOL portalDetailSegue;
+	MBProgressHUD *locationAllowHUD;
 }
 
 - (void)viewDidLoad {
@@ -70,7 +71,7 @@
     locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
 	
 	[locationManager startUpdatingLocation];
-	[locationManager startUpdatingHeading];
+//	[locationManager startUpdatingHeading];
 
 	if (YES) { // TODO: Free moving allowed for debug only
 		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
@@ -78,19 +79,6 @@
 			[_mapView setScrollEnabled:YES];
 		});
 	}
-
-//	if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorized) {
-//#warning location
-//		[_mapView setHidden:YES];
-//		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
-//		HUD.userInteractionEnabled = NO;
-//		HUD.mode = MBProgressHUDModeCustomView;
-//		HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-//		HUD.labelText = @"Please allow location services";
-//		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-//		[self.view addSubview:HUD];
-//		[HUD show:YES];
-//	}
 
 	UIPinchGestureRecognizer *recognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
 	[_mapView addGestureRecognizer:recognizer];
@@ -427,13 +415,43 @@
 
 }
 
-#pragma mark - Circle
+#pragma mark - Update
 
 - (void)updateCircle {
-	CGFloat diameter = 100/((_mapView.region.span.latitudeDelta * 111200) / _mapView.bounds.size.width);
-	rangeCircleView.frame = CGRectMake(0, 0, diameter, diameter);
-	rangeCircleView.center = _mapView.center;
-	rangeCircleView.layer.cornerRadius = diameter/2;
+	
+	if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorized) {
+		if (!locationAllowHUD) {
+			_mapView.hidden = YES;
+			rangeCircleView.hidden = YES;
+			playerArrowImage.hidden = YES;
+			locationAllowHUD = [[MBProgressHUD alloc] initWithView:self.view];
+			locationAllowHUD.userInteractionEnabled = NO;
+			locationAllowHUD.mode = MBProgressHUDModeCustomView;
+			locationAllowHUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+			locationAllowHUD.labelText = @"Please allow location services";
+			locationAllowHUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+			locationAllowHUD.removeFromSuperViewOnHide = YES;
+			__weak __block typeof(locationAllowHUD) weakLocationAllowHUD = locationAllowHUD;
+			locationAllowHUD.completionBlock = ^{
+				weakLocationAllowHUD = nil;
+			};
+			[self.view addSubview:locationAllowHUD];
+			[locationAllowHUD show:YES];
+		}
+	} else {
+		if (locationAllowHUD) {
+			[locationAllowHUD hide:YES];
+			_mapView.hidden = NO;
+			rangeCircleView.hidden = NO;
+			playerArrowImage.hidden = NO;
+		} else {
+			CGFloat diameter = 100/((_mapView.region.span.latitudeDelta * 111200) / _mapView.bounds.size.width);
+			rangeCircleView.frame = CGRectMake(0, 0, diameter, diameter);
+			rangeCircleView.center = _mapView.center;
+			rangeCircleView.layer.cornerRadius = diameter/2;
+		}
+	}
+
 }
 
 #pragma mark - CLLocationManagerDelegate
