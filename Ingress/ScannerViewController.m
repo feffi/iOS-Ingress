@@ -76,10 +76,10 @@
 	UIPinchGestureRecognizer *recognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
 	[_mapView addGestureRecognizer:recognizer];
 
-//#warning Manual scrolling for debug purposes only!
-//	UITapGestureRecognizer *mapViewTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapTapped:)];
-//	mapViewTapGestureRecognizer.numberOfTapsRequired = 2;
-//	[_mapView addGestureRecognizer:mapViewTapGestureRecognizer];
+#warning Manual scrolling for debug purposes only!
+	UITapGestureRecognizer *mapViewTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapTapped:)];
+	mapViewTapGestureRecognizer.numberOfTapsRequired = 2;
+	[_mapView addGestureRecognizer:mapViewTapGestureRecognizer];
 
 	UILongPressGestureRecognizer *mapViewLognPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(mapLongPress:)];
 	[_mapView addGestureRecognizer:mapViewLognPressGestureRecognizer];
@@ -174,9 +174,7 @@
 	[HUD show:YES];
 
 	[[API sharedInstance] getObjectsWithCompletionHandler:^{
-
 		[HUD hide:YES];
-
 	}];
 
 }
@@ -363,7 +361,10 @@
 			rangeCircleView.hidden = NO;
 			playerArrowImage.hidden = NO;
 		} else {
-			CGFloat diameter = 100/((_mapView.region.span.latitudeDelta * 111200) / _mapView.bounds.size.width);
+			CGFloat diameter = 0.;
+			if (_mapView.bounds.size.width > 0) {
+				diameter = 100/((_mapView.region.span.latitudeDelta * 111200) / _mapView.bounds.size.width);
+			}
 			rangeCircleView.frame = CGRectMake(0, 0, diameter, diameter);
 			rangeCircleView.center = _mapView.center;
 			rangeCircleView.layer.cornerRadius = diameter/2;
@@ -407,7 +408,7 @@
 	if (energy < maxEnergy) {
 		[[[API sharedInstance] energyToCollect] removeAllObjects];
 		for (EnergyGlob *xm in [EnergyGlob MR_findAll]) {
-			if ([xm distanceFromCoordinate:_mapView.centerCoordinate] <= 25) {
+			if ([xm distanceFromCoordinate:_mapView.centerCoordinate] <= 30) {
 				[[[API sharedInstance] energyToCollect] addObject:xm];
 			}
 		}

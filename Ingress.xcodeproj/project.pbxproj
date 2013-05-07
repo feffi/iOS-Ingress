@@ -103,6 +103,7 @@
 		FA6EF957172D1C490004905F /* trackImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EF956172D1C490004905F /* trackImage@2x.png */; };
 		FA6EF960172D2D360004905F /* progressImage-aliens@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EF95E172D2D350004905F /* progressImage-aliens@2x.png */; };
 		FA6EF961172D2D360004905F /* progressImage-resistance@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EF95F172D2D360004905F /* progressImage-resistance@2x.png */; };
+		FA7792591738F6040019462E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7792581738F6040019462E /* Default-568h@2x.png */; };
 		FA779AAB16A55FC40080B62A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA779AAA16A55FC40080B62A /* AVFoundation.framework */; };
 		FA7AC9D816D14C5400505404 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7AC9D716D14C5400505404 /* SoundManager.m */; };
 		FA7BCEDE16B535B0007636C8 /* MKCircle+Ingress.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7BCEDD16B535B0007636C8 /* MKCircle+Ingress.m */; };
@@ -241,7 +242,6 @@
 		FAEA584C169C7E7500E2F502 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEA584B169C7E7500E2F502 /* AppDelegate.m */; };
 		FAEA584E169C7E7500E2F502 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = FAEA584D169C7E7500E2F502 /* Default.png */; };
 		FAEA5850169C7E7500E2F502 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAEA584F169C7E7500E2F502 /* Default@2x.png */; };
-		FAEA5852169C7E7500E2F502 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAEA5851169C7E7500E2F502 /* Default-568h@2x.png */; };
 		FAEA5855169C7E7500E2F502 /* MainStoryboard_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAEA5853169C7E7500E2F502 /* MainStoryboard_iPhone.storyboard */; };
 		FAEA5858169C7E7500E2F502 /* MainStoryboard_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = FAEA5856169C7E7500E2F502 /* MainStoryboard_iPad.storyboard */; };
 		FAEA585B169C7E7500E2F502 /* ScannerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAEA585A169C7E7500E2F502 /* ScannerViewController.m */; };
@@ -401,6 +401,7 @@
 		FA6EF956172D1C490004905F /* trackImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackImage@2x.png"; sourceTree = "<group>"; };
 		FA6EF95E172D2D350004905F /* progressImage-aliens@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progressImage-aliens@2x.png"; sourceTree = "<group>"; };
 		FA6EF95F172D2D360004905F /* progressImage-resistance@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progressImage-resistance@2x.png"; sourceTree = "<group>"; };
+		FA7792581738F6040019462E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		FA779AAA16A55FC40080B62A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FA7AC9D116D0116800505404 /* Sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Sound; path = Ingress/Sound; sourceTree = "<group>"; };
 		FA7AC9D616D14C5400505404 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
@@ -763,7 +764,6 @@
 		FAEA584B169C7E7500E2F502 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = AppDelegate.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
 		FAEA584D169C7E7500E2F502 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
 		FAEA584F169C7E7500E2F502 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
-		FAEA5851169C7E7500E2F502 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		FAEA5854169C7E7500E2F502 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPhone.storyboard; sourceTree = "<group>"; };
 		FAEA5857169C7E7500E2F502 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard_iPad.storyboard; sourceTree = "<group>"; };
 		FAEA5859169C7E7500E2F502 /* ScannerViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScannerViewController.h; sourceTree = "<group>"; };
@@ -1822,6 +1822,7 @@
 		FAEA582C169C7E7500E2F502 = {
 			isa = PBXGroup;
 			children = (
+				FA7792581738F6040019462E /* Default-568h@2x.png */,
 				FAEA5841169C7E7500E2F502 /* Ingress */,
 				FAC37C46169DE2EB000F88AB /* Loading View Controller */,
 				FA54DEFA16A19BAE006A92E0 /* Intel */,
@@ -1894,7 +1895,6 @@
 				FAEA5849169C7E7500E2F502 /* Ingress-Prefix.pch */,
 				FAEA584D169C7E7500E2F502 /* Default.png */,
 				FAEA584F169C7E7500E2F502 /* Default@2x.png */,
-				FAEA5851169C7E7500E2F502 /* Default-568h@2x.png */,
 				FAEA586A169C844400E2F502 /* Icon-72.png */,
 				FAEA5868169C842D00E2F502 /* Icon-57.png */,
 				FAEA586C169C858400E2F502 /* Icon-114.png */,
@@ -1995,7 +1995,6 @@
 				FA54DF0816A1D882006A92E0 /* Coda-Regular.ttf in Resources */,
 				FAEA584E169C7E7500E2F502 /* Default.png in Resources */,
 				FAEA5850169C7E7500E2F502 /* Default@2x.png in Resources */,
-				FAEA5852169C7E7500E2F502 /* Default-568h@2x.png in Resources */,
 				FAEA5855169C7E7500E2F502 /* MainStoryboard_iPhone.storyboard in Resources */,
 				FAEA5858169C7E7500E2F502 /* MainStoryboard_iPad.storyboard in Resources */,
 				FA0A3FEA172ED90D00BBBA3D /* Sound in Resources */,
@@ -2109,6 +2108,7 @@
 				FA3BD78D17356424004F5ED5 /* device@2x.png in Resources */,
 				FA3BD78F1735B704004F5ED5 /* blue_bg@2x.png in Resources */,
 				FA3FC31317369E4D009CD94A /* green_bg@2x.png in Resources */,
+				FA7792591738F6040019462E /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
