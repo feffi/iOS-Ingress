@@ -401,7 +401,7 @@
 		FA6EF956172D1C490004905F /* trackImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackImage@2x.png"; sourceTree = "<group>"; };
 		FA6EF95E172D2D350004905F /* progressImage-aliens@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progressImage-aliens@2x.png"; sourceTree = "<group>"; };
 		FA6EF95F172D2D360004905F /* progressImage-resistance@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progressImage-resistance@2x.png"; sourceTree = "<group>"; };
-		FA7792581738F6040019462E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		FA7792581738F6040019462E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		FA779AAA16A55FC40080B62A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FA7AC9D116D0116800505404 /* Sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Sound; path = Ingress/Sound; sourceTree = "<group>"; };
 		FA7AC9D616D14C5400505404 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
@@ -1822,7 +1822,6 @@
 		FAEA582C169C7E7500E2F502 = {
 			isa = PBXGroup;
 			children = (
-				FA7792581738F6040019462E /* Default-568h@2x.png */,
 				FAEA5841169C7E7500E2F502 /* Ingress */,
 				FAC37C46169DE2EB000F88AB /* Loading View Controller */,
 				FA54DEFA16A19BAE006A92E0 /* Intel */,
@@ -1895,6 +1894,7 @@
 				FAEA5849169C7E7500E2F502 /* Ingress-Prefix.pch */,
 				FAEA584D169C7E7500E2F502 /* Default.png */,
 				FAEA584F169C7E7500E2F502 /* Default@2x.png */,
+				FA7792581738F6040019462E /* Default-568h@2x.png */,
 				FAEA586A169C844400E2F502 /* Icon-72.png */,
 				FAEA5868169C842D00E2F502 /* Icon-57.png */,
 				FAEA586C169C858400E2F502 /* Icon-114.png */,
