@@ -14,11 +14,10 @@
 #import "GlowingLabel.h"
 #import "APView.h"
 
-@interface ScannerViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate> {
+@interface ScannerViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, UIActionSheetDelegate> {
 	
 	__weak IBOutlet MKMapView *_mapView;
 	__weak IBOutlet UIImageView *playerArrowImage;
-	Portal *currentPortal;
 	
 	__weak IBOutlet UIButton *fireXmpButton;
 	LevelChooserViewController *_levelChooser;

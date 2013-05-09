@@ -22,6 +22,10 @@
 #import "ColorOverlayView.h"
 
 @implementation ScannerViewController {
+
+	Portal *currentPortal;
+	Item *currentItem;
+
 	UIView *rangeCircleView;
 	CLLocationManager *locationManager;
 	CLLocation *lastLocation;
@@ -29,6 +33,7 @@
 	BOOL firstLocationUpdate;
 	BOOL portalDetailSegue;
 	MBProgressHUD *locationAllowHUD;
+	
 }
 
 - (void)viewDidLoad {
@@ -390,6 +395,60 @@
 	playerArrowImage.center = _mapView.center;
 }
 
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+
+	if (actionSheet.tag == 1 && buttonIndex == 0) {
+
+		__block Item *item = currentItem;
+
+		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.userInteractionEnabled = YES;
+		HUD.mode = MBProgressHUDModeIndeterminate;
+		HUD.dimBackground = YES;
+		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+		HUD.labelText = @"Picking up...";
+		[[AppDelegate instance].window addSubview:HUD];
+		[HUD show:YES];
+
+		[[API sharedInstance] pickUpItemWithGuid:item.guid completionHandler:^(NSString *errorStr) {
+
+			[HUD hide:YES];
+
+			[_mapView removeAnnotation:item];
+			item.latitude = 0;
+			item.longitude = 0;
+			item.dropped = NO;
+
+			[[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
+
+			if (errorStr) {
+
+				HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+				HUD.userInteractionEnabled = YES;
+				HUD.dimBackground = YES;
+				HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+				HUD.mode = MBProgressHUDModeCustomView;
+				HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+				HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+				HUD.detailsLabelText = errorStr;
+				[[AppDelegate instance].window addSubview:HUD];
+				[HUD show:YES];
+				[HUD hide:YES afterDelay:3];
+
+			} else {
+
+				[[SoundManager sharedManager] playSound:@"Sound/sfx_resource_pick_up.aif"];
+				
+			}
+			
+		}];
+
+	}
+}
+
 #pragma mark - MKMapViewDelegate
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
@@ -438,59 +497,16 @@
 	if ([view.annotation isKindOfClass:[Portal class]]) {
 		currentPortal = (Portal *)view.annotation;
 		[self performSegueWithIdentifier:@"PortalDetailSegue" sender:self];
+	} else if ([view.annotation isKindOfClass:[Item class]]) {
+		if ([(Item *)(view.annotation) distanceFromCoordinate:_mapView.centerCoordinate] <= 30) {
+			[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+			
+			currentItem = (Item *)view.annotation;
+			UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:currentItem.title delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Acquire", nil];
+			actionSheet.tag = 1;
+			[actionSheet showFromTabBar:self.tabBarController.tabBar];
+		}
 	}
-}
-
-- (void)mapView:(MKMapView *)mapView annotationView:(MKAnnotationView *)view calloutAccessoryControlTapped:(UIControl *)control {
-	
-	if ([view.annotation isKindOfClass:[Item class]]) {
-		
-		__block Item *item = (Item *)view.annotation;
-		
-		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-		HUD.userInteractionEnabled = YES;
-		HUD.mode = MBProgressHUDModeIndeterminate;
-		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		HUD.labelText = @"Picking up...";
-		[[AppDelegate instance].window addSubview:HUD];
-		[HUD show:YES];
-		
-		[[API sharedInstance] pickUpItemWithGuid:item.guid completionHandler:^(NSString *errorStr) {
-			
-			[HUD hide:YES];
-			
-			[mapView removeAnnotation:item];
-			item.latitude = 0;
-			item.longitude = 0;
-			item.dropped = NO;
-
-			[[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
-			
-			if (errorStr) {
-				
-				HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-				HUD.userInteractionEnabled = YES;
-				HUD.dimBackground = YES;
-				HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-				HUD.mode = MBProgressHUDModeCustomView;
-				HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-				HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-				HUD.detailsLabelText = errorStr;
-				[[AppDelegate instance].window addSubview:HUD];
-				[HUD show:YES];
-				[HUD hide:YES afterDelay:3];
-				
-			} else {
-				
-				[[SoundManager sharedManager] playSound:@"Sound/sfx_resource_pick_up.aif"];
-				
-			}
-			
-		}];
-		
-	}
-	
 }
 
 - (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation {
@@ -503,9 +519,9 @@
 		if (annotationView == nil) {
 			annotationView = [[MKAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewID];
 			annotationView.canShowCallout = NO;
-		} else {
-			annotationView.annotation = annotation;
 		}
+		
+		annotationView.annotation = annotation;
 		
 		Portal *portal = (Portal *)annotation;
 		annotationView.image = [[API sharedInstance] iconForPortal:portal];
@@ -520,12 +536,11 @@
 		MKPinAnnotationView *annotationView = (MKPinAnnotationView *)[_mapView dequeueReusableAnnotationViewWithIdentifier:AnnotationViewID];
 		if (annotationView == nil) {
 			annotationView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationViewID];
-			annotationView.canShowCallout = YES;
-			annotationView.rightCalloutAccessoryView = [UIButton buttonWithType:UIButtonTypeDetailDisclosure];
+			annotationView.canShowCallout = NO;
 			annotationView.pinColor = MKPinAnnotationColorPurple;
-		} else {
-			annotationView.annotation = annotation;
 		}
+		
+		annotationView.annotation = annotation;
 		
 		return annotationView;
 		
