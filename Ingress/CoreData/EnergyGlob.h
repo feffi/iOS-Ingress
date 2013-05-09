@@ -2,7 +2,7 @@
 //  EnergyGlob.h
 //  Ingress
 //
-//  Created by Alex Studnicka on 24.01.13.
+//  Created by Alex Studnička on 09.05.13.
 //  Copyright (c) 2013 A&A Code. All rights reserved.
 //
 
@@ -13,6 +13,6 @@
 
 @interface EnergyGlob : Item
 
-- (MKCircle *)circle;
+@property (nonatomic) int32_t amount;
 
 @end

@@ -117,6 +117,7 @@
 		FA82129D1722C21E0019E5FD /* positive_btn_background_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8212971722C21E0019E5FD /* positive_btn_background_default@2x.png */; };
 		FA82129E1722C21E0019E5FD /* positive_btn_background_disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8212981722C21E0019E5FD /* positive_btn_background_disabled@2x.png */; };
 		FA82129F1722C21E0019E5FD /* positive_btn_background_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8212991722C21E0019E5FD /* positive_btn_background_pressed@2x.png */; };
+		FA859F16173BD800002A2117 /* EnergyGlob.m in Sources */ = {isa = PBXBuildFile; fileRef = FA859F15173BD800002A2117 /* EnergyGlob.m */; };
 		FA8C24D816B3257D000C8738 /* DarkPressedBackgroundButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C24D716B3257D000C8738 /* DarkPressedBackgroundButton.m */; };
 		FA8C24DA16B3CEA6000C8738 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8C24D916B3CEA6000C8738 /* CoreImage.framework */; };
 		FA8C24DD16B3D251000C8738 /* ColorOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C24DC16B3D251000C8738 /* ColorOverlay.m */; };
@@ -174,7 +175,6 @@
 		FAC23E2616B18759000C17DD /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E2516B18759000C17DD /* Player.m */; };
 		FAC23E2916B18759000C17DD /* DeployedShield.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E2816B18759000C17DD /* DeployedShield.m */; };
 		FAC23E2C16B18759000C17DD /* Resonator.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E2B16B18759000C17DD /* Resonator.m */; };
-		FAC23E3016B1BD50000C17DD /* EnergyGlob.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E2F16B1BD50000C17DD /* EnergyGlob.m */; };
 		FAC23E3916B1CEEC000C17DD /* PortalLink.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E3816B1CEEC000C17DD /* PortalLink.m */; };
 		FAC23E3F16B1CEF0000C17DD /* ControlField.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E3E16B1CEF0000C17DD /* ControlField.m */; };
 		FAC23E4216B1CF3A000C17DD /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E4116B1CF39000C17DD /* User.m */; };
@@ -421,6 +421,8 @@
 		FA8212971722C21E0019E5FD /* positive_btn_background_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "positive_btn_background_default@2x.png"; sourceTree = "<group>"; };
 		FA8212981722C21E0019E5FD /* positive_btn_background_disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "positive_btn_background_disabled@2x.png"; sourceTree = "<group>"; };
 		FA8212991722C21E0019E5FD /* positive_btn_background_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "positive_btn_background_pressed@2x.png"; sourceTree = "<group>"; };
+		FA859F14173BD800002A2117 /* EnergyGlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnergyGlob.h; path = CoreData/EnergyGlob.h; sourceTree = "<group>"; };
+		FA859F15173BD800002A2117 /* EnergyGlob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnergyGlob.m; path = CoreData/EnergyGlob.m; sourceTree = "<group>"; };
 		FA8C24D616B3257D000C8738 /* DarkPressedBackgroundButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DarkPressedBackgroundButton.h; sourceTree = "<group>"; };
 		FA8C24D716B3257D000C8738 /* DarkPressedBackgroundButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DarkPressedBackgroundButton.m; sourceTree = "<group>"; };
 		FA8C24D916B3CEA6000C8738 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
@@ -531,8 +533,6 @@
 		FAC23E2816B18759000C17DD /* DeployedShield.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeployedShield.m; path = CoreData/DeployedShield.m; sourceTree = "<group>"; };
 		FAC23E2A16B18759000C17DD /* Resonator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Resonator.h; path = CoreData/Resonator.h; sourceTree = "<group>"; };
 		FAC23E2B16B18759000C17DD /* Resonator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Resonator.m; path = CoreData/Resonator.m; sourceTree = "<group>"; };
-		FAC23E2E16B1BD50000C17DD /* EnergyGlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnergyGlob.h; path = CoreData/EnergyGlob.h; sourceTree = "<group>"; };
-		FAC23E2F16B1BD50000C17DD /* EnergyGlob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnergyGlob.m; path = CoreData/EnergyGlob.m; sourceTree = "<group>"; };
 		FAC23E3716B1CEEB000C17DD /* PortalLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PortalLink.h; path = CoreData/PortalLink.h; sourceTree = "<group>"; };
 		FAC23E3816B1CEEC000C17DD /* PortalLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PortalLink.m; path = CoreData/PortalLink.m; sourceTree = "<group>"; };
 		FAC23E3D16B1CEEF000C17DD /* ControlField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControlField.h; path = CoreData/ControlField.h; sourceTree = "<group>"; };
@@ -1388,8 +1388,6 @@
 				FAC23E1316B18757000C17DD /* Media.m */,
 				FAC23E0916B18755000C17DD /* Shield.h */,
 				FAC23E0A16B18755000C17DD /* Shield.m */,
-				FAC23E2E16B1BD50000C17DD /* EnergyGlob.h */,
-				FAC23E2F16B1BD50000C17DD /* EnergyGlob.m */,
 				FAC23E4016B1CF38000C17DD /* User.h */,
 				FAC23E4116B1CF39000C17DD /* User.m */,
 				FAC23E2416B18759000C17DD /* Player.h */,
@@ -1410,6 +1408,8 @@
 				FA008E16171D310500176C3D /* PowerCube.m */,
 				FAA9C47117306EB8000C2638 /* PortalKey.h */,
 				FAA9C47217306EB8000C2638 /* PortalKey.m */,
+				FA859F14173BD800002A2117 /* EnergyGlob.h */,
+				FA859F15173BD800002A2117 /* EnergyGlob.m */,
 			);
 			name = NSManagedObjects;
 			sourceTree = "<group>";
@@ -2160,7 +2160,6 @@
 				FAC23E2616B18759000C17DD /* Player.m in Sources */,
 				FAC23E2916B18759000C17DD /* DeployedShield.m in Sources */,
 				FAC23E2C16B18759000C17DD /* Resonator.m in Sources */,
-				FAC23E3016B1BD50000C17DD /* EnergyGlob.m in Sources */,
 				FAC23E3916B1CEEC000C17DD /* PortalLink.m in Sources */,
 				FAC23E3F16B1CEF0000C17DD /* ControlField.m in Sources */,
 				FAC23E4216B1CF3A000C17DD /* User.m in Sources */,
@@ -2247,6 +2246,7 @@
 				FA3FC30E173656AC009CD94A /* MissionViewController.m in Sources */,
 				FA3FC3111736603B009CD94A /* ScrollTextView.m in Sources */,
 				FACEE6171737E9D3006A9912 /* NSShadow+Initilalizer.m in Sources */,
+				FA859F16173BD800002A2117 /* EnergyGlob.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

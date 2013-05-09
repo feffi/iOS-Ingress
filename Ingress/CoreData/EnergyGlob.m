@@ -2,7 +2,7 @@
 //  EnergyGlob.m
 //  Ingress
 //
-//  Created by Alex Studnicka on 24.01.13.
+//  Created by Alex Studnička on 09.05.13.
 //  Copyright (c) 2013 A&A Code. All rights reserved.
 //
 
@@ -10,6 +10,8 @@
 #import "MKCircle+Ingress.h"
 
 @implementation EnergyGlob
+
+@dynamic amount;
 
 - (NSString *)description {
 	return @"XM";

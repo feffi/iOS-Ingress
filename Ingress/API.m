@@ -1810,6 +1810,11 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		CLLocationCoordinate2D coord = [S2Geometry coordinateForCellId:numCellId];
 		energyGlob.latitude = coord.latitude;
 		energyGlob.longitude = coord.longitude;
+
+		scanner = [NSScanner scannerWithString:[energyGlobGuid substringFromIndex:energyGlobGuid.length-4]];
+		unsigned int amount;
+		[scanner scanHexInt:&amount];
+		energyGlob.amount = amount;
 	}
 	[[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
 }
