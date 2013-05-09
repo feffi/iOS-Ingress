@@ -414,10 +414,9 @@
 	[subtitleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:18]];
 
 	[mainButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:28]];
-	[mainButton setEnabled:NO];
 	[mainButton setTitle:@"Start" forState:UIControlStateNormal];
 	[mainButton removeTarget:self action:NULL forControlEvents:UIControlEventTouchUpInside];
-	[mainButton addTarget:self action:@selector(proceed) forControlEvents:UIControlEventTouchUpInside];
+	[mainButton addTarget:self action:@selector(start) forControlEvents:UIControlEventTouchUpInside];
 
 	[altButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:22]];
 	[altButton setTitle:@"Skip" forState:UIControlStateNormal];
@@ -745,9 +744,10 @@
 
 }
 
-- (void)proceed {
+- (void)start {
 	[[SoundManager sharedManager] stopSound:sound fadeOut:NO];
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+	[[API sharedInstance] playSounds:@[@"SPEECH_MISSION", @"SPEECH_OFFLINE"]]; //SPEECH_ACTIVATED
 	
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -755,9 +755,7 @@
 - (void)skip {
 	[[SoundManager sharedManager] stopSound:sound fadeOut:NO];
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-	[[API sharedInstance] playSounds:@[@"SPEECH_MISSION", @"SPEECH_ABANDONED"]]; //@"SFX_UI_SUCCESS",
-
-	//Speech Mission Abandoned
+	[[API sharedInstance] playSounds:@[@"SPEECH_MISSION", @"SPEECH_ABANDONED"]];
 	
 	[self dismissViewControllerAnimated:YES completion:nil];
 }

@@ -47,7 +47,4 @@
 
 - (IBAction)join:(id)sender;
 
-- (void)proceed;
-- (void)skip;
-
 @end
