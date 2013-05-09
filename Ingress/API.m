@@ -1141,14 +1141,12 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 }
 
 - (void)dropItemWithGuid:(NSString *)guid completionHandler:(void (^)(void))handler {
-//	NSLog(@"dropItemWithGuid: %@", guid);
 
 	NSDictionary *dict = @{
 		@"itemGuid": guid
 	};
 	
 	[self sendRequest:@"gameplay/dropItem" params:dict completionHandler:^(id responseObj) {
-		
 		//NSLog(@"dropItemWithGuid responseObj: %@", responseObj);
 		
 		dispatch_async(dispatch_get_main_queue(), ^{
@@ -1174,7 +1172,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 			});
 			
 		} else {
-			
 			//NSLog(@"pickUpItemWithGuid responseObj: %@", responseObj);
 			
 			dispatch_async(dispatch_get_main_queue(), ^{
@@ -1546,8 +1543,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 			for (int i = 0; i < 4; i++) {
 
 				NSDictionary *modDict = gameEntity[2][@"portalV2"][@"linkedModArray"][i];
-
-
 
 				if ([modDict isKindOfClass:[NSNull class]]) {
 					DeployedMod *mod = [DeployedMod MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"portal = %@ && slot = %d", portal, i]];
