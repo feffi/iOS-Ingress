@@ -1486,7 +1486,23 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		//NSLog(@"processGameEntities: %@", gameEntities);
 
 	for (NSArray *gameEntity in gameEntities) {
+
 		NSDictionary *loc = gameEntity[2][@"locationE6"];
+		
+		NSString *resourceType;
+
+		if (gameEntity[2][@"resourceWithLevels"][@"resourceType"]) {
+			resourceType = gameEntity[2][@"resourceWithLevels"][@"resourceType"];
+		}
+
+		if (gameEntity[2][@"resource"][@"resourceType"]) {
+			resourceType = gameEntity[2][@"resource"][@"resourceType"];
+		}
+
+		if (gameEntity[2][@"modResource"][@"resourceType"]) {
+			resourceType = gameEntity[2][@"modResource"][@"resourceType"];
+		}
+
 		if (loc && gameEntity[2][@"portalV2"]) {
 
 			Portal *portal = [Portal MR_findFirstByAttribute:@"guid" withValue:gameEntity[0]];
@@ -1595,21 +1611,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 				//[[Portals sharedInstance] addPortal:portal];
 
-		} else if (loc && gameEntity[2][@"resource"]) {
-
-			NSString *resourceType;
-
-			if (gameEntity[2][@"resourceWithLevels"][@"resourceType"]) {
-				resourceType = gameEntity[2][@"resourceWithLevels"][@"resourceType"];
-			}
-
-			if (gameEntity[2][@"resource"][@"resourceType"]) {
-				resourceType = gameEntity[2][@"resource"][@"resourceType"];
-			}
-
-			if (gameEntity[2][@"modResource"][@"resourceType"]) {
-				resourceType = gameEntity[2][@"modResource"][@"resourceType"];
-			}
+		} else if (loc && resourceType) {
 
 				//NSLog(@"Dropped resourceType: %@", resourceType);
 
