@@ -169,10 +169,10 @@
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
 		
+		[[API sharedInstance] playSound:@"SFX_DROP_RESOURCE"];
+		
 		[[API sharedInstance] dropItemWithGuid:portalKey.guid completionHandler:^(void) {
-			
 			[HUD hide:YES];
-			
 		}];
 		
 	}
