@@ -223,7 +223,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 #pragma mark - Knob Sync
 
 - (long long)knobSyncTimestamp {
-	NSString *timestampString = [NSString stringWithFormat:@"%.3f", [[NSDate date] timeIntervalSinceReferenceDate]];
+	NSString *timestampString = [NSString stringWithFormat:@"%.3f", [[NSDate date] timeIntervalSince1970]];
 	timestampString = [timestampString stringByReplacingOccurrencesOfString:@"." withString:@""];
 	return [timestampString longLongValue];
 }
@@ -664,8 +664,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	}
 	
 	NSDictionary *dict = @{
-		@"playerLocation": [self currentE6Location],
-		@"knobSyncTimestamp": @(self.knobSyncTimestamp),
 		//@"energyGlobGuids": @[],
 		@"cellsAsHex": cellsAsHex,
 		@"dates": dates
@@ -782,8 +780,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	
 	NSDictionary *dict = @{
 		@"factionOnly": @(factionOnly),
-		@"message": message,
-		@"playerLocation": self.currentE6Location,
+		@"message": message
 	};
 	
 	[self sendRequest:@"player/say" params:dict completionHandler:^(id responseObj) {
@@ -876,9 +873,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	//loc = CLLocationCoordinate2DMake(50.639722, 13.829444);
 	
 	NSDictionary *dict = @{
-		@"knobSyncTimestamp": @(self.knobSyncTimestamp),
-		@"itemGuid": xmpItem.guid,
-		@"playerLocation": self.currentE6Location,
+		@"itemGuid": xmpItem.guid
 	};
 	
 	[self sendRequest:@"gameplay/fireUntargetedRadialWeapon" params:dict completionHandler:^(id responseObj) {
@@ -976,9 +971,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 - (void)hackPortal:(Portal *)portal completionHandler:(void (^)(NSString *errorStr, NSArray *acquiredItems, int secondsRemaining))handler {
 	
 	NSDictionary *dict = @{
-		@"itemGuid": portal.guid,
-		@"playerLocation": self.currentE6Location,
-		@"knobSyncTimestamp": @(self.knobSyncTimestamp),
+		@"itemGuid": portal.guid
 	};
 	
 	[self sendRequest:@"gameplay/collectItemsFromPortal" params:dict completionHandler:^(id responseObj) {
@@ -1037,9 +1030,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 - (void)deployResonator:(Resonator *)resonatorItem toPortal:(Portal *)portal toSlot:(int)slot completionHandler:(void (^)(NSString *errorStr))handler {
 
 	NSDictionary *dict = @{
-		@"knobSyncTimestamp": @(self.knobSyncTimestamp),
 		@"itemGuids": @[resonatorItem.guid],
-		@"playerLocation": self.currentE6Location,
 		@"portalGuid": portal.guid,
 		@"preferredSlot": @(slot)
 	};
@@ -1080,9 +1071,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 - (void)upgradeResonator:(Resonator *)resonatorItem toPortal:(Portal *)portal toSlot:(int)slot completionHandler:(void (^)(NSString *errorStr))handler {
 
 	NSDictionary *dict = @{
-		@"knobSyncTimestamp": @(self.knobSyncTimestamp),
 		@"emitterGuid": resonatorItem.guid,
-		@"playerLocation": self.currentE6Location,
 		@"portalGuid": portal.guid,
 		@"resonatorSlotToUpgrade": @(slot)
 	};
@@ -1123,8 +1112,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 - (void)addMod:(Item *)modItem toItem:(Item *)modableItem toSlot:(int)slot completionHandler:(void (^)(NSString *errorStr))handler {
 	
 	NSDictionary *dict = @{
-		@"knobSyncTimestamp": @(self.knobSyncTimestamp),
-		@"playerLocation": self.currentE6Location,
 		@"modResourceGuid": modItem.guid,
 		@"modableGuid": modableItem.guid,
 		@"index": @(slot)
@@ -1156,8 +1143,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 //	NSLog(@"dropItemWithGuid: %@", guid);
 
 	NSDictionary *dict = @{
-		@"knobSyncTimestamp": @(self.knobSyncTimestamp),
-		@"playerLocation": self.currentE6Location,
 		@"itemGuid": guid
 	};
 	
@@ -1176,8 +1161,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 - (void)pickUpItemWithGuid:(NSString *)guid completionHandler:(void (^)(NSString *errorStr))handler {
 	
 	NSDictionary *dict = @{
-		@"knobSyncTimestamp": @(self.knobSyncTimestamp),
-		@"playerLocation": self.currentE6Location,
 		@"itemGuid": guid
 	};
 	
@@ -1206,8 +1189,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 - (void)recycleItem:(Item *)item completionHandler:(void (^)(void))handler {
 
 	NSDictionary *dict = @{
-		@"knobSyncTimestamp": @(self.knobSyncTimestamp),
-		@"playerLocation": self.currentE6Location,
 		@"itemGuid": item.guid
 	};
 
@@ -1225,8 +1206,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 - (void)usePowerCube:(PowerCube *)powerCube completionHandler:(void (^)(void))handler {
 
 	NSDictionary *dict = @{
-		@"knobSyncTimestamp": @(self.knobSyncTimestamp),
-		@"playerLocation": self.currentE6Location,
 		@"itemGuid": powerCube.guid
 	};
 
@@ -1246,15 +1225,12 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	//{"params":{"energyGlobGuids":[],"knobSyncTimestamp":1358000897501,"location":"0304bb25,00d2f8f0","portalGuid":"3e7788cf535745a29461dffcad2c8711.12","portalKeyGuid":null,"resonatorSlots":[0,5,6,7]}}
 	
 	NSDictionary *dict = @{
-		@"knobSyncTimestamp": @(self.knobSyncTimestamp),
-		@"playerLocation": self.currentE6Location,
 		@"portalGuid": portal.guid,
 		@"portalKeyGuid": [NSNull null],
 		@"resonatorSlots": @[@0, @1, @2, @3, @4, @5, @6, @7]
 	};
 	
 	[self sendRequest:@"gameplay/rechargeResonatorsV2" params:dict completionHandler:^(id responseObj) {
-		
 		//NSLog(@"rechargeResonatorWithGuid responseObj: %@", responseObj);
 		
 		dispatch_async(dispatch_get_main_queue(), ^{
@@ -1268,8 +1244,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 - (void)queryLinkabilityForPortal:(Portal *)portal portalKey:(PortalKey *)portalKey completionHandler:(void (^)(NSString *errorStr))handler {
 
 	NSDictionary *dict = @{
-		@"knobSyncTimestamp": @(self.knobSyncTimestamp),
-		@"playerLocation": self.currentE6Location,
 		@"originPortalGuid": portal.guid,
 		@"portalLinkKeyGuidSet": @[portalKey.guid]
 	};
@@ -1288,8 +1262,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 - (void)linkPortal:(Portal *)portal withPortalKey:(PortalKey *)portalKey completionHandler:(void (^)(NSString *errorStr))handler {
 
 	NSDictionary *dict = @{
-		@"knobSyncTimestamp": @(self.knobSyncTimestamp),
-		@"playerLocation": self.currentE6Location,
 		@"originPortalGuid": portal.guid,
 		@"destinationPortalGuid": portalKey.portalGuid,
 		@"linkKeyGuid": portalKey.guid
@@ -1324,6 +1296,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	if ([params isKindOfClass:[NSDictionary class]]) {
 		
 		NSMutableDictionary *mutableParams = [params mutableCopy];
+
+		mutableParams[@"knobSyncTimestamp"] = @(self.knobSyncTimestamp);
+		mutableParams[@"playerLocation"] = self.currentE6Location;
+		mutableParams[@"location"] = self.currentE6Location;
 
 		NSMutableArray *collectedEnergyGuids = [NSMutableArray array];
 		for (EnergyGlob *energyGlob in self.energyToCollect) {

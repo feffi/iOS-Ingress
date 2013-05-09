@@ -71,7 +71,7 @@
     locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
 	
 	[locationManager startUpdatingLocation];
-//	[locationManager startUpdatingHeading];
+	[locationManager startUpdatingHeading];
 
 	UIPinchGestureRecognizer *recognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
 	[_mapView addGestureRecognizer:recognizer];
@@ -155,12 +155,12 @@
 //		[[API sharedInstance] getObjectsWithCompletionHandler:^{ }];
 //	}];
 
-	[ControlField MR_truncateAll];
-	[PortalLink MR_truncateAll];
-	[Item MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"dropped = YES"]];
-	[EnergyGlob MR_truncateAll];
-	[DeployedResonator MR_truncateAll];
-	[DeployedMod MR_truncateAll];
+//	[ControlField MR_truncateAll];
+//	[PortalLink MR_truncateAll];
+//	[Item MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"dropped = YES"]];
+//	[EnergyGlob MR_truncateAll];
+//	[DeployedResonator MR_truncateAll];
+//	[DeployedMod MR_truncateAll];
 
 	[_mapView removeAnnotations:_mapView.annotations];
 	[_mapView removeOverlays:_mapView.overlays];

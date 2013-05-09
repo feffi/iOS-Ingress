@@ -25,7 +25,9 @@
         <attribute name="mitigation" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="rarity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="EnergyGlob" representedClassName="EnergyGlob" parentEntity="Item" syncable="YES"/>
+    <entity name="EnergyGlob" representedClassName="EnergyGlob" parentEntity="Item" syncable="YES">
+        <attribute name="amount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+    </entity>
     <entity name="Item" representedClassName="Item" isAbstract="YES" syncable="YES">
         <attribute name="dropped" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="guid" optional="YES" attributeType="String" syncable="YES"/>
@@ -97,7 +99,7 @@
         <element name="DeployedMod" positionX="-4599" positionY="-1297" width="128" height="88"/>
         <element name="DeployedResonator" positionX="-4581" positionY="-1201" width="128" height="148"/>
         <element name="DeployedShield" positionX="-4763" positionY="-1296" width="128" height="73"/>
-        <element name="EnergyGlob" positionX="-4889" positionY="-1413" width="128" height="43"/>
+        <element name="EnergyGlob" positionX="-4889" positionY="-1413" width="128" height="58"/>
         <element name="Item" positionX="-4635" positionY="-1629" width="128" height="103"/>
         <element name="Media" positionX="-4464" positionY="-1638" width="128" height="118"/>
         <element name="Player" positionX="-4221" positionY="-1134" width="128" height="118"/>
