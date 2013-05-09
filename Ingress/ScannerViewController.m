@@ -261,77 +261,88 @@
 
 - (void)managedObjectContextObjectsDidChange:(NSNotification *)notification {
 
-//	dispatch_async(dispatch_get_main_queue(), ^{
-//		for (NSManagedObject *object in notification.userInfo[NSDeletedObjectsKey]) {
-//			if ([object isKindOfClass:[Portal class]]) {
-//				Portal *portal = (Portal *)object;
-////				[_mapView removeAnnotation:portal];
-//				[_mapView removeOverlay:portal];
-//			} else if ([object isKindOfClass:[EnergyGlob class]]) {
-//				EnergyGlob *xm = (EnergyGlob *)object;
-//				[_mapView removeOverlay:xm.circle];
-//			} else if ([object isKindOfClass:[Item class]]) {
-//				Item *item = (Item *)object;
-//				[_mapView removeAnnotation:item];
-//			} else if ([object isKindOfClass:[PortalLink class]]) {
-//				PortalLink *portalLink = (PortalLink *)object;
-//				[_mapView removeOverlay:portalLink.polyline];
-//			} else if ([object isKindOfClass:[ControlField class]]) {
-//				ControlField *controlField = (ControlField *)object;
-//				[_mapView removeOverlay:controlField.polygon];
-//			} else if ([object isKindOfClass:[DeployedResonator class]]) {
-//				DeployedResonator *resonator = (DeployedResonator *)object;
-//				[_mapView removeOverlay:resonator.circle];
-//			}
-//		}
+	dispatch_async(dispatch_get_main_queue(), ^{
 
-	NSArray *insertedObject = [notification.userInfo[NSInsertedObjectsKey] allObjects];
-	for (NSManagedObject *object in insertedObject) {
-		if ([object isKindOfClass:[Portal class]]) {
-			Portal *portal = (Portal *)object;
-			[_mapView addOverlay:portal];
-			[_mapView addAnnotation:portal];
-		} else if ([object isKindOfClass:[EnergyGlob class]]) {
-			EnergyGlob *xm = (EnergyGlob *)object;
-			[_mapView addOverlay:xm.circle];
-		} else if ([object isKindOfClass:[Item class]]) {
-			Item *item = (Item *)object;
-			[_mapView addAnnotation:item];
-		} else if ([object isKindOfClass:[PortalLink class]]) {
-			PortalLink *portalLink = (PortalLink *)object;
-			[_mapView addOverlay:portalLink.polyline];
-		} else if ([object isKindOfClass:[ControlField class]]) {
-			ControlField *controlField = (ControlField *)object;
-			[_mapView addOverlay:controlField.polygon];
-		} else if ([object isKindOfClass:[DeployedResonator class]]) {
-			DeployedResonator *resonator = (DeployedResonator *)object;
-			[_mapView addOverlay:resonator.circle];
+		NSArray *deletedObject = [notification.userInfo[NSInsertedObjectsKey] allObjects];
+		for (NSManagedObject *object in deletedObject) {
+			if ([object isKindOfClass:[Portal class]]) {
+				Portal *portal = (Portal *)object;
+				[_mapView removeOverlay:portal];
+				[_mapView removeAnnotation:portal];
+			} else if ([object isKindOfClass:[EnergyGlob class]]) {
+				EnergyGlob *xm = (EnergyGlob *)object;
+				[_mapView removeOverlay:xm.circle];
+			} else if ([object isKindOfClass:[Item class]]) {
+				Item *item = (Item *)object;
+				[_mapView removeAnnotation:item];
+			} else if ([object isKindOfClass:[PortalLink class]]) {
+				PortalLink *portalLink = (PortalLink *)object;
+				[_mapView removeOverlay:portalLink.polyline];
+			} else if ([object isKindOfClass:[ControlField class]]) {
+				ControlField *controlField = (ControlField *)object;
+				[_mapView removeOverlay:controlField.polygon];
+			} else if ([object isKindOfClass:[DeployedResonator class]]) {
+				DeployedResonator *resonator = (DeployedResonator *)object;
+				[_mapView removeOverlay:resonator.circle];
+			}
 		}
-	}
 
-	NSArray *updatedObject = [notification.userInfo[NSUpdatedObjectsKey] allObjects];
-	for (NSManagedObject *object in updatedObject) {
-		if ([object isKindOfClass:[Portal class]]) {
-			Portal *portal = (Portal *)object;
-			[_mapView addOverlay:portal];
-			[_mapView addAnnotation:portal];
-		} else if ([object isKindOfClass:[EnergyGlob class]]) {
-			EnergyGlob *xm = (EnergyGlob *)object;
-			[_mapView addOverlay:xm.circle];
-		} else if ([object isKindOfClass:[Item class]]) {
-			Item *item = (Item *)object;
-			[_mapView addAnnotation:item];
-		} else if ([object isKindOfClass:[PortalLink class]]) {
-			PortalLink *portalLink = (PortalLink *)object;
-			[_mapView addOverlay:portalLink.polyline];
-		} else if ([object isKindOfClass:[ControlField class]]) {
-			ControlField *controlField = (ControlField *)object;
-			[_mapView addOverlay:controlField.polygon];
-		} else if ([object isKindOfClass:[DeployedResonator class]]) {
-			DeployedResonator *resonator = (DeployedResonator *)object;
-			[_mapView addOverlay:resonator.circle];
+		NSArray *insertedObject = [notification.userInfo[NSInsertedObjectsKey] allObjects];
+		for (NSManagedObject *object in insertedObject) {
+			if ([object isKindOfClass:[Portal class]]) {
+				Portal *portal = (Portal *)object;
+				[_mapView addOverlay:portal];
+				[_mapView addAnnotation:portal];
+			} else if ([object isKindOfClass:[EnergyGlob class]]) {
+				EnergyGlob *xm = (EnergyGlob *)object;
+				[_mapView addOverlay:xm.circle];
+			} else if ([object isKindOfClass:[Item class]]) {
+				Item *item = (Item *)object;
+				[_mapView addAnnotation:item];
+			} else if ([object isKindOfClass:[PortalLink class]]) {
+				PortalLink *portalLink = (PortalLink *)object;
+				[_mapView addOverlay:portalLink.polyline];
+			} else if ([object isKindOfClass:[ControlField class]]) {
+				ControlField *controlField = (ControlField *)object;
+				[_mapView addOverlay:controlField.polygon];
+			} else if ([object isKindOfClass:[DeployedResonator class]]) {
+				DeployedResonator *resonator = (DeployedResonator *)object;
+				[_mapView addOverlay:resonator.circle];
+			}
 		}
-	}
+
+		NSArray *updatedObject = [notification.userInfo[NSUpdatedObjectsKey] allObjects];
+		for (NSManagedObject *object in updatedObject) {
+			if ([object isKindOfClass:[Portal class]]) {
+				Portal *portal = (Portal *)object;
+				[_mapView removeOverlay:portal];
+				[_mapView removeAnnotation:portal];
+				[_mapView addOverlay:portal];
+				[_mapView addAnnotation:portal];
+			} else if ([object isKindOfClass:[EnergyGlob class]]) {
+				EnergyGlob *xm = (EnergyGlob *)object;
+				[_mapView removeOverlay:xm.circle];
+				[_mapView addOverlay:xm.circle];
+			} else if ([object isKindOfClass:[Item class]]) {
+				Item *item = (Item *)object;
+				[_mapView removeAnnotation:item];
+				[_mapView addAnnotation:item];
+			} else if ([object isKindOfClass:[PortalLink class]]) {
+				PortalLink *portalLink = (PortalLink *)object;
+				[_mapView removeOverlay:portalLink.polyline];
+				[_mapView addOverlay:portalLink.polyline];
+			} else if ([object isKindOfClass:[ControlField class]]) {
+				ControlField *controlField = (ControlField *)object;
+				[_mapView removeOverlay:controlField.polygon];
+				[_mapView addOverlay:controlField.polygon];
+			} else if ([object isKindOfClass:[DeployedResonator class]]) {
+				DeployedResonator *resonator = (DeployedResonator *)object;
+				[_mapView removeOverlay:resonator.circle];
+				[_mapView addOverlay:resonator.circle];
+			}
+		}
+
+	});
 
 }
 
