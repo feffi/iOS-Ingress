@@ -274,6 +274,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		@"SFX_AMBIENT_SPACE_MAGNIFICATION": @{@"file": @"sfx_ambient_space_magnification.aif", @"duration": @(1516)},
 		@"SFX_AMBIENT_SPACE_LATTITUDE": @{@"file": @"sfx_ambient_space_lattitude.aif", @"duration": @(1301)},
 		@"SFX_DROP_RESOURCE": @{@"file": @"sfx_drop_resource.aif", @"duration": @(1114)},
+		@"SFX_PLAYER_LEVEL_UP": @{@"file": @"sfx_player_level_up.aif", @"duration": @(8680)},
 		@"SPEECH_ABANDONED": @{@"file": @"speech_abandoned.aif", @"duration": @(744)},
 		@"SPEECH_ACCESS_LEVEL_ACHIEVED": @{@"file": @"speech_access_level_achieved.aif", @"duration": @(1327)},
 		@"SPEECH_ACTIVATED": @{@"file": @"speech_activated.aif", @"duration": @(782)},
@@ -1765,7 +1766,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	int newLevel = [API levelForAp:[playerEntity[2][@"playerPersonal"][@"ap"] intValue]];
 	
 	if ([self.playerInfo[@"ap"] intValue] != 0 && newLevel > oldLevel) {
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_player_level_up.aif"];
+		[self playSound:@"SFX_PLAYER_LEVEL_UP"];
 	}
 
 	if ([self.playerInfo[@"energy"] intValue] != [playerEntity[2][@"playerPersonal"][@"energy"] intValue]) {
