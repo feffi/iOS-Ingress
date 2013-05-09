@@ -402,17 +402,22 @@
 	NSDictionary *playerInfo = [[API sharedInstance] playerInfo];
 	int ap = [playerInfo[@"ap"] intValue];
 	int level = [API levelForAp:ap];
-	float energy = [playerInfo[@"energy"] floatValue];
-	float maxEnergy = [API maxXmForLevel:level];
+	int energy = [playerInfo[@"energy"] intValue];
+	int maxEnergy = [API maxXmForLevel:level];
+	int collecting = 0;
 
 	if (energy < maxEnergy) {
 		[[[API sharedInstance] energyToCollect] removeAllObjects];
 		for (EnergyGlob *xm in [EnergyGlob MR_findAll]) {
 			if ([xm distanceFromCoordinate:_mapView.centerCoordinate] <= 30) {
 				[[[API sharedInstance] energyToCollect] addObject:xm];
+				collecting += xm.amount;
+			}
+			if (collecting >= (maxEnergy-energy)) {
+				break;
 			}
 		}
-		//NSLog(@"Collecting %d XM", [[[API sharedInstance] energyToCollect] count]);
+		//NSLog(@"Collecting %d (%d) XM", [[[API sharedInstance] energyToCollect] count], collecting);
 	}
 
 	CLLocation *mapLocation = [[CLLocation alloc] initWithLatitude:_mapView.centerCoordinate.latitude longitude:_mapView.centerCoordinate.longitude];
