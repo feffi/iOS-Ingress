@@ -1,17 +1,19 @@
 iOS Ingress
 ===========
 
-Fully playable Google's AR Game Ingress port for iOS
+Fully playable Google's AR Game Ingress port for iOS.
+
+Not working on simulator, GPS is needed.
 
 Download
 --------
 
 You need to be developer or have jailbreak to install it.
 
-**New ipa (5/7/2013):** Fixed Faction Choosing for 3.5" screen
+**New ipa (5/9/2013):** Various fixes for dropped items, resonators deploying and upgrade, xm collecting,...
 
 - https://www.dropbox.com/s/q28f2bj2bgt2vxj/Ingress.ipa
-- https://docs.google.com/file/d/0B8rmzjJD-xnSbUs0MnJmbVlhQU0/edit?usp=sharing
+- https://docs.google.com/file/d/0B8rmzjJD-xnSeXFrMEo3enAxVDQ/edit?usp=sharing
 
 Support
 -------
