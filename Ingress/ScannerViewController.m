@@ -450,9 +450,7 @@
 				[HUD hide:YES afterDelay:3];
 
 			} else {
-
-				[[SoundManager sharedManager] playSound:@"Sound/sfx_resource_pick_up.aif"];
-				
+				[[API sharedInstance] playSound:@"SFX_RESOURCE_PICK_UP"];
 			}
 			
 		}];
