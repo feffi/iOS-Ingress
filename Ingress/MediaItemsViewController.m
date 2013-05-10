@@ -7,9 +7,12 @@
 //
 
 #import "MediaItemsViewController.h"
+#import "MediaWebViewViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
-@implementation MediaItemsViewController
+@implementation MediaItemsViewController {
+	Media *currentMedia;
+}
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
@@ -149,21 +152,20 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
-	Media *media = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	
-	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:media.url]];
-	UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 240, 320)];
-	[webView loadRequest:request];
-	
-	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-	HUD.userInteractionEnabled = YES;
-	HUD.mode = MBProgressHUDModeCustomView;
-	HUD.dimBackground = YES;
-	HUD.showCloseButton = YES;
-	HUD.customView = webView;
-	[[AppDelegate instance].window addSubview:HUD];
-	[HUD show:YES];
-	
+	currentMedia = [self.fetchedResultsController objectAtIndexPath:indexPath];
+	[self performSegueWithIdentifier:@"MediaWebViewSegue" sender:self];
+}
+
+#pragma mark - Storyboard
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:@"MediaWebViewSegue"]) {
+		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+
+		UINavigationController *navC = segue.destinationViewController;
+		MediaWebViewViewController *vc = (MediaWebViewViewController *)navC.topViewController;
+		vc.media = currentMedia;
+	}
 }
 
 @end

@@ -32,7 +32,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="037-Ag-kxy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Items" image="items.png" id="lhw-GV-zZJ"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="5Vm-qA-M13">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
@@ -178,7 +178,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="uov-Gq-D3V" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Scanner" image="scanner.png" id="WhP-Gq-eC2"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="tN3-ZP-rlO">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
@@ -267,7 +267,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="itQ-wA-Fj4" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Comm" image="comm.png" id="gFP-og-IqF"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="6Zy-vF-dI0">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
@@ -478,7 +478,7 @@
             <objects>
                 <navigationController definesPresentationContext="YES" id="jM8-0Z-aAW" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Device" image="device.png" id="C2g-Qi-MJZ"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="TFE-M3-MmX">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
@@ -1020,7 +1020,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="DGE-a3-6cB"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <connections>
                         <outlet property="activationButton" destination="hHD-Es-Bxa" id="wf9-2T-4Qa"/>
                         <outlet property="activationCodeField" destination="UE4-B0-iFm" id="sId-tg-6lX"/>
@@ -1486,7 +1486,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
             <objects>
                 <navigationController definesPresentationContext="YES" id="0Yz-ju-TH7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Intel" image="intel.png" id="ZYQ-6i-qCL"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="Lcy-6g-wOd">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
@@ -2157,10 +2157,72 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                             <outlet property="delegate" destination="KTC-Mi-HZa" id="HsJ-MU-nJj"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="lYb-zI-rbd" kind="modal" identifier="MediaWebViewSegue" id="7uL-es-Dzj"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1r5-qZ-6pz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2159" y="-133"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="TLB-hP-Ugx">
+            <objects>
+                <navigationController definesPresentationContext="YES" id="lYb-zI-rbd" sceneMemberID="viewController">
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="a3o-Bp-9gL">
+                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="lAm-cG-YDF" kind="relationship" relationship="rootViewController" id="3kL-qW-OtY"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e1k-eR-YNb" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2632" y="-205"/>
+        </scene>
+        <!--Media Web View View Controller-->
+        <scene sceneID="q1P-fV-g1A">
+            <objects>
+                <viewController id="lAm-cG-YDF" customClass="MediaWebViewViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="plU-c5-3e7">
+                        <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R9o-1c-oAb">
+                                <color key="backgroundColor" red="0.031372549020000001" green="0.1647058824" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <dataDetectorType key="dataDetectorTypes"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.031372549020000001" green="0.1647058824" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="R9o-1c-oAb" firstAttribute="leading" secondItem="plU-c5-3e7" secondAttribute="leading" type="default" id="B8K-FE-eXe"/>
+                            <constraint firstItem="R9o-1c-oAb" firstAttribute="trailing" secondItem="plU-c5-3e7" secondAttribute="trailing" type="default" id="WW9-A9-VU1"/>
+                            <constraint firstItem="R9o-1c-oAb" firstAttribute="top" secondItem="plU-c5-3e7" secondAttribute="top" type="default" id="x5Q-vQ-968"/>
+                            <constraint firstItem="R9o-1c-oAb" firstAttribute="bottom" secondItem="plU-c5-3e7" secondAttribute="bottom" type="default" id="z17-gn-We9"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="DyM-e3-rHd">
+                        <barButtonItem key="leftBarButtonItem" title="Close" id="YN9-xD-Fpz">
+                            <connections>
+                                <action selector="close" destination="lAm-cG-YDF" id="vs9-lk-lVo"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="action" id="Qc1-0m-vCC">
+                            <connections>
+                                <action selector="action" destination="lAm-cG-YDF" id="iHR-eh-ha1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="_webView" destination="R9o-1c-oAb" id="NxQ-EH-eqJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jDe-Dw-abI" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3080" y="-205"/>
         </scene>
         <!--Portal Upgrade View Controller-->
         <scene sceneID="Eh4-m3-S9L">
@@ -3494,6 +3556,14 @@ Range: 0km</string>
         <class className="MediaItemsViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MediaItemsViewController.h"/>
         </class>
+        <class className="MediaWebViewViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MediaWebViewViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="action"/>
+                <relationship kind="action" name="close"/>
+                <relationship kind="outlet" name="_webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
         <class className="MissionViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/MissionViewController.h"/>
             <relationships>
@@ -3625,8 +3695,8 @@ Range: 0km</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="zJ1-yC-6tR"/>
         <segue reference="7q6-q9-DTR"/>
+        <segue reference="zJ1-yC-6tR"/>
         <segue reference="s91-lu-tu1"/>
     </inferredMetricsTieBreakers>
 </document>

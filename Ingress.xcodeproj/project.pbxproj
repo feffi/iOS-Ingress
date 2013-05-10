@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		FA008E17171D310500176C3D /* PowerCube.m in Sources */ = {isa = PBXBuildFile; fileRef = FA008E16171D310500176C3D /* PowerCube.m */; };
 		FA008E19171D334700176C3D /* powerCube@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA008E18171D334700176C3D /* powerCube@2x.png */; };
+		FA02F9D8173D54540016EE7F /* MediaWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA02F9D7173D54540016EE7F /* MediaWebViewViewController.m */; };
 		FA0A3FE9172EC61F00BBBA3D /* XMOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0A3FE8172EC61F00BBBA3D /* XMOverlayView.m */; };
 		FA0A3FEA172ED90D00BBBA3D /* Sound in Resources */ = {isa = PBXBuildFile; fileRef = FA7AC9D116D0116800505404 /* Sound */; };
 		FA0A4012172EF78700BBBA3D /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0A4011172EF78600BBBA3D /* SDWebImage.framework */; };
@@ -281,6 +282,8 @@
 		FA008E15171D310500176C3D /* PowerCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PowerCube.h; path = CoreData/PowerCube.h; sourceTree = "<group>"; };
 		FA008E16171D310500176C3D /* PowerCube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PowerCube.m; path = CoreData/PowerCube.m; sourceTree = "<group>"; };
 		FA008E18171D334700176C3D /* powerCube@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "powerCube@2x.png"; sourceTree = "<group>"; };
+		FA02F9D6173D54540016EE7F /* MediaWebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaWebViewViewController.h; sourceTree = "<group>"; };
+		FA02F9D7173D54540016EE7F /* MediaWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaWebViewViewController.m; sourceTree = "<group>"; };
 		FA0A3FE7172EC61F00BBBA3D /* XMOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMOverlayView.h; sourceTree = "<group>"; };
 		FA0A3FE8172EC61F00BBBA3D /* XMOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMOverlayView.m; sourceTree = "<group>"; };
 		FA0A4011172EF78600BBBA3D /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
@@ -981,6 +984,8 @@
 			children = (
 				FAA7E4F216D7E3B9007EAE9A /* MediaItemsViewController.h */,
 				FAA7E4F316D7E3B9007EAE9A /* MediaItemsViewController.m */,
+				FA02F9D6173D54540016EE7F /* MediaWebViewViewController.h */,
+				FA02F9D7173D54540016EE7F /* MediaWebViewViewController.m */,
 			);
 			name = Media;
 			sourceTree = "<group>";
@@ -2255,6 +2260,7 @@
 				FA3FC3111736603B009CD94A /* ScrollTextView.m in Sources */,
 				FACEE6171737E9D3006A9912 /* NSShadow+Initilalizer.m in Sources */,
 				FA859F16173BD800002A2117 /* EnergyGlob.m in Sources */,
+				FA02F9D8173D54540016EE7F /* MediaWebViewViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
