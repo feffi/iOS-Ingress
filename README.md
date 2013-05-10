@@ -14,6 +14,7 @@ You need to be developer or have jailbreak to install it.
 
 - https://www.dropbox.com/s/q28f2bj2bgt2vxj/Ingress.ipa
 - https://docs.google.com/file/d/0B8rmzjJD-xnSeXFrMEo3enAxVDQ/edit?usp=sharing
+- Availabile at Cydia repo http://repo.insanelyi.com/
 
 Support
 -------
