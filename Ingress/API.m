@@ -1448,6 +1448,16 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 			portal.imageURL = item[2][@"portalCoupler"][@"portalImageUrl"];
 			portal.name = item[2][@"portalCoupler"][@"portalTitle"];
 			portal.address = item[2][@"portalCoupler"][@"portalAddress"];
+
+			unsigned int latitude;
+			unsigned int longitude;
+			NSArray *E6location = [item[2][@"portalCoupler"][@"portalLocation"] componentsSeparatedByString:@","];
+			NSScanner *scanner = [NSScanner scannerWithString:E6location[0]];
+			[scanner scanHexInt:&latitude];
+			scanner = [NSScanner scannerWithString:E6location[1]];
+			[scanner scanHexInt:&longitude];
+			portal.latitude = latitude/1E6;
+			portal.longitude = longitude/1E6;
 			
 			PortalKey *portalKey = [PortalKey MR_findFirstByAttribute:@"guid" withValue:item[0]];
 			if (!portalKey) { portalKey = [PortalKey MR_createEntity]; }
@@ -1646,6 +1656,16 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 				portal.imageURL = gameEntity[2][@"portalCoupler"][@"portalImageUrl"];
 				portal.name = gameEntity[2][@"portalCoupler"][@"portalTitle"];
 				portal.address = gameEntity[2][@"portalCoupler"][@"portalAddress"];
+
+				unsigned int latitude;
+				unsigned int longitude;
+				NSArray *E6location = [gameEntity[2][@"portalCoupler"][@"portalLocation"] componentsSeparatedByString:@","];
+				NSScanner *scanner = [NSScanner scannerWithString:E6location[0]];
+				[scanner scanHexInt:&latitude];
+				scanner = [NSScanner scannerWithString:E6location[1]];
+				[scanner scanHexInt:&longitude];
+				portal.latitude = latitude/1E6;
+				portal.longitude = longitude/1E6;
 
 				PortalKey *portalKey = [PortalKey MR_findFirstByAttribute:@"guid" withValue:gameEntity[0]];
 				if (!portalKey) { portalKey = [PortalKey MR_createEntity]; }
