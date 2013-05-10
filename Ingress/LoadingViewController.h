@@ -12,6 +12,7 @@
 #import "WheelActivityIndicatorView.h"
 #import "StretchableBackgroundButton.h"
 #import "GlowingLabel.h"
+#import "GUIButton.h"
 #import "TypeWriterLabel.h"
 #import "CustomBackgroundColorButton.h"
 #import "TPKeyboardAvoidingScrollView.h"
@@ -22,6 +23,8 @@
 	NSURL *handshakeURL;
 	UIWebView *_webView;
 	BOOL loginProcess;
+
+	__weak IBOutlet GUIButton *retryHandshakeButton;
 
 	BOOL activationStarted;
 	__weak IBOutlet UIView *activationView;
@@ -67,6 +70,7 @@
 	
 }
 
+- (IBAction)retryHandshake;
 - (IBAction)activate;
 - (IBAction)termsCheckboxChanged;
 - (IBAction)termsConfirm;

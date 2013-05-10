@@ -244,11 +244,13 @@
 
 	//Error getting SACSID
 	[label setText:@"Login Error"];
+	retryHandshakeButton.hidden = NO;
 
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error { 
 	[label setText:@"Connection Error"]; //[error localizedDescription]
+	retryHandshakeButton.hidden = NO;
 }
 
 #pragma mark - UITextFieldDelegate
@@ -282,6 +284,14 @@
 }
 
 #pragma mark - IBActions
+
+- (IBAction)retryHandshake {
+	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+
+	[self performHandshake];
+
+	retryHandshakeButton.hidden = YES;
+}
 
 - (IBAction)activate {
 	
