@@ -140,7 +140,6 @@
 			imageData = nil;
 		} else {
 			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error while sending mail" message:nil delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
-			alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
 			[alertView show];
 		}
 	}
