@@ -3,17 +3,17 @@ iOS Ingress
 
 Fully playable Google's AR Game Ingress port for iOS.
 
-Not working on simulator, GPS is needed.
+- iOS 6 required.
+- Not working on simulator, GPS is needed.
 
 Download
 --------
 
 You need to be developer or have jailbreak to install it.
 
-**New ipa (5/9/2013):** Various fixes for dropped items, resonators deploying and upgrade, xm collecting,...
+**New ipa (5/10/2013):** Bugfixes, better portal keys and media screens
 
 - https://www.dropbox.com/s/q28f2bj2bgt2vxj/Ingress.ipa
-- https://docs.google.com/file/d/0B8rmzjJD-xnSeXFrMEo3enAxVDQ/edit?usp=sharing
 - Availabile at Cydia repo http://repo.insanelyi.com/
 
 Support
