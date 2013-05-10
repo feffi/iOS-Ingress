@@ -81,10 +81,12 @@
 	UIPinchGestureRecognizer *recognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
 	[_mapView addGestureRecognizer:recognizer];
 
-#warning Manual scrolling for debug purposes only!
+	#ifdef DEBUG
+	#warning Manual scrolling for debug purposes only!
 	UITapGestureRecognizer *mapViewTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapTapped:)];
 	mapViewTapGestureRecognizer.numberOfTapsRequired = 2;
 	[_mapView addGestureRecognizer:mapViewTapGestureRecognizer];
+	#endif
 
 	UILongPressGestureRecognizer *mapViewLognPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(mapLongPress:)];
 	[_mapView addGestureRecognizer:mapViewLognPressGestureRecognizer];
