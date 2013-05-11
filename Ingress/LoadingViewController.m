@@ -64,7 +64,7 @@
 
 	[wheelActivityIndicatorView startAnimating];
 	
-	[SoundManager sharedManager].allowsBackgroundMusic = NO;
+	[SoundManager sharedManager].allowsBackgroundMusic = YES;
     [[SoundManager sharedManager] prepareToPlay];
 
 	[self performHandshake];

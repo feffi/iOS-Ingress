@@ -32,6 +32,21 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
 	cell.textLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:18];
+    
+    switch (indexPath.row) {
+        case 3: {
+            NSString *muteLabel = @"Mute Sound";
+            float soundVolumeValue = [[NSUserDefaults standardUserDefaults] floatForKey:kDeviceSoundLevel];
+
+            if(soundVolumeValue < 0.1){
+                muteLabel = @"Unmute Sound";
+            }
+            
+            cell.textLabel.text = muteLabel;
+            break;
+        }
+    }
+    
     return cell;
 }
 
@@ -83,6 +98,28 @@
 
 			break;
 		}
+            
+        case 3: {
+            NSString *muteLabel = @"Unmute Sound";
+            float currentSoundVolume = [SoundManager sharedManager].soundVolume;
+            if(currentSoundVolume < 0.1){
+                currentSoundVolume = 1.0;
+                muteLabel = @"Mute Sound";
+            } else {
+                currentSoundVolume = 0.0;
+            }
+            
+            UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+            cell.textLabel.text = muteLabel;
+            
+            [SoundManager sharedManager].soundVolume = currentSoundVolume;
+            [SoundManager sharedManager].musicVolume = currentSoundVolume;
+            
+            [[NSUserDefaults standardUserDefaults] setFloat:currentSoundVolume forKey:kDeviceSoundLevel];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            break;
+        }
 	}
 	
 }
