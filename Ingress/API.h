@@ -30,7 +30,7 @@ typedef void (^SoundCompletionBlock)(void);
 @property (nonatomic, strong) NSString *SACSID;
 @property (nonatomic, strong) NSMutableDictionary *playerInfo;
 @property (nonatomic, strong) NSMutableArray *energyToCollect;
-@property (nonatomic, readonly) long long knobSyncTimestamp;
+@property (nonatomic, readonly) long long currentTimestamp;
 
 @property (nonatomic) SystemSoundID ui_success_sound;
 @property (nonatomic) SystemSoundID ui_fail_sound;

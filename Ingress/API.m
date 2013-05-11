@@ -14,6 +14,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 @implementation API {
 	BOOL isSoundPlaying;
 	NSMutableArray *soundsQueue;
+	NSMutableDictionary *cellsDates;
 }
 
 @synthesize networkQueue = _networkQueue;
@@ -22,7 +23,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 @synthesize SACSID = _SACSID;
 @synthesize playerInfo = _playerInfo;
 @synthesize energyToCollect = _energyToCollect;
-@synthesize knobSyncTimestamp = _knobSyncTimestamp;
+@synthesize currentTimestamp = _currentTimestamp;
 
 @synthesize ui_success_sound = _ui_success_sound;
 @synthesize ui_fail_sound = _ui_fail_sound;
@@ -40,6 +41,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
     self = [super init];
 	if (self) {
 		soundsQueue = [NSMutableArray array];
+		cellsDates = [NSMutableDictionary dictionary];
 		self.networkQueue = [NSOperationQueue new];
         self.notificationQueue = [NSOperationQueue new];
 		self.energyToCollect = [NSMutableArray array];
@@ -222,7 +224,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #pragma mark - Knob Sync
 
-- (long long)knobSyncTimestamp {
+- (long long)currentTimestamp {
 	NSString *timestampString = [NSString stringWithFormat:@"%.3f", [[NSDate date] timeIntervalSince1970]];
 	timestampString = [timestampString stringByReplacingOccurrencesOfString:@"." withString:@""];
 	return [timestampString longLongValue];
@@ -661,23 +663,28 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	NSArray *cellsAsHex = [S2Geometry cellsForNeCoord:neCoord swCoord:swCoord minZoomLevel:16 maxZoomLevel:16];
 
 	NSMutableArray *dates = [NSMutableArray arrayWithCapacity:cellsAsHex.count];
-	for (int i = 0; i < cellsAsHex.count; i++) {
-		[dates addObject:@0];
+	for (NSString *cellID in cellsAsHex) {
+//		if (cellsDates[cellID]) {
+//			[dates addObject:cellsDates[cellID]];
+//		} else {
+			[dates addObject:@0];
+//		}
+//		cellsDates[cellID] = @(self.currentTimestamp);
 	}
 	
 	NSDictionary *dict = @{
-		//@"energyGlobGuids": @[],
 		@"cellsAsHex": cellsAsHex,
 		@"dates": dates
 	};
 
 	[self sendRequest:@"gameplay/getObjectsInCells" params:dict completionHandler:^(id responseObj) {
-
 		//NSLog(@"getObjectsInCells responseObj: %@", responseObj);
 
-		dispatch_async(dispatch_get_main_queue(), ^{
-			handler();
-		});
+		if (handler) {
+			dispatch_async(dispatch_get_main_queue(), ^{
+				handler();
+			});
+		}
 		
 	}];
 
@@ -1221,7 +1228,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 - (void)rechargePortal:(Portal *)portal completionHandler:(void (^)(void))handler {
 	
-	//{"params":{"energyGlobGuids":[],"knobSyncTimestamp":1358000897501,"location":"0304bb25,00d2f8f0","portalGuid":"3e7788cf535745a29461dffcad2c8711.12","portalKeyGuid":null,"resonatorSlots":[0,5,6,7]}}
+	//{"params":{"energyGlobGuids":[],"currentTimestamp":1358000897501,"location":"0304bb25,00d2f8f0","portalGuid":"3e7788cf535745a29461dffcad2c8711.12","portalKeyGuid":null,"resonatorSlots":[0,5,6,7]}}
 	
 	NSDictionary *dict = @{
 		@"portalGuid": portal.guid,
@@ -1296,7 +1303,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		
 		NSMutableDictionary *mutableParams = [params mutableCopy];
 
-		mutableParams[@"knobSyncTimestamp"] = @(self.knobSyncTimestamp);
+		mutableParams[@"knobSyncTimestamp"] = @(self.currentTimestamp);
 		mutableParams[@"playerLocation"] = self.currentE6Location;
 		mutableParams[@"location"] = self.currentE6Location;
 

@@ -15,6 +15,6 @@
 
 @property (nonatomic) int32_t amount;
 
-- (MKCircle *)circle;
+@property (nonatomic, readonly) MKCircle *circle;
 
 @end

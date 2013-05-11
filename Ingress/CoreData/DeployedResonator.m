@@ -43,6 +43,8 @@ CLLocationCoordinate2D LatLonDestPoint(CLLocationCoordinate2D origin, double bea
 
 @implementation DeployedResonator
 
+@synthesize circle = _circle;
+
 @dynamic distanceToPortal;
 @dynamic energy;
 @dynamic level;
@@ -102,9 +104,14 @@ CLLocationCoordinate2D LatLonDestPoint(CLLocationCoordinate2D origin, double bea
 }
 
 - (MKCircle *)circle {
-	MKCircle *circle = [MKCircle circleWithCenterCoordinate:self.coordinate radius:2];
-	circle.deployedResonator = self;
-	return circle;
+
+	if (!_circle) {
+		_circle = [MKCircle circleWithCenterCoordinate:self.coordinate radius:2];
+		_circle.deployedResonator = self;
+	}
+
+	return _circle;
+
 }
 
 - (NSString *)description {

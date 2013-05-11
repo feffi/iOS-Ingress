@@ -11,6 +11,8 @@
 
 @implementation EnergyGlob
 
+@synthesize circle = _circle;
+
 @dynamic amount;
 
 - (NSString *)description {
@@ -18,9 +20,14 @@
 }
 
 - (MKCircle *)circle {
-	MKCircle *circle = [MKCircle circleWithCenterCoordinate:self.coordinate radius:1];
-	circle.energyGlob = self;
-	return circle;
+	
+	if (!_circle) {
+		_circle = [MKCircle circleWithCenterCoordinate:self.coordinate radius:1];
+		_circle.energyGlob = self;
+	}
+	
+	return _circle;
+	
 }
 
 @end

@@ -37,10 +37,21 @@
 
 	NSTimer *refreshTimer;
 
+	NSMutableSet *mapGuids;
+
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+	[ControlField MR_truncateAll];
+	[PortalLink MR_truncateAll];
+	[Item MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"dropped = YES"]];
+	[EnergyGlob MR_truncateAll];
+	[DeployedResonator MR_truncateAll];
+	[DeployedMod MR_truncateAll];
+
+	mapGuids = [NSMutableSet set];
 
 	[[AppDelegate instance] setMapView:_mapView];
 
@@ -163,15 +174,13 @@
 //	}
 //	refreshTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(refresh) userInfo:nil repeats:NO];
 
-	[EnergyGlob MR_truncateAll];
-
 	[_mapView removeAnnotations:_mapView.annotations];
 
 	NSMutableArray *overlays = [_mapView.overlays mutableCopy];
 	[overlays removeObject:_colorOverlay];
 	[_mapView removeOverlays:overlays];
 
-	[[API sharedInstance] getObjectsWithCompletionHandler:^{ }];
+	[[API sharedInstance] getObjectsWithCompletionHandler:nil];
 
 }
 
@@ -248,164 +257,129 @@
 	}
 }
 
+#pragma mark - Map Data Managing
+
+- (void)insertObjectToMapView:(NSManagedObject *)object {
+
+	MKMapRect mapRect = MKMapRectWorld; //MKMapRectOffset(_mapView.visibleMapRect, 1024, 1024);
+	
+	if ([object isKindOfClass:[Portal class]]) {
+		Portal *portal = (Portal *)object;
+		if (![mapGuids containsObject:portal.guid] && MKMapRectContainsPoint(mapRect, MKMapPointForCoordinate(portal.coordinate))) {
+			[mapGuids addObject:portal.guid];
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[_mapView addOverlay:portal];
+				[_mapView addAnnotation:portal];
+			});
+		}
+	} else if ([object isKindOfClass:[EnergyGlob class]]) {
+		EnergyGlob *xm = (EnergyGlob *)object;
+		if (![mapGuids containsObject:xm.guid] && MKMapRectContainsPoint(mapRect, MKMapPointForCoordinate(xm.coordinate))) {
+			[mapGuids addObject:xm.guid];
+//			NSLog(@"XM %@ (%d) adding", xm.guid, xm.amount);
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[_mapView addOverlay:xm.circle];
+			});
+		}
+	} else if ([object isKindOfClass:[Item class]] && ![object isKindOfClass:[EnergyGlob class]]) {
+		Item *item = (Item *)object;
+		if (![mapGuids containsObject:item.guid] && MKMapRectContainsPoint(mapRect, MKMapPointForCoordinate(item.coordinate))) {
+			[mapGuids addObject:item.guid];
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[_mapView addAnnotation:item];
+			});
+		}
+	} else if ([object isKindOfClass:[PortalLink class]]) {
+		PortalLink *portalLink = (PortalLink *)object;
+		if (![mapGuids containsObject:portalLink.guid] && (MKMapRectIntersectsRect(mapRect, portalLink.polyline.boundingMapRect) || MKMapRectContainsRect(_mapView.visibleMapRect, portalLink.polyline.boundingMapRect))) {
+			[mapGuids addObject:portalLink.guid];
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[_mapView addOverlay:portalLink.polyline];
+			});
+		}
+	} else if ([object isKindOfClass:[ControlField class]]) {
+		ControlField *controlField = (ControlField *)object;
+		if (![mapGuids containsObject:controlField.guid] && (MKMapRectIntersectsRect(mapRect, controlField.polygon.boundingMapRect) || MKMapRectContainsRect(_mapView.visibleMapRect, controlField.polygon.boundingMapRect))) {
+			[mapGuids addObject:controlField.guid];
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[_mapView addOverlay:controlField.polygon];
+			});
+		}
+	} else if ([object isKindOfClass:[DeployedResonator class]]) {
+		DeployedResonator *resonator = (DeployedResonator *)object;
+		NSString *resonatorGuid = [NSString stringWithFormat:@"%@-%d", resonator.portal.guid, resonator.slot];
+		if (![mapGuids containsObject:resonatorGuid] && MKMapRectContainsPoint(mapRect, MKMapPointForCoordinate(resonator.circle.coordinate))) {
+			[mapGuids addObject:resonatorGuid];
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[_mapView addOverlay:resonator.circle];
+			});
+		}
+	}
+	
+}
+
+- (void)removeObjectFromMapView:(NSManagedObject *)object {
+	
+	if ([object isKindOfClass:[Portal class]]) {
+		Portal *portal = (Portal *)object;
+		[mapGuids removeObject:portal.guid];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[_mapView removeOverlay:portal];
+			[_mapView removeAnnotation:portal];
+		});
+//	} else if ([object isKindOfClass:[EnergyGlob class]]) {
+//		EnergyGlob *xm = (EnergyGlob *)object;
+//		[mapGuids removeObject:xm.guid];
+//		NSLog(@"XM %@ (%d) removing", xm.guid, xm.amount);
+//		dispatch_async(dispatch_get_main_queue(), ^{
+//			[_mapView removeOverlay:xm.circle];
+//		});
+	} else if ([object isKindOfClass:[Item class]] && ![object isKindOfClass:[EnergyGlob class]]) {
+		Item *item = (Item *)object;
+		[mapGuids removeObject:item.guid];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[_mapView removeAnnotation:item];
+		});
+	} else if ([object isKindOfClass:[PortalLink class]]) {
+		PortalLink *portalLink = (PortalLink *)object;
+		[mapGuids removeObject:portalLink.guid];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[_mapView removeOverlay:portalLink.polyline];
+		});
+	} else if ([object isKindOfClass:[ControlField class]]) {
+		ControlField *controlField = (ControlField *)object;
+		[mapGuids removeObject:controlField.guid];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[_mapView removeOverlay:controlField.polygon];
+		});
+	} else if ([object isKindOfClass:[DeployedResonator class]]) {
+		DeployedResonator *resonator = (DeployedResonator *)object;
+		[mapGuids removeObject:[NSString stringWithFormat:@"%@-%d", resonator.portal.guid, resonator.slot]];
+		dispatch_async(dispatch_get_main_queue(), ^{
+			[_mapView removeOverlay:resonator.circle];
+		});
+	}
+	
+}
+
 #pragma mark - NSManagedObjectContext Did Change
 
 - (void)managedObjectContextObjectsDidChange:(NSNotification *)notification {
-
-	MKMapRect mapRect = MKMapRectWorld; //MKMapRectOffset(_mapView.visibleMapRect, 1024, 1024);
-
 	NSArray *deletedObject = [notification.userInfo[NSInsertedObjectsKey] allObjects];
 	for (NSManagedObject *object in deletedObject) {
-		if ([object isKindOfClass:[Portal class]]) {
-			Portal *portal = (Portal *)object;
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[_mapView removeOverlay:portal];
-				[_mapView removeAnnotation:portal];
-			});
-		} else if ([object isKindOfClass:[EnergyGlob class]]) {
-			EnergyGlob *xm = (EnergyGlob *)object;
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[_mapView removeOverlay:xm.circle];
-			});
-		} else if ([object isKindOfClass:[Item class]] && ![object isKindOfClass:[EnergyGlob class]]) {
-			Item *item = (Item *)object;
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[_mapView removeAnnotation:item];
-			});
-		} else if ([object isKindOfClass:[PortalLink class]]) {
-			PortalLink *portalLink = (PortalLink *)object;
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[_mapView removeOverlay:portalLink.polyline];
-			});
-		} else if ([object isKindOfClass:[ControlField class]]) {
-			ControlField *controlField = (ControlField *)object;
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[_mapView removeOverlay:controlField.polygon];
-			});
-		} else if ([object isKindOfClass:[DeployedResonator class]]) {
-			DeployedResonator *resonator = (DeployedResonator *)object;
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[_mapView removeOverlay:resonator.circle];
-			});
-		}
+		[self removeObjectFromMapView:object];
 	}
 
 	NSArray *insertedObject = [notification.userInfo[NSInsertedObjectsKey] allObjects];
 	for (NSManagedObject *object in insertedObject) {
-		if ([object isKindOfClass:[Portal class]]) {
-			Portal *portal = (Portal *)object;
-			if (MKMapRectContainsPoint(mapRect, MKMapPointForCoordinate(portal.coordinate))) {
-				dispatch_async(dispatch_get_main_queue(), ^{
-					[_mapView addOverlay:portal];
-					[_mapView addAnnotation:portal];
-				});
-			}
-		} else if ([object isKindOfClass:[EnergyGlob class]]) {
-			EnergyGlob *xm = (EnergyGlob *)object;
-			if (MKMapRectContainsPoint(mapRect, MKMapPointForCoordinate(xm.coordinate))) {
-				dispatch_async(dispatch_get_main_queue(), ^{
-					[_mapView addOverlay:xm.circle];
-				});
-			}
-		} else if ([object isKindOfClass:[Item class]] && ![object isKindOfClass:[EnergyGlob class]]) {
-			Item *item = (Item *)object;
-			if (MKMapRectContainsPoint(mapRect, MKMapPointForCoordinate(item.coordinate))) {
-				dispatch_async(dispatch_get_main_queue(), ^{
-					[_mapView addAnnotation:item];
-				});
-			}
-		} else if ([object isKindOfClass:[PortalLink class]]) {
-			PortalLink *portalLink = (PortalLink *)object;
-			if (MKMapRectIntersectsRect(mapRect, portalLink.polyline.boundingMapRect) || MKMapRectContainsRect(_mapView.visibleMapRect, portalLink.polyline.boundingMapRect)) {
-				dispatch_async(dispatch_get_main_queue(), ^{
-					[_mapView addOverlay:portalLink.polyline];
-				});
-			}
-		} else if ([object isKindOfClass:[ControlField class]]) {
-			ControlField *controlField = (ControlField *)object;
-			if (MKMapRectIntersectsRect(mapRect, controlField.polygon.boundingMapRect) || MKMapRectContainsRect(_mapView.visibleMapRect, controlField.polygon.boundingMapRect)) {
-				dispatch_async(dispatch_get_main_queue(), ^{
-					[_mapView addOverlay:controlField.polygon];
-				});
-			}
-		} else if ([object isKindOfClass:[DeployedResonator class]]) {
-			DeployedResonator *resonator = (DeployedResonator *)object;
-			if (MKMapRectContainsPoint(mapRect, MKMapPointForCoordinate(resonator.circle.coordinate))) {
-				dispatch_async(dispatch_get_main_queue(), ^{
-					[_mapView addOverlay:resonator.circle];
-				});
-			}
-		}
+		[self insertObjectToMapView:object];
 	}
 
 	NSArray *updatedObject = [notification.userInfo[NSUpdatedObjectsKey] allObjects];
 	for (NSManagedObject *object in updatedObject) {
-		if ([object isKindOfClass:[Portal class]]) {
-			Portal *portal = (Portal *)object;
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[_mapView removeOverlay:portal];
-				[_mapView removeAnnotation:portal];
-			});
-			if (MKMapRectContainsPoint(mapRect, MKMapPointForCoordinate(portal.coordinate))) {
-				dispatch_async(dispatch_get_main_queue(), ^{
-					[_mapView addOverlay:portal];
-					[_mapView addAnnotation:portal];
-				});
-			}
-		} else if ([object isKindOfClass:[EnergyGlob class]]) {
-			EnergyGlob *xm = (EnergyGlob *)object;
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[_mapView removeOverlay:xm.circle];
-			});
-			if (MKMapRectContainsPoint(mapRect, MKMapPointForCoordinate(xm.coordinate))) {
-				dispatch_async(dispatch_get_main_queue(), ^{
-					[_mapView addOverlay:xm.circle];
-				});
-			}
-		} else if ([object isKindOfClass:[Item class]] && ![object isKindOfClass:[EnergyGlob class]]) {
-			Item *item = (Item *)object;
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[_mapView removeAnnotation:item];
-			});
-			if (MKMapRectContainsPoint(mapRect, MKMapPointForCoordinate(item.coordinate))) {
-				dispatch_async(dispatch_get_main_queue(), ^{
-					[_mapView addAnnotation:item];
-				});
-			}
-		} else if ([object isKindOfClass:[PortalLink class]]) {
-			PortalLink *portalLink = (PortalLink *)object;
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[_mapView removeOverlay:portalLink.polyline];
-			});
-			if (MKMapRectIntersectsRect(mapRect, portalLink.polyline.boundingMapRect) || MKMapRectContainsRect(_mapView.visibleMapRect, portalLink.polyline.boundingMapRect)) {
-				dispatch_async(dispatch_get_main_queue(), ^{
-					[_mapView addOverlay:portalLink.polyline];
-				});
-			}
-		} else if ([object isKindOfClass:[ControlField class]]) {
-			ControlField *controlField = (ControlField *)object;
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[_mapView removeOverlay:controlField.polygon];
-			});
-			if (MKMapRectIntersectsRect(mapRect, controlField.polygon.boundingMapRect) || MKMapRectContainsRect(_mapView.visibleMapRect, controlField.polygon.boundingMapRect)) {
-				dispatch_async(dispatch_get_main_queue(), ^{
-					[_mapView addOverlay:controlField.polygon];
-				});
-			}
-			[_mapView addOverlay:controlField.polygon];
-		} else if ([object isKindOfClass:[DeployedResonator class]]) {
-			DeployedResonator *resonator = (DeployedResonator *)object;
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[_mapView removeOverlay:resonator.circle];
-			});
-			if (MKMapRectContainsPoint(mapRect, MKMapPointForCoordinate(resonator.circle.coordinate))) {
-				dispatch_async(dispatch_get_main_queue(), ^{
-					[_mapView addOverlay:resonator.circle];
-				});
-			}
-		}
+		[self removeObjectFromMapView:object];
+		[self insertObjectToMapView:object];
 	}
-
 }
 
 #pragma mark - Update
