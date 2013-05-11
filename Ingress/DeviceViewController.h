@@ -13,8 +13,6 @@
 #import "EXF.h"
 #import "EXFUtils.h"
 
-#define kDeviceSoundLevel @"kDeviceSoundLevel"
-
 @interface DeviceViewController : UITableViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
 
 @end

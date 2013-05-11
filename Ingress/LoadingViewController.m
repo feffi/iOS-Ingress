@@ -67,6 +67,15 @@
 	[SoundManager sharedManager].allowsBackgroundMusic = YES;
     [[SoundManager sharedManager] prepareToPlay];
 
+	if (![[NSUserDefaults standardUserDefaults] objectForKey:kDeviceSoundLevel]) {
+		[[NSUserDefaults standardUserDefaults] setFloat:1.0 forKey:kDeviceSoundLevel];
+		[[NSUserDefaults standardUserDefaults] synchronize];
+	}
+
+	float soundVolumeValue = [[NSUserDefaults standardUserDefaults] floatForKey:kDeviceSoundLevel];
+	[SoundManager sharedManager].soundVolume = soundVolumeValue;
+	[SoundManager sharedManager].musicVolume = soundVolumeValue;
+
 	[self performHandshake];
 
 }

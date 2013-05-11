@@ -712,7 +712,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	};
 	
 	[self sendRequest:@"playerUndecorated/getPaginatedPlexts" params:dict completionHandler:^(id responseObj) {
-		NSLog(@"getPaginatedPlexts responseObj: %@", responseObj);
+		//NSLog(@"getPaginatedPlexts responseObj: %@", responseObj);
 		
 		NSMutableArray *messages = [NSMutableArray array];
 		NSArray *tmpMessages = responseObj[@"result"];

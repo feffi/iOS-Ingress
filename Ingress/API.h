@@ -14,6 +14,8 @@
 #import <GLKit/GLKit.h>
 #import "DB.h"
 
+#define kDeviceSoundLevel @"kDeviceSoundLevel"
+
 typedef void (^SoundCompletionBlock)(void);
 
 @interface API : NSObject <AVAudioPlayerDelegate, MTStatusBarOverlayDelegate> {

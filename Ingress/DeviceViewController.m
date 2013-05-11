@@ -102,7 +102,7 @@
         case 3: {
             NSString *muteLabel = @"Unmute Sound";
             float currentSoundVolume = [SoundManager sharedManager].soundVolume;
-            if(currentSoundVolume < 0.1){
+            if (currentSoundVolume < 0.1){
                 currentSoundVolume = 1.0;
                 muteLabel = @"Mute Sound";
             } else {
