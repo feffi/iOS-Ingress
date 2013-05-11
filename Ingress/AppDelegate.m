@@ -7,10 +7,15 @@
 //
 
 #import "AppDelegate.h"
+#import "NSAttributedStringValueTransformer.h"
 
 @implementation AppDelegate
 
 @synthesize mapView = _mapView;
+
++ (void)initialize {
+	[NSAttributedStringValueTransformer class];
+}
 
 + (AppDelegate *)instance {
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];

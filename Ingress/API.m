@@ -712,7 +712,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	};
 	
 	[self sendRequest:@"playerUndecorated/getPaginatedPlexts" params:dict completionHandler:^(id responseObj) {
-		//NSLog(@"getPaginatedPlexts responseObj: %@", responseObj);
+		NSLog(@"getPaginatedPlexts responseObj: %@", responseObj);
 		
 		NSMutableArray *messages = [NSMutableArray array];
 		NSArray *tmpMessages = responseObj[@"result"];
@@ -738,11 +738,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 				if ([markup[0] isEqualToString:@"PLAYER"] || [markup[0] isEqualToString:@"SENDER"] || [markup[0] isEqualToString:@"AT_PLAYER"]) {
 					
 					if ([markup[0] isEqualToString:@"SENDER"]) {
+						[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:1.000 green:0.839 blue:0.322 alpha:1.000]} range:range];
 						isMessage = YES;
-					}
-
-					if ([markup[0] isEqualToString:@"AT_PLAYER"] && [[markup[1][@"plain"] substringFromIndex:1] isEqualToString:self.playerInfo[@"nickname"]]) {
-							[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:1.000 green:0.839 blue:0.322 alpha:1.000]} range:range];
+					} else if ([markup[0] isEqualToString:@"AT_PLAYER"] && [[markup[1][@"plain"] substringFromIndex:1] isEqualToString:self.playerInfo[@"nickname"]]) {
+						[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:1.000 green:0.839 blue:0.322 alpha:1.000]} range:range];
 						mentionsYou = YES;
 					} else {
 						if ([markup[1][@"team"] isEqualToString:@"ALIENS"]) {
@@ -770,7 +769,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 				start += range.length;
 			}
 
-			[messages addObject:@{@"date": date, @"message": atrstr, @"mentionsYou": @(mentionsYou)}];
+			[messages addObject:@{@"guid": message[0], @"date": date, @"message": atrstr, @"mentionsYou": @(mentionsYou)}];
 			
 		}
 		
