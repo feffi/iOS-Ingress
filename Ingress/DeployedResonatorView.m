@@ -29,21 +29,22 @@
 	if (damageDict) {
 		
 		int damagePercent = ([damageDict[@"damageAmount"] floatValue]/(float)[API maxEnergyForResonatorLevel:self.circle.deployedResonator.level])*100;
-		NSString *string = [NSString stringWithFormat:@"-%d%%", damagePercent];
-		
-		@synchronized([DeployedResonatorView class]) {
 
-			UIGraphicsPushContext(context);
-			CGContextSaveGState(context);
-			CGRect overallCGRect = [self rectForMapRect:self.overlay.boundingMapRect];
-			overallCGRect.origin.x -= 20;
-			overallCGRect.size.width += 40;
-			overallCGRect.origin.y -= 24;
-			[[UIColor redColor] set];
-			[string drawInRect:overallCGRect withFont:[UIFont systemFontOfSize:18] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentCenter];
-			CGContextRestoreGState(context);
-			UIGraphicsPopContext();
-			
+		if (damagePercent > 0) {
+			@synchronized([DeployedResonatorView class]) {
+
+				UIGraphicsPushContext(context);
+				CGContextSaveGState(context);
+				CGRect overallCGRect = [self rectForMapRect:self.overlay.boundingMapRect];
+				overallCGRect.origin.x -= 20;
+				overallCGRect.size.width += 40;
+				overallCGRect.origin.y -= 24;
+				[[UIColor redColor] set];
+				[[NSString stringWithFormat:@"-%d%%", damagePercent] drawInRect:overallCGRect withFont:[UIFont systemFontOfSize:18] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentCenter];
+				CGContextRestoreGState(context);
+				UIGraphicsPopContext();
+				
+			}
 		}
 		
 		dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC));

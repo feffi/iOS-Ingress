@@ -7,6 +7,7 @@
 //
 
 #import "XMOverlayView.h"
+#import "XMOverlay.h"
 
 @implementation XMOverlayView
 
@@ -23,6 +24,11 @@
     CGContextDrawRadialGradient(context, g, xmCenterPoint, 0, xmCenterPoint, xmSize, 0);
 	CGGradientRelease(g);
 	CGColorSpaceRelease(space);
+
+//	XMOverlay *energyGlobsOverlay = (XMOverlay *)self.overlay;
+//	for (EnergyGlob *glob in energyGlobsOverlay.globs) {
+//
+//	}
 
 }
 

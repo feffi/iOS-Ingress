@@ -127,6 +127,7 @@
 		FA8C24E016B3D25D000C8738 /* ColorOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C24DF16B3D25D000C8738 /* ColorOverlayView.m */; };
 		FA8C24E316B3DB64000C8738 /* CustomMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C24E216B3DB64000C8738 /* CustomMapView.m */; };
 		FA8C24E716B453C0000C8738 /* missing_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8C24E616B453C0000C8738 /* missing_image@2x.png */; };
+		FA9153F1173E547B008E239C /* XMOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9153F0173E547B008E239C /* XMOverlay.m */; };
 		FA92A0B216C2E13C00E6E3AE /* MKMapView+ZoomLevel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA92A0B116C2E13C00E6E3AE /* MKMapView+ZoomLevel.m */; };
 		FAA0C30116B992EF00DB57E8 /* resonatorTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA0C30016B992EF00DB57E8 /* resonatorTexture.png */; };
 		FAA0C30516B993B800DB57E8 /* default_btn_disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA0C30216B993B800DB57E8 /* default_btn_disabled@2x.png */; };
@@ -441,6 +442,8 @@
 		FA8C24E216B3DB64000C8738 /* CustomMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMapView.m; sourceTree = "<group>"; };
 		FA8C24E516B3E003000C8738 /* VKMapCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKMapCanvas.h; sourceTree = "<group>"; };
 		FA8C24E616B453C0000C8738 /* missing_image@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "missing_image@2x.png"; sourceTree = "<group>"; };
+		FA9153EF173E547A008E239C /* XMOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMOverlay.h; sourceTree = "<group>"; };
+		FA9153F0173E547B008E239C /* XMOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMOverlay.m; sourceTree = "<group>"; };
 		FA92A0B016C2E13C00E6E3AE /* MKMapView+ZoomLevel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "MKMapView+ZoomLevel.h"; path = "MKMapView+ZoomLevel/MKMapView+ZoomLevel.h"; sourceTree = "<group>"; };
 		FA92A0B116C2E13C00E6E3AE /* MKMapView+ZoomLevel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "MKMapView+ZoomLevel.m"; path = "MKMapView+ZoomLevel/MKMapView+ZoomLevel.m"; sourceTree = "<group>"; };
 		FAA0C30016B992EF00DB57E8 /* resonatorTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resonatorTexture.png; sourceTree = "<group>"; };
@@ -1428,6 +1431,8 @@
 		FAC23E4316B2D0C7000C17DD /* Overlay Views */ = {
 			isa = PBXGroup;
 			children = (
+				FA9153EF173E547A008E239C /* XMOverlay.h */,
+				FA9153F0173E547B008E239C /* XMOverlay.m */,
 				FA0A3FE7172EC61F00BBBA3D /* XMOverlayView.h */,
 				FA0A3FE8172EC61F00BBBA3D /* XMOverlayView.m */,
 				FA7E1AAE16AC6D3900C8F949 /* PortalOverlayView.h */,
@@ -2261,6 +2266,7 @@
 				FACEE6171737E9D3006A9912 /* NSShadow+Initilalizer.m in Sources */,
 				FA859F16173BD800002A2117 /* EnergyGlob.m in Sources */,
 				FA02F9D8173D54540016EE7F /* MediaWebViewViewController.m in Sources */,
+				FA9153F1173E547B008E239C /* XMOverlay.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
