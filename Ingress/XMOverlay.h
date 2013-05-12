@@ -10,8 +10,8 @@
 
 @interface XMOverlay : NSObject <MKOverlay>
 
-@property (nonatomic, readonly) NSArray *globs;
+@property (nonatomic, strong) NSArray *globs;
 
-- (id)initWithGlobs:(NSArray *)globs;
+//- (id)initWithGlobs:(NSArray *)globs;
 
 @end
