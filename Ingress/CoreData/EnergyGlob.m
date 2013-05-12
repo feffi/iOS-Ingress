@@ -16,7 +16,7 @@
 @dynamic amount;
 
 - (NSString *)description {
-	return @"XM";
+	return [NSString stringWithFormat:@"XM (% 3d): %f, %f", self.amount, self.latitude, self.longitude];
 }
 
 - (MKCircle *)circle {
