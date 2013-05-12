@@ -762,8 +762,8 @@
 	
 	XMP *xmpItem = [XMP MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", level]];
 
-	NSLog(@"Firing: %@", xmpItem);
-	
+//	NSLog(@"Firing: %@", xmpItem);
+
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_emp_power_up.aif"];
 	
 	if (!xmpItem) {

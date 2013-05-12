@@ -19,28 +19,9 @@
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	
-//	[[NSNotificationCenter defaultCenter] addObserverForName:@"PortalChanged" object:nil queue:[API sharedInstance].notificationQueue usingBlock:^(NSNotification *note) {
-//		Portal *newPortal = note.userInfo[@"portal"];
-//		if (newPortal && self.portal && [newPortal isKindOfClass:[Portal class]] && [newPortal.guid isEqualToString:self.portal.guid]) {
-//			self.portal= note.userInfo[@"portal"];
-//		}
-//	}];
 
-}
+	[self refresh];
 
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
-	
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
-- (void)setPortal:(Portal *)portal {
-	_portal = portal;
-	
-	dispatch_async(dispatch_get_main_queue(), ^{
-		[self refresh];
-	});
 }
 
 #pragma mark - Refresh
@@ -54,14 +35,6 @@
 		UILabel *levelLabel = (UILabel *)[self.view viewWithTag:10+i];
 		levelLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:14];
 		levelLabel.text = @"";
-		
-		//		UIProgressView *progressIndicator = (UIProgressView *)[self.view viewWithTag:20+i];
-		//		if ([self.portalItem.controllingTeam isEqualToString:@"ALIENS"]) {
-		//			progressIndicator.progressTintColor = [UIColor colorWithRed:40./255. green:244./255. blue:40./255. alpha:1];
-		//		} else {
-		//			progressIndicator.progressTintColor = [UIColor colorWithRed:0 green:194./255. blue:1 alpha:1];
-		//		}
-		//		[progressIndicator setHidden:YES];
 		
 		UIImageView *resonatorImage = (UIImageView *)[self.view viewWithTag:30+i];
 		[resonatorImage setHidden:YES];
@@ -128,11 +101,7 @@
 			UILabel *levelLabel = (UILabel *)[self.view viewWithTag:10+slot];
 			levelLabel.text = [NSString stringWithFormat:@"L%d", level];
 			levelLabel.textColor = [API colorForLevel:level];
-			
-			//			UIProgressView *progressIndicator = (UIProgressView *)[self.view viewWithTag:20+slot];
-			//			[progressIndicator setHidden:NO];
-			//			[progressIndicator setProgress:energy/maxEnergy];
-			
+
 			UIImageView *resonatorImage = (UIImageView *)[self.view viewWithTag:30+slot];
 			[resonatorImage setHidden:NO];
 			
@@ -165,7 +134,7 @@
 - (IBAction)resonatorButtonPressed:(GUIButton *)sender {
 	
 	if (sender.disabled) { return; }
-	
+
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 	HUD.userInteractionEnabled = YES;
 	HUD.mode = MBProgressHUDModeCustomView;
@@ -232,11 +201,9 @@
 					[HUD hide:YES afterDelay:3];
 				} else {
 
-					[[SoundManager sharedManager] playSound:@"Sound/speech_resonator.aif"];
+					[self refresh];
 
-					dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .75 * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
-						[[SoundManager sharedManager] playSound:@"Sound/speech_deployed.aif"];
-					});
+					[[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_DEPLOYED"]];
 					
 				}
 				
@@ -287,11 +254,9 @@
 					[HUD hide:YES afterDelay:3];
 				} else {
 
-					[[SoundManager sharedManager] playSound:@"Sound/speech_resonator.aif"];
+					[self refresh];
 
-					dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .75 * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
-						[[SoundManager sharedManager] playSound:@"Sound/speech_upgraded.aif"];
-					});
+					[[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_UPGRADED"]];
 					
 				}
 				
@@ -372,6 +337,8 @@
 				[HUD show:YES];
 				[HUD hide:YES afterDelay:3];
 			} else {
+
+				[self refresh];
 
 				[[API sharedInstance] playSounds:@[@"SPEECH_SHIELD", @"SPEECH_DEPLOYED"]];
 				
