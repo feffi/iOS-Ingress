@@ -20,6 +20,13 @@
 #define MR_ENABLE_ACTIVE_RECORD_LOGGING 0
 #import "CoreData+MagicalRecord.h"
 
+#ifdef DEBUG_VERBOSE
+#    define DLog(...) NSLog(__VA_ARGS__)
+#else
+#    define DLog(...) /* */
+#endif
+#define ALog(...) NSLog(__VA_ARGS__)
+
 #import "AppDelegate.h"
 #import "API.h"
 #import "DB.h"

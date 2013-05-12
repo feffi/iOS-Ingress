@@ -14,7 +14,9 @@
 @interface EnergyGlob : Item
 
 @property (nonatomic) int32_t amount;
-
 @property (nonatomic, readonly) MKCircle *circle;
+
+- (void)updateWithData:(NSString *)guid;
++ (instancetype)energyGlobWithData:(NSString *)guid inManagedObjectContext:(NSManagedObjectContext *)context;
 
 @end
