@@ -135,6 +135,10 @@
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 
 	if (self.linkingPortal) {
+		
+		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+
+		[[API sharedInstance] playSound:@"SPEECH_ESTABLISHING_PORTAL_LINK"];
 
 		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 		HUD.userInteractionEnabled = YES;
@@ -187,6 +191,10 @@
 						[[AppDelegate instance].window addSubview:HUD];
 						[HUD show:YES];
 						[HUD hide:YES afterDelay:3];
+					} else {
+
+						[[API sharedInstance] playSound:@"SPEECH_PORTAL_LINK_ESTABLISHED"];
+
 					}
 
 					[self refresh];

@@ -116,7 +116,8 @@
 			}
 			progressView.frame = rect;
 			
-			if ([self.portal.controllingTeam isEqualToString:[API sharedInstance].playerInfo[@"team"]]) {			UIButton *button = (UIButton *)[self.view viewWithTag:50+slot];
+			if ([self.portal.controllingTeam isEqualToString:[API sharedInstance].playerInfo[@"team"]]) {
+				UIButton *button = (UIButton *)[self.view viewWithTag:50+slot];
 				[button setTitle:@"UPGRADE" forState:UIControlStateNormal];
 				tmpResonators[slot] = @1;
 			}
@@ -204,6 +205,10 @@
 					[self refresh];
 
 					[[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_DEPLOYED"]];
+
+					if ([self.portal.resonators count] == 1) {
+						[[API sharedInstance] playSounds:@[@"SPEECH_PORTAL", @"SPEECH_ONLINE", @"SPEECH_GOOD_WORK"]];
+					}
 					
 				}
 				
