@@ -1824,24 +1824,69 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 }
 
 - (void)processEnergyGlobGuids:(NSArray *)energyGlobGuids {
-	//NSLog(@"processEnergyGlobGuids: %d", energyGlobGuids.count);
-	for (NSString *energyGlobGuid in energyGlobGuids) {
-		EnergyGlob *energyGlob = [EnergyGlob MR_createEntity];
-		energyGlob.guid = energyGlobGuid;
-
-		NSScanner *scanner = [NSScanner scannerWithString:[energyGlobGuid substringToIndex:16]]; //19
-		unsigned long long numCellId;
-		[scanner scanHexLongLong:&numCellId];
-		CLLocationCoordinate2D coord = [S2Geometry coordinateForCellId:numCellId];
-		energyGlob.latitude = coord.latitude;
-		energyGlob.longitude = coord.longitude;
-
-		scanner = [NSScanner scannerWithString:[energyGlobGuid substringFromIndex:energyGlobGuid.length-4]];
-		unsigned int amount;
-		[scanner scanHexInt:&amount];
-		energyGlob.amount = amount;
-	}
-	[[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
+    
+	NSLog(@"processEnergyGlobGuids: %d", energyGlobGuids.count);
+    if (energyGlobGuids.count == 0)
+        return;
+    
+    /*
+     The following is an implementation of the algorithm described in:
+     https://developer.apple.com/library/ios/#documentation/Cocoa/Conceptual/CoreData/Articles/cdImporting.html#//apple_ref/doc/uid/TP40003174-SW1
+     The document describes the "find-or-create" pattern for importing data into CoreData. The trick is to fetch all the objects in one fetch request.
+     I've extended it to support full synchronization. This version supports managed object update and deletion as well.
+     
+     The algorithm for ordered list synchronization: http://www.mlsite.net/blog/?p=2250
+     */
+    
+    NSArray *sortedEnergyGlobGuids = [energyGlobGuids sortedArrayUsingSelector:@selector(compare:)];
+    
+    NSFetchRequest *request = [EnergyGlob MR_createFetchRequest];
+//    request.predicate = [NSPredicate predicateWithFormat:@"guid IN %@", sortedEnergyGlobGuids];
+    request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"guid" ascending:YES]];
+    NSError *error;
+    NSArray *localEnergyGlobs = [[NSManagedObjectContext MR_contextForCurrentThread] executeFetchRequest:request error:&error];
+    if (localEnergyGlobs == nil)
+        [MagicalRecord handleErrors:error];
+    
+    int i = 0;
+    int j = 0;
+    const NSUInteger remoteCount = [sortedEnergyGlobGuids count];
+    const NSUInteger localCount = [localEnergyGlobs count];
+    while (i < remoteCount || j < localCount) {
+        if (i >= remoteCount) {
+            EnergyGlob *energyGlob = [localEnergyGlobs objectAtIndex:j];
+            DLog(@"Deleting %@", energyGlob);
+            [energyGlob MR_deleteEntity];
+            j++;
+        } else if (j >= localCount) {
+            NSString *energyGlobGuid = [sortedEnergyGlobGuids objectAtIndex:i];
+            DLog(@"Creating %@", energyGlobGuid);
+            [EnergyGlob energyGlobWithData:energyGlobGuid inManagedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+            i++;
+        } else {
+            EnergyGlob *energyGlob = [localEnergyGlobs objectAtIndex:j];
+            NSString *energyGlobGuid = [sortedEnergyGlobGuids objectAtIndex:i];
+            if ([energyGlobGuid compare:energyGlob.guid] == NSOrderedAscending) {
+                DLog(@"Creating %@", energyGlobGuid);
+                [EnergyGlob energyGlobWithData:energyGlobGuid inManagedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+                i++;
+            } else if ([energyGlobGuid compare:energyGlob.guid] == NSOrderedDescending) {
+                DLog(@"Deleting %@", energyGlob);
+                [energyGlob MR_deleteEntity];
+                j++;
+            } else {
+                // Updating does not really make sense, since everything is encoded in the guid
+                DLog(@"Updating %@", energyGlob);
+                // [energyGlob updateWithData:energyGlobGuid];
+                i++;
+                j++;
+            }
+        }
+    }
+    
+    NSLog(@"about to save, changes %d", [[NSManagedObjectContext MR_contextForCurrentThread] hasChanges]);
+    [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
+    NSLog(@"saved");
 }
 
 - (void)processAPGains:(NSArray *)apGains {

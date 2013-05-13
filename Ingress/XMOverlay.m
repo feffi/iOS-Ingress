@@ -8,34 +8,21 @@
 
 #import "XMOverlay.h"
 
-@implementation XMOverlay {
-	MKMapRect _boundingMapRect;
-}
+@implementation XMOverlay
 
-@synthesize globs = _globs;
-
-- (id)initWithGlobs:(NSArray *)globs {
-    if (self = [super init]) {
-        _globs = [globs copy];
-
-        NSUInteger polyCount = [_globs count];
-        if (polyCount) {
-            _boundingMapRect = [_globs[0] boundingMapRect];
-            NSUInteger i;
-            for (i = 1; i < polyCount; i++) {
-                _boundingMapRect = MKMapRectUnion(_boundingMapRect, [_globs[i] boundingMapRect]);
-            }
-        }
-    }
-    return self;
-}
+//- (id)initWithGlobs:(NSArray *)globs {
+//    if (self = [super init]) {
+//        self.globs = globs;
+//    }
+//    return self;
+//}
 
 - (MKMapRect)boundingMapRect {
-    return _boundingMapRect;
+    return MKMapRectWorld;
 }
 
 - (CLLocationCoordinate2D)coordinate {
-    return MKCoordinateForMapPoint(MKMapPointMake(MKMapRectGetMidX(_boundingMapRect), MKMapRectGetMidY(_boundingMapRect)));
+    return CLLocationCoordinate2DMake(0, 0);
 }
 
 @end

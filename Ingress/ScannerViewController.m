@@ -17,6 +17,7 @@
 #import "MKCircle+Ingress.h"
 #import "DeployedResonatorView.h"
 #import "XMOverlayView.h"
+#import "XMOverlay.h"
 
 #import "ColorOverlay.h"
 #import "ColorOverlayView.h"
@@ -34,6 +35,8 @@
 	BOOL portalDetailSegue;
 	MBProgressHUD *locationAllowHUD;
 	ColorOverlay *_colorOverlay;
+    XMOverlay *_xmOverlay;
+    XMOverlayView *_xmOverlayView;
 
 	NSTimer *refreshTimer;
 
@@ -54,9 +57,6 @@
 	mapGuids = [NSMutableSet set];
 
 	[[AppDelegate instance] setMapView:_mapView];
-
-	_colorOverlay = [ColorOverlay new];
-	[_mapView addOverlay:_colorOverlay];
 
 	levelLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:32];
 	nicknameLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
@@ -107,7 +107,11 @@
 
 	UILongPressGestureRecognizer *mapViewLognPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(mapLongPress:)];
 	[_mapView addGestureRecognizer:mapViewLognPressGestureRecognizer];
-
+    
+    _colorOverlay = [ColorOverlay new];
+	[_mapView addOverlay:_colorOverlay];
+    _xmOverlay = [XMOverlay new];
+    [_mapView addOverlay:_xmOverlay];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -178,10 +182,10 @@
 
 	NSMutableArray *overlays = [_mapView.overlays mutableCopy];
 	[overlays removeObject:_colorOverlay];
+    [overlays removeObject:_xmOverlay];
 	[_mapView removeOverlays:overlays];
 
 	[[API sharedInstance] getObjectsWithCompletionHandler:nil];
-
 }
 
 - (void)refreshProfile {
@@ -272,15 +276,15 @@
 				[_mapView addAnnotation:portal];
 			});
 		}
-	} else if ([object isKindOfClass:[EnergyGlob class]]) {
-		EnergyGlob *xm = (EnergyGlob *)object;
-		if (![mapGuids containsObject:xm.guid] && MKMapRectContainsPoint(mapRect, MKMapPointForCoordinate(xm.coordinate))) {
-			[mapGuids addObject:xm.guid];
-//			NSLog(@"XM %@ (%d) adding", xm.guid, xm.amount);
-			dispatch_async(dispatch_get_main_queue(), ^{
-				[_mapView addOverlay:xm.circle];
-			});
-		}
+//	} else if ([object isKindOfClass:[EnergyGlob class]]) {
+//		EnergyGlob *xm = (EnergyGlob *)object;
+//		if (![mapGuids containsObject:xm.guid] && MKMapRectContainsPoint(mapRect, MKMapPointForCoordinate(xm.coordinate))) {
+//			[mapGuids addObject:xm.guid];
+////			NSLog(@"XM %@ (%d) adding", xm.guid, xm.amount);
+//			dispatch_async(dispatch_get_main_queue(), ^{
+//				[_mapView addOverlay:xm.circle];
+//			});
+//		}
 	} else if ([object isKindOfClass:[Item class]] && ![object isKindOfClass:[EnergyGlob class]]) {
 		Item *item = (Item *)object;
 		if (![mapGuids containsObject:item.guid] && MKMapRectContainsPoint(mapRect, MKMapPointForCoordinate(item.coordinate))) {
@@ -380,6 +384,12 @@
 		[self removeObjectFromMapView:object];
 		[self insertObjectToMapView:object];
 	}
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        _xmOverlay.globs = [EnergyGlob MR_findAll];
+        [_xmOverlayView setNeedsDisplayInMapRect:_mapView.visibleMapRect];
+    });
+
 }
 
 #pragma mark - Update
@@ -620,16 +630,22 @@
 			circleView.fillColor = [API colorForLevel:circle.deployedResonator.level];
 			//circleView.alpha = .1;
 			return circleView;
-		} else if (circle.energyGlob) {
-			XMOverlayView *xmView = [[XMOverlayView alloc] initWithCircle:circle];
-			xmView.alpha = .5;
-			return xmView;
-		}
+        }
+//		} else if (circle.energyGlob) {
+//			XMOverlayView *xmView = [[XMOverlayView alloc] initWithCircle:circle];
+//			xmView.alpha = .5;
+//			return xmView;
+//		}
 
 	} else if ([overlay isKindOfClass:[ColorOverlay class]]) {
 		ColorOverlayView *overlayView = [[ColorOverlayView alloc] initWithOverlay:overlay];
 		return overlayView;
-	}
+	} else if ([overlay isKindOfClass:[XMOverlay class]]) {
+        XMOverlayView *xmOverlayView = [[XMOverlayView alloc] initWithOverlay:overlay];
+        xmOverlayView.alpha = 0.5;
+        _xmOverlayView = xmOverlayView;
+        return xmOverlayView;
+    }
 	return nil;
 }
 

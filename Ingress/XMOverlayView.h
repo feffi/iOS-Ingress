@@ -8,6 +8,6 @@
 
 #import <MapKit/MapKit.h>
 
-@interface XMOverlayView : MKCircleView
+@interface XMOverlayView : MKOverlayView
 
 @end
