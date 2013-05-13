@@ -124,8 +124,6 @@
 		FA859F1A173C3537002A2117 /* jarvis_virus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA859F18173C3537002A2117 /* jarvis_virus@2x.png */; };
 		FA8C24D816B3257D000C8738 /* DarkPressedBackgroundButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C24D716B3257D000C8738 /* DarkPressedBackgroundButton.m */; };
 		FA8C24DA16B3CEA6000C8738 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA8C24D916B3CEA6000C8738 /* CoreImage.framework */; };
-		FA8C24DD16B3D251000C8738 /* ColorOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C24DC16B3D251000C8738 /* ColorOverlay.m */; };
-		FA8C24E016B3D25D000C8738 /* ColorOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C24DF16B3D25D000C8738 /* ColorOverlayView.m */; };
 		FA8C24E316B3DB64000C8738 /* CustomMapView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C24E216B3DB64000C8738 /* CustomMapView.m */; };
 		FA8C24E716B453C0000C8738 /* missing_image@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA8C24E616B453C0000C8738 /* missing_image@2x.png */; };
 		FA9153F1173E547B008E239C /* XMOverlay.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9153F0173E547B008E239C /* XMOverlay.m */; };
@@ -440,10 +438,6 @@
 		FA8C24D616B3257D000C8738 /* DarkPressedBackgroundButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DarkPressedBackgroundButton.h; sourceTree = "<group>"; };
 		FA8C24D716B3257D000C8738 /* DarkPressedBackgroundButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DarkPressedBackgroundButton.m; sourceTree = "<group>"; };
 		FA8C24D916B3CEA6000C8738 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
-		FA8C24DB16B3D251000C8738 /* ColorOverlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorOverlay.h; sourceTree = "<group>"; };
-		FA8C24DC16B3D251000C8738 /* ColorOverlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorOverlay.m; sourceTree = "<group>"; };
-		FA8C24DE16B3D25D000C8738 /* ColorOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColorOverlayView.h; sourceTree = "<group>"; };
-		FA8C24DF16B3D25D000C8738 /* ColorOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ColorOverlayView.m; sourceTree = "<group>"; };
 		FA8C24E116B3DB63000C8738 /* CustomMapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomMapView.h; sourceTree = "<group>"; };
 		FA8C24E216B3DB64000C8738 /* CustomMapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomMapView.m; sourceTree = "<group>"; };
 		FA8C24E516B3E003000C8738 /* VKMapCanvas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKMapCanvas.h; sourceTree = "<group>"; };
@@ -1472,10 +1466,6 @@
 				FAC23E5116B2E5B3000C17DD /* MKPolygon+ControlField.m */,
 				FA7BCEDC16B535B0007636C8 /* MKCircle+Ingress.h */,
 				FA7BCEDD16B535B0007636C8 /* MKCircle+Ingress.m */,
-				FA8C24DB16B3D251000C8738 /* ColorOverlay.h */,
-				FA8C24DC16B3D251000C8738 /* ColorOverlay.m */,
-				FA8C24DE16B3D25D000C8738 /* ColorOverlayView.h */,
-				FA8C24DF16B3D25D000C8738 /* ColorOverlayView.m */,
 				FA143F7816D526440007330F /* DeployedResonatorView.h */,
 				FA143F7916D526450007330F /* DeployedResonatorView.m */,
 			);
@@ -2215,8 +2205,6 @@
 				FAC23E5216B2E5B3000C17DD /* MKPolygon+ControlField.m in Sources */,
 				FAC23E5516B2F9CA000C17DD /* Item.m in Sources */,
 				FA8C24D816B3257D000C8738 /* DarkPressedBackgroundButton.m in Sources */,
-				FA8C24DD16B3D251000C8738 /* ColorOverlay.m in Sources */,
-				FA8C24E016B3D25D000C8738 /* ColorOverlayView.m in Sources */,
 				FA8C24E316B3DB64000C8738 /* CustomMapView.m in Sources */,
 				FAE797CB16B4873C00A57316 /* UIImage+ColorReplace.m in Sources */,
 				FAE797DA16B49C1E00A57316 /* GLViewController.m in Sources */,

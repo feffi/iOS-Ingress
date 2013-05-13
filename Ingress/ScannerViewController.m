@@ -19,9 +19,6 @@
 #import "XMOverlayView.h"
 #import "XMOverlay.h"
 
-#import "ColorOverlay.h"
-#import "ColorOverlayView.h"
-
 @implementation ScannerViewController {
 
 	Portal *currentPortal;
@@ -34,7 +31,6 @@
 	BOOL firstLocationUpdate;
 	BOOL portalDetailSegue;
 	MBProgressHUD *locationAllowHUD;
-	ColorOverlay *_colorOverlay;
     XMOverlay *_xmOverlay;
     XMOverlayView *_xmOverlayView;
 
@@ -107,9 +103,7 @@
 
 	UILongPressGestureRecognizer *mapViewLognPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(mapLongPress:)];
 	[_mapView addGestureRecognizer:mapViewLognPressGestureRecognizer];
-    
-    _colorOverlay = [ColorOverlay new];
-	[_mapView addOverlay:_colorOverlay];
+
     _xmOverlay = [XMOverlay new];
     [_mapView addOverlay:_xmOverlay];
 }
@@ -181,7 +175,6 @@
 	[_mapView removeAnnotations:_mapView.annotations];
 
 	NSMutableArray *overlays = [_mapView.overlays mutableCopy];
-	[overlays removeObject:_colorOverlay];
     [overlays removeObject:_xmOverlay];
 	[_mapView removeOverlays:overlays];
 
@@ -621,27 +614,14 @@
 		polygonView.alpha = .1;
 		return polygonView;
 	} else if ([overlay isKindOfClass:[MKCircle class]]) {
-		
 		MKCircle *circle = (MKCircle *)overlay;
-
 		if (circle.deployedResonator) {
 			DeployedResonatorView *circleView = [[DeployedResonatorView alloc] initWithCircle:circle];
 			circleView.fillColor = [API colorForLevel:circle.deployedResonator.level];
-			//circleView.alpha = .1;
 			return circleView;
         }
-//		} else if (circle.energyGlob) {
-//			XMOverlayView *xmView = [[XMOverlayView alloc] initWithCircle:circle];
-//			xmView.alpha = .5;
-//			return xmView;
-//		}
-
-	} else if ([overlay isKindOfClass:[ColorOverlay class]]) {
-		ColorOverlayView *overlayView = [[ColorOverlayView alloc] initWithOverlay:overlay];
-		return overlayView;
 	} else if ([overlay isKindOfClass:[XMOverlay class]]) {
         XMOverlayView *xmOverlayView = [[XMOverlayView alloc] initWithOverlay:overlay];
-        xmOverlayView.alpha = 0.5;
         _xmOverlayView = xmOverlayView;
         return xmOverlayView;
     }
