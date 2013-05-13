@@ -29,15 +29,9 @@
     CGFloat comps[] = {1.0,1.0,1.0,1.0,  1.0,1.0,1.0,0.75,  0.7,1.0,1.0,0.0};
     CGFloat locs[] = {0,0.3,1};
     CGGradientRef g = CGGradientCreateWithColorComponents(space, comps, locs, 3);
-    
-    //    refreshObject:mergeChanges:
-    
-    NSManagedObjectContext *moc = [NSManagedObjectContext MR_contextForCurrentThread];
+
     NSError *error;
-    for (EnergyGlob *otherEnergyGlob in self.xmOverlay.globs) {
-        // EnergyGlob *energyGlob = (EnergyGlob *)[moc objectWithID:otherEnergyGlob.objectID];
-        // had some problems with the above, but the error should not happen now
-        EnergyGlob *energyGlob = (EnergyGlob *)[moc existingObjectWithID:otherEnergyGlob.objectID error:&error];
+    for (EnergyGlob *energyGlob in self.xmOverlay.globs) {
         if (energyGlob) {
             MKMapPoint xmCenter = MKMapPointForCoordinate(energyGlob.coordinate);
             if (MKMapRectContainsRect(mapRect, MKMapRectMake(xmCenter.x - xmRadius, xmCenter.y - xmRadius, 2*xmRadius, 2*xmRadius))) {
