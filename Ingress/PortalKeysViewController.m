@@ -91,11 +91,11 @@
     cell.textLabel.text = [NSString stringWithFormat:@"%dx %@", numberOfPortals, portal.subtitle];
 	cell.detailTextLabel.text = portal.address;
 
-	if ([@[@"ALIENS", @"RESISTANCE"] containsObject:portal.controllingTeam]) {
-		cell.textLabel.textColor = [API colorForFaction:portal.controllingTeam];
-	} else {
-		cell.textLabel.textColor = [UIColor whiteColor];
-	}
+//	if ([@[@"ALIENS", @"RESISTANCE"] containsObject:portal.controllingTeam]) {
+//		cell.textLabel.textColor = [API colorForFaction:portal.controllingTeam];
+//	} else {
+	cell.textLabel.textColor = [UIColor whiteColor];
+//	}
 
 	[cell.imageView setImageWithURL:[NSURL URLWithString:portal.imageURL] placeholderImage:[UIImage imageNamed:@"missing_image"]];
 
