@@ -1416,25 +1416,25 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	//NSLog(@"processGameBasket: %@", gameBasket);
 	
 	NSArray *inventory = gameBasket[@"inventory"];
-	if (inventory) { [self processInventory:inventory]; }
+	if (inventory && inventory.count > 0) { [self processInventory:inventory]; }
 
 	NSArray *gameEntities = gameBasket[@"gameEntities"];
-	if (gameEntities) { [self processGameEntities:gameEntities]; }
+	if (gameEntities && gameEntities.count > 0) { [self processGameEntities:gameEntities]; }
 	
 	NSArray *playerEntity = gameBasket[@"playerEntity"];
-	if (playerEntity) { [self processPlayerEntity:playerEntity]; }
+	if (playerEntity && playerEntity.count > 0) { [self processPlayerEntity:playerEntity]; }
 	
 	NSArray *energyGlobGuids = gameBasket[@"energyGlobGuids"];
-	if (energyGlobGuids) { [self processEnergyGlobGuids:energyGlobGuids]; }
+	if (energyGlobGuids && energyGlobGuids.count > 0) { [self processEnergyGlobGuids:energyGlobGuids]; }
 	
 	NSArray *apGains = gameBasket[@"apGains"];
-	if (apGains) { [self processAPGains:apGains]; }
+	if (apGains && apGains.count > 0) { [self processAPGains:apGains]; }
 	
 	NSArray *playerDamages = gameBasket[@"playerDamages"];
-	if (playerDamages) { [self processPlayerDamages:playerDamages]; }
+	if (playerDamages && playerDamages.count > 0) { [self processPlayerDamages:playerDamages]; }
 	
 	NSArray *deletedEntityGuids = gameBasket[@"deletedEntityGuids"];
-	if (deletedEntityGuids) { [self processDeletedEntityGuids:deletedEntityGuids]; }
+	if (deletedEntityGuids && deletedEntityGuids.count > 0) { [self processDeletedEntityGuids:deletedEntityGuids]; }
 
 }
 
@@ -1851,11 +1851,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 }
 
 - (void)processEnergyGlobGuids:(NSArray *)energyGlobGuids {
-    
-//	NSLog(@"processEnergyGlobGuids: %d", energyGlobGuids.count);
-    if (energyGlobGuids.count == 0)
-        return;
-    
+
     /*
      The following is an implementation of the algorithm described in:
      https://developer.apple.com/library/ios/#documentation/Cocoa/Conceptual/CoreData/Articles/cdImporting.html#//apple_ref/doc/uid/TP40003174-SW1
@@ -1868,19 +1864,12 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	[MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
 
 		NSArray *sortedEnergyGlobGuids = [energyGlobGuids sortedArrayUsingSelector:@selector(compare:)];
-
-		NSFetchRequest *request = [EnergyGlob MR_createFetchRequestInContext:localContext];
-		//    request.predicate = [NSPredicate predicateWithFormat:@"guid IN %@", sortedEnergyGlobGuids];
-		request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"guid" ascending:YES]];
-		NSError *error;
-		NSArray *localEnergyGlobs = [localContext executeFetchRequest:request error:&error];
-		if (localEnergyGlobs == nil)
-			[MagicalRecord handleErrors:error];
+		NSArray *localEnergyGlobs = [EnergyGlob MR_findAllSortedBy:@"guid" ascending:YES inContext:localContext];
 
 		int i = 0;
 		int j = 0;
-		const NSUInteger remoteCount = [sortedEnergyGlobGuids count];
-		const NSUInteger localCount = [localEnergyGlobs count];
+		const NSUInteger remoteCount = sortedEnergyGlobGuids.count;
+		const NSUInteger localCount = localEnergyGlobs.count;
 		while (i < remoteCount || j < localCount) {
 			if (i >= remoteCount) {
 				EnergyGlob *energyGlob = [localEnergyGlobs objectAtIndex:j];
@@ -1900,8 +1889,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 					[energyGlob MR_deleteInContext:localContext];
 					j++;
 				} else {
-					// Updating does not really make sense, since everything is encoded in the guid
-					// [energyGlob updateWithData:energyGlobGuid];
+					//Updating does not really make sense, since everything is encoded in the guid
+					//[energyGlob updateWithData:energyGlobGuid];
 					i++;
 					j++;
 				}
