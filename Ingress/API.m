@@ -1225,18 +1225,20 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 }
 
-- (void)rechargePortal:(Portal *)portal completionHandler:(void (^)(void))handler {
+- (void)rechargePortal:(Portal *)portal portalKey:(PortalKey *)portalKey completionHandler:(void (^)(void))handler {
 	
 	//{"params":{"energyGlobGuids":[],"currentTimestamp":1358000897501,"location":"0304bb25,00d2f8f0","portalGuid":"3e7788cf535745a29461dffcad2c8711.12","portalKeyGuid":null,"resonatorSlots":[0,5,6,7]}}
 	
 	NSDictionary *dict = @{
 		@"portalGuid": portal.guid,
-		@"portalKeyGuid": [NSNull null],
+		@"portalKeyGuid": portalKey ? portalKey.guid : [NSNull null],
 		@"resonatorSlots": @[@0, @1, @2, @3, @4, @5, @6, @7]
 	};
+
+	NSLog(@"rechargeResonatorsV2: %@", dict);
 	
 	[self sendRequest:@"gameplay/rechargeResonatorsV2" params:dict completionHandler:^(id responseObj) {
-		//NSLog(@"rechargeResonatorWithGuid responseObj: %@", responseObj);
+		NSLog(@"rechargeResonatorWithGuid responseObj: %@", responseObj);
 		
 		dispatch_async(dispatch_get_main_queue(), ^{
 			handler();
@@ -1825,7 +1827,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 - (void)processEnergyGlobGuids:(NSArray *)energyGlobGuids {
     
-	NSLog(@"processEnergyGlobGuids: %d", energyGlobGuids.count);
+//	NSLog(@"processEnergyGlobGuids: %d", energyGlobGuids.count);
     if (energyGlobGuids.count == 0)
         return;
     
@@ -1837,14 +1839,16 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
      
      The algorithm for ordered list synchronization: http://www.mlsite.net/blog/?p=2250
      */
-    
+
+	NSManagedObjectContext *context = [NSManagedObjectContext MR_contextForCurrentThread];
+
     NSArray *sortedEnergyGlobGuids = [energyGlobGuids sortedArrayUsingSelector:@selector(compare:)];
     
-    NSFetchRequest *request = [EnergyGlob MR_createFetchRequest];
+    NSFetchRequest *request = [EnergyGlob MR_createFetchRequestInContext:context];
 //    request.predicate = [NSPredicate predicateWithFormat:@"guid IN %@", sortedEnergyGlobGuids];
     request.sortDescriptors = @[[NSSortDescriptor sortDescriptorWithKey:@"guid" ascending:YES]];
     NSError *error;
-    NSArray *localEnergyGlobs = [[NSManagedObjectContext MR_contextForCurrentThread] executeFetchRequest:request error:&error];
+    NSArray *localEnergyGlobs = [context executeFetchRequest:request error:&error];
     if (localEnergyGlobs == nil)
         [MagicalRecord handleErrors:error];
     
@@ -1855,28 +1859,28 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
     while (i < remoteCount || j < localCount) {
         if (i >= remoteCount) {
             EnergyGlob *energyGlob = [localEnergyGlobs objectAtIndex:j];
-            DLog(@"Deleting %@", energyGlob);
-            [energyGlob MR_deleteEntity];
+//            DLog(@"Deleting %@", energyGlob);
+            [energyGlob MR_deleteInContext:context];
             j++;
         } else if (j >= localCount) {
             NSString *energyGlobGuid = [sortedEnergyGlobGuids objectAtIndex:i];
-            DLog(@"Creating %@", energyGlobGuid);
-            [EnergyGlob energyGlobWithData:energyGlobGuid inManagedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+//            DLog(@"Creating %@", energyGlobGuid);
+            [EnergyGlob energyGlobWithData:energyGlobGuid inManagedObjectContext:context];
             i++;
         } else {
             EnergyGlob *energyGlob = [localEnergyGlobs objectAtIndex:j];
             NSString *energyGlobGuid = [sortedEnergyGlobGuids objectAtIndex:i];
             if ([energyGlobGuid compare:energyGlob.guid] == NSOrderedAscending) {
-                DLog(@"Creating %@", energyGlobGuid);
-                [EnergyGlob energyGlobWithData:energyGlobGuid inManagedObjectContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+//                DLog(@"Creating %@", energyGlobGuid);
+                [EnergyGlob energyGlobWithData:energyGlobGuid inManagedObjectContext:context];
                 i++;
             } else if ([energyGlobGuid compare:energyGlob.guid] == NSOrderedDescending) {
-                DLog(@"Deleting %@", energyGlob);
-                [energyGlob MR_deleteEntity];
+//                DLog(@"Deleting %@", energyGlob);
+                [energyGlob MR_deleteInContext:context];
                 j++;
             } else {
                 // Updating does not really make sense, since everything is encoded in the guid
-                DLog(@"Updating %@", energyGlob);
+//                DLog(@"Updating %@", energyGlob);
                 // [energyGlob updateWithData:energyGlobGuid];
                 i++;
                 j++;
@@ -1884,9 +1888,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
         }
     }
     
-    NSLog(@"about to save, changes %d", [[NSManagedObjectContext MR_contextForCurrentThread] hasChanges]);
-    [[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
-    NSLog(@"saved");
+//    NSLog(@"about to save, changes %d", [[NSManagedObjectContext MR_contextForCurrentThread] hasChanges]);
+    [context MR_saveToPersistentStoreWithCompletion:nil];
+//    NSLog(@"saved");
 }
 
 - (void)processAPGains:(NSArray *)apGains {

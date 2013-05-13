@@ -12,6 +12,8 @@
 @implementation PortalKeysViewController {
 	NSMutableDictionary *keysDict;
 	NSMutableArray *portals;
+
+	PortalKey *currentPortalKey;
 }
 
 @synthesize linkingPortal = _linkingPortal;
@@ -101,36 +103,6 @@
 	
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return @"Drop";
-}
-
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-	if (editingStyle == UITableViewCellEditingStyleDelete) {
-
-		Portal *portal = portals[indexPath.row];
-		PortalKey *portalKey = [keysDict[portal.guid] lastObject];
-
-		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-		HUD.userInteractionEnabled = YES;
-		HUD.mode = MBProgressHUDModeIndeterminate;
-		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		HUD.labelText = @"Dropping Portal Key...";
-		[[AppDelegate instance].window addSubview:HUD];
-		[HUD show:YES];
-		
-		[[API sharedInstance] playSound:@"SFX_DROP_RESOURCE"];
-		
-		[[API sharedInstance] dropItemWithGuid:portalKey.guid completionHandler:^(void) {
-			[HUD hide:YES];
-
-			[self refresh];
-		}];
-		
-	}
-}
-
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 
@@ -205,8 +177,68 @@
 
 		}];
 		
+	} else {
+
+		Portal *portal = portals[indexPath.row];
+		PortalKey *portalKey = [keysDict[portal.guid] lastObject];
+		currentPortalKey = portalKey;
+
+		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Drop" otherButtonTitles:@"Recharge Portal", nil];
+		actionSheet.tag = 1;
+		[actionSheet showFromTabBar:self.tabBarController.tabBar];
+
 	}
 
+}
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	if (actionSheet.tag == 1 && buttonIndex == 0) {
+
+		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.userInteractionEnabled = YES;
+		HUD.mode = MBProgressHUDModeIndeterminate;
+		HUD.dimBackground = YES;
+		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+		HUD.labelText = @"Dropping Portal Key...";
+		[[AppDelegate instance].window addSubview:HUD];
+		[HUD show:YES];
+
+		[[API sharedInstance] playSound:@"SFX_DROP_RESOURCE"];
+
+		[[API sharedInstance] dropItemWithGuid:currentPortalKey.guid completionHandler:^(void) {
+			[HUD hide:YES];
+
+			[self refresh];
+		}];
+
+	} else if (actionSheet.tag == 1 && buttonIndex == 1) {
+
+		PortalKey *portalKey = currentPortalKey;
+
+		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.userInteractionEnabled = YES;
+		HUD.mode = MBProgressHUDModeIndeterminate;
+		HUD.dimBackground = YES;
+		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+		HUD.labelText = @"Recharging Portal...";
+		[[AppDelegate instance].window addSubview:HUD];
+		[HUD show:YES];
+
+		[[API sharedInstance] playSound:@"SFX_DROP_RESOURCE"];
+
+		[[API sharedInstance] rechargePortal:portalKey.portal portalKey:portalKey completionHandler:^{
+
+			[HUD hide:YES];
+
+			[[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_RECHARGED"]];
+
+			currentPortalKey = nil;
+
+		}];
+
+	}
 }
 
 @end

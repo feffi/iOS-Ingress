@@ -236,15 +236,11 @@
 	
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_resonator_recharge.aif"];
 	
-	[[API sharedInstance] rechargePortal:self.portal completionHandler:^() {
+	[[API sharedInstance] rechargePortal:self.portal portalKey:nil completionHandler:^() {
 		
 		[HUD hide:YES];
-		
-		[[SoundManager sharedManager] playSound:@"Sound/speech_resonator.aif"];
-		
-		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, .75 * NSEC_PER_SEC), dispatch_get_main_queue(), ^(void){
-			[[SoundManager sharedManager] playSound:@"Sound/speech_recharged.aif"];
-		});
+
+		[[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_RECHARGED"]];
 		
 	}];
 	
