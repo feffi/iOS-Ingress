@@ -190,22 +190,22 @@
 	NSString *string = [decoder decodeObjectForKey:@"keyString"];
 
 
-	NSArray *ranges = [decoder decodeObjectForKey:@"keyRanges"];
+//	NSArray *ranges = [decoder decodeObjectForKey:@"keyRanges"];
 
 
 	NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:string];
 
-	for (NSString *keyRange in ranges) {
-		NSData *aData = [(NSData*)[decoder decodeObjectForKey:keyRange] retain];
-		NSKeyedUnarchiver *attributeDecoder = [[NSKeyedUnarchiver alloc] initForReadingWithData:aData];
-		[aData release];
-
-		NSDictionary *attributes = [AttributedStringCoderHelper decodeAttributedStringAttriubtes:attributeDecoder];
-		[attributeDecoder finishDecoding];
-		[attributeDecoder release];
-
-		[attrString addAttributes:attributes range:NSRangeFromString(keyRange)];
-	}
+//	for (NSString *keyRange in ranges) {
+//		NSData *aData = [(NSData*)[decoder decodeObjectForKey:keyRange] retain];
+//		NSKeyedUnarchiver *attributeDecoder = [[NSKeyedUnarchiver alloc] initForReadingWithData:aData];
+//		[aData release];
+//
+//		NSDictionary *attributes = [AttributedStringCoderHelper decodeAttributedStringAttriubtes:attributeDecoder];
+//		[attributeDecoder finishDecoding];
+//		[attributeDecoder release];
+//
+//		[attrString addAttributes:attributes range:NSRangeFromString(keyRange)];
+//	}
 
 	[decoder finishDecoding];
 	[decoder release];

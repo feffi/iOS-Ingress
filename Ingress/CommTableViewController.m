@@ -44,9 +44,7 @@
 
 - (void)refresh {
 	[self.refreshControl beginRefreshing];
-//	[self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
-
-	[Plext MR_truncateAll];
+	[self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
 
 	self.fetchedResultsController.fetchRequest.predicate = [NSPredicate predicateWithFormat:@"factionOnly == %d", self.factionOnly];
 	[Plext MR_performFetch:self.fetchedResultsController];
