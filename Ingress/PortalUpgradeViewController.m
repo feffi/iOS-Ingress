@@ -80,11 +80,11 @@
 		} else {
 			[button setTitle:@"-" forState:UIControlStateNormal];
 		}
-		
-		if (!self.portal.controllingTeam || ![self.portal.controllingTeam isEqualToString:[API sharedInstance].playerInfo[@"team"]]) {
-			[button setEnabled:NO];
-		} else {
+
+		if (self.portal.controllingTeam && ([self.portal.controllingTeam isEqualToString:[API sharedInstance].playerInfo[@"team"]] || [self.portal.controllingTeam isEqualToString:@"NEUTRAL"])) {
 			[button setEnabled:YES];
+		} else {
+			[button setEnabled:NO];
 		}
 		
 	}
