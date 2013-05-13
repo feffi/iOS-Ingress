@@ -68,7 +68,37 @@
 	return _fetchedResultsController;
 }
 
+//- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+//    [self.tableView beginUpdates];
+//}
+//
+//- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+//
+//	UITableView *tableView = self.tableView;
+//
+//	switch(type) {
+//		case NSFetchedResultsChangeInsert:
+//			[tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
+//			break;
+//
+//		case NSFetchedResultsChangeDelete:
+//			[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
+//			break;
+//
+//		case NSFetchedResultsChangeUpdate:
+//			[tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+//			break;
+//
+//		case NSFetchedResultsChangeMove:
+//			[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//			[tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+//			break;
+//	}
+//
+//}
+
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+//    [self.tableView endUpdates];
 	[self.tableView reloadData];
 }
 
