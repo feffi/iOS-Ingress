@@ -10,13 +10,6 @@
 
 @implementation XMOverlay
 
-//- (id)initWithGlobs:(NSArray *)globs {
-//    if (self = [super init]) {
-//        self.globs = globs;
-//    }
-//    return self;
-//}
-
 - (MKMapRect)boundingMapRect {
     return MKMapRectWorld;
 }

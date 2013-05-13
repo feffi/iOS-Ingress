@@ -12,6 +12,4 @@
 
 @property (nonatomic, strong) NSArray *globs;
 
-//- (id)initWithGlobs:(NSArray *)globs;
-
 @end

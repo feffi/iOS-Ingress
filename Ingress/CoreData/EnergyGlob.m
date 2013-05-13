@@ -11,23 +11,10 @@
 
 @implementation EnergyGlob
 
-@synthesize circle = _circle;
-
 @dynamic amount;
 
 - (NSString *)description {
 	return [NSString stringWithFormat:@"XM (% 3d): %f, %f", self.amount, self.latitude, self.longitude];
-}
-
-- (MKCircle *)circle {
-	
-	if (!_circle) {
-		_circle = [MKCircle circleWithCenterCoordinate:self.coordinate radius:1];
-		_circle.energyGlob = self;
-	}
-	
-	return _circle;
-	
 }
 
 - (void)updateWithData:(NSString *)guid {
