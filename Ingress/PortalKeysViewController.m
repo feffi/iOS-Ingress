@@ -106,9 +106,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 
+	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+
 	if (self.linkingPortal) {
-		
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 
 		[[API sharedInstance] playSound:@"SPEECH_ESTABLISHING_PORTAL_LINK"];
 
@@ -194,6 +194,7 @@
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 	if (actionSheet.tag == 1 && buttonIndex == 0) {
 
 		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
@@ -226,13 +227,28 @@
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
 
-		[[API sharedInstance] playSound:@"SFX_DROP_RESOURCE"];
+		[[API sharedInstance] playSound:@"SFX_RESONATOR_RECHARGE"];
 
-		[[API sharedInstance] rechargePortal:portalKey.portal portalKey:portalKey completionHandler:^{
+		[[API sharedInstance] remoteRechargePortal:portalKey.portal portalKey:portalKey completionHandler:^(NSString *errorStr) {
 
 			[HUD hide:YES];
 
-			[[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_RECHARGED"]];
+			if (errorStr) {
+
+				MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+				HUD.userInteractionEnabled = YES;
+				HUD.dimBackground = YES;
+				HUD.mode = MBProgressHUDModeCustomView;
+				HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+				HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+				HUD.detailsLabelText = errorStr;
+				[[AppDelegate instance].window addSubview:HUD];
+				[HUD show:YES];
+				[HUD hide:YES afterDelay:3];
+
+			} else {
+				[[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_RECHARGED"]];
+			}
 
 			currentPortalKey = nil;
 

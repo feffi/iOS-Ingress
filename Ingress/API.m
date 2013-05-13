@@ -277,6 +277,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		@"SFX_AMBIENT_SPACE_LATTITUDE": @{@"file": @"sfx_ambient_space_lattitude.aif", @"duration": @(1301)},
 		@"SFX_DROP_RESOURCE": @{@"file": @"sfx_drop_resource.aif", @"duration": @(1114)},
 		@"SFX_RESOURCE_PICK_UP": @{@"file": @"sfx_resource_pick_up.aif", @"duration": @(2090)},
+		@"SFX_RESONATOR_RECHARGE": @{@"file": @"sfx_resonator_recharge.aif", @"duration": @(3090)},
 		@"SFX_PLAYER_LEVEL_UP": @{@"file": @"sfx_player_level_up.aif", @"duration": @(8680)},
 		@"SPEECH_ABANDONED": @{@"file": @"speech_abandoned.aif", @"duration": @(744)},
 		@"SPEECH_ACCESS_LEVEL_ACHIEVED": @{@"file": @"speech_access_level_achieved.aif", @"duration": @(1327)},
@@ -1225,25 +1226,39 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 }
 
-- (void)rechargePortal:(Portal *)portal portalKey:(PortalKey *)portalKey completionHandler:(void (^)(void))handler {
-	
-	//{"params":{"energyGlobGuids":[],"currentTimestamp":1358000897501,"location":"0304bb25,00d2f8f0","portalGuid":"3e7788cf535745a29461dffcad2c8711.12","portalKeyGuid":null,"resonatorSlots":[0,5,6,7]}}
+- (void)rechargePortal:(Portal *)portal completionHandler:(void (^)(NSString *errorStr))handler {
 	
 	NSDictionary *dict = @{
 		@"portalGuid": portal.guid,
-		@"portalKeyGuid": portalKey ? portalKey.guid : [NSNull null],
+		@"resonatorSlots": @[@0, @1, @2, @3, @4, @5, @6, @7]
+	};
+	
+	[self sendRequest:@"gameplay/rechargeResonatorsV2" params:dict completionHandler:^(id responseObj) {
+		//NSLog(@"rechargeResonatorWithGuid responseObj: %@", responseObj);
+		
+		dispatch_async(dispatch_get_main_queue(), ^{
+			handler(responseObj[@"error"]);
+		});
+		
+	}];
+	
+}
+
+- (void)remoteRechargePortal:(Portal *)portal portalKey:(PortalKey *)portalKey completionHandler:(void (^)(NSString *errorStr))handler {
+
+	NSDictionary *dict = @{
+		@"portalGuid": portal.guid,
+		@"portalKeyGuid": portalKey.guid,
 		@"resonatorSlots": @[@0, @1, @2, @3, @4, @5, @6, @7]
 	};
 
-	NSLog(@"rechargeResonatorsV2: %@", dict);
-	
-	[self sendRequest:@"gameplay/rechargeResonatorsV2" params:dict completionHandler:^(id responseObj) {
-		NSLog(@"rechargeResonatorWithGuid responseObj: %@", responseObj);
-		
+	[self sendRequest:@"gameplay/remoteRechargeResonatorsV2" params:dict completionHandler:^(id responseObj) {
+		//NSLog(@"rechargeResonatorWithGuid responseObj: %@", responseObj);
+
 		dispatch_async(dispatch_get_main_queue(), ^{
-			handler();
+			handler(responseObj[@"error"]);
 		});
-		
+
 	}];
 	
 }
