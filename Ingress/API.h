@@ -68,7 +68,7 @@ typedef void (^SoundCompletionBlock)(void);
 
 - (void)getInventoryWithCompletionHandler:(void (^)(void))handler;
 - (void)getObjectsWithCompletionHandler:(void (^)(void))handler;
-- (void)loadCommunicationForFactionOnly:(BOOL)factionOnly completionHandler:(void (^)(NSArray *messages))handler;
+- (void)loadCommunicationForFactionOnly:(BOOL)factionOnly completionHandler:(void (^)(void))handler;
 - (void)sendMessage:(NSString *)message factionOnly:(BOOL)factionOnly completionHandler:(void (^)(void))handler;
 - (void)loadScoreWithCompletionHandler:(void (^)(int alienScore, int resistanceScore))handler;
 - (void)redeemReward:(NSString *)passcode completionHandler:(void (^)(BOOL accepted, NSString *response))handler;

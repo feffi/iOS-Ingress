@@ -396,8 +396,7 @@
 
 - (void)updateCircle {
 
-	//[CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorized
-	if (![CLLocationManager locationServicesEnabled]) {
+	if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorized) {
 		if (!locationAllowHUD) {
 			_mapView.hidden = YES;
 			rangeCircleView.hidden = YES;

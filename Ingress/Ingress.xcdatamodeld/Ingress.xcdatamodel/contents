@@ -41,19 +41,19 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
-    <entity name="Message" representedClassName="Message" syncable="YES">
-        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="factionOnly" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="guid" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="mentionsYou" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="message" optional="YES" attributeType="Transformable" valueTransformerName="NSAttributedStringValueTransformer" syncable="YES"/>
-    </entity>
     <entity name="Player" representedClassName="Player" parentEntity="User" syncable="YES">
         <attribute name="ap" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="energy" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="level" optional="YES" transient="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="maxEnergy" optional="YES" transient="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="nextLevelAP" optional="YES" transient="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+    </entity>
+    <entity name="Plext" representedClassName="Plext" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="factionOnly" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="guid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="mentionsYou" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="message" optional="YES" attributeType="Transformable" valueTransformerName="NSAttributedStringValueTransformer" syncable="YES"/>
     </entity>
     <entity name="Portal" representedClassName="Portal" parentEntity="Item" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
@@ -109,6 +109,7 @@
         <element name="EnergyGlob" positionX="-4889" positionY="-1413" width="128" height="58"/>
         <element name="Item" positionX="-4635" positionY="-1629" width="128" height="103"/>
         <element name="Media" positionX="-4464" positionY="-1638" width="128" height="118"/>
+        <element name="Plext" positionX="-4034" positionY="-1168" width="128" height="118"/>
         <element name="Player" positionX="-4221" positionY="-1134" width="128" height="118"/>
         <element name="Portal" positionX="-4401" positionY="-1498" width="128" height="223"/>
         <element name="PortalKey" positionX="-4725" positionY="-1381" width="128" height="73"/>
@@ -118,6 +119,5 @@
         <element name="Shield" positionX="-4853" positionY="-1575" width="128" height="58"/>
         <element name="User" positionX="-4221" positionY="-1296" width="128" height="148"/>
         <element name="XMP" positionX="-4637" positionY="-1503" width="128" height="58"/>
-        <element name="Message" positionX="-4034" positionY="-1168" width="128" height="118"/>
     </elements>
 </model>

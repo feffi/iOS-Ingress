@@ -22,6 +22,7 @@
 		FA32E883169F2D9F00D30E90 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E882169F2D9F00D30E90 /* API.m */; };
 		FA32E888169F657400D30E90 /* CommViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E887169F657400D30E90 /* CommViewController.m */; };
 		FA32E88B169F661500D30E90 /* CommTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E88A169F661500D30E90 /* CommTableViewController.m */; };
+		FA39E146174166C200202259 /* Plext.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39E145174166C200202259 /* Plext.m */; };
 		FA3BD746173514D5004F5ED5 /* nudge_callout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3BD745173514D5004F5ED5 /* nudge_callout@2x.png */; };
 		FA3BD78117352C5B004F5ED5 /* APView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3BD78017352C5B004F5ED5 /* APView.m */; };
 		FA3BD78417352DCE004F5ED5 /* ap_fill_aliens@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3BD78217352DCE004F5ED5 /* ap_fill_aliens@2x.png */; };
@@ -137,7 +138,6 @@
 		FAA4986A173EFFFA00801651 /* AttributedStringCoderHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA49867173EFFFA00801651 /* AttributedStringCoderHelper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FAA4986B173EFFFA00801651 /* FontUtility.c in Sources */ = {isa = PBXBuildFile; fileRef = FAA49868173EFFFA00801651 /* FontUtility.c */; };
 		FAA4986D173F002700801651 /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAA4986C173F002700801651 /* CoreText.framework */; };
-		FAA49870173F00E900801651 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA4986F173F00E900801651 /* Message.m */; };
 		FAA7E4F616D7E429007EAE9A /* MediaItemsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA7E4F316D7E3B9007EAE9A /* MediaItemsViewController.m */; };
 		FAA7E4F716D7E42B007EAE9A /* PortalKeyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA7E4F516D7E3C5007EAE9A /* PortalKeyCell.m */; };
 		FAA7E4FB16D805FE007EAE9A /* xmpTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA7E4FA16D805FE007EAE9A /* xmpTexture.png */; };
@@ -307,6 +307,8 @@
 		FA32E887169F657400D30E90 /* CommViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommViewController.m; sourceTree = "<group>"; };
 		FA32E889169F661500D30E90 /* CommTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommTableViewController.h; sourceTree = "<group>"; };
 		FA32E88A169F661500D30E90 /* CommTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommTableViewController.m; sourceTree = "<group>"; };
+		FA39E144174166C100202259 /* Plext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Plext.h; path = CoreData/Plext.h; sourceTree = "<group>"; };
+		FA39E145174166C200202259 /* Plext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Plext.m; path = CoreData/Plext.m; sourceTree = "<group>"; };
 		FA3BD745173514D5004F5ED5 /* nudge_callout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nudge_callout@2x.png"; sourceTree = "<group>"; };
 		FA3BD77F17352C5B004F5ED5 /* APView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APView.h; sourceTree = "<group>"; };
 		FA3BD78017352C5B004F5ED5 /* APView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APView.m; sourceTree = "<group>"; };
@@ -461,8 +463,6 @@
 		FAA49868173EFFFA00801651 /* FontUtility.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = FontUtility.c; sourceTree = "<group>"; };
 		FAA49869173EFFFA00801651 /* FontUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FontUtility.h; sourceTree = "<group>"; };
 		FAA4986C173F002700801651 /* CoreText.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreText.framework; path = System/Library/Frameworks/CoreText.framework; sourceTree = SDKROOT; };
-		FAA4986E173F00E900801651 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Message.h; path = CoreData/Message.h; sourceTree = "<group>"; };
-		FAA4986F173F00E900801651 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Message.m; path = CoreData/Message.m; sourceTree = "<group>"; };
 		FAA7E4F216D7E3B9007EAE9A /* MediaItemsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MediaItemsViewController.h; sourceTree = "<group>"; };
 		FAA7E4F316D7E3B9007EAE9A /* MediaItemsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MediaItemsViewController.m; sourceTree = "<group>"; };
 		FAA7E4F416D7E3C5007EAE9A /* PortalKeyCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PortalKeyCell.h; sourceTree = "<group>"; };
@@ -1451,8 +1451,8 @@
 				FAA9C47217306EB8000C2638 /* PortalKey.m */,
 				FA859F14173BD800002A2117 /* EnergyGlob.h */,
 				FA859F15173BD800002A2117 /* EnergyGlob.m */,
-				FAA4986E173F00E900801651 /* Message.h */,
-				FAA4986F173F00E900801651 /* Message.m */,
+				FA39E144174166C100202259 /* Plext.h */,
+				FA39E145174166C200202259 /* Plext.m */,
 			);
 			name = NSManagedObjects;
 			sourceTree = "<group>";
@@ -2300,7 +2300,7 @@
 				FAA4985D173EFEEE00801651 /* NSAttributedStringValueTransformer.m in Sources */,
 				FAA4986A173EFFFA00801651 /* AttributedStringCoderHelper.m in Sources */,
 				FAA4986B173EFFFA00801651 /* FontUtility.c in Sources */,
-				FAA49870173F00E900801651 /* Message.m in Sources */,
+				FA39E146174166C200202259 /* Plext.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

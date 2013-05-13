@@ -14,7 +14,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-	
+
 	dateFormatter = [NSDateFormatter new];
 	[dateFormatter setDateStyle:NSDateFormatterShortStyle];
 	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
@@ -23,46 +23,76 @@
 	
 	[self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
 	
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+
 	[self refresh];
-	
+}
+
+- (void)didReceiveMemoryWarning {
+	[super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+
+	self.fetchedResultsController = nil;
+}
+
+- (void)dealloc {
+	self.fetchedResultsController = nil;
 }
 
 - (void)refresh {
 	[self.refreshControl beginRefreshing];
-	[self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
-	[[API sharedInstance] loadCommunicationForFactionOnly:self.factionOnly completionHandler:^(NSArray *messages) {
-		_messages = [messages mutableCopy];
-		[self.tableView reloadData];
+//	[self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+
+	[Plext MR_truncateAll];
+
+	self.fetchedResultsController.fetchRequest.predicate = [NSPredicate predicateWithFormat:@"factionOnly == %d", self.factionOnly];
+	[Plext MR_performFetch:self.fetchedResultsController];
+
+	[[API sharedInstance] loadCommunicationForFactionOnly:self.factionOnly completionHandler:^{
 		[self.refreshControl endRefreshing];
 	}];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)setFactionOnly:(BOOL)factionOnly {
+	_factionOnly = factionOnly;
+	[self refresh];
+}
+
+#pragma mark - NSFetchedResultsController & NSFetchedResultsControllerDelegate
+
+- (NSFetchedResultsController *)fetchedResultsController {
+	if (!_fetchedResultsController) {
+		_fetchedResultsController = [Plext MR_fetchAllSortedBy:@"date" ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"factionOnly == %d", self.factionOnly] groupBy:nil delegate:self];
+	}
+	return _fetchedResultsController;
+}
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+	[self.tableView reloadData];
 }
 
 #pragma mark - UITableViewDataSource & UITableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return 1;
+	return self.fetchedResultsController.sections.count;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	return _messages.count;
+	id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:section];
+	return sectionInfo.numberOfObjects;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	
-	NSAttributedString *atrstr = _messages[indexPath.row][@"message"];
-	
+
+	Plext *plext = [self.fetchedResultsController objectAtIndexPath:indexPath];
+
 	CGFloat width = tableView.frame.size.width;
 	width -= 74;
 	
-	CGRect rect = [atrstr boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:NULL];
-	
-	//CGSize size = [atrstr.string sizeWithFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16] constrainedToSize:CGSizeMake(width, (unsigned int)-1)];
+	CGRect rect = [plext.message boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:NULL];
 	
 	return rect.size.height;
 	
@@ -70,19 +100,13 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	
+	Plext *plext = [self.fetchedResultsController objectAtIndexPath:indexPath];
+	
 	CommTableViewCell *cell = (CommTableViewCell *)[tableView dequeueReusableCellWithIdentifier:@"msgCell" forIndexPath:indexPath];
-	
-	//NSLog(@"messages[indexPath.row]: %@", messages[indexPath.row]);
-
 	cell.timeLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:10];
-	cell.timeLabel.text = [dateFormatter stringFromDate:_messages[indexPath.row][@"date"]];
-
-	[cell setMentionsYou:[_messages[indexPath.row][@"mentionsYou"] boolValue]];
-
-	//cell.messageLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15];
-	cell.messageLabel.attributedText = _messages[indexPath.row][@"message"];
-	cell.messageLabel.numberOfLines = 0;
-	
+	cell.timeLabel.text = [dateFormatter stringFromDate:[NSDate dateWithTimeIntervalSinceReferenceDate:plext.date]];
+	cell.messageLabel.attributedText = plext.message;
+	cell.mentionsYou = plext.mentionsYou;
 	return cell;
 	
 }

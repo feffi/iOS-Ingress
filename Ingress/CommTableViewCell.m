@@ -12,7 +12,10 @@
 	UIImageView *nudgeImageView;
 }
 
+@synthesize mentionsYou = _mentionsYou;
+
 - (void)setMentionsYou:(BOOL)mentionsYou {
+	_mentionsYou = mentionsYou;
 
 	if (mentionsYou) {
 		if (!nudgeImageView) {

@@ -44,7 +44,6 @@
 
 - (IBAction)groupChanged:(UISegmentedControl *)sender {
 	[commTableVC setFactionOnly:sender.selectedSegmentIndex];
-	[commTableVC refresh];
 	
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 }
