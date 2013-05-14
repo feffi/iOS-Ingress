@@ -7,84 +7,81 @@
 //
 
 #import "PortalDetailViewController.h"
-#import "PortalInfoViewController.h"
-#import "PortalUpgradeViewController.h"
+#import "MDCParallaxView.h"
 
-@implementation PortalDetailViewController
-
-@synthesize portalInfoVC = _portalInfoVC;
+@implementation PortalDetailViewController {
+	BOOL pageControlUsed;
+}
 
 @synthesize portal = _portal;
-@synthesize mapCenterCoordinate = _mapCenterCoordinate;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	CGSize screenSize = [UIScreen mainScreen].bounds.size;
+	BOOL canUpgrade = (self.portal.controllingTeam && ([self.portal.controllingTeam isEqualToString:[API sharedInstance].playerInfo[@"team"]] || [self.portal.controllingTeam isEqualToString:@"NEUTRAL"]));
 
-	CGRect backgroundRect = CGRectMake(0, 0, screenSize.width, screenSize.height-113);
+	viewSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"Actions", @"Info"]];
+	viewSegmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+	if (canUpgrade) {
+		[viewSegmentedControl insertSegmentWithTitle:@"Upgrade" atIndex:2 animated:NO];
+	}
+	[viewSegmentedControl setApportionsSegmentWidthsByContent:NO];
+	[viewSegmentedControl setSelectedSegmentIndex:0];
+	[viewSegmentedControl addTarget:self action:@selector(viewSegmentedControlChanged) forControlEvents:UIControlEventValueChanged];
+	self.navigationItem.titleView = viewSegmentedControl;
+
+	CGFloat viewWidth = [UIScreen mainScreen].bounds.size.width;
+	CGFloat viewHeight = [UIScreen mainScreen].bounds.size.height-113;
+
+	_scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
+	_scrollView.delegate = self;
+	_scrollView.pagingEnabled = YES;
+	_scrollView.showsHorizontalScrollIndicator = NO;
+	_scrollView.backgroundColor = self.view.backgroundColor;
+	_scrollView.contentSize = CGSizeMake(viewWidth*(2+canUpgrade), viewHeight);
+	[self.view addSubview:_scrollView];
+
+	CGRect backgroundRect = CGRectMake(0, 0, viewWidth, viewHeight);
 	UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:backgroundRect];
 	backgroundImageView.image = [UIImage imageNamed:@"missing_image"];
 	backgroundImageView.contentMode = UIViewContentModeScaleAspectFill;
 
-	infoContainerView = [[MDCParallaxView alloc] initWithBackgroundView:backgroundImageView foregroundView:self.portalInfoVC.view];
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+	
+	portalActionsVC = [storyboard instantiateViewControllerWithIdentifier:@"PortalActionsViewController"];
+	MDCParallaxView *infoContainerView = [[MDCParallaxView alloc] initWithBackgroundView:backgroundImageView foregroundView:portalActionsVC.view];
 	infoContainerView.autoresizingMask = UIViewAutoresizingFlexibleWidth;
 	infoContainerView.backgroundColor = [UIColor colorWithRed:16.0/255.0 green:32.0/255.0 blue:34.0/255.0 alpha:1];
 	infoContainerView.scrollView.scrollsToTop = YES;
 	infoContainerView.scrollView.alwaysBounceVertical = YES;
 	infoContainerView.backgroundInteractionEnabled = NO;
+	infoContainerView.frame = CGRectMake(0, 0, viewWidth, viewHeight);
+	infoContainerView.backgroundHeight = viewHeight-280;
+	portalActionsVC.portal = self.portal;
+	portalActionsVC.view.frame = CGRectMake(0, 0, viewWidth, 280);
+	portalActionsVC.imageView = backgroundImageView;
+	[_scrollView addSubview:infoContainerView];
 
-	infoContainerView.frame = CGRectMake(0, 0, screenSize.width, screenSize.height-113);
-	infoContainerView.backgroundHeight = screenSize.height-113-280;
+	portalInfoVC = [storyboard instantiateViewControllerWithIdentifier:@"PortalInfoViewController"];
+	portalInfoVC.portal = self.portal;
+	portalInfoVC.view.frame = CGRectMake(viewWidth, 0, viewWidth, viewHeight);
+	[_scrollView addSubview:portalInfoVC.view];
 
-	self.portalInfoVC.portal = self.portal;
-	self.portalInfoVC.mapCenterCoordinate = self.mapCenterCoordinate;
-	self.portalInfoVC.view.frame = CGRectMake(0, 0, screenSize.width, 280);
+	if (canUpgrade) {
+		portalUpgradeVC = [storyboard instantiateViewControllerWithIdentifier:@"PortalUpgradeViewController"];
+		portalUpgradeVC.portal = self.portal;
+		portalUpgradeVC.view.frame = CGRectMake(viewWidth*2, 0, viewWidth, viewHeight);
+		[_scrollView addSubview:portalUpgradeVC.view];
+	}
 
-	self.portalInfoVC.imageView = backgroundImageView;
-
-	[self addChildViewController:self.portalInfoVC];
-	[self.view addSubview:infoContainerView];
-
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
-
-//	[[NSNotificationCenter defaultCenter] addObserverForName:@"PortalChanged" object:nil queue:[API sharedInstance].notificationQueue usingBlock:^(NSNotification *note) {
-//		Portal *newPortal = note.userInfo[@"portal"];
-//		if (newPortal && [newPortal isKindOfClass:[PortalItem class]] && [newPortal.guid isEqualToString:self.portal.guid]) {
-//			self.portal = note.userInfo[@"portal"];
-//		}
-//	}];
-	
-//	PortalInfoViewController *vc1 = (PortalInfoViewController *)[self childViewControllerWithClass:[PortalInfoViewController class]];
-//	vc1.portal = self.portal;
-//	vc1.mapCenterCoordinate = self.mapCenterCoordinate;
-
-
-
-//	CGPoint bottomOffset = CGPointMake(0, infoContainerView.scrollView.contentSize.height - infoContainerView.scrollView.bounds.size.height);
-//	[infoContainerView.scrollView setContentOffset:bottomOffset animated:NO];
-
-	PortalUpgradeViewController *vc2 = (PortalUpgradeViewController *)[self childViewControllerWithClass:[PortalUpgradeViewController class]];
-	vc2.portal = self.portal;
-	vc2.mapCenterCoordinate = self.mapCenterCoordinate;
-	
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
-	
+
 	if (self.isMovingFromParentViewController) {
 		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 	}
-}
-
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
-	
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -92,56 +89,38 @@
     // Dispose of any resources that can be recreated.
 }
 
-#pragma mark - Portal Info View Controller
+#pragma mark - Segmented Control Changed
 
-- (PortalInfoViewController *)portalInfoVC {
-	if (!_portalInfoVC) {
-		UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-		_portalInfoVC = [storyboard instantiateViewControllerWithIdentifier:@"PortalInfoViewController"];
-	}
-	return _portalInfoVC;
-}
-
-#pragma mark -
-
-- (UIViewController *)childViewControllerWithClass:(Class)class {
-	for (UIViewController *vc in self.childViewControllers) {
-		if ([vc isKindOfClass:class]) {
-			return vc;
-		}
-	}
-	return nil;
-}
-
-- (IBAction)viewSegmentedControlChanged {
-	
+- (void)viewSegmentedControlChanged {
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-	
-	switch (viewSegmentedControl.selectedSegmentIndex) {
-		case 0:
-			
-			[[self childViewControllerWithClass:[PortalInfoViewController class]] viewWillAppear:NO];
-			[infoContainerView setHidden:NO];
-			[[self childViewControllerWithClass:[PortalInfoViewController class]] viewDidAppear:NO];
-			
-			[[self childViewControllerWithClass:[PortalUpgradeViewController class]] viewWillDisappear:NO];
-			[upgradeContainerView setHidden:YES];
-			[[self childViewControllerWithClass:[PortalUpgradeViewController class]] viewDidDisappear:NO];
-			
-			break;
-		case 1:
-			
-			[[self childViewControllerWithClass:[PortalInfoViewController class]] viewWillDisappear:NO];
-			[infoContainerView setHidden:YES];
-			[[self childViewControllerWithClass:[PortalInfoViewController class]] viewDidDisappear:NO];
-			
-			[[self childViewControllerWithClass:[PortalUpgradeViewController class]] viewWillAppear:NO];
-			[upgradeContainerView setHidden:NO];
-			[[self childViewControllerWithClass:[PortalUpgradeViewController class]] viewDidAppear:NO];
-			
-			break;
-	}
-	
+
+	pageControlUsed = YES;
+    CGFloat pageWidth = _scrollView.contentSize.width /viewSegmentedControl.numberOfSegments;
+    CGFloat x = viewSegmentedControl.selectedSegmentIndex * pageWidth;
+    [_scrollView scrollRectToVisible:CGRectMake(x, 0, pageWidth, _scrollView.contentSize.height) animated:YES];
 }
+
+#pragma mark - UIScrollViewDelegate
+
+//- (void)scrollViewDidEndScrollingAnimation:(UIScrollView *)scrollView {
+//    pageControlUsed = NO;
+//}
+//
+//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+//    if (!pageControlUsed) {
+//        viewSegmentedControl.selectedSegmentIndex = lround(_scrollView.contentOffset.x / (_scrollView.contentSize.width / 2));
+//	}
+//}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    if (pageControlUsed) return;
+    CGFloat pageWidth = _scrollView.frame.size.width;
+    viewSegmentedControl.selectedSegmentIndex = floor((_scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+    pageControlUsed = NO;
+}
+
 
 @end

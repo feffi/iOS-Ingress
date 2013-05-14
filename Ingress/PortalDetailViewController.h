@@ -7,23 +7,21 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "MDCParallaxView.h"
+#import "PortalActionsViewController.h"
 #import "PortalInfoViewController.h"
+#import "PortalUpgradeViewController.h"
 
-@interface PortalDetailViewController : UIViewController {
-	
-	__weak IBOutlet UISegmentedControl *viewSegmentedControl;
-	
-	MDCParallaxView *infoContainerView;
-	__weak IBOutlet UIView *upgradeContainerView;
+@interface PortalDetailViewController : UIViewController <UIScrollViewDelegate> {
+
+	UIScrollView *_scrollView;
+	UISegmentedControl *viewSegmentedControl;
+
+	PortalActionsViewController *portalActionsVC;
+	PortalInfoViewController *portalInfoVC;
+	PortalUpgradeViewController *portalUpgradeVC;
 
 }
 
 @property (nonatomic, assign) Portal *portal;
-@property (nonatomic, assign) CLLocationCoordinate2D mapCenterCoordinate;
-
-@property (nonatomic, strong, readonly) PortalInfoViewController *portalInfoVC;
-
-- (IBAction)viewSegmentedControlChanged;
 
 @end

@@ -1271,44 +1271,14 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
             <objects>
                 <viewController id="EpT-PX-0Xb" customClass="PortalDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ROn-sT-oc0">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VS8-NI-iC5">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="lf3-Qp-xx8" kind="embed" id="npX-J8-mgb"/>
-                                </connections>
-                            </containerView>
-                        </subviews>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="VS8-NI-iC5" firstAttribute="bottom" secondItem="ROn-sT-oc0" secondAttribute="bottom" type="default" id="F8s-ck-UYg"/>
-                            <constraint firstItem="VS8-NI-iC5" firstAttribute="trailing" secondItem="ROn-sT-oc0" secondAttribute="trailing" type="default" id="N3N-bj-dbk"/>
-                            <constraint firstItem="VS8-NI-iC5" firstAttribute="top" secondItem="ROn-sT-oc0" secondAttribute="top" type="default" id="SCN-hY-c23"/>
-                            <constraint firstItem="VS8-NI-iC5" firstAttribute="leading" secondItem="ROn-sT-oc0" secondAttribute="leading" type="default" id="l9i-PO-cLN"/>
-                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="hks-CE-gCk">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="nfG-qs-m47">
-                            <rect key="frame" x="5" y="7" width="310" height="31"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="Info"/>
-                                <segment title="Upgrade"/>
-                            </segments>
-                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="groupChanged:" destination="ZBH-Po-zoq" eventType="valueChanged" id="fgJ-eu-2bo"/>
-                                <action selector="viewSegmentedControlChanged" destination="EpT-PX-0Xb" eventType="valueChanged" id="SPh-4u-aTL"/>
-                            </connections>
-                        </segmentedControl>
                     </navigationItem>
-                    <connections>
-                        <outlet property="upgradeContainerView" destination="VS8-NI-iC5" id="JNI-fn-p8h"/>
-                        <outlet property="viewSegmentedControl" destination="nfG-qs-m47" id="7cY-aB-uHH"/>
-                    </connections>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mac-VV-Wvp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2117,7 +2087,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Zn-ex-Sku" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2159" y="-1524"/>
+            <point key="canvasLocation" x="2183" y="-1524"/>
         </scene>
         <!--Portal Keys View Controller-->
         <scene sceneID="pOX-u1-cSZ">
@@ -2206,7 +2176,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1r5-qZ-6pz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2159" y="-133"/>
+            <point key="canvasLocation" x="2183" y="-133"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TLB-hP-Ugx">
@@ -2267,12 +2237,12 @@ You have downloaded what you believe to be a game, but it is not. Something is v
             </objects>
             <point key="canvasLocation" x="3080" y="-205"/>
         </scene>
-        <!--Portal Upgrade View Controller-->
+        <!--Portal Info View Controller-->
         <scene sceneID="Eh4-m3-S9L">
             <objects>
-                <viewController id="lf3-Qp-xx8" customClass="PortalUpgradeViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PortalInfoViewController" id="lf3-Qp-xx8" customClass="PortalInfoViewController" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="xob-Tu-pne">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1aa-eF-7rd">
@@ -2494,299 +2464,25 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="ppk-RV-jhe" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="4" id="zhB-Pw-p4d"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" tag="55" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="auU-pM-4h0" customClass="GUIButton">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" type="user" id="RSh-Zk-cGX"/>
-                                    <constraint firstAttribute="width" constant="64" type="user" id="Tvg-hW-euL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                                <state key="normal" title="DEPLOY">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="resonatorButtonPressed:" destination="lf3-Qp-xx8" eventType="touchUpInside" id="V9a-fa-Z1s"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="50" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tuj-pb-dGt" customClass="GUIButton">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" type="user" id="fI4-oH-7NZ"/>
-                                    <constraint firstAttribute="height" constant="30" type="user" id="z2S-YT-GF3"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                                <state key="normal" title="DEPLOY">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="resonatorButtonPressed:" destination="lf3-Qp-xx8" eventType="touchUpInside" id="qxH-Gf-8t0"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="56" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3fD-vG-amo" customClass="GUIButton">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" type="user" id="hnS-jU-CMS"/>
-                                    <constraint firstAttribute="height" constant="30" type="user" id="zC5-XV-1Zn"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                                <state key="normal" title="DEPLOY">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="resonatorButtonPressed:" destination="lf3-Qp-xx8" eventType="touchUpInside" id="Ezy-G8-QAf"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="57" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMh-B8-j72" customClass="GUIButton">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" type="user" id="0aU-wI-B9H"/>
-                                    <constraint firstAttribute="height" constant="30" type="user" id="kzg-fO-P6g"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                                <state key="normal" title="DEPLOY">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="resonatorButtonPressed:" destination="lf3-Qp-xx8" eventType="touchUpInside" id="rY0-8B-Gls"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="54" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6ts-Vu-ZgC" customClass="GUIButton">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" type="user" id="9Iv-Bd-pPt"/>
-                                    <constraint firstAttribute="height" constant="30" type="user" id="HGu-e0-d7T"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                                <state key="normal" title="DEPLOY">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="resonatorButtonPressed:" destination="lf3-Qp-xx8" eventType="touchUpInside" id="vx2-Xw-NhQ"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="51" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BGQ-ax-GRG" customClass="GUIButton">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" type="user" id="4MB-zf-TL5"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                                <state key="normal" title="DEPLOY">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="resonatorButtonPressed:" destination="lf3-Qp-xx8" eventType="touchUpInside" id="No2-XW-3GD"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="53" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="L77-A5-XYN" customClass="GUIButton">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" type="user" id="6Qh-0R-jVQ"/>
-                                    <constraint firstAttribute="height" constant="30" type="user" id="Qgg-zo-h37"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                                <state key="normal" title="DEPLOY">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="resonatorButtonPressed:" destination="lf3-Qp-xx8" eventType="touchUpInside" id="7HR-gg-z9f"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="52" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q5O-R5-Pic" customClass="GUIButton">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" type="user" id="Dl4-GM-oub"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                                <state key="normal" title="DEPLOY">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="resonatorButtonPressed:" destination="lf3-Qp-xx8" eventType="touchUpInside" id="22T-4P-Xej"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="100" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zzz-ml-7Ag" customClass="GUIButton">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" type="user" id="Qc7-6h-Ikh"/>
-                                    <constraint firstAttribute="height" constant="64" id="ZKH-Ni-bgD"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="-">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="shieldButtonPressed:" destination="lf3-Qp-xx8" eventType="touchUpInside" id="zMH-f0-yep"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="101" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Afx-ul-7bp" customClass="GUIButton">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" type="user" id="ITY-W8-UxZ"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="-">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="shieldButtonPressed:" destination="lf3-Qp-xx8" eventType="touchUpInside" id="6Ck-fc-G9W"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="102" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uYr-0g-eP5" customClass="GUIButton">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" id="38I-7C-CBf"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="-">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="shieldButtonPressed:" destination="lf3-Qp-xx8" eventType="touchUpInside" id="1G0-kw-186"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" tag="103" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yi5-ja-2IB" customClass="GUIButton">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" type="user" id="OiX-Cc-MG7"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="-">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="shieldButtonPressed:" destination="lf3-Qp-xx8" eventType="touchUpInside" id="jG1-50-0ui"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="auU-pM-4h0" firstAttribute="leading" secondItem="xob-Tu-pne" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="0xV-IL-48K"/>
-                            <constraint firstItem="3fD-vG-amo" firstAttribute="leading" secondItem="auU-pM-4h0" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="1cW-yD-bzx"/>
-                            <constraint firstAttribute="trailing" secondItem="Yi5-ja-2IB" secondAttribute="trailing" constant="19" type="user" id="2KG-4G-82W"/>
-                            <constraint firstItem="mMh-B8-j72" firstAttribute="leading" secondItem="3fD-vG-amo" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="4Rn-XN-68S"/>
-                            <constraint firstItem="uYr-0g-eP5" firstAttribute="bottom" secondItem="Yi5-ja-2IB" secondAttribute="bottom" type="default" id="4qx-3s-EPr"/>
-                            <constraint firstItem="zzz-ml-7Ag" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="20" symbolic="YES" type="default" id="4z7-q1-FOl"/>
-                            <constraint firstAttribute="bottom" secondItem="auU-pM-4h0" secondAttribute="bottom" constant="20" symbolic="YES" type="user" id="5UR-wM-bTW"/>
-                            <constraint firstItem="Q5O-R5-Pic" firstAttribute="bottom" secondItem="L77-A5-XYN" secondAttribute="bottom" type="default" id="DDu-X6-2yr"/>
-                            <constraint firstItem="Yi5-ja-2IB" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="20" symbolic="YES" type="default" id="GUO-Sb-jor"/>
-                            <constraint firstItem="Q5O-R5-Pic" firstAttribute="bottom" secondItem="BGQ-ax-GRG" secondAttribute="bottom" type="default" id="Icf-fB-Euc"/>
-                            <constraint firstItem="Afx-ul-7bp" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="20" symbolic="YES" type="default" id="NRV-mw-Xt1"/>
-                            <constraint firstAttribute="bottom" secondItem="mMh-B8-j72" secondAttribute="bottom" constant="20" symbolic="YES" type="user" id="PrK-tL-wg7"/>
-                            <constraint firstAttribute="bottom" secondItem="tuj-pb-dGt" secondAttribute="bottom" constant="20" symbolic="YES" type="user" id="TgA-wW-Uth"/>
-                            <constraint firstItem="Afx-ul-7bp" firstAttribute="leading" secondItem="L77-A5-XYN" secondAttribute="leading" type="user" id="U0P-oE-9Pu"/>
-                            <constraint firstItem="uYr-0g-eP5" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="20" symbolic="YES" type="default" id="WAO-H1-00V"/>
-                            <constraint firstItem="Q5O-R5-Pic" firstAttribute="baseline" secondItem="6ts-Vu-ZgC" secondAttribute="baseline" type="default" id="XIl-C6-hoq"/>
-                            <constraint firstItem="Afx-ul-7bp" firstAttribute="bottom" secondItem="zzz-ml-7Ag" secondAttribute="bottom" type="default" id="Y4H-3p-7ST"/>
-                            <constraint firstItem="zzz-ml-7Ag" firstAttribute="leading" secondItem="xob-Tu-pne" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="YbI-ME-4K5"/>
-                            <constraint firstItem="Yi5-ja-2IB" firstAttribute="leading" secondItem="BGQ-ax-GRG" secondAttribute="leading" type="user" id="bCM-7O-PcN"/>
-                            <constraint firstItem="Yi5-ja-2IB" firstAttribute="leading" secondItem="uYr-0g-eP5" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="eVI-hY-HZb"/>
-                            <constraint firstItem="Afx-ul-7bp" firstAttribute="leading" secondItem="zzz-ml-7Ag" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="ew6-Ei-OX4"/>
-                            <constraint firstItem="6ts-Vu-ZgC" firstAttribute="leading" secondItem="xob-Tu-pne" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="gKp-HY-UDp"/>
-                            <constraint firstAttribute="trailing" secondItem="tuj-pb-dGt" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="juH-8S-rco"/>
-                            <constraint firstItem="1aa-eF-7rd" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="166" id="mdu-mu-GxZ"/>
+                            <constraint firstAttribute="centerY" secondItem="1aa-eF-7rd" secondAttribute="centerY" type="user" id="r31-w4-8by"/>
                             <constraint firstItem="1aa-eF-7rd" firstAttribute="centerX" secondItem="xob-Tu-pne" secondAttribute="centerX" type="user" id="rRy-lj-hh1"/>
-                            <constraint firstItem="uYr-0g-eP5" firstAttribute="bottom" secondItem="Afx-ul-7bp" secondAttribute="bottom" type="default" id="u6o-nZ-AnQ"/>
-                            <constraint firstItem="Q5O-R5-Pic" firstAttribute="top" secondItem="L77-A5-XYN" secondAttribute="top" type="default" id="udi-MX-sDw"/>
-                            <constraint firstItem="BGQ-ax-GRG" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="127" type="user" id="upZ-3e-rHF"/>
-                            <constraint firstItem="Q5O-R5-Pic" firstAttribute="top" secondItem="xob-Tu-pne" secondAttribute="top" constant="127" type="user" id="wkv-on-Bgx"/>
-                            <constraint firstAttribute="bottom" secondItem="3fD-vG-amo" secondAttribute="bottom" constant="20" symbolic="YES" type="user" id="yGP-nj-w1W"/>
-                            <constraint firstItem="Q5O-R5-Pic" firstAttribute="leading" secondItem="L77-A5-XYN" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="yhq-TU-oeW"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tVf-gE-chp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2159" y="-847"/>
+            <point key="canvasLocation" x="2183" y="-847"/>
         </scene>
-        <!--Portal Info View Controller-->
+        <!--Portal Actions View Controller-->
         <scene sceneID="9Yb-wm-wMW">
             <objects>
-                <viewController storyboardIdentifier="PortalInfoViewController" id="733-kg-l6A" customClass="PortalInfoViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PortalActionsViewController" id="733-kg-l6A" customClass="PortalActionsViewController" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="kOm-3f-HtD">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="278"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -2898,7 +2594,7 @@ Range: 0km</string>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="0.95000000000000007" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="VzY-Vf-EiF" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="1Ez-pj-9nC"/>
                             <constraint firstItem="Act-Ua-pfK" firstAttribute="baseline" secondItem="62b-zG-XxU" secondAttribute="baseline" type="user" id="1Gv-r3-aed"/>
@@ -3456,6 +3152,317 @@ Range: 0km</string>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sb2-Ma-HN8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1324" y="-133"/>
+        </scene>
+        <!--Portal Upgrade View Controller-->
+        <scene sceneID="czi-Ff-zb7">
+            <objects>
+                <viewController storyboardIdentifier="PortalUpgradeViewController" id="253-rW-7Pb" customClass="PortalUpgradeViewController" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="5Wz-4j-Ggi">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" tag="55" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RKO-vK-db7" customClass="GUIButton">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" type="user" id="I6A-U6-ywl"/>
+                                    <constraint firstAttribute="height" constant="30" type="user" id="l91-pG-kyX"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                <state key="normal" title="DEPLOY">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="resonatorButtonPressed:" destination="253-rW-7Pb" eventType="touchUpInside" id="X3k-du-Xm8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="50" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsY-ky-n4c" customClass="GUIButton">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" type="user" id="M2n-Hv-VxK"/>
+                                    <constraint firstAttribute="width" constant="64" type="user" id="nZc-Zf-YQg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                <state key="normal" title="DEPLOY">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="resonatorButtonPressed:" destination="253-rW-7Pb" eventType="touchUpInside" id="1ap-OA-2nf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="56" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atd-cZ-jer" customClass="GUIButton">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" type="user" id="byy-yG-CQ7"/>
+                                    <constraint firstAttribute="width" constant="64" type="user" id="qGS-u0-N6a"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                <state key="normal" title="DEPLOY">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="resonatorButtonPressed:" destination="253-rW-7Pb" eventType="touchUpInside" id="his-mK-Ouh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="57" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dr6-AN-AgS" customClass="GUIButton">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" type="user" id="5QU-dS-64c"/>
+                                    <constraint firstAttribute="width" constant="64" type="user" id="rtn-R1-RqV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                <state key="normal" title="DEPLOY">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="resonatorButtonPressed:" destination="253-rW-7Pb" eventType="touchUpInside" id="xYi-l4-fyh"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="54" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyk-MP-1U2" customClass="GUIButton">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" type="user" id="9Ny-sg-kVh"/>
+                                    <constraint firstAttribute="width" constant="64" type="user" id="Jdl-Ml-RXP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                <state key="normal" title="DEPLOY">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="resonatorButtonPressed:" destination="253-rW-7Pb" eventType="touchUpInside" id="Q9u-jX-nrN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="51" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgO-HR-Z1s" customClass="GUIButton">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" type="user" id="EAf-Kr-leM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                <state key="normal" title="DEPLOY">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="resonatorButtonPressed:" destination="253-rW-7Pb" eventType="touchUpInside" id="gIX-3u-jAK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="53" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="izT-zY-RRC" customClass="GUIButton">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" type="user" id="CbV-dv-hxi"/>
+                                    <constraint firstAttribute="width" constant="64" type="user" id="KmC-8H-9bE"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                <state key="normal" title="DEPLOY">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="resonatorButtonPressed:" destination="253-rW-7Pb" eventType="touchUpInside" id="1KI-cc-MUL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="52" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ca4-ZO-O9p" customClass="GUIButton">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" type="user" id="z5y-Jf-O3r"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
+                                <state key="normal" title="DEPLOY">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="resonatorButtonPressed:" destination="253-rW-7Pb" eventType="touchUpInside" id="9Pc-6V-veA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="100" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Xb-Wh-5aO" customClass="GUIButton">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="64" id="3TN-Q5-7cx"/>
+                                    <constraint firstAttribute="width" constant="64" type="user" id="Y2Q-z9-o4d"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="-">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="shieldButtonPressed:" destination="253-rW-7Pb" eventType="touchUpInside" id="J7j-5U-NDn"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="101" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYY-dc-1p9" customClass="GUIButton">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" type="user" id="uwW-xo-csH"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="-">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="shieldButtonPressed:" destination="253-rW-7Pb" eventType="touchUpInside" id="F1N-Xx-c9j"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="102" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9d-7G-vJo" customClass="GUIButton">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" id="tYm-hf-Chd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="-">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="shieldButtonPressed:" destination="253-rW-7Pb" eventType="touchUpInside" id="k5Z-Py-3l8"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="103" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08H-Vc-v0b" customClass="GUIButton">
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="64" type="user" id="6rA-TA-Nyg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <state key="normal" title="-">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="shieldButtonPressed:" destination="253-rW-7Pb" eventType="touchUpInside" id="gmW-CN-c1d"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="08H-Vc-v0b" firstAttribute="top" secondItem="g9d-7G-vJo" secondAttribute="top" type="default" id="13m-ue-uqr"/>
+                            <constraint firstItem="rsY-ky-n4c" firstAttribute="baseline" secondItem="atd-cZ-jer" secondAttribute="baseline" type="default" id="2Ub-n2-uMi"/>
+                            <constraint firstItem="atd-cZ-jer" firstAttribute="baseline" secondItem="RKO-vK-db7" secondAttribute="baseline" type="default" id="3OA-QN-T23"/>
+                            <constraint firstItem="g9d-7G-vJo" firstAttribute="baseline" secondItem="OYY-dc-1p9" secondAttribute="baseline" type="default" id="4VO-GL-PF9"/>
+                            <constraint firstItem="atd-cZ-jer" firstAttribute="leading" secondItem="RKO-vK-db7" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="4yg-Gg-4hQ"/>
+                            <constraint firstItem="tyk-MP-1U2" firstAttribute="leading" secondItem="5Wz-4j-Ggi" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="6sJ-e9-VJB"/>
+                            <constraint firstItem="g9d-7G-vJo" firstAttribute="bottom" secondItem="OYY-dc-1p9" secondAttribute="bottom" type="default" id="7me-SW-pXH"/>
+                            <constraint firstAttribute="trailing" secondItem="08H-Vc-v0b" secondAttribute="trailing" constant="19" type="user" id="Ahv-M2-NTw"/>
+                            <constraint firstItem="Dr6-AN-AgS" firstAttribute="leading" secondItem="atd-cZ-jer" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="Apq-3b-vU4"/>
+                            <constraint firstItem="08H-Vc-v0b" firstAttribute="leading" secondItem="wgO-HR-Z1s" secondAttribute="leading" type="user" id="CrK-a2-Vgg"/>
+                            <constraint firstItem="OYY-dc-1p9" firstAttribute="baseline" secondItem="5Xb-Wh-5aO" secondAttribute="baseline" type="default" id="DC7-hI-Xwi"/>
+                            <constraint firstItem="08H-Vc-v0b" firstAttribute="baseline" secondItem="g9d-7G-vJo" secondAttribute="baseline" type="default" id="Dgp-8N-MoN"/>
+                            <constraint firstItem="08H-Vc-v0b" firstAttribute="leading" secondItem="g9d-7G-vJo" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Egj-jS-jsY"/>
+                            <constraint firstAttribute="trailing" secondItem="rsY-ky-n4c" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="FXg-xi-LYo"/>
+                            <constraint firstItem="08H-Vc-v0b" firstAttribute="baseline" secondItem="OYY-dc-1p9" secondAttribute="baseline" type="default" id="GzA-Qg-0Nj"/>
+                            <constraint firstItem="tyk-MP-1U2" firstAttribute="top" secondItem="5Wz-4j-Ggi" secondAttribute="top" constant="104" id="HhA-oE-hcV"/>
+                            <constraint firstAttribute="bottom" secondItem="RKO-vK-db7" secondAttribute="bottom" constant="17" id="Jq1-pD-qxC"/>
+                            <constraint firstItem="RKO-vK-db7" firstAttribute="baseline" secondItem="rsY-ky-n4c" secondAttribute="baseline" type="default" id="Ly4-4O-AdZ"/>
+                            <constraint firstItem="ca4-ZO-O9p" firstAttribute="leading" secondItem="izT-zY-RRC" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="MKv-gK-kFL"/>
+                            <constraint firstItem="ca4-ZO-O9p" firstAttribute="bottom" secondItem="wgO-HR-Z1s" secondAttribute="bottom" type="default" id="MtS-dO-hvc"/>
+                            <constraint firstItem="wgO-HR-Z1s" firstAttribute="top" secondItem="ca4-ZO-O9p" secondAttribute="top" type="default" id="Px2-Il-r7f"/>
+                            <constraint firstItem="atd-cZ-jer" firstAttribute="top" secondItem="RKO-vK-db7" secondAttribute="top" type="default" id="Sec-0k-gnI"/>
+                            <constraint firstItem="izT-zY-RRC" firstAttribute="baseline" secondItem="ca4-ZO-O9p" secondAttribute="baseline" type="default" id="YRM-Js-Db8"/>
+                            <constraint firstItem="5Xb-Wh-5aO" firstAttribute="leading" secondItem="5Wz-4j-Ggi" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="aQm-2m-lVl"/>
+                            <constraint firstItem="rsY-ky-n4c" firstAttribute="top" secondItem="Dr6-AN-AgS" secondAttribute="top" type="default" id="bzx-OH-ts9"/>
+                            <constraint firstItem="RKO-vK-db7" firstAttribute="baseline" secondItem="Dr6-AN-AgS" secondAttribute="baseline" type="default" id="cT1-Jy-uwE"/>
+                            <constraint firstItem="atd-cZ-jer" firstAttribute="top" secondItem="Dr6-AN-AgS" secondAttribute="top" type="default" id="d02-Fa-nRO"/>
+                            <constraint firstItem="5Xb-Wh-5aO" firstAttribute="top" secondItem="5Wz-4j-Ggi" secondAttribute="top" constant="16" id="gLU-QU-22i"/>
+                            <constraint firstItem="OYY-dc-1p9" firstAttribute="bottom" secondItem="5Xb-Wh-5aO" secondAttribute="bottom" type="default" id="iGJ-Gu-r0B"/>
+                            <constraint firstItem="g9d-7G-vJo" firstAttribute="bottom" secondItem="08H-Vc-v0b" secondAttribute="bottom" type="default" id="inj-m6-Nfb"/>
+                            <constraint firstItem="ca4-ZO-O9p" firstAttribute="bottom" secondItem="izT-zY-RRC" secondAttribute="bottom" type="default" id="kyD-Px-grI"/>
+                            <constraint firstItem="OYY-dc-1p9" firstAttribute="top" secondItem="g9d-7G-vJo" secondAttribute="top" type="default" id="l2k-ZQ-Mn4"/>
+                            <constraint firstItem="tyk-MP-1U2" firstAttribute="baseline" secondItem="izT-zY-RRC" secondAttribute="baseline" type="default" id="lCN-kY-21J"/>
+                            <constraint firstItem="5Xb-Wh-5aO" firstAttribute="baseline" secondItem="08H-Vc-v0b" secondAttribute="baseline" type="default" id="p2U-YG-7nJ"/>
+                            <constraint firstItem="wgO-HR-Z1s" firstAttribute="baseline" secondItem="ca4-ZO-O9p" secondAttribute="baseline" type="default" id="pKh-cn-Xao"/>
+                            <constraint firstItem="rsY-ky-n4c" firstAttribute="baseline" secondItem="Dr6-AN-AgS" secondAttribute="baseline" type="default" id="qhs-g0-5VU"/>
+                            <constraint firstItem="ca4-ZO-O9p" firstAttribute="top" secondItem="izT-zY-RRC" secondAttribute="top" type="default" id="r6j-7L-SZp"/>
+                            <constraint firstItem="g9d-7G-vJo" firstAttribute="baseline" secondItem="5Xb-Wh-5aO" secondAttribute="baseline" type="default" id="s1U-8p-0gG"/>
+                            <constraint firstItem="OYY-dc-1p9" firstAttribute="leading" secondItem="5Xb-Wh-5aO" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="sYQ-Qd-bvF"/>
+                            <constraint firstItem="OYY-dc-1p9" firstAttribute="leading" secondItem="izT-zY-RRC" secondAttribute="leading" type="user" id="tqq-Ex-xcE"/>
+                            <constraint firstItem="Dr6-AN-AgS" firstAttribute="baseline" secondItem="atd-cZ-jer" secondAttribute="baseline" type="default" id="yRD-sQ-YDf"/>
+                            <constraint firstItem="5Xb-Wh-5aO" firstAttribute="top" secondItem="OYY-dc-1p9" secondAttribute="top" type="default" id="zks-6i-IwV"/>
+                            <constraint firstItem="RKO-vK-db7" firstAttribute="leading" secondItem="5Wz-4j-Ggi" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="zvc-8N-XJS"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="tpA-bD-aeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2632" y="-847"/>
         </scene>
     </scenes>
     <resources>

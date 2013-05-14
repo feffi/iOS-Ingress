@@ -885,7 +885,6 @@
 		
 		PortalDetailViewController *vc = segue.destinationViewController;
 		vc.portal = currentPortal;
-		vc.mapCenterCoordinate = _mapView.centerCoordinate;
 		currentPortal = nil;
 	} else if ([segue.identifier isEqualToString:@"FactionChooseSegue"]) {
 		portalDetailSegue = NO;

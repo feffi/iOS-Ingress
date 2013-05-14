@@ -23,6 +23,7 @@
 		FA32E888169F657400D30E90 /* CommViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E887169F657400D30E90 /* CommViewController.m */; };
 		FA32E88B169F661500D30E90 /* CommTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E88A169F661500D30E90 /* CommTableViewController.m */; };
 		FA39E146174166C200202259 /* Plext.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39E145174166C200202259 /* Plext.m */; };
+		FA39E1501742CA2D00202259 /* PortalUpgradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39E14F1742CA2D00202259 /* PortalUpgradeViewController.m */; };
 		FA3BD746173514D5004F5ED5 /* nudge_callout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3BD745173514D5004F5ED5 /* nudge_callout@2x.png */; };
 		FA3BD78117352C5B004F5ED5 /* APView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3BD78017352C5B004F5ED5 /* APView.m */; };
 		FA3BD78417352DCE004F5ED5 /* ap_fill_aliens@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3BD78217352DCE004F5ED5 /* ap_fill_aliens@2x.png */; };
@@ -223,8 +224,8 @@
 		FAD5EF1816A2081B00182F6B /* PCPieChart.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD5EF1716A2081B00182F6B /* PCPieChart.m */; };
 		FAD5EF1B16A21B3900182F6B /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD5EF1916A21B3900182F6B /* check.png */; };
 		FAD5EF1C16A21B3900182F6B /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD5EF1A16A21B3900182F6B /* check@2x.png */; };
-		FAD9D7C616AC640A006553E0 /* PortalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD9D7C516AC640A006553E0 /* PortalInfoViewController.m */; };
-		FAD9D7C916AC6414006553E0 /* PortalUpgradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD9D7C816AC6414006553E0 /* PortalUpgradeViewController.m */; };
+		FAD9D7C616AC640A006553E0 /* PortalActionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD9D7C516AC640A006553E0 /* PortalActionsViewController.m */; };
+		FAD9D7C916AC6414006553E0 /* PortalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD9D7C816AC6414006553E0 /* PortalInfoViewController.m */; };
 		FAE6AC7416A0E2700082BBB5 /* DAKeyboardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE6AC7316A0E2700082BBB5 /* DAKeyboardControl.m */; };
 		FAE6FB6316AD391800FE188C /* UIBlackCloseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE6FB5F16AD391800FE188C /* UIBlackCloseButton.png */; };
 		FAE6FB6416AD391800FE188C /* UIBlackCloseButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE6FB6016AD391800FE188C /* UIBlackCloseButton@2x.png */; };
@@ -304,6 +305,8 @@
 		FA32E88A169F661500D30E90 /* CommTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommTableViewController.m; sourceTree = "<group>"; };
 		FA39E144174166C100202259 /* Plext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Plext.h; path = CoreData/Plext.h; sourceTree = "<group>"; };
 		FA39E145174166C200202259 /* Plext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Plext.m; path = CoreData/Plext.m; sourceTree = "<group>"; };
+		FA39E14E1742CA2D00202259 /* PortalUpgradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortalUpgradeViewController.h; sourceTree = "<group>"; };
+		FA39E14F1742CA2D00202259 /* PortalUpgradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalUpgradeViewController.m; sourceTree = "<group>"; };
 		FA3BD745173514D5004F5ED5 /* nudge_callout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nudge_callout@2x.png"; sourceTree = "<group>"; };
 		FA3BD77F17352C5B004F5ED5 /* APView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = APView.h; sourceTree = "<group>"; };
 		FA3BD78017352C5B004F5ED5 /* APView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = APView.m; sourceTree = "<group>"; };
@@ -739,10 +742,10 @@
 		FAD5EF1716A2081B00182F6B /* PCPieChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PCPieChart.m; sourceTree = "<group>"; };
 		FAD5EF1916A21B3900182F6B /* check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = check.png; sourceTree = "<group>"; };
 		FAD5EF1A16A21B3900182F6B /* check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "check@2x.png"; sourceTree = "<group>"; };
-		FAD9D7C416AC640A006553E0 /* PortalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortalInfoViewController.h; sourceTree = "<group>"; };
-		FAD9D7C516AC640A006553E0 /* PortalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalInfoViewController.m; sourceTree = "<group>"; };
-		FAD9D7C716AC6414006553E0 /* PortalUpgradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortalUpgradeViewController.h; sourceTree = "<group>"; };
-		FAD9D7C816AC6414006553E0 /* PortalUpgradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalUpgradeViewController.m; sourceTree = "<group>"; };
+		FAD9D7C416AC640A006553E0 /* PortalActionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortalActionsViewController.h; sourceTree = "<group>"; };
+		FAD9D7C516AC640A006553E0 /* PortalActionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalActionsViewController.m; sourceTree = "<group>"; };
+		FAD9D7C716AC6414006553E0 /* PortalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortalInfoViewController.h; sourceTree = "<group>"; };
+		FAD9D7C816AC6414006553E0 /* PortalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalInfoViewController.m; sourceTree = "<group>"; };
 		FAE6AC7216A0E2700082BBB5 /* DAKeyboardControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAKeyboardControl.h; sourceTree = "<group>"; };
 		FAE6AC7316A0E2700082BBB5 /* DAKeyboardControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAKeyboardControl.m; sourceTree = "<group>"; };
 		FAE6FB5F16AD391800FE188C /* UIBlackCloseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIBlackCloseButton.png; sourceTree = "<group>"; };
@@ -929,6 +932,15 @@
 			);
 			name = Comm;
 			path = Ingress;
+			sourceTree = "<group>";
+		};
+		FA39E14D1742C96800202259 /* Upgrade */ = {
+			isa = PBXGroup;
+			children = (
+				FA39E14E1742CA2D00202259 /* PortalUpgradeViewController.h */,
+				FA39E14F1742CA2D00202259 /* PortalUpgradeViewController.m */,
+			);
+			name = Upgrade;
 			sourceTree = "<group>";
 		};
 		FA3BD77E17352C5B004F5ED5 /* APView */ = {
@@ -1724,8 +1736,9 @@
 			children = (
 				FACD502116A441400077837F /* PortalDetailViewController.h */,
 				FACD502216A441400077837F /* PortalDetailViewController.m */,
-				FAD9D7C116AC63ED006553E0 /* Info */,
-				FAD9D7C316AC63F2006553E0 /* Upgrade */,
+				FAD9D7C116AC63ED006553E0 /* Actions */,
+				FAD9D7C316AC63F2006553E0 /* Info */,
+				FA39E14D1742C96800202259 /* Upgrade */,
 			);
 			name = "Portal Detail";
 			sourceTree = "<group>";
@@ -1748,22 +1761,22 @@
 			path = iOSPlot;
 			sourceTree = "<group>";
 		};
-		FAD9D7C116AC63ED006553E0 /* Info */ = {
+		FAD9D7C116AC63ED006553E0 /* Actions */ = {
 			isa = PBXGroup;
 			children = (
-				FAD9D7C416AC640A006553E0 /* PortalInfoViewController.h */,
-				FAD9D7C516AC640A006553E0 /* PortalInfoViewController.m */,
+				FAD9D7C416AC640A006553E0 /* PortalActionsViewController.h */,
+				FAD9D7C516AC640A006553E0 /* PortalActionsViewController.m */,
 			);
-			name = Info;
+			name = Actions;
 			sourceTree = "<group>";
 		};
-		FAD9D7C316AC63F2006553E0 /* Upgrade */ = {
+		FAD9D7C316AC63F2006553E0 /* Info */ = {
 			isa = PBXGroup;
 			children = (
-				FAD9D7C716AC6414006553E0 /* PortalUpgradeViewController.h */,
-				FAD9D7C816AC6414006553E0 /* PortalUpgradeViewController.m */,
+				FAD9D7C716AC6414006553E0 /* PortalInfoViewController.h */,
+				FAD9D7C816AC6414006553E0 /* PortalInfoViewController.m */,
 			);
-			name = Upgrade;
+			name = Info;
 			sourceTree = "<group>";
 		};
 		FAE6AC7116A0E2700082BBB5 /* DAKeyboardControl */ = {
@@ -2162,8 +2175,8 @@
 				FA52009C16A9AB24004AFE4D /* EXFTagDefinitionHolder.m in Sources */,
 				FA52009D16A9AB24004AFE4D /* EXFUtils.m in Sources */,
 				FAB5A2CD16AA165D00176C34 /* LevelChooserViewController.m in Sources */,
-				FAD9D7C616AC640A006553E0 /* PortalInfoViewController.m in Sources */,
-				FAD9D7C916AC6414006553E0 /* PortalUpgradeViewController.m in Sources */,
+				FAD9D7C616AC640A006553E0 /* PortalActionsViewController.m in Sources */,
+				FAD9D7C916AC6414006553E0 /* PortalInfoViewController.m in Sources */,
 				FA7E1AB016AC6D3900C8F949 /* PortalOverlayView.m in Sources */,
 				FAC23D7A16B16F44000C17DD /* Ingress.xcdatamodeld in Sources */,
 				FAC23E0B16B18755000C17DD /* Shield.m in Sources */,
@@ -2263,6 +2276,7 @@
 				FA02F9D8173D54540016EE7F /* MediaWebViewViewController.m in Sources */,
 				FA9153F1173E547B008E239C /* XMOverlay.m in Sources */,
 				FA39E146174166C200202259 /* Plext.m in Sources */,
+				FA39E1501742CA2D00202259 /* PortalUpgradeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
