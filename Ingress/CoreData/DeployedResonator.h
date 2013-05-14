@@ -23,4 +23,7 @@
 
 @property (nonatomic, readonly) MKCircle *circle;
 
+- (void)updateWithData:(NSDictionary *)data forPortal:(Portal *)portal;
++ (instancetype)resonatorWithData:(NSDictionary *)data forPortal:(Portal *)portal;
+
 @end
