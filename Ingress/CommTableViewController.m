@@ -28,6 +28,7 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 
+	[Plext MR_truncateAll];
 	[self refresh];
 }
 
@@ -46,16 +47,18 @@
 	[self.refreshControl beginRefreshing];
 	[self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
 
-	self.fetchedResultsController.fetchRequest.predicate = [NSPredicate predicateWithFormat:@"factionOnly == %d", self.factionOnly];
-	[Plext MR_performFetch:self.fetchedResultsController];
-
 	[[API sharedInstance] loadCommunicationForFactionOnly:self.factionOnly completionHandler:^{
 		[self.refreshControl endRefreshing];
-		[self.tableView reloadData];
+
+		self.fetchedResultsController.fetchRequest.predicate = [NSPredicate predicateWithFormat:@"factionOnly == %d", self.factionOnly];
+		[Plext MR_performFetch:self.fetchedResultsController];
 	}];
 }
 
 - (void)setFactionOnly:(BOOL)factionOnly {
+	if (factionOnly == _factionOnly) return;
+	
+	[Plext MR_truncateAll];
 	_factionOnly = factionOnly;
 	[self refresh];
 }
@@ -69,37 +72,7 @@
 	return _fetchedResultsController;
 }
 
-//- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-//    [self.tableView beginUpdates];
-//}
-//
-//- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-//
-//	UITableView *tableView = self.tableView;
-//
-//	switch(type) {
-//		case NSFetchedResultsChangeInsert:
-//			[tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
-//			break;
-//
-//		case NSFetchedResultsChangeDelete:
-//			[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-//			break;
-//
-//		case NSFetchedResultsChangeUpdate:
-//			[tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-//			break;
-//
-//		case NSFetchedResultsChangeMove:
-//			[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//			[tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-//			break;
-//	}
-//
-//}
-
 - (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-//    [self.tableView endUpdates];
 	[self.tableView reloadData];
 }
 
@@ -121,7 +94,7 @@
 	CGFloat width = tableView.frame.size.width;
 	width -= 74;
 	
-	CGRect rect = [plext.message boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin context:NULL];
+	CGRect rect = [plext.message boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingTruncatesLastVisibleLine context:NULL];
 	
 	return rect.size.height;
 	
