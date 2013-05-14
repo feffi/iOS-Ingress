@@ -87,6 +87,9 @@
 	locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+	if ([locationManager respondsToSelector:@selector(activityType)]) {
+		locationManager.activityType = CLActivityTypeFitness;
+	}
 	
 	[locationManager startUpdatingLocation];
 	[locationManager startUpdatingHeading];
@@ -420,7 +423,7 @@
 				diameter = 100/((_mapView.region.span.latitudeDelta * 111200) / _mapView.bounds.size.width);
 			}
 			rangeCircleView.frame = CGRectMake(0, 0, diameter, diameter);
-			rangeCircleView.center = _mapView.center;
+			rangeCircleView.center = CGPointMake(_mapView.center.x, _mapView.center.y+10);
 			rangeCircleView.layer.cornerRadius = diameter/2;
 		}
 	}
@@ -441,7 +444,7 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
 	CGAffineTransform transform = CGAffineTransformMakeRotation(newHeading.trueHeading*(M_PI/180));
 	playerArrowImage.transform = transform;
-	playerArrowImage.center = rangeCircleView.center;
+	playerArrowImage.center = _mapView.center;
 }
 
 #pragma mark - UIActionSheetDelegate
