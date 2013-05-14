@@ -53,7 +53,7 @@
         <attribute name="factionOnly" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="guid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="mentionsYou" optional="YES" attributeType="Boolean" syncable="YES"/>
-        <attribute name="message" optional="YES" attributeType="Transformable" valueTransformerName="NSAttributedStringValueTransformer" syncable="YES"/>
+        <attribute name="message" optional="YES" attributeType="Transformable" valueTransformerName="" syncable="YES"/>
     </entity>
     <entity name="Portal" representedClassName="Portal" parentEntity="Item" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>

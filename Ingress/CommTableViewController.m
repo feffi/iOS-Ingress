@@ -51,6 +51,7 @@
 
 	[[API sharedInstance] loadCommunicationForFactionOnly:self.factionOnly completionHandler:^{
 		[self.refreshControl endRefreshing];
+		[self.tableView reloadData];
 	}];
 }
 
