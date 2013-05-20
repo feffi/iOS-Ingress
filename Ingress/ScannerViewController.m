@@ -15,7 +15,6 @@
 #import "MKPolyline+PortalLink.h"
 #import "MKPolygon+ControlField.h"
 #import "MKCircle+Ingress.h"
-#import "DeployedResonator.h"
 #import "DeployedResonatorView.h"
 #import "XMOverlayView.h"
 #import "XMOverlay.h"
