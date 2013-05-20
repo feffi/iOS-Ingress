@@ -119,7 +119,7 @@ CLLocationCoordinate2D LatLonDestPoint(CLLocationCoordinate2D origin, double bea
 }
 
 - (void)updateWithData:(NSDictionary *)data forPortal:(Portal *)portal {
-    if (![self.portal.objectID isEqual:portal.objectID])
+//    if (![self.portal.objectID isEqual:portal.objectID])
         self.portal = portal;
     
     int slot = [data[@"slot"] intValue];
@@ -141,7 +141,7 @@ CLLocationCoordinate2D LatLonDestPoint(CLLocationCoordinate2D origin, double bea
     User *owner = [User MR_findFirstByAttribute:@"guid" withValue:data[@"ownerGuid"]];
     if (!owner) { owner = [User MR_createEntity]; }
     owner.guid = data[@"ownerGuid"];
-    if (![self.owner.objectID isEqual:owner.objectID])
+//    if (![self.owner.objectID isEqual:owner.objectID])
         self.owner = owner;
 }
 
