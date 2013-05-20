@@ -118,4 +118,37 @@ CLLocationCoordinate2D LatLonDestPoint(CLLocationCoordinate2D origin, double bea
 	return [NSString stringWithFormat:@"DepoloyedResonator forPortal:%@ slot:%d", self.portal.name, self.slot];
 }
 
+- (void)updateWithData:(NSDictionary *)data forPortal:(Portal *)portal {
+//    if (![self.portal.objectID isEqual:portal.objectID])
+        self.portal = portal;
+    
+    int slot = [data[@"slot"] intValue];
+    if (self.slot != slot)
+        self.slot = slot;
+    
+    int energy = [data[@"energyTotal"] intValue];
+    if (self.energy != energy )
+        self.energy = energy;
+    
+    int distanceToPortal = [data[@"distanceToPortal"] intValue];
+    if (self.distanceToPortal != distanceToPortal)
+        self.distanceToPortal = distanceToPortal;
+    
+    int level = [data[@"level"] intValue];
+    if (self.level != level)
+        self.level = level;
+    
+    User *owner = [User MR_findFirstByAttribute:@"guid" withValue:data[@"ownerGuid"]];
+    if (!owner) { owner = [User MR_createEntity]; }
+    owner.guid = data[@"ownerGuid"];
+//    if (![self.owner.objectID isEqual:owner.objectID])
+        self.owner = owner;
+}
+
++ (instancetype)resonatorWithData:(NSDictionary *)data forPortal:(Portal *)portal {
+    DeployedResonator *resonator = [DeployedResonator MR_createEntity];
+    [resonator updateWithData:data forPortal:(Portal *)portal];
+    return resonator;
+}
+
 @end

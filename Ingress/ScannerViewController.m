@@ -15,6 +15,7 @@
 #import "MKPolyline+PortalLink.h"
 #import "MKPolygon+ControlField.h"
 #import "MKCircle+Ingress.h"
+#import "DeployedResonator.h"
 #import "DeployedResonatorView.h"
 #import "XMOverlayView.h"
 #import "XMOverlay.h"
@@ -358,7 +359,7 @@
 #pragma mark - NSManagedObjectContext Did Change
 
 - (void)managedObjectContextObjectsDidChange:(NSNotification *)notification {
-	NSArray *deletedObject = [notification.userInfo[NSInsertedObjectsKey] allObjects];
+	NSArray *deletedObject = [notification.userInfo[NSDeletedObjectsKey] allObjects];
 	for (NSManagedObject *object in deletedObject) {
 		[self removeObjectFromMapView:object];
 	}

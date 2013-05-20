@@ -468,6 +468,24 @@
                                         </view>
                                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                     </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="DeviceCell" textLabel="gsu-sh-bhl" style="IBUITableViewCellStyleDefault" id="4r0-UE-Nva">
+                                        <rect key="frame" x="0.0" y="176" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Clear Cache" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="gsu-sh-bhl">
+                                                    <rect key="frame" x="10" y="0.0" width="300" height="43"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                                    <color key="textColor" red="0.86666666670000003" green="0.86666666670000003" blue="0.86666666670000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -2422,9 +2440,10 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="SqP-Ow-Sgr" firstAttribute="top" secondItem="LPK-gl-VrS" secondAttribute="top" type="default" id="NR2-0y-v7W"/>
                                     <constraint firstItem="G1b-Ok-CJl" firstAttribute="bottom" secondItem="1aa-eF-7rd" secondAttribute="bottom" type="default" id="NRT-bO-lGN"/>
                                     <constraint firstItem="6EI-dR-nxm" firstAttribute="leading" secondItem="Td6-71-ZLa" secondAttribute="leading" type="default" id="Nli-wq-fHD"/>
+                                    <constraint firstItem="pXL-eI-DBL" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="48" id="QYs-mC-uPq"/>
                                     <constraint firstAttribute="width" constant="116" type="user" id="SVG-nU-IMp"/>
+                                    <constraint firstItem="sTl-ca-2VI" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="52" id="VD4-vG-muI"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="bottom" secondItem="1aa-eF-7rd" secondAttribute="bottom" type="default" id="YV8-wM-Gbm"/>
-                                    <constraint firstItem="pXL-eI-DBL" firstAttribute="centerX" secondItem="sTl-ca-2VI" secondAttribute="centerX" type="default" id="Z13-fM-G4x"/>
                                     <constraint firstItem="qrg-gr-5hF" firstAttribute="bottom" secondItem="1aa-eF-7rd" secondAttribute="bottom" type="default" id="ZFB-US-wgX"/>
                                     <constraint firstItem="6EI-dR-nxm" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="8" id="ZPl-2w-Zah"/>
                                     <constraint firstItem="iI8-Vk-fD4" firstAttribute="trailing" secondItem="BQp-Pm-fjj" secondAttribute="trailing" type="default" id="anw-Qe-wzQ"/>
@@ -2432,16 +2451,15 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="iI8-Vk-fD4" firstAttribute="top" secondItem="ych-BV-d2s" secondAttribute="top" type="default" id="bqU-Eg-IvV"/>
                                     <constraint firstItem="ych-BV-d2s" firstAttribute="top" secondItem="EUM-hs-RCw" secondAttribute="top" type="default" id="cCQ-Af-khM"/>
                                     <constraint firstItem="GI8-4l-eUD" firstAttribute="trailing" secondItem="1uc-G7-RfQ" secondAttribute="trailing" type="default" id="dVr-xy-2hj"/>
+                                    <constraint firstItem="ppk-RV-jhe" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="81" id="duM-gK-jUp"/>
                                     <constraint firstItem="BQp-Pm-fjj" firstAttribute="top" secondItem="SqP-Ow-Sgr" secondAttribute="top" type="default" id="eRx-cj-jOx"/>
                                     <constraint firstItem="KLX-Br-DtD" firstAttribute="centerX" secondItem="zEQ-0c-NAe" secondAttribute="centerX" type="default" id="eZq-KU-qya"/>
                                     <constraint firstItem="iI8-Vk-fD4" firstAttribute="leading" secondItem="BQp-Pm-fjj" secondAttribute="leading" type="default" id="f5x-ki-SeX"/>
                                     <constraint firstItem="KLX-Br-DtD" firstAttribute="trailing" secondItem="1aa-eF-7rd" secondAttribute="trailing" type="default" id="fDL-iF-iv7"/>
                                     <constraint firstItem="TFw-BM-yYy" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" type="default" id="fx0-vX-Hra"/>
                                     <constraint firstItem="NAI-t7-cTU" firstAttribute="centerX" secondItem="ych-BV-d2s" secondAttribute="centerX" type="default" id="h0O-sY-MEv"/>
-                                    <constraint firstItem="ppk-RV-jhe" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="82" id="hVf-A6-p0P"/>
                                     <constraint firstItem="GI8-4l-eUD" firstAttribute="centerX" secondItem="A9n-5u-eiN" secondAttribute="centerX" type="default" id="i5V-gv-Huo"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" type="default" id="iGS-3g-MHq"/>
-                                    <constraint firstItem="pXL-eI-DBL" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="47" id="jgY-mn-vVm"/>
                                     <constraint firstItem="A9n-5u-eiN" firstAttribute="baseline" secondItem="iI8-Vk-fD4" secondAttribute="baseline" type="default" id="k4t-B6-wrL"/>
                                     <constraint firstItem="SqP-Ow-Sgr" firstAttribute="baseline" secondItem="LPK-gl-VrS" secondAttribute="baseline" type="default" id="kQc-Pw-viQ"/>
                                     <constraint firstItem="NAI-t7-cTU" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" type="default" id="lDE-Gt-pQ8"/>
