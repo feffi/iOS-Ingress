@@ -8,6 +8,7 @@
 
 #import "DeployedResonatorView.h"
 #import "MKCircle+Ingress.h"
+#import "GlowingLabel.h"
 
 @implementation DeployedResonatorView
 
@@ -23,49 +24,38 @@
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
-- (void)drawMapRect:(MKMapRect)mapRect zoomScale:(MKZoomScale)zoomScale inContext:(CGContextRef)context {
-	[super drawMapRect:mapRect zoomScale:zoomScale inContext:context];
-	
-	if (damageDict) {
-		
-		int damagePercent = ([damageDict[@"damageAmount"] floatValue]/(float)[API maxEnergyForResonatorLevel:self.circle.deployedResonator.level])*100;
-
-		if (damagePercent > 0) {
-			@synchronized([DeployedResonatorView class]) {
-
-				UIGraphicsPushContext(context);
-				CGContextSaveGState(context);
-				CGRect overallCGRect = [self rectForMapRect:self.overlay.boundingMapRect];
-				overallCGRect.origin.x -= 20;
-				overallCGRect.size.width += 40;
-				overallCGRect.origin.y -= 24;
-				[[UIColor redColor] set];
-				[[NSString stringWithFormat:@"-%d%%", damagePercent] drawInRect:overallCGRect withFont:[UIFont systemFontOfSize:18] lineBreakMode:NSLineBreakByClipping alignment:NSTextAlignmentCenter];
-				CGContextRestoreGState(context);
-				UIGraphicsPopContext();
-				
-			}
-		}
-		
-		dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC));
-		dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-			
-			if ([damageDict[@"destoryed"] boolValue]) {
-				[[[AppDelegate instance] mapView] removeOverlay:self.circle];
-			}
-			
-			damageDict = nil;
-			[self setNeedsDisplay];
-			
-		});
-		
-	}
-	
-}
-
 - (void)damage:(NSNotification *)notification {
 	damageDict = notification.userInfo;
-	[self setNeedsDisplay];
+    
+    int damagePercent = ([damageDict[@"damageAmount"] floatValue]/(float)[API maxEnergyForResonatorLevel:self.circle.deployedResonator.level])*100;
+    
+    if (damagePercent > 0) {
+        GlowingLabel *damageText = [[GlowingLabel alloc] init];
+        damageText.text = [NSString stringWithFormat:@"-%d%%", damagePercent];
+        damageText.font = [UIFont fontWithName:@"Helvetica" size:80];
+        damageText.textColor = [UIColor redColor];
+        damageText.backgroundColor = [UIColor clearColor];
+        [damageText sizeToFit];
+        damageText.center = CGPointMake(damageText.center.x - damageText.frame.size.width/2, damageText.center.y - damageText.frame.size.height);
+        damageText.alpha = 0;
+        [self addSubview:damageText];
+        
+        
+        [UIView animateWithDuration:0.5 animations:^{
+            damageText.alpha = 1;
+            damageText.center = CGPointMake(damageText.center.x, damageText.center.y + damageText.frame.size.height/2);
+        } completion:^(BOOL finished) {
+            [UIView animateWithDuration:2 delay:2 options:UIViewAnimationCurveEaseOut animations:^{
+                damageText.alpha = 0;
+                damageText.center = CGPointMake(damageText.center.x, damageText.center.y + damageText.frame.size.height);
+            } completion:^(BOOL finished) {
+                [damageText removeFromSuperview];
+                if ([damageDict[@"destroyed"] boolValue]) {
+                    [[[AppDelegate instance] mapView] removeOverlay:self.circle];
+                }
+            }];
+        }];
+    }
 }
 
 @end

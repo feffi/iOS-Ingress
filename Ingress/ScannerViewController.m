@@ -365,7 +365,7 @@
 #pragma mark - NSManagedObjectContext Did Change
 
 - (void)managedObjectContextObjectsDidChange:(NSNotification *)notification {
-	NSArray *deletedObject = [notification.userInfo[NSInsertedObjectsKey] allObjects];
+	NSArray *deletedObject = [notification.userInfo[NSDeletedObjectsKey] allObjects];
 	for (NSManagedObject *object in deletedObject) {
 		[self removeObjectFromMapView:object];
 	}
