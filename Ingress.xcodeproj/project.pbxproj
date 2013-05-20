@@ -33,6 +33,9 @@
 		FA3BD78C17356424004F5ED5 /* device.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3BD78A17356424004F5ED5 /* device.png */; };
 		FA3BD78D17356424004F5ED5 /* device@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3BD78B17356424004F5ED5 /* device@2x.png */; };
 		FA3BD78F1735B704004F5ED5 /* blue_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3BD78E1735B704004F5ED5 /* blue_bg@2x.png */; };
+		FA3CC8F91744D20100428FB7 /* shield_common@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3CC8F61744D20100428FB7 /* shield_common@2x.png */; };
+		FA3CC8FA1744D20100428FB7 /* shield_rare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3CC8F71744D20100428FB7 /* shield_rare@2x.png */; };
+		FA3CC8FB1744D20100428FB7 /* shield_veryrare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3CC8F81744D20100428FB7 /* shield_veryrare@2x.png */; };
 		FA3E8AEC17267F6700673665 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3E8AEB17267F6700673665 /* TPKeyboardAvoidingScrollView.m */; };
 		FA3FC30E173656AC009CD94A /* MissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3FC30D173656AC009CD94A /* MissionViewController.m */; };
 		FA3FC3111736603B009CD94A /* ScrollTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3FC3101736603B009CD94A /* ScrollTextView.m */; };
@@ -106,7 +109,7 @@
 		FA6EF957172D1C490004905F /* trackImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EF956172D1C490004905F /* trackImage@2x.png */; };
 		FA6EF960172D2D360004905F /* progressImage-aliens@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EF95E172D2D350004905F /* progressImage-aliens@2x.png */; };
 		FA6EF961172D2D360004905F /* progressImage-resistance@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EF95F172D2D360004905F /* progressImage-resistance@2x.png */; };
-		FA7792591738F6040019462E /* Defaulta-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7792581738F6040019462E /* Defaulta-568h@2x.png */; };
+		FA7792591738F6040019462E /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA7792581738F6040019462E /* Default-568h@2x.png */; };
 		FA779AAB16A55FC40080B62A /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA779AAA16A55FC40080B62A /* AVFoundation.framework */; };
 		FA7AC9D816D14C5400505404 /* SoundManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7AC9D716D14C5400505404 /* SoundManager.m */; };
 		FA7BCEDE16B535B0007636C8 /* MKCircle+Ingress.m in Sources */ = {isa = PBXBuildFile; fileRef = FA7BCEDD16B535B0007636C8 /* MKCircle+Ingress.m */; };
@@ -317,6 +320,9 @@
 		FA3BD78A17356424004F5ED5 /* device.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = device.png; sourceTree = "<group>"; };
 		FA3BD78B17356424004F5ED5 /* device@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "device@2x.png"; sourceTree = "<group>"; };
 		FA3BD78E1735B704004F5ED5 /* blue_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue_bg@2x.png"; sourceTree = "<group>"; };
+		FA3CC8F61744D20100428FB7 /* shield_common@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shield_common@2x.png"; sourceTree = "<group>"; };
+		FA3CC8F71744D20100428FB7 /* shield_rare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shield_rare@2x.png"; sourceTree = "<group>"; };
+		FA3CC8F81744D20100428FB7 /* shield_veryrare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shield_veryrare@2x.png"; sourceTree = "<group>"; };
 		FA3E8AEA17267F6700673665 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
 		FA3E8AEB17267F6700673665 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		FA3FC30C173656AC009CD94A /* MissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MissionViewController.h; sourceTree = "<group>"; };
@@ -411,7 +417,7 @@
 		FA6EF956172D1C490004905F /* trackImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackImage@2x.png"; sourceTree = "<group>"; };
 		FA6EF95E172D2D350004905F /* progressImage-aliens@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progressImage-aliens@2x.png"; sourceTree = "<group>"; };
 		FA6EF95F172D2D360004905F /* progressImage-resistance@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "progressImage-resistance@2x.png"; sourceTree = "<group>"; };
-		FA7792581738F6040019462E /* Defaulta-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Defaulta-568h@2x.png"; path = "../Defaulta-568h@2x.png"; sourceTree = "<group>"; };
+		FA7792581738F6040019462E /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		FA779AAA16A55FC40080B62A /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		FA7AC9D116D0116800505404 /* Sound */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Sound; path = Ingress/Sound; sourceTree = "<group>"; };
 		FA7AC9D616D14C5400505404 /* SoundManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoundManager.h; sourceTree = "<group>"; };
@@ -1027,6 +1033,9 @@
 			children = (
 				FACD4FFC16A428A80077837F /* marker_images */,
 				FAF5A90116A7449C00EB42CF /* Resonators */,
+				FA3CC8F61744D20100428FB7 /* shield_common@2x.png */,
+				FA3CC8F71744D20100428FB7 /* shield_rare@2x.png */,
+				FA3CC8F81744D20100428FB7 /* shield_veryrare@2x.png */,
 				FA3BD78E1735B704004F5ED5 /* blue_bg@2x.png */,
 				FA3FC31217369E4D009CD94A /* green_bg@2x.png */,
 				FA3BD745173514D5004F5ED5 /* nudge_callout@2x.png */,
@@ -1920,7 +1929,7 @@
 				FAEA5849169C7E7500E2F502 /* Ingress-Prefix.pch */,
 				FAEA584D169C7E7500E2F502 /* Default.png */,
 				FAEA584F169C7E7500E2F502 /* Default@2x.png */,
-				FA7792581738F6040019462E /* Defaulta-568h@2x.png */,
+				FA7792581738F6040019462E /* Default-568h@2x.png */,
 				FAEA586A169C844400E2F502 /* Icon-72.png */,
 				FAEA5868169C842D00E2F502 /* Icon-57.png */,
 				FAEA586C169C858400E2F502 /* Icon-114.png */,
@@ -2134,9 +2143,12 @@
 				FA3BD78D17356424004F5ED5 /* device@2x.png in Resources */,
 				FA3BD78F1735B704004F5ED5 /* blue_bg@2x.png in Resources */,
 				FA3FC31317369E4D009CD94A /* green_bg@2x.png in Resources */,
-				FA7792591738F6040019462E /* Defaulta-568h@2x.png in Resources */,
+				FA7792591738F6040019462E /* Default-568h@2x.png in Resources */,
 				FA859F19173C3537002A2117 /* ada_refactor@2x.png in Resources */,
 				FA859F1A173C3537002A2117 /* jarvis_virus@2x.png in Resources */,
+				FA3CC8F91744D20100428FB7 /* shield_common@2x.png in Resources */,
+				FA3CC8FA1744D20100428FB7 /* shield_rare@2x.png in Resources */,
+				FA3CC8FB1744D20100428FB7 /* shield_veryrare@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

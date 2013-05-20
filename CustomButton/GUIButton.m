@@ -13,39 +13,60 @@
 @synthesize disabled = _disabled;
 @synthesize errorString = _errorString;
 
+- (id)init {
+    self = [super init];
+    if (self) {
+		[self setup];
+    }
+    return self;
+}
+
+- (id)initWithFrame:(CGRect)frame {
+    self = [super initWithFrame:frame];
+    if (self) {
+		[self setup];
+    }
+    return self;
+}
+
 - (id)initWithCoder:(NSCoder *)aDecoder {
     self = [super initWithCoder:aDecoder];
     if (self) {
-		
-		_disabled = NO;
-		_errorString = nil;
-		
-		UIImage *bgImage;
-		
-		bgImage = [[UIImage imageNamed:@"default_btn"] stretchableImageWithLeftCapWidth:2 topCapHeight:12];
-		[self setBackgroundImage:bgImage forState:UIControlStateNormal];
-		
-		bgImage = [[UIImage imageNamed:@"default_btn_down"] stretchableImageWithLeftCapWidth:2 topCapHeight:12];
-		[self setBackgroundImage:bgImage forState:UIControlStateHighlighted];
-		
-		bgImage = [[UIImage imageNamed:@"default_btn_disabled"] stretchableImageWithLeftCapWidth:2 topCapHeight:12];
-		[self setBackgroundImage:bgImage forState:UIControlStateApplication];
-		
-		[self setTitleColor:[UIColor colorWithRed:144./255. green:1 blue:1 alpha:1] forState:UIControlStateNormal];
-		[self setTitleColor:[UIColor colorWithRed:144./255. green:1 blue:1 alpha:1] forState:UIControlStateHighlighted];
-		[self setTitleColor:[UIColor lightGrayColor] forState:UIControlStateApplication];
-
-		self.titleLabel.layer.shadowColor = [self titleColorForState:UIControlStateNormal].CGColor;
-		self.titleLabel.layer.shadowOffset = CGSizeZero;
-		self.titleLabel.layer.shadowRadius = 16/5;
-		self.titleLabel.layer.shadowOpacity = 1;
-		self.titleLabel.layer.shouldRasterize = YES;
-		self.titleLabel.layer.masksToBounds = NO;
-
-		[self addTarget:self action:@selector(touchUp) forControlEvents:UIControlEventTouchUpInside];
-
+		[self setup];
     }
     return self;
+}
+
+- (void)setup {
+	
+	_disabled = NO;
+	_errorString = nil;
+
+	UIImage *bgImage;
+
+	bgImage = [[UIImage imageNamed:@"default_btn"] stretchableImageWithLeftCapWidth:2 topCapHeight:12];
+	[self setBackgroundImage:bgImage forState:UIControlStateNormal];
+
+	bgImage = [[UIImage imageNamed:@"default_btn_down"] stretchableImageWithLeftCapWidth:2 topCapHeight:12];
+	[self setBackgroundImage:bgImage forState:UIControlStateHighlighted];
+
+	bgImage = [[UIImage imageNamed:@"default_btn_disabled"] stretchableImageWithLeftCapWidth:2 topCapHeight:12];
+	[self setBackgroundImage:bgImage forState:UIControlStateApplication];
+
+	[self setTitleColor:[UIColor colorWithRed:144./255. green:1 blue:1 alpha:1] forState:UIControlStateNormal];
+	[self setTitleColor:[UIColor colorWithRed:144./255. green:1 blue:1 alpha:1] forState:UIControlStateHighlighted];
+	[self setTitleColor:[UIColor lightGrayColor] forState:UIControlStateApplication];
+
+	self.titleLabel.layer.shadowColor = [self titleColorForState:UIControlStateNormal].CGColor;
+	self.titleLabel.layer.shadowOffset = CGSizeZero;
+	self.titleLabel.layer.shadowRadius = 16/5;
+	self.titleLabel.layer.shadowOpacity = 1;
+	self.titleLabel.layer.shouldRasterize = YES;
+	self.titleLabel.layer.masksToBounds = NO;
+
+	[self removeTarget:self action:NULL forControlEvents:UIControlEventAllEvents];
+	[self addTarget:self action:@selector(touchUp) forControlEvents:UIControlEventTouchUpInside];
+	
 }
 
 - (UIControlState)state {

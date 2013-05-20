@@ -60,17 +60,20 @@
 	portalActionsVC.portal = self.portal;
 	portalActionsVC.view.frame = CGRectMake(0, 0, viewWidth, 280);
 	portalActionsVC.imageView = backgroundImageView;
+	[self addChildViewController:portalActionsVC];
 	[_scrollView addSubview:infoContainerView];
 
 	portalInfoVC = [storyboard instantiateViewControllerWithIdentifier:@"PortalInfoViewController"];
 	portalInfoVC.portal = self.portal;
 	portalInfoVC.view.frame = CGRectMake(viewWidth, 0, viewWidth, viewHeight);
+	[self addChildViewController:portalInfoVC];
 	[_scrollView addSubview:portalInfoVC.view];
 
 	if (canUpgrade) {
 		portalUpgradeVC = [storyboard instantiateViewControllerWithIdentifier:@"PortalUpgradeViewController"];
 		portalUpgradeVC.portal = self.portal;
 		portalUpgradeVC.view.frame = CGRectMake(viewWidth*2, 0, viewWidth, viewHeight);
+		[self addChildViewController:portalUpgradeVC];
 		[_scrollView addSubview:portalUpgradeVC.view];
 	}
 

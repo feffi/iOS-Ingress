@@ -127,8 +127,14 @@
 	} else {
 		rechargeButton.enabled = NO;
 		linkButton.enabled = NO;
-		rechargeButton.errorString = @"Enemy Portal";
-		linkButton.errorString = @"Enemy Portal";
+
+		if ([self.portal.controllingTeam isEqualToString:@"NEUTRAL"]) {
+			rechargeButton.errorString = @"Neutral Portal";
+			linkButton.errorString = @"Neutral Portal";
+		} else {
+			rechargeButton.errorString = @"Enemy Portal";
+			linkButton.errorString = @"Enemy Portal";
+		}
 	}
 	
 }
@@ -264,18 +270,12 @@
 - (IBAction)link:(GUIButton *)sender {
 	
 	if (sender.disabled) { return; }
-	
-	[self performSegueWithIdentifier:@"PortalLinkPushKeysSegue" sender:self];
-	
-}
 
-#pragma mark - Storyboard
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+	PortalKeysViewController *portalKeysVC = [storyboard instantiateViewControllerWithIdentifier:@"PortalKeysViewController"];
+	portalKeysVC.linkingPortal = self.portal;
+	[self.navigationController pushViewController:portalKeysVC animated:YES]; //.parentViewController
 
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	if ([segue.identifier isEqualToString:@"PortalLinkPushKeysSegue"]) {
-		PortalKeysViewController *vc = segue.destinationViewController;
-		vc.linkingPortal = self.portal;
-	}
 }
 
 @end

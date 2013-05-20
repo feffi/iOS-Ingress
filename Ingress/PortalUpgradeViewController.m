@@ -8,21 +8,25 @@
 
 #import "PortalUpgradeViewController.h"
 
-@implementation PortalUpgradeViewController
+@implementation PortalUpgradeViewController {
+	int currentSlotForDeploy;
+}
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-//	CGFloat viewWidth = [UIScreen mainScreen].bounds.size.width;
-//	CGFloat viewHeight = [UIScreen mainScreen].bounds.size.height-113;
-//
-//	_carousel = [[iCarousel alloc] initWithFrame:self.view.bounds];
-//	_carousel.frame = CGRectMake(0, 100, viewWidth, viewHeight-110);
+	CGFloat viewWidth = [UIScreen mainScreen].bounds.size.width;
+	CGFloat viewHeight = [UIScreen mainScreen].bounds.size.height-113;
+
+	_carousel = [[iCarousel alloc] initWithFrame:self.view.bounds];
+	_carousel.frame = CGRectMake(0, 100, viewWidth, viewHeight-110);
+	_carousel.backgroundColor = self.view.backgroundColor;
 //	_carousel.backgroundColor = [UIColor colorWithRed:0 green:.5 blue:1 alpha:.5];
-//	_carousel.type = iCarouselTypeCylinder;
-//    _carousel.delegate = self;
-//    _carousel.dataSource = self;
-//	[self.view addSubview:_carousel];
+	_carousel.type = iCarouselTypeCylinder;
+    _carousel.delegate = self;
+    _carousel.dataSource = self;
+	[self.view addSubview:_carousel];
+	[_carousel scrollToItemAtIndex:6 animated:NO];
 
 }
 
@@ -31,7 +35,7 @@
     _carousel.dataSource = nil;
 }
 
-- (void)viewDidLayoutSubviews {
+- (void)viewWillLayoutSubviews {
 	[self refresh];
 }
 
@@ -47,7 +51,7 @@
 		if (self.portal.controllingTeam && ([self.portal.controllingTeam isEqualToString:[API sharedInstance].playerInfo[@"team"]] || [self.portal.controllingTeam isEqualToString:@"NEUTRAL"])) {
 			button.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:10];
 			[button setTitle:@"DEPLOY" forState:UIControlStateNormal];
-			tmpResonators[i] = @0;
+			tmpResonators[i] = [NSNull null];
 		} else {
 			[button setHidden:YES];
 		}
@@ -64,9 +68,23 @@
 		DeployedMod *mod = [DeployedMod MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"portal = %@ && slot = %d", self.portal, i]];
 
 		if ([mod isKindOfClass:[DeployedShield class]]) {
-			[button setTitle:[[(DeployedShield *)mod rarityStr] stringByAppendingString:@"\nShield"] forState:UIControlStateNormal];
+//			[button setTitle:[[(DeployedShield *)mod rarityStr] stringByAppendingString:@"\nShield"] forState:UIControlStateNormal];
+			switch ([(DeployedShield *)mod rarity]) {
+				case PortalShieldRarityCommon:
+					[button setImage:[UIImage imageNamed:@"shield_common.png"] forState:UIControlStateNormal];
+					break;
+				case PortalShieldRarityRare:
+					[button setImage:[UIImage imageNamed:@"shield_rare.png"] forState:UIControlStateNormal];
+					break;
+				case PortalShieldRarityVeryRare:
+					[button setImage:[UIImage imageNamed:@"shield_veryrare.png"] forState:UIControlStateNormal];
+					break;
+				default:
+					[button setImage:[UIImage imageNamed:@"shield_common.png"] forState:UIControlStateNormal];
+					break;
+			}
 		} else {
-			[button setTitle:@"-" forState:UIControlStateNormal];
+			[button setImage:nil forState:UIControlStateNormal];
 		}
 
 		if (self.portal.controllingTeam && ([self.portal.controllingTeam isEqualToString:[API sharedInstance].playerInfo[@"team"]] || [self.portal.controllingTeam isEqualToString:@"NEUTRAL"])) {
@@ -83,10 +101,10 @@
 
 			int slot = resonator.slot;
 
-			if ([self.portal.controllingTeam isEqualToString:[API sharedInstance].playerInfo[@"team"]]) {
+			if (self.portal.controllingTeam && ([self.portal.controllingTeam isEqualToString:[API sharedInstance].playerInfo[@"team"]] || [self.portal.controllingTeam isEqualToString:@"NEUTRAL"])) {
 				UIButton *button = (UIButton *)[self.view viewWithTag:50+slot];
 				[button setTitle:@"UPGRADE" forState:UIControlStateNormal];
-				tmpResonators[slot] = @1;
+				tmpResonators[slot] = resonator;
 			}
 
 		}
@@ -94,6 +112,8 @@
 	}
 
 	_resonators = tmpResonators;
+
+	[_carousel reloadData];
 	
 }
 
@@ -104,27 +124,48 @@
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view {
+
+	DeployedResonator *resonator = _resonators[index];
 	
     UILabel *label = nil;
+	GUIButton *deployButton = nil;
 
-    if (view == nil) {
-		//        view = [[[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 200.0f, 200.0f)] autorelease];
-		//        ((UIImageView *)view).image = [UIImage imageNamed:@"page.png"];
-		//        view.contentMode = UIViewContentModeCenter;
+    if (!view) {
+
 		view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
-		view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:.5];
+		view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:.75];
 
-        label = [[UILabel alloc] initWithFrame:view.bounds];
+        label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 136)];
         label.backgroundColor = [UIColor clearColor];
+        label.textColor = [UIColor blackColor];
         label.textAlignment = NSTextAlignmentCenter;
-        label.font = [label.font fontWithSize:50];
+        label.font = [label.font fontWithSize:30];
+		label.numberOfLines = 0;
         label.tag = 1;
         [view addSubview:label];
+
+		deployButton = [[GUIButton alloc] initWithFrame:CGRectMake(20, 136, 160, 44)];
+		[deployButton addTarget:self action:@selector(resonatorButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        deployButton.tag = 2;
+        [view addSubview:deployButton];
+
     } else {
         label = (UILabel *)[view viewWithTag:1];
+        deployButton = (GUIButton *)[view viewWithTag:2];
     }
 
-    label.text = [@(index+1) stringValue];
+	view.tag = index;
+	NSString *resonatorOctant = @[@"E", @"SE", @"S", @"SW", @"W", @"NW", @"N", @"NE"][index];
+
+	if (![resonator isKindOfClass:[NSNull class]]) {
+		label.text = [NSString stringWithFormat:@"Octant: %@\nLevel: %d\n%d XM", resonatorOctant, resonator.level, resonator.energy];
+
+		[deployButton setTitle:@"UPGRADE" forState:UIControlStateNormal];
+	} else {
+		label.text = [NSString stringWithFormat:@"Octant: %@", resonatorOctant];
+
+		[deployButton setTitle:@"DEPLOY" forState:UIControlStateNormal];
+	}
 
     return view;
 	
@@ -146,6 +187,10 @@
 	
 }
 
+//- (void)carouselCurrentItemIndexDidChange:(iCarousel *)carousel {
+//	
+//}
+
 #pragma mark - Resonators
 
 - (IBAction)resonatorButtonPressed:(GUIButton *)sender {
@@ -160,7 +205,7 @@
 
 	_levelChooser = [LevelChooserViewController levelChooserWithTitle:@"Choose resonator level" completionHandler:^(int level) {
 		[HUD hide:YES];
-		[self deployResonatorOfLevel:level toSlot:sender.tag-50];
+		[self deployResonatorOfLevel:level toSlot:sender.superview.tag];
 		_levelChooser = nil;
 	}];
 	HUD.customView = _levelChooser.view;
@@ -174,7 +219,7 @@
 
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_resonator_power_up.aif"];
 
-	if ([_resonators[slot] intValue] == 0) {
+	if ([_resonators[slot] isKindOfClass:[NSNull class]]) {
 
 		Resonator *resonatorItem = [Resonator MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", level]];
 
@@ -232,7 +277,7 @@
 
 		}
 
-	} else if ([_resonators[slot] intValue] == 1) {
+	} else {
 
 		Resonator *resonatorItem = [Resonator MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", level]];
 
