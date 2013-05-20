@@ -15,6 +15,7 @@
 #import "MKPolyline+PortalLink.h"
 #import "MKPolygon+ControlField.h"
 #import "MKCircle+Ingress.h"
+#import "DeployedResonator.h"
 #import "DeployedResonatorView.h"
 #import "XMOverlayView.h"
 #import "XMOverlay.h"
@@ -175,11 +176,11 @@
 //	}
 //	refreshTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(refresh) userInfo:nil repeats:NO];
 
-	[_mapView removeAnnotations:_mapView.annotations];
-
-	NSMutableArray *overlays = [_mapView.overlays mutableCopy];
-    [overlays removeObject:_xmOverlay];
-	[_mapView removeOverlays:overlays];
+//	[_mapView removeAnnotations:_mapView.annotations];
+//
+//	NSMutableArray *overlays = [_mapView.overlays mutableCopy];
+//    [overlays removeObject:_xmOverlay];
+//	[_mapView removeOverlays:overlays];
 
 	[[API sharedInstance] getObjectsWithCompletionHandler:nil];
 }
