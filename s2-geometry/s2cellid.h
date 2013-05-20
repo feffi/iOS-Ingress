@@ -488,12 +488,8 @@ inline S2CellId S2CellId::End(int level) {
 ostream& operator<<(ostream& os, S2CellId const& id);
 
 #ifndef SWIG
-#ifdef __GNUC__
-#include <ext/hash_set>
-#else
-#include <hash_set>
-#endif
-namespace __gnu_cxx {
+#include <unordered_set>
+namespace std {
 
 
 template<> struct hash<S2CellId> {
