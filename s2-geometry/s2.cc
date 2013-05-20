@@ -182,7 +182,7 @@ int S2::RobustCCW(S2Point const& a, S2Point const& b, S2Point const& c) {
 // that we can verify that certain tests actually require the more advanced
 // techniques implemented by the first version.
 
-#define SIMULATION_OF_SIMPLICITY
+//#define SIMULATION_OF_SIMPLICITY
 #ifdef SIMULATION_OF_SIMPLICITY
 
 // Below we define a floating-point type with enough precision so that it can
