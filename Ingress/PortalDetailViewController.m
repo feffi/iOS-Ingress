@@ -31,7 +31,7 @@
 	self.navigationItem.titleView = viewSegmentedControl;
 
 	CGFloat viewWidth = [UIScreen mainScreen].bounds.size.width;
-	CGFloat viewHeight = [UIScreen mainScreen].bounds.size.height-113;
+	CGFloat viewHeight = [UIScreen mainScreen].bounds.size.height-69; //-113+44
 
 	_scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
 	_scrollView.delegate = self;
@@ -65,14 +65,14 @@
 
 	portalInfoVC = [storyboard instantiateViewControllerWithIdentifier:@"PortalInfoViewController"];
 	portalInfoVC.portal = self.portal;
-	portalInfoVC.view.frame = CGRectMake(viewWidth, 0, viewWidth, viewHeight);
+	portalInfoVC.view.frame = CGRectMake(viewWidth, 44, viewWidth, viewHeight-44);
 	[self addChildViewController:portalInfoVC];
 	[_scrollView addSubview:portalInfoVC.view];
 
 	if (canUpgrade) {
 		portalUpgradeVC = [storyboard instantiateViewControllerWithIdentifier:@"PortalUpgradeViewController"];
 		portalUpgradeVC.portal = self.portal;
-		portalUpgradeVC.view.frame = CGRectMake(viewWidth*2, 0, viewWidth, viewHeight);
+		portalUpgradeVC.view.frame = CGRectMake(viewWidth*2, 44, viewWidth, viewHeight-44);
 		[self addChildViewController:portalUpgradeVC];
 		[_scrollView addSubview:portalUpgradeVC.view];
 	}
