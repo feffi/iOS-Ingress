@@ -1575,11 +1575,31 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 						[resonator MR_deleteEntity];
 					}
 				} else {
-                    if (!resonator) {
-                        [DeployedResonator resonatorWithData:resonatorDict forPortal:portal];
-                    } else {
-                        [resonator updateWithData:resonatorDict forPortal:portal];
-                    }
+					
+//					if (!resonator) {
+//						[DeployedResonator resonatorWithData:resonatorDict forPortal:portal];
+//					} else {
+//						[resonator updateWithData:resonatorDict forPortal:portal];
+//					}
+
+					if ([resonatorDict[@"slot"] intValue] != i) {
+						NSLog(@"%d != %d", [resonatorDict[@"slot"] intValue], i);
+					}
+
+					if (!resonator) { resonator = [DeployedResonator MR_createEntity]; }
+					resonator.portal = portal;
+					resonator.slot = i;
+					resonator.energy = [resonatorDict[@"energyTotal"] intValue];
+					resonator.distanceToPortal = [resonatorDict[@"distanceToPortal"] intValue];
+					resonator.level = [resonatorDict[@"level"] intValue];
+
+					User *owner = [User MR_findFirstByAttribute:@"guid" withValue:resonatorDict[@"ownerGuid"]];
+					if (!owner) { owner = [User MR_createEntity]; }
+					owner.guid = resonatorDict[@"ownerGuid"];
+					resonator.owner = owner;
+
+					[portal addResonatorsObject:resonator];
+
 				}
 
 			}
