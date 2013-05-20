@@ -64,12 +64,9 @@
 			}
 			[[NSUserDefaults standardUserDefaults] synchronize];
 
-			[Item MR_truncateAll];
-			[User MR_truncateAll];
-			[DeployedMod MR_truncateAll];
-			[DeployedResonator MR_truncateAll];
-			[PortalLink MR_truncateAll];
-			[ControlField MR_truncateAll];
+			[MagicalRecord cleanUp];
+			[[NSFileManager defaultManager] removeItemAtURL:[NSPersistentStore MR_urlForStoreName:@"Ingress.sqlite"] error:nil];
+			[MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Ingress.sqlite"];
 
 			[self dismissViewControllerAnimated:YES completion:nil];
 
@@ -120,6 +117,14 @@
             
             break;
         }
+
+		case 4: {
+
+			[MagicalRecord cleanUp];
+			[[NSFileManager defaultManager] removeItemAtURL:[NSPersistentStore MR_urlForStoreName:@"Ingress.sqlite"] error:nil];
+			[MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Ingress.sqlite"];
+
+		}
 	}
 	
 }
