@@ -22,6 +22,7 @@
 
 	viewSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"Actions", @"Info"]];
 	viewSegmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;
+	viewSegmentedControl.tintColor = [UIColor darkGrayColor];
 	if (canUpgrade) {
 		[viewSegmentedControl insertSegmentWithTitle:@"Upgrade" atIndex:2 animated:NO];
 	}
@@ -31,7 +32,7 @@
 	self.navigationItem.titleView = viewSegmentedControl;
 
 	CGFloat viewWidth = [UIScreen mainScreen].bounds.size.width;
-	CGFloat viewHeight = [UIScreen mainScreen].bounds.size.height-69; //-113+44
+	CGFloat viewHeight = [UIScreen mainScreen].bounds.size.height-49; //-113+44+20
 
 	_scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
 	_scrollView.delegate = self;
@@ -65,14 +66,14 @@
 
 	portalInfoVC = [storyboard instantiateViewControllerWithIdentifier:@"PortalInfoViewController"];
 	portalInfoVC.portal = self.portal;
-	portalInfoVC.view.frame = CGRectMake(viewWidth, 44, viewWidth, viewHeight-44);
+	portalInfoVC.view.frame = CGRectMake(viewWidth, 64, viewWidth, viewHeight-64);
 	[self addChildViewController:portalInfoVC];
 	[_scrollView addSubview:portalInfoVC.view];
 
 	if (canUpgrade) {
 		portalUpgradeVC = [storyboard instantiateViewControllerWithIdentifier:@"PortalUpgradeViewController"];
 		portalUpgradeVC.portal = self.portal;
-		portalUpgradeVC.view.frame = CGRectMake(viewWidth*2, 44, viewWidth, viewHeight-44);
+		portalUpgradeVC.view.frame = CGRectMake(viewWidth*2, 64, viewWidth, viewHeight-64);
 		[self addChildViewController:portalUpgradeVC];
 		[_scrollView addSubview:portalUpgradeVC.view];
 	}

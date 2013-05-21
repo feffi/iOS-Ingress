@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "LevelChooserViewController.h"
 #import "GUIButton.h"
+#import "GlowingLabel.h"
 #import "iCarousel.h"
 
 @interface PortalUpgradeViewController : UIViewController <iCarouselDataSource, iCarouselDelegate> {

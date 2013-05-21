@@ -1285,7 +1285,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
         <!--Portal Detail View Controller-->
         <scene sceneID="tKq-tx-ryc">
             <objects>
-                <viewController id="EpT-PX-0Xb" customClass="PortalDetailViewController" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" id="EpT-PX-0Xb" customClass="PortalDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ROn-sT-oc0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2108,7 +2108,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
         <!--Portal Keys View Controller-->
         <scene sceneID="pOX-u1-cSZ">
             <objects>
-                <tableViewController storyboardIdentifier="PortalKeysViewController" id="pnd-0d-rSp" customClass="PortalKeysViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PortalKeysViewController" wantsFullScreenLayout="YES" id="pnd-0d-rSp" customClass="PortalKeysViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="V5K-Z3-PLK">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
