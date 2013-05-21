@@ -17,5 +17,6 @@
 @property (nonatomic, retain) NSString * guid;
 @property (nonatomic) BOOL mentionsYou;
 @property (nonatomic, retain) NSAttributedString *message;
+@property (nonatomic, retain) User *sender;
 
 @end
