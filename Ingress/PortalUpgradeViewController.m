@@ -132,12 +132,13 @@
 
     if (!view) {
 
-		view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
-		view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:.75];
+		view = [[GlowingLabel alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
+//		view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:.95];
+		view.backgroundColor = [UIColor colorWithRed:16.0/255.0 green:32.0/255.0 blue:34.0/255.0 alpha:0.95];
 
-        label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 200, 136)];
+        label = [[GlowingLabel alloc] initWithFrame:CGRectMake(0, 0, 200, 136)];
         label.backgroundColor = [UIColor clearColor];
-        label.textColor = [UIColor blackColor];
+        label.textColor = [UIColor whiteColor];
         label.textAlignment = NSTextAlignmentCenter;
         label.font = [label.font fontWithSize:30];
 		label.numberOfLines = 0;

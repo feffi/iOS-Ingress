@@ -18,6 +18,7 @@
 		FA143F7A16D526450007330F /* DeployedResonatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA143F7916D526450007330F /* DeployedResonatorView.m */; };
 		FA1739F716A827660004EE10 /* resonator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1739F616A827660004EE10 /* resonator@2x.png */; };
 		FA1739FA16A82CA30004EE10 /* xmp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1739F916A82CA30004EE10 /* xmp@2x.png */; };
+		FA17E903174BA212003C3E24 /* UIRefreshControl+Inset.m in Sources */ = {isa = PBXBuildFile; fileRef = FA17E902174BA212003C3E24 /* UIRefreshControl+Inset.m */; };
 		FA29CCF8171F05C6007FB43E /* TypeWriterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA29CCF7171F05C6007FB43E /* TypeWriterLabel.m */; };
 		FA32E883169F2D9F00D30E90 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E882169F2D9F00D30E90 /* API.m */; };
 		FA32E888169F657400D30E90 /* CommViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E887169F657400D30E90 /* CommViewController.m */; };
@@ -298,6 +299,8 @@
 		FA143F7916D526450007330F /* DeployedResonatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DeployedResonatorView.m; sourceTree = "<group>"; };
 		FA1739F616A827660004EE10 /* resonator@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "resonator@2x.png"; sourceTree = "<group>"; };
 		FA1739F916A82CA30004EE10 /* xmp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xmp@2x.png"; sourceTree = "<group>"; };
+		FA17E901174BA212003C3E24 /* UIRefreshControl+Inset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIRefreshControl+Inset.h"; sourceTree = "<group>"; };
+		FA17E902174BA212003C3E24 /* UIRefreshControl+Inset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+Inset.m"; sourceTree = "<group>"; };
 		FA29CCF6171F05C6007FB43E /* TypeWriterLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TypeWriterLabel.h; path = TypeWriterLabel/TypeWriterLabel.h; sourceTree = "<group>"; };
 		FA29CCF7171F05C6007FB43E /* TypeWriterLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TypeWriterLabel.m; path = TypeWriterLabel/TypeWriterLabel.m; sourceTree = "<group>"; };
 		FA32E881169F2D9F00D30E90 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = API.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -1237,6 +1240,8 @@
 		FA8C24D516B3257D000C8738 /* Custom Buttons */ = {
 			isa = PBXGroup;
 			children = (
+				FA17E901174BA212003C3E24 /* UIRefreshControl+Inset.h */,
+				FA17E902174BA212003C3E24 /* UIRefreshControl+Inset.m */,
 				FACF89DF16BBFD410071A03D /* GUIButton.h */,
 				FACF89E016BBFD410071A03D /* GUIButton.m */,
 				FA8C24D616B3257D000C8738 /* DarkPressedBackgroundButton.h */,
@@ -2289,6 +2294,7 @@
 				FA9153F1173E547B008E239C /* XMOverlay.m in Sources */,
 				FA39E146174166C200202259 /* Plext.m in Sources */,
 				FA39E1501742CA2D00202259 /* PortalUpgradeViewController.m in Sources */,
+				FA17E903174BA212003C3E24 /* UIRefreshControl+Inset.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
