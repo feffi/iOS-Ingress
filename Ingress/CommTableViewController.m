@@ -123,7 +123,7 @@
     Plext *plext = [self.fetchedResultsController objectAtIndexPath:indexPath];
     User *sender = plext.sender;
     
-    if ( ! [sender.guid isEqualToString:[[API sharedInstance] playerInfo][@"guid"]]) {
+    if (sender && ( ! [sender.guid isEqualToString:[[API sharedInstance] playerInfo][@"guid"]])) {
         CommViewController *commVC = (CommViewController *)self.parentViewController;
         [commVC mentionUser:plext.sender];
     }
