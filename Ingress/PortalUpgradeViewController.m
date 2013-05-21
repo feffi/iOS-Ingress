@@ -124,50 +124,49 @@
 }
 
 - (UIView *)carousel:(iCarousel *)carousel viewForItemAtIndex:(NSUInteger)index reusingView:(UIView *)view {
-
+    
 	DeployedResonator *resonator = _resonators[index];
 	
     UILabel *label = nil;
 	GUIButton *deployButton = nil;
-
+    
     if (!view) {
-
+        
 		view = [[GlowingLabel alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
-//		view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:.95];
+        //		view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:.95];
 		view.backgroundColor = [UIColor colorWithRed:16.0/255.0 green:32.0/255.0 blue:34.0/255.0 alpha:0.95];
-
+        
         label = [[GlowingLabel alloc] initWithFrame:CGRectMake(0, 0, 200, 136)];
         label.backgroundColor = [UIColor clearColor];
         label.textColor = [UIColor whiteColor];
         label.textAlignment = NSTextAlignmentCenter;
-        label.font = [label.font fontWithSize:30];
+        label.font = [label.font fontWithSize:25];
 		label.numberOfLines = 0;
         label.tag = 1;
         [view addSubview:label];
-
+        
 		deployButton = [[GUIButton alloc] initWithFrame:CGRectMake(20, 136, 160, 44)];
 		[deployButton addTarget:self action:@selector(resonatorButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         deployButton.tag = 2;
         [view addSubview:deployButton];
-
+        
     } else {
         label = (UILabel *)[view viewWithTag:1];
         deployButton = (GUIButton *)[view viewWithTag:2];
     }
-
+    
 	view.tag = index;
 	NSString *resonatorOctant = @[@"E", @"SE", @"S", @"SW", @"W", @"NW", @"N", @"NE"][index];
-
+    
 	if (![resonator isKindOfClass:[NSNull class]]) {
-		label.text = [NSString stringWithFormat:@"Octant: %@\nLevel: %d\n%d XM", resonatorOctant, resonator.level, resonator.energy];
-
+		label.text = [NSString stringWithFormat:@"Octant: %@\nLevel: %d\n%d XM \n%@", resonatorOctant, resonator.level, resonator.energy, resonator.owner.nickname];
 		[deployButton setTitle:@"UPGRADE" forState:UIControlStateNormal];
 	} else {
 		label.text = [NSString stringWithFormat:@"Octant: %@", resonatorOctant];
-
+        
 		[deployButton setTitle:@"DEPLOY" forState:UIControlStateNormal];
 	}
-
+    
     return view;
 	
 }
