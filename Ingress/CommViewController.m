@@ -50,10 +50,10 @@
 
 - (void)mentionUser:(User *)user {
 	NSString *mentionToken = [NSString stringWithFormat:@"@%@", user.nickname];
-	NSString *input = transmitTextField.text;
+	NSString *input = [transmitTextField.text stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
 
 	if ([input rangeOfString:mentionToken].location == NSNotFound) {
-		input = [NSString stringWithFormat:@"%@ %@ ", [input stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]], mentionToken];
+		input = [NSString stringWithFormat:@"%@%@%@ ", input, (input.length > 0) ? @" " : @"", mentionToken];
 		transmitTextField.text = input;
 	}
 
