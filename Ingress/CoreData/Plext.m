@@ -16,5 +16,6 @@
 @dynamic guid;
 @dynamic mentionsYou;
 @dynamic message;
+@dynamic sender;
 
 @end
