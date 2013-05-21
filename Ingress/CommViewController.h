@@ -21,6 +21,7 @@
 }
 
 - (IBAction)groupChanged:(UISegmentedControl *)sender;
+- (void)mentionUser:(User *)user;
 - (IBAction)transmit;
 
 @end
