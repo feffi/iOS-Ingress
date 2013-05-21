@@ -54,9 +54,10 @@
 
 	if ([input rangeOfString:mentionToken].location == NSNotFound) {
 		input = [NSString stringWithFormat:@"%@ %@ ", [input stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]], mentionToken];
+		transmitTextField.text = input;
 	}
 
-	transmitTextField.text = input;
+	[transmitTextField becomeFirstResponder];
 }
 
 - (IBAction)transmit {
