@@ -600,6 +600,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		}
 		
 		self.playerInfo = [@{
+            @"guid": jsonObject[@"result"][@"playerEntity"][0],
 			@"nickname": jsonObject[@"result"][@"nickname"],
 			@"team": jsonObject[@"result"][@"playerEntity"][2][@"controllingTeam"][@"team"],
 			@"ap": jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"ap"],
@@ -1831,6 +1832,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	}
 
 	self.playerInfo = [@{
+        @"guid": playerEntity[0],
 		@"nickname": self.playerInfo[@"nickname"],
 		@"team": playerEntity[2][@"controllingTeam"][@"team"],
 		@"ap": playerEntity[2][@"playerPersonal"][@"ap"],
