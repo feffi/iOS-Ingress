@@ -13,18 +13,10 @@
 
 const CLLocationDegrees kLatLonEarthRadius = 6371.0;
 
-double radians(double degrees) {
-    return degrees * M_PI / 180.0;
-}
-
-double degrees(double radians) {
-    return radians * 180.0 / M_PI;
-}
-
 CLLocationCoordinate2D LatLonDestPoint(CLLocationCoordinate2D origin, double bearing, CLLocationDistance distance) {
-    double brng = radians(bearing);
-    double lat1 = radians(origin.latitude);
-    double lon1 = radians(origin.longitude);
+    double brng = GLKMathDegreesToRadians(bearing);
+    double lat1 = GLKMathDegreesToRadians(origin.latitude);
+    double lon1 = GLKMathDegreesToRadians(origin.longitude);
 
     CLLocationDegrees lat2 = asin(sin(lat1) * cos(distance / kLatLonEarthRadius) +
                                   cos(lat1) * sin(distance / kLatLonEarthRadius) * cos(brng));
@@ -34,8 +26,8 @@ CLLocationCoordinate2D LatLonDestPoint(CLLocationCoordinate2D origin, double bea
 	
     CLLocationCoordinate2D coordinate;
     if (! (isnan(lat2) || isnan(lon2))) {
-        coordinate.latitude = degrees(lat2);
-        coordinate.longitude = degrees(lon2);
+        coordinate.latitude = GLKMathRadiansToDegrees(lat2);
+        coordinate.longitude = GLKMathRadiansToDegrees(lon2);
     }
 
     return coordinate;
