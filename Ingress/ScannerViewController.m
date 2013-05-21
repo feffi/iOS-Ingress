@@ -194,7 +194,7 @@
 	float energy = [playerInfo[@"energy"] floatValue];
 	float maxEnergy = [API maxXmForLevel:level];
 
-	[apLabel setText:[NSString stringWithFormat:@"%d AP", ap]];
+	[apLabel setText:[NSString stringWithFormat:@"%d / %d AP", ap, maxAp]];
 	[xmLabel setText:[NSString stringWithFormat:@"%d XM", (int)energy]];
 
 	NSMutableParagraphStyle *pStyle = [NSMutableParagraphStyle new];
