@@ -7,6 +7,7 @@
 //
 
 #import "CommTableViewController.h"
+#import "CommViewController.h"
 
 #import "CommViewController.h"
 
@@ -118,15 +119,14 @@
 	
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    Plext *plext = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    User *sender = plext.sender;
-    
-    if (sender && ( ! [sender.guid isEqualToString:[[API sharedInstance] playerInfo][@"guid"]])) {
-        CommViewController *commVC = (CommViewController *)self.parentViewController;
-        [commVC mentionUser:plext.sender];
-    }
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	Plext *plext = [self.fetchedResultsController objectAtIndexPath:indexPath];
+	User *sender = plext.sender;
+
+	if (sender && ![sender.guid isEqualToString:[[API sharedInstance] playerInfo][@"guid"]]) {
+		CommViewController *commVC = (CommViewController *)self.parentViewController;
+		[commVC mentionUser:plext.sender];
+	}
 }
 
 @end

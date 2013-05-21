@@ -111,15 +111,15 @@
         <element name="EnergyGlob" positionX="-4889" positionY="-1413" width="128" height="58"/>
         <element name="Item" positionX="-4635" positionY="-1629" width="128" height="103"/>
         <element name="Media" positionX="-4464" positionY="-1638" width="128" height="118"/>
-        <element name="Player" positionX="-4221" positionY="-1134" width="128" height="118"/>
-        <element name="Plext" positionX="-4034" positionY="-1168" width="128" height="135"/>
+        <element name="Player" positionX="-4221" positionY="-1126" width="128" height="118"/>
+        <element name="Plext" positionX="-4016" positionY="-1179" width="128" height="133"/>
         <element name="Portal" positionX="-4401" positionY="-1498" width="128" height="223"/>
         <element name="PortalKey" positionX="-4725" positionY="-1381" width="128" height="73"/>
         <element name="PortalLink" positionX="-4041" positionY="-1558" width="128" height="118"/>
         <element name="PowerCube" positionX="-4833" positionY="-1660" width="128" height="58"/>
         <element name="Resonator" positionX="-4806" positionY="-1503" width="128" height="58"/>
         <element name="Shield" positionX="-4853" positionY="-1575" width="128" height="58"/>
-        <element name="User" positionX="-4221" positionY="-1296" width="128" height="163"/>
+        <element name="User" positionX="-4221" positionY="-1305" width="128" height="163"/>
         <element name="XMP" positionX="-4637" positionY="-1503" width="128" height="58"/>
     </elements>
 </model>
