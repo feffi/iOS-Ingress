@@ -121,8 +121,12 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     Plext *plext = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    CommViewController *commVC = (CommViewController *)self.parentViewController;
-    [commVC mentionUser:plext.sender];
+    User *sender = plext.sender;
+    
+    if ( ! [sender.guid isEqualToString:[[API sharedInstance] playerInfo][@"guid"]]) {
+        CommViewController *commVC = (CommViewController *)self.parentViewController;
+        [commVC mentionUser:plext.sender];
+    }
 }
 
 @end
