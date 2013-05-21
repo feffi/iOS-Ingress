@@ -761,8 +761,6 @@
 	XMP *xmpItem = [XMP MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", level]];
 
 //	NSLog(@"Firing: %@", xmpItem);
-
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_emp_power_up.aif"];
 	
 	if (!xmpItem) {
 		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
@@ -777,6 +775,8 @@
 		[HUD show:YES];
 		[HUD hide:YES afterDelay:3];
 		return;
+	} else {
+		[[SoundManager sharedManager] playSound:@"Sound/sfx_emp_power_up.aif"];
 	}
 	
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
