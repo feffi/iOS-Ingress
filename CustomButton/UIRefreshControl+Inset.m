@@ -14,7 +14,7 @@
     [super layoutSubviews];
 	
 	CGRect rect = self.frame;
-	rect.origin.y += [(UIScrollView *)self.superview contentInset].top;
+	rect.origin.y = -44;
 	self.frame = rect;
 }
 
