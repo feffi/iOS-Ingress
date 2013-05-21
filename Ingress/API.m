@@ -722,6 +722,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 				NSTimeInterval timestamp = [message[1] doubleValue]/1000.;
 				NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];
+                
+                User *sender = nil;
 
 				NSString *str = message[2][@"plext"][@"text"];
 				NSMutableAttributedString *atrstr = [[NSMutableAttributedString alloc] initWithString:str];
@@ -740,6 +742,13 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 						if ([markup[0] isEqualToString:@"SENDER"]) {
 							isMessage = YES;
+                            NSString *senderGUID = markup[1][@"guid"];
+                            sender = [User MR_findFirstByAttribute:@"guid" withValue:senderGUID inContext:localContext];
+                            if (!sender) {
+                                sender = [User MR_createInContext:localContext];
+                            }
+                            sender.guid = senderGUID;
+                            sender.nickname = [[markup[1][@"plain"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"@:"]];
 						}
 
 						if ([markup[0] isEqualToString:@"AT_PLAYER"] && [[markup[1][@"plain"] substringFromIndex:1] isEqualToString:self.playerInfo[@"nickname"]]) {
@@ -778,7 +787,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 				plext.factionOnly = factionOnly;
 				plext.date = [date timeIntervalSinceReferenceDate];
 				plext.mentionsYou = mentionsYou;
-
+                plext.sender = sender;
 			}
 
 			if (handler) {
