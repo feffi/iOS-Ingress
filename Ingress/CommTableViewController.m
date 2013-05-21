@@ -8,6 +8,8 @@
 
 #import "CommTableViewController.h"
 
+#import "CommViewController.h"
+
 @implementation CommTableViewController
 
 @synthesize factionOnly = _factionOnly;
@@ -111,6 +113,13 @@
 	cell.mentionsYou = plext.mentionsYou;
 	return cell;
 	
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    Plext *plext = [self.fetchedResultsController objectAtIndexPath:indexPath];
+    CommViewController *commVC = (CommViewController *)self.parentViewController;
+    [commVC mentionUser:plext.sender];
 }
 
 @end

@@ -48,6 +48,18 @@
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 }
 
+- (void)mentionUser:(User *)user
+{
+    NSString *mentionToken = [NSString stringWithFormat:@"@%@", user.nickname];
+    NSString *input = transmitTextField.text;
+    
+    if ([input rangeOfString:mentionToken].location == NSNotFound) {
+        input = [NSString stringWithFormat:@"%@ %@ ", [input stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]], mentionToken];
+    }
+    
+    transmitTextField.text = input;
+}
+
 - (IBAction)transmit {
 	
 	NSString *message = transmitTextField.text;
