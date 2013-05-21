@@ -182,13 +182,20 @@
 			NSMutableArray *sounds = [NSMutableArray arrayWithObjects:@"SPEECH_HACKING", @"SPEECH_UNSUCCESSFUL", nil];
 
 			if (secondsRemaining > 0) {
+				
 				[sounds addObject:@"SPEECH_COOLDOWN_ACTIVE"];
-			}
 
-			if (secondsRemaining == 300) {
-				[sounds addObject:@"SPEECH_NUMBER_005"];
-				[sounds addObject:@"SPEECH_MINUTES"];
+				int minutes = (int)floorf(secondsRemaining/60);
+				if (minutes > 0) {
+					[sounds addObjectsFromArray:[API soundsForNumber:minutes]];
+					[sounds addObject:@"SPEECH_MINUTES"];
+				} else {
+					[sounds addObjectsFromArray:[API soundsForNumber:secondsRemaining]];
+					[sounds addObject:@"SPEECH_SECONDS"];
+				}
+				
 				[sounds addObject:@"SPEECH_REMAINING"];
+
 			}
 
 			[[API sharedInstance] playSounds:sounds];
