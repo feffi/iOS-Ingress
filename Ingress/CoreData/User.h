@@ -14,7 +14,7 @@
 @interface User : NSManagedObject
 
 @property (nonatomic, retain) NSString * guid;
-@property (nonatomic, readonly) NSString * nickname;
+@property (nonatomic, retain) NSString * nickname;
 @property (nonatomic, retain) NSSet *capturedPortals;
 @property (nonatomic, retain) NSSet *deployedMods;
 @property (nonatomic, retain) NSSet *deployedResonators;
