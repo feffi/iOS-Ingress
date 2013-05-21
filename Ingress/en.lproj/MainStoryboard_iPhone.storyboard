@@ -33,8 +33,8 @@
                 <navigationController definesPresentationContext="YES" id="037-Ag-kxy" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Items" image="items.png" id="lhw-GV-zZJ"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="5Vm-qA-M13">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackTranslucent" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="5Vm-qA-M13">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -49,9 +49,9 @@
         <!--Items View Controller-->
         <scene sceneID="hKS-7Z-ZNQ">
             <objects>
-                <viewController id="UPB-vb-vXl" customClass="ItemsViewController" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" id="UPB-vb-vXl" customClass="ItemsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="TF2-3t-Eaf">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8dp-ed-Hho">
@@ -179,8 +179,8 @@
                 <navigationController definesPresentationContext="YES" id="uov-Gq-D3V" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Scanner" image="scanner.png" id="WhP-Gq-eC2"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="tN3-ZP-rlO">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackTranslucent" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="tN3-ZP-rlO">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -195,9 +195,9 @@
         <!--Intel View Controller-->
         <scene sceneID="QxF-5D-TQB">
             <objects>
-                <viewController id="9cv-bD-s30" customClass="IntelViewController" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" id="9cv-bD-s30" customClass="IntelViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Y6C-wi-NO8">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <containerView hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cvg-lo-laj" userLabel="Recruit Container View">
@@ -219,20 +219,20 @@
                                 </connections>
                             </containerView>
                         </subviews>
-                        <color key="backgroundColor" red="0.043137254899999998" green="0.047058823530000002" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.031372549020000001" green="0.1647058824" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Cvg-lo-laj" firstAttribute="bottom" secondItem="Y6C-wi-NO8" secondAttribute="bottom" type="default" id="25Q-f0-8tn"/>
                             <constraint firstItem="cgV-WG-DrB" firstAttribute="trailing" secondItem="Y6C-wi-NO8" secondAttribute="trailing" type="default" id="27o-Rp-iPz"/>
                             <constraint firstItem="KHH-bh-c01" firstAttribute="leading" secondItem="Y6C-wi-NO8" secondAttribute="leading" type="default" id="3NE-bl-X2b"/>
-                            <constraint firstItem="cgV-WG-DrB" firstAttribute="bottom" secondItem="Y6C-wi-NO8" secondAttribute="bottom" type="default" id="5qn-rt-C91"/>
                             <constraint firstItem="Cvg-lo-laj" firstAttribute="leading" secondItem="Y6C-wi-NO8" secondAttribute="leading" type="default" id="Ap0-aZ-G5I"/>
                             <constraint firstItem="cgV-WG-DrB" firstAttribute="leading" secondItem="Y6C-wi-NO8" secondAttribute="leading" type="default" id="Gfu-BA-g1t"/>
-                            <constraint firstItem="cgV-WG-DrB" firstAttribute="top" secondItem="Y6C-wi-NO8" secondAttribute="top" type="default" id="KN9-p5-cMr"/>
-                            <constraint firstItem="Cvg-lo-laj" firstAttribute="top" secondItem="Y6C-wi-NO8" secondAttribute="top" type="default" id="Kdw-gk-wi4"/>
+                            <constraint firstItem="cgV-WG-DrB" firstAttribute="top" secondItem="Cvg-lo-laj" secondAttribute="top" type="default" id="KEs-iY-Bp8"/>
                             <constraint firstItem="Cvg-lo-laj" firstAttribute="trailing" secondItem="Y6C-wi-NO8" secondAttribute="trailing" type="default" id="LIi-5j-7u6"/>
                             <constraint firstItem="KHH-bh-c01" firstAttribute="bottom" secondItem="Y6C-wi-NO8" secondAttribute="bottom" type="default" id="MiP-HK-BEB"/>
+                            <constraint firstItem="Cvg-lo-laj" firstAttribute="top" secondItem="Y6C-wi-NO8" secondAttribute="top" constant="64" id="iF7-6f-kfs"/>
+                            <constraint firstItem="cgV-WG-DrB" firstAttribute="bottom" secondItem="Y6C-wi-NO8" secondAttribute="bottom" type="default" id="ogt-Ci-rLw"/>
                             <constraint firstItem="KHH-bh-c01" firstAttribute="top" secondItem="Y6C-wi-NO8" secondAttribute="top" type="default" id="qal-tu-cYb"/>
                             <constraint firstItem="KHH-bh-c01" firstAttribute="trailing" secondItem="Y6C-wi-NO8" secondAttribute="trailing" type="default" id="sQ4-r0-Y07"/>
+                            <constraint firstItem="Cvg-lo-laj" firstAttribute="bottom" secondItem="Y6C-wi-NO8" secondAttribute="bottom" type="default" id="zSf-rx-elw"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Zpy-Pn-okr">
@@ -268,8 +268,8 @@
                 <navigationController definesPresentationContext="YES" id="itQ-wA-Fj4" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Comm" image="comm.png" id="gFP-og-IqF"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="6Zy-vF-dI0">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackTranslucent" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="6Zy-vF-dI0">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -284,9 +284,9 @@
         <!--Comm View Controller-->
         <scene sceneID="qvd-LH-EQa">
             <objects>
-                <viewController id="ZBH-Po-zoq" customClass="CommViewController" sceneMemberID="viewController">
+                <viewController wantsFullScreenLayout="YES" id="ZBH-Po-zoq" customClass="CommViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="KKy-Ai-3Pl">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kNa-cP-Kh8">
@@ -387,9 +387,9 @@
         <!--Device View Controller - Device-->
         <scene sceneID="e6j-6Z-d3P">
             <objects>
-                <tableViewController id="Pcn-Hn-MnN" customClass="DeviceViewController" sceneMemberID="viewController">
+                <tableViewController wantsFullScreenLayout="YES" id="Pcn-Hn-MnN" customClass="DeviceViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="LbP-3h-9Ro">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.34901960780000002" green="0.98431372549999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -491,8 +491,6 @@
                         </sections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Device" id="qY5-jF-5EJ"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackTranslucent"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
                     <connections>
                         <segue destination="3q1-04-OzW" kind="modal" identifier="ImagePickerSegue" id="Il2-uq-hnI"/>
                     </connections>
@@ -515,8 +513,8 @@
                 <navigationController definesPresentationContext="YES" id="jM8-0Z-aAW" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Device" image="device.png" id="C2g-Qi-MJZ"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="TFE-M3-MmX">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackTranslucent" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="TFE-M3-MmX">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -533,7 +531,7 @@
             <objects>
                 <tableViewController id="mX9-Da-fsv" customClass="CommTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dJy-ZC-C7D">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="423"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="487"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="msgCell" id="mXl-aT-oTE" customClass="CommTableViewCell">
@@ -1289,14 +1287,14 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
             <objects>
                 <viewController id="EpT-PX-0Xb" customClass="PortalDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ROn-sT-oc0">
-                        <rect key="frame" x="0.0" y="64" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="hks-CE-gCk">
                         <nil key="title"/>
                     </navigationItem>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackTranslucent" prompted="NO"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mac-VV-Wvp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1518,8 +1516,8 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 <navigationController definesPresentationContext="YES" id="0Yz-ju-TH7" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Intel" image="intel.png" id="ZYQ-6i-qCL"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="blackOpaque"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="Lcy-6g-wOd">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackTranslucent" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="Lcy-6g-wOd">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -1565,7 +1563,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
             <objects>
                 <glkViewController autoresizesArchivedViewToFullSize="NO" preferredFramesPerSecond="30" id="vZR-4F-H2Z" customClass="GLViewController" sceneMemberID="viewController">
                     <glkView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" id="Ild-u8-Olh">
-                        <rect key="frame" x="0.0" y="0.0" width="280" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
@@ -1835,7 +1833,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
             <objects>
                 <tableViewController id="GNK-rW-aij" customClass="MissionsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4Pr-Q8-cMs">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="519"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.34901960780000002" green="0.98431372549999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -2112,7 +2110,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
             <objects>
                 <tableViewController storyboardIdentifier="PortalKeysViewController" id="pnd-0d-rSp" customClass="PortalKeysViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="V5K-Z3-PLK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="423"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.34901960780000002" green="0.98431372549999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -2155,7 +2153,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
             <objects>
                 <tableViewController id="KTC-Mi-HZa" customClass="MediaItemsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tAe-Bj-Duz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="423"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="487"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.34901960780000002" green="0.98431372549999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -2755,7 +2753,7 @@ Range: 0km</string>
             <objects>
                 <tableViewController id="zM3-Tr-bQA" customClass="ResourcesViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="150" sectionHeaderHeight="22" sectionFooterHeight="22" id="Xvr-fT-iuU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="423"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="487"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.34901960780000002" green="0.98431372549999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -3748,7 +3746,7 @@ Range: 0km</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="7q6-q9-DTR"/>
         <segue reference="zJ1-yC-6tR"/>
+        <segue reference="uLU-Dv-S4x"/>
     </inferredMetricsTieBreakers>
 </document>

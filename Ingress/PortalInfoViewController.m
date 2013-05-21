@@ -12,8 +12,8 @@
 
 @synthesize portal = _portal;
 
-- (void)setPortal:(Portal *)portal {
-	_portal = portal;
+- (void)viewDidAppear:(BOOL)animated {
+	[super viewDidAppear:animated];
 	[self refresh];
 }
 
