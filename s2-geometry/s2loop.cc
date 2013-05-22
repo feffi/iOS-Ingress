@@ -418,22 +418,22 @@ bool S2Loop::Contains(S2Point const& p) const {
   return inside;
 }
 
-//void S2Loop::Encode(Encoder* const encoder) const {
-//  encoder->Ensure(num_vertices_ * sizeof(*vertices_) + 20);  // sufficient
-//
-//  encoder->put8(kCurrentEncodingVersionNumber);
-//  encoder->put32(num_vertices_);
-//  encoder->putn(vertices_, sizeof(*vertices_) * num_vertices_);
-//  encoder->put8(origin_inside_);
-//  encoder->put32(depth_);
+void S2Loop::Encode(Encoder* const encoder) const {
+  encoder->Ensure(num_vertices_ * sizeof(*vertices_) + 20);  // sufficient
+
+  encoder->put8(kCurrentEncodingVersionNumber);
+  encoder->put32(num_vertices_);
+  encoder->putn(vertices_, sizeof(*vertices_) * num_vertices_);
+  encoder->put8(origin_inside_);
+  encoder->put32(depth_);
 //  DCHECK_GE(encoder->avail(), 0);
-//
-//  bound_.Encode(encoder);
-//}
-//
-//bool S2Loop::Decode(Decoder* const decoder) {
-//  return DecodeInternal(decoder, false);
-//}
+
+  bound_.Encode(encoder);
+}
+
+bool S2Loop::Decode(Decoder* const decoder) {
+  return DecodeInternal(decoder, false);
+}
 
 bool S2Loop::DecodeWithinScope(Decoder* const decoder) {
   return DecodeInternal(decoder, true);

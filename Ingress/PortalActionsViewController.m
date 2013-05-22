@@ -203,8 +203,7 @@
 			HUD.mode = MBProgressHUDModeText;
 			if (acquiredItems.count > 0) {
 
-				[[SoundManager sharedManager] playSound:@"Sound/sfx_resource_pick_up.aif"];
-				
+				NSMutableArray *sounds = [NSMutableArray arrayWithCapacity:acquiredItems];
 				NSMutableString *acquiredItemsStr = [NSMutableString string];
 				
 				for (NSString *guid in acquiredItems) {
@@ -214,7 +213,55 @@
 					} else {
 						[acquiredItemsStr appendString:@"Unknown Item\n"];
 					}
+
+					if ([item isKindOfClass:[Resonator class]]) {
+						if (![sounds containsObject:@"SPEECH_RESONATOR"]) {
+							[sounds addObject:@"SPEECH_RESONATOR"];
+						}
+					} else if ([item isKindOfClass:[XMP class]]) {
+						if (![sounds containsObject:@"SPEECH_XMP"]) {
+							[sounds addObject:@"SPEECH_XMP"];
+						}
+					} else if ([item isKindOfClass:[Shield class]]) {
+						if (![sounds containsObject:@"SPEECH_SHIELD"]) {
+							[sounds addObject:@"SPEECH_SHIELD"];
+						}
+					} else if ([item isKindOfClass:[PowerCube class]]) {
+						if (![sounds containsObject:@"SPEECH_POWER_CUBE"]) {
+							[sounds addObject:@"SPEECH_POWER_CUBE"];
+						}
+					} else if ([item isKindOfClass:[FlipCard class]]) {
+						if ([[[API sharedInstance] playerInfo][@"team"] isEqualToString:@"ALIENS"]) {
+							if (![sounds containsObject:@"SPEECH_JARVIS_VIRUS"]) {
+								[sounds addObject:@"SPEECH_JARVIS_VIRUS"];
+							}
+						} else {
+							if (![sounds containsObject:@"SPEECH_ADA_REFACTOR"]) {
+								[sounds addObject:@"SPEECH_ADA_REFACTOR"];
+							}
+						}
+					} else if ([item isKindOfClass:[PortalKey class]]) {
+						if (![sounds containsObject:@"SPEECH_PORTAL_KEY"]) {
+							[sounds addObject:@"SPEECH_PORTAL_KEY"];
+						}
+					} else if ([item isKindOfClass:[Media class]]) {
+						if (![sounds containsObject:@"SPEECH_MEDIA"]) {
+							[sounds addObject:@"SPEECH_MEDIA"];
+						}
+					} else {
+						if (![sounds containsObject:@"SPEECH_UNKNOWN_TECH"]) {
+							[sounds addObject:@"SPEECH_UNKNOWN_TECH"];
+						}
+					}
+
 				}
+
+				if (sounds.count > 0) {
+					[sounds addObject:@"SPEECH_ACQUIRED"];
+				}
+
+				[[SoundManager sharedManager] playSound:@"Sound/sfx_resource_pick_up.aif"];
+				[[API sharedInstance] playSounds:sounds];
 				
 				HUD.labelText = @"Items acquired";
 				HUD.detailsLabelText = acquiredItemsStr;

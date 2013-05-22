@@ -50,33 +50,43 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	switch (indexPath.row) {
 		case 0: {
 			ResourceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LevelsItemCell" forIndexPath:indexPath];
-			cell.itemImageView.image = [UIImage imageNamed:@"resonator@2x.png"];
+			cell.itemImageView.image = [UIImage imageNamed:@"resonator.png"];
 			cell.itemType = ItemTypeResonator;
 			return cell;
 		}
 		case 1: {
 			ResourceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LevelsItemCell" forIndexPath:indexPath];
-			cell.itemImageView.image = [UIImage imageNamed:@"xmp@2x.png"];
+			cell.itemImageView.image = [UIImage imageNamed:@"xmp.png"];
 			cell.itemType = ItemTypeXMP;
 			return cell;
 		}
 		case 2: {
 			ResourceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RarityItemCell" forIndexPath:indexPath];
-			cell.itemImageView.image = [UIImage imageNamed:@"shield@2x.png"];
+			cell.itemImageView.image = [UIImage imageNamed:@"shield.png"];
 			cell.itemType = ItemTypePortalShield;
 			return cell;
 		}
 		case 3: {
 			ResourceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LevelsItemCell" forIndexPath:indexPath];
-			cell.itemImageView.image = [UIImage imageNamed:@"powerCube@2x.png"];
+			cell.itemImageView.image = [UIImage imageNamed:@"powerCube.png"];
 			cell.itemType = ItemTypePowerCube;
+			return cell;
+		}
+		case 4: {
+			ResourceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SingleItemCell" forIndexPath:indexPath];
+			if ([[[API sharedInstance] playerInfo][@"team"] isEqualToString:@"ALIENS"]) {
+				cell.itemImageView.image = [UIImage imageNamed:@"jarvis_virus.png"];
+			} else {
+				cell.itemImageView.image = [UIImage imageNamed:@"ada_refactor.png"];
+			}
+			cell.itemType = itemTypeFlipCard;
 			return cell;
 		}
 		default:

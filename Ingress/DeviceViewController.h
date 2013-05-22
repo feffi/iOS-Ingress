@@ -10,8 +10,6 @@
 #import <MessageUI/MessageUI.h>
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <MobileCoreServices/UTCoreTypes.h>
-#import "EXF.h"
-#import "EXFUtils.h"
 
 @interface DeviceViewController : UITableViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
 

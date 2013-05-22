@@ -282,6 +282,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		@"SPEECH_ABANDONED": @{@"file": @"speech_abandoned.aif", @"duration": @(744)},
 		@"SPEECH_ACCESS_LEVEL_ACHIEVED": @{@"file": @"speech_access_level_achieved.aif", @"duration": @(1327)},
 		@"SPEECH_ACTIVATED": @{@"file": @"speech_activated.aif", @"duration": @(782)},
+		@"SPEECH_ADA_REFACTOR": @{@"file": @"speech_flipcard_ada.aif", @"duration": @(1050)},
 		@"SPEECH_ADDED": @{@"file": @"speech_added.aif", @"duration": @(523)},
 		@"SPEECH_ACQUIRED": @{@"file": @"speech_acquired.aif", @"duration": @(580)},
 		@"SPEECH_ARCHIVED": @{@"file": @"speech_archived.aif", @"duration": @(767)},
@@ -328,8 +329,10 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		@"SPEECH_HUMANIST": @{@"file": @"speech_humanist.aif", @"duration": @(788)},
 		@"SPEECH_IN_RANGE": @{@"file": @"speech_in_range.aif", @"duration": @(673)},
 		@"SPEECH_INCOMING_MESSAGE": @{@"file": @"speech_incoming_message.aif", @"duration": @(1133)},
+		@"SPEECH_JARVIS_VIRUS": @{@"file": @"speech_flipcard_jarvis.aif", @"duration": @(1190)},
 		@"SPEECH_KILOMETERS": @{@"file": @"speech_kilometers.aif", @"duration": @(719)},
 		@"SPEECH_LINK": @{@"file": @"speech_link.aif", @"duration": @(590)},
+		@"SPEECH_LINKAMP": @{@"file": @"speech_linkamp.aif", @"duration": @(920)},
 		@"SPEECH_LOST": @{@"file": @"speech_lost.aif", @"duration": @(671)},
 		@"SPEECH_MEDIA": @{@"file": @"speech_media.aif", @"duration": @(645)},
 		@"SPEECH_METERS": @{@"file": @"speech_meters.aif", @"duration": @(557)},
@@ -435,6 +438,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		@"SPEECH_SHIELD": @{@"file": @"speech_shield.aif", @"duration": @(637)},
 		@"SPEECH_TARGET": @{@"file": @"speech_target.aif", @"duration": @(464)},
 		@"SPEECH_TESLA": @{@"file": @"speech_tesla.aif", @"duration": @(628)},
+		@"SPEECH_UNKNOWN_TECH": @{@"file": @"speech_unknown_tech.aif", @"duration": @(1390)},
 		@"SPEECH_UNSUCCESSFUL": @{@"file": @"speech_unsuccessful.aif", @"duration": @(918)},
 		@"SPEECH_UPGRADED": @{@"file": @"speech_upgraded.aif", @"duration": @(712)},
 		@"SPEECH_WEAPONS": @{@"file": @"speech_weapons.aif", @"duration": @(709)},
@@ -458,6 +462,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		@"SPEECH_ZOOM_LOCKON": @{@"file": @"speech_zoom_lockon.aif", @"duration": @(1470)},
 		@"SPEECH_ZOOMDOWN_INTRO": @{@"file": @"speech_zoomdown_intro.aif", @"duration": @(28152)},
 		@"SPEECH_ZOOMDOWN_TRIANGULATING": @{@"file": @"speech_zoomdown_triangulating.aif", @"duration": @(1861)},
+//		@"": @{@"file": @"", @"duration": @()},
 	};
 }
 

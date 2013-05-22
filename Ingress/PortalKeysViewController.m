@@ -170,6 +170,8 @@
 						[HUD hide:YES afterDelay:3];
 					} else {
 
+						[[SoundManager sharedManager] playSound:@"Sound/sfx_link_power_up.aif"];
+
 						[[API sharedInstance] playSound:@"SPEECH_PORTAL_LINK_ESTABLISHED"];
 
 					}

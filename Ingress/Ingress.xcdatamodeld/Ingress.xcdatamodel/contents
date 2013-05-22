@@ -28,6 +28,9 @@
     <entity name="EnergyGlob" representedClassName="EnergyGlob" parentEntity="Item" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
+    <entity name="FlipCard" representedClassName="FlipCard" parentEntity="Item" syncable="YES">
+        <attribute name="faction" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Item" representedClassName="Item" isAbstract="YES" syncable="YES">
         <attribute name="dropped" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="guid" optional="YES" attributeType="String" syncable="YES"/>
@@ -121,5 +124,6 @@
         <element name="Shield" positionX="-4853" positionY="-1575" width="128" height="58"/>
         <element name="User" positionX="-4221" positionY="-1305" width="128" height="163"/>
         <element name="XMP" positionX="-4637" positionY="-1503" width="128" height="58"/>
+        <element name="FlipCard" positionX="-4563" positionY="-1422" width="128" height="58"/>
     </elements>
 </model>
