@@ -1885,10 +1885,11 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 			} else {
 				EnergyGlob *energyGlob = [localEnergyGlobs objectAtIndex:j];
 				NSString *energyGlobGuid = [sortedEnergyGlobGuids objectAtIndex:i];
-				if ([energyGlobGuid compare:energyGlob.guid] == NSOrderedAscending) {
+                NSComparisonResult comparisonResult = [energyGlobGuid compare:energyGlob.guid];
+				if (comparisonResult == NSOrderedAscending) {
 					[EnergyGlob energyGlobWithData:energyGlobGuid inManagedObjectContext:localContext];
 					i++;
-				} else if ([energyGlobGuid compare:energyGlob.guid] == NSOrderedDescending) {
+				} else if (comparisonResult == NSOrderedDescending) {
 					[energyGlob MR_deleteInContext:localContext];
 					j++;
 				} else {
