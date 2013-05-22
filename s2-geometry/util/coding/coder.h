@@ -206,7 +206,7 @@ inline void Encoder::clear() {
 inline void Encoder::Ensure(int N) {
 //  DCHECK(ensure_allowed());
   if (avail() < N) {
-    EnsureSlowPath(N);
+//    EnsureSlowPath(N);
   }
 }
 
