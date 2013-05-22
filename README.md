@@ -26,12 +26,19 @@ For China Users
 -------
 
 -Non-jailbreak Download
+
  [中国未越狱用户点此下载](http://angelxwind.net/jeanny710/ingress/)
+
 -Google software hosts
+
  [中国用户Hosts点此下载](http://angelxwind.net/jeanny710/ingress/hosts.zip)
+
  请将文件解压后置于/etc
+
  如果您已经使用了其他hosts，请在MobileTerminal中输入
+
  <code>cd ../../etc</code>
+
  <code>cat /var/mobile/Documents/hosts >> hosts</code>
 
 Support
