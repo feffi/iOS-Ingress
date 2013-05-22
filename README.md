@@ -9,17 +9,14 @@ Fully playable Google's AR Game Ingress port for iOS.
 Download
 --------
 
-- non-jailbreak option (works fine on a jailbroken device)
+- testing version (works fine also on a non-jailbroken devices)
+    - it's untested and may crash or be unplayable
+    - [![Install App](http://com.macbuildserver.github.s3-website-us-east-1.amazonaws.com/button_up.png)](http://macbuildserver.com/project/github/build/?xcode_project=Ingress.xcodeproj&amp;target=Ingress&amp;repo_url=https%3A%2F%2Fgithub.com%2Falex-alex%2FiOS-Ingress.git&amp;build_conf=Release)
+        - by [MacBuildServer](http://macbuildserver.com/github/opensource/)
+        - Open on device to install directly via OTA
+    - [Daily-updated mirror](http://angelxwind.net/jeanny710/ingress/)
 
-<!-- MacBuildServer Install Button -->
-<div class="macbuildserver-block">
-    <a class="macbuildserver-button" href="http://macbuildserver.com/project/github/build/?xcode_project=Ingress.xcodeproj&amp;target=Ingress&amp;repo_url=https%3A%2F%2Fgithub.com%2Falex-alex%2FiOS-Ingress.git&amp;build_conf=Release" target="_blank"><img src="http://com.macbuildserver.github.s3-website-us-east-1.amazonaws.com/button_up.png"/></a><br/><sup><a href="http://macbuildserver.com/github/opensource/" target="_blank">by MacBuildServer</a><br>(Open on device to install directly via OTA)</sup>
-</div>
-<!-- MacBuildServer Install Button -->
-
-(If you just failed or don't wanna wait, go to http://angelxwind.net/jeanny710/ingress for a 100%success install =P)
-
-- jailbreak option
+- stable version (requires jailbreak)
 
   - https://www.dropbox.com/s/q28f2bj2bgt2vxj/Ingress.ipa
   - Availabile at Cydia repo http://cydia.angelxwind.net/
