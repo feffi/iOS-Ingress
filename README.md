@@ -11,7 +11,7 @@ Download
 
 You need to be developer or have jailbreak to install it.
 
-**New ipa (5/10/2013):** Bugfixes, better portal keys and media screens
+**New version (1.0.3):** Bugfixes, various improvements, new portal detail screen, ability to clear cache
 
 - https://www.dropbox.com/s/q28f2bj2bgt2vxj/Ingress.ipa
 - Availabile at Cydia repo http://cydia.angelxwind.net/
