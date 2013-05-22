@@ -27,6 +27,7 @@
 		FA32E883169F2D9F00D30E90 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E882169F2D9F00D30E90 /* API.m */; };
 		FA32E888169F657400D30E90 /* CommViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E887169F657400D30E90 /* CommViewController.m */; };
 		FA32E88B169F661500D30E90 /* CommTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E88A169F661500D30E90 /* CommTableViewController.m */; };
+		FA38F02E174D04780005D85E /* ScrollTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA38F02D174D04780005D85E /* ScrollTextView.m */; };
 		FA39E146174166C200202259 /* Plext.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39E145174166C200202259 /* Plext.m */; };
 		FA39E1501742CA2D00202259 /* PortalUpgradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39E14F1742CA2D00202259 /* PortalUpgradeViewController.m */; };
 		FA3BD746173514D5004F5ED5 /* nudge_callout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3BD745173514D5004F5ED5 /* nudge_callout@2x.png */; };
@@ -43,7 +44,6 @@
 		FA3CC8FB1744D20100428FB7 /* shield_veryrare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3CC8F81744D20100428FB7 /* shield_veryrare@2x.png */; };
 		FA3E8AEC17267F6700673665 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3E8AEB17267F6700673665 /* TPKeyboardAvoidingScrollView.m */; };
 		FA3FC30E173656AC009CD94A /* MissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3FC30D173656AC009CD94A /* MissionViewController.m */; };
-		FA3FC3111736603B009CD94A /* ScrollTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3FC3101736603B009CD94A /* ScrollTextView.m */; };
 		FA3FC31317369E4D009CD94A /* green_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3FC31217369E4D009CD94A /* green_bg@2x.png */; };
 		FA47817F16AC8FE00041FDFB /* enl_res_energy_fill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA47817D16AC8FE00041FDFB /* enl_res_energy_fill@2x.png */; };
 		FA47818016AC8FE00041FDFB /* hum_res_energy_fill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA47817E16AC8FE00041FDFB /* hum_res_energy_fill@2x.png */; };
@@ -98,13 +98,6 @@
 		FA52007216A99C98004AFE4D /* iCarousel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA4FB3CA16A7200D00FD989C /* iCarousel.m */; };
 		FA52007416A9A607004AFE4D /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA52007316A9A607004AFE4D /* AssetsLibrary.framework */; };
 		FA52007616A9A64F004AFE4D /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA52007516A9A64F004AFE4D /* MobileCoreServices.framework */; };
-		FA52009716A9AB24004AFE4D /* EXFGPS.m in Sources */ = {isa = PBXBuildFile; fileRef = FA52008816A9AB24004AFE4D /* EXFGPS.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FA52009816A9AB24004AFE4D /* EXFHandlers.m in Sources */ = {isa = PBXBuildFile; fileRef = FA52008A16A9AB24004AFE4D /* EXFHandlers.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FA52009916A9AB24004AFE4D /* EXFJFIF.m in Sources */ = {isa = PBXBuildFile; fileRef = FA52008C16A9AB24004AFE4D /* EXFJFIF.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FA52009A16A9AB24004AFE4D /* EXFJpeg.m in Sources */ = {isa = PBXBuildFile; fileRef = FA52008E16A9AB24004AFE4D /* EXFJpeg.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FA52009B16A9AB24004AFE4D /* EXFMetaData.m in Sources */ = {isa = PBXBuildFile; fileRef = FA52009116A9AB24004AFE4D /* EXFMetaData.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FA52009C16A9AB24004AFE4D /* EXFTagDefinitionHolder.m in Sources */ = {isa = PBXBuildFile; fileRef = FA52009416A9AB24004AFE4D /* EXFTagDefinitionHolder.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		FA52009D16A9AB24004AFE4D /* EXFUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = FA52009616A9AB24004AFE4D /* EXFUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		FA54DEF916A19B47006A92E0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FA54DEF816A19B47006A92E0 /* MBProgressHUD.m */; };
 		FA54DEFD16A19BD8006A92E0 /* IntelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA54DEFC16A19BD8006A92E0 /* IntelViewController.m */; };
 		FA54DF0316A1C784006A92E0 /* items.png in Resources */ = {isa = PBXBuildFile; fileRef = FA54DF0116A1C784006A92E0 /* items.png */; };
@@ -316,6 +309,8 @@
 		FA32E887169F657400D30E90 /* CommViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommViewController.m; sourceTree = "<group>"; };
 		FA32E889169F661500D30E90 /* CommTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommTableViewController.h; sourceTree = "<group>"; };
 		FA32E88A169F661500D30E90 /* CommTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommTableViewController.m; sourceTree = "<group>"; };
+		FA38F02C174D04780005D85E /* ScrollTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollTextView.h; sourceTree = "<group>"; };
+		FA38F02D174D04780005D85E /* ScrollTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollTextView.m; sourceTree = "<group>"; };
 		FA39E144174166C100202259 /* Plext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Plext.h; path = CoreData/Plext.h; sourceTree = "<group>"; };
 		FA39E145174166C200202259 /* Plext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Plext.m; path = CoreData/Plext.m; sourceTree = "<group>"; };
 		FA39E14E1742CA2D00202259 /* PortalUpgradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortalUpgradeViewController.h; sourceTree = "<group>"; };
@@ -337,8 +332,6 @@
 		FA3E8AEB17267F6700673665 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
 		FA3FC30C173656AC009CD94A /* MissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MissionViewController.h; sourceTree = "<group>"; };
 		FA3FC30D173656AC009CD94A /* MissionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MissionViewController.m; sourceTree = "<group>"; };
-		FA3FC30F1736603B009CD94A /* ScrollTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollTextView.h; sourceTree = "<group>"; };
-		FA3FC3101736603B009CD94A /* ScrollTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollTextView.m; sourceTree = "<group>"; };
 		FA3FC31217369E4D009CD94A /* green_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green_bg@2x.png"; sourceTree = "<group>"; };
 		FA47817D16AC8FE00041FDFB /* enl_res_energy_fill@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "enl_res_energy_fill@2x.png"; sourceTree = "<group>"; };
 		FA47817E16AC8FE00041FDFB /* hum_res_energy_fill@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "hum_res_energy_fill@2x.png"; sourceTree = "<group>"; };
@@ -397,24 +390,6 @@
 		FA52006F16A99AB0004AFE4D /* PortalKeysViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalKeysViewController.m; sourceTree = "<group>"; };
 		FA52007316A9A607004AFE4D /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		FA52007516A9A64F004AFE4D /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
-		FA52008516A9AB24004AFE4D /* EXF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXF.h; sourceTree = "<group>"; };
-		FA52008616A9AB24004AFE4D /* EXFConstants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXFConstants.h; sourceTree = "<group>"; };
-		FA52008716A9AB24004AFE4D /* EXFGPS.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXFGPS.h; sourceTree = "<group>"; };
-		FA52008816A9AB24004AFE4D /* EXFGPS.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXFGPS.m; sourceTree = "<group>"; };
-		FA52008916A9AB24004AFE4D /* EXFHandlers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXFHandlers.h; sourceTree = "<group>"; };
-		FA52008A16A9AB24004AFE4D /* EXFHandlers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXFHandlers.m; sourceTree = "<group>"; };
-		FA52008B16A9AB24004AFE4D /* EXFJFIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXFJFIF.h; sourceTree = "<group>"; };
-		FA52008C16A9AB24004AFE4D /* EXFJFIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXFJFIF.m; sourceTree = "<group>"; };
-		FA52008D16A9AB24004AFE4D /* EXFJpeg.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXFJpeg.h; sourceTree = "<group>"; };
-		FA52008E16A9AB24004AFE4D /* EXFJpeg.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXFJpeg.m; sourceTree = "<group>"; };
-		FA52008F16A9AB24004AFE4D /* EXFLogging.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXFLogging.h; sourceTree = "<group>"; };
-		FA52009016A9AB24004AFE4D /* EXFMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXFMetaData.h; sourceTree = "<group>"; };
-		FA52009116A9AB24004AFE4D /* EXFMetaData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXFMetaData.m; sourceTree = "<group>"; };
-		FA52009216A9AB24004AFE4D /* EXFMutableMetaData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXFMutableMetaData.h; sourceTree = "<group>"; };
-		FA52009316A9AB24004AFE4D /* EXFTagDefinitionHolder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXFTagDefinitionHolder.h; sourceTree = "<group>"; };
-		FA52009416A9AB24004AFE4D /* EXFTagDefinitionHolder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXFTagDefinitionHolder.m; sourceTree = "<group>"; };
-		FA52009516A9AB24004AFE4D /* EXFUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EXFUtils.h; sourceTree = "<group>"; };
-		FA52009616A9AB24004AFE4D /* EXFUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EXFUtils.m; sourceTree = "<group>"; };
 		FA54DEF716A19B47006A92E0 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		FA54DEF816A19B47006A92E0 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		FA54DEFB16A19BD8006A92E0 /* IntelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntelViewController.h; sourceTree = "<group>"; };
@@ -831,15 +806,13 @@
 			name = "s2-geomtery-library";
 			sourceTree = "<group>";
 		};
-		FA29CCF5171F05BB007FB43E /* Text Views */ = {
+		FA29CCF5171F05BB007FB43E /* TypeWriterLabel */ = {
 			isa = PBXGroup;
 			children = (
 				FA29CCF6171F05C6007FB43E /* TypeWriterLabel.h */,
 				FA29CCF7171F05C6007FB43E /* TypeWriterLabel.m */,
-				FA3FC30F1736603B009CD94A /* ScrollTextView.h */,
-				FA3FC3101736603B009CD94A /* ScrollTextView.m */,
 			);
-			name = "Text Views";
+			name = TypeWriterLabel;
 			sourceTree = "<group>";
 		};
 		FA32E871169EC13900D30E90 /* Model */ = {
@@ -867,6 +840,15 @@
 			);
 			name = Comm;
 			path = Ingress;
+			sourceTree = "<group>";
+		};
+		FA38F02B174D04780005D85E /* ScrollTextView */ = {
+			isa = PBXGroup;
+			children = (
+				FA38F02C174D04780005D85E /* ScrollTextView.h */,
+				FA38F02D174D04780005D85E /* ScrollTextView.m */,
+			);
+			path = ScrollTextView;
 			sourceTree = "<group>";
 		};
 		FA39E14D1742C96800202259 /* Upgrade */ = {
@@ -1048,31 +1030,6 @@
 				FA512D0716A0A2A800C8A81C /* GUI */,
 			);
 			name = Resources;
-			sourceTree = "<group>";
-		};
-		FA52008416A9AB24004AFE4D /* EXIF */ = {
-			isa = PBXGroup;
-			children = (
-				FA52008516A9AB24004AFE4D /* EXF.h */,
-				FA52008616A9AB24004AFE4D /* EXFConstants.h */,
-				FA52008716A9AB24004AFE4D /* EXFGPS.h */,
-				FA52008816A9AB24004AFE4D /* EXFGPS.m */,
-				FA52008916A9AB24004AFE4D /* EXFHandlers.h */,
-				FA52008A16A9AB24004AFE4D /* EXFHandlers.m */,
-				FA52008B16A9AB24004AFE4D /* EXFJFIF.h */,
-				FA52008C16A9AB24004AFE4D /* EXFJFIF.m */,
-				FA52008D16A9AB24004AFE4D /* EXFJpeg.h */,
-				FA52008E16A9AB24004AFE4D /* EXFJpeg.m */,
-				FA52008F16A9AB24004AFE4D /* EXFLogging.h */,
-				FA52009016A9AB24004AFE4D /* EXFMetaData.h */,
-				FA52009116A9AB24004AFE4D /* EXFMetaData.m */,
-				FA52009216A9AB24004AFE4D /* EXFMutableMetaData.h */,
-				FA52009316A9AB24004AFE4D /* EXFTagDefinitionHolder.h */,
-				FA52009416A9AB24004AFE4D /* EXFTagDefinitionHolder.m */,
-				FA52009516A9AB24004AFE4D /* EXFUtils.h */,
-				FA52009616A9AB24004AFE4D /* EXFUtils.m */,
-			);
-			path = EXIF;
 			sourceTree = "<group>";
 		};
 		FA54DEF216A1970A006A92E0 /* Items */ = {
@@ -1621,7 +1578,8 @@
 			children = (
 				FACEE6141737E9AB006A9912 /* NSShadow+Initializer */,
 				FA3BD77E17352C5B004F5ED5 /* APView */,
-				FA29CCF5171F05BB007FB43E /* Text Views */,
+				FA29CCF5171F05BB007FB43E /* TypeWriterLabel */,
+				FA38F02B174D04780005D85E /* ScrollTextView */,
 				FA8C24D516B3257D000C8738 /* Custom Buttons */,
 				FAA9C41517304B6A000C2638 /* MagicalRecord */,
 				FAC4749C172DB2A000AAFFC0 /* s2-geometry */,
@@ -1631,7 +1589,6 @@
 				FA7AC9D516D14C5400505404 /* SoundManager */,
 				FA92A0AF16C2E11A00E6E3AE /* MKMapView+ZoomLevel */,
 				FAE797D516B49BEB00A57316 /* OpenGL */,
-				FA52008416A9AB24004AFE4D /* EXIF */,
 				FA4D43D116A8AB1300B98C1F /* MTStatusBarOverlay */,
 				FA4FB3C716A71FFB00FD989C /* iCarousel */,
 				FAD5EF1516A2081B00182F6B /* iOSPlot */,
@@ -2000,13 +1957,6 @@
 				FA4D43D416A8AB6C00B98C1F /* MTStatusBarOverlay.m in Sources */,
 				FA52007016A99AB0004AFE4D /* PortalKeysViewController.m in Sources */,
 				FA52007216A99C98004AFE4D /* iCarousel.m in Sources */,
-				FA52009716A9AB24004AFE4D /* EXFGPS.m in Sources */,
-				FA52009816A9AB24004AFE4D /* EXFHandlers.m in Sources */,
-				FA52009916A9AB24004AFE4D /* EXFJFIF.m in Sources */,
-				FA52009A16A9AB24004AFE4D /* EXFJpeg.m in Sources */,
-				FA52009B16A9AB24004AFE4D /* EXFMetaData.m in Sources */,
-				FA52009C16A9AB24004AFE4D /* EXFTagDefinitionHolder.m in Sources */,
-				FA52009D16A9AB24004AFE4D /* EXFUtils.m in Sources */,
 				FAB5A2CD16AA165D00176C34 /* LevelChooserViewController.m in Sources */,
 				FAD9D7C616AC640A006553E0 /* PortalActionsViewController.m in Sources */,
 				FAD9D7C916AC6414006553E0 /* PortalInfoViewController.m in Sources */,
@@ -2102,7 +2052,6 @@
 				FAE71C2F1732ACC100742071 /* DeviceViewController.m in Sources */,
 				FA3BD78117352C5B004F5ED5 /* APView.m in Sources */,
 				FA3FC30E173656AC009CD94A /* MissionViewController.m in Sources */,
-				FA3FC3111736603B009CD94A /* ScrollTextView.m in Sources */,
 				FACEE6171737E9D3006A9912 /* NSShadow+Initilalizer.m in Sources */,
 				FA859F16173BD800002A2117 /* EnergyGlob.m in Sources */,
 				FA02F9D8173D54540016EE7F /* MediaWebViewViewController.m in Sources */,
@@ -2111,6 +2060,7 @@
 				FA39E1501742CA2D00202259 /* PortalUpgradeViewController.m in Sources */,
 				FA17E903174BA212003C3E24 /* UIRefreshControl+Inset.m in Sources */,
 				FA17F05D174C9BB3003C3E24 /* FlipCard.m in Sources */,
+				FA38F02E174D04780005D85E /* ScrollTextView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
