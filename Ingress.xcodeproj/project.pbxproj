@@ -22,7 +22,7 @@
 		FA17F05D174C9BB3003C3E24 /* FlipCard.m in Sources */ = {isa = PBXBuildFile; fileRef = FA17F05C174C9BB3003C3E24 /* FlipCard.m */; };
 		FA17F060174C9DAF003C3E24 /* ada_refactor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA17F05E174C9DAF003C3E24 /* ada_refactor@2x.png */; };
 		FA17F061174C9DAF003C3E24 /* jarvis_virus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA17F05F174C9DAF003C3E24 /* jarvis_virus@2x.png */; };
-		FA17F063174CA3E2003C3E24 /* linkAmp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA17F062174CA3E0003C3E24 /* linkAmp@2x.png */; };
+		FA17F065174CB0CE003C3E24 /* link_amp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA17F064174CB0CC003C3E24 /* link_amp@2x.png */; };
 		FA29CCF8171F05C6007FB43E /* TypeWriterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA29CCF7171F05C6007FB43E /* TypeWriterLabel.m */; };
 		FA32E883169F2D9F00D30E90 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E882169F2D9F00D30E90 /* API.m */; };
 		FA32E888169F657400D30E90 /* CommViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E887169F657400D30E90 /* CommViewController.m */; };
@@ -307,7 +307,7 @@
 		FA17F05C174C9BB3003C3E24 /* FlipCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipCard.m; path = CoreData/FlipCard.m; sourceTree = "<group>"; };
 		FA17F05E174C9DAF003C3E24 /* ada_refactor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ada_refactor@2x.png"; sourceTree = "<group>"; };
 		FA17F05F174C9DAF003C3E24 /* jarvis_virus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jarvis_virus@2x.png"; sourceTree = "<group>"; };
-		FA17F062174CA3E0003C3E24 /* linkAmp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linkAmp@2x.png"; sourceTree = "<group>"; };
+		FA17F064174CB0CC003C3E24 /* link_amp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "link_amp@2x.png"; sourceTree = "<group>"; };
 		FA29CCF6171F05C6007FB43E /* TypeWriterLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TypeWriterLabel.h; path = TypeWriterLabel/TypeWriterLabel.h; sourceTree = "<group>"; };
 		FA29CCF7171F05C6007FB43E /* TypeWriterLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TypeWriterLabel.m; path = TypeWriterLabel/TypeWriterLabel.m; sourceTree = "<group>"; };
 		FA32E881169F2D9F00D30E90 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = API.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -962,7 +962,7 @@
 			children = (
 				FACD4FFC16A428A80077837F /* marker_images */,
 				FAF5A90116A7449C00EB42CF /* Resonators */,
-				FA17F062174CA3E0003C3E24 /* linkAmp@2x.png */,
+				FA17F064174CB0CC003C3E24 /* link_amp@2x.png */,
 				FA17F05E174C9DAF003C3E24 /* ada_refactor@2x.png */,
 				FA17F05F174C9DAF003C3E24 /* jarvis_virus@2x.png */,
 				FA3CC8F61744D20100428FB7 /* shield_common@2x.png */,
@@ -1969,7 +1969,7 @@
 				FA3CC8FB1744D20100428FB7 /* shield_veryrare@2x.png in Resources */,
 				FA17F060174C9DAF003C3E24 /* ada_refactor@2x.png in Resources */,
 				FA17F061174C9DAF003C3E24 /* jarvis_virus@2x.png in Resources */,
-				FA17F063174CA3E2003C3E24 /* linkAmp@2x.png in Resources */,
+				FA17F065174CB0CE003C3E24 /* link_amp@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
