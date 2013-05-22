@@ -2778,7 +2778,7 @@ Range: 0km</string>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <state key="normal" title="L1">
-                                                <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <state key="disabled">
@@ -2798,7 +2798,7 @@ Range: 0km</string>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <state key="normal" title="L2">
-                                                <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <state key="disabled">
@@ -2818,7 +2818,7 @@ Range: 0km</string>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <state key="normal" title="L3">
-                                                <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <state key="disabled">
@@ -2838,7 +2838,7 @@ Range: 0km</string>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <state key="normal" title="L4">
-                                                <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <state key="disabled">
@@ -2858,7 +2858,7 @@ Range: 0km</string>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <state key="normal" title="L5">
-                                                <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <state key="disabled">
@@ -2875,7 +2875,7 @@ Range: 0km</string>
                                             <color key="backgroundColor" red="0.92156862750000001" green="0.14901960780000001" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <state key="normal" title="L6">
-                                                <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <state key="disabled">
@@ -2892,7 +2892,7 @@ Range: 0km</string>
                                             <color key="backgroundColor" red="0.75686274509999996" green="0.14117647059999999" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <state key="normal" title="L7">
-                                                <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <state key="disabled">
@@ -2909,7 +2909,7 @@ Range: 0km</string>
                                             <color key="backgroundColor" red="0.58823529409999997" green="0.1529411765" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <state key="normal" title="L8">
-                                                <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <state key="disabled">
@@ -3056,7 +3056,7 @@ Range: 0km</string>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                             <state key="normal" title="COMMON">
-                                                <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <state key="disabled">
@@ -3076,7 +3076,7 @@ Range: 0km</string>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                             <state key="normal" title="RARE">
-                                                <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <state key="disabled">
@@ -3096,7 +3096,7 @@ Range: 0km</string>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                             <state key="normal" title="V. RARE">
-                                                <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
                                             <state key="disabled">
@@ -3155,6 +3155,53 @@ Range: 0km</string>
                                 </constraints>
                                 <connections>
                                     <outlet property="itemImageView" destination="Bdm-3I-nJv" id="rVN-UA-YLB"/>
+                                </connections>
+                            </tableViewCell>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SingleItemCell" rowHeight="150" id="oGb-Tp-eHQ" customClass="ResourceCell">
+                                <rect key="frame" x="0.0" y="322" width="320" height="150"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="149"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmu-Jx-CtL">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="120" type="user" id="JBe-85-rbF"/>
+                                                <constraint firstAttribute="width" constant="120" type="user" id="mWt-Jt-ewx"/>
+                                            </constraints>
+                                        </imageView>
+                                        <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DmI-ha-idA" customClass="DarkPressedBackgroundButton">
+                                            <color key="backgroundColor" red="0.69019607839999997" green="0.54901960780000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="44" id="MOj-2R-yEr"/>
+                                                <constraint firstAttribute="height" constant="32" id="hCQ-2I-Wjb"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <state key="normal" title="0">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="disabled">
+                                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="action:" destination="oGb-Tp-eHQ" eventType="touchUpInside" id="Ua6-8f-WR3"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="DmI-ha-idA" secondAttribute="trailing" constant="68" id="7ef-6T-e5J"/>
+                                    <constraint firstItem="DmI-ha-idA" firstAttribute="centerY" secondItem="oGb-Tp-eHQ" secondAttribute="centerY" type="default" id="HMB-PG-K51"/>
+                                    <constraint firstItem="bmu-Jx-CtL" firstAttribute="leading" secondItem="oGb-Tp-eHQ" secondAttribute="leading" constant="23" id="HXT-hx-o1q"/>
+                                    <constraint firstItem="DmI-ha-idA" firstAttribute="centerY" secondItem="bmu-Jx-CtL" secondAttribute="centerY" type="default" id="YGr-at-hLr"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="itemImageView" destination="bmu-Jx-CtL" id="pVv-w1-2Pf"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

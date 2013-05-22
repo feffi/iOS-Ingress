@@ -49,6 +49,9 @@
 		case ItemTypePowerCube:
 			objectClass = [PowerCube class];
 			break;
+		case itemTypeFlipCard:
+			objectClass = [FlipCard class];
+			break;
 	}
 
 	if (itemType == ItemTypePortalShield) {
@@ -56,6 +59,9 @@
 			UILabel *label = (UILabel *)[self.contentView viewWithTag:i];
 			label.text = [NSString stringWithFormat:@"%d", [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", i-1]]];
 		}
+	} else if (itemType == itemTypeFlipCard) {
+		UIButton *button = (UIButton *)[self.contentView viewWithTag:1];
+		[button setTitle:[NSString stringWithFormat:@"%d", [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO"]]] forState:UIControlStateNormal];
 	} else {
 		for (int i = 1; i <= 8; i++) {
 			UILabel *label = (UILabel *)[self.contentView viewWithTag:i];
@@ -71,7 +77,7 @@
 
 	actionLevel = sender.tag-10;
 
-	if (self.itemType == ItemTypePowerCube) {
+	if (self.itemType == ItemTypePowerCube || self.itemType == itemTypeFlipCard) {
 		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Drop" otherButtonTitles:@"Use", @"Recycle", nil];
 		//	[actionSheet showFromTabBar:self.tabBarController.tabBar];
 		[actionSheet showInView:self];
@@ -101,6 +107,9 @@
 		case ItemTypePowerCube:
 			objectClass = [PowerCube class];
 			break;
+		case itemTypeFlipCard:
+			objectClass = [FlipCard class];
+			break;
 	}
 
 	NSString *guid;
@@ -108,6 +117,8 @@
 	if (self.itemType == ItemTypePortalShield) {
 		PortalShieldRarity rarity = [API shieldRarityFromInt:actionLevel];
 		guid = [[objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]] guid];
+	} else if (self.itemType == itemTypeFlipCard) {
+		guid = [[objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO"]] guid];
 	} else {
 		guid = [[objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", actionLevel]] guid];
 	}
@@ -164,6 +175,9 @@
 		case ItemTypePowerCube:
 			objectClass = [PowerCube class];
 			break;
+		case itemTypeFlipCard:
+			objectClass = [FlipCard class];
+			break;
 	}
 
 	Item *item;
@@ -171,6 +185,8 @@
 	if (self.itemType == ItemTypePortalShield) {
 		PortalShieldRarity rarity = [API shieldRarityFromInt:actionLevel];
 		item = [objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
+	} else if (self.itemType == itemTypeFlipCard) {
+		item = [objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO"]];
 	} else {
 		item = [objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", actionLevel]];
 	}
@@ -253,11 +269,15 @@
 	
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 	
-	if (self.itemType == ItemTypePowerCube) {
+	if (self.itemType == ItemTypePowerCube || self.itemType == itemTypeFlipCard) {
 		if (buttonIndex == 0) {
 			[self dropItem];
 		} else if (buttonIndex == 1) {
-			[self usePowerCube];
+			if (self.itemType == ItemTypePowerCube) {
+				[self usePowerCube];
+			} else {
+//				[self useFlipCard];
+			}
 		} else if (buttonIndex == 2) {
 			[self recycleItem];
 		}
