@@ -306,7 +306,8 @@ NSString *const SoundDidFinishPlayingNotification = @"SoundDidFinishPlayingNotif
     float delta = (now - fadeStart)/fadeTime * (targetVolume - startVolume);
     [sound setVolume:(startVolume + delta) * baseVolume];
     if ((delta > 0.0f && [sound volume] >= targetVolume) ||
-        (delta < 0.0f && [sound volume] <= targetVolume))
+        (delta < 0.0f && [sound volume] <= targetVolume) ||
+        (delta == 0))
     {
         [sound setVolume:targetVolume * baseVolume];
         [timer invalidate];
