@@ -86,7 +86,7 @@
 			} else {
 				cell.itemImageView.image = [UIImage imageNamed:@"ada_refactor.png"];
 			}
-			cell.itemType = itemTypeFlipCard;
+			cell.itemType = ItemTypeFlipCard;
 			return cell;
 		}
 		default:
