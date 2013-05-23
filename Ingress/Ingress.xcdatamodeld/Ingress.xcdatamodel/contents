@@ -50,6 +50,8 @@
         <attribute name="ap" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="energy" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="maySendPromoEmail" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="shouldPushNotifyForAtPlayer" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="shouldPushNotifyForPortalAttacks" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="shouldSendEmail" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
     <entity name="Plext" representedClassName="Plext" syncable="YES">
@@ -117,7 +119,7 @@
         <element name="FlipCard" positionX="-4563" positionY="-1422" width="128" height="58"/>
         <element name="Item" positionX="-4635" positionY="-1629" width="128" height="103"/>
         <element name="Media" positionX="-4464" positionY="-1638" width="128" height="118"/>
-        <element name="Player" positionX="-4221" positionY="-1107" width="128" height="133"/>
+        <element name="Player" positionX="-4221" positionY="-1107" width="128" height="163"/>
         <element name="Plext" positionX="-4016" positionY="-1179" width="128" height="133"/>
         <element name="Portal" positionX="-4401" positionY="-1498" width="128" height="223"/>
         <element name="PortalKey" positionX="-4725" positionY="-1381" width="128" height="73"/>

@@ -19,6 +19,8 @@
 @property (nonatomic) BOOL maySendPromoEmail;
 @property (nonatomic) BOOL allowNicknameEdit;
 @property (nonatomic) BOOL allowFactionChoice;
+@property (nonatomic) BOOL shouldPushNotifyForAtPlayer;
+@property (nonatomic) BOOL shouldPushNotifyForPortalAttacks;
 
 @property (nonatomic, readonly) int level;
 @property (nonatomic, readonly) int maxEnergy;

@@ -17,6 +17,8 @@
 @dynamic maySendPromoEmail;
 @dynamic allowNicknameEdit;
 @dynamic allowFactionChoice;
+@dynamic shouldPushNotifyForAtPlayer;
+@dynamic shouldPushNotifyForPortalAttacks;
 
 - (int)level {
 	return [API levelForAp:self.ap];

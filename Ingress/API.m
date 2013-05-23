@@ -618,7 +618,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		self.player.allowNicknameEdit = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"allowNicknameEdit"] boolValue];
 		self.player.allowFactionChoice = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"allowFactionChoice"] boolValue];
 		self.player.shouldSendEmail = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"notificationSettings"][@"shouldSendEmail"] boolValue];
-		self.player.maySendPromoEmail = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"notificationSettings"][@"maySendPromoEmail"] boolValue];
+		self.player.shouldPushNotifyForAtPlayer = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"notificationSettings"][@"shouldPushNotifyForAtPlayer"] boolValue];
+		self.player.shouldPushNotifyForPortalAttacks = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"notificationSettings"][@"shouldPushNotifyForPortalAttacks"] boolValue];
 
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"ProfileUpdatedNotification" object:nil];
 
@@ -1848,7 +1849,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	self.player.allowFactionChoice = [playerEntity[2][@"playerPersonal"][@"allowFactionChoice"] boolValue];
 	self.player.shouldSendEmail = [playerEntity[2][@"playerPersonal"][@"notificationSettings"][@"shouldSendEmail"] boolValue];
 	self.player.maySendPromoEmail = [playerEntity[2][@"playerPersonal"][@"notificationSettings"][@"maySendPromoEmail"] boolValue];
-
+	self.player.shouldPushNotifyForAtPlayer = [playerEntity[2][@"playerPersonal"][@"notificationSettings"][@"shouldPushNotifyForAtPlayer"] boolValue];
+	self.player.shouldPushNotifyForPortalAttacks = [playerEntity[2][@"playerPersonal"][@"notificationSettings"][@"shouldPushNotifyForPortalAttacks"] boolValue];
+	
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"ProfileUpdatedNotification" object:nil];
 
 }
