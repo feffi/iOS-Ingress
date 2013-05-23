@@ -23,8 +23,6 @@
 		FA1739FA16A82CA30004EE10 /* xmp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1739F916A82CA30004EE10 /* xmp@2x.png */; };
 		FA17E903174BA212003C3E24 /* UIRefreshControl+Inset.m in Sources */ = {isa = PBXBuildFile; fileRef = FA17E902174BA212003C3E24 /* UIRefreshControl+Inset.m */; };
 		FA17F05D174C9BB3003C3E24 /* FlipCard.m in Sources */ = {isa = PBXBuildFile; fileRef = FA17F05C174C9BB3003C3E24 /* FlipCard.m */; };
-		FA17F060174C9DAF003C3E24 /* ada_refactor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA17F05E174C9DAF003C3E24 /* ada_refactor@2x.png */; };
-		FA17F061174C9DAF003C3E24 /* jarvis_virus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA17F05F174C9DAF003C3E24 /* jarvis_virus@2x.png */; };
 		FA17F065174CB0CE003C3E24 /* link_amp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA17F064174CB0CC003C3E24 /* link_amp@2x.png */; };
 		FA29CCF8171F05C6007FB43E /* TypeWriterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA29CCF7171F05C6007FB43E /* TypeWriterLabel.m */; };
 		FA32E883169F2D9F00D30E90 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E882169F2D9F00D30E90 /* API.m */; };
@@ -1924,8 +1922,6 @@
 				FA3CC8F91744D20100428FB7 /* shield_common@2x.png in Resources */,
 				FA3CC8FA1744D20100428FB7 /* shield_rare@2x.png in Resources */,
 				FA3CC8FB1744D20100428FB7 /* shield_veryrare@2x.png in Resources */,
-				FA17F060174C9DAF003C3E24 /* ada_refactor@2x.png in Resources */,
-				FA17F061174C9DAF003C3E24 /* jarvis_virus@2x.png in Resources */,
 				FA17F065174CB0CE003C3E24 /* link_amp@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

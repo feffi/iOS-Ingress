@@ -86,7 +86,7 @@ typedef void (^SoundCompletionBlock)(void);
 - (void)pickUpItemWithGuid:(NSString *)guid completionHandler:(void (^)(NSString *errorStr))handler;
 - (void)recycleItem:(Item *)item completionHandler:(void (^)(void))handler;
 - (void)usePowerCube:(PowerCube *)powerCube completionHandler:(void (^)(void))handler;
-- (void)rechargePortal:(Portal *)portal completionHandler:(void (^)(NSString *errorStr))handler;
+- (void)rechargePortal:(Portal *)portal slots:(NSArray *)slots completionHandler:(void (^)(NSString *errorStr))handler;
 - (void)remoteRechargePortal:(Portal *)portal portalKey:(PortalKey *)portalKey completionHandler:(void (^)(NSString *errorStr))handler;
 - (void)queryLinkabilityForPortal:(Portal *)portal portalKey:(PortalKey *)portalKey completionHandler:(void (^)(NSString *errorStr))handler;
 - (void)linkPortal:(Portal *)portal withPortalKey:(PortalKey *)portalKey completionHandler:(void (^)(NSString *errorStr))handler;

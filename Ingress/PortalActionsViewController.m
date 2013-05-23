@@ -294,9 +294,7 @@
 	[[AppDelegate instance].window addSubview:HUD];
 	[HUD show:YES];
 	
-	[[API sharedInstance] playSound:@"SFX_RESONATOR_RECHARGE"];
-	
-	[[API sharedInstance] rechargePortal:self.portal completionHandler:^(NSString *errorStr) {
+	[[API sharedInstance] rechargePortal:self.portal slots:@[@0, @1, @2, @3, @4, @5, @6, @7] completionHandler:^(NSString *errorStr) {
 		
 		[HUD hide:YES];
 
@@ -314,6 +312,7 @@
 			[HUD hide:YES afterDelay:3];
 
 		} else {
+			[[SoundManager sharedManager] playSound:@"Sound/sfx_resonator_recharge.aif"];
 			[[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_RECHARGED"]];
 		}
 

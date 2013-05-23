@@ -1257,11 +1257,11 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 }
 
-- (void)rechargePortal:(Portal *)portal completionHandler:(void (^)(NSString *errorStr))handler {
+- (void)rechargePortal:(Portal *)portal slots:(NSArray *)slots completionHandler:(void (^)(NSString *errorStr))handler {
 	
 	NSDictionary *dict = @{
 		@"portalGuid": portal.guid,
-		@"resonatorSlots": @[@0, @1, @2, @3, @4, @5, @6, @7]
+		@"resonatorSlots": slots
 	};
 	
 	[self sendRequest:@"gameplay/rechargeResonatorsV2" params:dict completionHandler:^(id responseObj) {

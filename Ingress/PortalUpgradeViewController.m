@@ -129,37 +129,45 @@
 	
     UILabel *label = nil;
 	GUIButton *deployButton = nil;
+	GUIButton *rechargeButton = nil;
     
     if (!view) {
         
-		view = [[GlowingLabel alloc] initWithFrame:CGRectMake(0, 0, 200, 200)];
-        //		view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:.95];
+		view = [[GlowingLabel alloc] initWithFrame:CGRectMake(0, 0, 220, 220)];
+//        view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:.95];
 		view.backgroundColor = [UIColor colorWithRed:16.0/255.0 green:32.0/255.0 blue:34.0/255.0 alpha:0.95];
-        
-        label = [[GlowingLabel alloc] initWithFrame:CGRectMake(0, 0, 200, 136)];
+
+        label = [[GlowingLabel alloc] initWithFrame:CGRectMake(0, 0, 220, 112)];
         label.backgroundColor = [UIColor clearColor];
         label.textColor = [UIColor whiteColor];
         label.textAlignment = NSTextAlignmentCenter;
-        label.font = [label.font fontWithSize:25];
+        label.font = [label.font fontWithSize:20];
 		label.numberOfLines = 0;
         label.tag = 1;
         [view addSubview:label];
         
-		deployButton = [[GUIButton alloc] initWithFrame:CGRectMake(20, 136, 160, 44)];
+		deployButton = [[GUIButton alloc] initWithFrame:CGRectMake(20, 112, 180, 44)];
 		[deployButton addTarget:self action:@selector(resonatorButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         deployButton.tag = 2;
         [view addSubview:deployButton];
+
+		rechargeButton = [[GUIButton alloc] initWithFrame:CGRectMake(20, 166, 180, 44)];
+		[rechargeButton setTitle:@"RECHARGE" forState:UIControlStateNormal];
+		[rechargeButton addTarget:self action:@selector(rechargeButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+        rechargeButton.tag = 3;
+        [view addSubview:rechargeButton];
         
     } else {
         label = (UILabel *)[view viewWithTag:1];
         deployButton = (GUIButton *)[view viewWithTag:2];
+        rechargeButton = (GUIButton *)[view viewWithTag:3];
     }
     
 	view.tag = index;
 	NSString *resonatorOctant = @[@"E", @"SE", @"S", @"SW", @"W", @"NW", @"N", @"NE"][index];
     
 	if (![resonator isKindOfClass:[NSNull class]]) {
-		label.text = [NSString stringWithFormat:@"Octant: %@\nLevel: %d\n%d XM", resonatorOctant, resonator.level, resonator.energy];
+		label.text = [NSString stringWithFormat:@"Octant: %@\nLevel: %d\n%d / %d XM", resonatorOctant, resonator.level, resonator.energy, [API maxEnergyForResonatorLevel:resonator.level]];
 		[deployButton setTitle:@"UPGRADE" forState:UIControlStateNormal];
 	} else {
 		label.text = [NSString stringWithFormat:@"Octant: %@", resonatorOctant];
@@ -217,8 +225,6 @@
 
 - (void)deployResonatorOfLevel:(int)level toSlot:(int)slot {
 
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_resonator_power_up.aif"];
-
 	if ([_resonators[slot] isKindOfClass:[NSNull class]]) {
 
 		Resonator *resonatorItem = [Resonator MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", level]];
@@ -263,7 +269,12 @@
 					[HUD hide:YES afterDelay:3];
 				} else {
 
-					[self refresh];
+					dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC));
+					dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+						[self refresh];
+					});
+
+					[[SoundManager sharedManager] playSound:@"Sound/sfx_resonator_power_up.aif"];
 
 					[[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_DEPLOYED"]];
 
@@ -320,7 +331,12 @@
 					[HUD hide:YES afterDelay:3];
 				} else {
 
-					[self refresh];
+					dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC));
+					dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+						[self refresh];
+					});
+
+					[[SoundManager sharedManager] playSound:@"Sound/sfx_resonator_power_up.aif"];
 
 					[[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_UPGRADED"]];
 
@@ -332,6 +348,43 @@
 
 	}
 
+}
+
+- (IBAction)rechargeButtonPressed:(GUIButton *)sender {
+
+	__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+	HUD.userInteractionEnabled = YES;
+	HUD.mode = MBProgressHUDModeIndeterminate;
+	HUD.dimBackground = YES;
+	HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+	HUD.labelText = @"Recharging...";
+	[[AppDelegate instance].window addSubview:HUD];
+	[HUD show:YES];
+
+	[[API sharedInstance] rechargePortal:self.portal slots:@[@(sender.superview.tag)] completionHandler:^(NSString *errorStr) {
+
+		[HUD hide:YES];
+
+		if (errorStr) {
+
+			MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+			HUD.userInteractionEnabled = YES;
+			HUD.dimBackground = YES;
+			HUD.mode = MBProgressHUDModeCustomView;
+			HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+			HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+			HUD.detailsLabelText = errorStr;
+			[[AppDelegate instance].window addSubview:HUD];
+			[HUD show:YES];
+			[HUD hide:YES afterDelay:3];
+
+		} else {
+			[[SoundManager sharedManager] playSound:@"Sound/sfx_resonator_recharge.aif"];
+			[[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_RECHARGED"]];
+		}
+
+	}];
+	
 }
 
 #pragma mark - Shields
