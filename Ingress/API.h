@@ -90,7 +90,7 @@ typedef void (^SoundCompletionBlock)(void);
 - (void)remoteRechargePortal:(Portal *)portal portalKey:(PortalKey *)portalKey completionHandler:(void (^)(NSString *errorStr))handler;
 - (void)queryLinkabilityForPortal:(Portal *)portal portalKey:(PortalKey *)portalKey completionHandler:(void (^)(NSString *errorStr))handler;
 - (void)linkPortal:(Portal *)portal withPortalKey:(PortalKey *)portalKey completionHandler:(void (^)(NSString *errorStr))handler;
-
+- (void)setNotificationSettingsWithCompletionHandler:(void (^)(void))handler;
 - (void)cheatSetPlayerLevel;
 
 - (void)sendRequest:(NSString *)requestName params:(id)params completionHandler:(void (^)(id responseObj))handler;

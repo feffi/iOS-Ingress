@@ -1331,6 +1331,28 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	
 }
 
+- (void)setNotificationSettingsWithCompletionHandler:(void (^)(void))handler {
+
+	NSDictionary *dict = @{
+		@"notificationSettings": @{
+			@"maySendPromoEmail": @(self.player.maySendPromoEmail),
+			@"shouldSendEmail": @(self.player.shouldSendEmail),
+			@"shouldPushNotifyForAtPlayer": @(self.player.shouldPushNotifyForAtPlayer),
+			@"shouldPushNotifyForPortalAttacks": @(self.player.shouldPushNotifyForPortalAttacks)
+		}
+	};
+
+	[self sendRequest:@"gameplay/setNotificationSettings" params:dict completionHandler:^(id responseObj) {
+		//NSLog(@"setNotificationSettings responseObj: %@", responseObj);
+
+		dispatch_async(dispatch_get_main_queue(), ^{
+			handler(nil);
+		});
+		
+	}];
+	
+}
+
 - (void)cheatSetPlayerLevel {
 
 	[self sendRequest:@"devCheat/cheatSetPlayerLevel" params:@[@5] completionHandler:^(id responseObj) {
