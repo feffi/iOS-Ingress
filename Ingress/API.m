@@ -1911,6 +1911,8 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 - (void)processPlayerEntity:(NSArray *)playerEntity {
 	//NSLog(@"processPlayerEntity");
 
+	if ([self.player isFault]) { return; }
+
 	int oldLevel = self.player.level;
 	int newLevel = [API levelForAp:[playerEntity[2][@"playerPersonal"][@"ap"] intValue]];
 	
