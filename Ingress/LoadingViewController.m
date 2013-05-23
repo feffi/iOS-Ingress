@@ -121,6 +121,7 @@
 	[_webView setAlpha:0];
 	[self.view addSubview:_webView];
 	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:handshakeURL];
+	[request setValue:@"Nemesis (gzip)" forHTTPHeaderField:@"User-Agent"];
 	[_webView loadRequest:request];
 	
 }
