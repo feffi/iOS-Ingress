@@ -45,11 +45,12 @@
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Player" representedClassName="Player" parentEntity="User" syncable="YES">
-        <attribute name="ap" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="allowFactionChoice" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="allowNicknameEdit" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="ap" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="energy" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="level" optional="YES" transient="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="maxEnergy" optional="YES" transient="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="nextLevelAP" optional="YES" transient="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="maySendPromoEmail" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="shouldSendEmail" optional="YES" attributeType="Boolean" syncable="YES"/>
     </entity>
     <entity name="Plext" representedClassName="Plext" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
@@ -96,6 +97,7 @@
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="guid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nickname" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="team" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="capturedPortals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Portal" inverseName="capturedBy" inverseEntity="Portal" syncable="YES"/>
         <relationship name="createdControlFields" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ControlField" inverseName="creator" inverseEntity="ControlField" syncable="YES"/>
         <relationship name="createdLinks" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="PortalLink" inverseName="creator" inverseEntity="PortalLink" syncable="YES"/>
@@ -112,9 +114,10 @@
         <element name="DeployedResonator" positionX="-4581" positionY="-1201" width="128" height="148"/>
         <element name="DeployedShield" positionX="-4763" positionY="-1296" width="128" height="73"/>
         <element name="EnergyGlob" positionX="-4889" positionY="-1413" width="128" height="58"/>
+        <element name="FlipCard" positionX="-4563" positionY="-1422" width="128" height="58"/>
         <element name="Item" positionX="-4635" positionY="-1629" width="128" height="103"/>
         <element name="Media" positionX="-4464" positionY="-1638" width="128" height="118"/>
-        <element name="Player" positionX="-4221" positionY="-1126" width="128" height="118"/>
+        <element name="Player" positionX="-4221" positionY="-1107" width="128" height="133"/>
         <element name="Plext" positionX="-4016" positionY="-1179" width="128" height="133"/>
         <element name="Portal" positionX="-4401" positionY="-1498" width="128" height="223"/>
         <element name="PortalKey" positionX="-4725" positionY="-1381" width="128" height="73"/>
@@ -122,8 +125,7 @@
         <element name="PowerCube" positionX="-4833" positionY="-1660" width="128" height="58"/>
         <element name="Resonator" positionX="-4806" positionY="-1503" width="128" height="58"/>
         <element name="Shield" positionX="-4853" positionY="-1575" width="128" height="58"/>
-        <element name="User" positionX="-4221" positionY="-1305" width="128" height="163"/>
+        <element name="User" positionX="-4221" positionY="-1305" width="128" height="178"/>
         <element name="XMP" positionX="-4637" positionY="-1503" width="128" height="58"/>
-        <element name="FlipCard" positionX="-4563" positionY="-1422" width="128" height="58"/>
     </elements>
 </model>

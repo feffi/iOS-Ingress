@@ -2,7 +2,7 @@
 //  Player.h
 //  Ingress
 //
-//  Created by Alex Studnicka on 24.01.13.
+//  Created by Alex Studnička on 23.05.13.
 //  Copyright (c) 2013 A&A Code. All rights reserved.
 //
 
@@ -13,10 +13,11 @@
 
 @interface Player : User
 
-@property (nonatomic) int16_t ap;
+@property (nonatomic) int32_t ap;
 @property (nonatomic) int16_t energy;
-@property (nonatomic) int16_t level;
-@property (nonatomic) int16_t maxEnergy;
-@property (nonatomic) int16_t nextLevelAP;
+@property (nonatomic) BOOL shouldSendEmail;
+@property (nonatomic) BOOL maySendPromoEmail;
+@property (nonatomic) BOOL allowNicknameEdit;
+@property (nonatomic) BOOL allowFactionChoice;
 
 @end
