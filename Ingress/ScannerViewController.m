@@ -437,7 +437,6 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
 	CGAffineTransform transform = CGAffineTransformMakeRotation(GLKMathDegreesToRadians(newHeading.trueHeading));
 	playerArrowImage.transform = transform;
-	playerArrowImage.center = _mapView.center;
 }
 
 #pragma mark - UIActionSheetDelegate
