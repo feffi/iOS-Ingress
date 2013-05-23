@@ -1952,8 +1952,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
      The algorithm for ordered list synchronization: http://www.mlsite.net/blog/?p=2250
      */
 
-//	[MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
-		NSManagedObjectContext *localContext = [NSManagedObjectContext MR_contextForCurrentThread];
+	[MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
 
 		NSArray *sortedEnergyGlobGuids = [energyGlobGuids sortedArrayUsingSelector:@selector(compare:)];
 		NSArray *localEnergyGlobs = [EnergyGlob MR_findAllSortedBy:@"guid" ascending:YES inContext:localContext];
@@ -1990,9 +1989,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 			}
 		}
 
-//	}];
-
-	[[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
+	}];
 
 }
 
