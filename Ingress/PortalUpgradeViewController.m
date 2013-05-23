@@ -26,7 +26,7 @@
     _carousel.delegate = self;
     _carousel.dataSource = self;
 	[self.view addSubview:_carousel];
-	[_carousel scrollToItemAtIndex:6 animated:NO];
+	[_carousel scrollToItemAtIndex:2 animated:NO];
 
 }
 
@@ -164,7 +164,7 @@
     }
     
 	view.tag = index;
-	NSString *resonatorOctant = @[@"E", @"SE", @"S", @"SW", @"W", @"NW", @"N", @"NE"][index];
+	NSString *resonatorOctant = @[@"E", @"NE", @"N", @"NW", @"W", @"SW", @"S", @"SE"][index];
     
 	if (![resonator isKindOfClass:[NSNull class]]) {
 		label.text = [NSString stringWithFormat:@"Octant: %@\nLevel: %d\n%d / %d XM", resonatorOctant, resonator.level, resonator.energy, [API maxEnergyForResonatorLevel:resonator.level]];
