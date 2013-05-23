@@ -1323,9 +1323,11 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	[self sendRequest:@"gameplay/createLink" params:dict completionHandler:^(id responseObj) {
 		//NSLog(@"createLink responseObj: %@", responseObj);
 
-		dispatch_async(dispatch_get_main_queue(), ^{
-			handler(nil);
-		});
+		if (handler) {
+			dispatch_async(dispatch_get_main_queue(), ^{
+				handler(nil);
+			});
+		}
 		
 	}];
 	
@@ -1345,9 +1347,11 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	[self sendRequest:@"gameplay/setNotificationSettings" params:dict completionHandler:^(id responseObj) {
 		//NSLog(@"setNotificationSettings responseObj: %@", responseObj);
 
-		dispatch_async(dispatch_get_main_queue(), ^{
-			handler();
-		});
+		if (handler) {
+			dispatch_async(dispatch_get_main_queue(), ^{
+				handler();
+			});
+		}
 		
 	}];
 	
@@ -1363,9 +1367,11 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	[self sendRequest:@"gameplay/getModifiedEntitiesByGuid" params:dict completionHandler:^(id responseObj) {
 		//NSLog(@"getModifiedEntitiesByGuid responseObj: %@", responseObj);
 
-		dispatch_async(dispatch_get_main_queue(), ^{
-			handler();
-		});
+		if (handler) {
+			dispatch_async(dispatch_get_main_queue(), ^{
+				handler();
+			});
+		}
 		
 	}];
 

@@ -35,15 +35,20 @@
 	cell.textLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:18];
     
     switch (indexPath.row) {
-        case 3: {
-            NSString *muteLabel = @"Mute Sound";
-            float soundVolumeValue = [[NSUserDefaults standardUserDefaults] floatForKey:kDeviceSoundLevel];
-
-            if(soundVolumeValue < 0.1){
-                muteLabel = @"Unmute Sound";
-            }
-            
-            cell.textLabel.text = muteLabel;
+        case 4: {
+            if ([[NSUserDefaults standardUserDefaults] floatForKey:kDeviceSoundLevel] < 0.1) {
+                cell.textLabel.text = @"Unmute Sound";
+            } else {
+                cell.textLabel.text = @"Mute Sound";
+			}
+            break;
+        }
+		case 5: {
+            if ([API sharedInstance].player.shouldSendEmail) {
+                cell.textLabel.text = @"Disable Email Notifications";
+            } else {
+                cell.textLabel.text = @"Enable Email Notifications";
+			}
             break;
         }
     }
@@ -96,35 +101,49 @@
 
 			break;
 		}
-            
-        case 3: {
-            NSString *muteLabel = @"Unmute Sound";
-            float currentSoundVolume = [SoundManager sharedManager].soundVolume;
-            if (currentSoundVolume < 0.1){
+
+		case 3: {
+
+			[MagicalRecord cleanUp];
+			[[NSFileManager defaultManager] removeItemAtURL:[NSPersistentStore MR_urlForStoreName:@"Ingress.sqlite"] error:nil];
+			[MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Ingress.sqlite"];
+			
+		}
+
+        case 4: {
+
+			float currentSoundVolume = [SoundManager sharedManager].soundVolume;
+			UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+			if (currentSoundVolume < 0.1) {
+				cell.textLabel.text = @"Mute Sound";
                 currentSoundVolume = 1.0;
-                muteLabel = @"Mute Sound";
-            } else {
+			} else {
+				cell.textLabel.text = @"Unmute Sound";
                 currentSoundVolume = 0.0;
-            }
-            
-            UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
-            cell.textLabel.text = muteLabel;
-            
+			}
+
             [SoundManager sharedManager].soundVolume = currentSoundVolume;
             [SoundManager sharedManager].musicVolume = currentSoundVolume;
-            
+
             [[NSUserDefaults standardUserDefaults] setFloat:currentSoundVolume forKey:kDeviceSoundLevel];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
             break;
         }
 
-		case 4: {
+		case 5: {
 
-			[MagicalRecord cleanUp];
-			[[NSFileManager defaultManager] removeItemAtURL:[NSPersistentStore MR_urlForStoreName:@"Ingress.sqlite"] error:nil];
-			[MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Ingress.sqlite"];
+            UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+			if ([API sharedInstance].player.shouldSendEmail) {
+				cell.textLabel.text = @"Enable Email Notifications";
+			} else {
+				cell.textLabel.text = @"Disable Email Notifications";
+			}
 
+            [API sharedInstance].player.shouldSendEmail = ![API sharedInstance].player.shouldSendEmail;
+
+			[[API sharedInstance] setNotificationSettingsWithCompletionHandler:nil];
+			
 		}
 	}
 	
