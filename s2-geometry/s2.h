@@ -27,6 +27,7 @@ typedef Vector3_d S2Point;
 #include <unordered_set>
 namespace std {
 
+
 template<> struct hash<S2Point> {
   size_t operator()(S2Point const& p) const;
 };

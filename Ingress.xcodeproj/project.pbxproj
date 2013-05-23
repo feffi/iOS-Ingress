@@ -752,7 +752,7 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		FA0B4DA6172DB905001B025D /* s2-geomtery-library */ = {
+		FA0B4DA6172DB905001B025D /* s2-geometry-library */ = {
 			isa = PBXGroup;
 			children = (
 				FAC4749E172DB2A000AAFFC0 /* base */,
@@ -803,7 +803,7 @@
 				FAC474DC172DB2A000AAFFC0 /* s2regionunion.cc */,
 				FAC474DD172DB2A000AAFFC0 /* s2regionunion.h */,
 			);
-			name = "s2-geomtery-library";
+			name = "s2-geometry-library";
 			sourceTree = "<group>";
 		};
 		FA29CCF5171F05BB007FB43E /* TypeWriterLabel */ = {
@@ -1379,7 +1379,7 @@
 			children = (
 				FAC475C5172DB8B100AAFFC0 /* S2Geometry.h */,
 				FAC475C6172DB8B100AAFFC0 /* S2Geometry.mm */,
-				FA0B4DA6172DB905001B025D /* s2-geomtery-library */,
+				FA0B4DA6172DB905001B025D /* s2-geometry-library */,
 			);
 			path = "s2-geometry";
 			sourceTree = "<group>";

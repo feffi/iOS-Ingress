@@ -9,6 +9,8 @@
 #import "CommTableViewController.h"
 #import "CommViewController.h"
 
+#import "CommViewController.h"
+
 @implementation CommTableViewController
 
 @synthesize factionOnly = _factionOnly;

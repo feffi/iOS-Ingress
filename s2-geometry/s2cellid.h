@@ -488,10 +488,10 @@ inline S2CellId S2CellId::End(int level) {
 ostream& operator<<(ostream& os, S2CellId const& id);
 
 #ifndef SWIG
-
 #include <unordered_set>
 namespace std {
-	
+
+
 template<> struct hash<S2CellId> {
   size_t operator()(S2CellId const& id) const {
     return static_cast<size_t>(id.id() >> 32) + static_cast<size_t>(id.id());

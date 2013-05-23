@@ -727,6 +727,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 				NSTimeInterval timestamp = [message[1] doubleValue]/1000.;
 				NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];
+
 				User *sender = nil;
 
 				NSString *str = message[2][@"plext"][@"text"];
@@ -793,7 +794,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 				plext.date = [date timeIntervalSinceReferenceDate];
 				plext.mentionsYou = mentionsYou;
 				plext.sender = sender;
-
 			}
 
 			if (handler) {
@@ -1885,10 +1885,11 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 			} else {
 				EnergyGlob *energyGlob = [localEnergyGlobs objectAtIndex:j];
 				NSString *energyGlobGuid = [sortedEnergyGlobGuids objectAtIndex:i];
-				if ([energyGlobGuid compare:energyGlob.guid] == NSOrderedAscending) {
+                NSComparisonResult comparisonResult = [energyGlobGuid compare:energyGlob.guid];
+				if (comparisonResult == NSOrderedAscending) {
 					[EnergyGlob energyGlobWithData:energyGlobGuid inManagedObjectContext:localContext];
 					i++;
-				} else if ([energyGlobGuid compare:energyGlob.guid] == NSOrderedDescending) {
+				} else if (comparisonResult == NSOrderedDescending) {
 					[energyGlob MR_deleteInContext:localContext];
 					j++;
 				} else {
