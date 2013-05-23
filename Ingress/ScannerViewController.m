@@ -435,8 +435,25 @@
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
-	CGAffineTransform transform = CGAffineTransformMakeRotation(GLKMathDegreesToRadians(newHeading.trueHeading));
-	playerArrowImage.transform = transform;
+    /* 
+     Using CoreAnimation to improve performance here. Mad world... :)
+     
+     Changing UIView.transform matrix became very time consuming process after
+     introduction of AutoLayout, so we do it less often, but animate
+     transitions. This way it both looks reasonably responsive, and doesn't burn
+     CPU and battery. Animation duration is a knob to fine-tune, since newer
+     devices can probably get away with more frequent updates, but my vintage
+     iPhone 4 is the only device i can run this project on.
+     */
+    
+    #define INGRESS_SCANNER_BEARING_ANIMATION_DURATION 0.2
+    
+    if ( ! playerArrowImage.layer.animationKeys.count) {
+        [UIView animateWithDuration:INGRESS_SCANNER_BEARING_ANIMATION_DURATION delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
+            CGAffineTransform transform = CGAffineTransformMakeRotation(GLKMathDegreesToRadians(newHeading.trueHeading));
+            playerArrowImage.transform = transform;
+        } completion:nil];
+    }
 }
 
 #pragma mark - UIActionSheetDelegate
