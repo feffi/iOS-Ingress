@@ -159,7 +159,7 @@
 	NSString *resonatorOctant = @[@"E", @"SE", @"S", @"SW", @"W", @"NW", @"N", @"NE"][index];
     
 	if (![resonator isKindOfClass:[NSNull class]]) {
-		label.text = [NSString stringWithFormat:@"Octant: %@\nLevel: %d\n%d XM \n%@", resonatorOctant, resonator.level, resonator.energy, resonator.owner.nickname];
+		label.text = [NSString stringWithFormat:@"Octant: %@\nLevel: %d\n%d XM", resonatorOctant, resonator.level, resonator.energy];
 		[deployButton setTitle:@"UPGRADE" forState:UIControlStateNormal];
 	} else {
 		label.text = [NSString stringWithFormat:@"Octant: %@", resonatorOctant];
