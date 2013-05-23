@@ -1346,7 +1346,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		//NSLog(@"setNotificationSettings responseObj: %@", responseObj);
 
 		dispatch_async(dispatch_get_main_queue(), ^{
-			handler(nil);
+			handler();
 		});
 		
 	}];
@@ -1364,7 +1364,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		//NSLog(@"getModifiedEntitiesByGuid responseObj: %@", responseObj);
 
 		dispatch_async(dispatch_get_main_queue(), ^{
-			handler(nil);
+			handler();
 		});
 		
 	}];
