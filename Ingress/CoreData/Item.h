@@ -16,6 +16,7 @@
 @property (nonatomic) BOOL dropped;
 @property (nonatomic) CLLocationDegrees latitude;
 @property (nonatomic) CLLocationDegrees longitude;
+@property (nonatomic) NSTimeInterval timestamp;
 
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 

@@ -15,6 +15,7 @@
 @synthesize dropped;
 @dynamic latitude;
 @dynamic longitude;
+@dynamic timestamp;
 
 - (CLLocationCoordinate2D)coordinate {
 	return CLLocationCoordinate2DMake(self.latitude, self.longitude);

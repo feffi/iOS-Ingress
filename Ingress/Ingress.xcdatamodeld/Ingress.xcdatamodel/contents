@@ -36,6 +36,7 @@
         <attribute name="guid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
     <entity name="Media" representedClassName="Media" parentEntity="Item" syncable="YES">
         <attribute name="imageData" optional="YES" transient="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
@@ -117,7 +118,7 @@
         <element name="DeployedShield" positionX="-4763" positionY="-1296" width="128" height="73"/>
         <element name="EnergyGlob" positionX="-4889" positionY="-1413" width="128" height="58"/>
         <element name="FlipCard" positionX="-4563" positionY="-1422" width="128" height="58"/>
-        <element name="Item" positionX="-4635" positionY="-1629" width="128" height="103"/>
+        <element name="Item" positionX="-4635" positionY="-1639" width="128" height="118"/>
         <element name="Media" positionX="-4464" positionY="-1638" width="128" height="118"/>
         <element name="Player" positionX="-4221" positionY="-1107" width="128" height="163"/>
         <element name="Plext" positionX="-4016" positionY="-1179" width="128" height="133"/>

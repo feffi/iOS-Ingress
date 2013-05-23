@@ -12,6 +12,7 @@
 		FA02F9D8173D54540016EE7F /* MediaWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA02F9D7173D54540016EE7F /* MediaWebViewViewController.m */; };
 		FA06162F174E6A9A001AB5CE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FA06162E174E6A9A001AB5CE /* User.m */; };
 		FA061635174E74F2001AB5CE /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = FA061634174E74F2001AB5CE /* Player.m */; };
+		FA061638174E7873001AB5CE /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = FA061637174E7873001AB5CE /* Item.m */; };
 		FA0A3FE9172EC61F00BBBA3D /* XMOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0A3FE8172EC61F00BBBA3D /* XMOverlayView.m */; };
 		FA0A3FEA172ED90D00BBBA3D /* Sound in Resources */ = {isa = PBXBuildFile; fileRef = FA7AC9D116D0116800505404 /* Sound */; };
 		FA0A4012172EF78700BBBA3D /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0A4011172EF78600BBBA3D /* SDWebImage.framework */; };
@@ -186,7 +187,6 @@
 		FAC23E3F16B1CEF0000C17DD /* ControlField.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E3E16B1CEF0000C17DD /* ControlField.m */; };
 		FAC23E4F16B2E3A9000C17DD /* MKPolyline+PortalLink.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E4E16B2E3A8000C17DD /* MKPolyline+PortalLink.m */; };
 		FAC23E5216B2E5B3000C17DD /* MKPolygon+ControlField.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E5116B2E5B3000C17DD /* MKPolygon+ControlField.m */; };
-		FAC23E5516B2F9CA000C17DD /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E5416B2F9CA000C17DD /* Item.m */; };
 		FAC37C49169DE303000F88AB /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC37C48169DE303000F88AB /* LoadingViewController.m */; };
 		FAC47502172DB2A000AAFFC0 /* s1angle.cc in Sources */ = {isa = PBXBuildFile; fileRef = FAC474B4172DB2A000AAFFC0 /* s1angle.cc */; settings = {COMPILER_FLAGS = "-w"; }; };
 		FAC47503172DB2A000AAFFC0 /* s1interval.cc in Sources */ = {isa = PBXBuildFile; fileRef = FAC474B6172DB2A000AAFFC0 /* s1interval.cc */; settings = {COMPILER_FLAGS = "-w"; }; };
@@ -288,6 +288,8 @@
 		FA06162E174E6A9A001AB5CE /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = CoreData/User.m; sourceTree = "<group>"; };
 		FA061633174E74F2001AB5CE /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = CoreData/Player.h; sourceTree = "<group>"; };
 		FA061634174E74F2001AB5CE /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Player.m; path = CoreData/Player.m; sourceTree = "<group>"; };
+		FA061636174E7873001AB5CE /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = CoreData/Item.h; sourceTree = "<group>"; };
+		FA061637174E7873001AB5CE /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = CoreData/Item.m; sourceTree = "<group>"; };
 		FA0A3FE7172EC61F00BBBA3D /* XMOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMOverlayView.h; sourceTree = "<group>"; };
 		FA0A3FE8172EC61F00BBBA3D /* XMOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMOverlayView.m; sourceTree = "<group>"; };
 		FA0A4011172EF78600BBBA3D /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
@@ -545,8 +547,6 @@
 		FAC23E4E16B2E3A8000C17DD /* MKPolyline+PortalLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKPolyline+PortalLink.m"; sourceTree = "<group>"; };
 		FAC23E5016B2E5B3000C17DD /* MKPolygon+ControlField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKPolygon+ControlField.h"; sourceTree = "<group>"; };
 		FAC23E5116B2E5B3000C17DD /* MKPolygon+ControlField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKPolygon+ControlField.m"; sourceTree = "<group>"; };
-		FAC23E5316B2F9CA000C17DD /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = CoreData/Item.h; sourceTree = "<group>"; };
-		FAC23E5416B2F9CA000C17DD /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = CoreData/Item.m; sourceTree = "<group>"; };
 		FAC37C47169DE303000F88AB /* LoadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingViewController.h; sourceTree = "<group>"; };
 		FAC37C48169DE303000F88AB /* LoadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingViewController.m; sourceTree = "<group>"; };
 		FAC4749F172DB2A000AAFFC0 /* basictypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = basictypes.h; sourceTree = "<group>"; };
@@ -1303,8 +1303,6 @@
 		FAC23E2D16B1982D000C17DD /* NSManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
-				FAC23E5316B2F9CA000C17DD /* Item.h */,
-				FAC23E5416B2F9CA000C17DD /* Item.m */,
 				FAC23E2A16B18759000C17DD /* Resonator.h */,
 				FAC23E2B16B18759000C17DD /* Resonator.m */,
 				FAC23E1516B18757000C17DD /* XMP.h */,
@@ -1339,6 +1337,8 @@
 				FA06162E174E6A9A001AB5CE /* User.m */,
 				FA061633174E74F2001AB5CE /* Player.h */,
 				FA061634174E74F2001AB5CE /* Player.m */,
+				FA061636174E7873001AB5CE /* Item.h */,
+				FA061637174E7873001AB5CE /* Item.m */,
 			);
 			name = NSManagedObjects;
 			sourceTree = "<group>";
@@ -1974,7 +1974,6 @@
 				FAC23E3F16B1CEF0000C17DD /* ControlField.m in Sources */,
 				FAC23E4F16B2E3A9000C17DD /* MKPolyline+PortalLink.m in Sources */,
 				FAC23E5216B2E5B3000C17DD /* MKPolygon+ControlField.m in Sources */,
-				FAC23E5516B2F9CA000C17DD /* Item.m in Sources */,
 				FA8C24D816B3257D000C8738 /* DarkPressedBackgroundButton.m in Sources */,
 				FA8C24E316B3DB64000C8738 /* CustomMapView.m in Sources */,
 				FAE797CB16B4873C00A57316 /* UIImage+ColorReplace.m in Sources */,
@@ -2061,6 +2060,7 @@
 				FA38F02E174D04780005D85E /* ScrollTextView.m in Sources */,
 				FA06162F174E6A9A001AB5CE /* User.m in Sources */,
 				FA061635174E74F2001AB5CE /* Player.m in Sources */,
+				FA061638174E7873001AB5CE /* Item.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
