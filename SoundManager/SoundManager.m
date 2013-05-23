@@ -475,6 +475,11 @@ NSString *const SoundDidFinishPlayingNotification = @"SoundDidFinishPlayingNotif
 
 - (void)playSound:(id)soundOrName looping:(BOOL)looping fadeIn:(BOOL)fadeIn
 {
+    if (( ! soundVolume) && ( ! looping)) {
+        // Don't even bother with non-looped sounds when muted
+        return;
+    }
+    
     Sound *sound = [soundOrName isKindOfClass:[Sound class]]? soundOrName: [Sound soundNamed:soundOrName];
     if (![currentSounds containsObject:sound])
     {
