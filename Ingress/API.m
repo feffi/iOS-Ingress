@@ -1353,6 +1353,24 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	
 }
 
+- (void)getModifiedEntitiesByGuid:(NSString *)guid completionHandler:(void (^)(void))handler {
+
+	NSDictionary *dict = @{
+		@"guids": @[guid],
+		@"timestampsMs": @[@(0)]
+	};
+
+	[self sendRequest:@"gameplay/getModifiedEntitiesByGuid" params:dict completionHandler:^(id responseObj) {
+		//NSLog(@"getModifiedEntitiesByGuid responseObj: %@", responseObj);
+
+		dispatch_async(dispatch_get_main_queue(), ^{
+			handler(nil);
+		});
+		
+	}];
+
+}
+
 - (void)cheatSetPlayerLevel {
 
 	[self sendRequest:@"devCheat/cheatSetPlayerLevel" params:@[@5] completionHandler:^(id responseObj) {
