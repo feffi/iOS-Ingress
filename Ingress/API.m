@@ -15,6 +15,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	BOOL isSoundPlaying;
 	NSMutableArray *soundsQueue;
 	NSMutableDictionary *cellsDates;
+	NSString *playerGuid;
 }
 
 @synthesize networkQueue = _networkQueue;
@@ -524,6 +525,20 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	return [NSString stringWithFormat:@"%08x,%08x", (int)(loc.latitude*1E6), (int)(loc.longitude*1E6)];
 }
 
+#pragma mark - Player
+
+- (Player *)player {
+	if (!_player) {
+		Player *player = [Player MR_findFirstByAttribute:@"guid" withValue:playerGuid];
+		if (!player) {
+			player = [Player MR_createEntity];
+			player.guid = playerGuid;
+		}
+		_player = player;
+	}
+	return _player;
+}
+
 #pragma mark - Portals
 
 - (UIImage *)iconForPortal:(Portal *)portal {
@@ -604,12 +619,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 			return;
 		}
 
-		Player *player = [Player MR_findFirstByAttribute:@"guid" withValue:jsonObject[@"result"][@"playerEntity"][0]];
-		if (!player) {
-			player = [Player MR_createEntity];
-			player.guid = jsonObject[@"result"][@"playerEntity"][0];
-		}
-		_player = player;
+		playerGuid = jsonObject[@"result"][@"playerEntity"][0];
 
 		self.player.nickname = jsonObject[@"result"][@"nickname"];
 		self.player.team = jsonObject[@"result"][@"playerEntity"][2][@"controllingTeam"][@"team"];
@@ -1910,8 +1920,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 - (void)processPlayerEntity:(NSArray *)playerEntity {
 	//NSLog(@"processPlayerEntity");
-
-	if (![self.player isDeleted]) { return; }
 
 	int oldLevel = self.player.level;
 	int newLevel = [API levelForAp:[playerEntity[2][@"playerPersonal"][@"ap"] intValue]];
