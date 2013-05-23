@@ -20,4 +20,8 @@
 @property (nonatomic) BOOL allowNicknameEdit;
 @property (nonatomic) BOOL allowFactionChoice;
 
+@property (nonatomic, readonly) int level;
+@property (nonatomic, readonly) int maxEnergy;
+@property (nonatomic, readonly) int nextLevelAP;
+
 @end

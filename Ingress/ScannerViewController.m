@@ -97,6 +97,13 @@
 	UIPinchGestureRecognizer *recognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
 	[_mapView addGestureRecognizer:recognizer];
 
+#ifdef DEBUG
+#warning Manual scrolling for debug purposes only!
+	UITapGestureRecognizer *mapViewTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapTapped:)];
+	mapViewTapGestureRecognizer.numberOfTapsRequired = 2;
+	[_mapView addGestureRecognizer:mapViewTapGestureRecognizer];
+#endif
+
 	UILongPressGestureRecognizer *mapViewLognPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(mapLongPress:)];
 	[_mapView addGestureRecognizer:mapViewLognPressGestureRecognizer];
 
@@ -133,7 +140,7 @@
 //	layer.transform = transform;
 //	layer.shouldRasterize = YES;
 
-	if ([[[API sharedInstance] playerInfo][@"allowFactionChoice"] boolValue]) {
+	if ([API sharedInstance].player.allowFactionChoice) {
 		[self performSegueWithIdentifier:@"FactionChooseSegue" sender:self];
 	}
 	
@@ -179,13 +186,13 @@
 
 - (void)refreshProfile {
 
-	NSDictionary *playerInfo = [[API sharedInstance] playerInfo];
+	Player *player = [API sharedInstance].player;
 
-	int ap = [playerInfo[@"ap"] intValue];
-	int level = [API levelForAp:ap];
-	int maxAp = [API maxApForLevel:level];
-	float energy = [playerInfo[@"energy"] floatValue];
-	float maxEnergy = [API maxXmForLevel:level];
+	int ap = player.ap;
+	int level = player.level;
+	int maxAp = player.nextLevelAP;
+	float energy = player.energy;
+	float maxEnergy = player.maxEnergy;
 
 	[apLabel setText:[NSString stringWithFormat:@"%d / %d AP", ap, maxAp]];
 	[xmLabel setText:[NSString stringWithFormat:@"%d XM", (int)energy]];
@@ -193,18 +200,18 @@
 	NSMutableParagraphStyle *pStyle = [NSMutableParagraphStyle new];
     pStyle.alignment = NSTextAlignmentRight;
 
-	UIColor *teamColor = [API colorForFaction:playerInfo[@"team"]];
+	UIColor *teamColor = [API colorForFaction:player.team];
 	
-	[apView setFaction:playerInfo[@"team"]];
+	[apView setFaction:player.team];
 	NSArray *maxAPs = @[@0, @10000, @30000, @70000, @150000, @300000, @600000, @1200000, @(INFINITY)];
 	[apView setProgress:(maxAp == 0 ? 0 : ((ap - [maxAPs[level - 1] floatValue]) / ([maxAPs[level] floatValue] - [maxAPs[level - 1] floatValue])))];
 
 	levelLabel.text = [NSString stringWithFormat:@"%d", level];
 
 	nicknameLabel.textColor = teamColor;
-	nicknameLabel.text = playerInfo[@"nickname"];
+	nicknameLabel.text = player.nickname;
 
-	if ([[API sharedInstance].playerInfo[@"team"] isEqualToString:@"RESISTANCE"]) {
+	if ([player.team isEqualToString:@"RESISTANCE"]) {
 		[xmIndicator setProgressImage:[[UIImage imageNamed:@"progressImage-resistance.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(7, 7, 7, 7)]];
 	} else {
 		[xmIndicator setProgressImage:[[UIImage imageNamed:@"progressImage-aliens.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(7, 7, 7, 7)]];
@@ -517,11 +524,10 @@
 		return;
     }
 
-	NSDictionary *playerInfo = [[API sharedInstance] playerInfo];
-	int ap = [playerInfo[@"ap"] intValue];
-	int level = [API levelForAp:ap];
-	int energy = [playerInfo[@"energy"] intValue];
-	int maxEnergy = [API maxXmForLevel:level];
+	Player *player = [API sharedInstance].player;
+
+	int energy = player.energy;
+	int maxEnergy = player.maxEnergy;
 	int collecting = 0;
 
 	if (energy < maxEnergy) {

@@ -18,8 +18,16 @@
 @dynamic allowNicknameEdit;
 @dynamic allowFactionChoice;
 
-//@dynamic level;
-//@dynamic maxEnergy;
-//@dynamic nextLevelAP;
+- (int)level {
+	return [API levelForAp:self.ap];
+}
+
+- (int)maxEnergy {
+	return [API maxXmForLevel:self.level];
+}
+
+- (int)nextLevelAP {
+	return [API maxApForLevel:self.level];
+}
 
 @end

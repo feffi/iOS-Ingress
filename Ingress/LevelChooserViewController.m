@@ -47,8 +47,7 @@
 	switch (self.view.tag) {
 		case 100: {
 			
-			int ap = [[API sharedInstance].playerInfo[@"ap"] intValue];
-			int level = [API levelForAp:ap];
+			int level = [API sharedInstance].player.level;
 			
 			for (int i = 1; i <= 8; i++) {
 				UIButton *button = (UIButton *)[self.view viewWithTag:i];

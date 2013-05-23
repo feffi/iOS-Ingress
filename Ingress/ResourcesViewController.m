@@ -81,7 +81,7 @@
 		}
 		case 4: {
 			ResourceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SingleItemCell" forIndexPath:indexPath];
-			if ([[[API sharedInstance] playerInfo][@"team"] isEqualToString:@"ALIENS"]) {
+			if ([[API sharedInstance].player.team isEqualToString:@"ALIENS"]) {
 				cell.itemImageView.image = [UIImage imageNamed:@"jarvis_virus.png"];
 			} else {
 				cell.itemImageView.image = [UIImage imageNamed:@"ada_refactor.png"];

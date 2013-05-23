@@ -21,7 +21,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 @synthesize notificationQueue = _notificationQueue;
 @synthesize xsrfToken = _xsrfToken;
 @synthesize SACSID = _SACSID;
-@synthesize playerInfo = _playerInfo;
+@synthesize player = _player;
 @synthesize energyToCollect = _energyToCollect;
 @synthesize currentTimestamp = _currentTimestamp;
 
@@ -603,18 +603,22 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 			});
 			return;
 		}
-		
-		self.playerInfo = [@{
-			@"guid": jsonObject[@"result"][@"playerEntity"][0],
-			@"nickname": jsonObject[@"result"][@"nickname"],
-			@"team": jsonObject[@"result"][@"playerEntity"][2][@"controllingTeam"][@"team"],
-			@"ap": jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"ap"],
-			@"energy": jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"energy"],
-			@"allowNicknameEdit": jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"allowNicknameEdit"],
-			@"allowFactionChoice": jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"allowFactionChoice"],
-			@"shouldSendEmail": jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"notificationSettings"][@"shouldSendEmail"],
-			@"maySendPromoEmail": jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"notificationSettings"][@"maySendPromoEmail"],
-		} mutableCopy];
+
+		Player *player = [Player MR_findFirstByAttribute:@"guid" withValue:jsonObject[@"result"][@"playerEntity"][0]];
+		if (!player) {
+			player = [Player MR_createEntity];
+			player.guid = jsonObject[@"result"][@"playerEntity"][0];
+		}
+		_player = player;
+
+		self.player.nickname = jsonObject[@"result"][@"nickname"];
+		self.player.team = jsonObject[@"result"][@"playerEntity"][2][@"controllingTeam"][@"team"];
+		self.player.ap = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"ap"] intValue];
+		self.player.energy = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"energy"] intValue];
+		self.player.allowNicknameEdit = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"allowNicknameEdit"] boolValue];
+		self.player.allowFactionChoice = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"allowFactionChoice"] boolValue];
+		self.player.shouldSendEmail = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"notificationSettings"][@"shouldSendEmail"] boolValue];
+		self.player.maySendPromoEmail = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"notificationSettings"][@"maySendPromoEmail"] boolValue];
 
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"ProfileUpdatedNotification" object:nil];
 
@@ -757,7 +761,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 							sender.nickname = [[markup[1][@"plain"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"@:"]];
 						}
 
-						if ([markup[0] isEqualToString:@"AT_PLAYER"] && [[markup[1][@"plain"] substringFromIndex:1] isEqualToString:self.playerInfo[@"nickname"]]) {
+						if ([markup[0] isEqualToString:@"AT_PLAYER"] && [[markup[1][@"plain"] substringFromIndex:1] isEqualToString:self.player.nickname]) {
 							[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:1.000 green:0.839 blue:0.322 alpha:1.000]} range:range];
 							mentionsYou = YES;
 						} else {
@@ -1814,15 +1818,15 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 - (void)processPlayerEntity:(NSArray *)playerEntity {
 	//NSLog(@"processPlayerEntity");
-	
-	int oldLevel = [API levelForAp:[self.playerInfo[@"ap"] intValue]];
+
+	int oldLevel = self.player.level;
 	int newLevel = [API levelForAp:[playerEntity[2][@"playerPersonal"][@"ap"] intValue]];
 	
-	if ([self.playerInfo[@"ap"] intValue] != 0 && newLevel > oldLevel) {
+	if (self.player.ap != 0 && newLevel > oldLevel) {
 		[self playSound:@"SFX_PLAYER_LEVEL_UP"];
 	}
 
-	if ([self.playerInfo[@"energy"] intValue] != [playerEntity[2][@"playerPersonal"][@"energy"] intValue]) {
+	if (self.player.energy != [playerEntity[2][@"playerPersonal"][@"energy"] intValue]) {
 		int xmPercent = (int)round(([playerEntity[2][@"playerPersonal"][@"energy"] floatValue]/[API maxXmForLevel:newLevel])*100);
 
 		NSMutableArray *sounds = [NSMutableArray arrayWithCapacity:4];
@@ -1837,20 +1841,16 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 	}
 
-	self.playerInfo = [@{
-		@"guid": playerEntity[0],
-		@"nickname": self.playerInfo[@"nickname"],
-		@"team": playerEntity[2][@"controllingTeam"][@"team"],
-		@"ap": playerEntity[2][@"playerPersonal"][@"ap"],
-		@"energy": playerEntity[2][@"playerPersonal"][@"energy"],
-		@"allowNicknameEdit": playerEntity[2][@"playerPersonal"][@"allowNicknameEdit"],
-		@"allowFactionChoice": playerEntity[2][@"playerPersonal"][@"allowFactionChoice"],
-		@"shouldSendEmail": playerEntity[2][@"playerPersonal"][@"notificationSettings"][@"shouldSendEmail"],
-		@"maySendPromoEmail": playerEntity[2][@"playerPersonal"][@"notificationSettings"][@"maySendPromoEmail"],
-	} mutableCopy];
-	
+	self.player.team = playerEntity[2][@"controllingTeam"][@"team"];
+	self.player.ap = [playerEntity[2][@"playerPersonal"][@"ap"] intValue];
+	self.player.energy = [playerEntity[2][@"playerPersonal"][@"energy"] intValue];
+	self.player.allowNicknameEdit = [playerEntity[2][@"playerPersonal"][@"allowNicknameEdit"] boolValue];
+	self.player.allowFactionChoice = [playerEntity[2][@"playerPersonal"][@"allowFactionChoice"] boolValue];
+	self.player.shouldSendEmail = [playerEntity[2][@"playerPersonal"][@"notificationSettings"][@"shouldSendEmail"] boolValue];
+	self.player.maySendPromoEmail = [playerEntity[2][@"playerPersonal"][@"notificationSettings"][@"maySendPromoEmail"] boolValue];
+
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"ProfileUpdatedNotification" object:nil];
-	
+
 }
 
 - (void)processEnergyGlobGuids:(NSArray *)energyGlobGuids {

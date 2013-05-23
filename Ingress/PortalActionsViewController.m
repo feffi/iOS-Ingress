@@ -119,7 +119,7 @@
 	
 	////////////////////////////
 	
-	if (self.portal.controllingTeam && [self.portal.controllingTeam isEqualToString:[API sharedInstance].playerInfo[@"team"]]) {
+	if (self.portal.controllingTeam && [self.portal.controllingTeam isEqualToString:[API sharedInstance].player.team]) {
 		rechargeButton.enabled = YES;
 		linkButton.enabled = YES;
 		rechargeButton.errorString = nil;
@@ -231,7 +231,7 @@
 							[sounds addObject:@"SPEECH_POWER_CUBE"];
 						}
 					} else if ([item isKindOfClass:[FlipCard class]]) {
-						if ([[[API sharedInstance] playerInfo][@"team"] isEqualToString:@"ALIENS"]) {
+						if ([[API sharedInstance].player.team isEqualToString:@"ALIENS"]) {
 							if (![sounds containsObject:@"SPEECH_JARVIS_VIRUS"]) {
 								[sounds addObject:@"SPEECH_JARVIS_VIRUS"];
 							}

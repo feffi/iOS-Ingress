@@ -48,7 +48,7 @@
 	for (int i = 0; i < 8; i++) {
 
 		UIButton *button = (UIButton *)[self.view viewWithTag:50+i];
-		if (self.portal.controllingTeam && ([self.portal.controllingTeam isEqualToString:[API sharedInstance].playerInfo[@"team"]] || [self.portal.controllingTeam isEqualToString:@"NEUTRAL"])) {
+		if (self.portal.controllingTeam && ([self.portal.controllingTeam isEqualToString:[API sharedInstance].player.team] || [self.portal.controllingTeam isEqualToString:@"NEUTRAL"])) {
 			button.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:10];
 			[button setTitle:@"DEPLOY" forState:UIControlStateNormal];
 			tmpResonators[i] = [NSNull null];
@@ -87,7 +87,7 @@
 			[button setImage:nil forState:UIControlStateNormal];
 		}
 
-		if (self.portal.controllingTeam && ([self.portal.controllingTeam isEqualToString:[API sharedInstance].playerInfo[@"team"]] || [self.portal.controllingTeam isEqualToString:@"NEUTRAL"])) {
+		if (self.portal.controllingTeam && ([self.portal.controllingTeam isEqualToString:[API sharedInstance].player.team] || [self.portal.controllingTeam isEqualToString:@"NEUTRAL"])) {
 			[button setEnabled:YES];
 		} else {
 			[button setEnabled:NO];
@@ -101,7 +101,7 @@
 
 			int slot = resonator.slot;
 
-			if (self.portal.controllingTeam && ([self.portal.controllingTeam isEqualToString:[API sharedInstance].playerInfo[@"team"]] || [self.portal.controllingTeam isEqualToString:@"NEUTRAL"])) {
+			if (self.portal.controllingTeam && ([self.portal.controllingTeam isEqualToString:[API sharedInstance].player.team] || [self.portal.controllingTeam isEqualToString:@"NEUTRAL"])) {
 				UIButton *button = (UIButton *)[self.view viewWithTag:50+slot];
 				[button setTitle:@"UPGRADE" forState:UIControlStateNormal];
 				tmpResonators[slot] = resonator;

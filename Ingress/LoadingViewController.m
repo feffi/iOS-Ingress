@@ -413,8 +413,8 @@
 
 		} else {
 
-			[API sharedInstance].playerInfo = [@{@"nickname": codenameToConfirm} mutableCopy];
-			
+//			[API sharedInstance].playerInfo = [@{@"nickname": codenameToConfirm} mutableCopy];
+
 			typewriterLabel.text = @"";
 
 			typewriterView.hidden = NO;

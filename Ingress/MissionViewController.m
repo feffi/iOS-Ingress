@@ -336,7 +336,7 @@
 			jarvisBackgroundTimer = [NSTimer scheduledTimerWithTimeInterval:2 target:self selector:@selector(jarvisBackground) userInfo:nil repeats:YES];
 			[self factionChooseButtons];
 		} else {
-			[[API sharedInstance] playerInfo][@"allowFactionChoice"] = @NO;
+			[API sharedInstance].player.allowFactionChoice = NO;
 			[self dismissViewControllerAnimated:YES completion:nil];
 		}
 
