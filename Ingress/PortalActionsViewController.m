@@ -275,7 +275,7 @@
 		
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
-		[HUD hide:YES afterDelay:3];
+		[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 		
 	}];
 	
@@ -309,7 +309,7 @@
 			HUD.detailsLabelText = errorStr;
 			[[AppDelegate instance].window addSubview:HUD];
 			[HUD show:YES];
-			[HUD hide:YES afterDelay:3];
+			[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 
 		} else {
 			[[SoundManager sharedManager] playSound:@"Sound/sfx_resonator_recharge.aif"];

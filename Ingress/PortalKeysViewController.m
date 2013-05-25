@@ -142,7 +142,7 @@
 				HUD.detailsLabelText = errorStr;
 				[[AppDelegate instance].window addSubview:HUD];
 				[HUD show:YES];
-				[HUD hide:YES afterDelay:3];
+				[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 			} else {
 
 				HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
@@ -167,7 +167,7 @@
 						HUD.detailsLabelText = errorStr;
 						[[AppDelegate instance].window addSubview:HUD];
 						[HUD show:YES];
-						[HUD hide:YES afterDelay:3];
+						[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 					} else {
 
 						[[SoundManager sharedManager] playSound:@"Sound/sfx_link_power_up.aif"];
@@ -251,7 +251,7 @@
 				HUD.detailsLabelText = errorStr;
 				[[AppDelegate instance].window addSubview:HUD];
 				[HUD show:YES];
-				[HUD hide:YES afterDelay:3];
+				[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 
 			} else {
 				[[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_RECHARGED"]];

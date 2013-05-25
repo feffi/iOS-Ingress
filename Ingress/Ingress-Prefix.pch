@@ -32,6 +32,8 @@
 #import "DB.h"
 #import "S2Geometry.h"
 
+#define HUD_DELAY_TIME 3
+
 #pragma clang diagnostic ignored "-Wmissing-selector-name"
 
 #endif

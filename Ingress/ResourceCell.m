@@ -153,7 +153,7 @@
 		HUD.detailsLabelText = @"No Item";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
-		[HUD hide:YES afterDelay:3];
+		[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 		
 	}
 
@@ -219,7 +219,7 @@
 		HUD.detailsLabelText = @"No Item";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
-		[HUD hide:YES afterDelay:3];
+		[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 		
 	}
 
@@ -257,7 +257,7 @@
 		HUD.detailsLabelText = @"No Item";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
-		[HUD hide:YES afterDelay:3];
+		[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 		
 	}
 
