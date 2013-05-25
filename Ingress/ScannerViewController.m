@@ -19,12 +19,17 @@
 #import "XMOverlayView.h"
 #import "XMOverlay.h"
 
+#define IG_RANGE_CIRCLE_VIEW_BORDER_WIDTH 2
+
 @implementation ScannerViewController {
 
 	Portal *currentPortal;
 	Item *currentItem;
 
 	UIView *rangeCircleView;
+    NSLayoutConstraint *rangeCircleViewWidth;
+    NSLayoutConstraint *rangeCircleViewHeight;
+    
 	CLLocationManager *locationManager;
 	CLLocation *lastLocation;
 	BOOL firstRefreshProfile;
@@ -70,19 +75,7 @@
 	[xmIndicator setProgressImage:[[UIImage imageNamed:@"progressImage-aliens.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(7, 7, 7, 7)]];
 	[xmIndicator setTrackImage:[[UIImage imageNamed:@"trackImage.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(2, 2, 2, 2)]];
 
-	rangeCircleView = [UIView new];
-	rangeCircleView.frame = CGRectMake(0, 0, 0, 0);
-	rangeCircleView.center = _mapView.center;
-	rangeCircleView.backgroundColor = [UIColor clearColor];
-	rangeCircleView.opaque = NO;
-	rangeCircleView.userInteractionEnabled = NO;
-	rangeCircleView.layer.cornerRadius = 0;
-	rangeCircleView.layer.masksToBounds = YES;
-	rangeCircleView.layer.borderWidth = 2;
-	rangeCircleView.layer.borderColor = [[[UIColor blueColor] colorWithAlphaComponent:0.25] CGColor];
-	[self.view addSubview:rangeCircleView];
-
-	[NSTimer scheduledTimerWithTimeInterval:.01 target:self selector:@selector(updateCircle) userInfo:nil repeats:YES];
+    [self validateLocationServicesAuthorization];
 
 	locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
@@ -390,12 +383,10 @@
 
 #pragma mark - Update
 
-- (void)updateCircle {
-
+- (void)validateLocationServicesAuthorization {
 	if ([CLLocationManager authorizationStatus] != kCLAuthorizationStatusAuthorized) {
 		if (!locationAllowHUD) {
 			_mapView.hidden = YES;
-			rangeCircleView.hidden = YES;
 			playerArrowImage.hidden = YES;
 			locationAllowHUD = [[MBProgressHUD alloc] initWithView:self.view];
 			locationAllowHUD.userInteractionEnabled = NO;
@@ -415,22 +406,79 @@
 		if (locationAllowHUD) {
 			[locationAllowHUD hide:YES];
 			_mapView.hidden = NO;
-			rangeCircleView.hidden = NO;
 			playerArrowImage.hidden = NO;
-		} else {
-			CGFloat diameter = 0.;
-			if (_mapView.bounds.size.width > 0) {
-				diameter = 100/((_mapView.region.span.latitudeDelta * 111200) / _mapView.bounds.size.width);
-			}
-			rangeCircleView.frame = CGRectMake(0, 0, diameter, diameter);
-			rangeCircleView.center = CGPointMake(_mapView.center.x, _mapView.center.y+10);
-			rangeCircleView.layer.cornerRadius = diameter/2;
 		}
 	}
+    
+    [self updateRangeCircleView];
+}
 
+- (void)updateRangeCircleView {
+    // Create view on first update
+    if ( ! rangeCircleView) {
+        rangeCircleView = [UIView new];
+        rangeCircleView.backgroundColor = [UIColor clearColor];
+        rangeCircleView.opaque = NO;
+        rangeCircleView.userInteractionEnabled = NO;
+        rangeCircleView.layer.masksToBounds = YES;
+        rangeCircleView.layer.borderWidth = IG_RANGE_CIRCLE_VIEW_BORDER_WIDTH;
+        rangeCircleView.layer.borderColor = [[[UIColor blueColor] colorWithAlphaComponent:0.25] CGColor];
+        
+        rangeCircleView.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:_mapView
+                                                              attribute:NSLayoutAttributeCenterX
+                                  
+                                                              relatedBy:NSLayoutRelationEqual
+                                  
+                                                                 toItem:rangeCircleView
+                                                              attribute:NSLayoutAttributeCenterX
+                                  
+                                                             multiplier:1
+                                                               constant:0]];
+        
+        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:_mapView
+                                                              attribute:NSLayoutAttributeCenterY
+                                  
+                                                              relatedBy:NSLayoutRelationEqual
+                                  
+                                                                 toItem:rangeCircleView
+                                                              attribute:NSLayoutAttributeCenterY
+                                  
+                                                             multiplier:1
+                                                               constant:-10]];
+        
+        rangeCircleViewWidth = [NSLayoutConstraint constraintWithItem:rangeCircleView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:0 constant:0];
+        rangeCircleViewHeight = [NSLayoutConstraint constraintWithItem:rangeCircleView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:0 constant:0];
+        [self.view addConstraint:rangeCircleViewWidth];
+        [self.view addConstraint:rangeCircleViewHeight];
+        
+        [self.view addSubview:rangeCircleView];
+    }
+    
+    // Hide view while no sensible data can be shown
+    if (locationAllowHUD) {
+        rangeCircleView.hidden = YES;
+        
+        return;
+    }
+    
+    // Update range diameter
+    CGFloat diameter = 0.;
+    if (_mapView.bounds.size.width > 0) {
+        diameter = 100/((_mapView.region.span.latitudeDelta * 111200) / _mapView.bounds.size.width);
+    }
+    rangeCircleViewWidth.constant = diameter + IG_RANGE_CIRCLE_VIEW_BORDER_WIDTH * 2;
+    rangeCircleViewHeight.constant = diameter + IG_RANGE_CIRCLE_VIEW_BORDER_WIDTH * 2;
+    rangeCircleView.layer.cornerRadius = diameter/2;
 }
 
 #pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
+{
+    [self validateLocationServicesAuthorization];
+}
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
 	[_mapView setCenterCoordinate:newLocation.coordinate animated:!firstLocationUpdate];
@@ -551,6 +599,7 @@
 		[self refresh];
 	}
 
+    [self updateRangeCircleView];
 }
 
 - (void)mapViewDidFinishLoadingMap:(MKMapView *)mapView {
