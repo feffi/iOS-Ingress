@@ -552,7 +552,7 @@
 				HUD.detailsLabelText = errorStr;
 				[[AppDelegate instance].window addSubview:HUD];
 				[HUD show:YES];
-				[HUD hide:YES afterDelay:3];
+				[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 
 			} else {
 				[[API sharedInstance] playSound:@"SFX_RESOURCE_PICK_UP"];
@@ -837,7 +837,7 @@
 		HUD.detailsLabelText = @"No XMP remaining!";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
-		[HUD hide:YES afterDelay:3];
+		[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 		return;
 	} else {
 		[[SoundManager sharedManager] playSound:@"Sound/sfx_emp_power_up.aif"];
@@ -931,7 +931,7 @@
 			
 			[[AppDelegate instance].window addSubview:HUD];
 			[HUD show:YES];
-			[HUD hide:YES afterDelay:3];
+			[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 			
 		}
 

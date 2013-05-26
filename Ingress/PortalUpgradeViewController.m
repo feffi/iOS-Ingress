@@ -252,7 +252,7 @@
 			HUD.detailsLabelText = @"No resonator of that level remaining!";
 			[[AppDelegate instance].window addSubview:HUD];
 			[HUD show:YES];
-			[HUD hide:YES afterDelay:3];
+			[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 
 		} else {
 
@@ -278,7 +278,7 @@
 					HUD.detailsLabelText = errorStr;
 					[[AppDelegate instance].window addSubview:HUD];
 					[HUD show:YES];
-					[HUD hide:YES afterDelay:3];
+					[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 				} else {
 
 					dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC));
@@ -315,7 +315,7 @@
 			HUD.detailsLabelText = @"No resonator of that level remaining!";
 			[[AppDelegate instance].window addSubview:HUD];
 			[HUD show:YES];
-			[HUD hide:YES afterDelay:3];
+			[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 
 		} else {
 
@@ -340,7 +340,7 @@
 					HUD.detailsLabelText = errorStr;
 					[[AppDelegate instance].window addSubview:HUD];
 					[HUD show:YES];
-					[HUD hide:YES afterDelay:3];
+					[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 				} else {
 
 					dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC));
@@ -388,7 +388,7 @@
 			HUD.detailsLabelText = errorStr;
 			[[AppDelegate instance].window addSubview:HUD];
 			[HUD show:YES];
-			[HUD hide:YES afterDelay:3];
+			[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 
 		} else {
 			[[SoundManager sharedManager] playSound:@"Sound/sfx_resonator_recharge.aif"];
@@ -440,7 +440,7 @@
 		HUD.detailsLabelText = @"No shield of that rarity remaining!";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
-		[HUD hide:YES afterDelay:3];
+		[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 
 	} else {
 
@@ -466,7 +466,7 @@
 				HUD.detailsLabelText = errorStr;
 				[[AppDelegate instance].window addSubview:HUD];
 				[HUD show:YES];
-				[HUD hide:YES afterDelay:3];
+				[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 			} else {
 
 				[self refresh];
