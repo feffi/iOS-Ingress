@@ -17,7 +17,7 @@
 
 	CGFloat fontSize = 16;
 
-	if (self.itemType == ItemTypePortalShield) {
+	if (self.itemType == ItemTypePortalShield || self.itemType == ItemTypeLinkAmp) {
 		fontSize = 8;
 	}
 
@@ -52,6 +52,9 @@
 		case ItemTypeFlipCard:
 			objectClass = [FlipCard class];
 			break;
+		case ItemTypeLinkAmp:
+			objectClass = [Item class];
+			break;
 	}
 
 	if (itemType == ItemTypePortalShield) {
@@ -62,7 +65,13 @@
 	} else if (itemType == ItemTypeFlipCard) {
 		for (int i = 1; i <= 2; i++) {
 			UILabel *label = (UILabel *)[self.contentView viewWithTag:i];
-			label.text = [NSString stringWithFormat:@"%d", [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && faction = %@", (i == 1) ? @"ALIENS" : @"RESISTANCE"]]];
+			label.text = @"-";
+			//label.text = [NSString stringWithFormat:@"%d", [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && faction = %@", (i == 1) ? @"ALIENS" : @"RESISTANCE"]]];
+		}
+	} else if (itemType == ItemTypeLinkAmp) {
+		for (int i = 1; i <= 3; i++) {
+			UILabel *label = (UILabel *)[self.contentView viewWithTag:i];
+			label.text = @"-";
 		}
 	} else {
 		for (int i = 1; i <= 8; i++) {
@@ -110,6 +119,9 @@
 		case ItemTypeFlipCard:
 			objectClass = [FlipCard class];
 			break;
+		case ItemTypeLinkAmp:
+			objectClass = [Item class];
+			break;
 	}
 
 	NSString *guid;
@@ -119,6 +131,8 @@
 		guid = [[objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]] guid];
 	} else if (self.itemType == ItemTypeFlipCard) {
 		guid = [[objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && faction = %@", (actionLevel == 1) ? @"ALIENS" : @"RESISTANCE"]] guid];
+	} else if (self.itemType == ItemTypeLinkAmp) {
+		guid = nil;
 	} else {
 		guid = [[objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", actionLevel]] guid];
 	}
@@ -178,6 +192,9 @@
 		case ItemTypeFlipCard:
 			objectClass = [FlipCard class];
 			break;
+		case ItemTypeLinkAmp:
+			objectClass = [Item class];
+			break;
 	}
 
 	Item *item;
@@ -187,6 +204,8 @@
 		item = [objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
 	} else if (self.itemType == ItemTypeFlipCard) {
 		item = [objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && faction = %@", (actionLevel == 1) ? @"ALIENS" : @"RESISTANCE"]];
+	} else if (self.itemType == ItemTypeLinkAmp) {
+		item = nil;
 	} else {
 		item = [objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", actionLevel]];
 	}

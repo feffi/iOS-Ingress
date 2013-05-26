@@ -13,7 +13,8 @@ typedef enum {
 	ItemTypeXMP,
 	ItemTypePortalShield,
 	ItemTypePowerCube,
-	ItemTypeFlipCard
+	ItemTypeFlipCard,
+	ItemTypeLinkAmp
 } ItemType;
 
 @interface ResourceCell : UITableViewCell <UIActionSheetDelegate>

@@ -50,7 +50,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 5;
+    return 6;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -87,6 +87,12 @@
 				cell.itemImageView.image = [UIImage imageNamed:@"ada_refactor.png"];
 			}
 			cell.itemType = ItemTypeFlipCard;
+			return cell;
+		}
+		case 5: {
+			ResourceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RarityItemCell" forIndexPath:indexPath];
+			cell.itemImageView.image = [UIImage imageNamed:@"link_amp.png"];
+			cell.itemType = ItemTypeLinkAmp;
 			return cell;
 		}
 		default:
