@@ -136,7 +136,7 @@
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
 
-		[[API sharedInstance] playSound:@"SFX_DROP_RESOURCE"];
+		[[SoundManager sharedManager] playSound:@"Sound/sfx_drop_resource.aif"];
 
 		[[API sharedInstance] dropItemWithGuid:guid completionHandler:^(void) {
 			[HUD hide:YES];
@@ -204,6 +204,8 @@
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
 
+		[[SoundManager sharedManager] playSound:[NSString stringWithFormat:@"Sound/sfx_recycle_%@.aif", arc4random_uniform(2) ? @"a" : @"b"]];
+
 		[[API sharedInstance] recycleItem:item completionHandler:^{
 			[HUD hide:YES];
 		}];
@@ -241,6 +243,8 @@
 		HUD.labelText = @"Using Power Cube...";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
+
+		[[SoundManager sharedManager] playSound:@"Sound/sfx_powercube_activate.aif"];
 
 		[[API sharedInstance] usePowerCube:powerCube completionHandler:^{
 			[HUD hide:YES];
