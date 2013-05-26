@@ -164,7 +164,7 @@
 		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 		[self.view.window addSubview:HUD];
 		[HUD show:YES];
-		[HUD hide:YES afterDelay:2];
+		[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 
 	}];
 
