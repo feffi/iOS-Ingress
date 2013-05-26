@@ -142,6 +142,8 @@
         label.textColor = [UIColor whiteColor];
         label.textAlignment = NSTextAlignmentCenter;
         label.font = [label.font fontWithSize:20];
+		label.minimumScaleFactor = .75;
+		label.adjustsFontSizeToFitWidth = YES;
 		label.numberOfLines = 0;
         label.tag = 1;
         [view addSubview:label];
@@ -167,7 +169,17 @@
 	NSString *resonatorOctant = @[@"E", @"NE", @"N", @"NW", @"W", @"SW", @"S", @"SE"][index];
     
 	if (![resonator isKindOfClass:[NSNull class]]) {
-		label.text = [NSString stringWithFormat:@"Octant: %@\nLevel: %d\n%d / %d XM", resonatorOctant, resonator.level, resonator.energy, [API maxEnergyForResonatorLevel:resonator.level]];
+
+		NSMutableString *resonatorString = [NSMutableString string];
+		[resonatorString appendFormat:@"Octant: %@\n", resonatorOctant];
+		[resonatorString appendFormat:@"Level: %d\n", resonator.level];
+		[resonatorString appendFormat:@"%d / %d XM\n", resonator.energy, [API maxEnergyForResonatorLevel:resonator.level]];
+
+		NSString *nickname = resonator.owner.nickname;
+		if (nickname) { [resonatorString appendFormat:@"Owner: %@", nickname]; }
+
+		[label setText:resonatorString];
+
 		[deployButton setTitle:@"UPGRADE" forState:UIControlStateNormal];
 	} else {
 		label.text = [NSString stringWithFormat:@"Octant: %@", resonatorOctant];
