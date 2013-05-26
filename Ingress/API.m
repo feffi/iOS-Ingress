@@ -1392,6 +1392,24 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 }
 
+- (void)flipPortal:(Portal *)portal withFlipCard:(FlipCard *)flipCard completionHandler:(void (^)(void))handler {
+
+	NSDictionary *dict = @{
+		@"portalGuid": portal.guid,
+		@"resourceGuid": flipCard.guid
+	};
+
+	[self sendRequest:@"gameplay/flipPortal" params:dict completionHandler:^(id responseObj) {
+		//NSLog(@"flipPortal responseObj: %@", responseObj);
+
+		dispatch_async(dispatch_get_main_queue(), ^{
+			handler();
+		});
+
+	}];
+	
+}
+
 - (void)cheatSetPlayerLevel {
 
 	[self sendRequest:@"devCheat/cheatSetPlayerLevel" params:@[@5] completionHandler:^(id responseObj) {
