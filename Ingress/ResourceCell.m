@@ -88,7 +88,7 @@
 
 	actionLevel = sender.tag-10;
 
-	if (self.itemType == ItemTypePowerCube) {
+	if (self.itemType == ItemTypePowerCube || self.itemType == ItemTypeFlipCard) {
 		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Drop" otherButtonTitles:@"Use", @"Recycle", nil];
 		[actionSheet showInView:self];
 	} else {
@@ -292,7 +292,7 @@
 	
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 	
-	if (self.itemType == ItemTypePowerCube) {
+	if (self.itemType == ItemTypePowerCube || self.itemType == ItemTypeFlipCard) {
 		if (buttonIndex == 0) {
 			[self dropItem];
 		} else if (buttonIndex == 1) {
