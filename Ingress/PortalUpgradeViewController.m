@@ -281,8 +281,7 @@
 					[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 				} else {
 
-					dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC));
-					dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+					dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
 						[self refresh];
 					});
 
@@ -343,8 +342,7 @@
 					[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 				} else {
 
-					dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC));
-					dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+					dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
 						[self refresh];
 					});
 
@@ -391,8 +389,14 @@
 			[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 
 		} else {
+
+			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
+				[self refresh];
+			});
+			
 			[[SoundManager sharedManager] playSound:@"Sound/sfx_resonator_recharge.aif"];
 			[[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_RECHARGED"]];
+			
 		}
 
 	}];
