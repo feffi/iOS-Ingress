@@ -50,6 +50,7 @@
 	// Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 	[MagicalRecord cleanUp];
 	[MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Ingress.sqlite"];
+	[[API sharedInstance] setPlayer:nil];
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
