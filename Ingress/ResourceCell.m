@@ -286,6 +286,35 @@
 
 }
 
+- (void)useFlipCard {
+
+	FlipCard *flipCard = [FlipCard MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && faction = %@", (actionLevel == 1) ? @"ALIENS" : @"RESISTANCE"]];
+
+	if (flipCard) {
+
+		actionLevel = 0;
+
+#warning Virus not yet implemented
+
+		//self.window.rootViewController.tabBarController
+
+	} else {
+
+		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.userInteractionEnabled = YES;
+		HUD.dimBackground = YES;
+		HUD.mode = MBProgressHUDModeCustomView;
+		HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+		HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+		HUD.detailsLabelText = @"No Item";
+		[[AppDelegate instance].window addSubview:HUD];
+		[HUD show:YES];
+		[HUD hide:YES afterDelay:HUD_DELAY_TIME];
+		
+	}
+	
+}
+
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
@@ -299,7 +328,7 @@
 			if (self.itemType == ItemTypePowerCube) {
 				[self usePowerCube];
 			} else {
-//				[self useFlipCard];
+				[self useFlipCard];
 			}
 		} else if (buttonIndex == 2) {
 			[self recycleItem];
