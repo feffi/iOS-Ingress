@@ -567,8 +567,8 @@
 
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
 
-	if (mapView.zoomLevel < 16) {
-        [mapView setCenterCoordinate:_mapView.centerCoordinate zoomLevel:16 animated:NO];
+	if (mapView.zoomLevel < 15) {
+        [mapView setCenterCoordinate:_mapView.centerCoordinate zoomLevel:15 animated:NO];
 		return;
     }
 
@@ -639,7 +639,7 @@
 		
 		Portal *portal = (Portal *)annotation;
 		annotationView.image = [[API sharedInstance] iconForPortal:portal];
-		annotationView.alpha = 0;
+		//annotationView.alpha = 0;
 
 		return annotationView;
 	
@@ -721,7 +721,7 @@
     MKCoordinateSpan span = MKCoordinateSpanMake(latdelta, londelta);
 	MKCoordinateRegion region = MKCoordinateRegionMake(originalRegion.center, span);
 
-	if ([self zoomLevelForRegion:region] >= 16) {
+	if ([self zoomLevelForRegion:region] >= 15) {
 		[_mapView setRegion:region animated:NO];
 	}
     
