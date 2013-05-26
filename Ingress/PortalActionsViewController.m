@@ -9,6 +9,7 @@
 #import "PortalActionsViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "PortalKeysViewController.h"
+#import "NSShadow+Initilalizer.h"
 
 @implementation PortalActionsViewController
 
@@ -84,26 +85,17 @@
 	User *user = self.portal.capturedBy;
 	NSString *nickname = user.nickname;
 	if (!nickname) { nickname = [API factionStrForFaction:self.portal.controllingTeam]; }
-	[str appendFormat:@"%@", nickname];
+	[str appendFormat:@"Owner: %@", nickname];
 
 	NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:str];
 
-	NSShadow *shadow = [NSShadow new];
-	shadow.shadowOffset = CGSizeZero;
-	shadow.shadowBlurRadius = 15/5;
-	shadow.shadowColor = [UIColor colorWithRed:.56 green:1 blue:1 alpha:1];
+	NSShadow *shadow = [NSShadow shadowWithOffset:CGSizeZero blurRadius:15/5 color:[UIColor colorWithRed:.56 green:1 blue:1 alpha:1]];
 	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15], NSForegroundColorAttributeName : [UIColor colorWithRed:.56 green:1 blue:1 alpha:1], NSShadowAttributeName: shadow} range:NSMakeRange(0, str.length)];
 
-	shadow = [NSShadow new];
-	shadow.shadowOffset = CGSizeZero;
-	shadow.shadowBlurRadius = 15/5;
-	shadow.shadowColor = [API colorForLevel:self.portal.level];
+	shadow = [NSShadow shadowWithOffset:CGSizeZero blurRadius:15/5 color:[API colorForLevel:self.portal.level]];
 	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15], NSForegroundColorAttributeName : [API colorForLevel:self.portal.level], NSShadowAttributeName: shadow} range:NSMakeRange(7, 2)];
 
-	shadow = [NSShadow new];
-	shadow.shadowOffset = CGSizeZero;
-	shadow.shadowBlurRadius = 15/5;
-	shadow.shadowColor = [API colorForFaction:self.portal.controllingTeam];
+	shadow = [NSShadow shadowWithOffset:CGSizeZero blurRadius:15/5 color:[API colorForFaction:self.portal.controllingTeam]];
 	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15], NSForegroundColorAttributeName : [API colorForFaction:self.portal.controllingTeam], NSShadowAttributeName: shadow} range:NSMakeRange(str.length-(nickname.length), nickname.length)];
 
 	infoLabel1.attributedText = attrStr;
