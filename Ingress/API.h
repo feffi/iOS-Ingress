@@ -64,6 +64,8 @@ typedef void (^SoundCompletionBlock)(void);
 - (NSString *)currentE6Location;
 - (UIImage *)iconForPortal:(Portal *)portal;
 
+- (Player *)playerForContext:(NSManagedObjectContext *)context;
+
 - (void)processHandshakeData:(NSString *)jsonString completionHandler:(void (^)(NSString *errorStr))handler;
 
 - (void)getInventoryWithCompletionHandler:(void (^)(void))handler;

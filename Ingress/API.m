@@ -525,20 +525,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	return [NSString stringWithFormat:@"%08x,%08x", (int)(loc.latitude*1E6), (int)(loc.longitude*1E6)];
 }
 
-#pragma mark - Player
-
-- (Player *)player {
-	if (!_player) {
-		Player *player = [Player MR_findFirstByAttribute:@"guid" withValue:playerGuid];
-		if (!player) {
-			player = [Player MR_createEntity];
-			player.guid = playerGuid;
-		}
-		_player = player;
-	}
-	return _player;
-}
-
 #pragma mark - Portals
 
 - (UIImage *)iconForPortal:(Portal *)portal {
@@ -575,6 +561,32 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 //	
 //	return [UIImage imageNamed:@"neutral_icon.png"];
 
+}
+
+#pragma mark - Player
+
+- (Player *)player {
+	if (!_player) {
+		Player *player = [Player MR_findFirstByAttribute:@"guid" withValue:playerGuid];
+		if (!player) {
+			player = [Player MR_createEntity];
+			player.guid = playerGuid;
+		}
+		_player = player;
+	}
+	return _player;
+}
+
+- (Player *)playerForContext:(NSManagedObjectContext *)context {
+	if (playerGuid) {
+		Player *player = [Player MR_findFirstByAttribute:@"guid" withValue:playerGuid inContext:context];
+		if (!player) {
+			player = [Player MR_createInContext:context];
+			player.guid = playerGuid;
+		}
+		return player;
+	}
+	return nil;
 }
 
 #pragma mark - Handshake
