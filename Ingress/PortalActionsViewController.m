@@ -178,7 +178,7 @@
 				[sounds addObject:@"SPEECH_COOLDOWN_ACTIVE"];
 
 				int minutes = (int)floorf(secondsRemaining/60);
-				if (minutes > 0) {
+				if (minutes > 1) {
 					[sounds addObjectsFromArray:[API soundsForNumber:minutes]];
 					[sounds addObject:@"SPEECH_MINUTES"];
 				} else {
