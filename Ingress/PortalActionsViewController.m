@@ -110,8 +110,10 @@
 //	infoLabel2.attributedText = attrStr;
 	
 	////////////////////////////
+
+	Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
 	
-	if (self.portal.controllingTeam && [self.portal.controllingTeam isEqualToString:[API sharedInstance].player.team]) {
+	if (self.portal.controllingTeam && [self.portal.controllingTeam isEqualToString:player.team]) {
 		rechargeButton.enabled = YES;
 		linkButton.enabled = YES;
 		rechargeButton.errorString = nil;
@@ -195,6 +197,8 @@
 			HUD.mode = MBProgressHUDModeText;
 			if (acquiredItems.count > 0) {
 
+				Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+
 				NSMutableArray *sounds = [NSMutableArray arrayWithCapacity:acquiredItems];
 				NSMutableString *acquiredItemsStr = [NSMutableString string];
 				
@@ -223,7 +227,7 @@
 							[sounds addObject:@"SPEECH_POWER_CUBE"];
 						}
 					} else if ([item isKindOfClass:[FlipCard class]]) {
-						if ([[API sharedInstance].player.team isEqualToString:@"ALIENS"]) {
+						if ([player.team isEqualToString:@"ALIENS"]) {
 							if (![sounds containsObject:@"SPEECH_JARVIS_VIRUS"]) {
 								[sounds addObject:@"SPEECH_JARVIS_VIRUS"];
 							}

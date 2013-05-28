@@ -18,7 +18,9 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	BOOL canUpgrade = (self.portal.controllingTeam && ([self.portal.controllingTeam isEqualToString:[API sharedInstance].player.team] || [self.portal.controllingTeam isEqualToString:@"NEUTRAL"]));
+	Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+
+	BOOL canUpgrade = (self.portal.controllingTeam && ([self.portal.controllingTeam isEqualToString:player.team] || [self.portal.controllingTeam isEqualToString:@"NEUTRAL"]));
 
 	viewSegmentedControl = [[UISegmentedControl alloc] initWithItems:@[@"Actions", @"Info"]];
 	viewSegmentedControl.segmentedControlStyle = UISegmentedControlStyleBar;

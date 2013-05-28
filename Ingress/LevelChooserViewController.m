@@ -46,8 +46,9 @@
 	
 	switch (self.view.tag) {
 		case 100: {
-			
-			int level = [API sharedInstance].player.level;
+
+			Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+			int level = player.level;
 			
 			for (int i = 1; i <= 8; i++) {
 				UIButton *button = (UIButton *)[self.view viewWithTag:i];

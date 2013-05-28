@@ -133,7 +133,9 @@
 //	layer.transform = transform;
 //	layer.shouldRasterize = YES;
 
-	if ([API sharedInstance].player.allowFactionChoice) {
+	Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+
+	if (player.allowFactionChoice) {
 		[self performSegueWithIdentifier:@"FactionChooseSegue" sender:self];
 	}
 	
@@ -179,7 +181,7 @@
 
 - (void)refreshProfile {
 
-	Player *player = [API sharedInstance].player;
+	Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
 
 	int ap = player.ap;
 	int level = player.level;
@@ -572,7 +574,7 @@
 		return;
     }
 
-	Player *player = [API sharedInstance].player;
+	Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
 
 	int energy = player.energy;
 	int maxEnergy = player.maxEnergy;

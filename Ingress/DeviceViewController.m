@@ -44,7 +44,8 @@
             break;
         }
 		case 5: {
-            if ([API sharedInstance].player.shouldSendEmail) {
+			Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+            if (player.shouldSendEmail) {
                 cell.textLabel.text = @"Disable Email Notifications";
             } else {
                 cell.textLabel.text = @"Enable Email Notifications";
@@ -135,16 +136,20 @@
 		case 5: {
 
             UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
-			if ([API sharedInstance].player.shouldSendEmail) {
+			Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+			if (player.shouldSendEmail) {
 				cell.textLabel.text = @"Enable Email Notifications";
 			} else {
 				cell.textLabel.text = @"Disable Email Notifications";
 			}
 
-            [API sharedInstance].player.shouldSendEmail = ![API sharedInstance].player.shouldSendEmail;
+			[MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+				Player *player = [[API sharedInstance] playerForContext:localContext];
+				player.shouldSendEmail = !player.shouldSendEmail;
+			} completion:^(BOOL success, NSError *error) {
+				[[API sharedInstance] setNotificationSettingsWithCompletionHandler:nil];
+			}];
 
-			[[API sharedInstance] setNotificationSettingsWithCompletionHandler:nil];
-			
 		}
 	}
 	

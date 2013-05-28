@@ -120,10 +120,11 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
 	Plext *plext = [self.fetchedResultsController objectAtIndexPath:indexPath];
 	User *sender = plext.sender;
 
-	if (sender && ![sender.guid isEqualToString:[API sharedInstance].player.guid]) {
+	if (sender && ![sender.guid isEqualToString:player.guid]) {
 		CommViewController *commVC = (CommViewController *)self.parentViewController;
 		[commVC mentionUser:plext.sender];
 	}

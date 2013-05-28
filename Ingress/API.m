@@ -22,7 +22,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 @synthesize notificationQueue = _notificationQueue;
 @synthesize xsrfToken = _xsrfToken;
 @synthesize SACSID = _SACSID;
-@synthesize player = _player;
 @synthesize energyToCollect = _energyToCollect;
 @synthesize currentTimestamp = _currentTimestamp;
 
@@ -565,17 +564,17 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 #pragma mark - Player
 
-- (Player *)player {
-	if (!_player) {
-		Player *player = [Player MR_findFirstByAttribute:@"guid" withValue:playerGuid];
-		if (!player) {
-			player = [Player MR_createEntity];
-			player.guid = playerGuid;
-		}
-		_player = player;
-	}
-	return _player;
-}
+//- (Player *)player {
+//	if (!_player) {
+//		Player *player = [Player MR_findFirstByAttribute:@"guid" withValue:playerGuid];
+//		if (!player) {
+//			player = [Player MR_createEntity];
+//			player.guid = playerGuid;
+//		}
+//		_player = player;
+//	}
+//	return _player;
+//}
 
 - (Player *)playerForContext:(NSManagedObjectContext *)context {
 	if (playerGuid) {
@@ -638,15 +637,17 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 		playerGuid = jsonObject[@"result"][@"playerEntity"][0];
 
-		self.player.nickname = jsonObject[@"result"][@"nickname"];
-		self.player.team = jsonObject[@"result"][@"playerEntity"][2][@"controllingTeam"][@"team"];
-		self.player.ap = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"ap"] intValue];
-		self.player.energy = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"energy"] intValue];
-		self.player.allowNicknameEdit = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"allowNicknameEdit"] boolValue];
-		self.player.allowFactionChoice = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"allowFactionChoice"] boolValue];
-		self.player.shouldSendEmail = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"notificationSettings"][@"shouldSendEmail"] boolValue];
-		self.player.shouldPushNotifyForAtPlayer = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"notificationSettings"][@"shouldPushNotifyForAtPlayer"] boolValue];
-		self.player.shouldPushNotifyForPortalAttacks = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"notificationSettings"][@"shouldPushNotifyForPortalAttacks"] boolValue];
+		Player *player = [self playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+
+		player.nickname = jsonObject[@"result"][@"nickname"];
+		player.team = jsonObject[@"result"][@"playerEntity"][2][@"controllingTeam"][@"team"];
+		player.ap = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"ap"] intValue];
+		player.energy = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"energy"] intValue];
+		player.allowNicknameEdit = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"allowNicknameEdit"] boolValue];
+		player.allowFactionChoice = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"allowFactionChoice"] boolValue];
+		player.shouldSendEmail = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"notificationSettings"][@"shouldSendEmail"] boolValue];
+		player.shouldPushNotifyForAtPlayer = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"notificationSettings"][@"shouldPushNotifyForAtPlayer"] boolValue];
+		player.shouldPushNotifyForPortalAttacks = [jsonObject[@"result"][@"playerEntity"][2][@"playerPersonal"][@"notificationSettings"][@"shouldPushNotifyForPortalAttacks"] boolValue];
 
 		[[NSNotificationCenter defaultCenter] postNotificationName:@"ProfileUpdatedNotification" object:nil];
 
@@ -760,6 +761,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 				NSTimeInterval timestamp = [message[1] doubleValue]/1000.;
 				NSDate *date = [NSDate dateWithTimeIntervalSince1970:timestamp];
 
+				Player *player = [self playerForContext:localContext];
 				User *sender = nil;
 
 				NSString *str = message[2][@"plext"][@"text"];
@@ -789,7 +791,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 							sender.nickname = [[markup[1][@"plain"] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"@:"]];
 						}
 
-						if ([markup[0] isEqualToString:@"AT_PLAYER"] && [[markup[1][@"plain"] substringFromIndex:1] isEqualToString:self.player.nickname]) {
+						if ([markup[0] isEqualToString:@"AT_PLAYER"] && [[markup[1][@"plain"] substringFromIndex:1] isEqualToString:player.nickname]) {
 							[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:1.000 green:0.839 blue:0.322 alpha:1.000]} range:range];
 							mentionsYou = YES;
 						} else {
@@ -1362,12 +1364,14 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 - (void)setNotificationSettingsWithCompletionHandler:(void (^)(void))handler {
 
+	Player *player = [self playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+	
 	NSDictionary *dict = @{
 		@"notificationSettings": @{
-			@"maySendPromoEmail": @(self.player.maySendPromoEmail),
-			@"shouldSendEmail": @(self.player.shouldSendEmail),
-			@"shouldPushNotifyForAtPlayer": @(self.player.shouldPushNotifyForAtPlayer),
-			@"shouldPushNotifyForPortalAttacks": @(self.player.shouldPushNotifyForPortalAttacks)
+			@"maySendPromoEmail": @(player.maySendPromoEmail),
+			@"shouldSendEmail": @(player.shouldSendEmail),
+			@"shouldPushNotifyForAtPlayer": @(player.shouldPushNotifyForAtPlayer),
+			@"shouldPushNotifyForPortalAttacks": @(player.shouldPushNotifyForPortalAttacks)
 		}
 	};
 
@@ -1956,14 +1960,16 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 - (void)processPlayerEntity:(NSArray *)playerEntity {
 	//NSLog(@"processPlayerEntity");
 
-	int oldLevel = self.player.level;
+	Player *player = [self playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+
+	int oldLevel = player.level;
 	int newLevel = [API levelForAp:[playerEntity[2][@"playerPersonal"][@"ap"] intValue]];
 	
-	if (self.player.ap != 0 && newLevel > oldLevel) {
+	if (player.ap != 0 && newLevel > oldLevel) {
 		[self playSound:@"SFX_PLAYER_LEVEL_UP"];
 	}
 
-	if (self.player.energy != [playerEntity[2][@"playerPersonal"][@"energy"] intValue]) {
+	if (player.energy != [playerEntity[2][@"playerPersonal"][@"energy"] intValue]) {
 		int xmPercent = (int)round(([playerEntity[2][@"playerPersonal"][@"energy"] floatValue]/[API maxXmForLevel:newLevel])*100);
 
 		NSMutableArray *sounds = [NSMutableArray arrayWithCapacity:4];
@@ -1978,15 +1984,15 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 	}
 
-	self.player.team = playerEntity[2][@"controllingTeam"][@"team"];
-	self.player.ap = [playerEntity[2][@"playerPersonal"][@"ap"] intValue];
-	self.player.energy = [playerEntity[2][@"playerPersonal"][@"energy"] intValue];
-	self.player.allowNicknameEdit = [playerEntity[2][@"playerPersonal"][@"allowNicknameEdit"] boolValue];
-	self.player.allowFactionChoice = [playerEntity[2][@"playerPersonal"][@"allowFactionChoice"] boolValue];
-	self.player.shouldSendEmail = [playerEntity[2][@"playerPersonal"][@"notificationSettings"][@"shouldSendEmail"] boolValue];
-	self.player.maySendPromoEmail = [playerEntity[2][@"playerPersonal"][@"notificationSettings"][@"maySendPromoEmail"] boolValue];
-	self.player.shouldPushNotifyForAtPlayer = [playerEntity[2][@"playerPersonal"][@"notificationSettings"][@"shouldPushNotifyForAtPlayer"] boolValue];
-	self.player.shouldPushNotifyForPortalAttacks = [playerEntity[2][@"playerPersonal"][@"notificationSettings"][@"shouldPushNotifyForPortalAttacks"] boolValue];
+	player.team = playerEntity[2][@"controllingTeam"][@"team"];
+	player.ap = [playerEntity[2][@"playerPersonal"][@"ap"] intValue];
+	player.energy = [playerEntity[2][@"playerPersonal"][@"energy"] intValue];
+	player.allowNicknameEdit = [playerEntity[2][@"playerPersonal"][@"allowNicknameEdit"] boolValue];
+	player.allowFactionChoice = [playerEntity[2][@"playerPersonal"][@"allowFactionChoice"] boolValue];
+	player.shouldSendEmail = [playerEntity[2][@"playerPersonal"][@"notificationSettings"][@"shouldSendEmail"] boolValue];
+	player.maySendPromoEmail = [playerEntity[2][@"playerPersonal"][@"notificationSettings"][@"maySendPromoEmail"] boolValue];
+	player.shouldPushNotifyForAtPlayer = [playerEntity[2][@"playerPersonal"][@"notificationSettings"][@"shouldPushNotifyForAtPlayer"] boolValue];
+	player.shouldPushNotifyForPortalAttacks = [playerEntity[2][@"playerPersonal"][@"notificationSettings"][@"shouldPushNotifyForPortalAttacks"] boolValue];
 	
 	[[NSNotificationCenter defaultCenter] postNotificationName:@"ProfileUpdatedNotification" object:nil];
 
