@@ -98,12 +98,12 @@ typedef void (^SoundCompletionBlock)(void);
 
 - (void)sendRequest:(NSString *)requestName params:(id)params completionHandler:(void (^)(id responseObj))handler;
 
-- (void)processInventory:(NSArray *)inventory;
-- (void)processGameEntities:(NSArray *)gameEntities;
-- (void)processPlayerEntity:(NSArray *)inventory;
-- (void)processEnergyGlobGuids:(NSArray *)energyGlobGuids;
+- (void)processInventory:(NSArray *)inventory context:(NSManagedObjectContext *)context;
+- (void)processGameEntities:(NSArray *)gameEntities context:(NSManagedObjectContext *)context;
+- (void)processPlayerEntity:(NSArray *)inventory context:(NSManagedObjectContext *)context;
+- (void)processEnergyGlobGuids:(NSArray *)energyGlobGuids context:(NSManagedObjectContext *)context;
+- (void)processDeletedEntityGuids:(NSArray *)deletedEntityGuids context:(NSManagedObjectContext *)context;
 - (void)processAPGains:(NSArray *)apGains;
 - (void)processPlayerDamages:(NSArray *)playerDamages;
-- (void)processDeletedEntityGuids:(NSArray *)deletedEntityGuids;
 
 @end

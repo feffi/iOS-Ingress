@@ -1531,30 +1531,36 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 - (void)processGameBasket:(NSDictionary *)gameBasket {
 	//NSLog(@"processGameBasket: %@", gameBasket);
 	
-	NSArray *inventory = gameBasket[@"inventory"];
-	if (inventory && inventory.count > 0) { [self processInventory:inventory]; }
+	[MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
 
-	NSArray *gameEntities = gameBasket[@"gameEntities"];
-	if (gameEntities && gameEntities.count > 0) { [self processGameEntities:gameEntities]; }
-	
-	NSArray *playerEntity = gameBasket[@"playerEntity"];
-	if (playerEntity && playerEntity.count > 0) { [self processPlayerEntity:playerEntity]; }
-	
-	NSArray *energyGlobGuids = gameBasket[@"energyGlobGuids"];
-	if (energyGlobGuids && energyGlobGuids.count > 0) { [self processEnergyGlobGuids:energyGlobGuids]; }
-	
-	NSArray *apGains = gameBasket[@"apGains"];
-	if (apGains && apGains.count > 0) { [self processAPGains:apGains]; }
-	
-	NSArray *playerDamages = gameBasket[@"playerDamages"];
-	if (playerDamages && playerDamages.count > 0) { [self processPlayerDamages:playerDamages]; }
-	
-	NSArray *deletedEntityGuids = gameBasket[@"deletedEntityGuids"];
-	if (deletedEntityGuids && deletedEntityGuids.count > 0) { [self processDeletedEntityGuids:deletedEntityGuids]; }
+		NSArray *inventory = gameBasket[@"inventory"];
+		if (inventory && inventory.count > 0) { [self processInventory:inventory context:localContext]; }
+
+		NSArray *gameEntities = gameBasket[@"gameEntities"];
+		if (gameEntities && gameEntities.count > 0) { [self processGameEntities:gameEntities context:localContext]; }
+
+		NSArray *playerEntity = gameBasket[@"playerEntity"];
+		if (playerEntity && playerEntity.count > 0) { [self processPlayerEntity:playerEntity context:localContext]; }
+
+		NSArray *energyGlobGuids = gameBasket[@"energyGlobGuids"];
+		if (energyGlobGuids && energyGlobGuids.count > 0) { [self processEnergyGlobGuids:energyGlobGuids context:localContext]; }
+
+		NSArray *deletedEntityGuids = gameBasket[@"deletedEntityGuids"];
+		if (deletedEntityGuids && deletedEntityGuids.count > 0) { [self processDeletedEntityGuids:deletedEntityGuids context:localContext]; }
+
+		NSArray *apGains = gameBasket[@"apGains"];
+		if (apGains && apGains.count > 0) { [self processAPGains:apGains]; }
+
+		NSArray *playerDamages = gameBasket[@"playerDamages"];
+		if (playerDamages && playerDamages.count > 0) { [self processPlayerDamages:playerDamages]; }
+
+	} completion:^(BOOL success, NSError *error) {
+		
+	}];
 
 }
 
-- (void)processInventory:(NSArray *)inventory {
+- (void)processInventory:(NSArray *)inventory context:(NSManagedObjectContext *)context {
 	//NSLog(@"processInventory");
 	
 	for (NSArray *item in inventory) {
@@ -1665,7 +1671,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	
 }
 
-- (void)processGameEntities:(NSArray *)gameEntities {
+- (void)processGameEntities:(NSArray *)gameEntities context:(NSManagedObjectContext *)context {
 		//NSLog(@"processGameEntities: %@", gameEntities);
 
 	for (NSArray *gameEntity in gameEntities) {
@@ -1957,7 +1963,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 	
 }
 
-- (void)processPlayerEntity:(NSArray *)playerEntity {
+- (void)processPlayerEntity:(NSArray *)playerEntity context:(NSManagedObjectContext *)context {
 	//NSLog(@"processPlayerEntity");
 
 	Player *player = [self playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
@@ -1998,7 +2004,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 }
 
-- (void)processEnergyGlobGuids:(NSArray *)energyGlobGuids {
+- (void)processEnergyGlobGuids:(NSArray *)energyGlobGuids context:(NSManagedObjectContext *)context {
 
     /*
      The following is an implementation of the algorithm described in:
@@ -2050,6 +2056,19 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 }
 
+- (void)processDeletedEntityGuids:(NSArray *)deletedEntityGuids context:(NSManagedObjectContext *)context {
+	//NSLog(@"processDeletedEntityGuids: %d", deletedEntityGuids.count);
+
+	for (NSString *deletedGuid in deletedEntityGuids) {
+		Item *item = [Item MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"guid = %@", deletedGuid]];
+		if (item) {
+			[item MR_deleteEntity];
+		}
+	}
+	[[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
+
+}
+
 - (void)processAPGains:(NSArray *)apGains {
 	//NSLog(@"processAPGains");
 
@@ -2071,19 +2090,6 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 			[[MTStatusBarOverlay sharedInstance] postErrorMessage:[NSString stringWithFormat:@"- %d XM", [playerDamage[@"damageAmount"] intValue]] duration:3 animated:YES];
 		});
 	}
-}
-
-- (void)processDeletedEntityGuids:(NSArray *)deletedEntityGuids {
-	//NSLog(@"processDeletedEntityGuids: %d", deletedEntityGuids.count);
-	
-	for (NSString *deletedGuid in deletedEntityGuids) {
-		Item *item = [Item MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"guid = %@", deletedGuid]];
-		if (item) {
-			[item MR_deleteEntity];
-		}
-	}
-	[[NSManagedObjectContext MR_contextForCurrentThread] MR_saveToPersistentStoreWithCompletion:nil];
-	
 }
 
 @end
