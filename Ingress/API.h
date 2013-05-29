@@ -16,6 +16,8 @@
 
 #define kDeviceSoundLevel @"kDeviceSoundLevel"
 
+FOUNDATION_EXPORT NSString *const IGMapDayMode;
+
 typedef void (^SoundCompletionBlock)(void);
 
 @interface API : NSObject <AVAudioPlayerDelegate, MTStatusBarOverlayDelegate> {
