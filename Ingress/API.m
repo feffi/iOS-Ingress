@@ -482,6 +482,9 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 		int tens = (int)(number/10)*10;
 		int units = number-tens;
 		return @[[NSString stringWithFormat:@"SPEECH_NUMBER_0%d", tens], [NSString stringWithFormat:@"SPEECH_NUMBER_00%d", units]];
+	} else if (number > 100 && number < 1000) {
+		int hundrets = (int)(number/100)*100;
+		return [@[[NSString stringWithFormat:@"SPEECH_NUMBER_%d", hundrets]] arrayByAddingObjectsFromArray:[API soundsForNumber:(number-hundrets)]];
 	}
 
 	return @[];
