@@ -52,6 +52,14 @@
 			}
             break;
         }
+        case 6: {
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:IGMapDayMode]) {
+                cell.textLabel.text = @"Switch map to night mode";
+            } else {
+                cell.textLabel.text = @"Switch map to day mode";
+            }
+            break;
+        }
     }
     
     return cell;
@@ -152,6 +160,22 @@
 
             break;
 		}
+            
+        case 6: {
+            BOOL newDayModeValue = ! [[NSUserDefaults standardUserDefaults] boolForKey:IGMapDayMode];
+            
+            [[NSUserDefaults standardUserDefaults] setBool:newDayModeValue forKey:IGMapDayMode];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+            if (newDayModeValue) {
+                cell.textLabel.text = @"Switch map to night mode";
+            } else {
+                cell.textLabel.text = @"Switch map to day mode";
+            }
+            
+            break;
+        }
 	}
 	
 }
