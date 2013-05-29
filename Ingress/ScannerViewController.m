@@ -102,6 +102,12 @@
 
     _xmOverlay = [XMOverlay new];
     [_mapView addOverlay:_xmOverlay];
+    
+	[[NSNotificationCenter defaultCenter] addObserverForName:@"DBUpdatedNotification" object:nil queue:nil usingBlock:^(NSNotification *note) {
+        if ([self isSelectedAndTopmost]) {
+            [self refreshProfile];
+        }
+	}];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -110,10 +116,6 @@
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
 
 //	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(managedObjectContextObjectsDidChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:nil];
-
-	[[NSNotificationCenter defaultCenter] addObserverForName:@"DBUpdatedNotification" object:nil queue:nil usingBlock:^(NSNotification *note) {
-		[self refreshProfile];
-	}];
 
 	[self refreshProfile];
 
@@ -146,15 +148,19 @@
 	}
 }
 
-- (void)viewDidDisappear:(BOOL)animated {
-	[super viewDidDisappear:animated];
-	
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
+- (BOOL)isSelectedAndTopmost {
+    return ((self.tabBarController.selectedViewController == self.navigationController) &&
+            (self.navigationController.visibleViewController == self));
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)dealloc
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Data Refresh
