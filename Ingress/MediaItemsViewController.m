@@ -8,6 +8,7 @@
 
 #import "MediaItemsViewController.h"
 #import "MediaWebViewViewController.h"
+#import "XCDYouTubeVideoPlayerViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 
 @implementation MediaItemsViewController {
@@ -19,6 +20,20 @@
 
 	self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
 	self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(64, 0, 0, 0);
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+
+	[[NSNotificationCenter defaultCenter] addObserverForName:MPMoviePlayerPlaybackDidFinishNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
+		[[SoundManager sharedManager] playMusic:@"Sound/sfx_ambient_scanner_base.aif" looping:YES];
+	}];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+	[super viewDidDisappear:animated];
+
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -156,7 +171,24 @@
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	
 	currentMedia = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	[self performSegueWithIdentifier:@"MediaWebViewSegue" sender:self];
+
+	if ([currentMedia.mediaURL.host isEqualToString:@"www.youtube.com"]) {
+		NSString *videoID = [currentMedia.url componentsSeparatedByString:@"v="][1];
+		NSRange search = [videoID rangeOfString:@"&"];
+		if (search.location != NSNotFound) {
+			videoID = [videoID substringToIndex:search.location];
+		}
+		XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:videoID];
+		[self presentMoviePlayerViewControllerAnimated:videoPlayerViewController];
+		[[SoundManager sharedManager] stopMusic:YES];
+	} else if ([currentMedia.mediaURL.lastPathComponent.pathExtension isEqualToString:@"mp3"]) {
+		MPMoviePlayerViewController *audioPlayerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:currentMedia.mediaURL];
+		[self presentMoviePlayerViewControllerAnimated:audioPlayerViewController];
+		[[SoundManager sharedManager] stopMusic:YES];
+	} else {
+		[self performSegueWithIdentifier:@"MediaWebViewSegue" sender:self];
+	}
+
 }
 
 #pragma mark - Storyboard
