@@ -146,6 +146,11 @@
 	}
 }
 
+- (BOOL)isSelectedAndTopmost {
+    return ((self.tabBarController.selectedViewController == self.navigationController) &&
+            (self.navigationController.visibleViewController == self));
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
