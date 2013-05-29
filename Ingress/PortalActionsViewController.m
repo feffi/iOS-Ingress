@@ -193,6 +193,10 @@
 			}
 
 			[[API sharedInstance] playSounds:sounds];
+
+			[[AppDelegate instance].window addSubview:HUD];
+			[HUD show:YES];
+			[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 		} else {
 			HUD.mode = MBProgressHUDModeText;
 			if (acquiredItems.count > 0) {
