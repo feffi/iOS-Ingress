@@ -23,17 +23,17 @@
     CGFloat locs[] =	{0.0,				0.3,				1.0};
     CGGradientRef g = CGGradientCreateWithColorComponents(space, comps, locs, 3);
 
-    for (EnergyGlob *energyGlob in [(XMOverlay *)(self.overlay) globs]) {
-        if (energyGlob) {
-            MKMapPoint xmCenter = MKMapPointForCoordinate(energyGlob.coordinate);
-            if (MKMapRectContainsRect(mapRect, MKMapRectMake(xmCenter.x - xmRadius, xmCenter.y - xmRadius, 2*xmRadius, 2*xmRadius))) {
-                CGPoint xmCenterPoint = [self pointForMapPoint:xmCenter];
-                CGFloat xmScaledRadius = xmDelta/100 * energyGlob.amount + xmRadius-xmDelta;
-                CGContextDrawRadialGradient(context, g, xmCenterPoint, 0, xmCenterPoint, xmScaledRadius, 0);
-            }
-        }
-    }
-    
+	for (NSDictionary *energy in [(XMOverlay *)(self.overlay) globs]) {
+		CLLocation *location = energy[@"location"];
+		CLLocationCoordinate2D coordinate = location.coordinate;
+		MKMapPoint xmCenter = MKMapPointForCoordinate(coordinate);
+		if (MKMapRectContainsRect(mapRect, MKMapRectMake(xmCenter.x - xmRadius, xmCenter.y - xmRadius, 2*xmRadius, 2*xmRadius))) {
+			CGPoint xmCenterPoint = [self pointForMapPoint:xmCenter];
+			CGFloat xmScaledRadius = xmDelta/100 * [energy[@"amount"] intValue] + xmRadius-xmDelta;
+			CGContextDrawRadialGradient(context, g, xmCenterPoint, 0, xmCenterPoint, xmScaledRadius, 0);
+		}
+	}
+
     CGGradientRelease(g);
 	CGColorSpaceRelease(space);
 

@@ -27,7 +27,6 @@ typedef void (^SoundCompletionBlock)(void);
 }
 
 @property (nonatomic, strong) NSOperationQueue *networkQueue;
-@property (nonatomic, strong) NSOperationQueue *notificationQueue;
 @property (nonatomic, strong) NSString *xsrfToken;
 @property (nonatomic, strong) NSString *SACSID;
 @property (nonatomic, strong) NSMutableArray *energyToCollect;
@@ -98,6 +97,7 @@ typedef void (^SoundCompletionBlock)(void);
 
 - (void)sendRequest:(NSString *)requestName params:(id)params completionHandler:(void (^)(id responseObj))handler;
 
+- (void)processGameBasket:(NSDictionary *)gameBasket completion:(MRSaveCompletionHandler)completion;
 - (void)processInventory:(NSArray *)inventory context:(NSManagedObjectContext *)context;
 - (void)processGameEntities:(NSArray *)gameEntities context:(NSManagedObjectContext *)context;
 - (void)processPlayerEntity:(NSArray *)inventory context:(NSManagedObjectContext *)context;

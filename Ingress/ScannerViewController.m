@@ -109,12 +109,10 @@
 
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
 
-	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(managedObjectContextObjectsDidChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:nil];
-	
-	[[NSNotificationCenter defaultCenter] addObserverForName:@"ProfileUpdatedNotification" object:nil queue:[[API sharedInstance] notificationQueue] usingBlock:^(NSNotification *note) {
-		dispatch_async(dispatch_get_main_queue(), ^{
-			[self refreshProfile];
-		});
+//	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(managedObjectContextObjectsDidChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:nil];
+
+	[[NSNotificationCenter defaultCenter] addObserverForName:@"DBUpdatedNotification" object:nil queue:nil usingBlock:^(NSNotification *note) {
+		[self refreshProfile];
 	}];
 
 	[self refreshProfile];
@@ -134,7 +132,6 @@
 //	layer.shouldRasterize = YES;
 
 	Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-
 	if (player.allowFactionChoice) {
 		[self performSegueWithIdentifier:@"FactionChooseSegue" sender:self];
 	}
@@ -170,13 +167,74 @@
 //	}
 //	refreshTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(refresh) userInfo:nil repeats:NO];
 
-//	[_mapView removeAnnotations:_mapView.annotations];
-//
-//	NSMutableArray *overlays = [_mapView.overlays mutableCopy];
-//    [overlays removeObject:_xmOverlay];
-//	[_mapView removeOverlays:overlays];
+    NSManagedObjectContext *context  = [NSManagedObjectContext MR_contextForCurrentThread];
 
-	[[API sharedInstance] getObjectsWithCompletionHandler:nil];
+	[[API sharedInstance] getObjectsWithCompletionHandler:^{
+
+		[_mapView removeAnnotations:_mapView.annotations];
+
+		NSMutableArray *overlays = [_mapView.overlays mutableCopy];
+		[overlays removeObject:_xmOverlay];
+		[_mapView removeOverlays:overlays];
+
+		[context performBlock:^{
+
+			NSArray *fetchedFields = [ControlField MR_findAllInContext:context];
+			for (ControlField *controlField in fetchedFields) {
+				dispatch_async(dispatch_get_main_queue(), ^{
+					[_mapView addOverlay:controlField.polygon];
+				});
+			}
+
+			NSArray *fetchedLinks = [PortalLink MR_findAllInContext:context];
+			for (PortalLink *portalLink in fetchedLinks) {
+				dispatch_async(dispatch_get_main_queue(), ^{
+					[_mapView addOverlay:portalLink.polyline];
+				});
+			}
+
+			NSArray *fetchedItems = [Item MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"dropped = YES"] inContext:context];
+			for (Item *item in fetchedItems) {
+				//NSLog(@"adding item to map: %@ (%f, %f)", item, item.latitude, item.longitude);
+				if (item.coordinate.latitude == 0 && item.coordinate.longitude == 0) { continue; }
+				dispatch_async(dispatch_get_main_queue(), ^{
+					[_mapView addAnnotation:item];
+				});
+			}
+
+			NSArray *fetchedPortals = [Portal MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"completeInfo = YES"] inContext:context];
+			for (Portal *portal in fetchedPortals) {
+				//NSLog(@"adding portal to map: %@ (%f, %f)", portal.subtitle, portal.latitude, portal.longitude);
+				if (portal.coordinate.latitude == 0 && portal.coordinate.longitude == 0) { continue; }
+				dispatch_async(dispatch_get_main_queue(), ^{
+					[_mapView addAnnotation:portal];
+					[_mapView addOverlay:portal];
+				});
+			}
+
+			NSArray *fetchedResonators = [DeployedResonator MR_findAllInContext:context];
+			for (DeployedResonator *resonator in fetchedResonators) {
+				//NSLog(@"adding resonator to map: %@ (%f, %f)", resonator, resonator.coordinate.latitude, resonator.coordinate.longitude);
+				if (resonator.portal.coordinate.latitude == 0 && resonator.portal.coordinate.longitude == 0) { continue; }
+				dispatch_async(dispatch_get_main_queue(), ^{
+					[_mapView addOverlay:resonator.circle];
+				});
+			}
+
+			NSArray *fetchedEnergy = [EnergyGlob MR_findAllInContext:context];
+			NSMutableArray *globs = [NSMutableArray arrayWithCapacity:fetchedEnergy.count];
+			for (EnergyGlob *energyGlob in fetchedEnergy) {
+				[globs addObject:@{@"location": [[CLLocation alloc] initWithLatitude:energyGlob.latitude longitude:energyGlob.longitude], @"amount": @(energyGlob.amount)}];
+			}
+			_xmOverlay.globs = globs;
+
+			dispatch_async(dispatch_get_main_queue(), ^{
+				[_xmOverlayView setNeedsDisplayInMapRect:_mapView.visibleMapRect];
+			});
+
+		}];
+
+	}];
 }
 
 - (void)refreshProfile {
@@ -519,7 +577,7 @@
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 
 	if (actionSheet.tag == 1 && buttonIndex == 0) {
-
+		
 		__block Item *item = currentItem;
 
 		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
@@ -536,11 +594,15 @@
 			[HUD hide:YES];
 
 			[_mapView removeAnnotation:item];
-			item.latitude = 0;
-			item.longitude = 0;
-			item.dropped = NO;
 
-			[[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreWithCompletion:nil];
+			[MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+				Item *item = (Item *)[localContext existingObjectWithID:currentItem.objectID error:nil];
+				item.latitude = 0;
+				item.longitude = 0;
+				item.dropped = NO;
+			} completion:^(BOOL success, NSError *error) {
+				[[NSNotificationCenter defaultCenter] postNotificationName:@"InventoryUpdatedNotification" object:nil];
+			}];
 
 			if (errorStr) {
 

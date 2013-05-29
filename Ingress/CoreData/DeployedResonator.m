@@ -110,7 +110,7 @@ CLLocationCoordinate2D LatLonDestPoint(CLLocationCoordinate2D origin, double bea
 	return [NSString stringWithFormat:@"DepoloyedResonator forPortal:%@ slot:%d", self.portal.name, self.slot];
 }
 
-- (void)updateWithData:(NSDictionary *)data forPortal:(Portal *)portal {
+- (void)updateWithData:(NSDictionary *)data forPortal:(Portal *)portal context:(NSManagedObjectContext *)context {
 //    if (![self.portal.objectID isEqual:portal.objectID])
         self.portal = portal;
     
@@ -130,16 +130,16 @@ CLLocationCoordinate2D LatLonDestPoint(CLLocationCoordinate2D origin, double bea
     if (self.level != level)
         self.level = level;
     
-    User *owner = [User MR_findFirstByAttribute:@"guid" withValue:data[@"ownerGuid"]];
-    if (!owner) { owner = [User MR_createEntity]; }
+    User *owner = [User MR_findFirstByAttribute:@"guid" withValue:data[@"ownerGuid"] inContext:context];
+    if (!owner) { owner = [User MR_createInContext:context]; }
     owner.guid = data[@"ownerGuid"];
 //    if (![self.owner.objectID isEqual:owner.objectID])
         self.owner = owner;
 }
 
-+ (instancetype)resonatorWithData:(NSDictionary *)data forPortal:(Portal *)portal {
-    DeployedResonator *resonator = [DeployedResonator MR_createEntity];
-    [resonator updateWithData:data forPortal:(Portal *)portal];
++ (instancetype)resonatorWithData:(NSDictionary *)data forPortal:(Portal *)portal context:(NSManagedObjectContext *)context {
+    DeployedResonator *resonator = [DeployedResonator MR_createInContext:context];
+    [resonator updateWithData:data forPortal:(Portal *)portal context:context];
     return resonator;
 }
 
