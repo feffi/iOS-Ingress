@@ -102,6 +102,10 @@
 
     _xmOverlay = [XMOverlay new];
     [_mapView addOverlay:_xmOverlay];
+    
+	[[NSNotificationCenter defaultCenter] addObserverForName:@"DBUpdatedNotification" object:nil queue:nil usingBlock:^(NSNotification *note) {
+		[self refreshProfile];
+	}];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -110,10 +114,6 @@
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
 
 //	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(managedObjectContextObjectsDidChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:nil];
-
-	[[NSNotificationCenter defaultCenter] addObserverForName:@"DBUpdatedNotification" object:nil queue:nil usingBlock:^(NSNotification *note) {
-		[self refreshProfile];
-	}];
 
 	[self refreshProfile];
 
