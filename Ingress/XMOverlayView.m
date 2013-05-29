@@ -13,17 +13,26 @@
 
 - (void)drawMapRect:(MKMapRect)mapRect zoomScale:(MKZoomScale)zoomScale inContext:(CGContextRef)context {
 
-    if ( ! [[NSUserDefaults standardUserDefaults] boolForKey:IGMapDayMode]) {
+	CGFloat comps[] = {1.0,1.0,1.0,0.5, 1.0,1.0,1.0,0.375, 0.7,1.0,1.0,0.0};
+
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:IGMapDayMode]) {
         // Dimming map takes about 300ms per refresh on iPhone 4 :(
         CGContextSetRGBFillColor(context, 0, 0, 0, .75);
         CGContextFillRect(context, [self rectForMapRect:mapRect]);
-    }
+    } else {
+		comps[0] = 0.0;
+		comps[1] = 0.5;
+		comps[2] = 1.0;
+
+		comps[4] = 0.0;
+		comps[5] = 0.5;
+		comps[6] = 1.0;
+	}
 
     CGFloat xmRadius = 30;
     CGFloat xmDelta = 15;
     CGColorSpaceRef space = CGColorSpaceCreateDeviceRGB();
-    CGFloat comps[] =	{1.0,1.0,1.0,0.5,	1.0,1.0,1.0,0.375,	0.7,1.0,1.0,0.0};
-    CGFloat locs[] =	{0.0,				0.3,				1.0};
+    CGFloat locs[] = {0.0, 0.3, 1.0};
     CGGradientRef g = CGGradientCreateWithColorComponents(space, comps, locs, 3);
 
 	for (NSDictionary *energy in [(XMOverlay *)(self.overlay) globs]) {
