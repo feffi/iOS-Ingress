@@ -190,7 +190,7 @@
 		PortalKey *portalKey = [keysDict[portal.guid] lastObject];
 		currentPortalKey = portalKey;
 
-		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Drop" otherButtonTitles:@"Recharge Portal", nil];
+		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Drop" otherButtonTitles:@"Recharge Portal", @"Recycle", nil];
 		actionSheet.tag = 1;
 		[actionSheet showFromTabBar:self.tabBarController.tabBar];
 
@@ -259,6 +259,27 @@
 
 			currentPortalKey = nil;
 
+		}];
+
+	} else if (actionSheet.tag == 1 && buttonIndex == 2) {
+
+		PortalKey *portalKey = currentPortalKey;
+
+		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.userInteractionEnabled = YES;
+		HUD.mode = MBProgressHUDModeIndeterminate;
+		HUD.dimBackground = YES;
+		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+		HUD.labelText = @"Recycling Item...";
+		[[AppDelegate instance].window addSubview:HUD];
+		[HUD show:YES];
+
+		[[SoundManager sharedManager] playSound:[NSString stringWithFormat:@"Sound/sfx_recycle_%@.aif", arc4random_uniform(2) ? @"a" : @"b"]];
+
+		[[API sharedInstance] recycleItem:portalKey completionHandler:^{
+			[HUD hide:YES];
+
+			[self refresh];
 		}];
 
 	}
