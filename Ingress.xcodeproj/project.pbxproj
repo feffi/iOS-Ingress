@@ -10,6 +10,7 @@
 		FA008E17171D310500176C3D /* PowerCube.m in Sources */ = {isa = PBXBuildFile; fileRef = FA008E16171D310500176C3D /* PowerCube.m */; };
 		FA008E19171D334700176C3D /* powerCube@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA008E18171D334700176C3D /* powerCube@2x.png */; };
 		FA02F9D8173D54540016EE7F /* MediaWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA02F9D7173D54540016EE7F /* MediaWebViewViewController.m */; };
+		FA036DE7175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA036DE6175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController.m */; };
 		FA06162F174E6A9A001AB5CE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FA06162E174E6A9A001AB5CE /* User.m */; };
 		FA061635174E74F2001AB5CE /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = FA061634174E74F2001AB5CE /* Player.m */; };
 		FA061638174E7873001AB5CE /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = FA061637174E7873001AB5CE /* Item.m */; };
@@ -282,6 +283,8 @@
 		FA008E18171D334700176C3D /* powerCube@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "powerCube@2x.png"; sourceTree = "<group>"; };
 		FA02F9D6173D54540016EE7F /* MediaWebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaWebViewViewController.h; sourceTree = "<group>"; };
 		FA02F9D7173D54540016EE7F /* MediaWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaWebViewViewController.m; sourceTree = "<group>"; };
+		FA036DE5175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCDYouTubeVideoPlayerViewController.h; sourceTree = "<group>"; };
+		FA036DE6175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCDYouTubeVideoPlayerViewController.m; sourceTree = "<group>"; };
 		FA06162D174E6A9A001AB5CE /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = CoreData/User.h; sourceTree = "<group>"; };
 		FA06162E174E6A9A001AB5CE /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = CoreData/User.m; sourceTree = "<group>"; };
 		FA061633174E74F2001AB5CE /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = CoreData/Player.h; sourceTree = "<group>"; };
@@ -750,6 +753,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		FA036DE4175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController */ = {
+			isa = PBXGroup;
+			children = (
+				FA036DE5175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController.h */,
+				FA036DE6175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController.m */,
+			);
+			path = XCDYouTubeVideoPlayerViewController;
+			sourceTree = "<group>";
+		};
 		FA0B4DA6172DB905001B025D /* s2-geometry-library */ = {
 			isa = PBXGroup;
 			children = (
@@ -1594,6 +1606,7 @@
 				FA54DEF616A19B47006A92E0 /* MBProgressHUD */,
 				FAE6AC7116A0E2700082BBB5 /* DAKeyboardControl */,
 				FAE797CD16B4874100A57316 /* UIImage+ColorReplace */,
+				FA036DE4175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -2057,6 +2070,7 @@
 				FA06162F174E6A9A001AB5CE /* User.m in Sources */,
 				FA061635174E74F2001AB5CE /* Player.m in Sources */,
 				FA061638174E7873001AB5CE /* Item.m in Sources */,
+				FA036DE7175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
