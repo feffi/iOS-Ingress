@@ -64,4 +64,12 @@
 	[MagicalRecord cleanUp];
 }
 
+- (NSUInteger)application:(UIApplication *)application supportedInterfaceOrientationsForWindow:(UIWindow *)window {
+    if ([[self.window.subviews.lastObject class].description isEqualToString:@"MPMovieView"]) {
+        return UIInterfaceOrientationMaskAllButUpsideDown;
+    } else {
+        return UIInterfaceOrientationMaskPortrait;
+    }
+}
+
 @end
