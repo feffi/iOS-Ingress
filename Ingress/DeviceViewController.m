@@ -150,6 +150,7 @@
 				[[API sharedInstance] setNotificationSettingsWithCompletionHandler:nil];
 			}];
 
+            break;
 		}
 	}
 	
