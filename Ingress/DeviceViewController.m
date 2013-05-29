@@ -36,7 +36,7 @@
     
     switch (indexPath.row) {
         case 4: {
-            if ([[NSUserDefaults standardUserDefaults] floatForKey:kDeviceSoundLevel] < 0.1) {
+            if ([[NSUserDefaults standardUserDefaults] floatForKey:DeviceSoundLevel] < 0.1) {
                 cell.textLabel.text = @"Unmute Sound";
             } else {
                 cell.textLabel.text = @"Mute Sound";
@@ -135,7 +135,7 @@
             [SoundManager sharedManager].soundVolume = currentSoundVolume;
             [SoundManager sharedManager].musicVolume = currentSoundVolume;
 
-            [[NSUserDefaults standardUserDefaults] setFloat:currentSoundVolume forKey:kDeviceSoundLevel];
+            [[NSUserDefaults standardUserDefaults] setFloat:currentSoundVolume forKey:DeviceSoundLevel];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
             break;

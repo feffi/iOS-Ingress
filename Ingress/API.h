@@ -14,8 +14,7 @@
 #import <GLKit/GLKit.h>
 #import "DB.h"
 
-#define kDeviceSoundLevel @"kDeviceSoundLevel"
-
+FOUNDATION_EXPORT NSString *const DeviceSoundLevel;
 FOUNDATION_EXPORT NSString *const IGMapDayMode;
 
 typedef void (^SoundCompletionBlock)(void);
