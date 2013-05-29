@@ -21,4 +21,8 @@
 	return [NSString stringWithFormat:@"L%d Media Item", self.level];
 }
 
+- (NSURL *)mediaURL {
+	return [NSURL URLWithString:self.url];
+}
+
 @end
