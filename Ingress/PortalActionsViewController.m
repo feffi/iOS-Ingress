@@ -200,14 +200,15 @@
 				Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
 
 				NSMutableArray *sounds = [NSMutableArray arrayWithCapacity:acquiredItems];
+				NSCountedSet *acquiredItemStrings = [[NSCountedSet alloc] initWithCapacity:acquiredItems.count];
 				NSMutableString *acquiredItemsStr = [NSMutableString string];
 				
 				for (NSString *guid in acquiredItems) {
 					Item *item = [Item MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"guid = %@", guid]];
 					if (item) {
-						[acquiredItemsStr appendFormat:@"%@\n", item];
+						[acquiredItemStrings addObject:item.description];
 					} else {
-						[acquiredItemsStr appendString:@"Unknown Item\n"];
+						[acquiredItemStrings addObject:@"Unknown Item"];
 					}
 
 					if ([item isKindOfClass:[Resonator class]]) {
@@ -260,19 +261,34 @@
 				[[API sharedInstance] playSounds:sounds];
 				
 				HUD.labelText = @"Items acquired";
+
+				for (NSString *acquiredItem in acquiredItemStrings) {
+					NSUInteger count = [acquiredItemStrings countForObject:acquiredItem];
+					if (count == 1) {
+						[acquiredItemsStr appendFormat:@"%@\n", acquiredItem];
+					} else {
+						[acquiredItemsStr appendFormat:@"%dx %@\n", count, acquiredItem];
+					}
+				}
+
 				HUD.detailsLabelText = acquiredItemsStr;
+
+				HUD.showCloseButton = YES;
+
+				[[AppDelegate instance].window addSubview:HUD];
+				[HUD show:YES];
 				
 			} else {
 				HUD.labelText = @"Hack acquired no items";
 				
 				[[API sharedInstance] playSounds:@[@"SPEECH_HACKING", @"SPEECH_UNSUCCESSFUL"]];
+
+				[[AppDelegate instance].window addSubview:HUD];
+				[HUD show:YES];
+				[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 			}
 		}
-		
-		[[AppDelegate instance].window addSubview:HUD];
-		[HUD show:YES];
-		[HUD hide:YES afterDelay:HUD_DELAY_TIME];
-		
+
 	}];
 	
 }
