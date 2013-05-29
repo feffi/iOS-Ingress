@@ -104,7 +104,6 @@
     [_mapView addOverlay:_xmOverlay];
     
 	[[NSNotificationCenter defaultCenter] addObserverForName:@"DBUpdatedNotification" object:nil queue:nil usingBlock:^(NSNotification *note) {
-		[self refreshProfile];
         if ([self isSelectedAndTopmost]) {
             [self refreshProfile];
         }
