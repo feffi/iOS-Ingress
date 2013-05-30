@@ -621,6 +621,13 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 			});
 			return;
 		}
+
+		if ([jsonObject[@"result"][@"pregameStatus"][@"action"] isEqualToString:@"CLIENT_MUST_UPGRADE"]) {
+			dispatch_async(dispatch_get_main_queue(), ^{
+				handler(@"CLIENT_MUST_UPGRADE");
+			});
+			return;
+		}
 		
 		if (![jsonObject[@"result"][@"canPlay"] boolValue]) {
 			dispatch_async(dispatch_get_main_queue(), ^{
