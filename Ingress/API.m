@@ -1680,6 +1680,15 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 			}
 			powerCube.level = [item[2][@"resourceWithLevels"][@"level"] integerValue];
 			powerCube.timestamp = [[NSDate dateWithTimeIntervalSince1970:([item[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
+		} else if ([resourceType isEqualToString:@"FLIP_CARD"]) {
+			FlipCard *flipCard = [FlipCard MR_findFirstByAttribute:@"guid" withValue:item[0] inContext:context];
+			if (!flipCard) {
+				flipCard = [FlipCard MR_createInContext:context];
+				flipCard.guid = item[0];
+			}
+#warning Virus faction detection
+			//				flipCard.faction = @"ALIENS";
+			flipCard.timestamp = [[NSDate dateWithTimeIntervalSince1970:([item[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
 		} else {
 			NSLog(@"Unknown Item");
 			Item *itemObj = [Item MR_findFirstByAttribute:@"guid" withValue:item[0] inContext:context];
@@ -1729,6 +1738,7 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 			portal.name = gameEntity[2][@"portalV2"][@"descriptiveText"][@"TITLE"];
 			portal.address = gameEntity[2][@"portalV2"][@"descriptiveText"][@"ADDRESS"];
 			portal.completeInfo = YES;
+			portal.timestamp = [[NSDate dateWithTimeIntervalSince1970:([gameEntity[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
 
 			User *creator = [User MR_findFirstByAttribute:@"guid" withValue:gameEntity[2][@"captured"][@"capturingPlayerId"] inContext:context];
 			if (!creator) {
@@ -1810,6 +1820,7 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 				resonator.latitude = [loc[@"latE6"] intValue]/1E6;
 				resonator.longitude = [loc[@"lngE6"] intValue]/1E6;
 				resonator.level = [gameEntity[2][@"resourceWithLevels"][@"level"] integerValue];
+				resonator.timestamp = [[NSDate dateWithTimeIntervalSince1970:([gameEntity[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
 			} else if ([resourceType isEqualToString:@"EMP_BURSTER"]) {
 				XMP *xmp = [XMP MR_findFirstByAttribute:@"guid" withValue:gameEntity[0] inContext:context];
 				if (!xmp) {
@@ -1820,6 +1831,7 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 				xmp.latitude = [loc[@"latE6"] intValue]/1E6;
 				xmp.longitude = [loc[@"lngE6"] intValue]/1E6;
 				xmp.level = [gameEntity[2][@"resourceWithLevels"][@"level"] integerValue];
+				xmp.timestamp = [[NSDate dateWithTimeIntervalSince1970:([gameEntity[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
 			} else if ([resourceType isEqualToString:@"RES_SHIELD"]) {
 				Shield *shield = [Shield MR_findFirstByAttribute:@"guid" withValue:gameEntity[0] inContext:context];
 				if (!shield) {
@@ -1830,6 +1842,7 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 				shield.latitude = [loc[@"latE6"] intValue]/1E6;
 				shield.longitude = [loc[@"lngE6"] intValue]/1E6;
 				shield.rarity = [API shieldRarityFromString:gameEntity[2][@"modResource"][@"rarity"]];
+				shield.timestamp = [[NSDate dateWithTimeIntervalSince1970:([gameEntity[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
 			} else if ([resourceType isEqualToString:@"PORTAL_LINK_KEY"]) {
 				Portal *portal = [Portal MR_findFirstByAttribute:@"guid" withValue:gameEntity[2][@"portalCoupler"][@"portalGuid"] inContext:context];
 				if (!portal) {
@@ -1839,6 +1852,7 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 				portal.imageURL = gameEntity[2][@"portalCoupler"][@"portalImageUrl"];
 				portal.name = gameEntity[2][@"portalCoupler"][@"portalTitle"];
 				portal.address = gameEntity[2][@"portalCoupler"][@"portalAddress"];
+				portal.timestamp = [[NSDate dateWithTimeIntervalSince1970:([gameEntity[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
 
 				unsigned int latitude;
 				unsigned int longitude;
@@ -1859,6 +1873,7 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 				portalKey.latitude = [loc[@"latE6"] intValue]/1E6;
 				portalKey.longitude = [loc[@"lngE6"] intValue]/1E6;
 				portalKey.portal = portal;
+				portalKey.timestamp = [[NSDate dateWithTimeIntervalSince1970:([gameEntity[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
 			} else if ([resourceType isEqualToString:@"MEDIA"]) {
 				Media *media = [Media MR_findFirstByAttribute:@"guid" withValue:gameEntity[0] inContext:context];
 				if (!media) {
@@ -1872,6 +1887,7 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 				media.url = gameEntity[2][@"storyItem"][@"primaryUrl"];
 				media.level = [gameEntity[2][@"resourceWithLevels"][@"level"] integerValue];
 				media.imageURL = gameEntity[2][@"imageByUrl"][@"imageUrl"];
+				media.timestamp = [[NSDate dateWithTimeIntervalSince1970:([gameEntity[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
 			} else if ([resourceType isEqualToString:@"POWER_CUBE"]) {
 				PowerCube *powerCube = [PowerCube MR_findFirstByAttribute:@"guid" withValue:gameEntity[0] inContext:context];
 				if (!powerCube) {
@@ -1882,6 +1898,16 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 				powerCube.latitude = [loc[@"latE6"] intValue]/1E6;
 				powerCube.longitude = [loc[@"lngE6"] intValue]/1E6;
 				powerCube.level = [gameEntity[2][@"resourceWithLevels"][@"level"] integerValue];
+				powerCube.timestamp = [[NSDate dateWithTimeIntervalSince1970:([gameEntity[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
+			} else if ([resourceType isEqualToString:@"FLIP_CARD"]) {
+				FlipCard *flipCard = [FlipCard MR_findFirstByAttribute:@"guid" withValue:gameEntity[0] inContext:context];
+				if (!flipCard) {
+					flipCard = [FlipCard MR_createInContext:context];
+					flipCard.guid = gameEntity[0];
+				}
+#warning Virus faction detection
+//				flipCard.faction = @"ALIENS";
+				flipCard.timestamp = [[NSDate dateWithTimeIntervalSince1970:([gameEntity[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
 			} else {
 				NSLog(@"Unknown Dropped Item");
 				Item *itemObj = [Item MR_findFirstByAttribute:@"guid" withValue:gameEntity[0] inContext:context];
@@ -1892,6 +1918,7 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 				itemObj.dropped = YES;
 				itemObj.latitude = [loc[@"latE6"] intValue]/1E6;
 				itemObj.longitude = [loc[@"lngE6"] intValue]/1E6;
+				itemObj.timestamp = [[NSDate dateWithTimeIntervalSince1970:([gameEntity[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
 			}
 
 		} else if (gameEntity[2][@"edge"]) {
