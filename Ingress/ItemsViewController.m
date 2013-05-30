@@ -71,6 +71,8 @@
 			[[self childViewControllerWithClass:[MediaItemsViewController class]] viewWillDisappear:NO];
 			[mediaContainerView setHidden:YES];
 			[[self childViewControllerWithClass:[MediaItemsViewController class]] viewDidDisappear:NO];
+
+			[[[GAI sharedInstance] defaultTracker] sendView:@"Resources Screen"];
 			
 			break;
 		case 1:
@@ -89,6 +91,8 @@
 			[mediaContainerView setHidden:YES];
 			[[self childViewControllerWithClass:[MediaItemsViewController class]] viewDidDisappear:NO];
 			[[(UITableViewController *)[self childViewControllerWithClass:[MediaItemsViewController class]] tableView] setScrollsToTop:NO];
+
+			[[[GAI sharedInstance] defaultTracker] sendView:@"Portal Keys Screen"];
 			
 			break;
 		case 2:
@@ -107,6 +111,8 @@
 			[mediaContainerView setHidden:NO];
 			[[self childViewControllerWithClass:[MediaItemsViewController class]] viewDidAppear:NO];
 			[[(UITableViewController *)[self childViewControllerWithClass:[MediaItemsViewController class]] tableView] setScrollsToTop:YES];
+
+			[[[GAI sharedInstance] defaultTracker] sendView:@"Media Items Screen"];
 			
 			break;
 	}

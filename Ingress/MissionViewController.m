@@ -48,6 +48,12 @@
 
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+
+	[[[GAI sharedInstance] defaultTracker] sendView:@"Mission Screen"];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.

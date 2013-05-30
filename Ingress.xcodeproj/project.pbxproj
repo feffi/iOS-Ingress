@@ -12,6 +12,8 @@
 		FA02F9D8173D54540016EE7F /* MediaWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA02F9D7173D54540016EE7F /* MediaWebViewViewController.m */; };
 		FA036DE7175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA036DE6175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController.m */; };
 		FA036DE91756828F00E3C55B /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA036DE81756828E00E3C55B /* MediaPlayer.framework */; };
+		FA036DF117576B7000E3C55B /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA036DF017576B7000E3C55B /* libGoogleAnalytics.a */; };
+		FA036DF317576B7D00E3C55B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA036DF217576B7C00E3C55B /* SystemConfiguration.framework */; };
 		FA06162F174E6A9A001AB5CE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FA06162E174E6A9A001AB5CE /* User.m */; };
 		FA061635174E74F2001AB5CE /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = FA061634174E74F2001AB5CE /* Player.m */; };
 		FA061638174E7873001AB5CE /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = FA061637174E7873001AB5CE /* Item.m */; };
@@ -287,6 +289,13 @@
 		FA036DE5175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCDYouTubeVideoPlayerViewController.h; sourceTree = "<group>"; };
 		FA036DE6175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCDYouTubeVideoPlayerViewController.m; sourceTree = "<group>"; };
 		FA036DE81756828E00E3C55B /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
+		FA036DEB17576B7000E3C55B /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		FA036DEC17576B7000E3C55B /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		FA036DED17576B7000E3C55B /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		FA036DEE17576B7000E3C55B /* GAITransaction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransaction.h; sourceTree = "<group>"; };
+		FA036DEF17576B7000E3C55B /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransactionItem.h; sourceTree = "<group>"; };
+		FA036DF017576B7000E3C55B /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
+		FA036DF217576B7C00E3C55B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		FA06162D174E6A9A001AB5CE /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = CoreData/User.h; sourceTree = "<group>"; };
 		FA06162E174E6A9A001AB5CE /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = CoreData/User.m; sourceTree = "<group>"; };
 		FA061633174E74F2001AB5CE /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = CoreData/Player.h; sourceTree = "<group>"; };
@@ -750,6 +759,8 @@
 				FA0A4014172EF79600BBBA3D /* ImageIO.framework in Frameworks */,
 				FA0A4012172EF78700BBBA3D /* SDWebImage.framework in Frameworks */,
 				FAA4986D173F002700801651 /* CoreText.framework in Frameworks */,
+				FA036DF317576B7D00E3C55B /* SystemConfiguration.framework in Frameworks */,
+				FA036DF117576B7000E3C55B /* libGoogleAnalytics.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -763,6 +774,19 @@
 				FA036DE6175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController.m */,
 			);
 			path = XCDYouTubeVideoPlayerViewController;
+			sourceTree = "<group>";
+		};
+		FA036DEA17576B7000E3C55B /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				FA036DEB17576B7000E3C55B /* GAI.h */,
+				FA036DEC17576B7000E3C55B /* GAITrackedViewController.h */,
+				FA036DED17576B7000E3C55B /* GAITracker.h */,
+				FA036DEE17576B7000E3C55B /* GAITransaction.h */,
+				FA036DEF17576B7000E3C55B /* GAITransactionItem.h */,
+				FA036DF017576B7000E3C55B /* libGoogleAnalytics.a */,
+			);
+			path = GoogleAnalytics;
 			sourceTree = "<group>";
 		};
 		FA0B4DA6172DB905001B025D /* s2-geometry-library */ = {
@@ -1610,6 +1634,7 @@
 				FAE6AC7116A0E2700082BBB5 /* DAKeyboardControl */,
 				FAE797CD16B4874100A57316 /* UIImage+ColorReplace */,
 				FA036DE4175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController */,
+				FA036DEA17576B7000E3C55B /* GoogleAnalytics */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -1675,6 +1700,7 @@
 		FAEA583A169C7E7500E2F502 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				FA036DF217576B7C00E3C55B /* SystemConfiguration.framework */,
 				FA036DE81756828E00E3C55B /* MediaPlayer.framework */,
 				FAA4986C173F002700801651 /* CoreText.framework */,
 				FA0A4013172EF79500BBBA3D /* ImageIO.framework */,
@@ -2177,6 +2203,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/s2-geometry\"",
+					"\"$(SRCROOT)/GoogleAnalytics\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
@@ -2205,6 +2232,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/s2-geometry\"",
+					"\"$(SRCROOT)/GoogleAnalytics\"",
 				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";

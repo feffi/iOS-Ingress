@@ -76,6 +76,8 @@
 	}
 	
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+
+	[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Recruit" withLabel:nil withValue:@(0)];
 	
 	__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
 	HUD.userInteractionEnabled = NO;

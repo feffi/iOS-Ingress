@@ -115,6 +115,8 @@
 
 	[self.navigationController setNavigationBarHidden:YES animated:YES];
 
+	[[[GAI sharedInstance] defaultTracker] sendView:@"Scanner Screen"];
+
 //	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(managedObjectContextObjectsDidChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:nil];
 
 	[self refreshProfile];
@@ -912,6 +914,8 @@
 	} else {
 		[[SoundManager sharedManager] playSound:@"Sound/sfx_emp_power_up.aif"];
 	}
+
+	[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Fire XMP" withLabel:nil withValue:@(xmpItem.level)];
 	
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 	HUD.userInteractionEnabled = YES;

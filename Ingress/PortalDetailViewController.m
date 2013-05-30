@@ -85,6 +85,8 @@
 - (void)viewWillDisappear:(BOOL)animated {
 	[super viewWillDisappear:animated];
 
+	[[[GAI sharedInstance] defaultTracker] sendView:@"Portal Detail Screen"];
+
 	if (self.isMovingFromParentViewController) {
 		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 	}

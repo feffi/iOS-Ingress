@@ -62,6 +62,8 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 
+	[[[GAI sharedInstance] defaultTracker] sendView:@"Loading Screen"];
+
 	[wheelActivityIndicatorView startAnimating];
 	
 	[SoundManager sharedManager].allowsBackgroundMusic = YES;
@@ -193,6 +195,11 @@
 						[activationCodeField becomeFirstResponder];
 
 					} else if ([errorStr isEqualToString:@"USER_MUST_ACCEPT_TOS"]) {
+
+						if (activationStarted) {
+							activationStarted = NO;
+							[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Player Activated" withLabel:nil withValue:@(0)];
+						}
 
 						typewriterView.hidden = NO;
 

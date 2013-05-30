@@ -32,6 +32,12 @@
 	[[UIButton appearanceWhenContainedIn:[UINavigationBar class], nil] setFont:[UIFont fontWithName:@"Coda-Regular" size:12]];
 	[[UITextField appearance] setFont:[UIFont fontWithName:@"Coda-Regular" size:16]];
 
+	[GAI sharedInstance].trackUncaughtExceptions = YES;
+	[GAI sharedInstance].dispatchInterval = 20;
+//	[GAI sharedInstance].debug = YES;
+	id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-41323983-1"];
+	[GAI sharedInstance].defaultTracker = tracker;
+
     return YES;
 }
 							

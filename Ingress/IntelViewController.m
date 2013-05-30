@@ -55,6 +55,8 @@
 			[[self childViewControllerWithClass:[RecruitViewController class]] viewWillDisappear:NO];
 			[recruitContainerView setHidden:YES];
 			[[self childViewControllerWithClass:[RecruitViewController class]] viewDidDisappear:NO];
+
+			[[[GAI sharedInstance] defaultTracker] sendView:@"Score Screen"];
 			
 			break;
 		case 1:
@@ -70,6 +72,8 @@
 			[[self childViewControllerWithClass:[RecruitViewController class]] viewWillDisappear:NO];
 			[recruitContainerView setHidden:YES];
 			[[self childViewControllerWithClass:[RecruitViewController class]] viewDidDisappear:NO];
+
+			[[[GAI sharedInstance] defaultTracker] sendView:@"Missions Screen"];
 			
 			break;
 		case 2:
@@ -85,6 +89,8 @@
 			[[self childViewControllerWithClass:[RecruitViewController class]] viewWillAppear:NO];
 			[recruitContainerView setHidden:NO];
 			[[self childViewControllerWithClass:[RecruitViewController class]] viewDidAppear:NO];
+
+			[[[GAI sharedInstance] defaultTracker] sendView:@"Recruit Screen"];
 			
 			break;
 	}

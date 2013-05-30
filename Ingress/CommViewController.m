@@ -37,6 +37,12 @@
 	
 }
 
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+
+	[[[GAI sharedInstance] defaultTracker] sendView:@"Comm Screen"];
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -70,6 +76,8 @@
 		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_fail.aif"];
 		return;
 	}
+
+	[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Send Message" withLabel:nil withValue:@(commTableVC.factionOnly)];
 	
 	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 	

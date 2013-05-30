@@ -15,6 +15,8 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
 
+	[[[GAI sharedInstance] defaultTracker] sendView:@"Media WebView Screen"];
+
 	self.navigationItem.title = self.media.name;
 
 	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:self.media.url]];

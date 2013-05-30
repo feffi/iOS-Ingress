@@ -138,7 +138,9 @@
 - (IBAction)hack:(GUIButton *)sender {
 	
 	if (sender.disabled) { return; }
-	
+
+	[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Portal Hack" withLabel:self.portal.name withValue:@(0)];
+
 	__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 	HUD.userInteractionEnabled = YES;
 	HUD.mode = MBProgressHUDModeIndeterminate;
@@ -300,6 +302,8 @@
 - (IBAction)recharge:(GUIButton *)sender {
 	
 	if (sender.disabled) { return; }
+
+	[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Portal Recharge" withLabel:self.portal.name withValue:@(0)];
 	
 	__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 	HUD.userInteractionEnabled = YES;
@@ -339,6 +343,8 @@
 - (IBAction)link:(GUIButton *)sender {
 	
 	if (sender.disabled) { return; }
+
+	[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Portal Link" withLabel:self.portal.name withValue:@(0)];
 
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
 	PortalKeysViewController *portalKeysVC = [storyboard instantiateViewControllerWithIdentifier:@"PortalKeysViewController"];

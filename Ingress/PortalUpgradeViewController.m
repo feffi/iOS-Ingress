@@ -258,6 +258,8 @@
 
 		} else {
 
+			[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Deploy Resonator" withLabel:self.portal.name withValue:@(resonatorItem.level)];
+
 			MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 			HUD.userInteractionEnabled = YES;
 			HUD.dimBackground = YES;
@@ -320,6 +322,8 @@
 
 		} else {
 
+			[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Upgrade Resonator" withLabel:self.portal.name withValue:@(resonatorItem.level)];
+
 			MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 			HUD.userInteractionEnabled = YES;
 			HUD.dimBackground = YES;
@@ -372,6 +376,8 @@
 	HUD.labelText = @"Recharging...";
 	[[AppDelegate instance].window addSubview:HUD];
 	[HUD show:YES];
+
+	[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Resonator Recharge" withLabel:self.portal.name withValue:@(sender.superview.tag)];
 
 	[[API sharedInstance] rechargePortal:self.portal slots:@[@(sender.superview.tag)] completionHandler:^(NSString *errorStr) {
 
@@ -449,6 +455,8 @@
 		[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 
 	} else {
+
+		[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Deploy Shield" withLabel:self.portal.name withValue:@(shieldItem.rarity)];
 
 		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 		HUD.userInteractionEnabled = YES;
