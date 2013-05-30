@@ -92,7 +92,7 @@ typedef void (^SoundCompletionBlock)(void);
 - (void)queryLinkabilityForPortal:(Portal *)portal portalKey:(PortalKey *)portalKey completionHandler:(void (^)(NSString *errorStr))handler;
 - (void)linkPortal:(Portal *)portal withPortalKey:(PortalKey *)portalKey completionHandler:(void (^)(NSString *errorStr))handler;
 - (void)setNotificationSettingsWithCompletionHandler:(void (^)(void))handler;
-- (void)getModifiedEntitiesByGuid:(NSString *)guid completionHandler:(void (^)(void))handler;
+- (void)getModifiedEntity:(Item *)item completionHandler:(void (^)(void))handler;
 - (void)flipPortal:(Portal *)portal withFlipCard:(FlipCard *)flipCard completionHandler:(void (^)(void))handler;
 - (void)cheatSetPlayerLevel;
 

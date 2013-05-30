@@ -1392,11 +1392,15 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 	
 }
 
-- (void)getModifiedEntitiesByGuid:(NSString *)guid completionHandler:(void (^)(void))handler {
+- (void)getModifiedEntity:(Item *)item completionHandler:(void (^)(void))handler {
+
+	NSString *timestampString = [NSString stringWithFormat:@"%.3f", [[NSDate dateWithTimeIntervalSinceReferenceDate:item.timestamp] timeIntervalSince1970]];
+	timestampString = [timestampString stringByReplacingOccurrencesOfString:@"." withString:@""];
+	long long timestamp = [timestampString longLongValue];
 
 	NSDictionary *dict = @{
-		@"guids": @[guid],
-		@"timestampsMs": @[@(0)]
+		@"guids": @[item.guid],
+		@"timestampsMs": @[@(timestamp)]
 	};
 
 	[self sendRequest:@"gameplay/getModifiedEntitiesByGuid" params:dict completionHandler:^(id responseObj) {

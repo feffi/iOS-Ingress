@@ -88,24 +88,44 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PortalKeyCell" forIndexPath:indexPath];
-
 	Portal *portal = portals[indexPath.row];
-	int numberOfPortals = [keysDict[portal.guid] count];
-    cell.textLabel.text = [NSString stringWithFormat:@"%dx %@", numberOfPortals, portal.subtitle];
-	cell.detailTextLabel.text = portal.address;
-
-//	if ([@[@"ALIENS", @"RESISTANCE"] containsObject:portal.controllingTeam]) {
-//		cell.textLabel.textColor = [API colorForFaction:portal.controllingTeam];
-//	} else {
-	cell.textLabel.textColor = [UIColor whiteColor];
-//	}
-
+	
+	[[API sharedInstance] getModifiedEntity:portal completionHandler:^{
+		[self configureCellAtIndexPath:indexPath inTableView:tableView];
+	}];
 	[cell.imageView setImageWithURL:[NSURL URLWithString:portal.imageURL] placeholderImage:[UIImage imageNamed:@"missing_image"]];
 
+	int numberOfPortals = [keysDict[portal.guid] count];
+	cell.textLabel.text = [NSString stringWithFormat:@"%dx %@", numberOfPortals, portal.subtitle];
+	cell.detailTextLabel.text = portal.address;
+	if (portal.completeInfo) {
+		if ([@[@"ALIENS", @"RESISTANCE"] containsObject:portal.controllingTeam]) {
+			cell.textLabel.textColor = [API colorForFaction:portal.controllingTeam];
+		} else {
+			cell.textLabel.textColor = [UIColor lightGrayColor];
+		}
+	} else {
+		cell.textLabel.textColor = [UIColor whiteColor];
+	}
+
     return cell;
-	
+}
+
+- (void)configureCellAtIndexPath:(NSIndexPath *)indexPath inTableView:(UITableView *)tableView {
+	UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+	if (cell) {
+		Portal *portal = portals[indexPath.row];
+		if (portal.completeInfo) {
+			if ([@[@"ALIENS", @"RESISTANCE"] containsObject:portal.controllingTeam]) {
+				cell.textLabel.textColor = [API colorForFaction:portal.controllingTeam];
+			} else {
+				cell.textLabel.textColor = [UIColor lightGrayColor];
+			}
+		} else {
+			cell.textLabel.textColor = [UIColor whiteColor];
+		}
+	}
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
