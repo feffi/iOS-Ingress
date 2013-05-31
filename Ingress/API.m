@@ -694,12 +694,13 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 
 - (void)getInventoryWithCompletionHandler:(void (^)(void))handler {
 
-	//[[Inventory sharedInstance] clearInventory];
 	[self sendRequest:@"playerUndecorated/getInventory" params:@{@"lastQueryTimestamp": @0} completionHandler:^(id responseObj) {
-		//NSLog(@"getInventory responseObj: %@", responseObj);
+//		NSLog(@"getInventory responseObj: %@", responseObj);
+
 		dispatch_async(dispatch_get_main_queue(), ^{
 			handler();
         });
+		
 	}];
 	
 }
@@ -1466,7 +1467,9 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 
 		NSMutableArray *collectedEnergyGuids = [NSMutableArray array];
 		for (EnergyGlob *energyGlob in self.energyToCollect) {
-			[collectedEnergyGuids addObject:energyGlob.guid];
+			if (energyGlob.guid) {
+				[collectedEnergyGuids addObject:energyGlob.guid];
+			}
 		}
 		mutableParams[@"energyGlobGuids"] = collectedEnergyGuids;
 		[self.energyToCollect removeAllObjects];
@@ -1686,8 +1689,7 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 				flipCard = [FlipCard MR_createInContext:context];
 				flipCard.guid = item[0];
 			}
-#warning Virus faction detection
-			//				flipCard.faction = @"ALIENS";
+			flipCard.type = item[2][@"flipCard"][@"flipCardType"];
 			flipCard.timestamp = [[NSDate dateWithTimeIntervalSince1970:([item[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
 		} else {
 			NSLog(@"Unknown Item");
@@ -1905,8 +1907,10 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 					flipCard = [FlipCard MR_createInContext:context];
 					flipCard.guid = gameEntity[0];
 				}
-#warning Virus faction detection
-//				flipCard.faction = @"ALIENS";
+				flipCard.dropped = YES;
+				flipCard.latitude = [loc[@"latE6"] intValue]/1E6;
+				flipCard.longitude = [loc[@"lngE6"] intValue]/1E6;
+				flipCard.type = gameEntity[2][@"flipCard"][@"flipCardType"];
 				flipCard.timestamp = [[NSDate dateWithTimeIntervalSince1970:([gameEntity[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
 			} else {
 				NSLog(@"Unknown Dropped Item");

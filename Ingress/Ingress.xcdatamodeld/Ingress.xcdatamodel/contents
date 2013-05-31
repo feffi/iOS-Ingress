@@ -29,7 +29,7 @@
         <attribute name="amount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="FlipCard" representedClassName="FlipCard" parentEntity="Item" syncable="YES">
-        <attribute name="faction" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Item" representedClassName="Item" isAbstract="YES" syncable="YES">
         <attribute name="dropped" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -112,23 +112,23 @@
         <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ControlField" positionX="-4025" positionY="-1377" width="128" height="118"/>
-        <element name="DeployedMod" positionX="-4599" positionY="-1297" width="128" height="88"/>
-        <element name="DeployedResonator" positionX="-4581" positionY="-1201" width="128" height="148"/>
-        <element name="DeployedShield" positionX="-4763" positionY="-1296" width="128" height="73"/>
-        <element name="EnergyGlob" positionX="-4889" positionY="-1413" width="128" height="58"/>
-        <element name="FlipCard" positionX="-4563" positionY="-1422" width="128" height="58"/>
-        <element name="Item" positionX="-4635" positionY="-1639" width="128" height="118"/>
-        <element name="Media" positionX="-4464" positionY="-1638" width="128" height="118"/>
-        <element name="Player" positionX="-4221" positionY="-1107" width="128" height="163"/>
-        <element name="Plext" positionX="-4016" positionY="-1179" width="128" height="133"/>
-        <element name="Portal" positionX="-4401" positionY="-1498" width="128" height="223"/>
-        <element name="PortalKey" positionX="-4725" positionY="-1381" width="128" height="73"/>
-        <element name="PortalLink" positionX="-4041" positionY="-1558" width="128" height="118"/>
-        <element name="PowerCube" positionX="-4833" positionY="-1660" width="128" height="58"/>
-        <element name="Resonator" positionX="-4806" positionY="-1503" width="128" height="58"/>
-        <element name="Shield" positionX="-4853" positionY="-1575" width="128" height="58"/>
-        <element name="User" positionX="-4221" positionY="-1305" width="128" height="178"/>
-        <element name="XMP" positionX="-4637" positionY="-1503" width="128" height="58"/>
+        <element name="ControlField" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="DeployedMod" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="DeployedResonator" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="DeployedShield" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="EnergyGlob" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="FlipCard" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Item" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Media" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Player" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Plext" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Portal" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="PortalKey" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="PortalLink" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="PowerCube" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Resonator" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="Shield" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="User" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="XMP" positionX="0" positionY="0" width="0" height="0"/>
     </elements>
 </model>

@@ -65,8 +65,7 @@
 	} else if (itemType == ItemTypeFlipCard) {
 		for (int i = 1; i <= 2; i++) {
 			UILabel *label = (UILabel *)[self.contentView viewWithTag:i];
-			label.text = @"-";
-			//label.text = [NSString stringWithFormat:@"%d", [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && faction = %@", (i == 1) ? @"ALIENS" : @"RESISTANCE"]]];
+			label.text = [NSString stringWithFormat:@"%d", [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && type = %@", (i == 1) ? @"JARVIS" : @"ADA"]]];
 		}
 	} else if (itemType == ItemTypeLinkAmp) {
 		for (int i = 1; i <= 3; i++) {
@@ -203,7 +202,7 @@
 		PortalShieldRarity rarity = [API shieldRarityFromInt:actionLevel];
 		item = [objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
 	} else if (self.itemType == ItemTypeFlipCard) {
-		item = [objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && faction = %@", (actionLevel == 1) ? @"ALIENS" : @"RESISTANCE"]];
+		item = [objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && type = %@", (actionLevel == 1) ? @"JARVIS" : @"ADA"]];
 	} else if (self.itemType == ItemTypeLinkAmp) {
 		item = nil;
 	} else {
@@ -288,7 +287,7 @@
 
 - (void)useFlipCard {
 
-	FlipCard *flipCard = [FlipCard MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && faction = %@", (actionLevel == 1) ? @"ALIENS" : @"RESISTANCE"]];
+	FlipCard *flipCard = [FlipCard MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && type = %@", (actionLevel == 1) ? @"JARVIS" : @"ADA"]];
 
 	if (flipCard) {
 
@@ -297,6 +296,17 @@
 #warning Virus not yet implemented
 
 		//self.window.rootViewController.tabBarController
+
+		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.userInteractionEnabled = YES;
+		HUD.dimBackground = YES;
+		HUD.mode = MBProgressHUDModeCustomView;
+		HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+		HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+		HUD.detailsLabelText = @"Not yet implemented";
+		[[AppDelegate instance].window addSubview:HUD];
+		[HUD show:YES];
+		[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 
 	} else {
 

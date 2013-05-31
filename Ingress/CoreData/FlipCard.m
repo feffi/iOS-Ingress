@@ -11,6 +11,15 @@
 
 @implementation FlipCard
 
-@dynamic faction;
+@dynamic type;
+
+- (NSString *)description {
+	if ([self.type isEqualToString:@"ADA"]) {
+		return @"ADA Refactor";
+	} else if ([self.type isEqualToString:@"JARVIS"]) {
+		return @"Jarvis Virus";
+	}
+	return [super description];
+}
 
 @end

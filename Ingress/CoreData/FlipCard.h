@@ -13,6 +13,6 @@
 
 @interface FlipCard : Item
 
-@property (nonatomic, retain) NSString * faction;
+@property (nonatomic, retain) NSString * type;
 
 @end

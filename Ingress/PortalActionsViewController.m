@@ -203,8 +203,6 @@
 			HUD.mode = MBProgressHUDModeText;
 			if (acquiredItems.count > 0) {
 
-				Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-
 				NSMutableArray *sounds = [NSMutableArray arrayWithCapacity:acquiredItems];
 				NSCountedSet *acquiredItemStrings = [[NSCountedSet alloc] initWithCapacity:acquiredItems.count];
 				NSMutableString *acquiredItemsStr = [NSMutableString string];
@@ -234,7 +232,7 @@
 							[sounds addObject:@"SPEECH_POWER_CUBE"];
 						}
 					} else if ([item isKindOfClass:[FlipCard class]]) {
-						if ([player.team isEqualToString:@"ALIENS"]) {
+						if ([[(FlipCard *)item type] isEqualToString:@"JARVIS"]) {
 							if (![sounds containsObject:@"SPEECH_JARVIS_VIRUS"]) {
 								[sounds addObject:@"SPEECH_JARVIS_VIRUS"];
 							}
