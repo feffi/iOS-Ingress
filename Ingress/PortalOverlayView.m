@@ -17,13 +17,10 @@
 	if (portal.completeInfo) {
 		CGImageRef portalImage;
 
-		int count = [DeployedResonator MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"portal = %@", portal]];
-		if (count > 0) {
-			if ([portal.controllingTeam isEqualToString:@"ALIENS"]) {
-				portalImage = [UIImage imageNamed:@"portal_aliens.png"].CGImage;
-			} else {
-				portalImage = [UIImage imageNamed:@"portal_resistance.png"].CGImage;
-			}
+		if (portal.completeInfo && [portal.controllingTeam isEqualToString:@"ALIENS"]) {
+			portalImage = [UIImage imageNamed:@"portal_aliens.png"].CGImage;
+		} else if (portal.completeInfo && [portal.controllingTeam isEqualToString:@"RESISTANCE"]) {
+			portalImage = [UIImage imageNamed:@"portal_resistance.png"].CGImage;
 		} else {
 			portalImage = [UIImage imageNamed:@"portal_neutral.png"].CGImage;
 		}
