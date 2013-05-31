@@ -19,7 +19,7 @@ Download
 
 - stable version (requires jailbreak)
 
-  - 1.0.4 (05/26/2013)
+  - 1.0.5 (05/31/2013)
   - https://www.dropbox.com/s/q28f2bj2bgt2vxj/Ingress.ipa
   - Availabile at Cydia repo http://cydia.angelxwind.net/
 
