@@ -11,6 +11,7 @@
 @implementation AppDelegate
 
 @synthesize mapView = _mapView;
+@synthesize tabBarVC = _tabBarVC;
 
 + (AppDelegate *)instance {
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];

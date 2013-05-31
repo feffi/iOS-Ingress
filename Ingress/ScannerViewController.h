@@ -12,6 +12,7 @@
 #import <CoreImage/CoreImage.h>
 #import "LevelChooserViewController.h"
 #import "GlowingLabel.h"
+#import "GUIButton.h"
 #import "APView.h"
 
 @interface ScannerViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, UIActionSheetDelegate> {
@@ -32,10 +33,17 @@
 	__weak IBOutlet GlowingLabel *xmLabel;
 	__weak IBOutlet UIProgressView *xmIndicator;
 	
+	__weak IBOutlet GlowingLabel *virusChoosePortalLabel;
+	__weak IBOutlet GUIButton *virusChoosePortalCancelButton;
+	
 }
+
+@property (nonatomic, strong) FlipCard *virusToUse;
 
 - (IBAction)showAP;
 - (IBAction)showXM;
+
+- (IBAction)virusChoosePortalCancel;
 
 - (void)refresh;
 - (void)fireXMP;

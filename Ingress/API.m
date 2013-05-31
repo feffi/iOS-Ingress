@@ -55,7 +55,22 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 	AudioServicesDisposeSystemSoundID(self.ui_fail_sound);
 }
 
-#pragma mark - Static Methods
+#pragma mark - Warning
+
++ (void)showWarningWithTitle:(NSString *)title {
+	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+	HUD.userInteractionEnabled = YES;
+	HUD.dimBackground = YES;
+	HUD.mode = MBProgressHUDModeCustomView;
+	HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
+	HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+	HUD.detailsLabelText = title;
+	[[AppDelegate instance].window addSubview:HUD];
+	[HUD show:YES];
+	[HUD hide:YES afterDelay:HUD_DELAY_TIME];
+}
+
+#pragma mark - Rarities Converters
 
 + (PortalShieldRarity)shieldRarityFromString:(NSString *)shieldRarityStr {
 	if ([shieldRarityStr isEqualToString:@"COMMON"]) {
@@ -1430,7 +1445,7 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 		@"portalGuid": portal.guid,
 		@"resourceGuid": flipCard.guid
 	};
-
+	
 	[self sendRequest:@"gameplay/flipPortal" params:dict completionHandler:^(id responseObj) {
 		//NSLog(@"flipPortal responseObj: %@", responseObj);
 

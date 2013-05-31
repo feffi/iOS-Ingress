@@ -159,10 +159,6 @@
 	return YES;
 }
 
-- (void)webViewDidStartLoad:(UIWebView *)webView {
-	
-}
-
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
 	
 	if (loginProcess) { return; }
@@ -547,6 +543,7 @@
 	if ([segue.identifier isEqualToString:@"LoadingCompletedSegue"]) {
 		_tabBarController = (UITabBarController *)segue.destinationViewController;
 		_tabBarController.delegate = self;
+		[[AppDelegate instance] setTabBarVC:_tabBarController];
 
 //		[self addTabBarArrow];
 

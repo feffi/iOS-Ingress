@@ -61,7 +61,7 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 	
-	return;
+	//return;
 	
     if ([self isViewLoaded] && ([[self view] window] == nil)) {
         self.view = nil;

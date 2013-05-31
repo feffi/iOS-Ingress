@@ -45,6 +45,8 @@
 
 }
 
+@synthesize virusToUse = _virusToUse;
+
 - (void)viewDidLoad {
     [super viewDidLoad];
 
@@ -63,6 +65,7 @@
 	nicknameLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
 	apLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
 	xmLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
+	virusChoosePortalLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
 
 	apLabel.hidden = YES;
 	xmLabel.hidden = YES;
@@ -121,6 +124,13 @@
 
 	[self refreshProfile];
 
+	if (self.virusToUse) {
+		virusChoosePortalLabel.hidden = NO;
+		virusChoosePortalCancelButton.hidden = NO;
+	} else {
+		virusChoosePortalLabel.hidden = YES;
+		virusChoosePortalCancelButton.hidden = YES;
+	}
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -316,6 +326,15 @@
 			[xmLabel setHidden:YES];
 		}];
 	}
+}
+
+- (IBAction)virusChoosePortalCancel {
+	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+	
+	virusChoosePortalLabel.hidden = YES;
+	virusChoosePortalCancelButton.hidden = YES;
+
+	self.virusToUse = nil;
 }
 
 #pragma mark - Map Data Managing
@@ -632,7 +651,30 @@
 			
 		}];
 
+	} else if (actionSheet.tag == 2 && buttonIndex == 0) {
+
+		virusChoosePortalLabel.hidden = YES;
+		virusChoosePortalCancelButton.hidden = YES;
+
+		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.userInteractionEnabled = YES;
+		HUD.mode = MBProgressHUDModeIndeterminate;
+		HUD.dimBackground = YES;
+		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+		HUD.labelText = @"Deploying Virus...";
+		[[AppDelegate instance].window addSubview:HUD];
+		[HUD show:YES];
+
+		//[[SoundManager sharedManager] playSound:@"Sound/"];
+
+		[[API sharedInstance] flipPortal:currentPortal withFlipCard:self.virusToUse completionHandler:^{
+			[HUD hide:YES];
+			self.virusToUse = nil;
+			[self refresh];
+		}];
+		
 	}
+
 }
 
 #pragma mark - MKMapViewDelegate
@@ -682,9 +724,17 @@
 	[_mapView deselectAnnotation:view.annotation animated:NO];
 	if ([view.annotation isKindOfClass:[Portal class]]) {
 		currentPortal = (Portal *)view.annotation;
-		[self performSegueWithIdentifier:@"PortalDetailSegue" sender:self];
+		if ([currentPortal distanceFromCoordinate:_mapView.centerCoordinate] <= 40) {
+			if (self.virusToUse) {
+				UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Confirm Deployment" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Confirm", nil];
+				actionSheet.tag = 2;
+				[actionSheet showFromTabBar:self.tabBarController.tabBar];
+			} else {
+				[self performSegueWithIdentifier:@"PortalDetailSegue" sender:self];
+			}
+		}
 	} else if ([view.annotation isKindOfClass:[Item class]]) {
-		if ([(Item *)(view.annotation) distanceFromCoordinate:_mapView.centerCoordinate] <= 30) {
+		if ([(Item *)(view.annotation) distanceFromCoordinate:_mapView.centerCoordinate] <= 40) {
 			[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 			
 			currentItem = (Item *)view.annotation;

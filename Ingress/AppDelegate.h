@@ -13,6 +13,7 @@
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) MKMapView *mapView;
+@property (strong, nonatomic) UITabBarController *tabBarVC;
 
 + (AppDelegate *)instance;
 

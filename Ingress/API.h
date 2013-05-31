@@ -38,6 +38,8 @@ typedef void (^SoundCompletionBlock)(void);
 
 + (API *)sharedInstance;
 
++ (void)showWarningWithTitle:(NSString *)title;
+
 + (PortalShieldRarity)shieldRarityFromString:(NSString *)shieldRarityStr;
 + (PortalShieldRarity)shieldRarityFromInt:(int)shieldRarityInt;
 + (NSString *)shieldRarityStrFromRarity:(PortalShieldRarity)shieldRarity;
