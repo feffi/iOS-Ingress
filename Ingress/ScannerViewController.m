@@ -695,7 +695,7 @@
 	if (energy < maxEnergy) {
 		[[[API sharedInstance] energyToCollect] removeAllObjects];
 		for (EnergyGlob *xm in [EnergyGlob MR_findAll]) {
-			if ([xm distanceFromCoordinate:_mapView.centerCoordinate] <= 30) {
+			if ([xm distanceFromCoordinate:_mapView.centerCoordinate] <= 40) {
 				[[[API sharedInstance] energyToCollect] addObject:xm];
 				collecting += xm.amount;
 			}
