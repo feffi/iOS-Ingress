@@ -16,7 +16,7 @@
 @dynamic portal;
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"Portal Key"];
+	return [NSString stringWithFormat:@"Portal Key: %@", self.portal.name];
 }
 
 @end
