@@ -12,6 +12,9 @@
 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 NSString *const DeviceSoundLevel = @"DeviceSoundLevel";
+NSString *const DeviceSoundToggleBackground = @"FHDeviceSoundToggleBackground";
+NSString *const DeviceSoundToggleEffects = @"FHDeviceSoundToggleEffects";
+NSString *const DeviceSoundToggleSpeech = @"FHDeviceSoundToggleSpeech";
 NSString *const IGMapDayMode = @"IGMapDayMode";
 
 @implementation API {
