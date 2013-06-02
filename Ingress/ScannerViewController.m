@@ -674,10 +674,15 @@
 		HUD.labelText = @"Deploying Virus...";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
-
-		//[[SoundManager sharedManager] playSound:@"Sound/"];
-
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[API sharedInstance] playSound:@"SFX_FLIPCARD_SWIRL"];
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_flipcard_tugofwar.aif"];
+        }
+        
 		[[API sharedInstance] flipPortal:currentPortal withFlipCard:self.virusToUse completionHandler:^{
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+                [[API sharedInstance] playSound:@"SFX_FLIPCARD_EXPLOSION"];
+            }
 			[HUD hide:YES];
 			self.virusToUse = nil;
 			[self refresh];
