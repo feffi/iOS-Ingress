@@ -1495,7 +1495,9 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 		params = mutableParams;
 		
 		if (collectedEnergyGuids.count > 0) {
-			[[API sharedInstance] playSound:@"SFX_XM_PICKUP"];
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+                [[API sharedInstance] playSound:@"SFX_XM_PICKUP"];
+            }
 		}
 		
 	}
@@ -2042,22 +2044,25 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 	int newLevel = [API levelForAp:[playerEntity[2][@"playerPersonal"][@"ap"] intValue]];
 	
 	if (player.ap != 0 && newLevel > oldLevel) {
-		[self playSound:@"SFX_PLAYER_LEVEL_UP"];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects] && [[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+            [self playSound:@"SFX_PLAYER_LEVEL_UP"];
+        }
 	}
 
 	if (player.energy != [playerEntity[2][@"playerPersonal"][@"energy"] intValue]) {
-		int xmPercent = (int)round(([playerEntity[2][@"playerPersonal"][@"energy"] floatValue]/[API maxXmForLevel:newLevel])*100);
-
-		NSMutableArray *sounds = [NSMutableArray arrayWithCapacity:4];
-		[sounds addObject:@"SPEECH_XM_LEVELS"];
-		[sounds addObjectsFromArray:[API soundsForNumber:xmPercent]];
-		[sounds addObject:@"SPEECH_PERCENT"];
-
-		dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
-		dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-			[self playSounds:sounds];
-		});
-
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+            int xmPercent = (int)round(([playerEntity[2][@"playerPersonal"][@"energy"] floatValue]/[API maxXmForLevel:newLevel])*100);
+            
+            NSMutableArray *sounds = [NSMutableArray arrayWithCapacity:4];
+            [sounds addObject:@"SPEECH_XM_LEVELS"];
+            [sounds addObjectsFromArray:[API soundsForNumber:xmPercent]];
+            [sounds addObject:@"SPEECH_PERCENT"];
+            
+            dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
+            dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+                [self playSounds:sounds];
+            });
+        }
 	}
 
 	player.team = playerEntity[2][@"controllingTeam"][@"team"];
@@ -2148,9 +2153,10 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 
 	for (NSDictionary *playerDamage in playerDamages) {
 		dispatch_async(dispatch_get_main_queue(), ^{
-
-			[[SoundManager sharedManager] playSound:@"Sound/sfx_player_hit.aif"];
-
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+                [[SoundManager sharedManager] playSound:@"Sound/sfx_player_hit.aif"];
+            }
+            
 			[[MTStatusBarOverlay sharedInstance] postErrorMessage:[NSString stringWithFormat:@"- %d XM", [playerDamage[@"damageAmount"] intValue]] duration:3 animated:YES];
 		});
 	}

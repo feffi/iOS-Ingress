@@ -50,8 +50,9 @@
 
 - (IBAction)groupChanged:(UISegmentedControl *)sender {
 	[commTableVC setFactionOnly:sender.selectedSegmentIndex];
-	
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
 }
 
 - (void)mentionUser:(User *)user {
@@ -73,14 +74,17 @@
 	[transmitTextField resignFirstResponder];
 	
 	if (!message || message.length < 1) {
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_fail.aif"];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_fail.aif"];
+        }
 		return;
 	}
 
 	[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Send Message" withLabel:nil withValue:@(commTableVC.factionOnly)];
-	
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-	
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    
 	[[API sharedInstance] sendMessage:message factionOnly:commTableVC.factionOnly completionHandler:^{
 		[commTableVC refresh];
 	}];
@@ -90,9 +94,9 @@
 #pragma mark - UITextFieldDelegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-	
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-	
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

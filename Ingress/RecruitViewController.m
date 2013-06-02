@@ -71,12 +71,16 @@
 	[inviteTextField resignFirstResponder];
 
 	if (!email || email.length < 1) {
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_fail.aif"];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_fail.aif"];
+        }
 		return;
 	}
 	
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    
 	[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Recruit" withLabel:nil withValue:@(0)];
 	
 	__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
@@ -111,9 +115,9 @@
 #pragma mark - UITextFieldDelegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-	
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-	
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

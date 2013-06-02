@@ -298,8 +298,10 @@
 
 - (IBAction)showAP {
 	if (apLabel.hidden) {
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-		
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+        }
+        
 		[apLabel setHidden:NO];
 		[UIView animateWithDuration:.5 animations:^{
 			[apLabel setAlpha:1];
@@ -314,8 +316,10 @@
 
 - (IBAction)showXM {
 	if (xmLabel.hidden) {
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+        }
+        
 		[xmLabel setHidden:NO];
 		[UIView animateWithDuration:.5 animations:^{
 			[xmLabel setAlpha:1];
@@ -329,8 +333,10 @@
 }
 
 - (IBAction)virusChoosePortalCancel {
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-	
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    
 	virusChoosePortalLabel.hidden = YES;
 	virusChoosePortalCancelButton.hidden = YES;
 
@@ -601,8 +607,10 @@
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    
 	if (actionSheet.tag == 1 && buttonIndex == 0) {
 		
 		__block Item *item = currentItem;
@@ -646,7 +654,9 @@
 				[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 
 			} else {
-				[[API sharedInstance] playSound:@"SFX_RESOURCE_PICK_UP"];
+                if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+                    [[API sharedInstance] playSound:@"SFX_RESOURCE_PICK_UP"];
+                }
 			}
 			
 		}];
@@ -735,8 +745,10 @@
 		}
 	} else if ([view.annotation isKindOfClass:[Item class]]) {
 		if ([(Item *)(view.annotation) distanceFromCoordinate:_mapView.centerCoordinate] <= 40) {
-			[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-			
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+                [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+            }
+            
 			currentItem = (Item *)view.annotation;
 			UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:currentItem.title delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Acquire", nil];
 			actionSheet.tag = 1;
@@ -922,8 +934,10 @@
 //	int level = [API levelForAp:ap];
 //	[self fireXMPOfLevel:level];
 	
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-		
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 	HUD.userInteractionEnabled = YES;
 	HUD.mode = MBProgressHUDModeCustomView;
@@ -962,7 +976,9 @@
 		[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 		return;
 	} else {
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_emp_power_up.aif"];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_emp_power_up.aif"];
+        }
 	}
 
 	[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Fire XMP" withLabel:nil withValue:@(xmpItem.level)];
@@ -1014,7 +1030,9 @@
 					BOOL destroyed = [damage[@"targetDestroyed"] boolValue];
 					
 					if (destroyed) {
-						[[SoundManager sharedManager] playSound:@"Sound/sfx_explode_resonator.aif"];
+                        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+                            [[SoundManager sharedManager] playSound:@"Sound/sfx_explode_resonator.aif"];
+                        }
 					}
 					
 					DeployedResonator *resonator = [DeployedResonator MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"portal = %@ && slot = %d", portal, slot]];
@@ -1067,8 +1085,10 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:@"PortalDetailSegue"]) {
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+        }
+        
 		portalDetailSegue = YES;
 		
 		PortalDetailViewController *vc = segue.destinationViewController;

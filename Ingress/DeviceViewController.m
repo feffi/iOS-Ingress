@@ -89,8 +89,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    
+    if ((indexPath.row == 5 && ![[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) || (indexPath.row != 5 && [[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects])) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
 
 	switch (indexPath.row) {
 		case 0: {
@@ -147,11 +149,13 @@
 			BOOL background = [[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleBackground];
 			UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
 			if (background) {
+                [[SoundManager sharedManager] stopMusic:NO];
 				cell.textLabel.text = @"Unmute Background";
                 [[NSUserDefaults standardUserDefaults] setBool:NO forKey:DeviceSoundToggleBackground];
 			} else {
 				cell.textLabel.text = @"Mute Background";
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:DeviceSoundToggleBackground];
+                [[SoundManager sharedManager] playMusic:@"Sound/sfx_ambient_scanner_base.aif" looping:YES fadeIn:NO];
 			}
             [[NSUserDefaults standardUserDefaults] synchronize];
             
@@ -184,6 +188,7 @@
 			} else {
 				cell.textLabel.text = @"Mute Speech";
                 [[NSUserDefaults standardUserDefaults] setBool:YES forKey:DeviceSoundToggleSpeech];
+                [[API sharedInstance] playSound:@"SPEECH_ACTIVATED"];
 			}
             [[NSUserDefaults standardUserDefaults] synchronize];
             
