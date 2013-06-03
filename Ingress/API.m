@@ -13,6 +13,7 @@ green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/
 
 NSString *const DeviceSoundLevel = @"DeviceSoundLevel";
 NSString *const IGMapDayMode = @"IGMapDayMode";
+NSString *const MilesOrKM = @"MilesOrKM";
 
 @implementation API {
 	BOOL isSoundPlaying;

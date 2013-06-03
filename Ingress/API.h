@@ -16,6 +16,7 @@
 
 FOUNDATION_EXPORT NSString *const DeviceSoundLevel;
 FOUNDATION_EXPORT NSString *const IGMapDayMode;
+FOUNDATION_EXPORT NSString *const MilesOrKM;
 
 typedef void (^SoundCompletionBlock)(void);
 

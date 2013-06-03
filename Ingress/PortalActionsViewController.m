@@ -102,7 +102,13 @@
 
 	////////////////////////////
 
-	infoLabel2.text = [NSString stringWithFormat:@"Energy: %.1fk\nRange: %.1fkm", self.portal.energy/1000., self.portal.range/1000.];
+    if (![[NSUserDefaults standardUserDefaults] boolForKey:MilesOrKM]) {
+        infoLabel2.text = [NSString stringWithFormat:@"Energy: %.1fk\nRange: %.1fmi", self.portal.energy/1000., (self.portal.range/1000.) * 0.62137];
+    }
+    else
+    {
+    	infoLabel2.text = [NSString stringWithFormat:@"Energy: %.1fk\nRange: %.1fkm", self.portal.energy/1000., self.portal.range/1000.];
+    }
 	
 //	attrStr = [[NSMutableAttributedString alloc] initWithString:str];
 //	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15], NSForegroundColorAttributeName : [UIColor colorWithRed:.56 green:1 blue:1 alpha:1]} range:NSMakeRange(0, str.length)];
