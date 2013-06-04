@@ -108,6 +108,7 @@
 		FA54DF0316A1C784006A92E0 /* items.png in Resources */ = {isa = PBXBuildFile; fileRef = FA54DF0116A1C784006A92E0 /* items.png */; };
 		FA54DF0416A1C784006A92E0 /* items@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA54DF0216A1C784006A92E0 /* items@2x.png */; };
 		FA54DF0816A1D882006A92E0 /* Coda-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA54DF0616A1D870006A92E0 /* Coda-Regular.ttf */; };
+		FA600FD5175E3FF900F360A6 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FA600FD4175E3FF900F360A6 /* Utilities.m */; };
 		FA6EF951172D11790004905F /* GlowingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6EF950172D11790004905F /* GlowingLabel.m */; };
 		FA6EF957172D1C490004905F /* trackImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EF956172D1C490004905F /* trackImage@2x.png */; };
 		FA6EF960172D2D360004905F /* progressImage-aliens@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EF95E172D2D350004905F /* progressImage-aliens@2x.png */; };
@@ -417,6 +418,8 @@
 		FA54DF0116A1C784006A92E0 /* items.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = items.png; sourceTree = "<group>"; };
 		FA54DF0216A1C784006A92E0 /* items@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "items@2x.png"; sourceTree = "<group>"; };
 		FA54DF0616A1D870006A92E0 /* Coda-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Coda-Regular.ttf"; path = "Ingress/Coda-Regular.ttf"; sourceTree = "<group>"; };
+		FA600FD3175E3FF900F360A6 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		FA600FD4175E3FF900F360A6 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
 		FA6EF94F172D11790004905F /* GlowingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlowingLabel.h; path = GlowingLabel/GlowingLabel.h; sourceTree = "<group>"; };
 		FA6EF950172D11790004905F /* GlowingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlowingLabel.m; path = GlowingLabel/GlowingLabel.m; sourceTree = "<group>"; };
 		FA6EF956172D1C490004905F /* trackImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackImage@2x.png"; sourceTree = "<group>"; };
@@ -862,6 +865,7 @@
 			isa = PBXGroup;
 			children = (
 				FAC23D7C16B16F62000C17DD /* API */,
+				FA600FD6175E3FFC00F360A6 /* Utilities */,
 				FAC23D7B16B16F5A000C17DD /* DB */,
 				FAC23E4316B2D0C7000C17DD /* Overlay Views */,
 				FA8C24E416B3DFEE000C8738 /* Custom Map */,
@@ -1135,6 +1139,15 @@
 				FAD5EF0C16A2006C00182F6B /* MissionsViewController.m */,
 			);
 			name = Missions;
+			sourceTree = "<group>";
+		};
+		FA600FD6175E3FFC00F360A6 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				FA600FD3175E3FF900F360A6 /* Utilities.h */,
+				FA600FD4175E3FF900F360A6 /* Utilities.m */,
+			);
+			name = Utilities;
 			sourceTree = "<group>";
 		};
 		FA6EF94E172D115F0004905F /* GlowingLabel */ = {
@@ -2110,6 +2123,7 @@
 				FA061635174E74F2001AB5CE /* Player.m in Sources */,
 				FA061638174E7873001AB5CE /* Item.m in Sources */,
 				FA036DE7175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController.m in Sources */,
+				FA600FD5175E3FF900F360A6 /* Utilities.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
