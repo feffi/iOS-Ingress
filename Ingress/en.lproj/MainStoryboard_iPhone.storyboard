@@ -3343,172 +3343,6 @@ Range: 0km</string>
                         <rect key="frame" x="0.0" y="0.0" width="320" height="455"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button hidden="YES" opaque="NO" tag="55" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RKO-vK-db7" customClass="GUIButton">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" type="user" id="I6A-U6-ywl"/>
-                                    <constraint firstAttribute="height" constant="30" type="user" id="l91-pG-kyX"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                                <state key="normal" title="DEPLOY">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="resonatorButtonPressed:" destination="253-rW-7Pb" eventType="touchUpInside" id="X3k-du-Xm8"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" tag="50" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rsY-ky-n4c" customClass="GUIButton">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" type="user" id="M2n-Hv-VxK"/>
-                                    <constraint firstAttribute="width" constant="64" type="user" id="nZc-Zf-YQg"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                                <state key="normal" title="DEPLOY">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="resonatorButtonPressed:" destination="253-rW-7Pb" eventType="touchUpInside" id="1ap-OA-2nf"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" tag="56" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="atd-cZ-jer" customClass="GUIButton">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" type="user" id="byy-yG-CQ7"/>
-                                    <constraint firstAttribute="width" constant="64" type="user" id="qGS-u0-N6a"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                                <state key="normal" title="DEPLOY">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="resonatorButtonPressed:" destination="253-rW-7Pb" eventType="touchUpInside" id="his-mK-Ouh"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" tag="57" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dr6-AN-AgS" customClass="GUIButton">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" type="user" id="5QU-dS-64c"/>
-                                    <constraint firstAttribute="width" constant="64" type="user" id="rtn-R1-RqV"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                                <state key="normal" title="DEPLOY">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="resonatorButtonPressed:" destination="253-rW-7Pb" eventType="touchUpInside" id="xYi-l4-fyh"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" tag="54" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tyk-MP-1U2" customClass="GUIButton">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" type="user" id="9Ny-sg-kVh"/>
-                                    <constraint firstAttribute="width" constant="64" type="user" id="Jdl-Ml-RXP"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                                <state key="normal" title="DEPLOY">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="resonatorButtonPressed:" destination="253-rW-7Pb" eventType="touchUpInside" id="Q9u-jX-nrN"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" tag="51" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wgO-HR-Z1s" customClass="GUIButton">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" type="user" id="EAf-Kr-leM"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                                <state key="normal" title="DEPLOY">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="resonatorButtonPressed:" destination="253-rW-7Pb" eventType="touchUpInside" id="gIX-3u-jAK"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" tag="53" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="izT-zY-RRC" customClass="GUIButton">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" type="user" id="CbV-dv-hxi"/>
-                                    <constraint firstAttribute="width" constant="64" type="user" id="KmC-8H-9bE"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                                <state key="normal" title="DEPLOY">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="resonatorButtonPressed:" destination="253-rW-7Pb" eventType="touchUpInside" id="1KI-cc-MUL"/>
-                                </connections>
-                            </button>
-                            <button hidden="YES" opaque="NO" tag="52" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ca4-ZO-O9p" customClass="GUIButton">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="64" type="user" id="z5y-Jf-O3r"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="10"/>
-                                <state key="normal" title="DEPLOY">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="disabled">
-                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="resonatorButtonPressed:" destination="253-rW-7Pb" eventType="touchUpInside" id="9Pc-6V-veA"/>
-                                </connections>
-                            </button>
                             <button opaque="NO" tag="100" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Xb-Wh-5aO" customClass="GUIButton">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
@@ -3594,34 +3428,16 @@ Range: 0km</string>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="08H-Vc-v0b" firstAttribute="top" secondItem="g9d-7G-vJo" secondAttribute="top" type="default" id="13m-ue-uqr"/>
-                            <constraint firstItem="atd-cZ-jer" firstAttribute="baseline" secondItem="RKO-vK-db7" secondAttribute="baseline" type="default" id="3OA-QN-T23"/>
-                            <constraint firstItem="atd-cZ-jer" firstAttribute="leading" secondItem="RKO-vK-db7" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="4yg-Gg-4hQ"/>
-                            <constraint firstItem="tyk-MP-1U2" firstAttribute="leading" secondItem="5Wz-4j-Ggi" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="6sJ-e9-VJB"/>
                             <constraint firstItem="g9d-7G-vJo" firstAttribute="bottom" secondItem="OYY-dc-1p9" secondAttribute="bottom" type="default" id="7me-SW-pXH"/>
                             <constraint firstAttribute="trailing" secondItem="08H-Vc-v0b" secondAttribute="trailing" constant="19" type="user" id="Ahv-M2-NTw"/>
-                            <constraint firstItem="Dr6-AN-AgS" firstAttribute="leading" secondItem="atd-cZ-jer" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="Apq-3b-vU4"/>
-                            <constraint firstItem="08H-Vc-v0b" firstAttribute="leading" secondItem="wgO-HR-Z1s" secondAttribute="leading" type="user" id="CrK-a2-Vgg"/>
                             <constraint firstItem="08H-Vc-v0b" firstAttribute="leading" secondItem="g9d-7G-vJo" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="Egj-jS-jsY"/>
-                            <constraint firstAttribute="trailing" secondItem="rsY-ky-n4c" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="FXg-xi-LYo"/>
-                            <constraint firstItem="tyk-MP-1U2" firstAttribute="top" secondItem="5Wz-4j-Ggi" secondAttribute="top" constant="104" id="HhA-oE-hcV"/>
-                            <constraint firstAttribute="bottom" secondItem="RKO-vK-db7" secondAttribute="bottom" constant="17" id="Jq1-pD-qxC"/>
-                            <constraint firstItem="ca4-ZO-O9p" firstAttribute="leading" secondItem="izT-zY-RRC" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="MKv-gK-kFL"/>
-                            <constraint firstItem="ca4-ZO-O9p" firstAttribute="bottom" secondItem="wgO-HR-Z1s" secondAttribute="bottom" type="default" id="MtS-dO-hvc"/>
-                            <constraint firstItem="wgO-HR-Z1s" firstAttribute="top" secondItem="ca4-ZO-O9p" secondAttribute="top" type="default" id="Px2-Il-r7f"/>
                             <constraint firstItem="5Xb-Wh-5aO" firstAttribute="leading" secondItem="5Wz-4j-Ggi" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="aQm-2m-lVl"/>
                             <constraint firstItem="5Xb-Wh-5aO" firstAttribute="top" secondItem="5Wz-4j-Ggi" secondAttribute="top" constant="16" id="gLU-QU-22i"/>
                             <constraint firstItem="OYY-dc-1p9" firstAttribute="bottom" secondItem="5Xb-Wh-5aO" secondAttribute="bottom" type="default" id="iGJ-Gu-r0B"/>
                             <constraint firstItem="g9d-7G-vJo" firstAttribute="bottom" secondItem="08H-Vc-v0b" secondAttribute="bottom" type="default" id="inj-m6-Nfb"/>
-                            <constraint firstItem="ca4-ZO-O9p" firstAttribute="bottom" secondItem="izT-zY-RRC" secondAttribute="bottom" type="default" id="kyD-Px-grI"/>
                             <constraint firstItem="OYY-dc-1p9" firstAttribute="top" secondItem="g9d-7G-vJo" secondAttribute="top" type="default" id="l2k-ZQ-Mn4"/>
-                            <constraint firstItem="tyk-MP-1U2" firstAttribute="baseline" secondItem="izT-zY-RRC" secondAttribute="baseline" type="default" id="lCN-kY-21J"/>
-                            <constraint firstItem="rsY-ky-n4c" firstAttribute="baseline" secondItem="Dr6-AN-AgS" secondAttribute="baseline" type="default" id="qhs-g0-5VU"/>
-                            <constraint firstItem="ca4-ZO-O9p" firstAttribute="top" secondItem="izT-zY-RRC" secondAttribute="top" type="default" id="r6j-7L-SZp"/>
                             <constraint firstItem="OYY-dc-1p9" firstAttribute="leading" secondItem="5Xb-Wh-5aO" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="sYQ-Qd-bvF"/>
-                            <constraint firstItem="OYY-dc-1p9" firstAttribute="leading" secondItem="izT-zY-RRC" secondAttribute="leading" type="user" id="tqq-Ex-xcE"/>
-                            <constraint firstItem="Dr6-AN-AgS" firstAttribute="baseline" secondItem="atd-cZ-jer" secondAttribute="baseline" type="default" id="yRD-sQ-YDf"/>
                             <constraint firstItem="5Xb-Wh-5aO" firstAttribute="top" secondItem="OYY-dc-1p9" secondAttribute="top" type="default" id="zks-6i-IwV"/>
-                            <constraint firstItem="RKO-vK-db7" firstAttribute="leading" secondItem="5Wz-4j-Ggi" secondAttribute="leading" constant="20" symbolic="YES" type="user" id="zvc-8N-XJS"/>
                         </constraints>
                     </view>
                     <toolbarItems/>
@@ -3659,6 +3475,257 @@ Range: 0km</string>
         <image name="scanner-bg@2x.png" width="640" height="910"/>
         <image name="scanner.png" width="27" height="27"/>
     </resources>
+    <classes>
+        <class className="APView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/APView.h"/>
+        </class>
+        <class className="CommTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CommTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="messageLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CommTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CommTableViewController.h"/>
+        </class>
+        <class className="CommViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CommViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="groupChanged:" candidateClass="UISegmentedControl"/>
+                <relationship kind="action" name="transmit"/>
+                <relationship kind="outlet" name="groupSegments" candidateClass="UISegmentedControl"/>
+                <relationship kind="outlet" name="transmitButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="transmitContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="transmitTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CustomBackgroundColorButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomBackgroundColorButton.h"/>
+        </class>
+        <class className="DarkPressedBackgroundButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DarkPressedBackgroundButton.h"/>
+        </class>
+        <class className="DeviceViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DeviceViewController.h"/>
+        </class>
+        <class className="GLViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GLViewController.h"/>
+        </class>
+        <class className="GUIButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GUIButton.h"/>
+        </class>
+        <class className="GlowingLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GlowingLabel.h"/>
+        </class>
+        <class className="IntelViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/IntelViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="viewSegmentedControlChanged"/>
+                <relationship kind="outlet" name="missionsContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="recruitContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="scoreContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="viewSegmentedControl" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="ItemsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ItemsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="submitPasscode"/>
+                <relationship kind="action" name="viewSegmentedControlChanged"/>
+                <relationship kind="outlet" name="mediaContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="passcodeContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="passcodeTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="portalKeysContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="resourcesContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="submitPasscodeButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="viewSegmentedControl" candidateClass="UISegmentedControl"/>
+            </relationships>
+        </class>
+        <class className="LevelChooserViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LevelChooserViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="action:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="LoadingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoadingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="activate"/>
+                <relationship kind="action" name="codenameConfirm"/>
+                <relationship kind="action" name="codenameRetry"/>
+                <relationship kind="action" name="createCodename"/>
+                <relationship kind="action" name="retryHandshake"/>
+                <relationship kind="action" name="termsCheckboxChanged"/>
+                <relationship kind="action" name="termsConfirm"/>
+                <relationship kind="outlet" name="activationButton" candidateClass="CustomBackgroundColorButton"/>
+                <relationship kind="outlet" name="activationCodeField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="activationErrorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="activationView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="codenameConfirmButton" candidateClass="StretchableBackgroundButton"/>
+                <relationship kind="outlet" name="codenameConfirmLabel" candidateClass="TypeWriterLabel"/>
+                <relationship kind="outlet" name="codenameConfirmRetryButton" candidateClass="StretchableBackgroundButton"/>
+                <relationship kind="outlet" name="codenameConfirmView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="codenameErrorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="codenameErrorRetryButton" candidateClass="StretchableBackgroundButton"/>
+                <relationship kind="outlet" name="codenameErrorView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="createCodenameButton" candidateClass="CustomBackgroundColorButton"/>
+                <relationship kind="outlet" name="createCodenameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="createCodenameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="createCodenameScrollview" candidateClass="TPKeyboardAvoidingScrollView"/>
+                <relationship kind="outlet" name="introTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="introView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="label" candidateClass="GlowingLabel"/>
+                <relationship kind="outlet" name="retryHandshakeButton" candidateClass="GUIButton"/>
+                <relationship kind="outlet" name="termsCheckboxButton" candidateClass="SelectingButton"/>
+                <relationship kind="outlet" name="termsConfirmButton" candidateClass="StretchableBackgroundButton"/>
+                <relationship kind="outlet" name="termsDescriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="termsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="termsView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="termsWarningLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="typewriterLabel" candidateClass="TypeWriterLabel"/>
+                <relationship kind="outlet" name="typewriterView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="wheelActivityIndicatorView" candidateClass="WheelActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="MediaItemsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MediaItemsViewController.h"/>
+        </class>
+        <class className="MediaWebViewViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MediaWebViewViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="action"/>
+                <relationship kind="action" name="close"/>
+                <relationship kind="outlet" name="_webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="MissionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MissionViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="join:"/>
+                <relationship kind="outlet" name="altButton" candidateClass="StretchableBackgroundButton"/>
+                <relationship kind="outlet" name="authLabel" candidateClass="GlowingLabel"/>
+                <relationship kind="outlet" name="authProgressView" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="choosingLabel" candidateClass="GlowingLabel"/>
+                <relationship kind="outlet" name="factionChooseButtons" candidateClass="UIView"/>
+                <relationship kind="outlet" name="factionChooseButtonsLabel" candidateClass="GlowingLabel"/>
+                <relationship kind="outlet" name="jarvisBackground" candidateClass="UIView"/>
+                <relationship kind="outlet" name="joinEnlightenedButton" candidateClass="GUIButton"/>
+                <relationship kind="outlet" name="joinResistanceButton" candidateClass="GUIButton"/>
+                <relationship kind="outlet" name="mainButton" candidateClass="StretchableBackgroundButton"/>
+                <relationship kind="outlet" name="subtitleLabel" candidateClass="GlowingLabel"/>
+                <relationship kind="outlet" name="textView" candidateClass="ScrollTextView"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="GlowingLabel"/>
+                <relationship kind="outlet" name="typewriterLabel" candidateClass="TypeWriterLabel"/>
+            </relationships>
+        </class>
+        <class className="MissionsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MissionsViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="PortalActionsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalActionsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="hack:" candidateClass="GUIButton"/>
+                <relationship kind="action" name="link:" candidateClass="GUIButton"/>
+                <relationship kind="action" name="recharge:" candidateClass="GUIButton"/>
+                <relationship kind="outlet" name="hackButton" candidateClass="GUIButton"/>
+                <relationship kind="outlet" name="imageActivityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="infoLabel1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="infoLabel2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="linkButton" candidateClass="GUIButton"/>
+                <relationship kind="outlet" name="portalTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="rechargeButton" candidateClass="GUIButton"/>
+            </relationships>
+        </class>
+        <class className="PortalDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalDetailViewController.h"/>
+        </class>
+        <class className="PortalInfoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalInfoViewController.h"/>
+        </class>
+        <class className="PortalKeyCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalKeyCell.h"/>
+        </class>
+        <class className="PortalKeysViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalKeysViewController.h"/>
+        </class>
+        <class className="PortalUpgradeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalUpgradeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="resonatorButtonPressed:" candidateClass="GUIButton"/>
+                <relationship kind="action" name="shieldButtonPressed:" candidateClass="GUIButton"/>
+            </relationships>
+        </class>
+        <class className="RecruitViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecruitViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="invite"/>
+                <relationship kind="outlet" name="inviteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="inviteContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="inviteLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="inviteTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ResourceCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ResourceCell.h"/>
+            <relationships>
+                <relationship kind="action" name="action:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="itemImageView" candidateClass="UIImageView"/>
+            </relationships>
+        </class>
+        <class className="ResourcesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ResourcesViewController.h"/>
+        </class>
+        <class className="ScannerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScannerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showAP"/>
+                <relationship kind="action" name="showXM"/>
+                <relationship kind="action" name="virusChoosePortalCancel"/>
+                <relationship kind="outlet" name="_mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="apLabel" candidateClass="GlowingLabel"/>
+                <relationship kind="outlet" name="apView" candidateClass="APView"/>
+                <relationship kind="outlet" name="bgImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="fireXmpButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="levelLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nicknameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="playerArrowImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="virusChoosePortalCancelButton" candidateClass="GUIButton"/>
+                <relationship kind="outlet" name="virusChoosePortalLabel" candidateClass="GlowingLabel"/>
+                <relationship kind="outlet" name="xmIndicator" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="xmLabel" candidateClass="GlowingLabel"/>
+            </relationships>
+        </class>
+        <class className="ScoreViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScoreViewController.h"/>
+        </class>
+        <class className="ScrollTextView" superclassName="UITextView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScrollTextView.h"/>
+        </class>
+        <class className="SelectingButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectingButton.h"/>
+        </class>
+        <class className="StretchableBackgroundButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StretchableBackgroundButton.h"/>
+        </class>
+        <class className="TPKeyboardAvoidingScrollView" superclassName="UIScrollView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TPKeyboardAvoidingScrollView.h"/>
+        </class>
+        <class className="TypeWriterLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TypeWriterLabel.h"/>
+        </class>
+        <class className="UIRefreshControl" superclassName="UIControl">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
+        </class>
+        <class className="WheelActivityIndicatorView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WheelActivityIndicatorView.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
