@@ -88,7 +88,9 @@
 	[[[GAI sharedInstance] defaultTracker] sendView:@"Portal Detail Screen"];
 
 	if (self.isMovingFromParentViewController) {
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+        }
 	}
 }
 
@@ -100,8 +102,10 @@
 #pragma mark - Segmented Control Changed
 
 - (void)viewSegmentedControlChanged {
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    
 	pageControlUsed = YES;
     CGFloat pageWidth = _scrollView.contentSize.width /viewSegmentedControl.numberOfSegments;
     CGFloat x = viewSegmentedControl.selectedSegmentIndex * pageWidth;

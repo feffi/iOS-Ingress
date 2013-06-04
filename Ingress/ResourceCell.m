@@ -149,9 +149,11 @@
 		HUD.labelText = @"Dropping Item...";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
-
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_drop_resource.aif"];
-
+        
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_drop_resource.aif"];
+        }
+        
 		[[API sharedInstance] dropItemWithGuid:guid completionHandler:^(void) {
 			[HUD hide:YES];
 		}];
@@ -222,9 +224,11 @@
 		HUD.labelText = @"Recycling Item...";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
-
-		[[SoundManager sharedManager] playSound:[NSString stringWithFormat:@"Sound/sfx_recycle_%@.aif", arc4random_uniform(2) ? @"a" : @"b"]];
-
+        
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:[NSString stringWithFormat:@"Sound/sfx_recycle_%@.aif", arc4random_uniform(2) ? @"a" : @"b"]];
+        }
+        
 		[[API sharedInstance] recycleItem:item completionHandler:^{
 			[HUD hide:YES];
 		}];
@@ -262,9 +266,11 @@
 		HUD.labelText = @"Using Power Cube...";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
-
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_powercube_activate.aif"];
-
+        
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_powercube_activate.aif"];
+        }
+        
 		[[API sharedInstance] usePowerCube:powerCube completionHandler:^{
 			[HUD hide:YES];
 		}];
@@ -319,9 +325,10 @@
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-	
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    
 	if (self.itemType == ItemTypePowerCube || self.itemType == ItemTypeFlipCard) {
 		if (buttonIndex == 0) {
 			[self dropItem];

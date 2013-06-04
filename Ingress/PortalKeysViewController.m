@@ -130,13 +130,16 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    
 	if (self.linkingPortal) {
-
-		[[API sharedInstance] playSound:@"SPEECH_ESTABLISHING_PORTAL_LINK"];
-
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+            [[API sharedInstance] playSound:@"SPEECH_ESTABLISHING_PORTAL_LINK"];
+        }
+        
 		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 		HUD.userInteractionEnabled = YES;
 		HUD.dimBackground = YES;
@@ -189,11 +192,12 @@
 						[HUD show:YES];
 						[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 					} else {
-
-						[[SoundManager sharedManager] playSound:@"Sound/sfx_link_power_up.aif"];
-
-						[[API sharedInstance] playSound:@"SPEECH_PORTAL_LINK_ESTABLISHED"];
-
+                        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+                            [[SoundManager sharedManager] playSound:@"Sound/sfx_link_power_up.aif"];
+                        }
+                        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+                            [[API sharedInstance] playSound:@"SPEECH_PORTAL_LINK_ESTABLISHED"];
+                        }
 					}
 
 					[self refresh];
@@ -221,7 +225,9 @@
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
 	if (actionSheet.tag == 1 && buttonIndex == 0) {
 
 		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
@@ -232,9 +238,10 @@
 		HUD.labelText = @"Dropping Portal Key...";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
-
-		[[API sharedInstance] playSound:@"SFX_DROP_RESOURCE"];
-
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[API sharedInstance] playSound:@"SFX_DROP_RESOURCE"];
+        }
+        
 		[[API sharedInstance] dropItemWithGuid:currentPortalKey.guid completionHandler:^(void) {
 			[HUD hide:YES];
 
@@ -253,9 +260,11 @@
 		HUD.labelText = @"Recharging Portal...";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
-
-		[[API sharedInstance] playSound:@"SFX_RESONATOR_RECHARGE"];
-
+        
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[API sharedInstance] playSound:@"SFX_RESONATOR_RECHARGE"];
+        }
+        
 		[[API sharedInstance] remoteRechargePortal:portalKey.portal portalKey:portalKey completionHandler:^(NSString *errorStr) {
 
 			[HUD hide:YES];
@@ -274,7 +283,9 @@
 				[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 
 			} else {
-				[[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_RECHARGED"]];
+                if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+                    [[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_RECHARGED"]];
+                }
 			}
 
 			currentPortalKey = nil;
@@ -293,9 +304,11 @@
 		HUD.labelText = @"Recycling Item...";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
-
-		[[SoundManager sharedManager] playSound:[NSString stringWithFormat:@"Sound/sfx_recycle_%@.aif", arc4random_uniform(2) ? @"a" : @"b"]];
-
+        
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:[NSString stringWithFormat:@"Sound/sfx_recycle_%@.aif", arc4random_uniform(2) ? @"a" : @"b"]];
+        }
+        
 		[[API sharedInstance] recycleItem:portalKey completionHandler:^{
 			[HUD hide:YES];
 

@@ -27,13 +27,17 @@
 #pragma mark - IBActions
 
 - (IBAction)close {
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)action {
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Open in Safari", nil];
 	actionSheet.tag = 1;
 	[actionSheet showInView:self.view];
@@ -42,7 +46,9 @@
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
 	if (actionSheet.tag == 1 && buttonIndex == 0) {
 		[[UIApplication sharedApplication] openURL:[NSURL URLWithString:self.media.url]];
 		[self dismissViewControllerAnimated:YES completion:nil];

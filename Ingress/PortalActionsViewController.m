@@ -151,11 +151,17 @@
 	[HUD show:YES];
 	
 	if ([self.portal.controllingTeam isEqualToString:@"ALIENS"]) {
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_portal_hacking_alien.aif"];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_portal_hacking_alien.aif"];
+        }
 	} else if ([self.portal.controllingTeam isEqualToString:@"RESISTANCE"]) {
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_portal_hacking_human.aif"];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_portal_hacking_human.aif"];
+        }
 	} else {
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_portal_hacking_neutral.aif"];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_portal_hacking_neutral.aif"];
+        }
 	}
 	
 	[[API sharedInstance] hackPortal:self.portal completionHandler:^(NSString *errorStr, NSArray *acquiredItems, int secondsRemaining) {
@@ -174,26 +180,28 @@
 			HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
 			HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 			HUD.detailsLabelText = errorStr;
-
-			NSMutableArray *sounds = [NSMutableArray arrayWithObjects:@"SPEECH_HACKING", @"SPEECH_UNSUCCESSFUL", nil];
-
-			if (secondsRemaining > 0) {
-				
-				[sounds addObject:@"SPEECH_COOLDOWN_ACTIVE"];
-
-				int minutes = (int)floorf(secondsRemaining/60);
-				if (minutes > 1) {
-					[sounds addObjectsFromArray:[API soundsForNumber:minutes]];
-					[sounds addObject:@"SPEECH_MINUTES"];
-				} else {
-					[sounds addObjectsFromArray:[API soundsForNumber:secondsRemaining]];
-					[sounds addObject:@"SPEECH_SECONDS"];
-				}
-				
-				[sounds addObject:@"SPEECH_REMAINING"];
-
-			}
-
+            
+            NSMutableArray *sounds = [NSMutableArray array];
+			if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+                [sounds addObjectsFromArray:@[@"SPEECH_HACKING", @"SPEECH_UNSUCCESSFUL"]];
+                if (secondsRemaining > 0) {
+                    
+                    [sounds addObject:@"SPEECH_COOLDOWN_ACTIVE"];
+                    
+                    int minutes = (int)floorf(secondsRemaining/60);
+                    if (minutes > 1) {
+                        [sounds addObjectsFromArray:[API soundsForNumber:minutes]];
+                        [sounds addObject:@"SPEECH_MINUTES"];
+                    } else {
+                        [sounds addObjectsFromArray:[API soundsForNumber:secondsRemaining]];
+                        [sounds addObject:@"SPEECH_SECONDS"];
+                    }
+                    
+                    [sounds addObject:@"SPEECH_REMAINING"];
+                    
+                }
+            }
+            
 			[[API sharedInstance] playSounds:sounds];
 
 			[[AppDelegate instance].window addSubview:HUD];
@@ -214,55 +222,57 @@
 					} else {
 						[acquiredItemStrings addObject:@"Unknown Item"];
 					}
-
-					if ([item isKindOfClass:[Resonator class]]) {
-						if (![sounds containsObject:@"SPEECH_RESONATOR"]) {
-							[sounds addObject:@"SPEECH_RESONATOR"];
-						}
-					} else if ([item isKindOfClass:[XMP class]]) {
-						if (![sounds containsObject:@"SPEECH_XMP"]) {
-							[sounds addObject:@"SPEECH_XMP"];
-						}
-					} else if ([item isKindOfClass:[Shield class]]) {
-						if (![sounds containsObject:@"SPEECH_SHIELD"]) {
-							[sounds addObject:@"SPEECH_SHIELD"];
-						}
-					} else if ([item isKindOfClass:[PowerCube class]]) {
-						if (![sounds containsObject:@"SPEECH_POWER_CUBE"]) {
-							[sounds addObject:@"SPEECH_POWER_CUBE"];
-						}
-					} else if ([item isKindOfClass:[FlipCard class]]) {
-						if ([[(FlipCard *)item type] isEqualToString:@"JARVIS"]) {
-							if (![sounds containsObject:@"SPEECH_JARVIS_VIRUS"]) {
-								[sounds addObject:@"SPEECH_JARVIS_VIRUS"];
-							}
-						} else {
-							if (![sounds containsObject:@"SPEECH_ADA_REFACTOR"]) {
-								[sounds addObject:@"SPEECH_ADA_REFACTOR"];
-							}
-						}
-					} else if ([item isKindOfClass:[PortalKey class]]) {
-						if (![sounds containsObject:@"SPEECH_PORTAL_KEY"]) {
-							[sounds addObject:@"SPEECH_PORTAL_KEY"];
-						}
-					} else if ([item isKindOfClass:[Media class]]) {
-						if (![sounds containsObject:@"SPEECH_MEDIA"]) {
-							[sounds addObject:@"SPEECH_MEDIA"];
-						}
-					} else {
-						if (![sounds containsObject:@"SPEECH_UNKNOWN_TECH"]) {
-							[sounds addObject:@"SPEECH_UNKNOWN_TECH"];
-						}
-					}
-
+                    
+                    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+                        if ([item isKindOfClass:[Resonator class]]) {
+                            if (![sounds containsObject:@"SPEECH_RESONATOR"]) {
+                                [sounds addObject:@"SPEECH_RESONATOR"];
+                            }
+                        } else if ([item isKindOfClass:[XMP class]]) {
+                            if (![sounds containsObject:@"SPEECH_XMP"]) {
+                                [sounds addObject:@"SPEECH_XMP"];
+                            }
+                        } else if ([item isKindOfClass:[Shield class]]) {
+                            if (![sounds containsObject:@"SPEECH_SHIELD"]) {
+                                [sounds addObject:@"SPEECH_SHIELD"];
+                            }
+                        } else if ([item isKindOfClass:[PowerCube class]]) {
+                            if (![sounds containsObject:@"SPEECH_POWER_CUBE"]) {
+                                [sounds addObject:@"SPEECH_POWER_CUBE"];
+                            }
+                        } else if ([item isKindOfClass:[FlipCard class]]) {
+                            if ([[(FlipCard *)item type] isEqualToString:@"JARVIS"]) {
+                                if (![sounds containsObject:@"SPEECH_JARVIS_VIRUS"]) {
+                                    [sounds addObject:@"SPEECH_JARVIS_VIRUS"];
+                                }
+                            } else {
+                                if (![sounds containsObject:@"SPEECH_ADA_REFACTOR"]) {
+                                    [sounds addObject:@"SPEECH_ADA_REFACTOR"];
+                                }
+                            }
+                        } else if ([item isKindOfClass:[PortalKey class]]) {
+                            if (![sounds containsObject:@"SPEECH_PORTAL_KEY"]) {
+                                [sounds addObject:@"SPEECH_PORTAL_KEY"];
+                            }
+                        } else if ([item isKindOfClass:[Media class]]) {
+                            if (![sounds containsObject:@"SPEECH_MEDIA"]) {
+                                [sounds addObject:@"SPEECH_MEDIA"];
+                            }
+                        } else {
+                            if (![sounds containsObject:@"SPEECH_UNKNOWN_TECH"]) {
+                                [sounds addObject:@"SPEECH_UNKNOWN_TECH"];
+                            }
+                        }
+                    }
 				}
-
-				if (sounds.count > 0) {
-					[sounds addObject:@"SPEECH_ACQUIRED"];
-				}
-
-				[[SoundManager sharedManager] playSound:@"Sound/sfx_resource_pick_up.aif"];
-				[[API sharedInstance] playSounds:sounds];
+                if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+                    if (sounds.count > 0) {
+                        [sounds addObject:@"SPEECH_ACQUIRED"];
+                    }
+                    
+                    [[SoundManager sharedManager] playSound:@"Sound/sfx_resource_pick_up.aif"];
+                    [[API sharedInstance] playSounds:sounds];
+                }
 				
 				HUD.labelText = @"Items acquired";
 
@@ -284,9 +294,10 @@
 				
 			} else {
 				HUD.labelText = @"Hack acquired no items";
-				
-				[[API sharedInstance] playSounds:@[@"SPEECH_HACKING", @"SPEECH_UNSUCCESSFUL"]];
-
+				if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+                    [[API sharedInstance] playSounds:@[@"SPEECH_HACKING", @"SPEECH_UNSUCCESSFUL"]];
+                }
+                
 				[[AppDelegate instance].window addSubview:HUD];
 				[HUD show:YES];
 				[HUD hide:YES afterDelay:HUD_DELAY_TIME];
@@ -319,8 +330,12 @@
 		if (errorStr) {
 			[API showWarningWithTitle:errorStr];
 		} else {
-			[[SoundManager sharedManager] playSound:@"Sound/sfx_resonator_recharge.aif"];
-			[[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_RECHARGED"]];
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+                [[SoundManager sharedManager] playSound:@"Sound/sfx_resonator_recharge.aif"];
+            }
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+                [[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_RECHARGED"]];
+            }
 		}
 
 	}];

@@ -15,6 +15,9 @@
 #import "DB.h"
 
 FOUNDATION_EXPORT NSString *const DeviceSoundLevel;
+FOUNDATION_EXPORT NSString *const DeviceSoundToggleBackground;
+FOUNDATION_EXPORT NSString *const DeviceSoundToggleEffects;
+FOUNDATION_EXPORT NSString *const DeviceSoundToggleSpeech;
 FOUNDATION_EXPORT NSString *const IGMapDayMode;
 
 typedef void (^SoundCompletionBlock)(void);

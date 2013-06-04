@@ -40,7 +40,9 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
 	UIActionSheet *actionSheet = nil;
 	switch (indexPath.row) {
@@ -102,7 +104,9 @@
 #pragma mark - UIActionSheetDelegate
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
 	if (actionSheet.tag >= 1 && actionSheet.tag <= 8 && buttonIndex == 0) {
 		selectedMission = actionSheet.tag;
 		[self performSegueWithIdentifier:@"MissionSegue" sender:self];
@@ -113,7 +117,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:@"MissionSegue"]) {
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+        }
 
 		MissionViewController *vc = segue.destinationViewController;
 		vc.factionChoose = NO;

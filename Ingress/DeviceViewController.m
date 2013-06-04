@@ -42,14 +42,30 @@
     
     switch (indexPath.row) {
         case 4: {
-            if ([[NSUserDefaults standardUserDefaults] floatForKey:DeviceSoundLevel] < 0.1) {
-                cell.textLabel.text = @"Unmute Sound";
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleBackground]) {
+                cell.textLabel.text = @"Mute Background";
             } else {
-                cell.textLabel.text = @"Mute Sound";
+                cell.textLabel.text = @"Unmute Background";
 			}
             break;
         }
-		case 5: {
+        case 5: {
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+                cell.textLabel.text = @"Mute Effects";
+            } else {
+                cell.textLabel.text = @"Unmute Effects";
+            }
+            break;
+        }
+        case 6: {
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+                cell.textLabel.text = @"Mute Speech";
+            } else {
+                cell.textLabel.text = @"Unmute Speech";
+            }
+            break;
+        }
+		case 7: {
 			Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
             if (player.shouldSendEmail) {
                 cell.textLabel.text = @"Disable Email Notifications";
@@ -58,7 +74,7 @@
 			}
             break;
         }
-        case 6: {
+        case 8: {
             if ([[NSUserDefaults standardUserDefaults] boolForKey:IGMapDayMode]) {
                 cell.textLabel.text = @"Switch map to night mode";
             } else {
@@ -73,8 +89,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
-
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    
+    if ((indexPath.row == 5 && ![[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) || (indexPath.row != 5 && [[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects])) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
 
 	switch (indexPath.row) {
 		case 0: {
@@ -128,26 +146,56 @@
 
         case 4: {
 
-			float currentSoundVolume = [SoundManager sharedManager].soundVolume;
+			BOOL background = [[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleBackground];
 			UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
-			if (currentSoundVolume < 0.1) {
-				cell.textLabel.text = @"Mute Sound";
-                currentSoundVolume = 1.0;
+			if (background) {
+                [[SoundManager sharedManager] stopMusic:NO];
+				cell.textLabel.text = @"Unmute Background";
+                [[NSUserDefaults standardUserDefaults] setBool:NO forKey:DeviceSoundToggleBackground];
 			} else {
-				cell.textLabel.text = @"Unmute Sound";
-                currentSoundVolume = 0.0;
+				cell.textLabel.text = @"Mute Background";
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:DeviceSoundToggleBackground];
+                [[SoundManager sharedManager] playMusic:@"Sound/sfx_ambient_scanner_base.aif" looping:YES fadeIn:NO];
 			}
-
-            [SoundManager sharedManager].soundVolume = currentSoundVolume;
-            [SoundManager sharedManager].musicVolume = currentSoundVolume;
-
-            [[NSUserDefaults standardUserDefaults] setFloat:currentSoundVolume forKey:DeviceSoundLevel];
             [[NSUserDefaults standardUserDefaults] synchronize];
             
             break;
         }
-
-		case 5: {
+            
+        case 5: {
+            
+			BOOL effects = [[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects];
+			UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+			if (effects) {
+				cell.textLabel.text = @"Unmute Effects";
+                [[NSUserDefaults standardUserDefaults] setBool:NO forKey:DeviceSoundToggleEffects];
+			} else {
+				cell.textLabel.text = @"Mute Effects";
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:DeviceSoundToggleEffects];
+			}
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            break;
+        }
+            
+        case 6: {
+            
+			BOOL speech = [[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech];
+			UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+			if (speech) {
+				cell.textLabel.text = @"Unmute Speech";
+                [[NSUserDefaults standardUserDefaults] setBool:NO forKey:DeviceSoundToggleSpeech];
+			} else {
+				cell.textLabel.text = @"Mute Speech";
+                [[NSUserDefaults standardUserDefaults] setBool:YES forKey:DeviceSoundToggleSpeech];
+                [[API sharedInstance] playSound:@"SPEECH_ACTIVATED"];
+			}
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            break;
+        }
+        
+		case 7: {
 
             UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
 			Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
@@ -167,7 +215,7 @@
             break;
 		}
             
-        case 6: {
+        case 8: {
             BOOL newDayModeValue = ! [[NSUserDefaults standardUserDefaults] boolForKey:IGMapDayMode];
             
             [[NSUserDefaults standardUserDefaults] setBool:newDayModeValue forKey:IGMapDayMode];

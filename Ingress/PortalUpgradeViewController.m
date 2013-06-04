@@ -256,15 +256,15 @@
 					dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
 						[self refresh];
 					});
-
-					[[SoundManager sharedManager] playSound:@"Sound/sfx_resonator_power_up.aif"];
-
-					[[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_DEPLOYED"]];
-
-					if ([self.portal.resonators count] == 1) {
-						[[API sharedInstance] playSounds:@[@"SPEECH_PORTAL", @"SPEECH_ONLINE", @"SPEECH_GOOD_WORK"]];
-					}
-
+                    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+                        [[SoundManager sharedManager] playSound:@"Sound/sfx_resonator_power_up.aif"];
+                    }
+                    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+                        [[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_DEPLOYED"]];
+                        if ([self.portal.resonators count] == 1) {
+                            [[API sharedInstance] playSounds:@[@"SPEECH_PORTAL", @"SPEECH_ONLINE", @"SPEECH_GOOD_WORK"]];
+                        }
+                    }
 				}
 
 			}];
@@ -302,11 +302,12 @@
 					dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
 						[self refresh];
 					});
-
-					[[SoundManager sharedManager] playSound:@"Sound/sfx_resonator_power_up.aif"];
-
-					[[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_UPGRADED"]];
-
+                    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+                        [[SoundManager sharedManager] playSound:@"Sound/sfx_resonator_power_up.aif"];
+                    }
+                    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+                        [[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_UPGRADED"]];
+                    }
 				}
 
 			}];
@@ -342,10 +343,12 @@
 			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
 				[self refresh];
 			});
-			
-			[[SoundManager sharedManager] playSound:@"Sound/sfx_resonator_recharge.aif"];
-			[[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_RECHARGED"]];
-			
+			if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+                [[SoundManager sharedManager] playSound:@"Sound/sfx_resonator_recharge.aif"];
+            }
+            if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+                [[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_RECHARGED"]];
+            }
 		}
 
 	}];
@@ -378,9 +381,10 @@
 }
 
 - (void)deployShieldOfRarity:(PortalShieldRarity)rarity toSlot:(int)slot {
-
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_mod_power_up.aif"];
-
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_mod_power_up.aif"];
+    }
+    
 	Shield *shieldItem = [Shield MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
 
 	if (!shieldItem) {
@@ -407,9 +411,9 @@
 			} else {
 
 				[self refresh];
-
-				[[API sharedInstance] playSounds:@[@"SPEECH_SHIELD", @"SPEECH_DEPLOYED"]];
-				
+                if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+                    [[API sharedInstance] playSounds:@[@"SPEECH_SHIELD", @"SPEECH_DEPLOYED"]];
+                }
 			}
 			
 		}];

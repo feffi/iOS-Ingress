@@ -26,7 +26,9 @@
 	[super viewWillAppear:animated];
 
 	[[NSNotificationCenter defaultCenter] addObserverForName:MPMoviePlayerPlaybackDidFinishNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
-		[[SoundManager sharedManager] playMusic:@"Sound/sfx_ambient_scanner_base.aif" looping:YES];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleBackground]) {
+            [[SoundManager sharedManager] playMusic:@"Sound/sfx_ambient_scanner_base.aif" looping:YES];
+        }
 	}];
 }
 
@@ -157,9 +159,11 @@
 		HUD.labelText = @"Dropping Media...";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
-
-		[[API sharedInstance] playSound:@"SFX_DROP_RESOURCE"];
-		
+        
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[API sharedInstance] playSound:@"SFX_DROP_RESOURCE"];
+        }
+        
 		[[API sharedInstance] dropItemWithGuid:media.guid completionHandler:^(void) {
 			[HUD hide:YES];
 		}];
@@ -195,7 +199,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:@"MediaWebViewSegue"]) {
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+        }
 
 		UINavigationController *navC = segue.destinationViewController;
 		MediaWebViewViewController *vc = (MediaWebViewViewController *)navC.topViewController;

@@ -139,10 +139,12 @@
 
 //	textView.scrollInterval = 0.1;
 //	[textView startScrolling];
-
+    
 	sound = [Sound soundNamed:@"Sound/speech_faction_choice_humanist_alt.aif"];
-	[[SoundManager sharedManager] playSound:sound];
-
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+        [[SoundManager sharedManager] playSound:sound];
+    }
+    
 //	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(18 * NSEC_PER_SEC));
 //	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 //		[textView stopScrolling];
@@ -198,8 +200,10 @@
 - (void)proceedFactionChoose {
 
 	[[SoundManager sharedManager] stopSound:sound fadeOut:NO];
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    
 	authLabel.hidden = NO;
 	authProgressView.hidden = NO;
 	typewriterLabel.hidden = YES;
@@ -260,8 +264,10 @@
 		//	[textView startScrolling];
 
 	sound = [Sound soundNamed:@"Sound/speech_faction_choice_enlightened.aif"];
-	[[SoundManager sharedManager] playSound:sound];
-
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+        [[SoundManager sharedManager] playSound:sound];
+    }
+    
 		//	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(18 * NSEC_PER_SEC));
 		//	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 		//		[textView stopScrolling];
@@ -270,10 +276,10 @@
 }
 
 - (void)factionChooseButtons {
-
 	[[SoundManager sharedManager] stopSound:sound fadeOut:NO];
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
 	[self showFactionChooseButtons];
 
 }
@@ -302,9 +308,10 @@
 }
 
 - (IBAction)join:(id)sender {
-
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    
 	[jarvisBackgroundTimer invalidate];
 	jarvisBackgroundTimer = nil;
 	jarvisBackground.hidden = YES;
@@ -388,19 +395,23 @@
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
 		wheelActivityIndicatorView.center = backgroundImageView.center;
 	});
-
-	[[SoundManager sharedManager] playSound:@"Sound/speech_incoming_message.aif"];
-
-	sound = [Sound soundNamed:@"Sound/sfx_ringtone.aif"];
-	[[SoundManager sharedManager] playSound:sound looping:YES];
-
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+        [[SoundManager sharedManager] playSound:@"Sound/speech_incoming_message.aif"];
+    }
+    sound = [Sound soundNamed:@"Sound/sfx_ringtone.aif"];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:sound looping:YES];
+    }
 }
 
 - (void)accept {
 
 	[[SoundManager sharedManager] stopSound:sound fadeOut:NO];
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    
 	authLabel.hidden = YES;
 	authProgressView.hidden = YES;
 	typewriterLabel.hidden = YES;
@@ -746,24 +757,32 @@
 			break;
 		}
 	}
-	
-	[[SoundManager sharedManager] playSound:sound];
-
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+        [[SoundManager sharedManager] playSound:sound];
+    }
 }
 
 - (void)start {
 	[[SoundManager sharedManager] stopSound:sound fadeOut:NO];
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-	[[API sharedInstance] playSounds:@[@"SPEECH_MISSION", @"SPEECH_OFFLINE"]]; //SPEECH_ACTIVATED
-	
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+        [[API sharedInstance] playSounds:@[@"SPEECH_MISSION", @"SPEECH_OFFLINE"]]; //SPEECH_ACTIVATED
+    }
+    
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)skip {
 	[[SoundManager sharedManager] stopSound:sound fadeOut:NO];
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-	[[API sharedInstance] playSounds:@[@"SPEECH_MISSION", @"SPEECH_ABANDONED"]];
-	
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+        [[API sharedInstance] playSounds:@[@"SPEECH_MISSION", @"SPEECH_ABANDONED"]];
+    }
+    
 	[self dismissViewControllerAnimated:YES completion:nil];
 }
 

@@ -68,12 +68,34 @@
 	
 	[SoundManager sharedManager].allowsBackgroundMusic = YES;
     [[SoundManager sharedManager] prepareToPlay];
-
-	if (![[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundLevel]) {
-		[[NSUserDefaults standardUserDefaults] setFloat:1.0 forKey:DeviceSoundLevel];
+    
+	if (![[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundToggleBackground]) {
+        if ([[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundLevel] && [[NSUserDefaults standardUserDefaults] floatForKey:DeviceSoundLevel] < 0.1) {
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:DeviceSoundToggleBackground];
+        } else {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:DeviceSoundToggleBackground];
+        }
 		[[NSUserDefaults standardUserDefaults] synchronize];
 	}
-
+	if (![[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundToggleEffects]) {
+		if ([[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundLevel] && [[NSUserDefaults standardUserDefaults] floatForKey:DeviceSoundLevel] < 0.1) {
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:DeviceSoundToggleEffects];
+        } else {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:DeviceSoundToggleEffects];
+        }
+		[[NSUserDefaults standardUserDefaults] synchronize];
+	}
+	if (![[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundToggleSpeech]) {
+		if ([[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundLevel] && [[NSUserDefaults standardUserDefaults] floatForKey:DeviceSoundLevel] < 0.1) {
+            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:DeviceSoundToggleSpeech];
+        } else {
+            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:DeviceSoundToggleSpeech];
+        }
+		[[NSUserDefaults standardUserDefaults] synchronize];
+	}
+    if ([[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundLevel]) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:DeviceSoundLevel];
+    }
 	float soundVolumeValue = [[NSUserDefaults standardUserDefaults] floatForKey:DeviceSoundLevel];
 	[SoundManager sharedManager].soundVolume = soundVolumeValue;
 	[SoundManager sharedManager].musicVolume = soundVolumeValue;
@@ -104,8 +126,9 @@
 }
 
 - (void)performHandshake {
-
-	[[SoundManager sharedManager] playMusic:@"Sound/sfx_throbbing_wheels.aif" looping:YES fadeIn:NO];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleBackground]) {
+        [[SoundManager sharedManager] playMusic:@"Sound/sfx_throbbing_wheels.aif" looping:YES fadeIn:NO];
+    }
 	[label setText:versionString]; //Loading...
 	
 	NSError *error;
@@ -143,7 +166,9 @@
 			[webView setAlpha:1];
 		}];
 	} else {
-		[[SoundManager sharedManager] playMusic:@"Sound/sfx_throbbing_wheels.aif" looping:YES fadeIn:YES];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleBackground]) {
+            [[SoundManager sharedManager] playMusic:@"Sound/sfx_throbbing_wheels.aif" looping:YES fadeIn:YES];
+        }
 		[UIView animateWithDuration:.5 animations:^{
 			[webView setAlpha:0];
 		} completion:^(BOOL finished) {
@@ -215,8 +240,10 @@
 					} else if ([errorStr isEqualToString:@"allowNicknameEdit"]) {
 
 						[[SoundManager sharedManager] stopMusic:NO];
-						[[SoundManager sharedManager] playSound:@"Sound/sfx_typing.aif"];
-
+                        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+                            [[SoundManager sharedManager] playSound:@"Sound/sfx_typing.aif"];
+                        }
+                        
 						createCodenameScrollview.hidden = NO;
 
 						NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:@"Niantic software online.\nIncoming text transmission detected.\nOpening channel...\n\n> I need your help. The world needs your help. This chat is not secure.\n\nI need you to create a unique codename so that I can call you on a secure line.\n\nThis is the name other agents will know you by."];
@@ -301,17 +328,20 @@
 #pragma mark - IBActions
 
 - (IBAction)retryHandshake {
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    
 	[self performHandshake];
 
 	retryHandshakeButton.hidden = YES;
 }
 
 - (IBAction)activate {
-	
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-	
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    
 	activationStarted = YES;
 	[activationCodeField resignFirstResponder];
 	[jsonDict setValue:activationCodeField.text forKey:@"activationCode"];
@@ -328,9 +358,10 @@
 }
 
 - (IBAction)termsConfirm {
-
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    
 	[jsonDict setValue:@"1" forKey:@"tosAccepted"];
 	[self performHandshake];
 	[jsonDict setValue:nil forKey:@"tosAccepted"];
@@ -342,14 +373,16 @@
 }
 
 - (IBAction)createCodename {
-
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    
 	[createCodenameField resignFirstResponder];
 	createCodenameScrollview.hidden = YES;
-
-	[[SoundManager sharedManager] playMusic:@"Sound/sfx_throbbing_wheels.aif" looping:YES fadeIn:NO];
-
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleBackground]) {
+        [[SoundManager sharedManager] playMusic:@"Sound/sfx_throbbing_wheels.aif" looping:YES fadeIn:NO];
+    }
+    
 	[[API sharedInstance] validateNickname:createCodenameField.text completionHandler:^(NSString *errorStr) {
 
 		[[SoundManager sharedManager] stopMusic:NO];
@@ -390,13 +423,16 @@
 }
 
 - (IBAction)codenameConfirm {
-	
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    
 	codenameConfirmView.hidden = YES;
-
-	[[SoundManager sharedManager] playMusic:@"Sound/sfx_throbbing_wheels.aif" looping:YES fadeIn:NO];
-
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleBackground]) {
+        [[SoundManager sharedManager] playMusic:@"Sound/sfx_throbbing_wheels.aif" looping:YES fadeIn:NO];
+    }
+    
 	[[API sharedInstance] persistNickname:codenameToConfirm completionHandler:^(NSString *errorStr) {
 
 		[[SoundManager sharedManager] stopMusic:NO];
@@ -458,9 +494,10 @@
 }
 
 - (IBAction)codenameRetry {
-
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    
 	codenameConfirmView.hidden = YES;
 	codenameErrorView.hidden = YES;
 
@@ -489,7 +526,9 @@
 	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC));
 	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 		introScrollerTimer = [NSTimer scheduledTimerWithTimeInterval:(0.04) target:self selector:@selector(autoscrollTimerFired) userInfo:nil repeats:YES];
-		[[SoundManager sharedManager] playSound:@"Sound/speech_zoomdown_intro.aif"];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+            [[SoundManager sharedManager] playSound:@"Sound/speech_zoomdown_intro.aif"];
+        }
 	});
 
 	popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 + 40 * NSEC_PER_SEC));
@@ -510,9 +549,9 @@
 //		frame.origin.x = [self horizontalLocationFor:_tabBarController.selectedIndex];
 //		_tabBarArrow.frame = frame;
 //	}];
-	
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-	
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
 }
 
 //#pragma mark - Animated Tab Bar
@@ -552,9 +591,9 @@
 		}
 
 		[_tabBarController setSelectedIndex:2];
-
-		[[SoundManager sharedManager] playMusic:@"Sound/sfx_ambient_scanner_base.aif" looping:YES];
-		
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleBackground]) {
+            [[SoundManager sharedManager] playMusic:@"Sound/sfx_ambient_scanner_base.aif" looping:YES];
+        }
 	}
 }
 

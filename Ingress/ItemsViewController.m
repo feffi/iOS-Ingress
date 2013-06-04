@@ -51,9 +51,10 @@
 }
 
 - (IBAction)viewSegmentedControlChanged {
-	
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-	
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    
 	switch (viewSegmentedControl.selectedSegmentIndex) {
 		case 0:
 			
@@ -122,9 +123,9 @@
 #pragma mark - UITextFieldDelegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
@@ -141,12 +142,16 @@
 	[passcodeTextField resignFirstResponder];
 
 	if (!passcode || passcode.length < 1) {
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_fail.aif"];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_fail.aif"];
+        }
 		return;
 	}
-
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-
+    
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view.window];
 	HUD.userInteractionEnabled = NO;
 	HUD.labelText = @"Redeeming...";

@@ -38,9 +38,10 @@
 }
 
 - (IBAction)viewSegmentedControlChanged {
-	
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-	
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    
 	switch (viewSegmentedControl.selectedSegmentIndex) {
 		case 0:
 			
