@@ -68,18 +68,12 @@
 			return cell;
 		}
 		case 2: {
-			ResourceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RarityItemCell" forIndexPath:indexPath];
-			cell.itemImageView.image = [UIImage imageNamed:@"shield.png"];
-			cell.itemType = ItemTypePortalShield;
-			return cell;
-		}
-		case 3: {
 			ResourceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LevelsItemCell" forIndexPath:indexPath];
 			cell.itemImageView.image = [UIImage imageNamed:@"powerCube.png"];
 			cell.itemType = ItemTypePowerCube;
 			return cell;
 		}
-		case 4: {
+		case 3: {
 			ResourceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SingleItemCell" forIndexPath:indexPath];
 			Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
 			if ([player.team isEqualToString:@"ALIENS"]) {
@@ -88,6 +82,12 @@
 				cell.itemImageView.image = [UIImage imageNamed:@"ada_refactor.png"];
 			}
 			cell.itemType = ItemTypeFlipCard;
+			return cell;
+		}
+		case 4: {
+			ResourceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RarityItemCell" forIndexPath:indexPath];
+			cell.itemImageView.image = [UIImage imageNamed:@"shield.png"];
+			cell.itemType = ItemTypePortalShield;
 			return cell;
 		}
 		case 5: {

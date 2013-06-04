@@ -15,7 +15,7 @@
 @dynamic mitigation;
 
 - (NSString *)rarityStr {
-	return [API shieldRarityStrFromRarity:self.rarity];
+	return [Utilities rarityStringFromRarity:self.rarity];
 }
 
 @end

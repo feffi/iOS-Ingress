@@ -12,10 +12,10 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *titleLabel;
 @property (copy, nonatomic) void (^levelChooserCompletionHandler)(int level);
-@property (copy, nonatomic) void (^rarityChooserCompletionHandler)(PortalShieldRarity rarity);
+@property (copy, nonatomic) void (^rarityChooserCompletionHandler)(ItemRarity rarity);
 
 + (LevelChooserViewController *)levelChooserWithTitle:(NSString *)title completionHandler:(void (^)(int level))handler;
-+ (LevelChooserViewController *)rarityChooserWithTitle:(NSString *)title completionHandler:(void (^)(PortalShieldRarity rarity))handler;
++ (LevelChooserViewController *)rarityChooserWithTitle:(NSString *)title completionHandler:(void (^)(ItemRarity rarity))handler;
 
 - (IBAction)action:(UIButton *)sender;
 

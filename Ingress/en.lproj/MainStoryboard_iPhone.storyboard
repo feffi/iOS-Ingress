@@ -2764,13 +2764,17 @@ Range: 0km</string>
             <objects>
                 <viewController storyboardIdentifier="RarityChooserViewController" id="FWp-cC-zaH" customClass="LevelChooserViewController" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" tag="200" contentMode="scaleToFill" id="sxU-B7-AJz">
-                        <rect key="frame" x="0.0" y="0.0" width="240" height="60"/>
+                        <rect key="frame" x="0.0" y="0.0" width="240" height="100"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4kv-Kh-7Ab" customClass="DarkPressedBackgroundButton">
-                                <color key="backgroundColor" red="0.54901960780000003" green="1" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="COMMON">
+                                <color key="backgroundColor" red="0.53725490200000003" green="0.30588235289999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" type="user" id="skU-F0-b8J"/>
+                                    <constraint firstAttribute="width" constant="75" type="user" id="wiZ-Xk-2Uq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="RARE">
                                     <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -2785,13 +2789,13 @@ Range: 0km</string>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4sY-RR-DpF" customClass="DarkPressedBackgroundButton">
-                                <color key="backgroundColor" red="1" green="0.54901960780000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="1" green="0.23921568630000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="74" id="7wD-uR-x6y"/>
-                                    <constraint firstAttribute="height" constant="32" id="QWV-aK-35e"/>
+                                    <constraint firstAttribute="height" constant="32" type="user" id="6rB-He-aj9"/>
+                                    <constraint firstAttribute="width" constant="74" type="user" id="gIa-ki-B97"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="RARE">
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="VERY RARE">
                                     <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -2806,9 +2810,13 @@ Range: 0km</string>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fE-M1-aM9" customClass="DarkPressedBackgroundButton">
-                                <color key="backgroundColor" red="0.69019607839999997" green="0.54901960780000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                <state key="normal" title="V. RARE">
+                                <color key="backgroundColor" red="1" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" type="user" id="YbB-QF-AOP"/>
+                                    <constraint firstAttribute="height" constant="32" type="user" id="dbr-EY-bEu"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="EXTRA RARE">
                                     <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -2822,6 +2830,69 @@ Range: 0km</string>
                                     <action selector="action:" destination="FWp-cC-zaH" eventType="touchUpInside" id="zLP-3D-APV"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dd0-Cx-mVX" customClass="DarkPressedBackgroundButton">
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" type="user" id="NbK-WK-NIs"/>
+                                    <constraint firstAttribute="height" constant="32" type="user" id="VXs-QX-28h"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="VERY COMMON">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="action:" destination="FWp-cC-zaH" eventType="touchUpInside" id="M7I-gb-WK4"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6oe-fM-rQJ" customClass="DarkPressedBackgroundButton">
+                                <color key="backgroundColor" red="0.21960784310000001" green="1" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" type="user" id="jSa-cd-LDb"/>
+                                    <constraint firstAttribute="width" constant="74" type="user" id="kJx-Nf-qDV"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="COMMON">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="action:" destination="FWp-cC-zaH" eventType="touchUpInside" id="4yR-6g-lFW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1G-gm-R56" customClass="DarkPressedBackgroundButton">
+                                <color key="backgroundColor" red="0.2156862745" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" type="user" id="etC-KL-Jcr"/>
+                                    <constraint firstAttribute="width" constant="75" type="user" id="j4K-4b-ola"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                                <state key="normal" title="LESS COMMON">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="disabled">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="action:" destination="FWp-cC-zaH" eventType="touchUpInside" id="TaQ-et-SIF"/>
+                                </connections>
+                            </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTH-EI-Vl6">
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
@@ -2830,20 +2901,28 @@ Range: 0km</string>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="4kv-Kh-7Ab" firstAttribute="bottom" secondItem="sxU-B7-AJz" secondAttribute="bottom" type="default" id="2Rk-YM-8dc"/>
-                            <constraint firstItem="4kv-Kh-7Ab" firstAttribute="top" secondItem="cTH-EI-Vl6" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="D4f-HH-NEE"/>
-                            <constraint firstItem="cTH-EI-Vl6" firstAttribute="trailing" secondItem="sxU-B7-AJz" secondAttribute="trailing" type="default" id="LYH-4s-t7s"/>
-                            <constraint firstItem="4sY-RR-DpF" firstAttribute="bottom" secondItem="sxU-B7-AJz" secondAttribute="bottom" type="default" id="LZd-Gm-jaw"/>
-                            <constraint firstItem="9fE-M1-aM9" firstAttribute="bottom" secondItem="sxU-B7-AJz" secondAttribute="bottom" type="default" id="MWp-Sl-cW9"/>
-                            <constraint firstItem="cTH-EI-Vl6" firstAttribute="leading" secondItem="sxU-B7-AJz" secondAttribute="leading" type="default" id="Nwd-CB-Jif"/>
-                            <constraint firstItem="cTH-EI-Vl6" firstAttribute="centerX" secondItem="4sY-RR-DpF" secondAttribute="centerX" type="default" id="VAN-fA-DTs"/>
-                            <constraint firstItem="4sY-RR-DpF" firstAttribute="leading" secondItem="4kv-Kh-7Ab" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="WgH-cS-PxQ"/>
-                            <constraint firstItem="4sY-RR-DpF" firstAttribute="top" secondItem="cTH-EI-Vl6" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="id1-7N-ORn"/>
-                            <constraint firstItem="cTH-EI-Vl6" firstAttribute="top" secondItem="sxU-B7-AJz" secondAttribute="top" type="default" id="kgy-og-Ogb"/>
-                            <constraint firstItem="9fE-M1-aM9" firstAttribute="leading" secondItem="4sY-RR-DpF" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="qab-4m-Etz"/>
-                            <constraint firstItem="4kv-Kh-7Ab" firstAttribute="leading" secondItem="sxU-B7-AJz" secondAttribute="leading" type="default" id="qh9-BW-Hn6"/>
-                            <constraint firstItem="9fE-M1-aM9" firstAttribute="top" secondItem="cTH-EI-Vl6" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="wdk-TJ-VYj"/>
-                            <constraint firstItem="9fE-M1-aM9" firstAttribute="trailing" secondItem="sxU-B7-AJz" secondAttribute="trailing" type="default" id="ym2-VF-chg"/>
+                            <constraint firstItem="6oe-fM-rQJ" firstAttribute="top" secondItem="sxU-B7-AJz" secondAttribute="top" constant="28" type="user" id="0MN-db-le3"/>
+                            <constraint firstItem="4sY-RR-DpF" firstAttribute="leading" secondItem="4kv-Kh-7Ab" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="1Rz-DC-XJz"/>
+                            <constraint firstItem="4kv-Kh-7Ab" firstAttribute="bottom" secondItem="sxU-B7-AJz" secondAttribute="bottom" type="user" id="2Rk-YM-8dc"/>
+                            <constraint firstItem="Q1G-gm-R56" firstAttribute="top" secondItem="sxU-B7-AJz" secondAttribute="top" constant="28" type="user" id="7Em-pQ-DSW"/>
+                            <constraint firstItem="cTH-EI-Vl6" firstAttribute="top" secondItem="sxU-B7-AJz" secondAttribute="top" type="default" id="8nl-5b-7sL"/>
+                            <constraint firstItem="9fE-M1-aM9" firstAttribute="trailing" secondItem="sxU-B7-AJz" secondAttribute="trailing" type="default" id="92A-d3-2sl"/>
+                            <constraint firstItem="9fE-M1-aM9" firstAttribute="bottom" secondItem="sxU-B7-AJz" secondAttribute="bottom" type="user" id="ICW-FF-7T9"/>
+                            <constraint firstItem="cTH-EI-Vl6" firstAttribute="trailing" secondItem="sxU-B7-AJz" secondAttribute="trailing" type="user" id="LYH-4s-t7s"/>
+                            <constraint firstItem="4sY-RR-DpF" firstAttribute="bottom" secondItem="sxU-B7-AJz" secondAttribute="bottom" type="user" id="LZd-Gm-jaw"/>
+                            <constraint firstItem="cTH-EI-Vl6" firstAttribute="leading" secondItem="sxU-B7-AJz" secondAttribute="leading" type="user" id="Nwd-CB-Jif"/>
+                            <constraint firstItem="dd0-Cx-mVX" firstAttribute="top" secondItem="cTH-EI-Vl6" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="Ond-rG-Iaa"/>
+                            <constraint firstItem="6oe-fM-rQJ" firstAttribute="leading" secondItem="dd0-Cx-mVX" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="RMD-tj-p8K"/>
+                            <constraint firstItem="4kv-Kh-7Ab" firstAttribute="top" secondItem="sxU-B7-AJz" secondAttribute="top" constant="68" type="user" id="Vtf-nv-ZRe"/>
+                            <constraint firstItem="Q1G-gm-R56" firstAttribute="trailing" secondItem="sxU-B7-AJz" secondAttribute="trailing" type="default" id="Zy7-j5-qyE"/>
+                            <constraint firstItem="dd0-Cx-mVX" firstAttribute="leading" secondItem="sxU-B7-AJz" secondAttribute="leading" type="default" id="etJ-ex-t2N"/>
+                            <constraint firstItem="4sY-RR-DpF" firstAttribute="top" secondItem="sxU-B7-AJz" secondAttribute="top" constant="68" type="user" id="fE3-cC-Gsd"/>
+                            <constraint firstItem="6oe-fM-rQJ" firstAttribute="baseline" secondItem="dd0-Cx-mVX" secondAttribute="baseline" type="user" id="fzR-Gs-j8d"/>
+                            <constraint firstItem="4kv-Kh-7Ab" firstAttribute="top" secondItem="dd0-Cx-mVX" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="gSv-QN-E5L"/>
+                            <constraint firstItem="9fE-M1-aM9" firstAttribute="top" secondItem="sxU-B7-AJz" secondAttribute="top" constant="68" type="user" id="rv7-1A-456"/>
+                            <constraint firstItem="4kv-Kh-7Ab" firstAttribute="leading" secondItem="sxU-B7-AJz" secondAttribute="leading" type="default" id="wfG-pY-GHL"/>
+                            <constraint firstItem="Q1G-gm-R56" firstAttribute="top" secondItem="cTH-EI-Vl6" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="xYC-HB-Lqr"/>
+                            <constraint firstItem="dd0-Cx-mVX" firstAttribute="top" secondItem="sxU-B7-AJz" secondAttribute="top" constant="28" type="user" id="ysX-N1-v1x"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -3160,13 +3239,12 @@ Range: 0km</string>
                                             </constraints>
                                         </imageView>
                                         <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZi-Bv-8rN" customClass="DarkPressedBackgroundButton">
-                                            <color key="backgroundColor" red="0.54901960780000003" green="1" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="32" id="U86-4d-7pz"/>
                                                 <constraint firstAttribute="width" constant="44" id="YCw-Vg-ICh"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="8"/>
-                                            <state key="normal" title="COMMON">
+                                            <state key="normal" title="VERY COMMON">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -3181,12 +3259,12 @@ Range: 0km</string>
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ucK-fu-t0P" customClass="DarkPressedBackgroundButton">
-                                            <color key="backgroundColor" red="0.69019607839999997" green="0.54901960780000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.2196078431372549" green="1" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="44" id="ho3-Ed-zKS"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="8"/>
-                                            <state key="normal" title="RARE">
+                                            <state key="normal" title="COMMON">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -3201,12 +3279,13 @@ Range: 0km</string>
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVb-uJ-z6A" customClass="DarkPressedBackgroundButton">
-                                            <color key="backgroundColor" red="1" green="0.54901960780000003" blue="0.96862745100000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.21568627450980393" green="0.47843137254901957" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
+                                                <constraint firstAttribute="height" constant="32" id="ezf-qt-HBV"/>
                                                 <constraint firstAttribute="width" constant="44" id="hFn-74-L0x"/>
                                             </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="8"/>
-                                            <state key="normal" title="V. RARE">
+                                            <state key="normal" title="LESS COMMON">
                                                 <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                             </state>
@@ -3221,14 +3300,14 @@ Range: 0km</string>
                                             </connections>
                                         </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="44" translatesAutoresizingMaskIntoConstraints="NO" id="OS1-jb-zD9">
-                                            <constraints>
-                                                <constraint firstAttribute="height" constant="20" id="Ixh-dW-kPL"/>
-                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="44" translatesAutoresizingMaskIntoConstraints="NO" id="Qx2-g6-atM">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="PU7-PG-mOB"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -3238,31 +3317,127 @@ Range: 0km</string>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j99-gl-bDu" customClass="DarkPressedBackgroundButton">
+                                            <color key="backgroundColor" red="0.53725490196078429" green="0.30588235294117649" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="32" id="yc7-Yh-UVs"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                            <state key="normal" title="RARE">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="disabled">
+                                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="action:" destination="qfv-Yi-BkZ" eventType="touchUpInside" id="04w-Bf-MLA"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tjy-6B-8iH" customClass="DarkPressedBackgroundButton">
+                                            <color key="backgroundColor" red="1" green="0.23921568627450979" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                            <state key="normal">
+                                                <string key="title">VERY
+RARE</string>
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="disabled">
+                                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="action:" destination="qfv-Yi-BkZ" eventType="touchUpInside" id="GXX-fd-rdv"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8L-V9-bV1" customClass="DarkPressedBackgroundButton">
+                                            <color key="backgroundColor" red="1" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="8"/>
+                                            <state key="normal" title="EXTRA RARE">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="disabled">
+                                                <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                            </state>
+                                            <state key="highlighted">
+                                                <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="action:" destination="qfv-Yi-BkZ" eventType="touchUpInside" id="avd-m3-6pG"/>
+                                            </connections>
+                                        </button>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="44" translatesAutoresizingMaskIntoConstraints="NO" id="QzJ-bh-qkf">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="44" translatesAutoresizingMaskIntoConstraints="NO" id="6pK-LZ-Qv7">
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="20" id="AIc-2t-64H"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="6" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="44" translatesAutoresizingMaskIntoConstraints="NO" id="EgV-Wl-cCo">
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
                                     <constraint firstItem="OS1-jb-zD9" firstAttribute="leading" secondItem="fZi-Bv-8rN" secondAttribute="leading" type="default" id="1fg-rB-5Jf"/>
-                                    <constraint firstItem="6Lw-jH-lIS" firstAttribute="top" secondItem="cVb-uJ-z6A" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="4BC-Mg-sXC"/>
-                                    <constraint firstItem="6Lw-jH-lIS" firstAttribute="top" secondItem="Qx2-g6-atM" secondAttribute="top" type="default" id="7Ch-Cm-cKe"/>
-                                    <constraint firstItem="Bdm-3I-nJv" firstAttribute="centerY" secondItem="qfv-Yi-BkZ" secondAttribute="centerY" type="default" id="8F4-ee-UCE"/>
-                                    <constraint firstItem="Qx2-g6-atM" firstAttribute="top" secondItem="OS1-jb-zD9" secondAttribute="top" type="default" id="BM5-K8-Xfo"/>
+                                    <constraint firstItem="QzJ-bh-qkf" firstAttribute="top" secondItem="j99-gl-bDu" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="274-Qv-7hr"/>
+                                    <constraint firstItem="6pK-LZ-Qv7" firstAttribute="baseline" secondItem="QzJ-bh-qkf" secondAttribute="baseline" type="default" id="2Z9-PA-xFr"/>
+                                    <constraint firstItem="Tjy-6B-8iH" firstAttribute="top" secondItem="Qx2-g6-atM" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="4Tz-Vr-2Hd"/>
+                                    <constraint firstItem="OS1-jb-zD9" firstAttribute="top" secondItem="fZi-Bv-8rN" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="7PN-Vq-i7n"/>
+                                    <constraint firstItem="Qx2-g6-atM" firstAttribute="baseline" secondItem="OS1-jb-zD9" secondAttribute="baseline" type="default" id="G1g-Dr-Llu"/>
+                                    <constraint firstItem="cVb-uJ-z6A" firstAttribute="top" secondItem="ucK-fu-t0P" secondAttribute="top" type="default" id="G31-Jz-RQl"/>
                                     <constraint firstItem="ucK-fu-t0P" firstAttribute="trailing" secondItem="Qx2-g6-atM" secondAttribute="trailing" type="default" id="GjP-Oe-JQl"/>
-                                    <constraint firstItem="Qx2-g6-atM" firstAttribute="top" secondItem="ucK-fu-t0P" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ITb-yE-QA7"/>
-                                    <constraint firstItem="OS1-jb-zD9" firstAttribute="top" secondItem="fZi-Bv-8rN" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="N3D-Wf-FC9"/>
-                                    <constraint firstItem="6Lw-jH-lIS" firstAttribute="baseline" secondItem="Qx2-g6-atM" secondAttribute="baseline" type="default" id="QZK-hC-3Lj"/>
-                                    <constraint firstItem="fZi-Bv-8rN" firstAttribute="top" secondItem="ucK-fu-t0P" secondAttribute="top" type="default" id="TYi-bI-GCh"/>
-                                    <constraint firstItem="fZi-Bv-8rN" firstAttribute="top" secondItem="qfv-Yi-BkZ" secondAttribute="top" constant="45" id="VgV-Bj-fP5"/>
+                                    <constraint firstItem="Qx2-g6-atM" firstAttribute="top" secondItem="ucK-fu-t0P" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="GtC-k8-BjV"/>
+                                    <constraint firstItem="EgV-Wl-cCo" firstAttribute="baseline" secondItem="6pK-LZ-Qv7" secondAttribute="baseline" type="default" id="Hwr-iS-t8L"/>
+                                    <constraint firstItem="6pK-LZ-Qv7" firstAttribute="top" secondItem="QzJ-bh-qkf" secondAttribute="top" type="default" id="IqW-eB-2Tn"/>
+                                    <constraint firstItem="Tjy-6B-8iH" firstAttribute="leading" secondItem="Qx2-g6-atM" secondAttribute="leading" type="default" id="JIC-MF-Za1"/>
+                                    <constraint firstItem="6pK-LZ-Qv7" firstAttribute="top" secondItem="Tjy-6B-8iH" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Mv6-Kq-Dlf"/>
+                                    <constraint firstItem="V8L-V9-bV1" firstAttribute="leading" secondItem="EgV-Wl-cCo" secondAttribute="leading" type="default" id="SGP-qm-mzL"/>
+                                    <constraint firstAttribute="trailing" secondItem="V8L-V9-bV1" secondAttribute="trailing" constant="20" type="default" id="STB-Eb-lWB"/>
                                     <constraint firstAttribute="trailing" secondItem="fZi-Bv-8rN" secondAttribute="trailing" constant="116" id="VgW-2A-jbG"/>
                                     <constraint firstItem="OS1-jb-zD9" firstAttribute="trailing" secondItem="fZi-Bv-8rN" secondAttribute="trailing" type="default" id="VmP-y3-tSj"/>
                                     <constraint firstAttribute="trailing" secondItem="ucK-fu-t0P" secondAttribute="trailing" constant="68" id="Vxw-3r-AWY"/>
-                                    <constraint firstItem="OS1-jb-zD9" firstAttribute="baseline" secondItem="Qx2-g6-atM" secondAttribute="baseline" type="default" id="Y7i-3I-Wx9"/>
+                                    <constraint firstItem="6pK-LZ-Qv7" firstAttribute="trailing" secondItem="Tjy-6B-8iH" secondAttribute="trailing" type="default" id="WfJ-5a-SFO"/>
                                     <constraint firstItem="Bdm-3I-nJv" firstAttribute="leading" secondItem="qfv-Yi-BkZ" secondAttribute="leading" constant="23" id="bTS-eN-toC"/>
+                                    <constraint firstAttribute="bottom" secondItem="EgV-Wl-cCo" secondAttribute="bottom" constant="11" id="bmw-zk-otH"/>
+                                    <constraint firstItem="ucK-fu-t0P" firstAttribute="top" secondItem="fZi-Bv-8rN" secondAttribute="top" type="default" id="bve-7e-MBK"/>
+                                    <constraint firstItem="V8L-V9-bV1" firstAttribute="leading" secondItem="6Lw-jH-lIS" secondAttribute="leading" type="default" id="dAa-zs-6sU"/>
+                                    <constraint firstItem="j99-gl-bDu" firstAttribute="trailing" secondItem="OS1-jb-zD9" secondAttribute="trailing" type="default" id="dSZ-S6-Txc"/>
+                                    <constraint firstItem="j99-gl-bDu" firstAttribute="leading" secondItem="QzJ-bh-qkf" secondAttribute="leading" type="default" id="dZG-3Y-lR8"/>
+                                    <constraint firstItem="Bdm-3I-nJv" firstAttribute="centerY" secondItem="qfv-Yi-BkZ" secondAttribute="centerY" type="default" id="dw7-fZ-Ht7"/>
+                                    <constraint firstItem="EgV-Wl-cCo" firstAttribute="top" secondItem="V8L-V9-bV1" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="e1P-OV-h7D"/>
+                                    <constraint firstItem="V8L-V9-bV1" firstAttribute="top" secondItem="6Lw-jH-lIS" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="etE-sA-btu"/>
+                                    <constraint firstItem="j99-gl-bDu" firstAttribute="leading" secondItem="OS1-jb-zD9" secondAttribute="leading" type="default" id="f3W-Qf-f9U"/>
+                                    <constraint firstItem="QzJ-bh-qkf" firstAttribute="trailing" secondItem="j99-gl-bDu" secondAttribute="trailing" type="default" id="foN-9M-MTQ"/>
+                                    <constraint firstItem="Tjy-6B-8iH" firstAttribute="trailing" secondItem="Qx2-g6-atM" secondAttribute="trailing" type="default" id="gp2-xJ-72C"/>
                                     <constraint firstAttribute="trailing" secondItem="6Lw-jH-lIS" secondAttribute="trailing" constant="20" type="default" id="hLV-mp-rN8"/>
+                                    <constraint firstItem="6pK-LZ-Qv7" firstAttribute="leading" secondItem="Tjy-6B-8iH" secondAttribute="leading" type="default" id="iAD-Ud-8PF"/>
                                     <constraint firstAttribute="trailing" secondItem="cVb-uJ-z6A" secondAttribute="trailing" constant="20" type="default" id="kfT-wR-www"/>
+                                    <constraint firstItem="j99-gl-bDu" firstAttribute="top" secondItem="OS1-jb-zD9" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="m2Z-Mw-dlj"/>
+                                    <constraint firstAttribute="trailing" secondItem="EgV-Wl-cCo" secondAttribute="trailing" constant="20" type="default" id="mmy-C9-Jr1"/>
                                     <constraint firstItem="cVb-uJ-z6A" firstAttribute="leading" secondItem="6Lw-jH-lIS" secondAttribute="leading" type="default" id="qxh-8b-zQs"/>
-                                    <constraint firstItem="cVb-uJ-z6A" firstAttribute="top" secondItem="ucK-fu-t0P" secondAttribute="top" type="default" id="rRy-d4-MV3"/>
+                                    <constraint firstItem="Qx2-g6-atM" firstAttribute="top" secondItem="OS1-jb-zD9" secondAttribute="top" type="default" id="tdJ-ww-wfU"/>
+                                    <constraint firstItem="EgV-Wl-cCo" firstAttribute="top" secondItem="6pK-LZ-Qv7" secondAttribute="top" type="default" id="uYj-hC-Ugc"/>
+                                    <constraint firstItem="6Lw-jH-lIS" firstAttribute="baseline" secondItem="Qx2-g6-atM" secondAttribute="baseline" type="default" id="vZM-a0-y2C"/>
+                                    <constraint firstItem="6Lw-jH-lIS" firstAttribute="top" secondItem="cVb-uJ-z6A" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="xYy-Lc-Gha"/>
                                     <constraint firstItem="ucK-fu-t0P" firstAttribute="leading" secondItem="Qx2-g6-atM" secondAttribute="leading" type="default" id="xqI-BN-qyq"/>
+                                    <constraint firstItem="6Lw-jH-lIS" firstAttribute="top" secondItem="Qx2-g6-atM" secondAttribute="top" type="default" id="yI1-uk-3Yi"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="itemImageView" destination="Bdm-3I-nJv" id="rVN-UA-YLB"/>
@@ -3693,6 +3868,7 @@ Range: 0km</string>
         <class className="PortalUpgradeViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalUpgradeViewController.h"/>
             <relationships>
+                <relationship kind="action" name="rechargeButtonPressed:" candidateClass="GUIButton"/>
                 <relationship kind="action" name="resonatorButtonPressed:" candidateClass="GUIButton"/>
                 <relationship kind="action" name="shieldButtonPressed:" candidateClass="GUIButton"/>
             </relationships>

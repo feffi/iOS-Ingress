@@ -14,7 +14,7 @@
 @dynamic rarity;
 
 - (NSString *)rarityStr {
-	return [API shieldRarityStrFromRarity:self.rarity];
+	return [Utilities rarityStringFromRarity:self.rarity];
 }
 
 - (NSString *)description {

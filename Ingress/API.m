@@ -74,45 +74,6 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 	[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 }
 
-#pragma mark - Rarities Converters
-
-+ (PortalShieldRarity)shieldRarityFromString:(NSString *)shieldRarityStr {
-	if ([shieldRarityStr isEqualToString:@"COMMON"]) {
-		return PortalShieldRarityCommon;
-	} else if ([shieldRarityStr isEqualToString:@"RARE"]) {
-		return PortalShieldRarityRare;
-	} else if ([shieldRarityStr isEqualToString:@"VERY_RARE"]) {
-		return PortalShieldRarityVeryRare;
-	}
-	return PortalShieldRarityUnknown;
-}
-
-+ (PortalShieldRarity)shieldRarityFromInt:(int)shieldRarityInt {
-	switch (shieldRarityInt) {
-		case 1:
-			return PortalShieldRarityCommon;
-		case 2:
-			return PortalShieldRarityRare;
-		case 3:
-			return PortalShieldRarityVeryRare;
-		default:
-			return PortalShieldRarityUnknown;
-	}
-}
-
-+ (NSString *)shieldRarityStrFromRarity:(PortalShieldRarity)shieldRarity {
-	switch (shieldRarity) {
-		case PortalShieldRarityCommon:
-			return @"Common";
-		case PortalShieldRarityRare:
-			return @"Rare";
-		case PortalShieldRarityVeryRare:
-			return @"Very Rare";
-		default:
-			return @"Unknown";
-	}
-}
-
 #pragma mark - Levels
 
 + (int)levelForAp:(int)ap {
@@ -1654,7 +1615,7 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 				shield = [Shield MR_createInContext:context];
 				shield.guid = item[0];
 			}
-			shield.rarity = [API shieldRarityFromString:item[2][@"modResource"][@"rarity"]];
+			shield.rarity = [Utilities rarityFromString:item[2][@"modResource"][@"rarity"]];
 			shield.timestamp = [[NSDate dateWithTimeIntervalSince1970:([item[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
 		} else if ([resourceType isEqualToString:@"PORTAL_LINK_KEY"]) {
 			Portal *portal = [Portal MR_findFirstByAttribute:@"guid" withValue:item[2][@"portalCoupler"][@"portalGuid"] inContext:context];
@@ -1812,7 +1773,7 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 						shield.portal = portal;
 						shield.slot = i;
 						shield.mitigation = [modDict[@"stats"][@"MITIGATION"] intValue];
-						shield.rarity = [API shieldRarityFromString:modDict[@"rarity"]];
+						shield.rarity = [Utilities rarityFromString:modDict[@"rarity"]];
 
 						User *owner = [User MR_findFirstByAttribute:@"guid" withValue:modDict[@"installingUser"] inContext:context];
 						if (!owner) {
@@ -1864,7 +1825,7 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 				shield.dropped = YES;
 				shield.latitude = [loc[@"latE6"] intValue]/1E6;
 				shield.longitude = [loc[@"lngE6"] intValue]/1E6;
-				shield.rarity = [API shieldRarityFromString:gameEntity[2][@"modResource"][@"rarity"]];
+				shield.rarity = [Utilities rarityFromString:gameEntity[2][@"modResource"][@"rarity"]];
 				shield.timestamp = [[NSDate dateWithTimeIntervalSince1970:([gameEntity[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
 			} else if ([resourceType isEqualToString:@"PORTAL_LINK_KEY"]) {
 				Portal *portal = [Portal MR_findFirstByAttribute:@"guid" withValue:gameEntity[2][@"portalCoupler"][@"portalGuid"] inContext:context];

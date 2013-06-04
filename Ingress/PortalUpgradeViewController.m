@@ -57,17 +57,26 @@
 		if ([mod isKindOfClass:[DeployedShield class]]) {
 //			[button setTitle:[[(DeployedShield *)mod rarityStr] stringByAppendingString:@"\nShield"] forState:UIControlStateNormal];
 			switch ([(DeployedShield *)mod rarity]) {
-				case PortalShieldRarityCommon:
+				case ItemRarityVeryCommon:
+					[button setImage:[UIImage imageNamed:@"shield_verycommon.png"] forState:UIControlStateNormal];
+					break;
+				case ItemRarityCommon:
 					[button setImage:[UIImage imageNamed:@"shield_common.png"] forState:UIControlStateNormal];
 					break;
-				case PortalShieldRarityRare:
+				case ItemRarityLessCommon:
+					[button setImage:[UIImage imageNamed:@"shield_lesscommon.png"] forState:UIControlStateNormal];
+					break;
+				case ItemRarityRare:
 					[button setImage:[UIImage imageNamed:@"shield_rare.png"] forState:UIControlStateNormal];
 					break;
-				case PortalShieldRarityVeryRare:
+				case ItemRarityVeryRare:
 					[button setImage:[UIImage imageNamed:@"shield_veryrare.png"] forState:UIControlStateNormal];
 					break;
+				case ItemRarityExtraRare:
+					[button setImage:[UIImage imageNamed:@"shield_extrarare.png"] forState:UIControlStateNormal];
+					break;
 				default:
-					[button setImage:[UIImage imageNamed:@"shield_common.png"] forState:UIControlStateNormal];
+					[button setImage:[UIImage imageNamed:@"shield_verycommon.png"] forState:UIControlStateNormal];
 					break;
 			}
 		} else {
@@ -368,7 +377,7 @@
 	HUD.dimBackground = YES;
 	HUD.showCloseButton = YES;
 
-	_levelChooser = [LevelChooserViewController rarityChooserWithTitle:@"Choose shield rarity" completionHandler:^(PortalShieldRarity rarity) {
+	_levelChooser = [LevelChooserViewController rarityChooserWithTitle:@"Choose shield rarity" completionHandler:^(ItemRarity rarity) {
 		[HUD hide:YES];
 		[self deployShieldOfRarity:rarity toSlot:sender.tag-100];
 		_levelChooser = nil;
@@ -380,7 +389,7 @@
 
 }
 
-- (void)deployShieldOfRarity:(PortalShieldRarity)rarity toSlot:(int)slot {
+- (void)deployShieldOfRarity:(ItemRarity)rarity toSlot:(int)slot {
     if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
         [[SoundManager sharedManager] playSound:@"Sound/sfx_mod_power_up.aif"];
     }

@@ -22,4 +22,9 @@ typedef enum {
 
 + (NSDictionary *)attributesWithShadow:(BOOL)shadow size:(CGFloat)size color:(UIColor *)color;
 
++ (UIColor *)colorForRarity:(ItemRarity)rarity;
++ (NSString *)rarityStringFromRarity:(ItemRarity)rarity;
++ (ItemRarity)rarityFromString:(NSString *)rarityStr;
++ (ItemRarity)rarityFromInt:(int)rarityInt;
+
 @end

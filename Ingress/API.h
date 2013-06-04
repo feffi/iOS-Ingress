@@ -43,10 +43,6 @@ typedef void (^SoundCompletionBlock)(void);
 
 + (void)showWarningWithTitle:(NSString *)title;
 
-+ (PortalShieldRarity)shieldRarityFromString:(NSString *)shieldRarityStr;
-+ (PortalShieldRarity)shieldRarityFromInt:(int)shieldRarityInt;
-+ (NSString *)shieldRarityStrFromRarity:(PortalShieldRarity)shieldRarity;
-
 + (int)levelForAp:(int)ap;
 + (int)maxApForLevel:(int)level;
 + (int)maxXmForLevel:(int)level;

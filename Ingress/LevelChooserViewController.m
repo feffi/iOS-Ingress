@@ -22,10 +22,10 @@
 	return levelChooser;
 }
 
-+ (LevelChooserViewController *)rarityChooserWithTitle:(NSString *)title completionHandler:(void (^)(PortalShieldRarity rarity))handler {
++ (LevelChooserViewController *)rarityChooserWithTitle:(NSString *)title completionHandler:(void (^)(ItemRarity rarity))handler {
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
 	LevelChooserViewController *levelChooser = [storyboard instantiateViewControllerWithIdentifier:@"RarityChooserViewController"];
-	levelChooser.view.frame = CGRectMake(0, 0, 240, 55);
+	levelChooser.view.frame = CGRectMake(0, 0, 240, 100);
 	levelChooser.titleLabel.text = title;
 	levelChooser.rarityChooserCompletionHandler = handler;
 	return levelChooser;
@@ -33,16 +33,6 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
-	for (UIView *view in self.view.subviews) {
-		if ([view isKindOfClass:[UILabel class]]) {
-			UILabel *label = (UILabel *)view;
-			label.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:label.font.pointSize];
-		} else if ([view isKindOfClass:[UIButton class]]) {
-			UIButton *button = (UIButton *)view;
-			button.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:button.titleLabel.font.pointSize];
-		}
-	}
 	
 	switch (self.view.tag) {
 		case 100: {
@@ -61,12 +51,21 @@
 			
 			break;
 		}
-		case 200: {
-			
-			break;
-		}
 	}
 
+}
+
+- (void)viewDidLayoutSubviews {
+	[super viewDidLayoutSubviews];
+
+	for (UIView *view in self.view.subviews) {
+		if ([view isKindOfClass:[UIButton class]]) {
+			UIButton *button = (UIButton *)view;
+			button.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:10];
+			button.titleLabel.numberOfLines = 0;
+			button.titleLabel.textAlignment = NSTextAlignmentCenter;
+		}
+	}
 }
 
 - (IBAction)action:(UIButton *)sender {
@@ -82,7 +81,7 @@
 		case 200:
 			
 			if (self.rarityChooserCompletionHandler) {
-				self.rarityChooserCompletionHandler([API shieldRarityFromInt:sender.tag]);
+				self.rarityChooserCompletionHandler([Utilities rarityFromInt:sender.tag]);
 			}
 			
 			break;

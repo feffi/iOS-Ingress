@@ -26,6 +26,8 @@
 		if ([view isKindOfClass:[UIButton class]]) {
 			UIButton *button = (UIButton *)view;
 			button.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:fontSize];
+			button.titleLabel.numberOfLines = 0;
+			button.titleLabel.textAlignment = NSTextAlignmentCenter;
 		}
 	}
 
@@ -59,19 +61,20 @@
 	}
 
 	if (itemType == ItemTypePortalShield) {
-		for (int i = 1; i <= 3; i++) {
+		for (int i = 1; i <= 6; i++) {
 			UILabel *label = (UILabel *)[self.contentView viewWithTag:i];
-			label.text = [NSString stringWithFormat:@"%d", [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", i-1]]];
+			ItemRarity rarity = [Utilities rarityFromInt:i];
+			label.text = [NSString stringWithFormat:@"%d", [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]]];
+		}
+	} else if (itemType == ItemTypeLinkAmp) {
+		for (int i = 1; i <= 6; i++) {
+			UILabel *label = (UILabel *)[self.contentView viewWithTag:i];
+			label.text = @"-";
 		}
 	} else if (itemType == ItemTypeFlipCard) {
 		for (int i = 1; i <= 2; i++) {
 			UILabel *label = (UILabel *)[self.contentView viewWithTag:i];
 			label.text = [NSString stringWithFormat:@"%d", [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && type = %@", (i == 1) ? @"JARVIS" : @"ADA"]]];
-		}
-	} else if (itemType == ItemTypeLinkAmp) {
-		for (int i = 1; i <= 3; i++) {
-			UILabel *label = (UILabel *)[self.contentView viewWithTag:i];
-			label.text = @"-";
 		}
 	} else {
 		for (int i = 1; i <= 8; i++) {
@@ -127,7 +130,7 @@
 	NSString *guid;
 
 	if (self.itemType == ItemTypePortalShield) {
-		PortalShieldRarity rarity = [API shieldRarityFromInt:actionLevel];
+		ItemRarity rarity = [Utilities rarityFromInt:actionLevel];
 		guid = [[objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]] guid];
 	} else if (self.itemType == ItemTypeFlipCard) {
 		guid = [[objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && faction = %@", (actionLevel == 1) ? @"ALIENS" : @"RESISTANCE"]] guid];
@@ -202,7 +205,7 @@
 	Item *item;
 
 	if (self.itemType == ItemTypePortalShield) {
-		PortalShieldRarity rarity = [API shieldRarityFromInt:actionLevel];
+		ItemRarity rarity = [Utilities rarityFromInt:actionLevel];
 		item = [objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
 	} else if (self.itemType == ItemTypeFlipCard) {
 		item = [objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && type = %@", (actionLevel == 1) ? @"JARVIS" : @"ADA"]];

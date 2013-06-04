@@ -26,10 +26,3 @@
 #import "PowerCube.h"
 #import "Plext.h"
 #import "FlipCard.h"
-
-typedef enum {
-	PortalShieldRarityCommon,
-	PortalShieldRarityRare,
-	PortalShieldRarityVeryRare,
-	PortalShieldRarityUnknown
-} PortalShieldRarity;
