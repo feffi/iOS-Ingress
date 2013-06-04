@@ -168,18 +168,7 @@
 		
 		[HUD hide:YES];
 		
-		HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-		HUD.userInteractionEnabled = YES;
-		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:12];
-		//HUD.showCloseButton = YES;
-		
 		if (errorStr) {
-			HUD.mode = MBProgressHUDModeCustomView;
-			HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-			HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-			HUD.detailsLabelText = errorStr;
             
             NSMutableArray *sounds = [NSMutableArray array];
 			if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
@@ -204,16 +193,15 @@
             
 			[[API sharedInstance] playSounds:sounds];
 
-			[[AppDelegate instance].window addSubview:HUD];
-			[HUD show:YES];
-			[HUD hide:YES afterDelay:HUD_DELAY_TIME];
+			[API showWarningWithTitle:errorStr];
+			
 		} else {
-			HUD.mode = MBProgressHUDModeText;
+
 			if (acquiredItems.count > 0) {
 
 				NSMutableArray *sounds = [NSMutableArray arrayWithCapacity:acquiredItems];
 				NSCountedSet *acquiredItemStrings = [[NSCountedSet alloc] initWithCapacity:acquiredItems.count];
-				NSMutableString *acquiredItemsStr = [NSMutableString string];
+				NSMutableAttributedString *acquiredItemsStr = [NSMutableAttributedString new];
 				
 				for (NSString *guid in acquiredItems) {
 					Item *item = [Item MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"guid = %@", guid]];
@@ -226,7 +214,7 @@
 					} else {
 						[acquiredItemStrings addObject:@"Unknown Item"];
 					}
-                    
+
                     if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
                         if ([item isKindOfClass:[Resonator class]]) {
                             if (![sounds containsObject:@"SPEECH_RESONATOR"]) {
@@ -277,26 +265,48 @@
                     [[SoundManager sharedManager] playSound:@"Sound/sfx_resource_pick_up.aif"];
                     [[API sharedInstance] playSounds:sounds];
                 }
-				
-				HUD.labelText = @"Items acquired";
 
 				for (NSString *acquiredItem in acquiredItemStrings) {
-					NSUInteger count = [acquiredItemStrings countForObject:acquiredItem];
-					if (count == 1) {
-						[acquiredItemsStr appendFormat:@"%@\n", acquiredItem];
-					} else {
-						[acquiredItemsStr appendFormat:@"%dx %@\n", count, acquiredItem];
+
+					NSMutableAttributedString *acquiredItemStr = [[NSMutableAttributedString alloc] initWithString:acquiredItem attributes:[Utilities attributesWithShadow:YES size:15 color:[UIColor whiteColor]]];
+
+					if ([acquiredItem hasPrefix:@"L"]) {
+						int level = [[acquiredItem substringWithRange:NSMakeRange(1, 1)] intValue];
+						[acquiredItemStr setAttributes:[Utilities attributesWithShadow:YES size:15 color:[API colorForLevel:level]] range:NSMakeRange(0, 2)];
+					} else if ([acquiredItem hasPrefix:@"Common"]) {
+						//[acquiredItemStr setAttributes:[Utilities attributesWithShadow:YES size:15 color:[API colorForLevel:level]] range:NSMakeRange(0, 2)];
 					}
+
+					[acquiredItemsStr appendAttributedString:acquiredItemStr];
+
+					NSUInteger count = [acquiredItemStrings countForObject:acquiredItem];
+					if (count > 1) {
+						[acquiredItemsStr appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@" (%d)", count] attributes:[Utilities attributesWithShadow:YES size:15 color:[UIColor whiteColor]]]];
+					}
+
+					[acquiredItemsStr appendAttributedString:[[NSAttributedString alloc] initWithString:@"\n" attributes:nil]];
+
 				}
 
-				HUD.detailsLabelText = acquiredItemsStr;
-
+				HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+				HUD.userInteractionEnabled = YES;
+				HUD.dimBackground = YES;
+				HUD.mode = MBProgressHUDModeText;
+				HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:18];
+				HUD.labelText = @"Items acquired";
+				HUD.detailsLabelAttributedText = acquiredItemsStr;
 				HUD.showCloseButton = YES;
-
 				[[AppDelegate instance].window addSubview:HUD];
 				[HUD show:YES];
 				
 			} else {
+
+				HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+				HUD.userInteractionEnabled = YES;
+				HUD.dimBackground = YES;
+				HUD.mode = MBProgressHUDModeText;
+				HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+
 				HUD.labelText = @"Hack acquired no items";
 				if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
                     [[API sharedInstance] playSounds:@[@"SPEECH_HACKING", @"SPEECH_UNSUCCESSFUL"]];
@@ -305,6 +315,7 @@
 				[[AppDelegate instance].window addSubview:HUD];
 				[HUD show:YES];
 				[HUD hide:YES afterDelay:HUD_DELAY_TIME];
+				
 			}
 		}
 
