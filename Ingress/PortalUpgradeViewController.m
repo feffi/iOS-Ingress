@@ -154,6 +154,7 @@
 		[rechargeButton setTitle:@"RECHARGE" forState:UIControlStateNormal];
 		[rechargeButton addTarget:self action:@selector(rechargeButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         rechargeButton.tag = 3;
+		rechargeButton.hidden = YES;
         [view addSubview:rechargeButton];
         
     } else {
@@ -178,10 +179,14 @@
 		[label setText:resonatorString];
 
 		[deployButton setTitle:@"UPGRADE" forState:UIControlStateNormal];
+
+		rechargeButton.hidden = NO;
 	} else {
 		label.text = [NSString stringWithFormat:@"Octant: %@", resonatorOctant];
         
 		[deployButton setTitle:@"DEPLOY" forState:UIControlStateNormal];
+
+		rechargeButton.hidden = YES;
 	}
     
     return view;
