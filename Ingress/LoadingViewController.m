@@ -68,37 +68,25 @@
 	
 	[SoundManager sharedManager].allowsBackgroundMusic = YES;
     [[SoundManager sharedManager] prepareToPlay];
-    
-	if (![[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundToggleBackground]) {
-        if ([[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundLevel] && [[NSUserDefaults standardUserDefaults] floatForKey:DeviceSoundLevel] < 0.1) {
-            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:DeviceSoundToggleBackground];
-        } else {
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:DeviceSoundToggleBackground];
-        }
-		[[NSUserDefaults standardUserDefaults] synchronize];
-	}
-	if (![[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundToggleEffects]) {
-		if ([[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundLevel] && [[NSUserDefaults standardUserDefaults] floatForKey:DeviceSoundLevel] < 0.1) {
-            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:DeviceSoundToggleEffects];
-        } else {
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:DeviceSoundToggleEffects];
-        }
-		[[NSUserDefaults standardUserDefaults] synchronize];
-	}
-	if (![[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundToggleSpeech]) {
-		if ([[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundLevel] && [[NSUserDefaults standardUserDefaults] floatForKey:DeviceSoundLevel] < 0.1) {
-            [[NSUserDefaults standardUserDefaults] setBool:NO forKey:DeviceSoundToggleSpeech];
-        } else {
-            [[NSUserDefaults standardUserDefaults] setBool:YES forKey:DeviceSoundToggleSpeech];
-        }
-		[[NSUserDefaults standardUserDefaults] synchronize];
-	}
-    if ([[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundLevel]) {
+	
+	if ([[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundLevel]) {
         [[NSUserDefaults standardUserDefaults] removeObjectForKey:DeviceSoundLevel];
-    }
-	float soundVolumeValue = [[NSUserDefaults standardUserDefaults] floatForKey:DeviceSoundLevel];
-	[SoundManager sharedManager].soundVolume = soundVolumeValue;
-	[SoundManager sharedManager].musicVolume = soundVolumeValue;
+	}
+
+	if (![[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundToggleBackground]) {
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:DeviceSoundToggleBackground];
+	}
+	
+	if (![[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundToggleEffects]) {
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:DeviceSoundToggleEffects];
+	}
+	
+	if (![[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundToggleSpeech]) {
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:DeviceSoundToggleSpeech];
+	}
+
+	[SoundManager sharedManager].soundVolume = 1;
+	[SoundManager sharedManager].musicVolume = 1;
 
 	[self performHandshake];
 
