@@ -314,6 +314,7 @@ typedef void (^MBProgressHUDCompletionBlock)();
  * property is also set and is different from an empty string (@""). The details text can span multiple lines.
  */
 @property (copy) NSString *detailsLabelText;
+@property (copy) NSAttributedString *detailsLabelAttributedText;
 
 /**
  * The opacity of the HUD window. Defaults to 0.8 (80% opacity).
