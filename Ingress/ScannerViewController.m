@@ -122,7 +122,7 @@
 
 //	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(managedObjectContextObjectsDidChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:nil];
 
-	[self refreshProfile];
+	//[self refreshProfile];
 
 	if (self.virusToUse) {
 		virusChoosePortalLabel.hidden = NO;
@@ -183,7 +183,7 @@
 //		[refreshTimer invalidate];
 //		refreshTimer = nil;
 //	}
-//	refreshTimer = [NSTimer scheduledTimerWithTimeInterval:10 target:self selector:@selector(refresh) userInfo:nil repeats:NO];
+//	refreshTimer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(refresh) userInfo:nil repeats:NO];
 
     NSManagedObjectContext *context  = [NSManagedObjectContext MR_contextForCurrentThread];
 
