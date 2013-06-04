@@ -218,7 +218,11 @@
 				for (NSString *guid in acquiredItems) {
 					Item *item = [Item MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"guid = %@", guid]];
 					if (item) {
-						[acquiredItemStrings addObject:item.description];
+						if ([item isKindOfClass:[PortalKey class]]) {
+							[acquiredItemStrings addObject:@"Portal Key"];
+						} else {
+							[acquiredItemStrings addObject:item.description];
+						}
 					} else {
 						[acquiredItemStrings addObject:@"Unknown Item"];
 					}
