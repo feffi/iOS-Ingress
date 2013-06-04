@@ -724,14 +724,14 @@
 	[_mapView deselectAnnotation:view.annotation animated:NO];
 	if ([view.annotation isKindOfClass:[Portal class]]) {
 		currentPortal = (Portal *)view.annotation;
-		if ([currentPortal distanceFromCoordinate:_mapView.centerCoordinate] <= 40) {
-			if (self.virusToUse) {
+		if (self.virusToUse) {
+			if ([currentPortal distanceFromCoordinate:_mapView.centerCoordinate] <= 40) {
 				UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Confirm Deployment" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Confirm", nil];
 				actionSheet.tag = 2;
 				[actionSheet showFromTabBar:self.tabBarController.tabBar];
-			} else {
-				[self performSegueWithIdentifier:@"PortalDetailSegue" sender:self];
 			}
+		} else {
+			[self performSegueWithIdentifier:@"PortalDetailSegue" sender:self];
 		}
 	} else if ([view.annotation isKindOfClass:[Item class]]) {
 		if ([(Item *)(view.annotation) distanceFromCoordinate:_mapView.centerCoordinate] <= 40) {
