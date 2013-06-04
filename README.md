@@ -68,9 +68,9 @@ Screenshots
 ![Screenshot 3](http://i.imgur.com/FIYe6bm.png)
 ![Screenshot 4](http://i.imgur.com/V1r6eER.png)
 ![Screenshot 5](http://i.imgur.com/Joik8Qe.png)
-![Screenshot 6](http://i.imgur.com/hLajkw3.png)
+![Screenshot 6](https://f.cloud.github.com/assets/935614/608445/9139b11e-cd5e-11e2-9ba8-9092f4a17308.png)
 ![Screenshot 7](http://i.imgur.com/MzJn807.png)
-![Screenshot 8](http://i.imgur.com/uC9hXxk.png)
+![Screenshot 8](https://f.cloud.github.com/assets/935614/606705/fa8d98ca-cd30-11e2-8aec-ff6307e20820.png)
 
 Attribution & License
 ---------------------
