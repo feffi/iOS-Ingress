@@ -227,7 +227,7 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 		case 8:
 			return UIColorFromRGB(0x9627f4);
 		default:
-			return UIColorFromRGB(0x333);
+			return [UIColor whiteColor];
 	}
 	
 }
