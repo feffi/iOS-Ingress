@@ -60,6 +60,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	id objectForExecution;
 	UILabel *label;
 	UILabel *detailsLabel;
+	UIButton *closeBtn;
 	BOOL isFinished;
 	CGAffineTransform rotationTransform;
 }
@@ -570,9 +571,12 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	}
 	
 	self.size = totalSize;
-	
-	if (self.showCloseButton) {
-		UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+
+	if (!self.showCloseButton && closeBtn) {
+		[closeBtn removeFromSuperview];
+		closeBtn = nil;
+	} else if (self.showCloseButton && !closeBtn) {
+		closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 		[closeBtn setImage:[UIImage imageNamed:@"UIBlackCloseButton.png"] forState:UIControlStateNormal];
 		[closeBtn setImage:[UIImage imageNamed:@"UIBlackCloseButtonPressed.png"] forState:UIControlStateHighlighted];
 		[closeBtn addTarget:self action:@selector(closeButtonPressed) forControlEvents:UIControlEventTouchUpInside];
