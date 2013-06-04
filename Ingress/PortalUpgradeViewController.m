@@ -45,21 +45,6 @@
 
 	Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
 
-	NSMutableArray *tmpResonators = [NSMutableArray arrayWithCapacity:8];
-
-	for (int i = 0; i < 8; i++) {
-
-		UIButton *button = (UIButton *)[self.view viewWithTag:50+i];
-		if (self.portal.controllingTeam && ([self.portal.controllingTeam isEqualToString:player.team] || [self.portal.controllingTeam isEqualToString:@"NEUTRAL"])) {
-			button.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:10];
-			[button setTitle:@"DEPLOY" forState:UIControlStateNormal];
-			tmpResonators[i] = [NSNull null];
-		} else {
-			[button setHidden:YES];
-		}
-
-	}
-
 	for (int i = 0; i < 4; i++) {
 
 		UIButton *button = (UIButton *)[self.view viewWithTag:100+i];
@@ -97,8 +82,11 @@
 
 	}
 
+	NSMutableArray *tmpResonators = [NSMutableArray arrayWithCapacity:8];
+	for (int i = 0; i < 8; i++) {
+		tmpResonators[i] = [NSNull null];
+	}
 	for (DeployedResonator *resonator in self.portal.resonators) {
-
 		if (![resonator isKindOfClass:[NSNull class]]) {
 
 			int slot = resonator.slot;
@@ -110,9 +98,7 @@
 			}
 
 		}
-
 	}
-
 	_resonators = tmpResonators;
 
 	[_carousel reloadData];
@@ -223,6 +209,7 @@
 	HUD.userInteractionEnabled = YES;
 	HUD.mode = MBProgressHUDModeCustomView;
 	HUD.dimBackground = YES;
+	HUD.removeFromSuperViewOnHide = YES;
 	HUD.showCloseButton = YES;
 
 	_levelChooser = [LevelChooserViewController levelChooserWithTitle:@"Choose resonator level" completionHandler:^(int level) {
@@ -244,18 +231,7 @@
 		Resonator *resonatorItem = [Resonator MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", level]];
 
 		if (!resonatorItem) {
-
-			MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-			HUD.userInteractionEnabled = YES;
-			HUD.dimBackground = YES;
-			HUD.mode = MBProgressHUDModeCustomView;
-			HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-			HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-			HUD.detailsLabelText = @"No resonator of that level remaining!";
-			[[AppDelegate instance].window addSubview:HUD];
-			[HUD show:YES];
-			[HUD hide:YES afterDelay:HUD_DELAY_TIME];
-
+			[API showWarningWithTitle:@"No resonator of that level remaining!"];
 		} else {
 
 			[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Deploy Resonator" withLabel:self.portal.name withValue:@(resonatorItem.level)];
@@ -263,6 +239,7 @@
 			MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 			HUD.userInteractionEnabled = YES;
 			HUD.dimBackground = YES;
+			HUD.removeFromSuperViewOnHide = YES;
 			HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 			HUD.labelText = [NSString stringWithFormat:@"Deploying resonator of level: %d", level];
 			[[AppDelegate instance].window addSubview:HUD];
@@ -273,16 +250,7 @@
 				[HUD hide:YES];
 
 				if (errorStr) {
-					MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-					HUD.userInteractionEnabled = YES;
-					HUD.dimBackground = YES;
-					HUD.mode = MBProgressHUDModeCustomView;
-					HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-					HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-					HUD.detailsLabelText = errorStr;
-					[[AppDelegate instance].window addSubview:HUD];
-					[HUD show:YES];
-					[HUD hide:YES afterDelay:HUD_DELAY_TIME];
+					[API showWarningWithTitle:errorStr];
 				} else {
 
 					dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
@@ -309,16 +277,7 @@
 
 		if (!resonatorItem) {
 
-			MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-			HUD.userInteractionEnabled = YES;
-			HUD.dimBackground = YES;
-			HUD.mode = MBProgressHUDModeCustomView;
-			HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-			HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-			HUD.detailsLabelText = @"No resonator of that level remaining!";
-			[[AppDelegate instance].window addSubview:HUD];
-			[HUD show:YES];
-			[HUD hide:YES afterDelay:HUD_DELAY_TIME];
+			[API showWarningWithTitle:@"No resonator of that level remaining!"];
 
 		} else {
 
@@ -327,6 +286,7 @@
 			MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 			HUD.userInteractionEnabled = YES;
 			HUD.dimBackground = YES;
+			HUD.removeFromSuperViewOnHide = YES;
 			HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 			HUD.labelText = [NSString stringWithFormat:@"Upgrading resonator to level: %d", level];
 			[[AppDelegate instance].window addSubview:HUD];
@@ -336,16 +296,7 @@
 				[HUD hide:YES];
 
 				if (errorStr) {
-					MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-					HUD.userInteractionEnabled = YES;
-					HUD.dimBackground = YES;
-					HUD.mode = MBProgressHUDModeCustomView;
-					HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-					HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-					HUD.detailsLabelText = errorStr;
-					[[AppDelegate instance].window addSubview:HUD];
-					[HUD show:YES];
-					[HUD hide:YES afterDelay:HUD_DELAY_TIME];
+					[API showWarningWithTitle:errorStr];
 				} else {
 
 					dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
@@ -372,6 +323,7 @@
 	HUD.userInteractionEnabled = YES;
 	HUD.mode = MBProgressHUDModeIndeterminate;
 	HUD.dimBackground = YES;
+	HUD.removeFromSuperViewOnHide = YES;
 	HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 	HUD.labelText = @"Recharging...";
 	[[AppDelegate instance].window addSubview:HUD];
@@ -384,18 +336,7 @@
 		[HUD hide:YES];
 
 		if (errorStr) {
-
-			MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-			HUD.userInteractionEnabled = YES;
-			HUD.dimBackground = YES;
-			HUD.mode = MBProgressHUDModeCustomView;
-			HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-			HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-			HUD.detailsLabelText = errorStr;
-			[[AppDelegate instance].window addSubview:HUD];
-			[HUD show:YES];
-			[HUD hide:YES afterDelay:HUD_DELAY_TIME];
-
+			[API showWarningWithTitle:errorStr];
 		} else {
 
 			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
@@ -419,6 +360,7 @@
 
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 	HUD.userInteractionEnabled = YES;
+	HUD.removeFromSuperViewOnHide = YES;
 	HUD.mode = MBProgressHUDModeCustomView;
 	HUD.dimBackground = YES;
 	HUD.showCloseButton = YES;
@@ -442,18 +384,7 @@
 	Shield *shieldItem = [Shield MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
 
 	if (!shieldItem) {
-
-		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-		HUD.userInteractionEnabled = YES;
-		HUD.dimBackground = YES;
-		HUD.mode = MBProgressHUDModeCustomView;
-		HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-		HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		HUD.detailsLabelText = @"No shield of that rarity remaining!";
-		[[AppDelegate instance].window addSubview:HUD];
-		[HUD show:YES];
-		[HUD hide:YES afterDelay:HUD_DELAY_TIME];
-
+		[API showWarningWithTitle:@"No shield of that rarity remaining!"];
 	} else {
 
 		[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Deploy Shield" withLabel:self.portal.name withValue:@(shieldItem.rarity)];
@@ -461,6 +392,7 @@
 		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 		HUD.userInteractionEnabled = YES;
 		HUD.dimBackground = YES;
+		HUD.removeFromSuperViewOnHide = YES;
 		HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 		HUD.detailsLabelText = @"Deploying shield...";
 		[[AppDelegate instance].window addSubview:HUD];
@@ -471,16 +403,7 @@
 			[HUD hide:YES];
 
 			if (errorStr) {
-				MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-				HUD.userInteractionEnabled = YES;
-				HUD.dimBackground = YES;
-				HUD.mode = MBProgressHUDModeCustomView;
-				HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-				HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-				HUD.detailsLabelText = errorStr;
-				[[AppDelegate instance].window addSubview:HUD];
-				[HUD show:YES];
-				[HUD hide:YES afterDelay:HUD_DELAY_TIME];
+				[API showWarningWithTitle:errorStr];
 			} else {
 
 				[self refresh];

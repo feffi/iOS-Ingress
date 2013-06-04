@@ -1569,6 +1569,7 @@
 				FA39E14D1742C96800202259 /* Upgrade */,
 			);
 			name = "Portal Detail";
+			path = Ingress;
 			sourceTree = "<group>";
 		};
 		FACEE6141737E9AB006A9912 /* NSShadow+Initializer */ = {
@@ -1683,6 +1684,7 @@
 				FA3FC30B1736569B009CD94A /* Mission */,
 				FA54DEF216A1970A006A92E0 /* Items */,
 				FAEA5861169C7E8500E2F502 /* Scanner */,
+				FACD502016A441280077837F /* Portal Detail */,
 				FA32E885169F655E00D30E90 /* Comm */,
 				FAE71C2C1732ACA900742071 /* Device */,
 				FAB5A2C916AA164900176C34 /* Level Buttons */,
@@ -1767,7 +1769,6 @@
 			children = (
 				FAEA5859169C7E7500E2F502 /* ScannerViewController.h */,
 				FAEA585A169C7E7500E2F502 /* ScannerViewController.m */,
-				FACD502016A441280077837F /* Portal Detail */,
 			);
 			name = Scanner;
 			path = Ingress;

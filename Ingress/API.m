@@ -61,6 +61,7 @@ NSString *const IGMapDayMode = @"IGMapDayMode";
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 	HUD.userInteractionEnabled = YES;
 	HUD.dimBackground = YES;
+	HUD.removeFromSuperViewOnHide = YES;
 	HUD.mode = MBProgressHUDModeCustomView;
 	HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
 	HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
