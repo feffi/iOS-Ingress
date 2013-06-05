@@ -15,7 +15,7 @@
 
 + (ChooserViewController *)levelChooserWithTitle:(NSString *)title completionHandler:(void (^)(int level))handler {
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-	ChooserViewController *levelChooser = [storyboard instantiateViewControllerWithIdentifier:@"ChooserViewController"];
+	ChooserViewController *levelChooser = [storyboard instantiateViewControllerWithIdentifier:@"LevelChooserViewController"];
 	levelChooser.view.frame = CGRectMake(0, 0, 240, 100);
 	levelChooser.titleLabel.text = title;
 	levelChooser.numberChooserCompletionHandler = handler;
