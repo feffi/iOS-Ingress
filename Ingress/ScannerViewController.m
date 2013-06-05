@@ -100,12 +100,6 @@
 	[_mapView addGestureRecognizer:mapViewTapGestureRecognizer];
 #endif
 
-	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
-	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-		[locationManager stopUpdatingLocation];
-		[_mapView setCenterCoordinate:CLLocationCoordinate2DMake(50.780777,14.208888)];
-	});
-
 	UILongPressGestureRecognizer *mapViewLognPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(mapLongPress:)];
 	[_mapView addGestureRecognizer:mapViewLognPressGestureRecognizer];
 
