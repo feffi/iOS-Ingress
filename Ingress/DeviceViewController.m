@@ -239,7 +239,7 @@
             
             break;
         }
-        case 7:
+        case 9:
         {
            
             BOOL newMilesorKMValue = ! [[NSUserDefaults standardUserDefaults] boolForKey:MilesOrKM];
