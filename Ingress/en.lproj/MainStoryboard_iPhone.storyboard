@@ -1229,7 +1229,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                     <constraint firstAttribute="width" constant="225" id="NyL-SK-Wc8"/>
                                 </constraints>
                             </imageView>
-                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="center" image="playerArrow.png" translatesAutoresizingMaskIntoConstraints="NO" id="BX0-yd-s1M">
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="center" image="playerArrow_aliens.png" translatesAutoresizingMaskIntoConstraints="NO" id="BX0-yd-s1M">
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" type="user" id="7lC-bf-Unj"/>
@@ -3760,7 +3760,7 @@ RARE</string>
         <image name="negative_btn_background_default.png" width="16" height="16"/>
         <image name="negative_btn_background_disabled.png" width="16" height="16"/>
         <image name="negative_btn_background_pressed.png" width="16" height="16"/>
-        <image name="playerArrow.png" width="16" height="16"/>
+        <image name="playerArrow_aliens.png" width="16" height="16"/>
         <image name="positive_btn_background_default.png" width="16" height="16"/>
         <image name="positive_btn_background_disabled.png" width="16" height="16"/>
         <image name="positive_btn_background_pressed.png" width="16" height="16"/>

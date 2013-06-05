@@ -284,8 +284,10 @@
 
 	if ([player.team isEqualToString:@"RESISTANCE"]) {
 		[xmIndicator setProgressImage:[[UIImage imageNamed:@"progressImage-resistance.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(7, 7, 7, 7)]];
+		[playerArrowImage setImage:[UIImage imageNamed:@"playerArrow_resistance.png"]];
 	} else {
 		[xmIndicator setProgressImage:[[UIImage imageNamed:@"progressImage-aliens.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(7, 7, 7, 7)]];
+		[playerArrowImage setImage:[UIImage imageNamed:@"playerArrow_aliens.png"]];
 	}
 
 	[xmIndicator setProgress:(energy/maxEnergy) animated:!firstRefreshProfile];
