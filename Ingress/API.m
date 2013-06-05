@@ -16,6 +16,7 @@ NSString *const DeviceSoundToggleBackground = @"FHDeviceSoundToggleBackground";
 NSString *const DeviceSoundToggleEffects = @"FHDeviceSoundToggleEffects";
 NSString *const DeviceSoundToggleSpeech = @"FHDeviceSoundToggleSpeech";
 NSString *const IGMapDayMode = @"IGMapDayMode";
+NSString *const MilesOrKM = @"MilesOrKM";
 
 @implementation API {
 	BOOL isSoundPlaying;

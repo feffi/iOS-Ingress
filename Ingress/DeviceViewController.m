@@ -82,6 +82,15 @@
             }
             break;
         }
+        case 7:
+        {
+            if (![[NSUserDefaults standardUserDefaults] boolForKey:MilesOrKM]) {
+                cell.textLabel.text = @"Switch units to kilometers";
+            } else {
+                cell.textLabel.text = @"Switch units to miles";
+            }
+            break;
+        }
     }
     
     return cell;
@@ -230,6 +239,22 @@
             
             break;
         }
+        case 7:
+        {
+           
+            BOOL newMilesorKMValue = ! [[NSUserDefaults standardUserDefaults] boolForKey:MilesOrKM];
+            [[NSUserDefaults standardUserDefaults] setBool:newMilesorKMValue forKey:MilesOrKM];
+            [[NSUserDefaults standardUserDefaults] synchronize];
+            
+            UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
+            if (!newMilesorKMValue) {
+                cell.textLabel.text = @"Switch units to kilometers";
+            } else {
+                cell.textLabel.text = @"Switch units to miles";
+            }
+            break;
+        }
+        
 	}
 	
 }
