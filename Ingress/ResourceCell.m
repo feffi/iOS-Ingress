@@ -133,7 +133,7 @@
 		ItemRarity rarity = [Utilities rarityFromInt:actionLevel];
 		guid = [[objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]] guid];
 	} else if (self.itemType == ItemTypeFlipCard) {
-		guid = [[objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && faction = %@", (actionLevel == 1) ? @"ALIENS" : @"RESISTANCE"]] guid];
+		guid = [[objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && type = %@", (actionLevel == 1) ? @"JARVIS" : @"ADA"]] guid];
 	} else if (self.itemType == ItemTypeLinkAmp) {
 		guid = nil;
 	} else {
