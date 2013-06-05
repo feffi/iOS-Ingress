@@ -18,8 +18,36 @@
 	NSString *versionString;
 }
 
+- (void)setDefaults {
+	
+	if ([[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundLevel]) {
+        [[NSUserDefaults standardUserDefaults] removeObjectForKey:DeviceSoundLevel];
+	}
+
+	if (![[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundToggleBackground]) {
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:DeviceSoundToggleBackground];
+	}
+
+	if (![[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundToggleEffects]) {
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:DeviceSoundToggleEffects];
+	}
+
+	if (![[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundToggleSpeech]) {
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:DeviceSoundToggleSpeech];
+	}
+
+	if (![[NSUserDefaults standardUserDefaults] objectForKey:MilesOrKM]) {
+		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:MilesOrKM];
+	}
+
+	[[NSUserDefaults standardUserDefaults] synchronize];
+	
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+	[self setDefaults];
 
 	[label setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20]];
 
@@ -68,23 +96,6 @@
 	
 	[SoundManager sharedManager].allowsBackgroundMusic = YES;
     [[SoundManager sharedManager] prepareToPlay];
-	
-	if ([[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundLevel]) {
-        [[NSUserDefaults standardUserDefaults] removeObjectForKey:DeviceSoundLevel];
-	}
-
-	if (![[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundToggleBackground]) {
-		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:DeviceSoundToggleBackground];
-	}
-	
-	if (![[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundToggleEffects]) {
-		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:DeviceSoundToggleEffects];
-	}
-	
-	if (![[NSUserDefaults standardUserDefaults] objectForKey:DeviceSoundToggleSpeech]) {
-		[[NSUserDefaults standardUserDefaults] setBool:YES forKey:DeviceSoundToggleSpeech];
-	}
-
 	[SoundManager sharedManager].soundVolume = 1;
 	[SoundManager sharedManager].musicVolume = 1;
 
