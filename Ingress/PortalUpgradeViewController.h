@@ -7,14 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "LevelChooserViewController.h"
+#import "ChooserViewController.h"
 #import "GUIButton.h"
 #import "GlowingLabel.h"
 #import "iCarousel.h"
 
 @interface PortalUpgradeViewController : UIViewController <iCarouselDataSource, iCarouselDelegate> {
 	iCarousel *_carousel;
-	LevelChooserViewController *_levelChooser;
+	ChooserViewController *_levelChooser;
 	NSMutableArray *_resonators;
 }
 

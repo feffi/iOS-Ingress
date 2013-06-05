@@ -100,6 +100,12 @@
 	[_mapView addGestureRecognizer:mapViewTapGestureRecognizer];
 #endif
 
+	dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC));
+	dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+		[locationManager stopUpdatingLocation];
+		[_mapView setCenterCoordinate:CLLocationCoordinate2DMake(50.780777,14.208888)];
+	});
+
 	UILongPressGestureRecognizer *mapViewLognPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(mapLongPress:)];
 	[_mapView addGestureRecognizer:mapViewLognPressGestureRecognizer];
 
@@ -769,7 +775,7 @@
 		annotationView.annotation = annotation;
 		
 		Portal *portal = (Portal *)annotation;
-		annotationView.image = [[API sharedInstance] iconForPortal:portal];
+		annotationView.image = [Utilities iconForPortal:portal];
 		//annotationView.alpha = 0;
 
 		return annotationView;
@@ -941,7 +947,7 @@
 	HUD.dimBackground = YES;
 	HUD.showCloseButton = YES;
 	
-	_levelChooser = [LevelChooserViewController levelChooserWithTitle:@"Choose XMP burster level to fire" completionHandler:^(int level) {
+	_levelChooser = [ChooserViewController levelChooserWithTitle:@"Choose XMP burster level to fire" completionHandler:^(int level) {
 		[HUD hide:YES];
 		[self fireXMPOfLevel:level];
 		_levelChooser = nil;

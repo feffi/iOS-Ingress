@@ -267,4 +267,42 @@
 	}
 }
 
+#pragma mark - Portals
+
++ (UIImage *)iconForPortal:(Portal *)portal {
+
+	UIGraphicsBeginImageContextWithOptions(CGSizeMake(30, 30), NO, [UIScreen mainScreen].scale);
+	UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+	UIGraphicsEndImageContext();
+	return newImage;
+
+	//	if (portal.resonators.count > 0) {
+	//
+	//		NSString *factionStr;
+	//		if ([portal.controllingTeam isEqualToString:@"ALIENS"]) { factionStr = @"enl"; } else { factionStr = @"hum"; }
+	//
+	//		UIImage *bg = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%dres.png", factionStr, portal.resonators.count]];
+	//
+	//		int portalLevel = portal.level;
+	//
+	//		if (portalLevel > 1) {
+	//
+	//			UIImage *fg = [UIImage imageNamed:[NSString stringWithFormat:@"%@_lev%d.png", factionStr, portalLevel]];
+	//			UIGraphicsBeginImageContextWithOptions(bg.size, NO, [UIScreen mainScreen].scale);
+	//			[bg drawInRect:(CGRect){{0, 0}, bg.size}];
+	//			[fg drawInRect:(CGRect){{0, 0}, bg.size}];
+	//			UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
+	//			UIGraphicsEndImageContext();
+	//			return newImage;
+	//
+	//		} else {
+	//			return bg;
+	//		}
+	//
+	//	}
+	//
+	//	return [UIImage imageNamed:@"neutral_icon.png"];
+	
+}
+
 @end

@@ -37,10 +37,7 @@ typedef void (^SoundCompletionBlock)(void);
 @property (nonatomic, strong) NSMutableArray *energyToCollect;
 @property (nonatomic, readonly) long long currentTimestamp;
 
-@property (nonatomic) SystemSoundID ui_success_sound;
-@property (nonatomic) SystemSoundID ui_fail_sound;
-
-+ (API *)sharedInstance;
++ (instancetype)sharedInstance;
 
 + (NSDictionary *)sounds;
 + (float)durationOfSound:(NSString *)soundName;
@@ -51,7 +48,6 @@ typedef void (^SoundCompletionBlock)(void);
 - (void)playSounds:(NSArray *)soundNames;
 
 - (NSString *)currentE6Location;
-- (UIImage *)iconForPortal:(Portal *)portal;
 
 - (Player *)playerForContext:(NSManagedObjectContext *)context;
 

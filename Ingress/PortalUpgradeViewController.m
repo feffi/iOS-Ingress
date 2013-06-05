@@ -226,7 +226,7 @@
 	HUD.removeFromSuperViewOnHide = YES;
 	HUD.showCloseButton = YES;
 
-	_levelChooser = [LevelChooserViewController levelChooserWithTitle:@"Choose resonator level" completionHandler:^(int level) {
+	_levelChooser = [ChooserViewController levelChooserWithTitle:@"Choose resonator level" completionHandler:^(int level) {
 		[HUD hide:YES];
 		[self deployResonatorOfLevel:level toSlot:sender.superview.tag];
 		_levelChooser = nil;
@@ -382,7 +382,7 @@
 	HUD.dimBackground = YES;
 	HUD.showCloseButton = YES;
 
-	_levelChooser = [LevelChooserViewController rarityChooserWithTitle:@"Choose shield rarity" completionHandler:^(ItemRarity rarity) {
+	_levelChooser = [ChooserViewController rarityChooserWithTitle:@"Choose shield rarity" completionHandler:^(ItemRarity rarity) {
 		[HUD hide:YES];
 		[self deployShieldOfRarity:rarity toSlot:sender.tag-100];
 		_levelChooser = nil;

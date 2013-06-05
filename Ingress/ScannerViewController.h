@@ -10,7 +10,7 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <CoreImage/CoreImage.h>
-#import "LevelChooserViewController.h"
+#import "ChooserViewController.h"
 #import "GlowingLabel.h"
 #import "GUIButton.h"
 #import "APView.h"
@@ -21,7 +21,7 @@
 	__weak IBOutlet UIImageView *playerArrowImage;
 	
 	__weak IBOutlet UIButton *fireXmpButton;
-	LevelChooserViewController *_levelChooser;
+	ChooserViewController *_levelChooser;
 	
 	__weak IBOutlet UIImageView *bgImage;
 	

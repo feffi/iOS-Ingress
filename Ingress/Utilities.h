@@ -44,4 +44,6 @@ typedef enum {
 + (UIColor *)colorForLevel:(int)level;
 + (UIColor *)colorForFaction:(NSString *)faction;
 
++ (UIImage *)iconForPortal:(Portal *)portal;
+
 @end

@@ -113,6 +113,7 @@
 		FA600FE3175E90C500F360A6 /* shield_rare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA600FDC175E90C500F360A6 /* shield_rare@2x.png */; };
 		FA600FE4175E90C500F360A6 /* shield_verycommon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA600FDD175E90C500F360A6 /* shield_verycommon@2x.png */; };
 		FA600FE5175E90C500F360A6 /* shield_veryrare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA600FDE175E90C500F360A6 /* shield_veryrare@2x.png */; };
+		FA600FE9175F529C00F360A6 /* AudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA600FE8175F529C00F360A6 /* AudioManager.m */; };
 		FA6EF951172D11790004905F /* GlowingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6EF950172D11790004905F /* GlowingLabel.m */; };
 		FA6EF957172D1C490004905F /* trackImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EF956172D1C490004905F /* trackImage@2x.png */; };
 		FA6EF960172D2D360004905F /* progressImage-aliens@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EF95E172D2D350004905F /* progressImage-aliens@2x.png */; };
@@ -181,7 +182,7 @@
 		FAAA6C5D172299650066D540 /* CustomBackgroundColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAA6C5C172299650066D540 /* CustomBackgroundColorButton.m */; };
 		FAADA23A17291564001865D9 /* SelectingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FAADA23917291564001865D9 /* SelectingButton.m */; };
 		FAADA24017297DD9001865D9 /* MDCParallaxView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAADA23F17297DD9001865D9 /* MDCParallaxView.m */; };
-		FAB5A2CD16AA165D00176C34 /* LevelChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB5A2CC16AA165D00176C34 /* LevelChooserViewController.m */; };
+		FAB5A2CD16AA165D00176C34 /* ChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB5A2CC16AA165D00176C34 /* ChooserViewController.m */; };
 		FAC23D7716B16F31000C17DD /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC23D7616B16F31000C17DD /* CoreData.framework */; };
 		FAC23D7A16B16F44000C17DD /* Ingress.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAC23D7816B16F44000C17DD /* Ingress.xcdatamodeld */; };
 		FAC23E0B16B18755000C17DD /* Shield.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E0A16B18755000C17DD /* Shield.m */; };
@@ -428,6 +429,8 @@
 		FA600FDC175E90C500F360A6 /* shield_rare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shield_rare@2x.png"; sourceTree = "<group>"; };
 		FA600FDD175E90C500F360A6 /* shield_verycommon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shield_verycommon@2x.png"; sourceTree = "<group>"; };
 		FA600FDE175E90C500F360A6 /* shield_veryrare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shield_veryrare@2x.png"; sourceTree = "<group>"; };
+		FA600FE7175F529C00F360A6 /* AudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioManager.h; sourceTree = "<group>"; };
+		FA600FE8175F529C00F360A6 /* AudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioManager.m; sourceTree = "<group>"; };
 		FA6EF94F172D11790004905F /* GlowingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlowingLabel.h; path = GlowingLabel/GlowingLabel.h; sourceTree = "<group>"; };
 		FA6EF950172D11790004905F /* GlowingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlowingLabel.m; path = GlowingLabel/GlowingLabel.m; sourceTree = "<group>"; };
 		FA6EF956172D1C490004905F /* trackImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackImage@2x.png"; sourceTree = "<group>"; };
@@ -545,8 +548,8 @@
 		FAADA23917291564001865D9 /* SelectingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectingButton.m; sourceTree = "<group>"; };
 		FAADA23E17297DD9001865D9 /* MDCParallaxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDCParallaxView.h; path = MDCParallaxView/MDCParallaxView.h; sourceTree = "<group>"; };
 		FAADA23F17297DD9001865D9 /* MDCParallaxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDCParallaxView.m; path = MDCParallaxView/MDCParallaxView.m; sourceTree = "<group>"; };
-		FAB5A2CB16AA165D00176C34 /* LevelChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LevelChooserViewController.h; sourceTree = "<group>"; };
-		FAB5A2CC16AA165D00176C34 /* LevelChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LevelChooserViewController.m; sourceTree = "<group>"; };
+		FAB5A2CB16AA165D00176C34 /* ChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooserViewController.h; sourceTree = "<group>"; };
+		FAB5A2CC16AA165D00176C34 /* ChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooserViewController.m; sourceTree = "<group>"; };
 		FAC23D6F16B16EB6000C17DD /* DB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB.h; sourceTree = "<group>"; };
 		FAC23D7616B16F31000C17DD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FAC23D7916B16F44000C17DD /* Ingress.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ingress.xcdatamodel; sourceTree = "<group>"; };
@@ -874,6 +877,7 @@
 			children = (
 				FAC23D7C16B16F62000C17DD /* API */,
 				FA600FD6175E3FFC00F360A6 /* Utilities */,
+				FA600FE6175F527500F360A6 /* Audio Manager */,
 				FAC23D7B16B16F5A000C17DD /* DB */,
 				FAC23E4316B2D0C7000C17DD /* Overlay Views */,
 				FA8C24E416B3DFEE000C8738 /* Custom Map */,
@@ -1170,6 +1174,15 @@
 			path = mods;
 			sourceTree = "<group>";
 		};
+		FA600FE6175F527500F360A6 /* Audio Manager */ = {
+			isa = PBXGroup;
+			children = (
+				FA600FE7175F529C00F360A6 /* AudioManager.h */,
+				FA600FE8175F529C00F360A6 /* AudioManager.m */,
+			);
+			name = "Audio Manager";
+			sourceTree = "<group>";
+		};
 		FA6EF94E172D115F0004905F /* GlowingLabel */ = {
 			isa = PBXGroup;
 			children = (
@@ -1348,13 +1361,13 @@
 			name = MDCParallaxView;
 			sourceTree = "<group>";
 		};
-		FAB5A2C916AA164900176C34 /* Level Buttons */ = {
+		FAB5A2C916AA164900176C34 /* Chooser */ = {
 			isa = PBXGroup;
 			children = (
-				FAB5A2CB16AA165D00176C34 /* LevelChooserViewController.h */,
-				FAB5A2CC16AA165D00176C34 /* LevelChooserViewController.m */,
+				FAB5A2CB16AA165D00176C34 /* ChooserViewController.h */,
+				FAB5A2CC16AA165D00176C34 /* ChooserViewController.m */,
 			);
-			name = "Level Buttons";
+			name = Chooser;
 			path = Ingress;
 			sourceTree = "<group>";
 		};
@@ -1720,7 +1733,7 @@
 				FACD502016A441280077837F /* Portal Detail */,
 				FA32E885169F655E00D30E90 /* Comm */,
 				FAE71C2C1732ACA900742071 /* Device */,
-				FAB5A2C916AA164900176C34 /* Level Buttons */,
+				FAB5A2C916AA164900176C34 /* Chooser */,
 				FA32E871169EC13900D30E90 /* Model */,
 				FA512D1C16A0A2AA00C8A81C /* Resources */,
 				FAE6AC7616A0E27B0082BBB5 /* Extensions */,
@@ -2042,7 +2055,7 @@
 				FA4D43D416A8AB6C00B98C1F /* MTStatusBarOverlay.m in Sources */,
 				FA52007016A99AB0004AFE4D /* PortalKeysViewController.m in Sources */,
 				FA52007216A99C98004AFE4D /* iCarousel.m in Sources */,
-				FAB5A2CD16AA165D00176C34 /* LevelChooserViewController.m in Sources */,
+				FAB5A2CD16AA165D00176C34 /* ChooserViewController.m in Sources */,
 				FAD9D7C616AC640A006553E0 /* PortalActionsViewController.m in Sources */,
 				FAD9D7C916AC6414006553E0 /* PortalInfoViewController.m in Sources */,
 				FA7E1AB016AC6D3900C8F949 /* PortalOverlayView.m in Sources */,
@@ -2148,6 +2161,7 @@
 				FA061638174E7873001AB5CE /* Item.m in Sources */,
 				FA036DE7175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController.m in Sources */,
 				FA600FD5175E3FF900F360A6 /* Utilities.m in Sources */,
+				FA600FE9175F529C00F360A6 /* AudioManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

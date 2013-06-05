@@ -28,10 +28,7 @@ NSString *const MilesOrKM = @"MilesOrKM";
 @synthesize energyToCollect = _energyToCollect;
 @synthesize currentTimestamp = _currentTimestamp;
 
-@synthesize ui_success_sound = _ui_success_sound;
-@synthesize ui_fail_sound = _ui_fail_sound;
-
-+ (API *)sharedInstance {
++ (instancetype)sharedInstance {
     static dispatch_once_t onceToken;
     static API * __sharedInstance = nil;
     dispatch_once(&onceToken, ^{
@@ -49,11 +46,6 @@ NSString *const MilesOrKM = @"MilesOrKM";
 		self.energyToCollect = [NSMutableArray array];
 	}
     return self;
-}
-
-- (void)dealloc {
-	AudioServicesDisposeSystemSoundID(self.ui_success_sound);
-	AudioServicesDisposeSystemSoundID(self.ui_fail_sound);
 }
 
 #pragma mark - Knob Sync
@@ -361,57 +353,7 @@ NSString *const MilesOrKM = @"MilesOrKM";
 	return [NSString stringWithFormat:@"%08x,%08x", (int)(loc.latitude*1E6), (int)(loc.longitude*1E6)];
 }
 
-#pragma mark - Portals
-
-- (UIImage *)iconForPortal:(Portal *)portal {
-
-	UIGraphicsBeginImageContextWithOptions(CGSizeMake(30, 30), NO, [UIScreen mainScreen].scale);
-	UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-	UIGraphicsEndImageContext();
-	return newImage;
-
-//	if (portal.resonators.count > 0) {
-//
-//		NSString *factionStr;
-//		if ([portal.controllingTeam isEqualToString:@"ALIENS"]) { factionStr = @"enl"; } else { factionStr = @"hum"; }
-//		
-//		UIImage *bg = [UIImage imageNamed:[NSString stringWithFormat:@"%@_%dres.png", factionStr, portal.resonators.count]];
-//		
-//		int portalLevel = portal.level;
-//
-//		if (portalLevel > 1) {
-//			
-//			UIImage *fg = [UIImage imageNamed:[NSString stringWithFormat:@"%@_lev%d.png", factionStr, portalLevel]];
-//			UIGraphicsBeginImageContextWithOptions(bg.size, NO, [UIScreen mainScreen].scale);
-//			[bg drawInRect:(CGRect){{0, 0}, bg.size}];
-//			[fg drawInRect:(CGRect){{0, 0}, bg.size}];
-//			UIImage *newImage = UIGraphicsGetImageFromCurrentImageContext();
-//			UIGraphicsEndImageContext();
-//			return newImage;
-//			
-//		} else {
-//			return bg;
-//		}
-//
-//	}
-//	
-//	return [UIImage imageNamed:@"neutral_icon.png"];
-
-}
-
 #pragma mark - Player
-
-//- (Player *)player {
-//	if (!_player) {
-//		Player *player = [Player MR_findFirstByAttribute:@"guid" withValue:playerGuid];
-//		if (!player) {
-//			player = [Player MR_createEntity];
-//			player.guid = playerGuid;
-//		}
-//		_player = player;
-//	}
-//	return _player;
-//}
 
 - (Player *)playerForContext:(NSManagedObjectContext *)context {
 	if (playerGuid) {

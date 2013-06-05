@@ -11,6 +11,7 @@
 
 @implementation ResourceCell {
 	int actionLevel;
+	ChooserViewController *_countChooser;
 }
 
 - (void)layoutSubviews {
@@ -92,7 +93,7 @@
 	actionLevel = sender.tag-10;
 
 	if (self.itemType == ItemTypePowerCube || self.itemType == ItemTypeFlipCard) {
-		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Drop" otherButtonTitles:@"Use", @"Recycle", nil];
+		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Drop" otherButtonTitles:@"Recycle", @"Use", nil];
 		[actionSheet showInView:self];
 	} else {
 		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Drop" otherButtonTitles:@"Recycle", nil];
@@ -127,53 +128,83 @@
 			break;
 	}
 
-	NSString *guid;
+	int maxCount = 0;
 
 	if (self.itemType == ItemTypePortalShield) {
 		ItemRarity rarity = [Utilities rarityFromInt:actionLevel];
-		guid = [[objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]] guid];
-	} else if (self.itemType == ItemTypeFlipCard) {
-		guid = [[objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && type = %@", (actionLevel == 1) ? @"JARVIS" : @"ADA"]] guid];
+		maxCount = [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
 	} else if (self.itemType == ItemTypeLinkAmp) {
-		guid = nil;
+		maxCount = 0;
+	} else if (self.itemType == ItemTypeFlipCard) {
+		maxCount = [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && type = %@", (actionLevel == 1) ? @"JARVIS" : @"ADA"]];
 	} else {
-		guid = [[objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", actionLevel]] guid];
+		maxCount = [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", actionLevel]];
 	}
 
-	actionLevel = 0;
-
-	if (guid) {
-
-		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-		HUD.userInteractionEnabled = YES;
-		HUD.mode = MBProgressHUDModeIndeterminate;
-		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		HUD.labelText = @"Dropping Item...";
-		[[AppDelegate instance].window addSubview:HUD];
-		[HUD show:YES];
-        
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
-            [[SoundManager sharedManager] playSound:@"Sound/sfx_drop_resource.aif"];
-        }
-        
-		[[API sharedInstance] dropItemWithGuid:guid completionHandler:^(void) {
-			[HUD hide:YES];
-		}];
-
-	} else {
+	if (maxCount > 0) {
 
 		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 		HUD.userInteractionEnabled = YES;
-		HUD.dimBackground = YES;
 		HUD.mode = MBProgressHUDModeCustomView;
-		HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-		HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		HUD.detailsLabelText = @"No Item";
+		HUD.dimBackground = YES;
+		HUD.showCloseButton = YES;
+
+		_countChooser = [ChooserViewController countChooserWithButtonTitle:@"DROP" maxCount:maxCount completionHandler:^(int count) {
+			if (count > 0) {
+				[HUD hide:YES];
+				_countChooser = nil;
+
+				__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+				HUD.userInteractionEnabled = YES;
+				HUD.mode = MBProgressHUDModeIndeterminate;
+				HUD.dimBackground = YES;
+				HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+				HUD.labelText = @"Dropping...";
+				[[AppDelegate instance].window addSubview:HUD];
+				[HUD show:YES];
+
+				if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+					[[SoundManager sharedManager] playSound:@"Sound/sfx_drop_resource.aif"];
+				}
+
+				NSArray *items;
+
+				if (self.itemType == ItemTypePortalShield) {
+					ItemRarity rarity = [Utilities rarityFromInt:actionLevel];
+					items = [objectClass MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
+				} else if (self.itemType == ItemTypeFlipCard) {
+					items = [objectClass MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && type = %@", (actionLevel == 1) ? @"JARVIS" : @"ADA"]];
+				} else if (self.itemType == ItemTypeLinkAmp) {
+					items = nil;
+				} else {
+					items = [objectClass MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", actionLevel]];
+				}
+
+				if (items.count > count) {
+					items = [items subarrayWithRange:NSMakeRange(0, count)];
+				}
+
+				__block int completed = 0;
+				for (Item *item in items) {
+
+					[[API sharedInstance] dropItemWithGuid:item.guid completionHandler:^(void) {
+						completed++;
+						if (completed == items.count) {
+							[HUD hide:YES];
+						}
+					}];
+
+				}
+
+			}
+		}];
+		HUD.customView = _countChooser.view;
+		
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
-		[HUD hide:YES afterDelay:HUD_DELAY_TIME];
-		
+
+	} else {
+		[Utilities showWarningWithTitle:@"No Item"];
 	}
 
 }
@@ -202,53 +233,83 @@
 			break;
 	}
 
-	Item *item;
+	int maxCount = 0;
 
 	if (self.itemType == ItemTypePortalShield) {
 		ItemRarity rarity = [Utilities rarityFromInt:actionLevel];
-		item = [objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
-	} else if (self.itemType == ItemTypeFlipCard) {
-		item = [objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && type = %@", (actionLevel == 1) ? @"JARVIS" : @"ADA"]];
+		maxCount = [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
 	} else if (self.itemType == ItemTypeLinkAmp) {
-		item = nil;
+		maxCount = 0;
+	} else if (self.itemType == ItemTypeFlipCard) {
+		maxCount = [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && type = %@", (actionLevel == 1) ? @"JARVIS" : @"ADA"]];
 	} else {
-		item = [objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", actionLevel]];
+		maxCount = [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", actionLevel]];
 	}
 
-	actionLevel = 0;
-
-	if (item) {
-
-		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-		HUD.userInteractionEnabled = YES;
-		HUD.mode = MBProgressHUDModeIndeterminate;
-		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		HUD.labelText = @"Recycling Item...";
-		[[AppDelegate instance].window addSubview:HUD];
-		[HUD show:YES];
-        
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
-            [[SoundManager sharedManager] playSound:[NSString stringWithFormat:@"Sound/sfx_recycle_%@.aif", arc4random_uniform(2) ? @"a" : @"b"]];
-        }
-        
-		[[API sharedInstance] recycleItem:item completionHandler:^{
-			[HUD hide:YES];
-		}];
-
-	} else {
+	if (maxCount > 0) {
 
 		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 		HUD.userInteractionEnabled = YES;
-		HUD.dimBackground = YES;
 		HUD.mode = MBProgressHUDModeCustomView;
-		HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-		HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		HUD.detailsLabelText = @"No Item";
+		HUD.dimBackground = YES;
+		HUD.showCloseButton = YES;
+
+		_countChooser = [ChooserViewController countChooserWithButtonTitle:@"RECYCLE" maxCount:maxCount completionHandler:^(int count) {
+			if (count > 0) {
+				[HUD hide:YES];
+				_countChooser = nil;
+
+				__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+				HUD.userInteractionEnabled = YES;
+				HUD.mode = MBProgressHUDModeIndeterminate;
+				HUD.dimBackground = YES;
+				HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+				HUD.labelText = @"Recycling...";
+				[[AppDelegate instance].window addSubview:HUD];
+				[HUD show:YES];
+
+				if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+					[[SoundManager sharedManager] playSound:[NSString stringWithFormat:@"Sound/sfx_recycle_%@.aif", arc4random_uniform(2) ? @"a" : @"b"]];
+				}
+
+				NSArray *items;
+
+				if (self.itemType == ItemTypePortalShield) {
+					ItemRarity rarity = [Utilities rarityFromInt:actionLevel];
+					items = [objectClass MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
+				} else if (self.itemType == ItemTypeFlipCard) {
+					items = [objectClass MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && type = %@", (actionLevel == 1) ? @"JARVIS" : @"ADA"]];
+				} else if (self.itemType == ItemTypeLinkAmp) {
+					items = nil;
+				} else {
+					items = [objectClass MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", actionLevel]];
+				}
+
+				if (items.count > count) {
+					items = [items subarrayWithRange:NSMakeRange(0, count)];
+				}
+
+				__block int completed = 0;
+				for (Item *item in items) {
+
+					[[API sharedInstance] recycleItem:item completionHandler:^(void) {
+						completed++;
+						if (completed == items.count) {
+							[HUD hide:YES];
+						}
+					}];
+
+				}
+
+			}
+		}];
+		HUD.customView = _countChooser.view;
+
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
-		[HUD hide:YES afterDelay:HUD_DELAY_TIME];
-		
+
+	} else {
+		[Utilities showWarningWithTitle:@"No Item"];
 	}
 
 }
@@ -336,13 +397,13 @@
 		if (buttonIndex == 0) {
 			[self dropItem];
 		} else if (buttonIndex == 1) {
+			[self recycleItem];
+		} else if (buttonIndex == 2) {
 			if (self.itemType == ItemTypePowerCube) {
 				[self usePowerCube];
 			} else {
 				[self useFlipCard];
 			}
-		} else if (buttonIndex == 2) {
-			[self recycleItem];
 		}
 	} else {
 		if (buttonIndex == 0) {
