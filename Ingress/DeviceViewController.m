@@ -82,7 +82,7 @@
             }
             break;
         }
-        case 7:
+        case 9:
         {
             if (![[NSUserDefaults standardUserDefaults] boolForKey:MilesOrKM]) {
                 cell.textLabel.text = @"Switch units to kilometers";
