@@ -34,34 +34,31 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
-	switch (self.view.tag) {
-		case 100: {
-
-			Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-			int level = player.level;
-			
-			for (int i = 1; i <= 8; i++) {
-				UIButton *button = (UIButton *)[self.view viewWithTag:i];
-				if (i <= level) {
-					[button setEnabled:YES];
-				} else {
-					[button setEnabled:NO];
-				}
+	if (self.view.tag == 100) {
+		Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+		int level = player.level;
+		
+		for (int i = 1; i <= 8; i++) {
+			UIButton *button = (UIButton *)[self.view viewWithTag:i];
+			if (i <= level) {
+				[button setEnabled:YES];
+			} else {
+				[button setEnabled:NO];
 			}
-			
-			break;
 		}
 	}
 
 }
 
-- (void)viewDidLayoutSubviews {
+- (void)viewWillLayoutSubviews {
 	[super viewDidLayoutSubviews];
 
 	for (UIView *view in self.view.subviews) {
 		if ([view isKindOfClass:[UIButton class]]) {
 			UIButton *button = (UIButton *)view;
-			button.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:10];
+			if (self.view.tag == 200) {
+				button.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:10];
+			}
 			button.titleLabel.numberOfLines = 0;
 			button.titleLabel.textAlignment = NSTextAlignmentCenter;
 		}
