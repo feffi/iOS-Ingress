@@ -271,7 +271,7 @@
 	NSMutableParagraphStyle *pStyle = [NSMutableParagraphStyle new];
     pStyle.alignment = NSTextAlignmentRight;
 
-	UIColor *teamColor = [API colorForFaction:player.team];
+	UIColor *teamColor = [Utilities colorForFaction:player.team];
 	
 	[apView setFaction:player.team];
 	NSArray *maxAPs = @[@0, @10000, @30000, @70000, @150000, @300000, @600000, @1200000, @(INFINITY)];
@@ -640,19 +640,7 @@
 			}];
 
 			if (errorStr) {
-
-				HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-				HUD.userInteractionEnabled = YES;
-				HUD.dimBackground = YES;
-				HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-				HUD.mode = MBProgressHUDModeCustomView;
-				HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-				HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-				HUD.detailsLabelText = errorStr;
-				[[AppDelegate instance].window addSubview:HUD];
-				[HUD show:YES];
-				[HUD hide:YES afterDelay:HUD_DELAY_TIME];
-
+				[Utilities showWarningWithTitle:errorStr];
 			} else {
                 if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
                     [[API sharedInstance] playSound:@"SFX_RESOURCE_PICK_UP"];
@@ -679,13 +667,17 @@
             [[SoundManager sharedManager] playSound:@"Sound/sfx_flipcard_tugofwar.aif"];
         }
         
-		[[API sharedInstance] flipPortal:currentPortal withFlipCard:self.virusToUse completionHandler:^{
-            if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
-                [[API sharedInstance] playSound:@"SFX_FLIPCARD_EXPLOSION"];
-            }
+		[[API sharedInstance] flipPortal:currentPortal withFlipCard:self.virusToUse completionHandler:^(NSString *errorStr) {
 			[HUD hide:YES];
 			self.virusToUse = nil;
-			[self refresh];
+			if (errorStr) {
+				[Utilities showWarningWithTitle:errorStr];
+			} else {
+				if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+					[[API sharedInstance] playSound:@"SFX_FLIPCARD_EXPLOSION"];
+				}
+				[self refresh];
+			}
 		}];
 		
 	}
@@ -810,20 +802,20 @@
 	} else if ([overlay isKindOfClass:[MKPolyline class]]) {
 		MKPolyline *polyline = (MKPolyline *)overlay;
 		MKPolylineView *polylineView = [[MKPolylineView alloc] initWithPolyline:polyline];
-		polylineView.strokeColor = [API colorForFaction:polyline.portalLink.controllingTeam];
+		polylineView.strokeColor = [Utilities colorForFaction:polyline.portalLink.controllingTeam];
 		polylineView.lineWidth = 1;
 		return polylineView;
 	} else if ([overlay isKindOfClass:[MKPolygon class]]) {
 		MKPolygon *polygon = (MKPolygon *)overlay;
 		MKPolygonView *polygonView = [[MKPolygonView alloc] initWithPolygon:polygon];
-		polygonView.fillColor = [API colorForFaction:polygon.controlField.controllingTeam];
+		polygonView.fillColor = [Utilities colorForFaction:polygon.controlField.controllingTeam];
 		polygonView.alpha = .1;
 		return polygonView;
 	} else if ([overlay isKindOfClass:[MKCircle class]]) {
 		MKCircle *circle = (MKCircle *)overlay;
 		if (circle.deployedResonator) {
 			DeployedResonatorView *circleView = [[DeployedResonatorView alloc] initWithCircle:circle];
-			circleView.fillColor = [API colorForLevel:circle.deployedResonator.level];
+			circleView.fillColor = [Utilities colorForLevel:circle.deployedResonator.level];
 			return circleView;
         }
 	} else if ([overlay isKindOfClass:[XMOverlay class]]) {
@@ -1042,7 +1034,7 @@
 					
 					DeployedResonator *resonator = [DeployedResonator MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"portal = %@ && slot = %d", portal, slot]];
 					int level = resonator.level;
-					int maxEnergy = [API maxEnergyForResonatorLevel:level];
+					int maxEnergy = [Utilities maxEnergyForResonatorLevel:level];
 					
 					[damagesStr appendFormat:@"  • %d: -%d/%d %@%@\n", slot, damageAmount, maxEnergy, (critical ? @" CRITICAL" : @""), (destroyed ? @" DESTROYED" : @"")];
 

@@ -21,15 +21,15 @@
 @dynamic shouldPushNotifyForPortalAttacks;
 
 - (int)level {
-	return [API levelForAp:self.ap];
+	return [Utilities levelForAp:self.ap];
 }
 
 - (int)maxEnergy {
-	return [API maxXmForLevel:self.level];
+	return [Utilities maxXmForLevel:self.level];
 }
 
 - (int)nextLevelAP {
-	return [API maxApForLevel:self.level];
+	return [Utilities maxApForLevel:self.level];
 }
 
 @end

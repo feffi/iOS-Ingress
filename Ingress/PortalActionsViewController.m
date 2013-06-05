@@ -84,7 +84,7 @@
 	
 	User *user = self.portal.capturedBy;
 	NSString *nickname = user.nickname;
-	if (!nickname) { nickname = [API factionStrForFaction:self.portal.controllingTeam]; }
+	if (!nickname) { nickname = [Utilities factionStrForFaction:self.portal.controllingTeam]; }
 	[str appendFormat:@"Owner: %@", nickname];
 
 	NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:str];
@@ -92,11 +92,11 @@
 	NSShadow *shadow = [NSShadow shadowWithOffset:CGSizeZero blurRadius:15/5 color:[UIColor colorWithRed:.56 green:1 blue:1 alpha:1]];
 	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15], NSForegroundColorAttributeName : [UIColor colorWithRed:.56 green:1 blue:1 alpha:1], NSShadowAttributeName: shadow} range:NSMakeRange(0, str.length)];
 
-	shadow = [NSShadow shadowWithOffset:CGSizeZero blurRadius:15/5 color:[API colorForLevel:self.portal.level]];
-	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15], NSForegroundColorAttributeName : [API colorForLevel:self.portal.level], NSShadowAttributeName: shadow} range:NSMakeRange(7, 2)];
+	shadow = [NSShadow shadowWithOffset:CGSizeZero blurRadius:15/5 color:[Utilities colorForLevel:self.portal.level]];
+	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15], NSForegroundColorAttributeName : [Utilities colorForLevel:self.portal.level], NSShadowAttributeName: shadow} range:NSMakeRange(7, 2)];
 
-	shadow = [NSShadow shadowWithOffset:CGSizeZero blurRadius:15/5 color:[API colorForFaction:self.portal.controllingTeam]];
-	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15], NSForegroundColorAttributeName : [API colorForFaction:self.portal.controllingTeam], NSShadowAttributeName: shadow} range:NSMakeRange(str.length-(nickname.length), nickname.length)];
+	shadow = [NSShadow shadowWithOffset:CGSizeZero blurRadius:15/5 color:[Utilities colorForFaction:self.portal.controllingTeam]];
+	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15], NSForegroundColorAttributeName : [Utilities colorForFaction:self.portal.controllingTeam], NSShadowAttributeName: shadow} range:NSMakeRange(str.length-(nickname.length), nickname.length)];
 
 	infoLabel1.attributedText = attrStr;
 
@@ -199,7 +199,7 @@
             
 			[[API sharedInstance] playSounds:sounds];
 
-			[API showWarningWithTitle:errorStr];
+			[Utilities showWarningWithTitle:errorStr];
 			
 		} else {
 
@@ -278,7 +278,7 @@
 
 					if ([acquiredItem hasPrefix:@"L"]) {
 						int level = [[acquiredItem substringWithRange:NSMakeRange(1, 1)] intValue];
-						[acquiredItemStr setAttributes:[Utilities attributesWithShadow:YES size:15 color:[API colorForLevel:level]] range:NSMakeRange(0, 2)];
+						[acquiredItemStr setAttributes:[Utilities attributesWithShadow:YES size:15 color:[Utilities colorForLevel:level]] range:NSMakeRange(0, 2)];
 					} else if ([acquiredItem hasPrefix:@"Common"]) {
 						//[acquiredItemStr setAttributes:[Utilities attributesWithShadow:YES size:15 color:[API colorForLevel:level]] range:NSMakeRange(0, 2)];
 					}
@@ -349,7 +349,7 @@
 		[HUD hide:YES];
 
 		if (errorStr) {
-			[API showWarningWithTitle:errorStr];
+			[Utilities showWarningWithTitle:errorStr];
 		} else {
             if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
                 [[SoundManager sharedManager] playSound:@"Sound/sfx_resonator_recharge.aif"];

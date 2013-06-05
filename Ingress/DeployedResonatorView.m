@@ -27,7 +27,7 @@
 - (void)damage:(NSNotification *)notification {
 	damageDict = notification.userInfo;
     
-    int damagePercent = ([damageDict[@"damageAmount"] floatValue]/(float)[API maxEnergyForResonatorLevel:self.circle.deployedResonator.level])*100;
+    int damagePercent = ([damageDict[@"damageAmount"] floatValue]/(float)[Utilities maxEnergyForResonatorLevel:self.circle.deployedResonator.level])*100;
     
     if (damagePercent > 0) {
         GlowingLabel *damageText = [[GlowingLabel alloc] init];

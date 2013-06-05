@@ -55,11 +55,11 @@
 			int slot = resonator.slot;
 			int level = resonator.level;
 			float energy = resonator.energy;
-			float maxEnergy = (float)[API maxEnergyForResonatorLevel:level];
+			float maxEnergy = (float)[Utilities maxEnergyForResonatorLevel:level];
 
 			UILabel *levelLabel = (UILabel *)[self.view viewWithTag:10+slot];
 			levelLabel.text = [NSString stringWithFormat:@"L%d", level];
-			levelLabel.textColor = [API colorForLevel:level];
+			levelLabel.textColor = [Utilities colorForLevel:level];
 
 			UIImageView *resonatorImage = (UIImageView *)[self.view viewWithTag:30+slot];
 			[resonatorImage setHidden:NO];

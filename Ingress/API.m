@@ -8,9 +8,6 @@
 
 #import "API.h"
 
-#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
-green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
-
 NSString *const DeviceSoundLevel = @"DeviceSoundLevel";
 NSString *const DeviceSoundToggleBackground = @"FHDeviceSoundToggleBackground";
 NSString *const DeviceSoundToggleEffects = @"FHDeviceSoundToggleEffects";
@@ -57,151 +54,6 @@ NSString *const MilesOrKM = @"MilesOrKM";
 - (void)dealloc {
 	AudioServicesDisposeSystemSoundID(self.ui_success_sound);
 	AudioServicesDisposeSystemSoundID(self.ui_fail_sound);
-}
-
-#pragma mark - Warning
-
-+ (void)showWarningWithTitle:(NSString *)title {
-	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-	HUD.userInteractionEnabled = YES;
-	HUD.dimBackground = YES;
-	HUD.removeFromSuperViewOnHide = YES;
-	HUD.mode = MBProgressHUDModeCustomView;
-	HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-	HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-	HUD.detailsLabelText = title;
-	[[AppDelegate instance].window addSubview:HUD];
-	[HUD show:YES];
-	[HUD hide:YES afterDelay:HUD_DELAY_TIME];
-}
-
-#pragma mark - Levels
-
-+ (int)levelForAp:(int)ap {
-	
-	if (ap > 1200000) {
-		return 8;
-	} else if (ap > 600000) {
-		return 7;
-	} else if (ap > 300000) {
-		return 6;
-	} else if (ap > 150000) {
-		return 5;
-	} else if (ap > 70000) {
-		return 4;
-	} else if (ap > 30000) {
-		return 3;
-	} else if (ap > 10000) {
-		return 2;
-	} else if (ap >= 0) {
-		return 1;
-	}
-	
-	return 0;
-	
-}
-
-+ (int)maxApForLevel:(int)level {
-	return (level > 0 && level < 8) ? [@[@0, @10000, @30000, @70000, @150000, @300000, @600000, @1200000, @(INFINITY)][level] intValue] : 0;
-}
-
-+ (int)maxXmForLevel:(int)level {
-	
-	switch (level) {
-		case 1:
-			return 3000;
-		case 2:
-			return 4000;
-		case 3:
-			return 5000;
-		case 4:
-			return 6000;
-		case 5:
-			return 7000;
-		case 6:
-			return 8000;
-		case 7:
-			return 9000;
-		case 8:
-			return 10000;
-		default:
-			return 0;
-	}
-	
-}
-
-+ (int)maxEnergyForResonatorLevel:(int)level {
-	
-	switch (level) {
-		case 1:
-			return 1000;
-		case 2:
-			return 1500;
-		case 3:
-			return 2000;
-		case 4:
-			return 2500;
-		case 5:
-			return 3000;
-		case 6:
-			return 4000;
-		case 7:
-			return 5000;
-		case 8:
-			return 6000;
-		default:
-			return 0;
-	}
-	
-}
-
-#pragma mark - Factions
-
-+ (NSString *)factionStrForFaction:(NSString *)faction {
-	if ([faction isEqualToString:@"ALIENS"]) {
-		return @"Enlightened";
-	} else if ([faction isEqualToString:@"RESISTANCE"]) {
-		return @"Resistance";
-	} else {
-		return @"Neutral";
-	}
-}
-
-#pragma mark - Colors
-
-+ (UIColor *)colorForLevel:(int)level {
-	
-	switch (level) {
-		case 1:
-			return UIColorFromRGB(0xfece5a);
-		case 2:
-			return UIColorFromRGB(0xffa630);
-		case 3:
-			return UIColorFromRGB(0xff7315);
-		case 4:
-			return UIColorFromRGB(0xe40000);
-		case 5:
-			return UIColorFromRGB(0xfd2992);
-		case 6:
-			return UIColorFromRGB(0xeb26cd);
-		case 7:
-			return UIColorFromRGB(0xc124e0);
-		case 8:
-			return UIColorFromRGB(0x9627f4);
-		default:
-			return [UIColor whiteColor];
-	}
-	
-}
-
-+ (UIColor *)colorForFaction:(NSString *)faction {
-	if ([faction isEqualToString:@"ALIENS"]) {
-		return [UIColor colorWithRed:0.000 green:0.945 blue:0.439 alpha:1.000];
-	} else if ([faction isEqualToString:@"RESISTANCE"]) {
-		return [UIColor colorWithRed:0 green:194./255. blue:1 alpha:1];
-	} else {
-		return [UIColor grayColor];
-	}
 }
 
 #pragma mark - Knob Sync
@@ -1405,7 +1257,7 @@ NSString *const MilesOrKM = @"MilesOrKM";
 
 }
 
-- (void)flipPortal:(Portal *)portal withFlipCard:(FlipCard *)flipCard completionHandler:(void (^)(void))handler {
+- (void)flipPortal:(Portal *)portal withFlipCard:(FlipCard *)flipCard completionHandler:(void (^)(NSString *errorStr))handler {
 
 	NSDictionary *dict = @{
 		@"portalGuid": portal.guid,
@@ -1416,7 +1268,7 @@ NSString *const MilesOrKM = @"MilesOrKM";
 		//NSLog(@"flipPortal responseObj: %@", responseObj);
 
 		dispatch_async(dispatch_get_main_queue(), ^{
-			handler();
+			handler(responseObj[@"error"]);
 		});
 
 	}];
@@ -2004,7 +1856,7 @@ NSString *const MilesOrKM = @"MilesOrKM";
 	Player *player = [self playerForContext:context];
 
 	int oldLevel = player.level;
-	int newLevel = [API levelForAp:[playerEntity[2][@"playerPersonal"][@"ap"] intValue]];
+	int newLevel = [Utilities levelForAp:[playerEntity[2][@"playerPersonal"][@"ap"] intValue]];
 	
 	if (player.ap != 0 && newLevel > oldLevel) {
         if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects] && [[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
@@ -2014,7 +1866,7 @@ NSString *const MilesOrKM = @"MilesOrKM";
 
 	if (player.energy != [playerEntity[2][@"playerPersonal"][@"energy"] intValue]) {
         if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
-            int xmPercent = (int)round(([playerEntity[2][@"playerPersonal"][@"energy"] floatValue]/[API maxXmForLevel:newLevel])*100);
+            int xmPercent = (int)round(([playerEntity[2][@"playerPersonal"][@"energy"] floatValue]/[Utilities maxXmForLevel:newLevel])*100);
             
             NSMutableArray *sounds = [NSMutableArray arrayWithCapacity:4];
             [sounds addObject:@"SPEECH_XM_LEVELS"];

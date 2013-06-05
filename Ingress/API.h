@@ -42,18 +42,6 @@ typedef void (^SoundCompletionBlock)(void);
 
 + (API *)sharedInstance;
 
-+ (void)showWarningWithTitle:(NSString *)title;
-
-+ (int)levelForAp:(int)ap;
-+ (int)maxApForLevel:(int)level;
-+ (int)maxXmForLevel:(int)level;
-+ (int)maxEnergyForResonatorLevel:(int)level;
-
-+ (NSString *)factionStrForFaction:(NSString *)faction;
-
-+ (UIColor *)colorForLevel:(int)level;
-+ (UIColor *)colorForFaction:(NSString *)faction;
-
 + (NSDictionary *)sounds;
 + (float)durationOfSound:(NSString *)soundName;
 + (NSArray *)soundsForNumber:(int)number;
@@ -95,7 +83,7 @@ typedef void (^SoundCompletionBlock)(void);
 - (void)linkPortal:(Portal *)portal withPortalKey:(PortalKey *)portalKey completionHandler:(void (^)(NSString *errorStr))handler;
 - (void)setNotificationSettingsWithCompletionHandler:(void (^)(void))handler;
 - (void)getModifiedEntity:(Item *)item completionHandler:(void (^)(void))handler;
-- (void)flipPortal:(Portal *)portal withFlipCard:(FlipCard *)flipCard completionHandler:(void (^)(void))handler;
+- (void)flipPortal:(Portal *)portal withFlipCard:(FlipCard *)flipCard completionHandler:(void (^)(NSString *errorStr))handler;
 - (void)cheatSetPlayerLevel;
 
 - (void)sendRequest:(NSString *)requestName params:(id)params completionHandler:(void (^)(id responseObj))handler;

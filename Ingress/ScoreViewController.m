@@ -31,9 +31,9 @@
 	//pieChart.percentageFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
 	
 	PCPieComponent *component1 = [PCPieComponent pieComponentWithTitle:@"Enlightened" value:1.001];
-	[component1 setColour:[API colorForFaction:@"ALIENS"]];
+	[component1 setColour:[Utilities colorForFaction:@"ALIENS"]];
 	PCPieComponent *component2 = [PCPieComponent pieComponentWithTitle:@"Resistance" value:1];
-	[component2 setColour:[API colorForFaction:@"RESISTANCE"]];
+	[component2 setColour:[Utilities colorForFaction:@"RESISTANCE"]];
 	[pieChart setComponents:@[component2, component1]];
 	
 //	for (UIViewController *vc in self.childViewControllers) {

@@ -101,7 +101,7 @@
 	cell.detailTextLabel.text = portal.address;
 	if (portal.completeInfo) {
 		if ([@[@"ALIENS", @"RESISTANCE"] containsObject:portal.controllingTeam]) {
-			cell.textLabel.textColor = [API colorForFaction:portal.controllingTeam];
+			cell.textLabel.textColor = [Utilities colorForFaction:portal.controllingTeam];
 		} else {
 			cell.textLabel.textColor = [UIColor lightGrayColor];
 		}
@@ -118,7 +118,7 @@
 		Portal *portal = portals[indexPath.row];
 		if (portal.completeInfo) {
 			if ([@[@"ALIENS", @"RESISTANCE"] containsObject:portal.controllingTeam]) {
-				cell.textLabel.textColor = [API colorForFaction:portal.controllingTeam];
+				cell.textLabel.textColor = [Utilities colorForFaction:portal.controllingTeam];
 			} else {
 				cell.textLabel.textColor = [UIColor lightGrayColor];
 			}

@@ -300,10 +300,10 @@
 	choosingLabel.hidden = YES;
 
 	[joinResistanceButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:22]];
-	[joinResistanceButton setTitleColor:[API colorForFaction:@"RESISTANCE"] forState:UIControlStateNormal];
+	[joinResistanceButton setTitleColor:[Utilities colorForFaction:@"RESISTANCE"] forState:UIControlStateNormal];
 
 	[joinEnlightenedButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:22]];
-	[joinEnlightenedButton setTitleColor:[API colorForFaction:@"ALIENS"] forState:UIControlStateNormal];
+	[joinEnlightenedButton setTitleColor:[Utilities colorForFaction:@"ALIENS"] forState:UIControlStateNormal];
 	
 }
 

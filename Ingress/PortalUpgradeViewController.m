@@ -171,7 +171,7 @@
 		NSMutableString *resonatorString = [NSMutableString string];
 		[resonatorString appendFormat:@"Octant: %@\n", resonatorOctant];
 		[resonatorString appendFormat:@"Level: %d\n", resonator.level];
-		[resonatorString appendFormat:@"%d / %d XM\n", resonator.energy, [API maxEnergyForResonatorLevel:resonator.level]];
+		[resonatorString appendFormat:@"%d / %d XM\n", resonator.energy, [Utilities maxEnergyForResonatorLevel:resonator.level]];
 
 		NSString *nickname = resonator.owner.nickname;
 		if (nickname) { [resonatorString appendFormat:@"Owner: %@", nickname]; }
@@ -245,7 +245,7 @@
 		Resonator *resonatorItem = [Resonator MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", level]];
 
 		if (!resonatorItem) {
-			[API showWarningWithTitle:@"No resonator of that level remaining!"];
+			[Utilities showWarningWithTitle:@"No resonator of that level remaining!"];
 		} else {
 
 			[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Deploy Resonator" withLabel:self.portal.name withValue:@(resonatorItem.level)];
@@ -264,7 +264,7 @@
 				[HUD hide:YES];
 
 				if (errorStr) {
-					[API showWarningWithTitle:errorStr];
+					[Utilities showWarningWithTitle:errorStr];
 				} else {
 
 					dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
@@ -291,7 +291,7 @@
 
 		if (!resonatorItem) {
 
-			[API showWarningWithTitle:@"No resonator of that level remaining!"];
+			[Utilities showWarningWithTitle:@"No resonator of that level remaining!"];
 
 		} else {
 
@@ -310,7 +310,7 @@
 				[HUD hide:YES];
 
 				if (errorStr) {
-					[API showWarningWithTitle:errorStr];
+					[Utilities showWarningWithTitle:errorStr];
 				} else {
 
 					dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
@@ -351,7 +351,7 @@
 		[HUD hide:YES];
 
 		if (errorStr) {
-			[API showWarningWithTitle:errorStr];
+			[Utilities showWarningWithTitle:errorStr];
 		} else {
 
 			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(.1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
@@ -402,7 +402,7 @@
 	Shield *shieldItem = [Shield MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
 
 	if (!shieldItem) {
-		[API showWarningWithTitle:@"No shield of that rarity remaining!"];
+		[Utilities showWarningWithTitle:@"No shield of that rarity remaining!"];
 	} else {
 
 		[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Deploy Shield" withLabel:self.portal.name withValue:@(shieldItem.rarity)];
@@ -421,7 +421,7 @@
 			[HUD hide:YES];
 
 			if (errorStr) {
-				[API showWarningWithTitle:errorStr];
+				[Utilities showWarningWithTitle:errorStr];
 			} else {
 
 				[self refresh];
