@@ -80,6 +80,8 @@
 		[_scrollView addSubview:portalUpgradeVC.view];
 	}
 
+	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(managedObjectContextObjectsDidChange:) name:NSManagedObjectContextObjectsDidChangeNotification object:nil];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -97,6 +99,16 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+#pragma mark - NSManagedObjectContext Did Change
+
+- (void)managedObjectContextObjectsDidChange:(NSNotification *)notification {
+	if ([notification.userInfo[NSUpdatedObjectsKey] containsObject:self.portal]) {
+		[portalActionsVC refresh];
+		[portalInfoVC refresh];
+		[portalUpgradeVC refresh];
+	}
 }
 
 #pragma mark - Segmented Control Changed

@@ -12,4 +12,6 @@
 
 @property (nonatomic, assign) Portal *portal;
 
+- (void)refresh;
+
 @end

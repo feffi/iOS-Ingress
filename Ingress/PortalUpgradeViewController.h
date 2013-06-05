@@ -20,6 +20,7 @@
 
 @property (nonatomic, assign) Portal *portal;
 
+- (void)refresh;
 - (IBAction)resonatorButtonPressed:(GUIButton *)sender;
 - (IBAction)shieldButtonPressed:(GUIButton *)sender;
 
