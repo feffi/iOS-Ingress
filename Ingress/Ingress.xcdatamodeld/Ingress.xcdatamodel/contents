@@ -30,8 +30,11 @@
         <attribute name="mitigation" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="DeployedTurret" representedClassName="DeployedTurret" parentEntity="DeployedMod" syncable="YES"/>
-    <entity name="EnergyGlob" representedClassName="EnergyGlob" parentEntity="Item" syncable="YES">
+    <entity name="EnergyGlob" representedClassName="EnergyGlob" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
+        <attribute name="guid" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
     </entity>
     <entity name="FlipCard" representedClassName="FlipCard" parentEntity="Item" syncable="YES">
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
@@ -135,7 +138,7 @@
         <element name="DeployedResonator" positionX="97" positionY="84" width="128" height="150"/>
         <element name="DeployedShield" positionX="9" positionY="288" width="128" height="58"/>
         <element name="DeployedTurret" positionX="9" positionY="380" width="128" height="43"/>
-        <element name="EnergyGlob" positionX="81" positionY="-87" width="128" height="60"/>
+        <element name="EnergyGlob" positionX="187" positionY="-117" width="128" height="103"/>
         <element name="FlipCard" positionX="-297" positionY="-297" width="128" height="60"/>
         <element name="ForceAmp" positionX="-263" positionY="306" width="128" height="43"/>
         <element name="Heatsink" positionX="-162" positionY="144" width="128" height="43"/>

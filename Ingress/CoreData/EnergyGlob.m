@@ -12,6 +12,23 @@
 @implementation EnergyGlob
 
 @dynamic amount;
+@dynamic guid;
+@dynamic latitude;
+@dynamic longitude;
+
+- (CLLocationCoordinate2D)coordinate {
+	return CLLocationCoordinate2DMake(self.latitude, self.longitude);
+}
+
+- (CLLocationDistance)distanceFromCoordinate:(CLLocationCoordinate2D)coordinate {
+	CLLocation *loc1 = [[CLLocation alloc] initWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
+	CLLocation *loc2 = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+	return [loc1 distanceFromLocation:loc2];
+}
+
+- (NSString *)title {
+	return self.description;
+}
 
 - (NSString *)description {
 	return [NSString stringWithFormat:@"XM (% 3d): %f, %f", self.amount, self.latitude, self.longitude];

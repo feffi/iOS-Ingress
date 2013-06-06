@@ -11,11 +11,18 @@
 #import "Item.h"
 
 
-@interface EnergyGlob : Item
+@interface EnergyGlob : NSManagedObject
 
 @property (nonatomic) int32_t amount;
+@property (nonatomic, retain) NSString * guid;
+@property (nonatomic) CLLocationDegrees latitude;
+@property (nonatomic) CLLocationDegrees longitude;
+
+@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 
 - (void)updateWithData:(NSString *)guid;
 + (instancetype)energyGlobWithData:(NSString *)guid inManagedObjectContext:(NSManagedObjectContext *)context;
+
+- (CLLocationDistance)distanceFromCoordinate:(CLLocationCoordinate2D)coordinate;
 
 @end
