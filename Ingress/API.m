@@ -965,7 +965,7 @@ NSString *const MilesOrKM = @"MilesOrKM";
 	
 }
 
-- (void)addMod:(Item *)modItem toItem:(Item *)modableItem toSlot:(int)slot completionHandler:(void (^)(NSString *errorStr))handler {
+- (void)addMod:(Item *)modItem toItem:(Portal *)modableItem toSlot:(int)slot completionHandler:(void (^)(NSString *errorStr))handler {
 	
 	NSDictionary *dict = @{
 		@"modResourceGuid": modItem.guid,
@@ -1175,7 +1175,7 @@ NSString *const MilesOrKM = @"MilesOrKM";
 	
 }
 
-- (void)getModifiedEntity:(Item *)item completionHandler:(void (^)(void))handler {
+- (void)getModifiedEntity:(Portal *)item completionHandler:(void (^)(void))handler {
 
 	NSString *timestampString = [NSString stringWithFormat:@"%.3f", [[NSDate dateWithTimeIntervalSinceReferenceDate:item.timestamp] timeIntervalSince1970]];
 	timestampString = [timestampString stringByReplacingOccurrencesOfString:@"." withString:@""];
