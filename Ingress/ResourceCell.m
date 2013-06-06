@@ -18,8 +18,8 @@
 	[super layoutSubviews];
 
 	CGFloat fontSize = 16;
-
-	if (self.itemType == ItemTypePortalShield || self.itemType == ItemTypeLinkAmp) {
+	
+	if (self.itemType == ItemTypePortalShield || self.itemType == ItemTypeForceAmp || self.itemType == ItemTypeHeatsink || self.itemType == ItemTypeLinkAmp || self.itemType == ItemTypeMultihack || self.itemType == ItemTypeTurret) {
 		fontSize = 8;
 	}
 
@@ -56,8 +56,20 @@
 		case ItemTypeFlipCard:
 			objectClass = [FlipCard class];
 			break;
+		case ItemTypeForceAmp:
+			objectClass = [ForceAmp class];
+			break;
+		case ItemTypeHeatsink:
+			objectClass = [Heatsink class];
+			break;
 		case ItemTypeLinkAmp:
-			objectClass = [Item class];
+			objectClass = [LinkAmp class];
+			break;
+		case ItemTypeMultihack:
+			objectClass = [Multihack class];
+			break;
+		case ItemTypeTurret:
+			objectClass = [Turret class];
 			break;
 	}
 
@@ -67,7 +79,7 @@
 			ItemRarity rarity = [Utilities rarityFromInt:i];
 			label.text = [NSString stringWithFormat:@"%d", [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]]];
 		}
-	} else if (itemType == ItemTypeLinkAmp) {
+	} else if (itemType == ItemTypeForceAmp || itemType == ItemTypeHeatsink || itemType == ItemTypeLinkAmp || itemType == ItemTypeMultihack || itemType == ItemTypeTurret) {
 		for (int i = 1; i <= 6; i++) {
 			UILabel *label = (UILabel *)[self.contentView viewWithTag:i];
 			label.text = @"-";
@@ -123,8 +135,20 @@
 		case ItemTypeFlipCard:
 			objectClass = [FlipCard class];
 			break;
+		case ItemTypeForceAmp:
+			objectClass = [ForceAmp class];
+			break;
+		case ItemTypeHeatsink:
+			objectClass = [Heatsink class];
+			break;
 		case ItemTypeLinkAmp:
-			objectClass = [Item class];
+			objectClass = [LinkAmp class];
+			break;
+		case ItemTypeMultihack:
+			objectClass = [Multihack class];
+			break;
+		case ItemTypeTurret:
+			objectClass = [Turret class];
 			break;
 	}
 
@@ -133,7 +157,7 @@
 	if (self.itemType == ItemTypePortalShield) {
 		ItemRarity rarity = [Utilities rarityFromInt:actionLevel];
 		maxCount = [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
-	} else if (self.itemType == ItemTypeLinkAmp) {
+	} else if (self.itemType == ItemTypeForceAmp || self.itemType == ItemTypeHeatsink || self.itemType == ItemTypeLinkAmp || self.itemType == ItemTypeMultihack || self.itemType == ItemTypeTurret) {
 		maxCount = 0;
 	} else if (self.itemType == ItemTypeFlipCard) {
 		maxCount = [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && type = %@", (actionLevel == 1) ? @"JARVIS" : @"ADA"]];
@@ -228,8 +252,20 @@
 		case ItemTypeFlipCard:
 			objectClass = [FlipCard class];
 			break;
+		case ItemTypeForceAmp:
+			objectClass = [ForceAmp class];
+			break;
+		case ItemTypeHeatsink:
+			objectClass = [Heatsink class];
+			break;
 		case ItemTypeLinkAmp:
-			objectClass = [Item class];
+			objectClass = [LinkAmp class];
+			break;
+		case ItemTypeMultihack:
+			objectClass = [Multihack class];
+			break;
+		case ItemTypeTurret:
+			objectClass = [Turret class];
 			break;
 	}
 
@@ -238,7 +274,7 @@
 	if (self.itemType == ItemTypePortalShield) {
 		ItemRarity rarity = [Utilities rarityFromInt:actionLevel];
 		maxCount = [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
-	} else if (self.itemType == ItemTypeLinkAmp) {
+	} else if (self.itemType == ItemTypeForceAmp || self.itemType == ItemTypeHeatsink || self.itemType == ItemTypeLinkAmp || self.itemType == ItemTypeMultihack || self.itemType == ItemTypeTurret) {
 		maxCount = 0;
 	} else if (self.itemType == ItemTypeFlipCard) {
 		maxCount = [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && type = %@", (actionLevel == 1) ? @"JARVIS" : @"ADA"]];

@@ -11,5 +11,8 @@
 
 @implementation Turret
 
+- (NSString *)description {
+	return [NSString stringWithFormat:@"%@ Turret", self.rarityStr];
+}
 
 @end

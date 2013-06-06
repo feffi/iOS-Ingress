@@ -11,5 +11,8 @@
 
 @implementation ForceAmp
 
+- (NSString *)description {
+	return [NSString stringWithFormat:@"%@ Force Amp", self.rarityStr];
+}
 
 @end

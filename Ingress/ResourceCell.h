@@ -14,12 +14,17 @@ typedef enum {
 	ItemTypePortalShield,
 	ItemTypePowerCube,
 	ItemTypeFlipCard,
-	ItemTypeLinkAmp
+	ItemTypeForceAmp,
+	ItemTypeHeatsink,
+	ItemTypeLinkAmp,
+	ItemTypeMultihack,
+	ItemTypeTurret
 } ItemType;
 
 @interface ResourceCell : UITableViewCell <UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *itemImageView;
+@property (weak, nonatomic) IBOutlet UILabel *itemTitleLabel;
 @property (nonatomic) ItemType itemType;
 
 - (IBAction)action:(UIButton *)sender;

@@ -15,4 +15,6 @@
 
 @property (nonatomic) int16_t rarity;
 
+@property (nonatomic, readonly) NSString *rarityStr;
+
 @end

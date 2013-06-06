@@ -11,5 +11,8 @@
 
 @implementation LinkAmp
 
+- (NSString *)description {
+	return [NSString stringWithFormat:@"%@ Link Amp", self.rarityStr];
+}
 
 @end

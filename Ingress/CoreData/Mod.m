@@ -13,4 +13,12 @@
 
 @dynamic rarity;
 
+- (NSString *)rarityStr {
+	return [Utilities rarityStringFromRarity:self.rarity];
+}
+
+- (NSString *)description {
+	return [NSString stringWithFormat:@"%@ Unknown Mod", self.rarityStr];
+}
+
 @end

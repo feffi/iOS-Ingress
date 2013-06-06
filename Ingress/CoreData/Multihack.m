@@ -11,5 +11,8 @@
 
 @implementation Multihack
 
+- (NSString *)description {
+	return [NSString stringWithFormat:@"%@ Multi-hack", self.rarityStr];
+}
 
 @end

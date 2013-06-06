@@ -11,5 +11,8 @@
 
 @implementation Heatsink
 
+- (NSString *)description {
+	return [NSString stringWithFormat:@"%@ Heat sink", self.rarityStr];
+}
 
 @end

@@ -176,6 +176,10 @@
 		FAAA6C5D172299650066D540 /* CustomBackgroundColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAA6C5C172299650066D540 /* CustomBackgroundColorButton.m */; };
 		FAADA23A17291564001865D9 /* SelectingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FAADA23917291564001865D9 /* SelectingButton.m */; };
 		FAADA24017297DD9001865D9 /* MDCParallaxView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAADA23F17297DD9001865D9 /* MDCParallaxView.m */; };
+		FAAF378017610D63009BD67C /* force_amp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAF377C17610D63009BD67C /* force_amp@2x.png */; };
+		FAAF378117610D63009BD67C /* heatsink@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAF377D17610D63009BD67C /* heatsink@2x.png */; };
+		FAAF378217610D63009BD67C /* multihack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAF377E17610D63009BD67C /* multihack@2x.png */; };
+		FAAF378317610D63009BD67C /* turret@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAF377F17610D63009BD67C /* turret@2x.png */; };
 		FAB5A2CD16AA165D00176C34 /* ChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB5A2CC16AA165D00176C34 /* ChooserViewController.m */; };
 		FAC23D7716B16F31000C17DD /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC23D7616B16F31000C17DD /* CoreData.framework */; };
 		FAC23D7A16B16F44000C17DD /* Ingress.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAC23D7816B16F44000C17DD /* Ingress.xcdatamodeld */; };
@@ -546,6 +550,10 @@
 		FAADA23917291564001865D9 /* SelectingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectingButton.m; sourceTree = "<group>"; };
 		FAADA23E17297DD9001865D9 /* MDCParallaxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDCParallaxView.h; path = MDCParallaxView/MDCParallaxView.h; sourceTree = "<group>"; };
 		FAADA23F17297DD9001865D9 /* MDCParallaxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDCParallaxView.m; path = MDCParallaxView/MDCParallaxView.m; sourceTree = "<group>"; };
+		FAAF377C17610D63009BD67C /* force_amp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "force_amp@2x.png"; sourceTree = "<group>"; };
+		FAAF377D17610D63009BD67C /* heatsink@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heatsink@2x.png"; sourceTree = "<group>"; };
+		FAAF377E17610D63009BD67C /* multihack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "multihack@2x.png"; sourceTree = "<group>"; };
+		FAAF377F17610D63009BD67C /* turret@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "turret@2x.png"; sourceTree = "<group>"; };
 		FAB5A2CB16AA165D00176C34 /* ChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooserViewController.h; sourceTree = "<group>"; };
 		FAB5A2CC16AA165D00176C34 /* ChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooserViewController.m; sourceTree = "<group>"; };
 		FAC23D6F16B16EB6000C17DD /* DB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB.h; sourceTree = "<group>"; };
@@ -1039,6 +1047,10 @@
 				FACD4FFC16A428A80077837F /* marker_images */,
 				FAF5A90116A7449C00EB42CF /* Resonators */,
 				FA600FD7175E90C500F360A6 /* mods */,
+				FAAF377C17610D63009BD67C /* force_amp@2x.png */,
+				FAAF377D17610D63009BD67C /* heatsink@2x.png */,
+				FAAF377E17610D63009BD67C /* multihack@2x.png */,
+				FAAF377F17610D63009BD67C /* turret@2x.png */,
 				FA17F064174CB0CC003C3E24 /* link_amp@2x.png */,
 				FA17F05E174C9DAF003C3E24 /* ada_refactor@2x.png */,
 				FA17F05F174C9DAF003C3E24 /* jarvis_virus@2x.png */,
@@ -2084,6 +2096,10 @@
 				FA600FE5175E90C500F360A6 /* shield_veryrare@2x.png in Resources */,
 				FA82A02D175FA361005C8415 /* playerArrow_aliens@2x.png in Resources */,
 				FA82A02E175FA361005C8415 /* playerArrow_resistance@2x.png in Resources */,
+				FAAF378017610D63009BD67C /* force_amp@2x.png in Resources */,
+				FAAF378117610D63009BD67C /* heatsink@2x.png in Resources */,
+				FAAF378217610D63009BD67C /* multihack@2x.png in Resources */,
+				FAAF378317610D63009BD67C /* turret@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
