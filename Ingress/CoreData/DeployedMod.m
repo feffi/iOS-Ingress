@@ -14,7 +14,12 @@
 @implementation DeployedMod
 
 @dynamic slot;
+@dynamic rarity;
 @dynamic owner;
 @dynamic portal;
+
+- (NSString *)rarityStr {
+	return [Utilities rarityStringFromRarity:self.rarity];
+}
 
 @end

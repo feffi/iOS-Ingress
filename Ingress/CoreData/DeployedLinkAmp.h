@@ -1,5 +1,5 @@
 //
-//  Shield.h
+//  DeployedLinkAmp.h
 //  Ingress
 //
 //  Created by Alex Studnička on 06.06.13.
@@ -8,10 +8,10 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "Mod.h"
+#import "DeployedMod.h"
 
 
-@interface Shield : Mod
+@interface DeployedLinkAmp : DeployedMod
 
 
 @end

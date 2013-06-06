@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12D78" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E55" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="ControlField" representedClassName="ControlField" syncable="YES">
         <attribute name="controllingTeam" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="entityScore" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -7,11 +7,16 @@
         <relationship name="creator" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="createdControlFields" inverseEntity="User" syncable="YES"/>
         <relationship name="portals" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Portal" inverseName="vertexForControlFields" inverseEntity="Portal" syncable="YES"/>
     </entity>
+    <entity name="DeployedForceAmp" representedClassName="DeployedForceAmp" parentEntity="DeployedMod" syncable="YES"/>
+    <entity name="DeployedHeatsink" representedClassName="DeployedHeatsink" parentEntity="DeployedMod" syncable="YES"/>
+    <entity name="DeployedLinkAmp" representedClassName="DeployedLinkAmp" parentEntity="DeployedMod" syncable="YES"/>
     <entity name="DeployedMod" representedClassName="DeployedMod" syncable="YES">
+        <attribute name="rarity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="slot" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="owner" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="deployedMods" inverseEntity="User" syncable="YES"/>
         <relationship name="portal" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Portal" inverseName="mods" inverseEntity="Portal" syncable="YES"/>
     </entity>
+    <entity name="DeployedMultihack" representedClassName="DeployedMultihack" parentEntity="DeployedMod" syncable="YES"/>
     <entity name="DeployedResonator" representedClassName="DeployedResonator" syncable="YES">
         <attribute name="distanceToPortal" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="energy" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -23,14 +28,16 @@
     </entity>
     <entity name="DeployedShield" representedClassName="DeployedShield" parentEntity="DeployedMod" syncable="YES">
         <attribute name="mitigation" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="rarity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
+    <entity name="DeployedTurret" representedClassName="DeployedTurret" parentEntity="DeployedMod" syncable="YES"/>
     <entity name="EnergyGlob" representedClassName="EnergyGlob" parentEntity="Item" syncable="YES">
         <attribute name="amount" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="FlipCard" representedClassName="FlipCard" parentEntity="Item" syncable="YES">
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="ForceAmp" representedClassName="ForceAmp" parentEntity="Mod" syncable="YES"/>
+    <entity name="Heatsink" representedClassName="Heatsink" parentEntity="Mod" syncable="YES"/>
     <entity name="Item" representedClassName="Item" isAbstract="YES" syncable="YES">
         <attribute name="dropped" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="guid" optional="YES" attributeType="String" syncable="YES"/>
@@ -38,13 +45,17 @@
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
     </entity>
+    <entity name="LinkAmp" representedClassName="LinkAmp" parentEntity="Mod" syncable="YES"/>
     <entity name="Media" representedClassName="Media" parentEntity="Item" syncable="YES">
-        <attribute name="imageData" optional="YES" transient="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
+    <entity name="Mod" representedClassName="Mod" parentEntity="Item" syncable="YES">
+        <attribute name="rarity" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Multihack" representedClassName="Multihack" parentEntity="Mod" syncable="YES"/>
     <entity name="Player" representedClassName="Player" parentEntity="User" syncable="YES">
         <attribute name="allowFactionChoice" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="allowNicknameEdit" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -63,12 +74,16 @@
         <attribute name="message" optional="YES" attributeType="Transformable" valueTransformerName="" syncable="YES"/>
         <relationship name="sender" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="sentPlexts" inverseEntity="User" syncable="YES"/>
     </entity>
-    <entity name="Portal" representedClassName="Portal" parentEntity="Item" syncable="YES">
+    <entity name="Portal" representedClassName="Portal" syncable="YES">
         <attribute name="address" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="completeInfo" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="controllingTeam" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="guid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="imageURL" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="capturedBy" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="capturedPortals" inverseEntity="User" syncable="YES"/>
         <relationship name="destinationForLinks" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="PortalLink" inverseName="destinationPortal" inverseEntity="PortalLink" syncable="YES"/>
         <relationship name="mods" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="DeployedMod" inverseName="portal" inverseEntity="DeployedMod" syncable="YES"/>
@@ -94,9 +109,8 @@
     <entity name="Resonator" representedClassName="Resonator" parentEntity="Item" syncable="YES">
         <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
-    <entity name="Shield" representedClassName="Shield" parentEntity="Item" syncable="YES">
-        <attribute name="rarity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-    </entity>
+    <entity name="Shield" representedClassName="Shield" parentEntity="Mod" syncable="YES"/>
+    <entity name="Turret" representedClassName="Turret" parentEntity="Mod" syncable="YES"/>
     <entity name="User" representedClassName="User" syncable="YES">
         <attribute name="guid" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="nickname" optional="YES" attributeType="String" syncable="YES"/>
@@ -112,23 +126,34 @@
         <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <elements>
-        <element name="ControlField" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="DeployedMod" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="DeployedResonator" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="DeployedShield" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="EnergyGlob" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="FlipCard" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Item" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Media" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Player" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Plext" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Portal" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="PortalKey" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="PortalLink" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="PowerCube" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Resonator" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Shield" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="User" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="XMP" positionX="0" positionY="0" width="0" height="0"/>
+        <element name="ControlField" positionX="745" positionY="-282" width="128" height="120"/>
+        <element name="DeployedForceAmp" positionX="288" positionY="450" width="128" height="43"/>
+        <element name="DeployedHeatsink" positionX="349" positionY="288" width="128" height="43"/>
+        <element name="DeployedLinkAmp" positionX="124" positionY="450" width="128" height="43"/>
+        <element name="DeployedMod" positionX="171" positionY="284" width="128" height="103"/>
+        <element name="DeployedMultihack" positionX="358" positionY="369" width="128" height="43"/>
+        <element name="DeployedResonator" positionX="97" positionY="84" width="128" height="150"/>
+        <element name="DeployedShield" positionX="9" positionY="288" width="128" height="58"/>
+        <element name="DeployedTurret" positionX="9" positionY="380" width="128" height="43"/>
+        <element name="EnergyGlob" positionX="81" positionY="-87" width="128" height="60"/>
+        <element name="FlipCard" positionX="-297" positionY="-297" width="128" height="60"/>
+        <element name="ForceAmp" positionX="-263" positionY="306" width="128" height="43"/>
+        <element name="Heatsink" positionX="-162" positionY="144" width="128" height="43"/>
+        <element name="Item" positionX="-153" positionY="-171" width="128" height="120"/>
+        <element name="LinkAmp" positionX="-425" positionY="297" width="128" height="43"/>
+        <element name="Media" positionX="-362" positionY="-174" width="128" height="103"/>
+        <element name="Mod" positionX="-326" positionY="149" width="128" height="58"/>
+        <element name="Multihack" positionX="-162" positionY="243" width="128" height="43"/>
+        <element name="Player" positionX="549" positionY="234" width="128" height="165"/>
+        <element name="Plext" positionX="745" positionY="81" width="128" height="135"/>
+        <element name="Portal" positionX="349" positionY="-202" width="128" height="283"/>
+        <element name="PortalKey" positionX="-146" positionY="-27" width="128" height="75"/>
+        <element name="PortalLink" positionX="772" positionY="-138" width="128" height="120"/>
+        <element name="PowerCube" positionX="-360" positionY="-18" width="128" height="60"/>
+        <element name="Resonator" positionX="36" positionY="-162" width="128" height="60"/>
+        <element name="Shield" positionX="-495" positionY="146" width="128" height="43"/>
+        <element name="Turret" positionX="-468" positionY="225" width="128" height="43"/>
+        <element name="User" positionX="549" positionY="36" width="128" height="180"/>
+        <element name="XMP" positionX="-110" positionY="-279" width="128" height="60"/>
     </elements>
 </model>

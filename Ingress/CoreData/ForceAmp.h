@@ -1,5 +1,5 @@
 //
-//  Shield.h
+//  ForceAmp.h
 //  Ingress
 //
 //  Created by Alex Studnička on 06.06.13.
@@ -11,7 +11,7 @@
 #import "Mod.h"
 
 
-@interface Shield : Mod
+@interface ForceAmp : Mod
 
 
 @end

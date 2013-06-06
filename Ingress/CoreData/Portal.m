@@ -2,31 +2,51 @@
 //  Portal.m
 //  Ingress
 //
-//  Created by Alex Studnicka on 24.01.13.
+//  Created by Alex Studnička on 06.06.13.
 //  Copyright (c) 2013 A&A Code. All rights reserved.
 //
 
 #import "Portal.h"
+#import "ControlField.h"
 #import "DeployedMod.h"
 #import "DeployedResonator.h"
 #import "PortalKey.h"
+#import "PortalLink.h"
 #import "User.h"
 
 
 @implementation Portal
 
-@dynamic controllingTeam;
-@dynamic name;
 @dynamic address;
-@dynamic imageURL;
-@dynamic capturedBy;
-@dynamic portalKeys;
-@dynamic mods;
-@dynamic resonators;
-@dynamic destinationForLinks;
-@dynamic originForLinks;
-@dynamic vertexForControlFields;
 @dynamic completeInfo;
+@dynamic controllingTeam;
+@dynamic imageURL;
+@dynamic name;
+@dynamic guid;
+@dynamic latitude;
+@dynamic longitude;
+@dynamic timestamp;
+@dynamic capturedBy;
+@dynamic destinationForLinks;
+@dynamic mods;
+@dynamic originForLinks;
+@dynamic portalKeys;
+@dynamic resonators;
+@dynamic vertexForControlFields;
+
+- (CLLocationCoordinate2D)coordinate {
+	return CLLocationCoordinate2DMake(self.latitude, self.longitude);
+}
+
+- (CLLocationDistance)distanceFromCoordinate:(CLLocationCoordinate2D)coordinate {
+	CLLocation *loc1 = [[CLLocation alloc] initWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
+	CLLocation *loc2 = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
+	return [loc1 distanceFromLocation:loc2];
+}
+
+- (NSString *)title {
+	return self.description;
+}
 
 - (NSString *)description {
 	return [NSString stringWithFormat:@"L%d Portal", self.level];

@@ -1,5 +1,5 @@
 //
-//  Shield.h
+//  Mod.h
 //  Ingress
 //
 //  Created by Alex Studnička on 06.06.13.
@@ -8,10 +8,11 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "Mod.h"
+#import "Item.h"
 
 
-@interface Shield : Mod
+@interface Mod : Item
 
+@property (nonatomic, retain) NSString * rarity;
 
 @end

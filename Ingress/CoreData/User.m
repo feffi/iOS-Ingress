@@ -27,20 +27,4 @@
 @dynamic deployedResonators;
 @dynamic sentPlexts;
 
-//- (NSString *)nickname {
-//    [self willAccessValueForKey:@"nickname"];
-//    NSString *nickname = [self primitiveValueForKey:@"nickname"];
-//    [self didAccessValueForKey:@"nickname"];
-//	if (!nickname || [nickname isEqual:[NSNull null]]) {
-//		return @"Loading...";
-//	}
-//    return nickname;
-//}
-//
-//- (void)setNickname:(NSString *)nickname {
-//    [self willAccessValueForKey:@"nickname"];
-//	[self setPrimitiveValue:nickname forKey:@"nickname"];
-//    [self didAccessValueForKey:@"nickname"];
-//}
-
 @end

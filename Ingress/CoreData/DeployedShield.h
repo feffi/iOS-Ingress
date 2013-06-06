@@ -12,8 +12,6 @@
 
 @interface DeployedShield : DeployedMod
 
-@property (nonatomic) int16_t rarity;
-@property (nonatomic, readonly) NSString *rarityStr;
 @property (nonatomic) int16_t mitigation;
 
 @end

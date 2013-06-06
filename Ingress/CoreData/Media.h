@@ -18,6 +18,5 @@
 @property (nonatomic, retain) NSString * imageURL;
 @property (nonatomic, retain) NSString * url;
 @property (nonatomic, readonly) NSURL * mediaURL;
-@property (nonatomic, retain) NSData * imageData;
 
 @end

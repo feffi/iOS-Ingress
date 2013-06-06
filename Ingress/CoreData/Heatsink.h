@@ -1,5 +1,5 @@
 //
-//  Shield.h
+//  Heatsink.h
 //  Ingress
 //
 //  Created by Alex Studnička on 06.06.13.
@@ -11,7 +11,7 @@
 #import "Mod.h"
 
 
-@interface Shield : Mod
+@interface Heatsink : Mod
 
 
 @end

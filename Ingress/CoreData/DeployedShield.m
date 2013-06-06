@@ -11,11 +11,6 @@
 
 @implementation DeployedShield
 
-@dynamic rarity;
 @dynamic mitigation;
-
-- (NSString *)rarityStr {
-	return [Utilities rarityStringFromRarity:self.rarity];
-}
 
 @end

@@ -7,16 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		FA008E17171D310500176C3D /* PowerCube.m in Sources */ = {isa = PBXBuildFile; fileRef = FA008E16171D310500176C3D /* PowerCube.m */; };
 		FA008E19171D334700176C3D /* powerCube@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA008E18171D334700176C3D /* powerCube@2x.png */; };
 		FA02F9D8173D54540016EE7F /* MediaWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA02F9D7173D54540016EE7F /* MediaWebViewViewController.m */; };
 		FA036DE7175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA036DE6175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController.m */; };
 		FA036DE91756828F00E3C55B /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA036DE81756828E00E3C55B /* MediaPlayer.framework */; };
 		FA036DF117576B7000E3C55B /* libGoogleAnalytics.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FA036DF017576B7000E3C55B /* libGoogleAnalytics.a */; };
 		FA036DF317576B7D00E3C55B /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA036DF217576B7C00E3C55B /* SystemConfiguration.framework */; };
-		FA06162F174E6A9A001AB5CE /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FA06162E174E6A9A001AB5CE /* User.m */; };
-		FA061635174E74F2001AB5CE /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = FA061634174E74F2001AB5CE /* Player.m */; };
-		FA061638174E7873001AB5CE /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = FA061637174E7873001AB5CE /* Item.m */; };
 		FA0A3FE9172EC61F00BBBA3D /* XMOverlayView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA0A3FE8172EC61F00BBBA3D /* XMOverlayView.m */; };
 		FA0A3FEA172ED90D00BBBA3D /* Sound in Resources */ = {isa = PBXBuildFile; fileRef = FA7AC9D116D0116800505404 /* Sound */; };
 		FA0A4012172EF78700BBBA3D /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0A4011172EF78600BBBA3D /* SDWebImage.framework */; };
@@ -26,14 +22,12 @@
 		FA1739F716A827660004EE10 /* resonator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1739F616A827660004EE10 /* resonator@2x.png */; };
 		FA1739FA16A82CA30004EE10 /* xmp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1739F916A82CA30004EE10 /* xmp@2x.png */; };
 		FA17E903174BA212003C3E24 /* UIRefreshControl+Inset.m in Sources */ = {isa = PBXBuildFile; fileRef = FA17E902174BA212003C3E24 /* UIRefreshControl+Inset.m */; };
-		FA17F05D174C9BB3003C3E24 /* FlipCard.m in Sources */ = {isa = PBXBuildFile; fileRef = FA17F05C174C9BB3003C3E24 /* FlipCard.m */; };
 		FA17F065174CB0CE003C3E24 /* link_amp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA17F064174CB0CC003C3E24 /* link_amp@2x.png */; };
 		FA29CCF8171F05C6007FB43E /* TypeWriterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA29CCF7171F05C6007FB43E /* TypeWriterLabel.m */; };
 		FA32E883169F2D9F00D30E90 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E882169F2D9F00D30E90 /* API.m */; };
 		FA32E888169F657400D30E90 /* CommViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E887169F657400D30E90 /* CommViewController.m */; };
 		FA32E88B169F661500D30E90 /* CommTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E88A169F661500D30E90 /* CommTableViewController.m */; };
 		FA38F02E174D04780005D85E /* ScrollTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA38F02D174D04780005D85E /* ScrollTextView.m */; };
-		FA39E146174166C200202259 /* Plext.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39E145174166C200202259 /* Plext.m */; };
 		FA39E1501742CA2D00202259 /* PortalUpgradeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA39E14F1742CA2D00202259 /* PortalUpgradeViewController.m */; };
 		FA3BD746173514D5004F5ED5 /* nudge_callout@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3BD745173514D5004F5ED5 /* nudge_callout@2x.png */; };
 		FA3BD78117352C5B004F5ED5 /* APView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3BD78017352C5B004F5ED5 /* APView.m */; };
@@ -136,7 +130,6 @@
 		FA82A02E175FA361005C8415 /* playerArrow_resistance@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA82A02C175FA361005C8415 /* playerArrow_resistance@2x.png */; };
 		FA85064E175DFB9700410D53 /* Reveal.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA85064D175DFB9700410D53 /* Reveal.framework */; };
 		FA850650175DFBAF00410D53 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA85064F175DFBAF00410D53 /* CFNetwork.framework */; };
-		FA859F16173BD800002A2117 /* EnergyGlob.m in Sources */ = {isa = PBXBuildFile; fileRef = FA859F15173BD800002A2117 /* EnergyGlob.m */; };
 		FA859F19173C3537002A2117 /* ada_refactor@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA859F17173C3537002A2117 /* ada_refactor@2x.png */; };
 		FA859F1A173C3537002A2117 /* jarvis_virus@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA859F18173C3537002A2117 /* jarvis_virus@2x.png */; };
 		FA8C24D816B3257D000C8738 /* DarkPressedBackgroundButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FA8C24D716B3257D000C8738 /* DarkPressedBackgroundButton.m */; };
@@ -180,23 +173,12 @@
 		FAA9C46817304B6A000C2638 /* MagicalRecord+Setup.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA9C44A17304B6A000C2638 /* MagicalRecord+Setup.m */; };
 		FAA9C46917304B6A000C2638 /* MagicalRecord+ShorthandSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA9C44C17304B6A000C2638 /* MagicalRecord+ShorthandSupport.m */; };
 		FAA9C46A17304B6A000C2638 /* MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA9C44E17304B6A000C2638 /* MagicalRecord.m */; };
-		FAA9C47317306EB9000C2638 /* PortalKey.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA9C47217306EB8000C2638 /* PortalKey.m */; };
 		FAAA6C5D172299650066D540 /* CustomBackgroundColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAA6C5C172299650066D540 /* CustomBackgroundColorButton.m */; };
 		FAADA23A17291564001865D9 /* SelectingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FAADA23917291564001865D9 /* SelectingButton.m */; };
 		FAADA24017297DD9001865D9 /* MDCParallaxView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAADA23F17297DD9001865D9 /* MDCParallaxView.m */; };
 		FAB5A2CD16AA165D00176C34 /* ChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB5A2CC16AA165D00176C34 /* ChooserViewController.m */; };
 		FAC23D7716B16F31000C17DD /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC23D7616B16F31000C17DD /* CoreData.framework */; };
 		FAC23D7A16B16F44000C17DD /* Ingress.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAC23D7816B16F44000C17DD /* Ingress.xcdatamodeld */; };
-		FAC23E0B16B18755000C17DD /* Shield.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E0A16B18755000C17DD /* Shield.m */; };
-		FAC23E1116B18756000C17DD /* Portal.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E1016B18756000C17DD /* Portal.m */; };
-		FAC23E1416B18757000C17DD /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E1316B18757000C17DD /* Media.m */; };
-		FAC23E1716B18757000C17DD /* XMP.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E1616B18757000C17DD /* XMP.m */; };
-		FAC23E1D16B18758000C17DD /* DeployedResonator.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E1C16B18758000C17DD /* DeployedResonator.m */; };
-		FAC23E2016B18758000C17DD /* DeployedMod.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E1F16B18758000C17DD /* DeployedMod.m */; };
-		FAC23E2916B18759000C17DD /* DeployedShield.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E2816B18759000C17DD /* DeployedShield.m */; };
-		FAC23E2C16B18759000C17DD /* Resonator.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E2B16B18759000C17DD /* Resonator.m */; };
-		FAC23E3916B1CEEC000C17DD /* PortalLink.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E3816B1CEEC000C17DD /* PortalLink.m */; };
-		FAC23E3F16B1CEF0000C17DD /* ControlField.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E3E16B1CEF0000C17DD /* ControlField.m */; };
 		FAC23E4F16B2E3A9000C17DD /* MKPolyline+PortalLink.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E4E16B2E3A8000C17DD /* MKPolyline+PortalLink.m */; };
 		FAC23E5216B2E5B3000C17DD /* MKPolygon+ControlField.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E5116B2E5B3000C17DD /* MKPolygon+ControlField.m */; };
 		FAC37C49169DE303000F88AB /* LoadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC37C48169DE303000F88AB /* LoadingViewController.m */; };
@@ -237,6 +219,35 @@
 		FAD5EF1C16A21B3900182F6B /* check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAD5EF1A16A21B3900182F6B /* check@2x.png */; };
 		FAD9D7C616AC640A006553E0 /* PortalActionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD9D7C516AC640A006553E0 /* PortalActionsViewController.m */; };
 		FAD9D7C916AC6414006553E0 /* PortalInfoViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAD9D7C816AC6414006553E0 /* PortalInfoViewController.m */; };
+		FADC98EC1760ECCE009C497A /* DeployedMod.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC98EB1760ECCE009C497A /* DeployedMod.m */; };
+		FADC98EF1760ECCF009C497A /* PortalLink.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC98EE1760ECCF009C497A /* PortalLink.m */; };
+		FADC98F21760ECCF009C497A /* DeployedShield.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC98F11760ECCF009C497A /* DeployedShield.m */; };
+		FADC98F51760ECCF009C497A /* Mod.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC98F41760ECCF009C497A /* Mod.m */; };
+		FADC98F81760ECCF009C497A /* Media.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC98F71760ECCF009C497A /* Media.m */; };
+		FADC98FB1760ECCF009C497A /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC98FA1760ECCF009C497A /* Player.m */; };
+		FADC98FE1760ECCF009C497A /* FlipCard.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC98FD1760ECCF009C497A /* FlipCard.m */; };
+		FADC99011760ECCF009C497A /* Turret.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC99001760ECCF009C497A /* Turret.m */; };
+		FADC99041760ECCF009C497A /* Multihack.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC99031760ECCF009C497A /* Multihack.m */; };
+		FADC99071760ECD0009C497A /* EnergyGlob.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC99061760ECD0009C497A /* EnergyGlob.m */; };
+		FADC990A1760ECD0009C497A /* DeployedMultihack.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC99091760ECD0009C497A /* DeployedMultihack.m */; };
+		FADC990D1760ECD0009C497A /* PortalKey.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC990C1760ECD0009C497A /* PortalKey.m */; };
+		FADC99101760ECD0009C497A /* LinkAmp.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC990F1760ECD0009C497A /* LinkAmp.m */; };
+		FADC99131760ECD0009C497A /* DeployedHeatsink.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC99121760ECD0009C497A /* DeployedHeatsink.m */; };
+		FADC99161760ECD0009C497A /* PowerCube.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC99151760ECD0009C497A /* PowerCube.m */; };
+		FADC99191760ECD1009C497A /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC99181760ECD1009C497A /* User.m */; };
+		FADC991C1760ECD1009C497A /* Resonator.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC991B1760ECD1009C497A /* Resonator.m */; };
+		FADC991F1760ECD1009C497A /* Item.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC991E1760ECD1009C497A /* Item.m */; };
+		FADC99221760ECD1009C497A /* Plext.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC99211760ECD1009C497A /* Plext.m */; };
+		FADC99251760ECD1009C497A /* Portal.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC99241760ECD1009C497A /* Portal.m */; };
+		FADC99281760ECD1009C497A /* DeployedForceAmp.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC99271760ECD1009C497A /* DeployedForceAmp.m */; };
+		FADC992B1760ECD1009C497A /* DeployedLinkAmp.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC992A1760ECD1009C497A /* DeployedLinkAmp.m */; };
+		FADC992E1760ECD1009C497A /* DeployedTurret.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC992D1760ECD1009C497A /* DeployedTurret.m */; };
+		FADC99311760ECD2009C497A /* Shield.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC99301760ECD2009C497A /* Shield.m */; };
+		FADC99341760ECD2009C497A /* ControlField.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC99331760ECD2009C497A /* ControlField.m */; };
+		FADC99371760ECD2009C497A /* Heatsink.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC99361760ECD2009C497A /* Heatsink.m */; };
+		FADC993A1760ECD2009C497A /* DeployedResonator.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC99391760ECD2009C497A /* DeployedResonator.m */; };
+		FADC993D1760ECD2009C497A /* ForceAmp.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC993C1760ECD2009C497A /* ForceAmp.m */; };
+		FADC99401760ECD2009C497A /* XMP.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC993F1760ECD2009C497A /* XMP.m */; };
 		FAE6AC7416A0E2700082BBB5 /* DAKeyboardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE6AC7316A0E2700082BBB5 /* DAKeyboardControl.m */; };
 		FAE6FB6316AD391800FE188C /* UIBlackCloseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE6FB5F16AD391800FE188C /* UIBlackCloseButton.png */; };
 		FAE6FB6416AD391800FE188C /* UIBlackCloseButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE6FB6016AD391800FE188C /* UIBlackCloseButton@2x.png */; };
@@ -290,8 +301,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		FA008E15171D310500176C3D /* PowerCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PowerCube.h; path = CoreData/PowerCube.h; sourceTree = "<group>"; };
-		FA008E16171D310500176C3D /* PowerCube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PowerCube.m; path = CoreData/PowerCube.m; sourceTree = "<group>"; };
 		FA008E18171D334700176C3D /* powerCube@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "powerCube@2x.png"; sourceTree = "<group>"; };
 		FA02F9D6173D54540016EE7F /* MediaWebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaWebViewViewController.h; sourceTree = "<group>"; };
 		FA02F9D7173D54540016EE7F /* MediaWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaWebViewViewController.m; sourceTree = "<group>"; };
@@ -305,12 +314,6 @@
 		FA036DEF17576B7000E3C55B /* GAITransactionItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITransactionItem.h; sourceTree = "<group>"; };
 		FA036DF017576B7000E3C55B /* libGoogleAnalytics.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalytics.a; sourceTree = "<group>"; };
 		FA036DF217576B7C00E3C55B /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		FA06162D174E6A9A001AB5CE /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = CoreData/User.h; sourceTree = "<group>"; };
-		FA06162E174E6A9A001AB5CE /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = CoreData/User.m; sourceTree = "<group>"; };
-		FA061633174E74F2001AB5CE /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = CoreData/Player.h; sourceTree = "<group>"; };
-		FA061634174E74F2001AB5CE /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Player.m; path = CoreData/Player.m; sourceTree = "<group>"; };
-		FA061636174E7873001AB5CE /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = CoreData/Item.h; sourceTree = "<group>"; };
-		FA061637174E7873001AB5CE /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = CoreData/Item.m; sourceTree = "<group>"; };
 		FA0A3FE7172EC61F00BBBA3D /* XMOverlayView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XMOverlayView.h; sourceTree = "<group>"; };
 		FA0A3FE8172EC61F00BBBA3D /* XMOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMOverlayView.m; sourceTree = "<group>"; };
 		FA0A4011172EF78600BBBA3D /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
@@ -323,8 +326,6 @@
 		FA1739F916A82CA30004EE10 /* xmp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xmp@2x.png"; sourceTree = "<group>"; };
 		FA17E901174BA212003C3E24 /* UIRefreshControl+Inset.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIRefreshControl+Inset.h"; sourceTree = "<group>"; };
 		FA17E902174BA212003C3E24 /* UIRefreshControl+Inset.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+Inset.m"; sourceTree = "<group>"; };
-		FA17F05B174C9BB3003C3E24 /* FlipCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlipCard.h; path = CoreData/FlipCard.h; sourceTree = "<group>"; };
-		FA17F05C174C9BB3003C3E24 /* FlipCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipCard.m; path = CoreData/FlipCard.m; sourceTree = "<group>"; };
 		FA17F05E174C9DAF003C3E24 /* ada_refactor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ada_refactor@2x.png"; sourceTree = "<group>"; };
 		FA17F05F174C9DAF003C3E24 /* jarvis_virus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jarvis_virus@2x.png"; sourceTree = "<group>"; };
 		FA17F064174CB0CC003C3E24 /* link_amp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "link_amp@2x.png"; sourceTree = "<group>"; };
@@ -338,8 +339,6 @@
 		FA32E88A169F661500D30E90 /* CommTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommTableViewController.m; sourceTree = "<group>"; };
 		FA38F02C174D04780005D85E /* ScrollTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ScrollTextView.h; sourceTree = "<group>"; };
 		FA38F02D174D04780005D85E /* ScrollTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ScrollTextView.m; sourceTree = "<group>"; };
-		FA39E144174166C100202259 /* Plext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Plext.h; path = CoreData/Plext.h; sourceTree = "<group>"; };
-		FA39E145174166C200202259 /* Plext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Plext.m; path = CoreData/Plext.m; sourceTree = "<group>"; };
 		FA39E14E1742CA2D00202259 /* PortalUpgradeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortalUpgradeViewController.h; sourceTree = "<group>"; };
 		FA39E14F1742CA2D00202259 /* PortalUpgradeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalUpgradeViewController.m; sourceTree = "<group>"; };
 		FA3BD745173514D5004F5ED5 /* nudge_callout@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nudge_callout@2x.png"; sourceTree = "<group>"; };
@@ -461,8 +460,6 @@
 		FA82A02C175FA361005C8415 /* playerArrow_resistance@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "playerArrow_resistance@2x.png"; sourceTree = "<group>"; };
 		FA85064D175DFB9700410D53 /* Reveal.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Reveal.framework; path = Reveal/Reveal.framework; sourceTree = "<group>"; };
 		FA85064F175DFBAF00410D53 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
-		FA859F14173BD800002A2117 /* EnergyGlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnergyGlob.h; path = CoreData/EnergyGlob.h; sourceTree = "<group>"; };
-		FA859F15173BD800002A2117 /* EnergyGlob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnergyGlob.m; path = CoreData/EnergyGlob.m; sourceTree = "<group>"; };
 		FA859F17173C3537002A2117 /* ada_refactor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ada_refactor@2x.png"; sourceTree = "<group>"; };
 		FA859F18173C3537002A2117 /* jarvis_virus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jarvis_virus@2x.png"; sourceTree = "<group>"; };
 		FA8C24D616B3257D000C8738 /* DarkPressedBackgroundButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DarkPressedBackgroundButton.h; sourceTree = "<group>"; };
@@ -543,8 +540,6 @@
 		FAA9C44E17304B6A000C2638 /* MagicalRecord.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MagicalRecord.m; sourceTree = "<group>"; };
 		FAA9C44F17304B6A000C2638 /* MagicalRecordShorthand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalRecordShorthand.h; sourceTree = "<group>"; };
 		FAA9C45017304B6A000C2638 /* CoreData+MagicalRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "CoreData+MagicalRecord.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
-		FAA9C47117306EB8000C2638 /* PortalKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PortalKey.h; path = CoreData/PortalKey.h; sourceTree = "<group>"; };
-		FAA9C47217306EB8000C2638 /* PortalKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PortalKey.m; path = CoreData/PortalKey.m; sourceTree = "<group>"; };
 		FAAA6C5B172299650066D540 /* CustomBackgroundColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBackgroundColorButton.h; sourceTree = "<group>"; };
 		FAAA6C5C172299650066D540 /* CustomBackgroundColorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBackgroundColorButton.m; sourceTree = "<group>"; };
 		FAADA23817291564001865D9 /* SelectingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectingButton.h; sourceTree = "<group>"; };
@@ -556,26 +551,6 @@
 		FAC23D6F16B16EB6000C17DD /* DB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB.h; sourceTree = "<group>"; };
 		FAC23D7616B16F31000C17DD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FAC23D7916B16F44000C17DD /* Ingress.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ingress.xcdatamodel; sourceTree = "<group>"; };
-		FAC23E0916B18755000C17DD /* Shield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shield.h; path = CoreData/Shield.h; sourceTree = "<group>"; };
-		FAC23E0A16B18755000C17DD /* Shield.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Shield.m; path = CoreData/Shield.m; sourceTree = "<group>"; };
-		FAC23E0F16B18756000C17DD /* Portal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Portal.h; path = CoreData/Portal.h; sourceTree = "<group>"; };
-		FAC23E1016B18756000C17DD /* Portal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Portal.m; path = CoreData/Portal.m; sourceTree = "<group>"; };
-		FAC23E1216B18757000C17DD /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Media.h; path = CoreData/Media.h; sourceTree = "<group>"; };
-		FAC23E1316B18757000C17DD /* Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Media.m; path = CoreData/Media.m; sourceTree = "<group>"; };
-		FAC23E1516B18757000C17DD /* XMP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMP.h; path = CoreData/XMP.h; sourceTree = "<group>"; };
-		FAC23E1616B18757000C17DD /* XMP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMP.m; path = CoreData/XMP.m; sourceTree = "<group>"; };
-		FAC23E1B16B18758000C17DD /* DeployedResonator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeployedResonator.h; path = CoreData/DeployedResonator.h; sourceTree = "<group>"; };
-		FAC23E1C16B18758000C17DD /* DeployedResonator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeployedResonator.m; path = CoreData/DeployedResonator.m; sourceTree = "<group>"; };
-		FAC23E1E16B18758000C17DD /* DeployedMod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeployedMod.h; path = CoreData/DeployedMod.h; sourceTree = "<group>"; };
-		FAC23E1F16B18758000C17DD /* DeployedMod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeployedMod.m; path = CoreData/DeployedMod.m; sourceTree = "<group>"; };
-		FAC23E2716B18759000C17DD /* DeployedShield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeployedShield.h; path = CoreData/DeployedShield.h; sourceTree = "<group>"; };
-		FAC23E2816B18759000C17DD /* DeployedShield.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeployedShield.m; path = CoreData/DeployedShield.m; sourceTree = "<group>"; };
-		FAC23E2A16B18759000C17DD /* Resonator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Resonator.h; path = CoreData/Resonator.h; sourceTree = "<group>"; };
-		FAC23E2B16B18759000C17DD /* Resonator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Resonator.m; path = CoreData/Resonator.m; sourceTree = "<group>"; };
-		FAC23E3716B1CEEB000C17DD /* PortalLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PortalLink.h; path = CoreData/PortalLink.h; sourceTree = "<group>"; };
-		FAC23E3816B1CEEC000C17DD /* PortalLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PortalLink.m; path = CoreData/PortalLink.m; sourceTree = "<group>"; };
-		FAC23E3D16B1CEEF000C17DD /* ControlField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControlField.h; path = CoreData/ControlField.h; sourceTree = "<group>"; };
-		FAC23E3E16B1CEF0000C17DD /* ControlField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ControlField.m; path = CoreData/ControlField.m; sourceTree = "<group>"; };
 		FAC23E4D16B2E3A8000C17DD /* MKPolyline+PortalLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKPolyline+PortalLink.h"; sourceTree = "<group>"; };
 		FAC23E4E16B2E3A8000C17DD /* MKPolyline+PortalLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MKPolyline+PortalLink.m"; sourceTree = "<group>"; };
 		FAC23E5016B2E5B3000C17DD /* MKPolygon+ControlField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MKPolygon+ControlField.h"; sourceTree = "<group>"; };
@@ -691,6 +666,64 @@
 		FAD9D7C516AC640A006553E0 /* PortalActionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalActionsViewController.m; sourceTree = "<group>"; };
 		FAD9D7C716AC6414006553E0 /* PortalInfoViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PortalInfoViewController.h; sourceTree = "<group>"; };
 		FAD9D7C816AC6414006553E0 /* PortalInfoViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PortalInfoViewController.m; sourceTree = "<group>"; };
+		FADC98EA1760ECCE009C497A /* DeployedMod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeployedMod.h; path = CoreData/DeployedMod.h; sourceTree = "<group>"; };
+		FADC98EB1760ECCE009C497A /* DeployedMod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeployedMod.m; path = CoreData/DeployedMod.m; sourceTree = "<group>"; };
+		FADC98ED1760ECCF009C497A /* PortalLink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PortalLink.h; path = CoreData/PortalLink.h; sourceTree = "<group>"; };
+		FADC98EE1760ECCF009C497A /* PortalLink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PortalLink.m; path = CoreData/PortalLink.m; sourceTree = "<group>"; };
+		FADC98F01760ECCF009C497A /* DeployedShield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeployedShield.h; path = CoreData/DeployedShield.h; sourceTree = "<group>"; };
+		FADC98F11760ECCF009C497A /* DeployedShield.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeployedShield.m; path = CoreData/DeployedShield.m; sourceTree = "<group>"; };
+		FADC98F31760ECCF009C497A /* Mod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Mod.h; path = CoreData/Mod.h; sourceTree = "<group>"; };
+		FADC98F41760ECCF009C497A /* Mod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Mod.m; path = CoreData/Mod.m; sourceTree = "<group>"; };
+		FADC98F61760ECCF009C497A /* Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Media.h; path = CoreData/Media.h; sourceTree = "<group>"; };
+		FADC98F71760ECCF009C497A /* Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Media.m; path = CoreData/Media.m; sourceTree = "<group>"; };
+		FADC98F91760ECCF009C497A /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Player.h; path = CoreData/Player.h; sourceTree = "<group>"; };
+		FADC98FA1760ECCF009C497A /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Player.m; path = CoreData/Player.m; sourceTree = "<group>"; };
+		FADC98FC1760ECCF009C497A /* FlipCard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FlipCard.h; path = CoreData/FlipCard.h; sourceTree = "<group>"; };
+		FADC98FD1760ECCF009C497A /* FlipCard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FlipCard.m; path = CoreData/FlipCard.m; sourceTree = "<group>"; };
+		FADC98FF1760ECCF009C497A /* Turret.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Turret.h; path = CoreData/Turret.h; sourceTree = "<group>"; };
+		FADC99001760ECCF009C497A /* Turret.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Turret.m; path = CoreData/Turret.m; sourceTree = "<group>"; };
+		FADC99021760ECCF009C497A /* Multihack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Multihack.h; path = CoreData/Multihack.h; sourceTree = "<group>"; };
+		FADC99031760ECCF009C497A /* Multihack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Multihack.m; path = CoreData/Multihack.m; sourceTree = "<group>"; };
+		FADC99051760ECCF009C497A /* EnergyGlob.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EnergyGlob.h; path = CoreData/EnergyGlob.h; sourceTree = "<group>"; };
+		FADC99061760ECD0009C497A /* EnergyGlob.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EnergyGlob.m; path = CoreData/EnergyGlob.m; sourceTree = "<group>"; };
+		FADC99081760ECD0009C497A /* DeployedMultihack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeployedMultihack.h; path = CoreData/DeployedMultihack.h; sourceTree = "<group>"; };
+		FADC99091760ECD0009C497A /* DeployedMultihack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeployedMultihack.m; path = CoreData/DeployedMultihack.m; sourceTree = "<group>"; };
+		FADC990B1760ECD0009C497A /* PortalKey.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PortalKey.h; path = CoreData/PortalKey.h; sourceTree = "<group>"; };
+		FADC990C1760ECD0009C497A /* PortalKey.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PortalKey.m; path = CoreData/PortalKey.m; sourceTree = "<group>"; };
+		FADC990E1760ECD0009C497A /* LinkAmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LinkAmp.h; path = CoreData/LinkAmp.h; sourceTree = "<group>"; };
+		FADC990F1760ECD0009C497A /* LinkAmp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LinkAmp.m; path = CoreData/LinkAmp.m; sourceTree = "<group>"; };
+		FADC99111760ECD0009C497A /* DeployedHeatsink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeployedHeatsink.h; path = CoreData/DeployedHeatsink.h; sourceTree = "<group>"; };
+		FADC99121760ECD0009C497A /* DeployedHeatsink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeployedHeatsink.m; path = CoreData/DeployedHeatsink.m; sourceTree = "<group>"; };
+		FADC99141760ECD0009C497A /* PowerCube.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PowerCube.h; path = CoreData/PowerCube.h; sourceTree = "<group>"; };
+		FADC99151760ECD0009C497A /* PowerCube.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = PowerCube.m; path = CoreData/PowerCube.m; sourceTree = "<group>"; };
+		FADC99171760ECD1009C497A /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = User.h; path = CoreData/User.h; sourceTree = "<group>"; };
+		FADC99181760ECD1009C497A /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = User.m; path = CoreData/User.m; sourceTree = "<group>"; };
+		FADC991A1760ECD1009C497A /* Resonator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Resonator.h; path = CoreData/Resonator.h; sourceTree = "<group>"; };
+		FADC991B1760ECD1009C497A /* Resonator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Resonator.m; path = CoreData/Resonator.m; sourceTree = "<group>"; };
+		FADC991D1760ECD1009C497A /* Item.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Item.h; path = CoreData/Item.h; sourceTree = "<group>"; };
+		FADC991E1760ECD1009C497A /* Item.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Item.m; path = CoreData/Item.m; sourceTree = "<group>"; };
+		FADC99201760ECD1009C497A /* Plext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Plext.h; path = CoreData/Plext.h; sourceTree = "<group>"; };
+		FADC99211760ECD1009C497A /* Plext.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Plext.m; path = CoreData/Plext.m; sourceTree = "<group>"; };
+		FADC99231760ECD1009C497A /* Portal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Portal.h; path = CoreData/Portal.h; sourceTree = "<group>"; };
+		FADC99241760ECD1009C497A /* Portal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Portal.m; path = CoreData/Portal.m; sourceTree = "<group>"; };
+		FADC99261760ECD1009C497A /* DeployedForceAmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeployedForceAmp.h; path = CoreData/DeployedForceAmp.h; sourceTree = "<group>"; };
+		FADC99271760ECD1009C497A /* DeployedForceAmp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeployedForceAmp.m; path = CoreData/DeployedForceAmp.m; sourceTree = "<group>"; };
+		FADC99291760ECD1009C497A /* DeployedLinkAmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeployedLinkAmp.h; path = CoreData/DeployedLinkAmp.h; sourceTree = "<group>"; };
+		FADC992A1760ECD1009C497A /* DeployedLinkAmp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeployedLinkAmp.m; path = CoreData/DeployedLinkAmp.m; sourceTree = "<group>"; };
+		FADC992C1760ECD1009C497A /* DeployedTurret.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeployedTurret.h; path = CoreData/DeployedTurret.h; sourceTree = "<group>"; };
+		FADC992D1760ECD1009C497A /* DeployedTurret.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeployedTurret.m; path = CoreData/DeployedTurret.m; sourceTree = "<group>"; };
+		FADC992F1760ECD2009C497A /* Shield.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Shield.h; path = CoreData/Shield.h; sourceTree = "<group>"; };
+		FADC99301760ECD2009C497A /* Shield.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Shield.m; path = CoreData/Shield.m; sourceTree = "<group>"; };
+		FADC99321760ECD2009C497A /* ControlField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ControlField.h; path = CoreData/ControlField.h; sourceTree = "<group>"; };
+		FADC99331760ECD2009C497A /* ControlField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ControlField.m; path = CoreData/ControlField.m; sourceTree = "<group>"; };
+		FADC99351760ECD2009C497A /* Heatsink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Heatsink.h; path = CoreData/Heatsink.h; sourceTree = "<group>"; };
+		FADC99361760ECD2009C497A /* Heatsink.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Heatsink.m; path = CoreData/Heatsink.m; sourceTree = "<group>"; };
+		FADC99381760ECD2009C497A /* DeployedResonator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DeployedResonator.h; path = CoreData/DeployedResonator.h; sourceTree = "<group>"; };
+		FADC99391760ECD2009C497A /* DeployedResonator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DeployedResonator.m; path = CoreData/DeployedResonator.m; sourceTree = "<group>"; };
+		FADC993B1760ECD2009C497A /* ForceAmp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ForceAmp.h; path = CoreData/ForceAmp.h; sourceTree = "<group>"; };
+		FADC993C1760ECD2009C497A /* ForceAmp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForceAmp.m; path = CoreData/ForceAmp.m; sourceTree = "<group>"; };
+		FADC993E1760ECD2009C497A /* XMP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMP.h; path = CoreData/XMP.h; sourceTree = "<group>"; };
+		FADC993F1760ECD2009C497A /* XMP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMP.m; path = CoreData/XMP.m; sourceTree = "<group>"; };
 		FAE6AC7216A0E2700082BBB5 /* DAKeyboardControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAKeyboardControl.h; sourceTree = "<group>"; };
 		FAE6AC7316A0E2700082BBB5 /* DAKeyboardControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAKeyboardControl.m; sourceTree = "<group>"; };
 		FAE6FB5F16AD391800FE188C /* UIBlackCloseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIBlackCloseButton.png; sourceTree = "<group>"; };
@@ -1395,42 +1428,64 @@
 		FAC23E2D16B1982D000C17DD /* NSManagedObjects */ = {
 			isa = PBXGroup;
 			children = (
-				FAC23E2A16B18759000C17DD /* Resonator.h */,
-				FAC23E2B16B18759000C17DD /* Resonator.m */,
-				FAC23E1516B18757000C17DD /* XMP.h */,
-				FAC23E1616B18757000C17DD /* XMP.m */,
-				FAC23E1216B18757000C17DD /* Media.h */,
-				FAC23E1316B18757000C17DD /* Media.m */,
-				FAC23E0916B18755000C17DD /* Shield.h */,
-				FAC23E0A16B18755000C17DD /* Shield.m */,
-				FAC23E0F16B18756000C17DD /* Portal.h */,
-				FAC23E1016B18756000C17DD /* Portal.m */,
-				FAC23E3716B1CEEB000C17DD /* PortalLink.h */,
-				FAC23E3816B1CEEC000C17DD /* PortalLink.m */,
-				FAC23E3D16B1CEEF000C17DD /* ControlField.h */,
-				FAC23E3E16B1CEF0000C17DD /* ControlField.m */,
-				FAC23E1B16B18758000C17DD /* DeployedResonator.h */,
-				FAC23E1C16B18758000C17DD /* DeployedResonator.m */,
-				FAC23E1E16B18758000C17DD /* DeployedMod.h */,
-				FAC23E1F16B18758000C17DD /* DeployedMod.m */,
-				FAC23E2716B18759000C17DD /* DeployedShield.h */,
-				FAC23E2816B18759000C17DD /* DeployedShield.m */,
-				FA008E15171D310500176C3D /* PowerCube.h */,
-				FA008E16171D310500176C3D /* PowerCube.m */,
-				FAA9C47117306EB8000C2638 /* PortalKey.h */,
-				FAA9C47217306EB8000C2638 /* PortalKey.m */,
-				FA859F14173BD800002A2117 /* EnergyGlob.h */,
-				FA859F15173BD800002A2117 /* EnergyGlob.m */,
-				FA39E144174166C100202259 /* Plext.h */,
-				FA39E145174166C200202259 /* Plext.m */,
-				FA17F05B174C9BB3003C3E24 /* FlipCard.h */,
-				FA17F05C174C9BB3003C3E24 /* FlipCard.m */,
-				FA06162D174E6A9A001AB5CE /* User.h */,
-				FA06162E174E6A9A001AB5CE /* User.m */,
-				FA061633174E74F2001AB5CE /* Player.h */,
-				FA061634174E74F2001AB5CE /* Player.m */,
-				FA061636174E7873001AB5CE /* Item.h */,
-				FA061637174E7873001AB5CE /* Item.m */,
+				FADC98EA1760ECCE009C497A /* DeployedMod.h */,
+				FADC98EB1760ECCE009C497A /* DeployedMod.m */,
+				FADC98ED1760ECCF009C497A /* PortalLink.h */,
+				FADC98EE1760ECCF009C497A /* PortalLink.m */,
+				FADC98F01760ECCF009C497A /* DeployedShield.h */,
+				FADC98F11760ECCF009C497A /* DeployedShield.m */,
+				FADC98F61760ECCF009C497A /* Media.h */,
+				FADC98F71760ECCF009C497A /* Media.m */,
+				FADC98F91760ECCF009C497A /* Player.h */,
+				FADC98FA1760ECCF009C497A /* Player.m */,
+				FADC98FC1760ECCF009C497A /* FlipCard.h */,
+				FADC98FD1760ECCF009C497A /* FlipCard.m */,
+				FADC99051760ECCF009C497A /* EnergyGlob.h */,
+				FADC99061760ECD0009C497A /* EnergyGlob.m */,
+				FADC990B1760ECD0009C497A /* PortalKey.h */,
+				FADC990C1760ECD0009C497A /* PortalKey.m */,
+				FADC99141760ECD0009C497A /* PowerCube.h */,
+				FADC99151760ECD0009C497A /* PowerCube.m */,
+				FADC99171760ECD1009C497A /* User.h */,
+				FADC99181760ECD1009C497A /* User.m */,
+				FADC991A1760ECD1009C497A /* Resonator.h */,
+				FADC991B1760ECD1009C497A /* Resonator.m */,
+				FADC991D1760ECD1009C497A /* Item.h */,
+				FADC991E1760ECD1009C497A /* Item.m */,
+				FADC99201760ECD1009C497A /* Plext.h */,
+				FADC99211760ECD1009C497A /* Plext.m */,
+				FADC99231760ECD1009C497A /* Portal.h */,
+				FADC99241760ECD1009C497A /* Portal.m */,
+				FADC992F1760ECD2009C497A /* Shield.h */,
+				FADC99301760ECD2009C497A /* Shield.m */,
+				FADC99321760ECD2009C497A /* ControlField.h */,
+				FADC99331760ECD2009C497A /* ControlField.m */,
+				FADC99381760ECD2009C497A /* DeployedResonator.h */,
+				FADC99391760ECD2009C497A /* DeployedResonator.m */,
+				FADC993E1760ECD2009C497A /* XMP.h */,
+				FADC993F1760ECD2009C497A /* XMP.m */,
+				FADC993B1760ECD2009C497A /* ForceAmp.h */,
+				FADC993C1760ECD2009C497A /* ForceAmp.m */,
+				FADC99351760ECD2009C497A /* Heatsink.h */,
+				FADC99361760ECD2009C497A /* Heatsink.m */,
+				FADC992C1760ECD1009C497A /* DeployedTurret.h */,
+				FADC992D1760ECD1009C497A /* DeployedTurret.m */,
+				FADC99291760ECD1009C497A /* DeployedLinkAmp.h */,
+				FADC992A1760ECD1009C497A /* DeployedLinkAmp.m */,
+				FADC99261760ECD1009C497A /* DeployedForceAmp.h */,
+				FADC99271760ECD1009C497A /* DeployedForceAmp.m */,
+				FADC99111760ECD0009C497A /* DeployedHeatsink.h */,
+				FADC99121760ECD0009C497A /* DeployedHeatsink.m */,
+				FADC990E1760ECD0009C497A /* LinkAmp.h */,
+				FADC990F1760ECD0009C497A /* LinkAmp.m */,
+				FADC99081760ECD0009C497A /* DeployedMultihack.h */,
+				FADC99091760ECD0009C497A /* DeployedMultihack.m */,
+				FADC99021760ECCF009C497A /* Multihack.h */,
+				FADC99031760ECCF009C497A /* Multihack.m */,
+				FADC98FF1760ECCF009C497A /* Turret.h */,
+				FADC99001760ECCF009C497A /* Turret.m */,
+				FADC98F31760ECCF009C497A /* Mod.h */,
+				FADC98F41760ECCF009C497A /* Mod.m */,
 			);
 			name = NSManagedObjects;
 			sourceTree = "<group>";
@@ -2064,16 +2119,6 @@
 				FAD9D7C916AC6414006553E0 /* PortalInfoViewController.m in Sources */,
 				FA7E1AB016AC6D3900C8F949 /* PortalOverlayView.m in Sources */,
 				FAC23D7A16B16F44000C17DD /* Ingress.xcdatamodeld in Sources */,
-				FAC23E0B16B18755000C17DD /* Shield.m in Sources */,
-				FAC23E1116B18756000C17DD /* Portal.m in Sources */,
-				FAC23E1416B18757000C17DD /* Media.m in Sources */,
-				FAC23E1716B18757000C17DD /* XMP.m in Sources */,
-				FAC23E1D16B18758000C17DD /* DeployedResonator.m in Sources */,
-				FAC23E2016B18758000C17DD /* DeployedMod.m in Sources */,
-				FAC23E2916B18759000C17DD /* DeployedShield.m in Sources */,
-				FAC23E2C16B18759000C17DD /* Resonator.m in Sources */,
-				FAC23E3916B1CEEC000C17DD /* PortalLink.m in Sources */,
-				FAC23E3F16B1CEF0000C17DD /* ControlField.m in Sources */,
 				FAC23E4F16B2E3A9000C17DD /* MKPolyline+PortalLink.m in Sources */,
 				FAC23E5216B2E5B3000C17DD /* MKPolygon+ControlField.m in Sources */,
 				FA8C24D816B3257D000C8738 /* DarkPressedBackgroundButton.m in Sources */,
@@ -2090,7 +2135,6 @@
 				FAF618B416DBDA6700AF0742 /* WheelActivityIndicatorView.m in Sources */,
 				FAC6BBAE171B080900AA0600 /* ResourcesViewController.m in Sources */,
 				FAC6BBB1171B0FFF00AA0600 /* ResourceCell.m in Sources */,
-				FA008E17171D310500176C3D /* PowerCube.m in Sources */,
 				FA29CCF8171F05C6007FB43E /* TypeWriterLabel.m in Sources */,
 				FAAA6C5D172299650066D540 /* CustomBackgroundColorButton.m in Sources */,
 				FAF48EBA17233161000CEFEE /* StretchableBackgroundButton.m in Sources */,
@@ -2147,25 +2191,47 @@
 				FAA9C46817304B6A000C2638 /* MagicalRecord+Setup.m in Sources */,
 				FAA9C46917304B6A000C2638 /* MagicalRecord+ShorthandSupport.m in Sources */,
 				FAA9C46A17304B6A000C2638 /* MagicalRecord.m in Sources */,
-				FAA9C47317306EB9000C2638 /* PortalKey.m in Sources */,
 				FAE71C2F1732ACC100742071 /* DeviceViewController.m in Sources */,
 				FA3BD78117352C5B004F5ED5 /* APView.m in Sources */,
 				FA3FC30E173656AC009CD94A /* MissionViewController.m in Sources */,
 				FACEE6171737E9D3006A9912 /* NSShadow+Initilalizer.m in Sources */,
-				FA859F16173BD800002A2117 /* EnergyGlob.m in Sources */,
 				FA02F9D8173D54540016EE7F /* MediaWebViewViewController.m in Sources */,
 				FA9153F1173E547B008E239C /* XMOverlay.m in Sources */,
-				FA39E146174166C200202259 /* Plext.m in Sources */,
 				FA39E1501742CA2D00202259 /* PortalUpgradeViewController.m in Sources */,
 				FA17E903174BA212003C3E24 /* UIRefreshControl+Inset.m in Sources */,
-				FA17F05D174C9BB3003C3E24 /* FlipCard.m in Sources */,
 				FA38F02E174D04780005D85E /* ScrollTextView.m in Sources */,
-				FA06162F174E6A9A001AB5CE /* User.m in Sources */,
-				FA061635174E74F2001AB5CE /* Player.m in Sources */,
-				FA061638174E7873001AB5CE /* Item.m in Sources */,
 				FA036DE7175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController.m in Sources */,
 				FA600FD5175E3FF900F360A6 /* Utilities.m in Sources */,
 				FA600FE9175F529C00F360A6 /* AudioManager.m in Sources */,
+				FADC98EC1760ECCE009C497A /* DeployedMod.m in Sources */,
+				FADC98EF1760ECCF009C497A /* PortalLink.m in Sources */,
+				FADC98F21760ECCF009C497A /* DeployedShield.m in Sources */,
+				FADC98F51760ECCF009C497A /* Mod.m in Sources */,
+				FADC98F81760ECCF009C497A /* Media.m in Sources */,
+				FADC98FB1760ECCF009C497A /* Player.m in Sources */,
+				FADC98FE1760ECCF009C497A /* FlipCard.m in Sources */,
+				FADC99011760ECCF009C497A /* Turret.m in Sources */,
+				FADC99041760ECCF009C497A /* Multihack.m in Sources */,
+				FADC99071760ECD0009C497A /* EnergyGlob.m in Sources */,
+				FADC990A1760ECD0009C497A /* DeployedMultihack.m in Sources */,
+				FADC990D1760ECD0009C497A /* PortalKey.m in Sources */,
+				FADC99101760ECD0009C497A /* LinkAmp.m in Sources */,
+				FADC99131760ECD0009C497A /* DeployedHeatsink.m in Sources */,
+				FADC99161760ECD0009C497A /* PowerCube.m in Sources */,
+				FADC99191760ECD1009C497A /* User.m in Sources */,
+				FADC991C1760ECD1009C497A /* Resonator.m in Sources */,
+				FADC991F1760ECD1009C497A /* Item.m in Sources */,
+				FADC99221760ECD1009C497A /* Plext.m in Sources */,
+				FADC99251760ECD1009C497A /* Portal.m in Sources */,
+				FADC99281760ECD1009C497A /* DeployedForceAmp.m in Sources */,
+				FADC992B1760ECD1009C497A /* DeployedLinkAmp.m in Sources */,
+				FADC992E1760ECD1009C497A /* DeployedTurret.m in Sources */,
+				FADC99311760ECD2009C497A /* Shield.m in Sources */,
+				FADC99341760ECD2009C497A /* ControlField.m in Sources */,
+				FADC99371760ECD2009C497A /* Heatsink.m in Sources */,
+				FADC993A1760ECD2009C497A /* DeployedResonator.m in Sources */,
+				FADC993D1760ECD2009C497A /* ForceAmp.m in Sources */,
+				FADC99401760ECD2009C497A /* XMP.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
