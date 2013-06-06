@@ -53,7 +53,7 @@
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="Mod" representedClassName="Mod" parentEntity="Item" syncable="YES">
-        <attribute name="rarity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rarity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
     </entity>
     <entity name="Multihack" representedClassName="Multihack" parentEntity="Mod" syncable="YES"/>
     <entity name="Player" representedClassName="Player" parentEntity="User" syncable="YES">

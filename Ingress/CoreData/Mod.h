@@ -13,6 +13,6 @@
 
 @interface Mod : Item
 
-@property (nonatomic, retain) NSString * rarity;
+@property (nonatomic) int16_t rarity;
 
 @end
