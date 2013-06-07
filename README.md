@@ -9,19 +9,14 @@ Fully playable Google's AR Game Ingress port for iOS.
 Download
 --------
 
-- testing version
-    - works fine also on a non-jailbroken devices
-    - it's untested and may crash or be unplayable
-    - [![Install App](http://com.macbuildserver.github.s3-website-us-east-1.amazonaws.com/button_up.png)](http://macbuildserver.com/project/github/build/?xcode_project=Ingress.xcodeproj&amp;target=Ingress&amp;repo_url=https%3A%2F%2Fgithub.com%2Falex-alex%2FiOS-Ingress.git&amp;build_conf=Release)
-        - by [MacBuildServer](http://macbuildserver.com/github/opensource/)
-        - Open on device to install directly via OTA
-    - [Daily-updated mirror](http://angelxwind.net/jeanny710/ingress/)
+works fine also on a non-jailbroken devices
 
-- stable version (requires jailbreak)
+1.0.6 (06/07/2013)
+- [Download ipa](http://commacbuildserverbuildartifacts.s3-website-eu-west-1.amazonaws.com/17ed0ab72c6d4272bd23aab9da1349be/release-build.ipa)
+- [Install app via OTA](itms-services://?action=download-manifest&url=http://commacbuildserve…-eu-west-1.amazonaws.com/17ed0ab72c6d4272bd23aab9da1349be/manifest.plist)
+- by [macbuildserver.com](http://macbuildserver.com/)
 
-  - 1.0.5 (05/31/2013)
-  - https://www.dropbox.com/s/q28f2bj2bgt2vxj/Ingress.ipa
-  - Availabile at Cydia repo http://cydia.angelxwind.net/
+Also availabile at Cydia repo http://cydia.angelxwind.net/
 
 Support
 -------
@@ -29,7 +24,8 @@ Support
 If you enjoy this software, please consider making a small donation, so I can continue to maintain and improve this app.
 
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=6HKVU78GCECL2&lc=US&item_name=iOS%20Ingress&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
-[![Flattr](http://api.flattr.com/button/flattr-badge-large.png)](http://flattr.com/thing/1350940/alex-alexiOS-Ingress-on-GitHub)
+
+[![Flattr](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/thing/1350940/iOS-Ingress)
 
 For China Users
 -------
