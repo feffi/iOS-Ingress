@@ -29,6 +29,7 @@ Support
 If you enjoy this software, please consider making a small donation, so I can continue to maintain and improve this app.
 
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=6HKVU78GCECL2&lc=US&item_name=iOS%20Ingress&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
+[![Flattr](http://api.flattr.com/button/flattr-badge-large.png)](http://flattr.com/thing/1350940/alex-alexiOS-Ingress-on-GitHub)
 
 For China Users
 -------
