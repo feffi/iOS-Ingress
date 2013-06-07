@@ -13,7 +13,7 @@ works fine also on a non-jailbroken devices
 
 1.0.6 (06/07/2013)
 - [Download ipa](http://commacbuildserverbuildartifacts.s3-website-eu-west-1.amazonaws.com/17ed0ab72c6d4272bd23aab9da1349be/release-build.ipa)
-- [Install app via OTA](itms-services://?action=download-manifest&url=http://commacbuildserve…-eu-west-1.amazonaws.com/17ed0ab72c6d4272bd23aab9da1349be/manifest.plist)
+- [Install app via OTA](http://tinyurl.com/kpak9ft)
 - by [macbuildserver.com](http://macbuildserver.com/)
 
 Also availabile at Cydia repo http://cydia.angelxwind.net/
