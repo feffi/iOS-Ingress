@@ -11,5 +11,8 @@
 
 @implementation Shield
 
+- (NSString *)description {
+	return [NSString stringWithFormat:@"%@ Shield", self.rarityStr];
+}
 
 @end
