@@ -199,44 +199,54 @@
 
 			NSArray *fetchedFields = [ControlField MR_findAllInContext:context];
 			for (ControlField *controlField in fetchedFields) {
-				dispatch_async(dispatch_get_main_queue(), ^{
-					[_mapView addOverlay:controlField.polygon];
-				});
+				if (MKMapRectIntersectsRect(_mapView.visibleMapRect, controlField.polygon.boundingMapRect)) {
+					dispatch_async(dispatch_get_main_queue(), ^{
+						[_mapView addOverlay:controlField.polygon];
+					});
+				}
 			}
 
 			NSArray *fetchedLinks = [PortalLink MR_findAllInContext:context];
 			for (PortalLink *portalLink in fetchedLinks) {
-				dispatch_async(dispatch_get_main_queue(), ^{
-					[_mapView addOverlay:portalLink.polyline];
-				});
+				if (MKMapRectIntersectsRect(_mapView.visibleMapRect, portalLink.polyline.boundingMapRect)) {
+					dispatch_async(dispatch_get_main_queue(), ^{
+						[_mapView addOverlay:portalLink.polyline];
+					});
+				}
 			}
 
 			NSArray *fetchedItems = [Item MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"dropped = YES"] inContext:context];
 			for (Item *item in fetchedItems) {
 				//NSLog(@"adding item to map: %@ (%f, %f)", item, item.latitude, item.longitude);
 				if (item.coordinate.latitude == 0 && item.coordinate.longitude == 0) { continue; }
-				dispatch_async(dispatch_get_main_queue(), ^{
-					[_mapView addAnnotation:item];
-				});
+				if (MKMapRectContainsPoint(_mapView.visibleMapRect, MKMapPointForCoordinate(item.coordinate))) {
+					dispatch_async(dispatch_get_main_queue(), ^{
+						[_mapView addAnnotation:item];
+					});
+				}
 			}
 
 			NSArray *fetchedPortals = [Portal MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"completeInfo = YES"] inContext:context];
 			for (Portal *portal in fetchedPortals) {
 				//NSLog(@"adding portal to map: %@ (%f, %f)", portal.subtitle, portal.latitude, portal.longitude);
 				if (portal.coordinate.latitude == 0 && portal.coordinate.longitude == 0) { continue; }
-				dispatch_async(dispatch_get_main_queue(), ^{
-					[_mapView addAnnotation:portal];
-					[_mapView addOverlay:portal];
-				});
+				if (MKMapRectContainsPoint(_mapView.visibleMapRect, MKMapPointForCoordinate(portal.coordinate))) {
+					dispatch_async(dispatch_get_main_queue(), ^{
+						[_mapView addAnnotation:portal];
+						[_mapView addOverlay:portal];
+					});
+				}
 			}
 
 			NSArray *fetchedResonators = [DeployedResonator MR_findAllInContext:context];
 			for (DeployedResonator *resonator in fetchedResonators) {
 				//NSLog(@"adding resonator to map: %@ (%f, %f)", resonator, resonator.coordinate.latitude, resonator.coordinate.longitude);
 				if (resonator.portal.coordinate.latitude == 0 && resonator.portal.coordinate.longitude == 0) { continue; }
-				dispatch_async(dispatch_get_main_queue(), ^{
-					[_mapView addOverlay:resonator.circle];
-				});
+				if (MKMapRectContainsPoint(_mapView.visibleMapRect, MKMapPointForCoordinate(resonator.portal.coordinate))) {
+					dispatch_async(dispatch_get_main_queue(), ^{
+						[_mapView addOverlay:resonator.circle];
+					});
+				}
 			}
 
 			NSArray *fetchedEnergy = [EnergyGlob MR_findAllInContext:context];
