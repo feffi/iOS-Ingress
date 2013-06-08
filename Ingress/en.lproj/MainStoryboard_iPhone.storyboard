@@ -2974,8 +2974,8 @@ Range: 0km</string>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yRF-gZ-vNv">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="120" type="user" id="OeJ-SG-V0k"/>
-                                                <constraint firstAttribute="width" constant="120" type="user" id="bt0-7Z-zo8"/>
+                                                <constraint firstAttribute="height" constant="90" id="h3M-T0-mLN"/>
+                                                <constraint firstAttribute="width" constant="90" id="i6d-Vk-rj6"/>
                                             </constraints>
                                         </imageView>
                                         <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDY-1N-Fsh" customClass="DarkPressedBackgroundButton">
@@ -3176,12 +3176,24 @@ Range: 0km</string>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AqE-rT-i4S">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="120" id="BdO-vH-cme"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
+                                    <constraint firstItem="AqE-rT-i4S" firstAttribute="top" secondItem="s20-Or-aZK" secondAttribute="top" constant="16" id="0ut-gq-saF"/>
                                     <constraint firstItem="mcc-go-h8w" firstAttribute="leading" secondItem="0lh-L7-gNe" secondAttribute="leading" type="default" id="1iF-OA-6RH"/>
+                                    <constraint firstItem="WRZ-Iq-JhM" firstAttribute="baseline" secondItem="8hR-0R-B7p" secondAttribute="baseline" type="default" id="2V9-dD-wz9"/>
+                                    <constraint firstItem="AqE-rT-i4S" firstAttribute="leading" secondItem="s20-Or-aZK" secondAttribute="leading" constant="23" id="3wC-wk-KHh"/>
                                     <constraint firstItem="I2a-48-VNf" firstAttribute="top" secondItem="UXq-Ci-WS2" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="4D6-0F-05T"/>
+                                    <constraint firstItem="oDY-1N-Fsh" firstAttribute="top" secondItem="s20-Or-aZK" secondAttribute="top" constant="11" id="5op-lm-oVI"/>
                                     <constraint firstAttribute="trailing" secondItem="H3i-AJ-u2E" secondAttribute="trailing" constant="23" id="6Hm-BD-TyQ"/>
                                     <constraint firstItem="rf9-r2-atR" firstAttribute="baseline" secondItem="f9s-jV-NVX" secondAttribute="baseline" type="default" id="6wM-qH-UiK"/>
                                     <constraint firstItem="rf9-r2-atR" firstAttribute="leading" secondItem="dl6-A5-fDV" secondAttribute="leading" type="default" id="7TF-ma-Vse"/>
@@ -3195,10 +3207,13 @@ Range: 0km</string>
                                     <constraint firstItem="oDY-1N-Fsh" firstAttribute="leading" secondItem="HZu-Le-Tz0" secondAttribute="leading" type="default" id="H8h-eT-PZy"/>
                                     <constraint firstItem="mcc-go-h8w" firstAttribute="trailing" secondItem="0lh-L7-gNe" secondAttribute="trailing" type="default" id="HY3-9s-333"/>
                                     <constraint firstItem="mcc-go-h8w" firstAttribute="trailing" secondItem="H3i-AJ-u2E" secondAttribute="trailing" type="default" id="Ho9-zs-nej"/>
+                                    <constraint firstItem="oDY-1N-Fsh" firstAttribute="baseline" secondItem="WRZ-Iq-JhM" secondAttribute="baseline" type="default" id="Ibt-bk-pPv"/>
+                                    <constraint firstItem="yRF-gZ-vNv" firstAttribute="leading" secondItem="s20-Or-aZK" secondAttribute="leading" constant="39" id="KqC-mU-KVg"/>
+                                    <constraint firstItem="dl6-A5-fDV" firstAttribute="baseline" secondItem="UXq-Ci-WS2" secondAttribute="baseline" type="default" id="KrM-iw-aF4"/>
                                     <constraint firstItem="cce-xO-Ehk" firstAttribute="leading" secondItem="aBW-GW-AcA" secondAttribute="leading" type="default" id="LHP-pg-SBB"/>
                                     <constraint firstItem="I2a-48-VNf" firstAttribute="baseline" secondItem="hHq-5t-Sle" secondAttribute="baseline" type="default" id="LZs-GR-daa"/>
                                     <constraint firstItem="rf9-r2-atR" firstAttribute="top" secondItem="dl6-A5-fDV" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Lcr-yC-0tN"/>
-                                    <constraint firstItem="yRF-gZ-vNv" firstAttribute="centerY" secondItem="s20-Or-aZK" secondAttribute="centerY" type="default" id="Lrk-Jw-5Rk"/>
+                                    <constraint firstItem="AqE-rT-i4S" firstAttribute="baseline" secondItem="oDY-1N-Fsh" secondAttribute="baseline" type="default" id="M9C-Hc-jhK"/>
                                     <constraint firstItem="cce-xO-Ehk" firstAttribute="top" secondItem="WRZ-Iq-JhM" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="MC1-sa-pDt"/>
                                     <constraint firstItem="Yyu-Zr-Lt1" firstAttribute="leading" secondItem="dl6-A5-fDV" secondAttribute="leading" type="default" id="Ql4-Nc-Jlk"/>
                                     <constraint firstItem="mcc-go-h8w" firstAttribute="leading" secondItem="H3i-AJ-u2E" secondAttribute="leading" type="default" id="Rc9-2n-1vb"/>
@@ -3210,8 +3225,10 @@ Range: 0km</string>
                                     <constraint firstItem="f9s-jV-NVX" firstAttribute="leading" secondItem="0lh-L7-gNe" secondAttribute="leading" type="default" id="UJf-jQ-Azj"/>
                                     <constraint firstItem="mcc-go-h8w" firstAttribute="top" secondItem="H3i-AJ-u2E" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="VEF-uT-JjB"/>
                                     <constraint firstItem="hHq-5t-Sle" firstAttribute="top" secondItem="aBW-GW-AcA" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="VoZ-ua-FKe"/>
+                                    <constraint firstItem="dl6-A5-fDV" firstAttribute="baseline" secondItem="aBW-GW-AcA" secondAttribute="baseline" type="default" id="Wpk-eL-j7E"/>
                                     <constraint firstItem="cce-xO-Ehk" firstAttribute="trailing" secondItem="WRZ-Iq-JhM" secondAttribute="trailing" type="default" id="Xr3-8k-xtv"/>
                                     <constraint firstItem="Yyu-Zr-Lt1" firstAttribute="trailing" secondItem="dl6-A5-fDV" secondAttribute="trailing" type="default" id="Y87-Hx-lvw"/>
+                                    <constraint firstItem="dl6-A5-fDV" firstAttribute="baseline" secondItem="0lh-L7-gNe" secondAttribute="baseline" type="default" id="Zoe-9q-Gjg"/>
                                     <constraint firstItem="Yyu-Zr-Lt1" firstAttribute="top" secondItem="mcc-go-h8w" secondAttribute="top" type="default" id="aMk-0i-Ddm"/>
                                     <constraint firstItem="HZu-Le-Tz0" firstAttribute="baseline" secondItem="cce-xO-Ehk" secondAttribute="baseline" type="default" id="aUF-YQ-RLK"/>
                                     <constraint firstItem="cce-xO-Ehk" firstAttribute="top" secondItem="Yyu-Zr-Lt1" secondAttribute="top" type="default" id="b9j-Hc-DtJ"/>
@@ -3220,8 +3237,11 @@ Range: 0km</string>
                                     <constraint firstItem="rf9-r2-atR" firstAttribute="top" secondItem="f9s-jV-NVX" secondAttribute="top" type="default" id="bUi-nX-eeC"/>
                                     <constraint firstItem="dl6-A5-fDV" firstAttribute="top" secondItem="Yyu-Zr-Lt1" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="cAY-jX-wKR"/>
                                     <constraint firstItem="0lh-L7-gNe" firstAttribute="top" secondItem="mcc-go-h8w" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="cXv-9B-t2G"/>
+                                    <constraint firstItem="UXq-Ci-WS2" firstAttribute="baseline" secondItem="aBW-GW-AcA" secondAttribute="baseline" type="default" id="cfy-02-dfk"/>
                                     <constraint firstItem="cce-xO-Ehk" firstAttribute="top" secondItem="HZu-Le-Tz0" secondAttribute="top" type="default" id="cvc-BY-W57"/>
+                                    <constraint firstItem="8hR-0R-B7p" firstAttribute="baseline" secondItem="H3i-AJ-u2E" secondAttribute="baseline" type="default" id="efd-x3-1lH"/>
                                     <constraint firstItem="hHq-5t-Sle" firstAttribute="top" secondItem="rf9-r2-atR" secondAttribute="top" type="default" id="fBT-RZ-g72"/>
+                                    <constraint firstItem="yRF-gZ-vNv" firstAttribute="top" secondItem="AqE-rT-i4S" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="i8S-JJ-74a"/>
                                     <constraint firstItem="f9s-jV-NVX" firstAttribute="trailing" secondItem="0lh-L7-gNe" secondAttribute="trailing" type="default" id="iaJ-hG-W6f"/>
                                     <constraint firstItem="cce-xO-Ehk" firstAttribute="leading" secondItem="WRZ-Iq-JhM" secondAttribute="leading" type="default" id="k9c-iv-g5R"/>
                                     <constraint firstItem="8hR-0R-B7p" firstAttribute="trailing" secondItem="Yyu-Zr-Lt1" secondAttribute="trailing" type="default" id="koy-y9-SL4"/>
@@ -3233,14 +3253,15 @@ Range: 0km</string>
                                     <constraint firstItem="mcc-go-h8w" firstAttribute="baseline" secondItem="Yyu-Zr-Lt1" secondAttribute="baseline" type="default" id="rh2-dC-gAr"/>
                                     <constraint firstItem="hHq-5t-Sle" firstAttribute="baseline" secondItem="rf9-r2-atR" secondAttribute="baseline" type="default" id="tAB-kA-MDr"/>
                                     <constraint firstItem="rf9-r2-atR" firstAttribute="trailing" secondItem="dl6-A5-fDV" secondAttribute="trailing" type="default" id="uyl-vc-9qz"/>
+                                    <constraint firstItem="aBW-GW-AcA" firstAttribute="baseline" secondItem="0lh-L7-gNe" secondAttribute="baseline" type="default" id="vzE-KA-o1g"/>
                                     <constraint firstItem="UXq-Ci-WS2" firstAttribute="trailing" secondItem="I2a-48-VNf" secondAttribute="trailing" type="default" id="w34-c9-fxs"/>
                                     <constraint firstItem="WRZ-Iq-JhM" firstAttribute="top" secondItem="8hR-0R-B7p" secondAttribute="top" type="default" id="x8h-lU-6qr"/>
-                                    <constraint firstItem="yRF-gZ-vNv" firstAttribute="leading" secondItem="s20-Or-aZK" secondAttribute="leading" constant="23" id="xmU-hV-KNk"/>
                                     <constraint firstItem="cce-xO-Ehk" firstAttribute="baseline" secondItem="Yyu-Zr-Lt1" secondAttribute="baseline" type="default" id="ypA-OF-Zzc"/>
-                                    <constraint firstItem="oDY-1N-Fsh" firstAttribute="top" secondItem="s20-Or-aZK" secondAttribute="top" constant="11" id="zqO-ZS-6K7"/>
+                                    <constraint firstItem="0lh-L7-gNe" firstAttribute="baseline" secondItem="UXq-Ci-WS2" secondAttribute="baseline" type="default" id="z5P-ZH-VxY"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="itemImageView" destination="yRF-gZ-vNv" id="4Xg-KP-C1J"/>
+                                    <outlet property="itemTitleLabel" destination="AqE-rT-i4S" id="pvJ-xn-EDN"/>
                                 </connections>
                             </tableViewCell>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="RarityItemCell" rowHeight="150" id="qfv-Yi-BkZ" customClass="ResourceCell">
@@ -3250,10 +3271,10 @@ Range: 0km</string>
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="149"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bdm-3I-nJv">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Bdm-3I-nJv">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="120" type="user" id="RsT-JH-zv9"/>
-                                                <constraint firstAttribute="width" constant="120" type="user" id="akt-mF-cBA"/>
+                                                <constraint firstAttribute="width" constant="90" id="L9E-5p-95F"/>
+                                                <constraint firstAttribute="height" constant="90" id="eWM-qB-xw7"/>
                                             </constraints>
                                         </imageView>
                                         <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZi-Bv-8rN" customClass="DarkPressedBackgroundButton">
@@ -3410,6 +3431,9 @@ RARE</string>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FN9-Xb-j5o">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="120" id="FVv-S5-kgY"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -3422,8 +3446,10 @@ RARE</string>
                                     <constraint firstItem="QzJ-bh-qkf" firstAttribute="top" secondItem="j99-gl-bDu" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="274-Qv-7hr"/>
                                     <constraint firstItem="6pK-LZ-Qv7" firstAttribute="baseline" secondItem="QzJ-bh-qkf" secondAttribute="baseline" type="default" id="2Z9-PA-xFr"/>
                                     <constraint firstItem="Tjy-6B-8iH" firstAttribute="top" secondItem="Qx2-g6-atM" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="4Tz-Vr-2Hd"/>
+                                    <constraint firstItem="Bdm-3I-nJv" firstAttribute="leading" secondItem="qfv-Yi-BkZ" secondAttribute="leading" constant="39" id="5K2-er-x6r"/>
                                     <constraint firstItem="FN9-Xb-j5o" firstAttribute="leading" secondItem="qfv-Yi-BkZ" secondAttribute="leading" constant="23" id="5N5-ld-y2z"/>
                                     <constraint firstItem="OS1-jb-zD9" firstAttribute="top" secondItem="fZi-Bv-8rN" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="7PN-Vq-i7n"/>
+                                    <constraint firstItem="FN9-Xb-j5o" firstAttribute="top" secondItem="qfv-Yi-BkZ" secondAttribute="top" constant="15" id="7vl-Z1-Ygv"/>
                                     <constraint firstItem="Qx2-g6-atM" firstAttribute="baseline" secondItem="OS1-jb-zD9" secondAttribute="baseline" type="default" id="G1g-Dr-Llu"/>
                                     <constraint firstItem="cVb-uJ-z6A" firstAttribute="top" secondItem="ucK-fu-t0P" secondAttribute="top" type="default" id="G31-Jz-RQl"/>
                                     <constraint firstItem="ucK-fu-t0P" firstAttribute="trailing" secondItem="Qx2-g6-atM" secondAttribute="trailing" type="default" id="GjP-Oe-JQl"/>
@@ -3438,13 +3464,11 @@ RARE</string>
                                     <constraint firstItem="OS1-jb-zD9" firstAttribute="trailing" secondItem="fZi-Bv-8rN" secondAttribute="trailing" type="default" id="VmP-y3-tSj"/>
                                     <constraint firstAttribute="trailing" secondItem="ucK-fu-t0P" secondAttribute="trailing" constant="68" id="Vxw-3r-AWY"/>
                                     <constraint firstItem="6pK-LZ-Qv7" firstAttribute="trailing" secondItem="Tjy-6B-8iH" secondAttribute="trailing" type="default" id="WfJ-5a-SFO"/>
-                                    <constraint firstItem="FN9-Xb-j5o" firstAttribute="trailing" secondItem="Bdm-3I-nJv" secondAttribute="trailing" type="default" id="YHj-3e-rKN"/>
-                                    <constraint firstItem="FN9-Xb-j5o" firstAttribute="leading" secondItem="Bdm-3I-nJv" secondAttribute="leading" type="default" id="YwQ-oC-GvO"/>
+                                    <constraint firstItem="Bdm-3I-nJv" firstAttribute="top" secondItem="qfv-Yi-BkZ" secondAttribute="top" constant="45" id="bCh-Yx-wP8"/>
                                     <constraint firstItem="ucK-fu-t0P" firstAttribute="top" secondItem="fZi-Bv-8rN" secondAttribute="top" type="default" id="bve-7e-MBK"/>
                                     <constraint firstItem="V8L-V9-bV1" firstAttribute="leading" secondItem="6Lw-jH-lIS" secondAttribute="leading" type="default" id="dAa-zs-6sU"/>
                                     <constraint firstItem="j99-gl-bDu" firstAttribute="trailing" secondItem="OS1-jb-zD9" secondAttribute="trailing" type="default" id="dSZ-S6-Txc"/>
                                     <constraint firstItem="j99-gl-bDu" firstAttribute="leading" secondItem="QzJ-bh-qkf" secondAttribute="leading" type="default" id="dZG-3Y-lR8"/>
-                                    <constraint firstItem="Bdm-3I-nJv" firstAttribute="centerY" secondItem="qfv-Yi-BkZ" secondAttribute="centerY" type="default" id="dw7-fZ-Ht7"/>
                                     <constraint firstItem="EgV-Wl-cCo" firstAttribute="top" secondItem="V8L-V9-bV1" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="e1P-OV-h7D"/>
                                     <constraint firstItem="V8L-V9-bV1" firstAttribute="top" secondItem="6Lw-jH-lIS" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="etE-sA-btu"/>
                                     <constraint firstItem="j99-gl-bDu" firstAttribute="leading" secondItem="OS1-jb-zD9" secondAttribute="leading" type="default" id="f3W-Qf-f9U"/>
@@ -3455,7 +3479,6 @@ RARE</string>
                                     <constraint firstAttribute="trailing" secondItem="cVb-uJ-z6A" secondAttribute="trailing" constant="20" type="default" id="kfT-wR-www"/>
                                     <constraint firstItem="j99-gl-bDu" firstAttribute="top" secondItem="OS1-jb-zD9" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="m2Z-Mw-dlj"/>
                                     <constraint firstAttribute="trailing" secondItem="EgV-Wl-cCo" secondAttribute="trailing" constant="20" type="default" id="mmy-C9-Jr1"/>
-                                    <constraint firstItem="FN9-Xb-j5o" firstAttribute="top" secondItem="Bdm-3I-nJv" secondAttribute="top" type="default" id="mqb-Xs-qMu"/>
                                     <constraint firstItem="cVb-uJ-z6A" firstAttribute="leading" secondItem="6Lw-jH-lIS" secondAttribute="leading" type="default" id="qxh-8b-zQs"/>
                                     <constraint firstItem="Qx2-g6-atM" firstAttribute="top" secondItem="OS1-jb-zD9" secondAttribute="top" type="default" id="tdJ-ww-wfU"/>
                                     <constraint firstItem="EgV-Wl-cCo" firstAttribute="top" secondItem="6pK-LZ-Qv7" secondAttribute="top" type="default" id="uYj-hC-Ugc"/>
@@ -3479,8 +3502,8 @@ RARE</string>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmu-Jx-CtL">
                                             <constraints>
-                                                <constraint firstAttribute="height" constant="120" type="user" id="JBe-85-rbF"/>
-                                                <constraint firstAttribute="width" constant="120" type="user" id="mWt-Jt-ewx"/>
+                                                <constraint firstAttribute="height" constant="90" id="VTC-0P-MSK"/>
+                                                <constraint firstAttribute="width" constant="90" id="wOR-ix-QzU"/>
                                             </constraints>
                                         </imageView>
                                         <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DmI-ha-idA" customClass="DarkPressedBackgroundButton">
@@ -3540,10 +3563,19 @@ RARE</string>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxr-Eu-Lxa">
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="120" id="OZP-v6-4PI"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </label>
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <constraints>
+                                    <constraint firstItem="hxr-Eu-Lxa" firstAttribute="top" secondItem="oGb-Tp-eHQ" secondAttribute="top" constant="16" id="58U-MB-JSV"/>
                                     <constraint firstItem="DmI-ha-idA" firstAttribute="top" secondItem="oGb-Tp-eHQ" secondAttribute="top" constant="11" id="7Ci-xs-O4G"/>
                                     <constraint firstItem="BXi-nd-MO5" firstAttribute="leading" secondItem="vai-oX-T84" secondAttribute="leading" type="default" id="ALH-ok-7sY"/>
                                     <constraint firstItem="izn-Nv-lqJ" firstAttribute="trailing" secondItem="BXi-nd-MO5" secondAttribute="trailing" type="default" id="F0z-Mu-rLl"/>
@@ -3551,15 +3583,18 @@ RARE</string>
                                     <constraint firstItem="BXi-nd-MO5" firstAttribute="top" secondItem="vai-oX-T84" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="R73-5H-MWk"/>
                                     <constraint firstItem="izn-Nv-lqJ" firstAttribute="top" secondItem="BXi-nd-MO5" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="UoM-Ea-Msy"/>
                                     <constraint firstItem="vai-oX-T84" firstAttribute="trailing" secondItem="DmI-ha-idA" secondAttribute="trailing" type="default" id="Wmm-od-4Xx"/>
-                                    <constraint firstItem="bmu-Jx-CtL" firstAttribute="leading" secondItem="oGb-Tp-eHQ" secondAttribute="leading" constant="23" id="a2n-yV-v5k"/>
+                                    <constraint firstItem="bmu-Jx-CtL" firstAttribute="top" secondItem="hxr-Eu-Lxa" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="ada-cu-29z"/>
                                     <constraint firstItem="BXi-nd-MO5" firstAttribute="trailing" secondItem="vai-oX-T84" secondAttribute="trailing" type="default" id="bvH-6J-8WI"/>
+                                    <constraint firstItem="hxr-Eu-Lxa" firstAttribute="leading" secondItem="oGb-Tp-eHQ" secondAttribute="leading" constant="24" id="dba-Ui-kCO"/>
+                                    <constraint firstItem="hxr-Eu-Lxa" firstAttribute="baseline" secondItem="DmI-ha-idA" secondAttribute="baseline" type="default" id="fre-oB-ghC"/>
+                                    <constraint firstItem="hxr-Eu-Lxa" firstAttribute="centerX" secondItem="bmu-Jx-CtL" secondAttribute="centerX" type="default" id="icc-vg-H7X"/>
                                     <constraint firstItem="DmI-ha-idA" firstAttribute="leading" secondItem="oGb-Tp-eHQ" secondAttribute="leading" constant="157" id="j6z-3D-oo6"/>
-                                    <constraint firstItem="bmu-Jx-CtL" firstAttribute="centerY" secondItem="oGb-Tp-eHQ" secondAttribute="centerY" type="default" id="lHd-Ps-PPM"/>
                                     <constraint firstItem="vai-oX-T84" firstAttribute="leading" secondItem="DmI-ha-idA" secondAttribute="leading" type="default" id="nLm-mN-zsb"/>
                                     <constraint firstItem="vai-oX-T84" firstAttribute="top" secondItem="DmI-ha-idA" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="nof-R1-pKf"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="itemImageView" destination="bmu-Jx-CtL" id="pVv-w1-2Pf"/>
+                                    <outlet property="itemTitleLabel" destination="hxr-Eu-Lxa" id="eBe-1g-M6k"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -3785,262 +3820,6 @@ RARE</string>
         <image name="scanner-bg@2x.png" width="640" height="910"/>
         <image name="scanner.png" width="27" height="27"/>
     </resources>
-    <classes>
-        <class className="APView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/APView.h"/>
-        </class>
-        <class className="ChooserViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChooserViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="action:" candidateClass="UIButton"/>
-                <relationship kind="action" name="stepperChanged:" candidateClass="UIStepper"/>
-                <relationship kind="outlet" name="countButton" candidateClass="GUIButton"/>
-                <relationship kind="outlet" name="countLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="countStepper" candidateClass="UIStepper"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="CommTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CommTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="messageLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="CommTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CommTableViewController.h"/>
-        </class>
-        <class className="CommViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CommViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="groupChanged:" candidateClass="UISegmentedControl"/>
-                <relationship kind="action" name="transmit"/>
-                <relationship kind="outlet" name="groupSegments" candidateClass="UISegmentedControl"/>
-                <relationship kind="outlet" name="transmitButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="transmitContainerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="transmitTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="CustomBackgroundColorButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomBackgroundColorButton.h"/>
-        </class>
-        <class className="DarkPressedBackgroundButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DarkPressedBackgroundButton.h"/>
-        </class>
-        <class className="DeviceViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DeviceViewController.h"/>
-        </class>
-        <class className="GLViewController" superclassName="GLKViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GLViewController.h"/>
-        </class>
-        <class className="GUIButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GUIButton.h"/>
-        </class>
-        <class className="GlowingLabel" superclassName="UILabel">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GlowingLabel.h"/>
-        </class>
-        <class className="IntelViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IntelViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="viewSegmentedControlChanged"/>
-                <relationship kind="outlet" name="missionsContainerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="recruitContainerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="scoreContainerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="viewSegmentedControl" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="ItemsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ItemsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="submitPasscode"/>
-                <relationship kind="action" name="viewSegmentedControlChanged"/>
-                <relationship kind="outlet" name="mediaContainerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="passcodeContainerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="passcodeTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="portalKeysContainerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="resourcesContainerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="submitPasscodeButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="viewSegmentedControl" candidateClass="UISegmentedControl"/>
-            </relationships>
-        </class>
-        <class className="LoadingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoadingViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="activate"/>
-                <relationship kind="action" name="codenameConfirm"/>
-                <relationship kind="action" name="codenameRetry"/>
-                <relationship kind="action" name="createCodename"/>
-                <relationship kind="action" name="retryHandshake"/>
-                <relationship kind="action" name="termsCheckboxChanged"/>
-                <relationship kind="action" name="termsConfirm"/>
-                <relationship kind="outlet" name="activationButton" candidateClass="CustomBackgroundColorButton"/>
-                <relationship kind="outlet" name="activationCodeField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="activationErrorLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="activationView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="codenameConfirmButton" candidateClass="StretchableBackgroundButton"/>
-                <relationship kind="outlet" name="codenameConfirmLabel" candidateClass="TypeWriterLabel"/>
-                <relationship kind="outlet" name="codenameConfirmRetryButton" candidateClass="StretchableBackgroundButton"/>
-                <relationship kind="outlet" name="codenameConfirmView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="codenameErrorLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="codenameErrorRetryButton" candidateClass="StretchableBackgroundButton"/>
-                <relationship kind="outlet" name="codenameErrorView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="createCodenameButton" candidateClass="CustomBackgroundColorButton"/>
-                <relationship kind="outlet" name="createCodenameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="createCodenameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="createCodenameScrollview" candidateClass="TPKeyboardAvoidingScrollView"/>
-                <relationship kind="outlet" name="introTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="introView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="label" candidateClass="GlowingLabel"/>
-                <relationship kind="outlet" name="retryHandshakeButton" candidateClass="GUIButton"/>
-                <relationship kind="outlet" name="termsCheckboxButton" candidateClass="SelectingButton"/>
-                <relationship kind="outlet" name="termsConfirmButton" candidateClass="StretchableBackgroundButton"/>
-                <relationship kind="outlet" name="termsDescriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="termsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="termsView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="termsWarningLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="typewriterLabel" candidateClass="TypeWriterLabel"/>
-                <relationship kind="outlet" name="typewriterView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="wheelActivityIndicatorView" candidateClass="WheelActivityIndicatorView"/>
-            </relationships>
-        </class>
-        <class className="MediaItemsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MediaItemsViewController.h"/>
-        </class>
-        <class className="MediaWebViewViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MediaWebViewViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="action"/>
-                <relationship kind="action" name="close"/>
-                <relationship kind="outlet" name="_webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="MissionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MissionViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="join:"/>
-                <relationship kind="outlet" name="altButton" candidateClass="StretchableBackgroundButton"/>
-                <relationship kind="outlet" name="authLabel" candidateClass="GlowingLabel"/>
-                <relationship kind="outlet" name="authProgressView" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="choosingLabel" candidateClass="GlowingLabel"/>
-                <relationship kind="outlet" name="factionChooseButtons" candidateClass="UIView"/>
-                <relationship kind="outlet" name="factionChooseButtonsLabel" candidateClass="GlowingLabel"/>
-                <relationship kind="outlet" name="jarvisBackground" candidateClass="UIView"/>
-                <relationship kind="outlet" name="joinEnlightenedButton" candidateClass="GUIButton"/>
-                <relationship kind="outlet" name="joinResistanceButton" candidateClass="GUIButton"/>
-                <relationship kind="outlet" name="mainButton" candidateClass="StretchableBackgroundButton"/>
-                <relationship kind="outlet" name="subtitleLabel" candidateClass="GlowingLabel"/>
-                <relationship kind="outlet" name="textView" candidateClass="ScrollTextView"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="GlowingLabel"/>
-                <relationship kind="outlet" name="typewriterLabel" candidateClass="TypeWriterLabel"/>
-            </relationships>
-        </class>
-        <class className="MissionsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MissionsViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="PortalActionsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalActionsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="hack:" candidateClass="GUIButton"/>
-                <relationship kind="action" name="link:" candidateClass="GUIButton"/>
-                <relationship kind="action" name="recharge:" candidateClass="GUIButton"/>
-                <relationship kind="outlet" name="hackButton" candidateClass="GUIButton"/>
-                <relationship kind="outlet" name="imageActivityIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="infoLabel1" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="infoLabel2" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="linkButton" candidateClass="GUIButton"/>
-                <relationship kind="outlet" name="portalTitleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="rechargeButton" candidateClass="GUIButton"/>
-            </relationships>
-        </class>
-        <class className="PortalDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalDetailViewController.h"/>
-        </class>
-        <class className="PortalInfoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalInfoViewController.h"/>
-        </class>
-        <class className="PortalKeyCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalKeyCell.h"/>
-        </class>
-        <class className="PortalKeysViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalKeysViewController.h"/>
-        </class>
-        <class className="PortalUpgradeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalUpgradeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="resonatorButtonPressed:" candidateClass="GUIButton"/>
-                <relationship kind="action" name="shieldButtonPressed:" candidateClass="GUIButton"/>
-            </relationships>
-        </class>
-        <class className="RecruitViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecruitViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="invite"/>
-                <relationship kind="outlet" name="inviteButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="inviteContainerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="inviteLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="inviteTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="ResourceCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ResourceCell.h"/>
-            <relationships>
-                <relationship kind="action" name="action:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="itemImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="itemTitleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ResourcesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ResourcesViewController.h"/>
-        </class>
-        <class className="ScannerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScannerViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="showAP"/>
-                <relationship kind="action" name="showXM"/>
-                <relationship kind="action" name="virusChoosePortalCancel"/>
-                <relationship kind="outlet" name="_mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="apLabel" candidateClass="GlowingLabel"/>
-                <relationship kind="outlet" name="apView" candidateClass="APView"/>
-                <relationship kind="outlet" name="bgImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="fireXmpButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="levelLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="nicknameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="playerArrowImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="virusChoosePortalCancelButton" candidateClass="GUIButton"/>
-                <relationship kind="outlet" name="virusChoosePortalLabel" candidateClass="GlowingLabel"/>
-                <relationship kind="outlet" name="xmIndicator" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="xmLabel" candidateClass="GlowingLabel"/>
-            </relationships>
-        </class>
-        <class className="ScoreViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScoreViewController.h"/>
-        </class>
-        <class className="ScrollTextView" superclassName="UITextView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScrollTextView.h"/>
-        </class>
-        <class className="SelectingButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectingButton.h"/>
-        </class>
-        <class className="StretchableBackgroundButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StretchableBackgroundButton.h"/>
-        </class>
-        <class className="TPKeyboardAvoidingScrollView" superclassName="UIScrollView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TPKeyboardAvoidingScrollView.h"/>
-        </class>
-        <class className="TypeWriterLabel" superclassName="UILabel">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TypeWriterLabel.h"/>
-        </class>
-        <class className="UIRefreshControl" superclassName="UIControl">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/UIRefreshControl.h"/>
-        </class>
-        <class className="WheelActivityIndicatorView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WheelActivityIndicatorView.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

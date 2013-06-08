@@ -58,21 +58,21 @@
 		case 0: {
 			ResourceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LevelsItemCell" forIndexPath:indexPath];
 			cell.itemImageView.image = [UIImage imageNamed:@"resonator.png"];
-//			cell.itemTitleLabel.text = @"Resonator";
+			cell.itemTitleLabel.text = @"Resonator";
 			cell.itemType = ItemTypeResonator;
 			return cell;
 		}
 		case 1: {
 			ResourceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LevelsItemCell" forIndexPath:indexPath];
 			cell.itemImageView.image = [UIImage imageNamed:@"xmp.png"];
-//			cell.itemTitleLabel.text = @"XMP Burster";
+			cell.itemTitleLabel.text = @"XMP Burster";
 			cell.itemType = ItemTypeXMP;
 			return cell;
 		}
 		case 2: {
 			ResourceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"LevelsItemCell" forIndexPath:indexPath];
 			cell.itemImageView.image = [UIImage imageNamed:@"powerCube.png"];
-//			cell.itemTitleLabel.text = @"Power Cube";
+			cell.itemTitleLabel.text = @"Power Cube";
 			cell.itemType = ItemTypePowerCube;
 			return cell;
 		}
@@ -84,14 +84,14 @@
 			} else {
 				cell.itemImageView.image = [UIImage imageNamed:@"ada_refactor.png"];
 			}
-//			cell.itemTitleLabel.text = @"Alignment Virus";
+			cell.itemTitleLabel.text = @"Alignment Virus";
 			cell.itemType = ItemTypeFlipCard;
 			return cell;
 		}
 		case 4: {
 			ResourceCell *cell = [tableView dequeueReusableCellWithIdentifier:@"RarityItemCell" forIndexPath:indexPath];
 			cell.itemImageView.image = [UIImage imageNamed:@"shield.png"];
-//			cell.itemTitleLabel.text = @"Shield";
+			cell.itemTitleLabel.text = @"Shield";
 			cell.itemType = ItemTypePortalShield;
 			return cell;
 		}
