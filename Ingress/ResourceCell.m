@@ -73,16 +73,11 @@
 			break;
 	}
 
-	if (itemType == ItemTypePortalShield) {
+	if (itemType == ItemTypePortalShield || itemType == ItemTypeForceAmp || itemType == ItemTypeHeatsink || itemType == ItemTypeLinkAmp || itemType == ItemTypeMultihack || itemType == ItemTypeTurret) {
 		for (int i = 1; i <= 6; i++) {
 			UILabel *label = (UILabel *)[self.contentView viewWithTag:i];
 			ItemRarity rarity = [Utilities rarityFromInt:i];
 			label.text = [NSString stringWithFormat:@"%d", [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]]];
-		}
-	} else if (itemType == ItemTypeForceAmp || itemType == ItemTypeHeatsink || itemType == ItemTypeLinkAmp || itemType == ItemTypeMultihack || itemType == ItemTypeTurret) {
-		for (int i = 1; i <= 6; i++) {
-			UILabel *label = (UILabel *)[self.contentView viewWithTag:i];
-			label.text = @"-";
 		}
 	} else if (itemType == ItemTypeFlipCard) {
 		for (int i = 1; i <= 2; i++) {
@@ -154,11 +149,9 @@
 
 	int maxCount = 0;
 
-	if (self.itemType == ItemTypePortalShield) {
+	if (self.itemType == ItemTypePortalShield || self.itemType == ItemTypeForceAmp || self.itemType == ItemTypeHeatsink || self.itemType == ItemTypeLinkAmp || self.itemType == ItemTypeMultihack || self.itemType == ItemTypeTurret) {
 		ItemRarity rarity = [Utilities rarityFromInt:actionLevel];
 		maxCount = [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
-	} else if (self.itemType == ItemTypeForceAmp || self.itemType == ItemTypeHeatsink || self.itemType == ItemTypeLinkAmp || self.itemType == ItemTypeMultihack || self.itemType == ItemTypeTurret) {
-		maxCount = 0;
 	} else if (self.itemType == ItemTypeFlipCard) {
 		maxCount = [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && type = %@", (actionLevel == 1) ? @"JARVIS" : @"ADA"]];
 	} else {
@@ -271,11 +264,9 @@
 
 	int maxCount = 0;
 
-	if (self.itemType == ItemTypePortalShield) {
+	if (self.itemType == ItemTypePortalShield || self.itemType == ItemTypeForceAmp || self.itemType == ItemTypeHeatsink || self.itemType == ItemTypeLinkAmp || self.itemType == ItemTypeMultihack || self.itemType == ItemTypeTurret) {
 		ItemRarity rarity = [Utilities rarityFromInt:actionLevel];
 		maxCount = [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
-	} else if (self.itemType == ItemTypeForceAmp || self.itemType == ItemTypeHeatsink || self.itemType == ItemTypeLinkAmp || self.itemType == ItemTypeMultihack || self.itemType == ItemTypeTurret) {
-		maxCount = 0;
 	} else if (self.itemType == ItemTypeFlipCard) {
 		maxCount = [objectClass MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && type = %@", (actionLevel == 1) ? @"JARVIS" : @"ADA"]];
 	} else {
