@@ -35,6 +35,14 @@
 
 	CGFloat viewWidth = [UIScreen mainScreen].bounds.size.width;
 	CGFloat viewHeight = [UIScreen mainScreen].bounds.size.height-49; //-113+44+20
+	CGFloat topPadding = 0;
+
+	if ([Utilities isOS7]) {
+		viewHeight -= 64;
+	} else {
+		viewHeight -= 49;
+		topPadding = 64;
+	}
 
 	_scrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, viewWidth, viewHeight)];
 	_scrollView.delegate = self;
@@ -68,14 +76,14 @@
 
 	portalInfoVC = [storyboard instantiateViewControllerWithIdentifier:@"PortalInfoViewController"];
 	portalInfoVC.portal = self.portal;
-	portalInfoVC.view.frame = CGRectMake(viewWidth, 64, viewWidth, viewHeight-64);
+	portalInfoVC.view.frame = CGRectMake(viewWidth, topPadding, viewWidth, viewHeight-64);
 	[self addChildViewController:portalInfoVC];
 	[_scrollView addSubview:portalInfoVC.view];
 
 	if (canUpgrade) {
 		portalUpgradeVC = [storyboard instantiateViewControllerWithIdentifier:@"PortalUpgradeViewController"];
 		portalUpgradeVC.portal = self.portal;
-		portalUpgradeVC.view.frame = CGRectMake(viewWidth*2, 64, viewWidth, viewHeight-64);
+		portalUpgradeVC.view.frame = CGRectMake(viewWidth*2, topPadding, viewWidth, viewHeight-64);
 		[self addChildViewController:portalUpgradeVC];
 		[_scrollView addSubview:portalUpgradeVC.view];
 	}
