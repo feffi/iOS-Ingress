@@ -37,7 +37,7 @@
 	levelChooser.view.frame = CGRectMake(0, 0, 240, 100);
 	levelChooser.numberChooserCompletionHandler = handler;
 	[levelChooser.countButton setTitle:buttonTitle forState:UIControlStateNormal];
-	levelChooser.countButton.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:16];
+	levelChooser.countButton.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 	levelChooser.countStepper.maximumValue = maxCount;
 	levelChooser.countStepper.value = (maxCount >= 1) ? 1 : 0;
 	levelChooser.countLabel.text = [NSString stringWithFormat:@"%.0f / %.0f", levelChooser.countStepper.value, levelChooser.countStepper.maximumValue];
@@ -70,7 +70,7 @@
 		if ([view isKindOfClass:[UIButton class]]) {
 			UIButton *button = (UIButton *)view;
 			if (self.view.tag == 200) {
-				button.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:10];
+				button.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:10];
 			}
 			button.titleLabel.numberOfLines = 0;
 			button.titleLabel.textAlignment = NSTextAlignmentCenter;

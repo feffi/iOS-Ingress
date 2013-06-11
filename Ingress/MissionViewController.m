@@ -124,7 +124,7 @@
 	[titleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:22]];
 	[subtitleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:18]];
 
-	[mainButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:28]];
+	[mainButton.titleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:28]];
 	[mainButton setEnabled:YES];
 	[mainButton setTitle:@"Proceed" forState:UIControlStateNormal];
 	[mainButton removeTarget:self action:NULL forControlEvents:UIControlEventTouchUpInside];
@@ -250,7 +250,7 @@
 	[titleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:22]];
 	[subtitleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:18]];
 
-	[mainButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:28]];
+	[mainButton.titleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:28]];
 	[mainButton setEnabled:YES];
 	[mainButton setTitle:@"Proceed" forState:UIControlStateNormal];
 	[mainButton removeTarget:self action:NULL forControlEvents:UIControlEventTouchUpInside];
@@ -299,10 +299,10 @@
 	altButton.hidden = YES;
 	choosingLabel.hidden = YES;
 
-	[joinResistanceButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:22]];
+	[joinResistanceButton.titleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:22]];
 	[joinResistanceButton setTitleColor:[Utilities colorForFaction:@"RESISTANCE"] forState:UIControlStateNormal];
 
-	[joinEnlightenedButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:22]];
+	[joinEnlightenedButton.titleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:22]];
 	[joinEnlightenedButton setTitleColor:[Utilities colorForFaction:@"ALIENS"] forState:UIControlStateNormal];
 	
 }
@@ -383,12 +383,12 @@
 	[titleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:22]];
 	[subtitleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:18]];
 
-	[mainButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:28]];
+	[mainButton.titleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:28]];
 	[mainButton setTitle:@"Accept" forState:UIControlStateNormal];
 	[mainButton removeTarget:self action:NULL forControlEvents:UIControlEventTouchUpInside];
 	[mainButton addTarget:self action:@selector(accept) forControlEvents:UIControlEventTouchUpInside];
 
-	[altButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:22]];
+	[altButton.titleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:22]];
 
 	[wheelActivityIndicatorView startAnimating];
 
@@ -431,12 +431,12 @@
 	[titleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:22]];
 	[subtitleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:18]];
 
-	[mainButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:28]];
+	[mainButton.titleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:28]];
 	[mainButton setTitle:@"Start" forState:UIControlStateNormal];
 	[mainButton removeTarget:self action:NULL forControlEvents:UIControlEventTouchUpInside];
 	[mainButton addTarget:self action:@selector(start) forControlEvents:UIControlEventTouchUpInside];
 
-	[altButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:22]];
+	[altButton.titleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:22]];
 	[altButton setTitle:@"Skip" forState:UIControlStateNormal];
 	[altButton removeTarget:self action:NULL forControlEvents:UIControlEventTouchUpInside];
 	[altButton addTarget:self action:@selector(skip) forControlEvents:UIControlEventTouchUpInside];

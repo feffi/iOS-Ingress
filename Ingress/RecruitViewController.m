@@ -16,7 +16,7 @@
     [super viewDidLoad];
 	
 	inviteTextField.font = [UIFont fontWithName:[[[UITextField appearance] font] fontName] size:15];
-	inviteButton.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:15];
+	inviteButton.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15];
 	inviteLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:12];
 	
 	__weak typeof(self) weakSelf = self;

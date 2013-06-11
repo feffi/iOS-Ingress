@@ -23,9 +23,9 @@
 	infoLabel1.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15];
 	infoLabel2.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15];
 	
-	hackButton.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:16];
-	rechargeButton.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:16];
-	linkButton.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:16];
+	hackButton.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+	rechargeButton.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+	linkButton.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 
 	self.imageView.image = [UIImage imageNamed:@"missing_image"];
 

@@ -50,7 +50,7 @@
 		UIButton *button = (UIButton *)[self.view viewWithTag:100+i];
 
 		button.titleLabel.numberOfLines = 0;
-		button.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:10];
+		button.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:10];
 
 		DeployedMod *mod = [DeployedMod MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"portal = %@ && slot = %d", self.portal, i]];
 
