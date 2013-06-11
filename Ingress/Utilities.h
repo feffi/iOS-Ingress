@@ -25,6 +25,8 @@ typedef enum {
 
 + (instancetype)sharedInstance;
 
++ (BOOL)isOS7;
+
 + (void)showWarningWithTitle:(NSString *)title;
 
 + (NSDictionary *)attributesWithShadow:(BOOL)shadow size:(CGFloat)size color:(UIColor *)color;

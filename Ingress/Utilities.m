@@ -21,6 +21,12 @@
     return __sharedInstance;
 }
 
+#pragma mark - iOS 7
+
++ (BOOL)isOS7 {
+	return ([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] != NSOrderedAscending);
+}
+
 #pragma mark - Warning
 
 + (void)showWarningWithTitle:(NSString *)title {
