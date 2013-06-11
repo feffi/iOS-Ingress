@@ -104,11 +104,11 @@
 	[_mapView addGestureRecognizer:mapViewLognPressGestureRecognizer];
 
 	if ([_mapView respondsToSelector:@selector(isPitchEnabled)]) {
-//		_mapView.pitchEnabled = NO;
+		_mapView.pitchEnabled = NO;
 	}
 
 	if ([_mapView respondsToSelector:@selector(isRotateEnabled)]) {
-//		_mapView.rotateEnabled = NO;
+		_mapView.rotateEnabled = NO;
 	}
 
 //	_mapView.scrollEnabled = YES;

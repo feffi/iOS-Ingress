@@ -38,7 +38,7 @@
 //	[[UIButton appearanceWhenContainedIn:[UINavigationBar class], nil] setFont:[UIFont fontWithName:@"Coda-Regular" size:12]];
 	
 	if ([UITabBar instancesRespondToSelector:@selector(barTintColor)]) {
-//		[[UITabBar appearance] setBarTintColor:[UIColor blackColor]];
+		[[UITabBar appearance] setBarTintColor:[UIColor blackColor]];
 	}
 
 	if ([Utilities isOS7]) {
