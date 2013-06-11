@@ -103,6 +103,17 @@
 	UILongPressGestureRecognizer *mapViewLognPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(mapLongPress:)];
 	[_mapView addGestureRecognizer:mapViewLognPressGestureRecognizer];
 
+	if ([_mapView respondsToSelector:@selector(isPitchEnabled)]) {
+//		_mapView.pitchEnabled = NO;
+	}
+
+	if ([_mapView respondsToSelector:@selector(isRotateEnabled)]) {
+//		_mapView.rotateEnabled = NO;
+	}
+
+//	_mapView.scrollEnabled = YES;
+//	_mapView.zoomEnabled = YES;
+
     _xmOverlay = [XMOverlay new];
     [_mapView addOverlay:_xmOverlay];
     
@@ -519,6 +530,10 @@
 }
 
 - (void)updateRangeCircleView {
+	if ([Utilities isOS7]) {
+		return;
+	}
+	
     // Create view on first update
     if ( ! rangeCircleView) {
         rangeCircleView = [UIView new];
@@ -701,7 +716,7 @@
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
 
 	if (mapView.zoomLevel < 15) {
-        [mapView setCenterCoordinate:_mapView.centerCoordinate zoomLevel:15 animated:NO];
+        [mapView setCenterCoordinate:mapView.centerCoordinate zoomLevel:15 animated:NO];
 		return;
     }
 
