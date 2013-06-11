@@ -54,7 +54,7 @@
 	[activationCodeField.layer setBorderWidth:1];
 	[activationCodeField.layer setBorderColor:[[UIColor colorWithRed:116.0/255.0 green:251.0/255.0 blue:233.0/255.0 alpha:1.0] CGColor]];
 	[activationCodeField addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
-	[activationButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:18]];
+	[activationButton.titleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:18]];
 
 	createCodenameLabel.font = [UIFont fontWithName:[[[UITextField appearance] font] fontName] size:14];
 	[createCodenameField.layer setBorderWidth:1];
@@ -62,7 +62,7 @@
 	[createCodenameField addTarget:self action:@selector(textChanged:) forControlEvents:UIControlEventEditingChanged];
 	[createCodenameButton.layer setBorderWidth:1];
 	[createCodenameButton.layer setBorderColor:[[UIColor colorWithRed:255.0/255.0 green:214.0/255.0 blue:82.0/255.0 alpha:1.0] CGColor]];
-	[createCodenameButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:18]];
+	[createCodenameButton.titleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:18]];
 
 	[createCodenameScrollview addKeyboardPanningWithActionHandler:^(CGRect keyboardFrameInView) { }];
 
@@ -233,7 +233,7 @@
 						dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
 							termsView.hidden = NO;
 							typewriterView.hidden = YES;
-							termsConfirmButton.titleLabel.font = [UIFont fontWithName:[[[UIButton appearance] font] fontName] size:28];
+							termsConfirmButton.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:28];
 						});
 						
 					} else if ([errorStr isEqualToString:@"allowNicknameEdit"]) {
@@ -388,7 +388,7 @@
 
 		if (errorStr) {
 
-			[codenameErrorRetryButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:22]];
+			[codenameErrorRetryButton.titleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:22]];
 			if ([errorStr isEqualToString:@"CANNOT_EDIT"]) {
 				[codenameErrorRetryButton setTitle:@"Skip" forState:UIControlStateNormal];
 				[codenameErrorRetryButton removeTarget:self	action:@selector(codenameRetry) forControlEvents:UIControlEventTouchUpInside];
@@ -404,8 +404,8 @@
 		} else {
 
 			codenameConfirmLabel.text = @"";
-			[codenameConfirmButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:28]];
-			[codenameConfirmRetryButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:22]];
+			[codenameConfirmButton.titleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:28]];
+			[codenameConfirmRetryButton.titleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:22]];
 
 			codenameConfirmView.hidden = NO;
 			codenameToConfirm = createCodenameField.text;
@@ -438,7 +438,7 @@
 
 		if (errorStr) {
 
-			[codenameErrorRetryButton.titleLabel setFont:[UIFont fontWithName:[[[UIButton appearance] font] fontName] size:22]];
+			[codenameErrorRetryButton.titleLabel setFont:[UIFont fontWithName:[[[UILabel appearance] font] fontName] size:22]];
 			if ([errorStr isEqualToString:@"CANNOT_EDIT"]) {
 				[codenameErrorRetryButton setTitle:@"Skip" forState:UIControlStateNormal];
 				[codenameErrorRetryButton removeTarget:self	action:@selector(codenameRetry) forControlEvents:UIControlEventTouchUpInside];
@@ -585,9 +585,9 @@
 
 //		[self addTabBarArrow];
 
-		for (UINavigationController *navC in _tabBarController.viewControllers) {
-			navC.topViewController.view.hidden = NO;
-		}
+//		for (UINavigationController *navC in _tabBarController.viewControllers) {
+//			navC.topViewController.view.hidden = NO;
+//		}
 
 		[_tabBarController setSelectedIndex:2];
         if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleBackground]) {
