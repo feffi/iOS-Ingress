@@ -17,6 +17,11 @@
 		FA0A3FEA172ED90D00BBBA3D /* Sound in Resources */ = {isa = PBXBuildFile; fileRef = FA7AC9D116D0116800505404 /* Sound */; };
 		FA0A4012172EF78700BBBA3D /* SDWebImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0A4011172EF78600BBBA3D /* SDWebImage.framework */; };
 		FA0A4014172EF79600BBBA3D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FA0A4013172EF79500BBBA3D /* ImageIO.framework */; };
+		FA13A5671767833400974387 /* TTBlackTriangle.m in Sources */ = {isa = PBXBuildFile; fileRef = FA13A55C1767833400974387 /* TTBlackTriangle.m */; };
+		FA13A5681767833400974387 /* TTScrollSlidingPagesController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA13A55E1767833400974387 /* TTScrollSlidingPagesController.m */; };
+		FA13A5691767833400974387 /* TTScrollViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = FA13A5601767833400974387 /* TTScrollViewWrapper.m */; };
+		FA13A56A1767833400974387 /* TTSlidingPage.m in Sources */ = {isa = PBXBuildFile; fileRef = FA13A5621767833400974387 /* TTSlidingPage.m */; };
+		FA13A56B1767833400974387 /* TTSlidingPageTitle.m in Sources */ = {isa = PBXBuildFile; fileRef = FA13A5651767833400974387 /* TTSlidingPageTitle.m */; };
 		FA13CDA416A038D7003C9962 /* CommTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = FA13CDA316A038D7003C9962 /* CommTableViewCell.m */; };
 		FA143F7A16D526450007330F /* DeployedResonatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA143F7916D526450007330F /* DeployedResonatorView.m */; };
 		FA1739F716A827660004EE10 /* resonator@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA1739F616A827660004EE10 /* resonator@2x.png */; };
@@ -322,6 +327,18 @@
 		FA0A3FE8172EC61F00BBBA3D /* XMOverlayView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XMOverlayView.m; sourceTree = "<group>"; };
 		FA0A4011172EF78600BBBA3D /* SDWebImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = SDWebImage.framework; sourceTree = "<group>"; };
 		FA0A4013172EF79500BBBA3D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		FA13A55B1767833400974387 /* TTBlackTriangle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTBlackTriangle.h; sourceTree = "<group>"; };
+		FA13A55C1767833400974387 /* TTBlackTriangle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTBlackTriangle.m; sourceTree = "<group>"; };
+		FA13A55D1767833400974387 /* TTScrollSlidingPagesController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTScrollSlidingPagesController.h; sourceTree = "<group>"; };
+		FA13A55E1767833400974387 /* TTScrollSlidingPagesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTScrollSlidingPagesController.m; sourceTree = "<group>"; };
+		FA13A55F1767833400974387 /* TTScrollViewWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTScrollViewWrapper.h; sourceTree = "<group>"; };
+		FA13A5601767833400974387 /* TTScrollViewWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTScrollViewWrapper.m; sourceTree = "<group>"; };
+		FA13A5611767833400974387 /* TTSlidingPage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSlidingPage.h; sourceTree = "<group>"; };
+		FA13A5621767833400974387 /* TTSlidingPage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSlidingPage.m; sourceTree = "<group>"; };
+		FA13A5631767833400974387 /* TTSlidingPagesDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSlidingPagesDataSource.h; sourceTree = "<group>"; };
+		FA13A5641767833400974387 /* TTSlidingPageTitle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTSlidingPageTitle.h; sourceTree = "<group>"; };
+		FA13A5651767833400974387 /* TTSlidingPageTitle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TTSlidingPageTitle.m; sourceTree = "<group>"; };
+		FA13A5661767833400974387 /* TTUIScrollViewSlidingPages.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TTUIScrollViewSlidingPages.h; sourceTree = "<group>"; };
 		FA13CDA216A038D7003C9962 /* CommTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommTableViewCell.h; sourceTree = "<group>"; };
 		FA13CDA316A038D7003C9962 /* CommTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommTableViewCell.m; sourceTree = "<group>"; };
 		FA143F7816D526440007330F /* DeployedResonatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DeployedResonatorView.h; sourceTree = "<group>"; };
@@ -904,6 +921,25 @@
 				FAC474DD172DB2A000AAFFC0 /* s2regionunion.h */,
 			);
 			name = "s2-geometry-library";
+			sourceTree = "<group>";
+		};
+		FA13A55A1767833400974387 /* UIScrollSlidingPages */ = {
+			isa = PBXGroup;
+			children = (
+				FA13A55B1767833400974387 /* TTBlackTriangle.h */,
+				FA13A55C1767833400974387 /* TTBlackTriangle.m */,
+				FA13A55D1767833400974387 /* TTScrollSlidingPagesController.h */,
+				FA13A55E1767833400974387 /* TTScrollSlidingPagesController.m */,
+				FA13A55F1767833400974387 /* TTScrollViewWrapper.h */,
+				FA13A5601767833400974387 /* TTScrollViewWrapper.m */,
+				FA13A5611767833400974387 /* TTSlidingPage.h */,
+				FA13A5621767833400974387 /* TTSlidingPage.m */,
+				FA13A5641767833400974387 /* TTSlidingPageTitle.h */,
+				FA13A5651767833400974387 /* TTSlidingPageTitle.m */,
+				FA13A5631767833400974387 /* TTSlidingPagesDataSource.h */,
+				FA13A5661767833400974387 /* TTUIScrollViewSlidingPages.h */,
+			);
+			path = UIScrollSlidingPages;
 			sourceTree = "<group>";
 		};
 		FA29CCF5171F05BB007FB43E /* TypeWriterLabel */ = {
@@ -1736,6 +1772,7 @@
 		FAE6AC7616A0E27B0082BBB5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FA13A55A1767833400974387 /* UIScrollSlidingPages */,
 				FACEE6141737E9AB006A9912 /* NSShadow+Initializer */,
 				FA3BD77E17352C5B004F5ED5 /* APView */,
 				FA29CCF5171F05BB007FB43E /* TypeWriterLabel */,
@@ -2138,6 +2175,7 @@
 				FAC23E4F16B2E3A9000C17DD /* MKPolyline+PortalLink.m in Sources */,
 				FAC23E5216B2E5B3000C17DD /* MKPolygon+ControlField.m in Sources */,
 				FA8C24D816B3257D000C8738 /* DarkPressedBackgroundButton.m in Sources */,
+				FA13A56B1767833400974387 /* TTSlidingPageTitle.m in Sources */,
 				FA8C24E316B3DB64000C8738 /* CustomMapView.m in Sources */,
 				FAE797CB16B4873C00A57316 /* UIImage+ColorReplace.m in Sources */,
 				FAE797DA16B49C1E00A57316 /* GLViewController.m in Sources */,
@@ -2186,6 +2224,7 @@
 				FAA9C45317304B6A000C2638 /* NSEntityDescription+MagicalDataImport.m in Sources */,
 				FAA9C45417304B6A000C2638 /* NSNumber+MagicalDataImport.m in Sources */,
 				FAA9C45517304B6A000C2638 /* NSObject+MagicalDataImport.m in Sources */,
+				FA13A5681767833400974387 /* TTScrollSlidingPagesController.m in Sources */,
 				FAA9C45617304B6A000C2638 /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
 				FAA9C45717304B6A000C2638 /* NSString+MagicalDataImport.m in Sources */,
 				FAA9C45817304B6A000C2638 /* NSManagedObject+MagicalAggregation.m in Sources */,
@@ -2212,6 +2251,7 @@
 				FA3FC30E173656AC009CD94A /* MissionViewController.m in Sources */,
 				FACEE6171737E9D3006A9912 /* NSShadow+Initilalizer.m in Sources */,
 				FA02F9D8173D54540016EE7F /* MediaWebViewViewController.m in Sources */,
+				FA13A5691767833400974387 /* TTScrollViewWrapper.m in Sources */,
 				FA9153F1173E547B008E239C /* XMOverlay.m in Sources */,
 				FA39E1501742CA2D00202259 /* PortalUpgradeViewController.m in Sources */,
 				FA17E903174BA212003C3E24 /* UIRefreshControl+Inset.m in Sources */,
@@ -2228,6 +2268,8 @@
 				FADC98FE1760ECCF009C497A /* FlipCard.m in Sources */,
 				FADC99011760ECCF009C497A /* Turret.m in Sources */,
 				FADC99041760ECCF009C497A /* Multihack.m in Sources */,
+				FA13A5671767833400974387 /* TTBlackTriangle.m in Sources */,
+				FA13A56A1767833400974387 /* TTSlidingPage.m in Sources */,
 				FADC99071760ECD0009C497A /* EnergyGlob.m in Sources */,
 				FADC990A1760ECD0009C497A /* DeployedMultihack.m in Sources */,
 				FADC990D1760ECD0009C497A /* PortalKey.m in Sources */,
