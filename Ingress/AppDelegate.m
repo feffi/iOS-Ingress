@@ -23,15 +23,30 @@
 	[MagicalRecord setShouldDeleteStoreOnModelMismatch:YES];
 	[MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Ingress.sqlite"];
 
-	[[UINavigationBar appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:16]}];
 	[[UIBarButtonItem appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:10]} forState:UIControlStateNormal];
 	[[UITabBarItem appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:10]} forState:UIControlStateNormal];
+	[[UITabBar appearance] setSelectedImageTintColor:[UIColor colorWithRed:0 green:186./255. blue:181./255. alpha:1]];
 	[[UISegmentedControl appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:10]} forState:UIControlStateNormal];
-	[[UILabel appearance] setFont:[UIFont fontWithName:@"Coda-Regular" size:16]];
-	[[UIButton appearance] setFont:[UIFont fontWithName:@"Coda-Regular" size:16]];
-	[[UIButton appearanceWhenContainedIn:[UIActionSheet class], nil] setFont:[UIFont fontWithName:@"Coda-Regular" size:18]];
-	[[UIButton appearanceWhenContainedIn:[UINavigationBar class], nil] setFont:[UIFont fontWithName:@"Coda-Regular" size:12]];
 	[[UITextField appearance] setFont:[UIFont fontWithName:@"Coda-Regular" size:16]];
+	[[UILabel appearance] setFont:[UIFont fontWithName:@"Coda-Regular" size:16]];
+
+	[[UILabel appearanceWhenContainedIn:[UIButton class], nil] setFont:[UIFont fontWithName:@"Coda-Regular" size:16]];
+	[[UILabel appearanceWhenContainedIn:[UIActionSheet class], nil] setFont:[UIFont fontWithName:@"Coda-Regular" size:18]];
+	[[UILabel appearanceWhenContainedIn:[UINavigationBar class], nil] setFont:[UIFont fontWithName:@"Coda-Regular" size:12]];
+//	[[UIButton appearance] setFont:[UIFont fontWithName:@"Coda-Regular" size:16]];
+//	[[UIButton appearanceWhenContainedIn:[UIActionSheet class], nil] setFont:[UIFont fontWithName:@"Coda-Regular" size:18]];
+//	[[UIButton appearanceWhenContainedIn:[UINavigationBar class], nil] setFont:[UIFont fontWithName:@"Coda-Regular" size:12]];
+	
+	if ([UITabBar instancesRespondToSelector:@selector(barTintColor)]) {
+//		[[UITabBar appearance] setBarTintColor:[UIColor blackColor]];
+	}
+
+	if ([Utilities isOS7]) {
+		[[UIView appearance] setTintColor:[UIColor colorWithRed:0 green:186./255. blue:181./255. alpha:1]];
+		[[UINavigationBar appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:19]}];
+	} else {
+		[[UINavigationBar appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:16]}];
+	}
 
 	[GAI sharedInstance].trackUncaughtExceptions = YES;
 	[GAI sharedInstance].dispatchInterval = 20;
