@@ -117,6 +117,10 @@
 
 //	_mapView.scrollEnabled = YES;
 //	_mapView.zoomEnabled = YES;
+    
+    self.alienPortalImage = [UIImage imageNamed:@"portal_aliens"];
+    self.resistancePortalImage = [UIImage imageNamed:@"portal_resistance"];
+    self.neutralPortalImage = [UIImage imageNamed:@"portal_neutral"];
 
     _xmOverlay = [XMOverlay new];
     [_mapView addOverlay:_xmOverlay];

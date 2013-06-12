@@ -38,6 +38,10 @@
 	
 }
 
+@property (strong, nonatomic) UIImage *alienPortalImage;
+@property (strong, nonatomic) UIImage *resistancePortalImage;
+@property (strong, nonatomic) UIImage *neutralPortalImage;
+
 @property (nonatomic, strong) FlipCard *virusToUse;
 
 - (IBAction)showAP;

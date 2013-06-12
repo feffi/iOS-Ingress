@@ -8,21 +8,25 @@
 
 #import "PortalOverlayView.h"
 
+#import "ScannerViewController.h"
+
 @implementation PortalOverlayView
 
 - (void)drawMapRect:(MKMapRect)mapRect zoomScale:(MKZoomScale)zoomScale inContext:(CGContextRef)context {
 
+    UITabBarController *tabBarVC = [[AppDelegate instance] tabBarVC];
+    ScannerViewController *scannerVC = (ScannerViewController *)[[(UINavigationController *)([tabBarVC viewControllers][2]) viewControllers] objectAtIndex:0];
 	Portal *portal = (Portal *)self.overlay;
 
 	if (portal.completeInfo) {
 		CGImageRef portalImage;
 
 		if (portal.completeInfo && [portal.controllingTeam isEqualToString:@"ALIENS"]) {
-			portalImage = [UIImage imageNamed:@"portal_aliens.png"].CGImage;
+			portalImage = scannerVC.alienPortalImage.CGImage;
 		} else if (portal.completeInfo && [portal.controllingTeam isEqualToString:@"RESISTANCE"]) {
-			portalImage = [UIImage imageNamed:@"portal_resistance.png"].CGImage;
+			portalImage = scannerVC.resistancePortalImage.CGImage;
 		} else {
-			portalImage = [UIImage imageNamed:@"portal_neutral.png"].CGImage;
+			portalImage = scannerVC.neutralPortalImage.CGImage;
 		}
 
 		MKMapPoint portalCenter = MKMapPointForCoordinate(self.overlay.coordinate);
