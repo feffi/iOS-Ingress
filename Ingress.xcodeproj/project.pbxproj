@@ -104,8 +104,12 @@
 		FA54DF0316A1C784006A92E0 /* items.png in Resources */ = {isa = PBXBuildFile; fileRef = FA54DF0116A1C784006A92E0 /* items.png */; };
 		FA54DF0416A1C784006A92E0 /* items@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA54DF0216A1C784006A92E0 /* items@2x.png */; };
 		FA54DF0816A1D882006A92E0 /* Coda-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA54DF0616A1D870006A92E0 /* Coda-Regular.ttf */; };
+		FA5B897A176908EA006D4653 /* forceAmpBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5B8975176908EA006D4653 /* forceAmpBtn@2x.png */; };
+		FA5B897B176908EA006D4653 /* heatsinkBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5B8976176908EA006D4653 /* heatsinkBtn@2x.png */; };
+		FA5B897C176908EA006D4653 /* linkAmpBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5B8977176908EA006D4653 /* linkAmpBtn@2x.png */; };
+		FA5B897D176908EA006D4653 /* multihackBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5B8978176908EA006D4653 /* multihackBtn@2x.png */; };
+		FA5B897E176908EA006D4653 /* turretBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5B8979176908EA006D4653 /* turretBtn@2x.png */; };
 		FA600FD5175E3FF900F360A6 /* Utilities.m in Sources */ = {isa = PBXBuildFile; fileRef = FA600FD4175E3FF900F360A6 /* Utilities.m */; };
-		FA600FDF175E90C500F360A6 /* linkamp_verycommon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA600FD8175E90C500F360A6 /* linkamp_verycommon@2x.png */; };
 		FA600FE0175E90C500F360A6 /* shield_common@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA600FD9175E90C500F360A6 /* shield_common@2x.png */; };
 		FA600FE1175E90C500F360A6 /* shield_extrarare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA600FDA175E90C500F360A6 /* shield_extrarare@2x.png */; };
 		FA600FE2175E90C500F360A6 /* shield_lesscommon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA600FDB175E90C500F360A6 /* shield_lesscommon@2x.png */; };
@@ -441,9 +445,13 @@
 		FA54DF0116A1C784006A92E0 /* items.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = items.png; sourceTree = "<group>"; };
 		FA54DF0216A1C784006A92E0 /* items@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "items@2x.png"; sourceTree = "<group>"; };
 		FA54DF0616A1D870006A92E0 /* Coda-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Coda-Regular.ttf"; path = "Ingress/Coda-Regular.ttf"; sourceTree = "<group>"; };
+		FA5B8975176908EA006D4653 /* forceAmpBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forceAmpBtn@2x.png"; sourceTree = "<group>"; };
+		FA5B8976176908EA006D4653 /* heatsinkBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heatsinkBtn@2x.png"; sourceTree = "<group>"; };
+		FA5B8977176908EA006D4653 /* linkAmpBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linkAmpBtn@2x.png"; sourceTree = "<group>"; };
+		FA5B8978176908EA006D4653 /* multihackBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "multihackBtn@2x.png"; sourceTree = "<group>"; };
+		FA5B8979176908EA006D4653 /* turretBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "turretBtn@2x.png"; sourceTree = "<group>"; };
 		FA600FD3175E3FF900F360A6 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
 		FA600FD4175E3FF900F360A6 /* Utilities.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utilities.m; sourceTree = "<group>"; };
-		FA600FD8175E90C500F360A6 /* linkamp_verycommon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linkamp_verycommon@2x.png"; sourceTree = "<group>"; };
 		FA600FD9175E90C500F360A6 /* shield_common@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shield_common@2x.png"; sourceTree = "<group>"; };
 		FA600FDA175E90C500F360A6 /* shield_extrarare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shield_extrarare@2x.png"; sourceTree = "<group>"; };
 		FA600FDB175E90C500F360A6 /* shield_lesscommon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shield_lesscommon@2x.png"; sourceTree = "<group>"; };
@@ -1247,7 +1255,11 @@
 		FA600FD7175E90C500F360A6 /* mods */ = {
 			isa = PBXGroup;
 			children = (
-				FA600FD8175E90C500F360A6 /* linkamp_verycommon@2x.png */,
+				FA5B8975176908EA006D4653 /* forceAmpBtn@2x.png */,
+				FA5B8976176908EA006D4653 /* heatsinkBtn@2x.png */,
+				FA5B8977176908EA006D4653 /* linkAmpBtn@2x.png */,
+				FA5B8978176908EA006D4653 /* multihackBtn@2x.png */,
+				FA5B8979176908EA006D4653 /* turretBtn@2x.png */,
 				FA600FD9175E90C500F360A6 /* shield_common@2x.png */,
 				FA600FDA175E90C500F360A6 /* shield_extrarare@2x.png */,
 				FA600FDB175E90C500F360A6 /* shield_lesscommon@2x.png */,
@@ -2005,6 +2017,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FAEA5846169C7E7500E2F502 /* InfoPlist.strings in Resources */,
+				FA5B897E176908EA006D4653 /* turretBtn@2x.png in Resources */,
 				FA54DF0816A1D882006A92E0 /* Coda-Regular.ttf in Resources */,
 				FAEA584E169C7E7500E2F502 /* Default.png in Resources */,
 				FAEA5850169C7E7500E2F502 /* Default@2x.png in Resources */,
@@ -2022,6 +2035,7 @@
 				FA512D1716A0A2A800C8A81C /* profile@2x.png in Resources */,
 				FA512D1816A0A2A800C8A81C /* scanner.png in Resources */,
 				FA512D1916A0A2A800C8A81C /* scanner@2x.png in Resources */,
+				FA5B897B176908EA006D4653 /* heatsinkBtn@2x.png in Resources */,
 				FA54DF0316A1C784006A92E0 /* items.png in Resources */,
 				FA54DF0416A1C784006A92E0 /* items@2x.png in Resources */,
 				FAD5EEFE16A1F1CA00182F6B /* warning.png in Resources */,
@@ -2096,6 +2110,7 @@
 				FAE797D316B49B8A00A57316 /* borders.png in Resources */,
 				FAA0C30116B992EF00DB57E8 /* resonatorTexture.png in Resources */,
 				FAA0C30516B993B800DB57E8 /* default_btn_disabled@2x.png in Resources */,
+				FA5B897A176908EA006D4653 /* forceAmpBtn@2x.png in Resources */,
 				FAA0C30616B993B800DB57E8 /* default_btn_down@2x.png in Resources */,
 				FAA0C30716B993B800DB57E8 /* default_btn@2x.png in Resources */,
 				FAA7E4FB16D805FE007EAE9A /* xmpTexture.png in Resources */,
@@ -2120,14 +2135,15 @@
 				FA3BD78D17356424004F5ED5 /* device@2x.png in Resources */,
 				FA3BD78F1735B704004F5ED5 /* blue_bg@2x.png in Resources */,
 				FA3FC31317369E4D009CD94A /* green_bg@2x.png in Resources */,
+				FA5B897C176908EA006D4653 /* linkAmpBtn@2x.png in Resources */,
 				FA7792591738F6040019462E /* Default-568h@2x.png in Resources */,
 				FA859F19173C3537002A2117 /* ada_refactor@2x.png in Resources */,
 				FA859F1A173C3537002A2117 /* jarvis_virus@2x.png in Resources */,
 				FA17F065174CB0CE003C3E24 /* link_amp@2x.png in Resources */,
-				FA600FDF175E90C500F360A6 /* linkamp_verycommon@2x.png in Resources */,
 				FA600FE0175E90C500F360A6 /* shield_common@2x.png in Resources */,
 				FA600FE1175E90C500F360A6 /* shield_extrarare@2x.png in Resources */,
 				FA600FE2175E90C500F360A6 /* shield_lesscommon@2x.png in Resources */,
+				FA5B897D176908EA006D4653 /* multihackBtn@2x.png in Resources */,
 				FA600FE3175E90C500F360A6 /* shield_rare@2x.png in Resources */,
 				FA600FE4175E90C500F360A6 /* shield_verycommon@2x.png in Resources */,
 				FA600FE5175E90C500F360A6 /* shield_veryrare@2x.png in Resources */,
