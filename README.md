@@ -1,22 +1,24 @@
 iOS Ingress
 ===========
 
-Fully playable Google's AR Game Ingress port for iOS.
+iOS Ingress is a fully playable iOS port of the popular game Ingress created by NianticLabs@Google. 
 
-- iOS 6 required.
-- GPS required -> not working on simulator, iPod or WiFi iPad
+This port works on both jailbroken & non-jailbroken devices.
+
+Requirements
+--------
+- iOS 6 or above.
+- GPS must be enabled.
 
 Download
 --------
 
-works fine also on a non-jailbroken devices
-
 - 1.0.7 (06/12/2013)
 - [Download ipa](http://www.ios-ingress.com/downloads/Ingress.ipa)
 - [Install app via OTA](http://tinyurl.com/iosingressota)
-- by [macbuildserver.com](http://macbuildserver.com/)
+- Availabile at Cydia repo http://cydia.angelxwind.net/
 
-Also availabile at Cydia repo http://cydia.angelxwind.net/
+OTA Install will work on jailbroken & non-jailbroken devices.
 
 Website
 -------
@@ -26,20 +28,20 @@ Website
 Support
 -------
 
-If you enjoy this software, please consider making a small donation, so I can continue to maintain and improve this app.
+If you enjoy this software, please consider making a small donation to help with maintenance and improvements to the app.
 
 [![Donate](https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif)](https://www.paypal.com/cgi-bin/webscr?cmd=_donations&business=6HKVU78GCECL2&lc=US&item_name=iOS%20Ingress&currency_code=USD&bn=PP%2dDonationsBF%3abtn_donateCC_LG%2egif%3aNonHosted)
 
 [![Flattr](http://api.flattr.com/button/flattr-badge-large.png)](https://flattr.com/thing/1350940/iOS-Ingress)
 
-For China Users
+For Chinese Users
 -------
 
-- Non-jailbreak Download
+- Non-Jailbroken Download
 
     - [中国未越狱用户点此下载](http://angelxwind.net/jeanny710/ingress/)
 
-- Google software hosts
+- Google Software Hosts
 
     - [中国用户Hosts点此下载](http://angelxwind.net/jeanny710/ingress/hosts.zip)
     - 请将文件解压后置于/etc
@@ -50,15 +52,15 @@ For China Users
 Videos
 ------
 
-Gameplay video
+Gameplay video:
 
 http://youtu.be/Jewu0rpKrrU
 
-Faction Choosing
+Selecting Faction:
 
 http://youtu.be/nrfMyHPbIPc
 
-Video of codename creating and intro which have been recently finished
+Choosing Codename & Intro:
 
 http://youtu.be/jRi8PuquP50
 
@@ -77,4 +79,4 @@ Screenshots
 Attribution & License
 ---------------------
 
-This project is licensed under the permissive ISC license. Parts imported from other projects remain under their respective licenses.
+This project is in no way associated with Niantic Labs or Google. This project is licensed under the permissive ISC license. Parts imported from other projects remain under their respective licenses.
