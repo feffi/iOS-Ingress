@@ -1412,6 +1412,46 @@ NSString *const MilesOrKM = @"MilesOrKM";
 			}
 			shield.rarity = [Utilities rarityFromString:item[2][@"modResource"][@"rarity"]];
 			shield.timestamp = [[NSDate dateWithTimeIntervalSince1970:([item[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
+		} else if ([resourceType isEqualToString:@"FORCE_AMP"]) {
+			ForceAmp *forceAmp = [Shield MR_findFirstByAttribute:@"guid" withValue:item[0] inContext:context];
+			if (!forceAmp) {
+				forceAmp = [ForceAmp MR_createInContext:context];
+				forceAmp.guid = item[0];
+			}
+			forceAmp.rarity = [Utilities rarityFromString:item[2][@"modResource"][@"rarity"]];
+			forceAmp.timestamp = [[NSDate dateWithTimeIntervalSince1970:([item[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
+		} else if ([resourceType isEqualToString:@"HEATSINK"]) {
+			Heatsink *heatsink = [Shield MR_findFirstByAttribute:@"guid" withValue:item[0] inContext:context];
+			if (!heatsink) {
+				heatsink = [Heatsink MR_createInContext:context];
+				heatsink.guid = item[0];
+			}
+			heatsink.rarity = [Utilities rarityFromString:item[2][@"modResource"][@"rarity"]];
+			heatsink.timestamp = [[NSDate dateWithTimeIntervalSince1970:([item[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
+		} else if ([resourceType isEqualToString:@"LINK_AMPLIFIER"]) {
+			LinkAmp *linkAmp = [Shield MR_findFirstByAttribute:@"guid" withValue:item[0] inContext:context];
+			if (!linkAmp) {
+				linkAmp = [LinkAmp MR_createInContext:context];
+				linkAmp.guid = item[0];
+			}
+			linkAmp.rarity = [Utilities rarityFromString:item[2][@"modResource"][@"rarity"]];
+			linkAmp.timestamp = [[NSDate dateWithTimeIntervalSince1970:([item[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
+		} else if ([resourceType isEqualToString:@"MULTIHACK"]) {
+			Multihack *multihack = [Shield MR_findFirstByAttribute:@"guid" withValue:item[0] inContext:context];
+			if (!multihack) {
+				multihack = [Multihack MR_createInContext:context];
+				multihack.guid = item[0];
+			}
+			multihack.rarity = [Utilities rarityFromString:item[2][@"modResource"][@"rarity"]];
+			multihack.timestamp = [[NSDate dateWithTimeIntervalSince1970:([item[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
+		} else if ([resourceType isEqualToString:@"TURRET"]) {
+			Turret *turret = [Shield MR_findFirstByAttribute:@"guid" withValue:item[0] inContext:context];
+			if (!turret) {
+				turret = [Turret MR_createInContext:context];
+				turret.guid = item[0];
+			}
+			turret.rarity = [Utilities rarityFromString:item[2][@"modResource"][@"rarity"]];
+			turret.timestamp = [[NSDate dateWithTimeIntervalSince1970:([item[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
 		} else if ([resourceType isEqualToString:@"PORTAL_LINK_KEY"]) {
 			Portal *portal = [Portal MR_findFirstByAttribute:@"guid" withValue:item[2][@"portalCoupler"][@"portalGuid"] inContext:context];
 			if (!portal) {
@@ -1622,6 +1662,61 @@ NSString *const MilesOrKM = @"MilesOrKM";
 				shield.longitude = [loc[@"lngE6"] intValue]/1E6;
 				shield.rarity = [Utilities rarityFromString:gameEntity[2][@"modResource"][@"rarity"]];
 				shield.timestamp = [[NSDate dateWithTimeIntervalSince1970:([gameEntity[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
+			} else if ([resourceType isEqualToString:@"FORCE_AMP"]) {
+				ForceAmp *forceAmp = [Shield MR_findFirstByAttribute:@"guid" withValue:gameEntity[0] inContext:context];
+				if (!forceAmp) {
+					forceAmp = [ForceAmp MR_createInContext:context];
+					forceAmp.guid = gameEntity[0];
+				}
+				forceAmp.dropped = YES;
+				forceAmp.latitude = [loc[@"latE6"] intValue]/1E6;
+				forceAmp.longitude = [loc[@"lngE6"] intValue]/1E6;
+				forceAmp.rarity = [Utilities rarityFromString:gameEntity[2][@"modResource"][@"rarity"]];
+				forceAmp.timestamp = [[NSDate dateWithTimeIntervalSince1970:([gameEntity[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
+			} else if ([resourceType isEqualToString:@"HEATSINK"]) {
+				Heatsink *heatsink = [Shield MR_findFirstByAttribute:@"guid" withValue:gameEntity[0] inContext:context];
+				if (!heatsink) {
+					heatsink = [Heatsink MR_createInContext:context];
+					heatsink.guid = gameEntity[0];
+				}
+				heatsink.dropped = YES;
+				heatsink.latitude = [loc[@"latE6"] intValue]/1E6;
+				heatsink.longitude = [loc[@"lngE6"] intValue]/1E6;
+				heatsink.rarity = [Utilities rarityFromString:gameEntity[2][@"modResource"][@"rarity"]];
+				heatsink.timestamp = [[NSDate dateWithTimeIntervalSince1970:([gameEntity[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
+			} else if ([resourceType isEqualToString:@"LINK_AMPLIFIER"]) {
+				LinkAmp *linkAmp = [Shield MR_findFirstByAttribute:@"guid" withValue:gameEntity[0] inContext:context];
+				if (!linkAmp) {
+					linkAmp = [LinkAmp MR_createInContext:context];
+					linkAmp.guid = gameEntity[0];
+				}
+				linkAmp.dropped = YES;
+				linkAmp.latitude = [loc[@"latE6"] intValue]/1E6;
+				linkAmp.longitude = [loc[@"lngE6"] intValue]/1E6;
+				linkAmp.rarity = [Utilities rarityFromString:gameEntity[2][@"modResource"][@"rarity"]];
+				linkAmp.timestamp = [[NSDate dateWithTimeIntervalSince1970:([gameEntity[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
+			} else if ([resourceType isEqualToString:@"MULTIHACK"]) {
+				Multihack *multihack = [Shield MR_findFirstByAttribute:@"guid" withValue:gameEntity[0] inContext:context];
+				if (!multihack) {
+					multihack = [Multihack MR_createInContext:context];
+					multihack.guid = gameEntity[0];
+				}
+				multihack.dropped = YES;
+				multihack.latitude = [loc[@"latE6"] intValue]/1E6;
+				multihack.longitude = [loc[@"lngE6"] intValue]/1E6;
+				multihack.rarity = [Utilities rarityFromString:gameEntity[2][@"modResource"][@"rarity"]];
+				multihack.timestamp = [[NSDate dateWithTimeIntervalSince1970:([gameEntity[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
+			} else if ([resourceType isEqualToString:@"TURRET"]) {
+				Turret *turret = [Shield MR_findFirstByAttribute:@"guid" withValue:gameEntity[0] inContext:context];
+				if (!turret) {
+					turret = [Turret MR_createInContext:context];
+					turret.guid = gameEntity[0];
+				}
+				turret.dropped = YES;
+				turret.latitude = [loc[@"latE6"] intValue]/1E6;
+				turret.longitude = [loc[@"lngE6"] intValue]/1E6;
+				turret.rarity = [Utilities rarityFromString:gameEntity[2][@"modResource"][@"rarity"]];
+				turret.timestamp = [[NSDate dateWithTimeIntervalSince1970:([gameEntity[1] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
 			} else if ([resourceType isEqualToString:@"PORTAL_LINK_KEY"]) {
 				Portal *portal = [Portal MR_findFirstByAttribute:@"guid" withValue:gameEntity[2][@"portalCoupler"][@"portalGuid"] inContext:context];
 				if (!portal) {
