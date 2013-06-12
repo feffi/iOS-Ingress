@@ -79,15 +79,15 @@
 					[button setImage:[UIImage imageNamed:@"shield_verycommon.png"] forState:UIControlStateNormal];
 					break;
 			}
-		} else if ([mod isKindOfClass:[LinkAmp class]]) {
+		} else if ([mod isKindOfClass:[DeployedLinkAmp class]]) {
 			[button setImage:[UIImage imageNamed:@"linkAmpBtn.png"] forState:UIControlStateNormal];
-		} else if ([mod isKindOfClass:[ForceAmp class]]) {
+		} else if ([mod isKindOfClass:[DeployedForceAmp class]]) {
 			[button setImage:[UIImage imageNamed:@"forceAmpBtn.png"] forState:UIControlStateNormal];
-		} else if ([mod isKindOfClass:[Heatsink class]]) {
+		} else if ([mod isKindOfClass:[DeployedHeatsink class]]) {
 			[button setImage:[UIImage imageNamed:@"heatsinkBtn.png"] forState:UIControlStateNormal];
-		} else if ([mod isKindOfClass:[Multihack class]]) {
+		} else if ([mod isKindOfClass:[DeployedMultihack class]]) {
 			[button setImage:[UIImage imageNamed:@"multihackBtn.png"] forState:UIControlStateNormal];
-		} else if ([mod isKindOfClass:[Turret class]]) {
+		} else if ([mod isKindOfClass:[DeployedTurret class]]) {
 			[button setImage:[UIImage imageNamed:@"turretBtn.png"] forState:UIControlStateNormal];
 		} else {
 			[button setImage:nil forState:UIControlStateNormal];
