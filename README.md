@@ -11,12 +11,17 @@ Download
 
 works fine also on a non-jailbroken devices
 
-1.0.6.1 (09/07/2013)
-- [Download ipa](https://dl.dropboxusercontent.com/s/q28f2bj2bgt2vxj/Ingress.ipa)
-- [Install app via OTA](http://tinyurl.com/q9baj5g)
+- 1.0.7 (12/07/2013)
+- [Download ipa](http://www.ios-ingress.com/downloads/Ingress.ipa)
+- [Install app via OTA](http://tinyurl.com/iosingressota)
 - by [macbuildserver.com](http://macbuildserver.com/)
 
 Also availabile at Cydia repo http://cydia.angelxwind.net/
+
+Website
+-------
+
+[http://ios-ingress.com/](http://ios-ingress.com/)
 
 Support
 -------
