@@ -56,7 +56,7 @@ Gameplay video:
 
 http://youtu.be/Jewu0rpKrrU
 
-Selecting Facton:
+Selecting Faction:
 
 http://youtu.be/nrfMyHPbIPc
 
