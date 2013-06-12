@@ -186,13 +186,11 @@
 
 				NSArray *items;
 
-				if (self.itemType == ItemTypePortalShield) {
+				if (self.itemType == ItemTypePortalShield || self.itemType == ItemTypeForceAmp || self.itemType == ItemTypeHeatsink || self.itemType == ItemTypeLinkAmp || self.itemType == ItemTypeMultihack || self.itemType == ItemTypeTurret) {
 					ItemRarity rarity = [Utilities rarityFromInt:actionLevel];
 					items = [objectClass MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
 				} else if (self.itemType == ItemTypeFlipCard) {
 					items = [objectClass MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && type = %@", (actionLevel == 1) ? @"JARVIS" : @"ADA"]];
-				} else if (self.itemType == ItemTypeLinkAmp) {
-					items = nil;
 				} else {
 					items = [objectClass MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", actionLevel]];
 				}
@@ -301,13 +299,11 @@
 
 				NSArray *items;
 
-				if (self.itemType == ItemTypePortalShield) {
+				if (self.itemType == ItemTypePortalShield || self.itemType == ItemTypeForceAmp || self.itemType == ItemTypeHeatsink || self.itemType == ItemTypeLinkAmp || self.itemType == ItemTypeMultihack || self.itemType == ItemTypeTurret) {
 					ItemRarity rarity = [Utilities rarityFromInt:actionLevel];
 					items = [objectClass MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
 				} else if (self.itemType == ItemTypeFlipCard) {
 					items = [objectClass MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && type = %@", (actionLevel == 1) ? @"JARVIS" : @"ADA"]];
-				} else if (self.itemType == ItemTypeLinkAmp) {
-					items = nil;
 				} else {
 					items = [objectClass MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && level = %d", actionLevel]];
 				}
