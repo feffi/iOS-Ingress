@@ -103,6 +103,8 @@
 	UILongPressGestureRecognizer *mapViewLognPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(mapLongPress:)];
 	[_mapView addGestureRecognizer:mapViewLognPressGestureRecognizer];
 
+	#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
+
 	if ([_mapView respondsToSelector:@selector(isPitchEnabled)]) {
 		_mapView.pitchEnabled = NO;
 	}
@@ -110,6 +112,8 @@
 	if ([_mapView respondsToSelector:@selector(isRotateEnabled)]) {
 		_mapView.rotateEnabled = NO;
 	}
+
+	#endif
 
 //	_mapView.scrollEnabled = YES;
 //	_mapView.zoomEnabled = YES;
