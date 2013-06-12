@@ -1617,6 +1617,86 @@ NSString *const MilesOrKM = @"MilesOrKM";
 						}
 						shield.owner = owner;
 
+					} else if ([modDict[@"type"] isEqualToString:@"FORCE_AMP"]) {
+
+						DeployedForceAmp *forceAmp = [DeployedForceAmp MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"portal = %@ && slot = %d", portal, i] inContext:context];
+
+						if (!forceAmp) { forceAmp = [DeployedForceAmp MR_createInContext:context]; }
+						forceAmp.portal = portal;
+						forceAmp.slot = i;
+						forceAmp.rarity = [Utilities rarityFromString:modDict[@"rarity"]];
+
+						User *owner = [User MR_findFirstByAttribute:@"guid" withValue:modDict[@"installingUser"] inContext:context];
+						if (!owner) {
+							owner = [User MR_createInContext:context];
+							owner.guid = modDict[@"installingUser"];
+						}
+						forceAmp.owner = owner;
+						
+					} else if ([modDict[@"type"] isEqualToString:@"HEATSINK"]) {
+
+						DeployedHeatsink *heatsink = [DeployedHeatsink MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"portal = %@ && slot = %d", portal, i] inContext:context];
+
+						if (!heatsink) { heatsink = [DeployedHeatsink MR_createInContext:context]; }
+						heatsink.portal = portal;
+						heatsink.slot = i;
+						heatsink.rarity = [Utilities rarityFromString:modDict[@"rarity"]];
+
+						User *owner = [User MR_findFirstByAttribute:@"guid" withValue:modDict[@"installingUser"] inContext:context];
+						if (!owner) {
+							owner = [User MR_createInContext:context];
+							owner.guid = modDict[@"installingUser"];
+						}
+						heatsink.owner = owner;
+						
+					} else if ([modDict[@"type"] isEqualToString:@"LINK_AMPLIFIER"]) {
+
+						DeployedLinkAmp *linkAmp = [DeployedLinkAmp MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"portal = %@ && slot = %d", portal, i] inContext:context];
+
+						if (!linkAmp) { linkAmp = [DeployedLinkAmp MR_createInContext:context]; }
+						linkAmp.portal = portal;
+						linkAmp.slot = i;
+						linkAmp.rarity = [Utilities rarityFromString:modDict[@"rarity"]];
+
+						User *owner = [User MR_findFirstByAttribute:@"guid" withValue:modDict[@"installingUser"] inContext:context];
+						if (!owner) {
+							owner = [User MR_createInContext:context];
+							owner.guid = modDict[@"installingUser"];
+						}
+						linkAmp.owner = owner;
+						
+					} else if ([modDict[@"type"] isEqualToString:@"MULTIHACK"]) {
+
+						DeployedMultihack *multihack = [DeployedMultihack MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"portal = %@ && slot = %d", portal, i] inContext:context];
+
+						if (!multihack) { multihack = [DeployedMultihack MR_createInContext:context]; }
+						multihack.portal = portal;
+						multihack.slot = i;
+						multihack.rarity = [Utilities rarityFromString:modDict[@"rarity"]];
+
+						User *owner = [User MR_findFirstByAttribute:@"guid" withValue:modDict[@"installingUser"] inContext:context];
+						if (!owner) {
+							owner = [User MR_createInContext:context];
+							owner.guid = modDict[@"installingUser"];
+						}
+						multihack.owner = owner;
+						
+					} else if ([modDict[@"type"] isEqualToString:@"TURRET"]) {
+
+						DeployedTurret *turret = [DeployedTurret MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"portal = %@ && slot = %d", portal, i] inContext:context];
+
+						if (!turret) { turret = [DeployedTurret MR_createInContext:context]; }
+						turret.portal = portal;
+						turret.slot = i;
+						turret.rarity = [Utilities rarityFromString:modDict[@"rarity"]];
+
+						User *owner = [User MR_findFirstByAttribute:@"guid" withValue:modDict[@"installingUser"] inContext:context];
+						if (!owner) {
+							owner = [User MR_createInContext:context];
+							owner.guid = modDict[@"installingUser"];
+						}
+						turret.owner = owner;
+
 					} else {
 						NSLog(@"Unknown Mod");
 					}
