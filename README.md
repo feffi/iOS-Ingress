@@ -11,7 +11,7 @@ Download
 
 works fine also on a non-jailbroken devices
 
-- 1.0.7 (12/07/2013)
+- 1.0.7 (06/12/2013)
 - [Download ipa](http://www.ios-ingress.com/downloads/Ingress.ipa)
 - [Install app via OTA](http://tinyurl.com/iosingressota)
 - by [macbuildserver.com](http://macbuildserver.com/)
