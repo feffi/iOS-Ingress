@@ -21,6 +21,19 @@ typedef enum {
 	ItemRarityUnknown
 } ItemRarity;
 
+typedef enum {
+	ItemTypeResonator,
+	ItemTypeXMP,
+	ItemTypePortalShield,
+	ItemTypePowerCube,
+	ItemTypeFlipCard,
+	ItemTypeForceAmp,
+	ItemTypeHeatsink,
+	ItemTypeLinkAmp,
+	ItemTypeMultihack,
+	ItemTypeTurret
+} ItemType;
+
 @interface Utilities : NSObject
 
 + (instancetype)sharedInstance;

@@ -8,19 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum {
-	ItemTypeResonator,
-	ItemTypeXMP,
-	ItemTypePortalShield,
-	ItemTypePowerCube,
-	ItemTypeFlipCard,
-	ItemTypeForceAmp,
-	ItemTypeHeatsink,
-	ItemTypeLinkAmp,
-	ItemTypeMultihack,
-	ItemTypeTurret
-} ItemType;
-
 @interface ResourceCell : UITableViewCell <UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *itemImageView;
