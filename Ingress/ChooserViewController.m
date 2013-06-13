@@ -44,6 +44,15 @@
 	return levelChooser;
 }
 
++ (ChooserViewController *)modChooserWithTitle:(NSString *)title completionHandler:(void (^)(ItemType modType))handler {
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+	ChooserViewController *levelChooser = [storyboard instantiateViewControllerWithIdentifier:@"ModChooserViewController"];
+	levelChooser.view.frame = CGRectMake(0, 0, 240, 184);
+	levelChooser.titleLabel.text = title;
+	levelChooser.modChooserCompletionHandler = handler;
+	return levelChooser;
+}
+
 - (void)viewDidLoad {
 	[super viewDidLoad];
 	
@@ -101,6 +110,13 @@
 				self.numberChooserCompletionHandler(self.countStepper.value);
 			}
 			
+			break;
+		case 400:
+			
+			if (self.modChooserCompletionHandler) {
+				self.modChooserCompletionHandler([Utilities itemTypeFromModInt:sender.tag]);
+			}
+
 			break;
 	}
 	

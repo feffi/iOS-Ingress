@@ -17,10 +17,12 @@
 @property (weak, nonatomic) IBOutlet GUIButton *countButton;
 @property (copy, nonatomic) void (^numberChooserCompletionHandler)(int number);
 @property (copy, nonatomic) void (^rarityChooserCompletionHandler)(ItemRarity rarity);
+@property (copy, nonatomic) void (^modChooserCompletionHandler)(ItemType modType);
 
 + (ChooserViewController *)levelChooserWithTitle:(NSString *)title completionHandler:(void (^)(int level))handler;
 + (ChooserViewController *)rarityChooserWithTitle:(NSString *)title completionHandler:(void (^)(ItemRarity rarity))handler;
 + (ChooserViewController *)countChooserWithButtonTitle:(NSString *)buttonTitle maxCount:(int)maxCount completionHandler:(void (^)(int count))handler;
++ (ChooserViewController *)modChooserWithTitle:(NSString *)title completionHandler:(void (^)(ItemType modType))handler;
 
 - (IBAction)action:(UIButton *)sender;
 - (IBAction)stepperChanged:(UIStepper *)sender;
