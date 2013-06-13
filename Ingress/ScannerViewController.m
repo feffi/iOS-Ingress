@@ -1150,8 +1150,9 @@
         }
         
 		portalDetailSegue = YES;
-		
-		PortalDetailViewController *vc = segue.destinationViewController;
+
+		UINavigationController *navC = segue.destinationViewController;
+		PortalDetailViewController *vc = navC.viewControllers[0];
 		vc.portal = currentPortal;
 		currentPortal = nil;
 	} else if ([segue.identifier isEqualToString:@"FactionChooseSegue"]) {

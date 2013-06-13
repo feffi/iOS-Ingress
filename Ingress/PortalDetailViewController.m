@@ -154,5 +154,10 @@
     pageControlUsed = NO;
 }
 
+#pragma mark - Back
+
+- (IBAction)back:(UIBarButtonItem *)sender {
+	[self dismissViewControllerAnimated:YES completion:NULL];
+}
 
 @end

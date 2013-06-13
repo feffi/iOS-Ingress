@@ -24,4 +24,6 @@
 
 @property (nonatomic, assign) Portal *portal;
 
+- (IBAction)back:(id)sender;
+
 @end
