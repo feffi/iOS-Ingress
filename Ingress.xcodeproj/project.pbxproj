@@ -116,7 +116,6 @@
 		FA600FE3175E90C500F360A6 /* shield_rare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA600FDC175E90C500F360A6 /* shield_rare@2x.png */; };
 		FA600FE4175E90C500F360A6 /* shield_verycommon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA600FDD175E90C500F360A6 /* shield_verycommon@2x.png */; };
 		FA600FE5175E90C500F360A6 /* shield_veryrare@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA600FDE175E90C500F360A6 /* shield_veryrare@2x.png */; };
-		FA600FE9175F529C00F360A6 /* AudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA600FE8175F529C00F360A6 /* AudioManager.m */; };
 		FA6EF951172D11790004905F /* GlowingLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA6EF950172D11790004905F /* GlowingLabel.m */; };
 		FA6EF957172D1C490004905F /* trackImage@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EF956172D1C490004905F /* trackImage@2x.png */; };
 		FA6EF960172D2D360004905F /* progressImage-aliens@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA6EF95E172D2D350004905F /* progressImage-aliens@2x.png */; };
@@ -458,8 +457,6 @@
 		FA600FDC175E90C500F360A6 /* shield_rare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shield_rare@2x.png"; sourceTree = "<group>"; };
 		FA600FDD175E90C500F360A6 /* shield_verycommon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shield_verycommon@2x.png"; sourceTree = "<group>"; };
 		FA600FDE175E90C500F360A6 /* shield_veryrare@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "shield_veryrare@2x.png"; sourceTree = "<group>"; };
-		FA600FE7175F529C00F360A6 /* AudioManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioManager.h; sourceTree = "<group>"; };
-		FA600FE8175F529C00F360A6 /* AudioManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioManager.m; sourceTree = "<group>"; };
 		FA6EF94F172D11790004905F /* GlowingLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = GlowingLabel.h; path = GlowingLabel/GlowingLabel.h; sourceTree = "<group>"; };
 		FA6EF950172D11790004905F /* GlowingLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = GlowingLabel.m; path = GlowingLabel/GlowingLabel.m; sourceTree = "<group>"; };
 		FA6EF956172D1C490004905F /* trackImage@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "trackImage@2x.png"; sourceTree = "<group>"; };
@@ -964,7 +961,6 @@
 			children = (
 				FAC23D7C16B16F62000C17DD /* API */,
 				FA600FD6175E3FFC00F360A6 /* Utilities */,
-				FA600FE6175F527500F360A6 /* Audio Manager */,
 				FAC23D7B16B16F5A000C17DD /* DB */,
 				FAC23E4316B2D0C7000C17DD /* Overlay Views */,
 				FA8C24E416B3DFEE000C8738 /* Custom Map */,
@@ -1268,15 +1264,6 @@
 				FA600FDE175E90C500F360A6 /* shield_veryrare@2x.png */,
 			);
 			path = mods;
-			sourceTree = "<group>";
-		};
-		FA600FE6175F527500F360A6 /* Audio Manager */ = {
-			isa = PBXGroup;
-			children = (
-				FA600FE7175F529C00F360A6 /* AudioManager.h */,
-				FA600FE8175F529C00F360A6 /* AudioManager.m */,
-			);
-			name = "Audio Manager";
 			sourceTree = "<group>";
 		};
 		FA6EF94E172D115F0004905F /* GlowingLabel */ = {
@@ -2274,7 +2261,6 @@
 				FA38F02E174D04780005D85E /* ScrollTextView.m in Sources */,
 				FA036DE7175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController.m in Sources */,
 				FA600FD5175E3FF900F360A6 /* Utilities.m in Sources */,
-				FA600FE9175F529C00F360A6 /* AudioManager.m in Sources */,
 				FADC98EC1760ECCE009C497A /* DeployedMod.m in Sources */,
 				FADC98EF1760ECCF009C497A /* PortalLink.m in Sources */,
 				FADC98F21760ECCF009C497A /* DeployedShield.m in Sources */,
