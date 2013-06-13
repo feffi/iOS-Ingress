@@ -42,8 +42,9 @@ NSString *const MilesOrKM = @"MilesOrKM";
 	if (self) {
 		soundsQueue = [NSMutableArray array];
 		cellsDates = [NSMutableDictionary dictionary];
-		self.networkQueue = [NSOperationQueue new];
 		self.energyToCollect = [NSMutableArray array];
+		self.networkQueue = [NSOperationQueue new];
+		self.networkQueue.name = @"Network Queue";
 	}
     return self;
 }
