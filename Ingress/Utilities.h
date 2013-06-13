@@ -18,7 +18,7 @@ typedef enum {
 	ItemRarityRare,
 	ItemRarityVeryRare,
 	ItemRarityExtraRare,
-	ItemRarityUnknown
+	ItemRarityUnknown = -1
 } ItemRarity;
 
 typedef enum {
@@ -31,7 +31,8 @@ typedef enum {
 	ItemTypeHeatsink,
 	ItemTypeLinkAmp,
 	ItemTypeMultihack,
-	ItemTypeTurret
+	ItemTypeTurret,
+	ItemTypeUnknown = -1
 } ItemType;
 
 @interface Utilities : NSObject
@@ -48,6 +49,8 @@ typedef enum {
 + (NSString *)rarityStringFromRarity:(ItemRarity)rarity;
 + (ItemRarity)rarityFromString:(NSString *)rarityStr;
 + (ItemRarity)rarityFromInt:(int)rarityInt;
+
++ (ItemType)itemTypeFromModInt:(int)modInt;
 
 + (int)levelForAp:(int)ap;
 + (int)maxApForLevel:(int)level;

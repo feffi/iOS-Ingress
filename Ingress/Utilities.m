@@ -144,6 +144,27 @@
 	}
 }
 
+#pragma mark - Items
+
++ (ItemType)itemTypeFromModInt:(int)modInt {
+	switch (modInt) {
+		case 1:
+			return ItemTypePortalShield;
+		case 2:
+			return ItemTypeLinkAmp;
+		case 3:
+			return ItemTypeForceAmp;
+		case 4:
+			return ItemTypeHeatsink;
+		case 5:
+			return ItemTypeMultihack;
+		case 6:
+			return ItemTypeTurret;
+		default:
+			return ItemTypeUnknown;
+	}
+}
+
 #pragma mark - Levels
 
 + (int)levelForAp:(int)ap {
