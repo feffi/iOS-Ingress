@@ -234,6 +234,26 @@
                             if (![sounds containsObject:@"SPEECH_SHIELD"]) {
                                 [sounds addObject:@"SPEECH_SHIELD"];
                             }
+                        } else if ([item isKindOfClass:[LinkAmp class]]) {
+                            if (![sounds containsObject:@"SPEECH_FORCE_AMP"]) {
+                                [sounds addObject:@"SPEECH_FORCE_AMP"];
+                            }
+                        } else if ([item isKindOfClass:[ForceAmp class]]) {
+                            if (![sounds containsObject:@"SPEECH_FORCE_AMP"]) {
+                                [sounds addObject:@"SPEECH_FORCE_AMP"];
+                            }
+                        } else if ([item isKindOfClass:[Heatsink class]]) {
+                            if (![sounds containsObject:@"SPEECH_HEAT_SINK"]) {
+                                [sounds addObject:@"SPEECH_HEAT_SINK"];
+                            }
+                        } else if ([item isKindOfClass:[Multihack class]]) {
+                            if (![sounds containsObject:@"SPEECH_MULTI_HACK"]) {
+                                [sounds addObject:@"SPEECH_MULTI_HACK"];
+                            }
+                        } else if ([item isKindOfClass:[Turret class]]) {
+                            if (![sounds containsObject:@"SPEECH_TURRET"]) {
+                                [sounds addObject:@"SPEECH_TURRET"];
+                            }
                         } else if ([item isKindOfClass:[PowerCube class]]) {
                             if (![sounds containsObject:@"SPEECH_POWER_CUBE"]) {
                                 [sounds addObject:@"SPEECH_POWER_CUBE"];
