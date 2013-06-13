@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "TTSlidingPagesDataSource.h"
-#import "ScoreViewController.h"
-#import "MissionsViewController.h"
-#import "RecruitViewController.h"
 
 @interface IntelViewController : UIViewController <TTSlidingPagesDataSource>
 
