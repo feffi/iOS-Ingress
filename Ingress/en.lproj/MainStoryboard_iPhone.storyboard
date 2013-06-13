@@ -19,9 +19,9 @@
                         <color key="selectedImageTintColor" red="0.0" green="0.72941176470588232" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="0Yz-ju-TH7" kind="relationship" relationship="viewControllers" id="mQg-iy-wbf"/>
-                        <segue destination="037-Ag-kxy" kind="relationship" relationship="viewControllers" id="xvx-iO-JCy"/>
-                        <segue destination="uov-Gq-D3V" kind="relationship" relationship="viewControllers" id="JNv-4Y-Dgd"/>
+                        <segue destination="9cv-bD-s30" kind="relationship" relationship="viewControllers" id="Xsi-es-gnR"/>
+                        <segue destination="UPB-vb-vXl" kind="relationship" relationship="viewControllers" id="nt1-7y-00E"/>
+                        <segue destination="2" kind="relationship" relationship="viewControllers" id="om8-PM-EH5"/>
                         <segue destination="itQ-wA-Fj4" kind="relationship" relationship="viewControllers" id="Giz-l6-G1E"/>
                         <segue destination="jM8-0Z-aAW" kind="relationship" relationship="viewControllers" id="Xfu-21-dMA"/>
                     </connections>
@@ -30,27 +30,7 @@
             </objects>
             <point key="canvasLocation" x="-280" y="-521"/>
         </scene>
-        <!--Navigation Controller - Items-->
-        <scene sceneID="ofL-4x-hGT">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="037-Ag-kxy" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Items" image="items.png" id="lhw-GV-zZJ"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="5Vm-qA-M13">
-                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="UPB-vb-vXl" kind="relationship" relationship="rootViewController" id="Y8r-Qd-Wnm"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="G9V-gS-9V5" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="422" y="-189"/>
-        </scene>
-        <!--Items View Controller-->
+        <!--Items View Controller - Items-->
         <scene sceneID="hKS-7Z-ZNQ">
             <objects>
                 <viewController wantsFullScreenLayout="YES" id="UPB-vb-vXl" customClass="ItemsViewController" sceneMemberID="viewController">
@@ -58,27 +38,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8dp-ed-Hho">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="KTC-Mi-HZa" kind="embed" id="2II-gc-upe"/>
-                                </connections>
-                            </containerView>
-                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uci-DX-bmM">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="pnd-0d-rSp" kind="embed" id="Hzu-Lp-GfO"/>
-                                </connections>
-                            </containerView>
-                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="J2r-07-Rea">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                                <connections>
-                                    <segue destination="zM3-Tr-bQA" kind="embed" id="tyX-qQ-MTl"/>
-                                </connections>
-                            </containerView>
                             <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N61-HA-Nsl">
                                 <rect key="frame" x="0.0" y="536" width="320" height="32"/>
                                 <subviews>
@@ -129,6 +88,7 @@
                                     <constraint firstAttribute="trailing" secondItem="99s-Xd-4gS" secondAttribute="trailing" constant="82" type="user" id="MT1-Li-zgi"/>
                                     <constraint firstAttribute="height" constant="32" type="user" id="Rw7-T0-QDf"/>
                                     <constraint firstItem="Lhn-Ji-4wC" firstAttribute="centerY" secondItem="N61-HA-Nsl" secondAttribute="centerY" type="user" id="T7y-Dy-N5f"/>
+                                    <constraint firstItem="d9U-0E-Aok" firstAttribute="baseline" secondItem="Lhn-Ji-4wC" secondAttribute="baseline" type="default" id="gW9-GW-hzI"/>
                                     <constraint firstItem="d9U-0E-Aok" firstAttribute="top" secondItem="Lhn-Ji-4wC" secondAttribute="top" type="default" id="qip-t1-ML7"/>
                                     <constraint firstItem="d9U-0E-Aok" firstAttribute="bottom" secondItem="Lhn-Ji-4wC" secondAttribute="bottom" type="default" id="rQF-Si-NoM"/>
                                     <constraint firstItem="99s-Xd-4gS" firstAttribute="leading" secondItem="N61-HA-Nsl" secondAttribute="leading" constant="1" type="user" id="tgl-NT-A4f"/>
@@ -137,76 +97,27 @@
                         </subviews>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="J2r-07-Rea" firstAttribute="leading" secondItem="TF2-3t-Eaf" secondAttribute="leading" type="default" id="0vc-DG-11m"/>
-                            <constraint firstItem="N61-HA-Nsl" firstAttribute="leading" secondItem="TF2-3t-Eaf" secondAttribute="leading" type="default" id="7tW-u7-UIa"/>
-                            <constraint firstItem="uci-DX-bmM" firstAttribute="leading" secondItem="TF2-3t-Eaf" secondAttribute="leading" type="default" id="9Bi-4N-KCY"/>
-                            <constraint firstItem="8dp-ed-Hho" firstAttribute="leading" secondItem="TF2-3t-Eaf" secondAttribute="leading" type="default" id="ENE-fY-Sw4"/>
-                            <constraint firstAttribute="bottom" secondItem="J2r-07-Rea" secondAttribute="bottom" constant="32" id="Ewu-Qh-jiK"/>
-                            <constraint firstItem="J2r-07-Rea" firstAttribute="bottom" secondItem="uci-DX-bmM" secondAttribute="bottom" type="default" id="Omm-bJ-YIY"/>
-                            <constraint firstItem="8dp-ed-Hho" firstAttribute="trailing" secondItem="TF2-3t-Eaf" secondAttribute="trailing" type="default" id="UQl-c5-AIH"/>
-                            <constraint firstItem="N61-HA-Nsl" firstAttribute="trailing" secondItem="TF2-3t-Eaf" secondAttribute="trailing" type="default" id="WFb-O4-4Jb"/>
-                            <constraint firstItem="uci-DX-bmM" firstAttribute="top" secondItem="TF2-3t-Eaf" secondAttribute="top" type="default" id="Xwl-MX-4c6"/>
-                            <constraint firstItem="uci-DX-bmM" firstAttribute="trailing" secondItem="TF2-3t-Eaf" secondAttribute="trailing" type="default" id="ZvP-Fr-huv"/>
-                            <constraint firstItem="J2r-07-Rea" firstAttribute="top" secondItem="TF2-3t-Eaf" secondAttribute="top" type="default" id="aHe-5n-ewe"/>
-                            <constraint firstItem="J2r-07-Rea" firstAttribute="trailing" secondItem="TF2-3t-Eaf" secondAttribute="trailing" type="default" id="ngM-Mb-p4F"/>
-                            <constraint firstItem="J2r-07-Rea" firstAttribute="bottom" secondItem="8dp-ed-Hho" secondAttribute="bottom" type="default" id="s19-Os-IkL"/>
+                            <constraint firstItem="N61-HA-Nsl" firstAttribute="trailing" secondItem="TF2-3t-Eaf" secondAttribute="trailing" type="default" id="Djr-Aw-T4w"/>
+                            <constraint firstItem="N61-HA-Nsl" firstAttribute="leading" secondItem="TF2-3t-Eaf" secondAttribute="leading" type="default" id="aEE-kW-7vh"/>
                             <constraint firstItem="N61-HA-Nsl" firstAttribute="bottom" secondItem="TF2-3t-Eaf" secondAttribute="bottom" type="default" id="tAd-m3-orB"/>
-                            <constraint firstItem="8dp-ed-Hho" firstAttribute="top" secondItem="TF2-3t-Eaf" secondAttribute="top" type="default" id="wB9-Ta-l2O"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <tabBarItem key="tabBarItem" title="Items" image="items.png" id="7fZ-CD-8fj"/>
                     <navigationItem key="navigationItem" id="nSf-Ye-rbc">
                         <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="dyi-6J-WUy">
-                            <rect key="frame" x="5" y="7" width="310" height="31"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <segments>
-                                <segment title="Resources"/>
-                                <segment title="Portal Keys"/>
-                                <segment title="Media"/>
-                            </segments>
-                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="viewSegmentedControlChanged" destination="UPB-vb-vXl" eventType="valueChanged" id="a8S-wi-i7N"/>
-                            </connections>
-                        </segmentedControl>
                     </navigationItem>
                     <connections>
-                        <outlet property="mediaContainerView" destination="8dp-ed-Hho" id="G7l-UO-0ge"/>
                         <outlet property="passcodeContainerView" destination="N61-HA-Nsl" id="MfQ-58-azL"/>
                         <outlet property="passcodeTextField" destination="d9U-0E-Aok" id="Q2x-dl-UeW"/>
-                        <outlet property="portalKeysContainerView" destination="uci-DX-bmM" id="GXN-Qf-AE0"/>
-                        <outlet property="resourcesContainerView" destination="J2r-07-Rea" id="w1k-Lm-oTP"/>
                         <outlet property="submitPasscodeButton" destination="Lhn-Ji-4wC" id="n1X-vU-9sM"/>
-                        <outlet property="viewSegmentedControl" destination="dyi-6J-WUy" id="wNJ-bT-hBg"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HcJ-Uy-RZc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="867" y="-189"/>
         </scene>
-        <!--Navigation Controller - Scanner-->
-        <scene sceneID="80z-Xa-7dV">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="uov-Gq-D3V" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Scanner" image="scanner.png" id="WhP-Gq-eC2"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="tN3-ZP-rlO">
-                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="2" kind="relationship" relationship="rootViewController" id="k9O-bw-aND"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="6Pv-rg-qeQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="422" y="-903"/>
-        </scene>
-        <!--Intel View Controller-->
+        <!--Intel View Controller - Intel-->
         <scene sceneID="QxF-5D-TQB">
             <objects>
                 <viewController wantsFullScreenLayout="YES" id="9cv-bD-s30" customClass="IntelViewController" sceneMemberID="viewController">
@@ -216,6 +127,7 @@
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <tabBarItem key="tabBarItem" title="Intel" image="intel.png" id="bFe-TQ-Ty5"/>
                     <navigationItem key="navigationItem" id="Zpy-Pn-okr">
                         <nil key="title"/>
                     </navigationItem>
@@ -1219,7 +1131,10 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWm-XI-3eu">
-                                <rect key="frame" x="0.0" y="-20" width="320" height="519"/>
+                                <rect key="frame" x="0.0" y="-20" width="320" height="520"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="520" id="2bT-Xa-t9a"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="delegate" destination="2" id="5J6-tb-StI"/>
                                 </connections>
@@ -1231,7 +1146,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 </constraints>
                             </imageView>
                             <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" image="map_target_visual.png" translatesAutoresizingMaskIntoConstraints="NO" id="mt2-lW-sE5">
-                                <rect key="frame" x="48" y="137" width="225" height="225"/>
+                                <rect key="frame" x="48" y="138" width="225" height="225"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="225" type="user" id="LsD-7i-iNP"/>
                                 </constraints>
@@ -1271,7 +1186,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waa-9V-nq3" customClass="GUIButton">
-                                <rect key="frame" x="110" y="395" width="100" height="44"/>
+                                <rect key="frame" x="110" y="396" width="100" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" type="user" id="KEj-Zc-1QN"/>
@@ -1369,7 +1284,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="p8g-KV-tR1" firstAttribute="leading" secondItem="7MI-jq-NjA" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="2wc-un-YRm"/>
                             <constraint firstItem="DmM-Ra-LBw" firstAttribute="bottom" secondItem="Z0t-4M-3D3" secondAttribute="bottom" type="default" id="4f2-k7-QzD"/>
                             <constraint firstAttribute="trailing" secondItem="MGD-pG-MhS" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="74Z-BH-tdM"/>
-                            <constraint firstAttribute="bottom" secondItem="waa-9V-nq3" secondAttribute="bottom" constant="60" type="user" id="7hC-16-ETJ"/>
                             <constraint firstItem="rgS-1f-mzM" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="user" id="7re-Hc-PwY"/>
                             <constraint firstItem="stx-mu-7c3" firstAttribute="leading" secondItem="DmM-Ra-LBw" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="7wN-Yu-g9w"/>
                             <constraint firstItem="YsP-qD-cUK" firstAttribute="bottom" secondItem="DmM-Ra-LBw" secondAttribute="bottom" type="default" id="8q8-us-2lI"/>
@@ -1378,16 +1292,17 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="MGD-pG-MhS" firstAttribute="leading" secondItem="7MI-jq-NjA" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="HJd-x2-u8O"/>
                             <constraint firstItem="YsP-qD-cUK" firstAttribute="leading" secondItem="DmM-Ra-LBw" secondAttribute="leading" type="default" id="IZI-NA-rdZ"/>
                             <constraint firstAttribute="trailing" secondItem="Z0t-4M-3D3" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="IgT-54-2o2"/>
-                            <constraint firstItem="mt2-lW-sE5" firstAttribute="centerY" secondItem="3" secondAttribute="centerY" type="user" id="JVU-e3-8Jc"/>
                             <constraint firstAttribute="centerY" secondItem="BX0-yd-s1M" secondAttribute="centerY" type="user" id="KOg-up-E7j"/>
                             <constraint firstItem="DmM-Ra-LBw" firstAttribute="top" secondItem="YsP-qD-cUK" secondAttribute="top" type="default" id="N1y-ne-uk3"/>
                             <constraint firstItem="waa-9V-nq3" firstAttribute="centerX" secondItem="BX0-yd-s1M" secondAttribute="centerX" type="default" id="QtV-vy-Bpd"/>
                             <constraint firstItem="2e8-m3-jc6" firstAttribute="top" secondItem="3" secondAttribute="top" constant="120" type="user" id="TEW-CG-3QY"/>
                             <constraint firstItem="p8g-KV-tR1" firstAttribute="leading" secondItem="YsP-qD-cUK" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="V45-4X-VxM"/>
                             <constraint firstItem="p8g-KV-tR1" firstAttribute="leading" secondItem="DmM-Ra-LBw" secondAttribute="trailing" constant="8" symbolic="YES" type="user" id="VnJ-6F-oDK"/>
+                            <constraint firstItem="mt2-lW-sE5" firstAttribute="centerY" secondItem="BX0-yd-s1M" secondAttribute="centerY" type="default" id="WjY-lQ-zQ4"/>
                             <constraint firstItem="2e8-m3-jc6" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="WxN-4h-K9e"/>
                             <constraint firstItem="7MI-jq-NjA" firstAttribute="top" secondItem="3" secondAttribute="top" constant="10" id="XrT-oh-tQ8"/>
                             <constraint firstItem="rgS-1f-mzM" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="user" id="YHS-V2-4sP"/>
+                            <constraint firstAttribute="bottom" secondItem="waa-9V-nq3" secondAttribute="bottom" constant="59" id="ZXK-fm-UhB"/>
                             <constraint firstItem="tWm-XI-3eu" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="user" id="a0b-6Q-wAf"/>
                             <constraint firstItem="tWm-XI-3eu" firstAttribute="top" secondItem="3" secondAttribute="top" constant="-20" type="user" id="cR0-5C-nDn"/>
                             <constraint firstItem="YsP-qD-cUK" firstAttribute="leading" secondItem="7MI-jq-NjA" secondAttribute="leading" type="default" id="cnY-RS-pgP"/>
@@ -1400,7 +1315,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="oVe-o2-Lr5" firstAttribute="leading" secondItem="7MI-jq-NjA" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="rsx-Bv-z15"/>
                             <constraint firstAttribute="trailing" secondItem="oVe-o2-Lr5" secondAttribute="trailing" constant="20" symbolic="YES" type="user" id="u22-us-K8J"/>
                             <constraint firstItem="stx-mu-7c3" firstAttribute="top" secondItem="MGD-pG-MhS" secondAttribute="top" type="default" id="ueR-bc-ewZ"/>
-                            <constraint firstItem="tWm-XI-3eu" firstAttribute="bottom" secondItem="3" secondAttribute="bottom" type="user" id="waX-mK-319"/>
                             <constraint firstItem="Z0t-4M-3D3" firstAttribute="leading" secondItem="YsP-qD-cUK" secondAttribute="trailing" constant="8" symbolic="YES" type="default" id="xMI-DS-RW1"/>
                             <constraint firstItem="mt2-lW-sE5" firstAttribute="centerX" secondItem="BX0-yd-s1M" secondAttribute="centerX" type="default" id="yO0-Y4-32c"/>
                             <constraint firstItem="oVe-o2-Lr5" firstAttribute="centerY" secondItem="7MI-jq-NjA" secondAttribute="centerY" type="user" id="yUX-Tf-CYR"/>
@@ -1408,6 +1322,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <tabBarItem key="tabBarItem" title="Scanner" image="scanner.png" id="zLU-l9-prb"/>
                     <navigationItem key="navigationItem" title="Scanner" id="jRf-fb-O9l"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <connections>
@@ -1668,26 +1583,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MfC-oC-0gb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-475" y="711"/>
-        </scene>
-        <!--Navigation Controller - Intel-->
-        <scene sceneID="Ela-fL-e9c">
-            <objects>
-                <navigationController definesPresentationContext="YES" navigationBarHidden="YES" id="0Yz-ju-TH7" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Intel" image="intel.png" id="ZYQ-6i-qCL"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <nil key="simulatedTopBarMetrics"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="Lcy-6g-wOd">
-                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="9cv-bD-s30" kind="relationship" relationship="rootViewController" id="QE4-uA-td1"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="apv-Ml-OCy" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="422" y="-1580"/>
         </scene>
         <!--Score View Controller-->
         <scene sceneID="tJs-a1-kIX">
@@ -2305,7 +2200,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
             <objects>
                 <tableViewController storyboardIdentifier="PortalKeysViewController" wantsFullScreenLayout="YES" id="pnd-0d-rSp" customClass="PortalKeysViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="V5K-Z3-PLK">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="536"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.34901960780000002" green="0.98431372549999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -2345,14 +2240,14 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="esV-93-vjs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1747" y="-133"/>
+            <point key="canvasLocation" x="1747" y="-189"/>
         </scene>
         <!--Media Items View Controller-->
         <scene sceneID="985-dd-AQF">
             <objects>
-                <tableViewController id="KTC-Mi-HZa" customClass="MediaItemsViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="MediaItemsViewController" id="KTC-Mi-HZa" customClass="MediaItemsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tAe-Bj-Duz">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="536"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.34901960780000002" green="0.98431372549999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -2393,7 +2288,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1r5-qZ-6pz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2183" y="-133"/>
+            <point key="canvasLocation" x="2183" y="-189"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TLB-hP-Ugx">
@@ -2412,7 +2307,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e1k-eR-YNb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2632" y="-205"/>
+            <point key="canvasLocation" x="2632" y="-189"/>
         </scene>
         <!--Media Web View View Controller-->
         <scene sceneID="q1P-fV-g1A">
@@ -2455,7 +2350,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jDe-Dw-abI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3080" y="-205"/>
+            <point key="canvasLocation" x="3082" y="-189"/>
         </scene>
         <!--Portal Info View Controller-->
         <scene sceneID="Eh4-m3-S9L">
@@ -2634,14 +2529,15 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="TFw-BM-yYy" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="102" id="2p3-2m-CJF"/>
                                     <constraint firstItem="NAI-t7-cTU" firstAttribute="trailing" secondItem="G1b-Ok-CJl" secondAttribute="trailing" type="default" id="4be-eE-rPM"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="trailing" secondItem="IWu-Y1-Qec" secondAttribute="trailing" type="default" id="4hL-xv-X2h"/>
+                                    <constraint firstItem="mD4-FJ-bc0" firstAttribute="leading" secondItem="TFw-BM-yYy" secondAttribute="leading" type="default" id="7HK-RI-JWj"/>
                                     <constraint firstItem="ych-BV-d2s" firstAttribute="baseline" secondItem="EUM-hs-RCw" secondAttribute="baseline" type="default" id="7Q9-PB-Bv2"/>
                                     <constraint firstItem="6EI-dR-nxm" firstAttribute="trailing" secondItem="Td6-71-ZLa" secondAttribute="trailing" type="default" id="7q6-oI-bCK"/>
                                     <constraint firstItem="zEQ-0c-NAe" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="104" id="8Rm-ZN-UR8"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="top" secondItem="WNO-Bo-z3R" secondAttribute="top" type="default" id="8fh-Pt-KKm"/>
                                     <constraint firstItem="A9n-5u-eiN" firstAttribute="leading" secondItem="IWu-Y1-Qec" secondAttribute="leading" type="default" id="AJl-PE-oko"/>
                                     <constraint firstItem="BQp-Pm-fjj" firstAttribute="baseline" secondItem="SqP-Ow-Sgr" secondAttribute="baseline" type="default" id="AWQ-LO-9r6"/>
+                                    <constraint firstItem="TFw-BM-yYy" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" type="default" id="C4A-OQ-db6"/>
                                     <constraint firstItem="ych-BV-d2s" firstAttribute="leading" secondItem="SqP-Ow-Sgr" secondAttribute="leading" type="default" id="CFy-tK-YB6"/>
-                                    <constraint firstItem="qrg-gr-5hF" firstAttribute="bottom" secondItem="mD4-FJ-bc0" secondAttribute="bottom" type="default" id="CXo-g8-6Aq"/>
                                     <constraint firstItem="IWu-Y1-Qec" firstAttribute="baseline" secondItem="BQp-Pm-fjj" secondAttribute="baseline" type="default" id="Dky-Bw-l7L"/>
                                     <constraint firstAttribute="trailing" secondItem="iI8-Vk-fD4" secondAttribute="trailing" constant="32" id="Exh-48-AjY"/>
                                     <constraint firstItem="NAI-t7-cTU" firstAttribute="bottom" secondItem="6EI-dR-nxm" secondAttribute="bottom" type="default" id="FOo-3b-SsI"/>
@@ -2661,7 +2557,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="pXL-eI-DBL" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="48" id="QYs-mC-uPq"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" type="default" id="Rci-Rj-4YX"/>
                                     <constraint firstAttribute="width" constant="116" type="user" id="SVG-nU-IMp"/>
-                                    <constraint firstItem="mD4-FJ-bc0" firstAttribute="leading" secondItem="TFw-BM-yYy" secondAttribute="leading" type="default" id="U8L-iW-036"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="trailing" secondItem="1aa-eF-7rd" secondAttribute="trailing" type="default" id="UOz-TM-RIi"/>
                                     <constraint firstItem="sTl-ca-2VI" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="52" id="VD4-vG-muI"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="trailing" secondItem="A9n-5u-eiN" secondAttribute="trailing" type="default" id="W40-09-uuT"/>
@@ -2677,8 +2572,8 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="NAI-t7-cTU" firstAttribute="centerX" secondItem="ych-BV-d2s" secondAttribute="centerX" type="default" id="h0O-sY-MEv"/>
                                     <constraint firstItem="GI8-4l-eUD" firstAttribute="centerX" secondItem="A9n-5u-eiN" secondAttribute="centerX" type="default" id="i5V-gv-Huo"/>
                                     <constraint firstItem="A9n-5u-eiN" firstAttribute="baseline" secondItem="iI8-Vk-fD4" secondAttribute="baseline" type="default" id="k4t-B6-wrL"/>
+                                    <constraint firstItem="mD4-FJ-bc0" firstAttribute="bottom" secondItem="G1b-Ok-CJl" secondAttribute="bottom" type="default" id="kLy-7i-pvH"/>
                                     <constraint firstItem="SqP-Ow-Sgr" firstAttribute="baseline" secondItem="LPK-gl-VrS" secondAttribute="baseline" type="default" id="kQc-Pw-viQ"/>
-                                    <constraint firstItem="TFw-BM-yYy" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" type="default" id="l6S-22-4dr"/>
                                     <constraint firstItem="G1b-Ok-CJl" firstAttribute="bottom" secondItem="qrg-gr-5hF" secondAttribute="bottom" type="default" id="n3g-74-5Tf"/>
                                     <constraint firstItem="sTl-ca-2VI" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="70" id="n3t-PR-4Lh"/>
                                     <constraint firstItem="G1b-Ok-CJl" firstAttribute="bottom" secondItem="Td6-71-ZLa" secondAttribute="bottom" type="default" id="nFd-BZ-ZtR"/>
@@ -3063,9 +2958,9 @@ Range: 0km</string>
         <!--Resources View Controller-->
         <scene sceneID="aha-5f-TD9">
             <objects>
-                <tableViewController id="zM3-Tr-bQA" customClass="ResourcesViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ResourcesViewController" id="zM3-Tr-bQA" customClass="ResourcesViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="150" sectionHeaderHeight="22" sectionFooterHeight="22" id="Xvr-fT-iuU">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="536"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.34901960780000002" green="0.98431372549999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -3319,9 +3214,10 @@ Range: 0km</string>
                                 <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="mcc-go-h8w" firstAttribute="leading" secondItem="0lh-L7-gNe" secondAttribute="leading" type="default" id="1iF-OA-6RH"/>
+                                    <constraint firstItem="UXq-Ci-WS2" firstAttribute="top" secondItem="s20-Or-aZK" secondAttribute="top" constant="79" type="user" id="3qX-kU-Toa"/>
                                     <constraint firstItem="AqE-rT-i4S" firstAttribute="leading" secondItem="s20-Or-aZK" secondAttribute="leading" constant="23" id="3wC-wk-KHh"/>
-                                    <constraint firstItem="I2a-48-VNf" firstAttribute="top" secondItem="UXq-Ci-WS2" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="4D6-0F-05T"/>
-                                    <constraint firstItem="oDY-1N-Fsh" firstAttribute="top" secondItem="s20-Or-aZK" secondAttribute="top" constant="11" id="5op-lm-oVI"/>
+                                    <constraint firstItem="aBW-GW-AcA" firstAttribute="top" secondItem="s20-Or-aZK" secondAttribute="top" constant="79" type="user" id="5Y7-ub-5Ug"/>
+                                    <constraint firstItem="oDY-1N-Fsh" firstAttribute="top" secondItem="s20-Or-aZK" secondAttribute="top" constant="11" type="user" id="5op-lm-oVI"/>
                                     <constraint firstAttribute="trailing" secondItem="H3i-AJ-u2E" secondAttribute="trailing" constant="23" id="6Hm-BD-TyQ"/>
                                     <constraint firstItem="rf9-r2-atR" firstAttribute="baseline" secondItem="f9s-jV-NVX" secondAttribute="baseline" type="user" id="6wM-qH-UiK"/>
                                     <constraint firstItem="rf9-r2-atR" firstAttribute="leading" secondItem="dl6-A5-fDV" secondAttribute="leading" type="default" id="7TF-ma-Vse"/>
@@ -3337,14 +3233,14 @@ Range: 0km</string>
                                     <constraint firstItem="mcc-go-h8w" firstAttribute="trailing" secondItem="0lh-L7-gNe" secondAttribute="trailing" type="default" id="HY3-9s-333"/>
                                     <constraint firstItem="mcc-go-h8w" firstAttribute="trailing" secondItem="H3i-AJ-u2E" secondAttribute="trailing" type="default" id="Ho9-zs-nej"/>
                                     <constraint firstItem="yRF-gZ-vNv" firstAttribute="leading" secondItem="s20-Or-aZK" secondAttribute="leading" constant="39" id="KqC-mU-KVg"/>
-                                    <constraint firstItem="hHq-5t-Sle" firstAttribute="top" secondItem="I2a-48-VNf" secondAttribute="top" type="user" id="L2e-k0-nfZ"/>
                                     <constraint firstItem="cce-xO-Ehk" firstAttribute="leading" secondItem="aBW-GW-AcA" secondAttribute="leading" type="default" id="LHP-pg-SBB"/>
                                     <constraint firstItem="rf9-r2-atR" firstAttribute="top" secondItem="dl6-A5-fDV" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="Lcr-yC-0tN"/>
                                     <constraint firstItem="AqE-rT-i4S" firstAttribute="baseline" secondItem="oDY-1N-Fsh" secondAttribute="baseline" type="default" id="M9C-Hc-jhK"/>
                                     <constraint firstItem="cce-xO-Ehk" firstAttribute="top" secondItem="WRZ-Iq-JhM" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="MC1-sa-pDt"/>
+                                    <constraint firstItem="dl6-A5-fDV" firstAttribute="top" secondItem="s20-Or-aZK" secondAttribute="top" constant="79" type="user" id="NVw-7s-8sf"/>
                                     <constraint firstItem="Yyu-Zr-Lt1" firstAttribute="leading" secondItem="dl6-A5-fDV" secondAttribute="leading" type="default" id="Ql4-Nc-Jlk"/>
                                     <constraint firstItem="mcc-go-h8w" firstAttribute="leading" secondItem="H3i-AJ-u2E" secondAttribute="leading" type="default" id="Rc9-2n-1vb"/>
-                                    <constraint firstItem="HZu-Le-Tz0" firstAttribute="top" secondItem="oDY-1N-Fsh" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="Riz-Ra-xeo"/>
+                                    <constraint firstItem="HZu-Le-Tz0" firstAttribute="top" secondItem="oDY-1N-Fsh" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="Riz-Ra-xeo"/>
                                     <constraint firstAttribute="trailing" secondItem="8hR-0R-B7p" secondAttribute="trailing" constant="59" id="Sgi-mZ-OnA"/>
                                     <constraint firstAttribute="trailing" secondItem="WRZ-Iq-JhM" secondAttribute="trailing" constant="95" id="T3m-ta-ZFd"/>
                                     <constraint firstItem="cce-xO-Ehk" firstAttribute="trailing" secondItem="aBW-GW-AcA" secondAttribute="trailing" type="default" id="Tnq-UC-CHE"/>
@@ -3365,11 +3261,13 @@ Range: 0km</string>
                                     <constraint firstItem="cce-xO-Ehk" firstAttribute="top" secondItem="HZu-Le-Tz0" secondAttribute="top" type="default" id="cvc-BY-W57"/>
                                     <constraint firstItem="yRF-gZ-vNv" firstAttribute="top" secondItem="AqE-rT-i4S" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="i8S-JJ-74a"/>
                                     <constraint firstItem="f9s-jV-NVX" firstAttribute="trailing" secondItem="0lh-L7-gNe" secondAttribute="trailing" type="default" id="iaJ-hG-W6f"/>
+                                    <constraint firstItem="I2a-48-VNf" firstAttribute="top" secondItem="s20-Or-aZK" secondAttribute="top" constant="118" type="user" id="jJf-YW-N8U"/>
                                     <constraint firstItem="cce-xO-Ehk" firstAttribute="leading" secondItem="WRZ-Iq-JhM" secondAttribute="leading" type="default" id="k9c-iv-g5R"/>
                                     <constraint firstItem="8hR-0R-B7p" firstAttribute="trailing" secondItem="Yyu-Zr-Lt1" secondAttribute="trailing" type="default" id="koy-y9-SL4"/>
                                     <constraint firstItem="HZu-Le-Tz0" firstAttribute="trailing" secondItem="oDY-1N-Fsh" secondAttribute="trailing" type="default" id="lEt-lY-I91"/>
                                     <constraint firstItem="Yyu-Zr-Lt1" firstAttribute="top" secondItem="8hR-0R-B7p" secondAttribute="bottom" constant="8" symbolic="YES" type="default" id="lu7-dR-Wwy"/>
                                     <constraint firstItem="UXq-Ci-WS2" firstAttribute="leading" secondItem="HZu-Le-Tz0" secondAttribute="leading" type="default" id="mjP-Ut-D28"/>
+                                    <constraint firstItem="0lh-L7-gNe" firstAttribute="top" secondItem="s20-Or-aZK" secondAttribute="top" constant="79" type="user" id="oUU-mk-PYO"/>
                                     <constraint firstItem="UXq-Ci-WS2" firstAttribute="top" secondItem="HZu-Le-Tz0" secondAttribute="bottom" constant="8" symbolic="YES" type="user" id="qfy-a6-PLh"/>
                                     <constraint firstItem="oDY-1N-Fsh" firstAttribute="leading" secondItem="s20-Or-aZK" secondAttribute="leading" constant="157" id="rge-uT-URW"/>
                                     <constraint firstItem="hHq-5t-Sle" firstAttribute="baseline" secondItem="rf9-r2-atR" secondAttribute="baseline" type="user" id="tAB-kA-MDr"/>
@@ -3732,7 +3630,7 @@ RARE</string>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sb2-Ma-HN8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1324" y="-133"/>
+            <point key="canvasLocation" x="1324" y="-189"/>
         </scene>
         <!--Portal Upgrade View Controller-->
         <scene sceneID="czi-Ff-zb7">
@@ -4144,7 +4042,7 @@ RARE</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="zJ1-yC-6tR"/>
         <segue reference="uLU-Dv-S4x"/>
-        <segue reference="fPf-WR-TNV"/>
     </inferredMetricsTieBreakers>
 </document>
