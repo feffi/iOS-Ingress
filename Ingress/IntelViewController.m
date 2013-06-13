@@ -11,9 +11,6 @@
 #import "ScoreViewController.h"
 #import "MissionsViewController.h"
 #import "RecruitViewController.h"
-#import "ScoreViewController.h"
-#import "MissionsViewController.h"
-#import "RecruitViewController.h"
 
 @implementation IntelViewController
 
