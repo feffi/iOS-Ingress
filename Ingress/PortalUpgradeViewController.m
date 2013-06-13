@@ -379,9 +379,9 @@
 	
 }
 
-#pragma mark - Shields
+#pragma mark - Mods
 
-- (IBAction)shieldButtonPressed:(GUIButton *)sender {
+- (IBAction)modButtonPressed:(GUIButton *)sender {
 
 	if (sender.disabled) { return; }
 
@@ -391,31 +391,71 @@
 	HUD.mode = MBProgressHUDModeCustomView;
 	HUD.dimBackground = YES;
 	HUD.showCloseButton = YES;
-
-	_levelChooser = [ChooserViewController rarityChooserWithTitle:@"Choose shield rarity" completionHandler:^(ItemRarity rarity) {
+	
+	_modChooser = [ChooserViewController modChooserWithTitle:@"Choose Mod" completionHandler:^(ItemType modType) {
 		[HUD hide:YES];
-		[self deployShieldOfRarity:rarity toSlot:sender.tag-100];
-		_levelChooser = nil;
-	}];
-	HUD.customView = _levelChooser.view;
+		_modChooser = nil;
 
+		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.userInteractionEnabled = YES;
+		HUD.removeFromSuperViewOnHide = NO;
+		HUD.mode = MBProgressHUDModeCustomView;
+		HUD.dimBackground = YES;
+		HUD.showCloseButton = YES;
+		_levelChooser = [ChooserViewController rarityChooserWithTitle:@"Choose shield rarity" completionHandler:^(ItemRarity rarity) {
+			[HUD hide:YES];
+			_levelChooser = nil;
+			[self deployMod:modType ofRarity:rarity toSlot:sender.tag-100];
+		}];
+		HUD.customView = _levelChooser.view;
+		[[AppDelegate instance].window addSubview:HUD];
+		[HUD show:YES];
+		
+	}];
+	HUD.customView = _modChooser.view;
 	[[AppDelegate instance].window addSubview:HUD];
 	[HUD show:YES];
 
 }
 
-- (void)deployShieldOfRarity:(ItemRarity)rarity toSlot:(int)slot {
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
-        [[SoundManager sharedManager] playSound:@"Sound/sfx_mod_power_up.aif"];
-    }
-    
-	Shield *shieldItem = [Shield MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
+- (void)deployMod:(ItemType)modType ofRarity:(ItemRarity)rarity toSlot:(int)slot {
 
-	if (!shieldItem) {
-		[Utilities showWarningWithTitle:@"No shield of that rarity remaining!"];
+	Class objectClass = [NSManagedObject class];
+	switch (modType) {
+		case ItemTypePortalShield:
+			objectClass = [Shield class];
+			break;
+		case ItemTypeForceAmp:
+			objectClass = [ForceAmp class];
+			break;
+		case ItemTypeHeatsink:
+			objectClass = [Heatsink class];
+			break;
+		case ItemTypeLinkAmp:
+			objectClass = [LinkAmp class];
+			break;
+		case ItemTypeMultihack:
+			objectClass = [Multihack class];
+			break;
+		case ItemTypeTurret:
+			objectClass = [Turret class];
+			break;
+		default:
+			objectClass = [Mod class];
+			break;
+	}
+
+	Mod *modItem = [objectClass MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO && rarity = %d", rarity]];
+
+	if (!modItem) {
+		[Utilities showWarningWithTitle:@"No mod of that rarity remaining!"];
 	} else {
 
-		[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Deploy Shield" withLabel:self.portal.name withValue:@(shieldItem.rarity)];
+		[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Deploy Mod" withLabel:self.portal.name withValue:@(modItem.rarity)];
+
+		if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+			[[SoundManager sharedManager] playSound:@"Sound/sfx_mod_power_up.aif"];
+		}
 
 		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 		HUD.userInteractionEnabled = YES;
@@ -426,7 +466,7 @@
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
 
-		[[API sharedInstance] addMod:shieldItem toItem:self.portal toSlot:slot completionHandler:^(NSString *errorStr) {
+		[[API sharedInstance] addMod:modItem toItem:self.portal toSlot:slot completionHandler:^(NSString *errorStr) {
 
 			[HUD hide:YES];
 
@@ -436,7 +476,34 @@
 
 				[self refresh];
                 if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
-                    [[API sharedInstance] playSounds:@[@"SPEECH_SHIELD", @"SPEECH_DEPLOYED"]];
+
+					NSMutableArray *sounds = [NSMutableArray arrayWithCapacity:2];
+					switch (modType) {
+						case ItemTypePortalShield:
+							[sounds addObject:@"SPEECH_SHIELD"];
+							break;
+						case ItemTypeForceAmp:
+							[sounds addObject:@"SPEECH_FORCE_AMP"];
+							break;
+						case ItemTypeHeatsink:
+							[sounds addObject:@"SPEECH_HEAT_SINK"];
+							break;
+						case ItemTypeLinkAmp:
+							[sounds addObject:@"SPEECH_LINKAMP"];
+							break;
+						case ItemTypeMultihack:
+							[sounds addObject:@"SPEECH_MULTI_HACK"];
+							break;
+						case ItemTypeTurret:
+							[sounds addObject:@"SPEECH_TURRET"];
+							break;
+						default:
+							[sounds addObject:@"SPEECH_UNKNOWN_TECH"];
+							break;
+					}
+					[sounds addObject:@"SPEECH_DEPLOYED"];
+					[[API sharedInstance] playSounds:sounds];
+
                 }
 			}
 			

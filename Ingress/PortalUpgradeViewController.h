@@ -15,13 +15,13 @@
 @interface PortalUpgradeViewController : UIViewController <iCarouselDataSource, iCarouselDelegate> {
 	iCarousel *_carousel;
 	ChooserViewController *_levelChooser;
+	ChooserViewController *_modChooser;
 	NSMutableArray *_resonators;
 }
 
 @property (nonatomic, assign) Portal *portal;
 
 - (void)refresh;
-- (IBAction)resonatorButtonPressed:(GUIButton *)sender;
-- (IBAction)shieldButtonPressed:(GUIButton *)sender;
+- (IBAction)modButtonPressed:(GUIButton *)sender;
 
 @end
