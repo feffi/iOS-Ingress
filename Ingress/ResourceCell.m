@@ -71,6 +71,9 @@
 		case ItemTypeTurret:
 			objectClass = [Turret class];
 			break;
+		case ItemTypeUnknown:
+			objectClass = [Item class];
+			break;
 	}
 
 	if (itemType == ItemTypePortalShield || itemType == ItemTypeForceAmp || itemType == ItemTypeHeatsink || itemType == ItemTypeLinkAmp || itemType == ItemTypeMultihack || itemType == ItemTypeTurret) {
@@ -144,6 +147,9 @@
 			break;
 		case ItemTypeTurret:
 			objectClass = [Turret class];
+			break;
+		case ItemTypeUnknown:
+			objectClass = [Item class];
 			break;
 	}
 
@@ -257,6 +263,9 @@
 			break;
 		case ItemTypeTurret:
 			objectClass = [Turret class];
+			break;
+		case ItemTypeUnknown:
+			objectClass = [Item class];
 			break;
 	}
 
