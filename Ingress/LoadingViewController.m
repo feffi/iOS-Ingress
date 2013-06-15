@@ -128,7 +128,7 @@
     if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleBackground]) {
         [[SoundManager sharedManager] playMusic:@"Sound/sfx_throbbing_wheels.aif" looping:YES fadeIn:NO];
     }
-	[label setText:[NSString stringWithFormat:@"%@ (%@)", versionString, [[NSBundle mainBundle] infoDictionary][@"CFBundleVersion"]]];
+	[label setText:[NSString stringWithFormat:@"%@ (%@)", versionString, [[NSBundle mainBundle] infoDictionary][@"FullVersion"]]];
 	
 	NSError *error;
 	NSData *jsonData = [NSJSONSerialization dataWithJSONObject:jsonDict options:0 error:&error];
