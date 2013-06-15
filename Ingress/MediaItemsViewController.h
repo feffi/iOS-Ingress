@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface MediaItemsViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface MediaItemsViewController : UITableViewController <NSFetchedResultsControllerDelegate, UIActionSheetDelegate>
 
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
