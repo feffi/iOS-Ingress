@@ -100,6 +100,14 @@
 	[_mapView addGestureRecognizer:mapViewTapGestureRecognizer];
 #endif
 
+	if ([Utilities isOS7]) {
+		for (int i = 0; i < 50; i++) {
+			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 + i*0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
+				[_mapView setCenterCoordinate:_mapView.centerCoordinate zoomLevel:15 animated:NO];
+			});
+		}
+	}
+
 	UILongPressGestureRecognizer *mapViewLognPressGestureRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(mapLongPress:)];
 	[_mapView addGestureRecognizer:mapViewLognPressGestureRecognizer];
 
