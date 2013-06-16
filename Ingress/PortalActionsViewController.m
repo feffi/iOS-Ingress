@@ -145,6 +145,12 @@
 	
 	if (sender.disabled) { return; }
 
+	int numItems = [Item MR_countOfEntitiesWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO"]];
+	if (numItems >= 2000) {
+		[Utilities showWarningWithTitle:@"Too many items in Inventory. Your Inventory can have no more than 2000 items."];
+		return;
+	}
+
 	[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Portal Hack" withLabel:self.portal.name withValue:@(0)];
 
 	__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
