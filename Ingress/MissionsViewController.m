@@ -99,7 +99,7 @@
 	}
 	if (actionSheet) {
 		[actionSheet setTag:indexPath.row+1];
-		[actionSheet showFromTabBar:self.tabBarController.tabBar];
+		[actionSheet showInView:self.view.window];
 	}
 }
 

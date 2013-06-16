@@ -182,6 +182,7 @@
 		FAA9C46917304B6A000C2638 /* MagicalRecord+ShorthandSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA9C44C17304B6A000C2638 /* MagicalRecord+ShorthandSupport.m */; };
 		FAA9C46A17304B6A000C2638 /* MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = FAA9C44E17304B6A000C2638 /* MagicalRecord.m */; };
 		FAAA6C5D172299650066D540 /* CustomBackgroundColorButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAA6C5C172299650066D540 /* CustomBackgroundColorButton.m */; };
+		FAAB8F42176E48E6008489D8 /* OpsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAB8F41176E48E6008489D8 /* OpsViewController.m */; };
 		FAADA23A17291564001865D9 /* SelectingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FAADA23917291564001865D9 /* SelectingButton.m */; };
 		FAADA24017297DD9001865D9 /* MDCParallaxView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAADA23F17297DD9001865D9 /* MDCParallaxView.m */; };
 		FAAF378017610D63009BD67C /* force_amp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAF377C17610D63009BD67C /* force_amp@2x.png */; };
@@ -568,6 +569,8 @@
 		FAA9C45017304B6A000C2638 /* CoreData+MagicalRecord.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = "CoreData+MagicalRecord.h"; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		FAAA6C5B172299650066D540 /* CustomBackgroundColorButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBackgroundColorButton.h; sourceTree = "<group>"; };
 		FAAA6C5C172299650066D540 /* CustomBackgroundColorButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBackgroundColorButton.m; sourceTree = "<group>"; };
+		FAAB8F40176E48E6008489D8 /* OpsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpsViewController.h; sourceTree = "<group>"; };
+		FAAB8F41176E48E6008489D8 /* OpsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OpsViewController.m; sourceTree = "<group>"; };
 		FAADA23817291564001865D9 /* SelectingButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectingButton.h; sourceTree = "<group>"; };
 		FAADA23917291564001865D9 /* SelectingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectingButton.m; sourceTree = "<group>"; };
 		FAADA23E17297DD9001865D9 /* MDCParallaxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDCParallaxView.h; path = MDCParallaxView/MDCParallaxView.h; sourceTree = "<group>"; };
@@ -1435,6 +1438,16 @@
 			path = Core;
 			sourceTree = "<group>";
 		};
+		FAAB8F3F176E48D1008489D8 /* Ops */ = {
+			isa = PBXGroup;
+			children = (
+				FAAB8F40176E48E6008489D8 /* OpsViewController.h */,
+				FAAB8F41176E48E6008489D8 /* OpsViewController.m */,
+			);
+			name = Ops;
+			path = Ingress;
+			sourceTree = "<group>";
+		};
 		FAADA23D17297D99001865D9 /* MDCParallaxView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1836,6 +1849,7 @@
 				FA3FC30B1736569B009CD94A /* Mission */,
 				FA54DEF216A1970A006A92E0 /* Items */,
 				FAEA5861169C7E8500E2F502 /* Scanner */,
+				FAAB8F3F176E48D1008489D8 /* Ops */,
 				FACD502016A441280077837F /* Portal Detail */,
 				FA32E885169F655E00D30E90 /* Comm */,
 				FAE71C2C1732ACA900742071 /* Device */,
@@ -2267,6 +2281,7 @@
 				FADC98F51760ECCF009C497A /* Mod.m in Sources */,
 				FADC98F81760ECCF009C497A /* Media.m in Sources */,
 				FADC98FB1760ECCF009C497A /* Player.m in Sources */,
+				FAAB8F42176E48E6008489D8 /* OpsViewController.m in Sources */,
 				FADC98FE1760ECCF009C497A /* FlipCard.m in Sources */,
 				FADC99011760ECCF009C497A /* Turret.m in Sources */,
 				FADC99041760ECCF009C497A /* Multihack.m in Sources */,

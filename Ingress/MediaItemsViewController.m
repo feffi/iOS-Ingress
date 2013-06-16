@@ -155,7 +155,7 @@
 
 	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Drop" otherButtonTitles:@"Recycle", @"View", nil];
 	actionSheet.tag = 1;
-	[actionSheet showFromTabBar:self.tabBarController.tabBar];
+	[actionSheet showInView:self.view.window];
 
 }
 
