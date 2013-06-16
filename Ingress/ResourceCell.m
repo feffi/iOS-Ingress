@@ -212,6 +212,7 @@
 						completed++;
 						if (completed == items.count) {
 							[HUD hide:YES];
+							self.itemType = self.itemType;
 						}
 					}];
 
@@ -328,6 +329,7 @@
 						completed++;
 						if (completed == items.count) {
 							[HUD hide:YES];
+							self.itemType = self.itemType;
 						}
 					}];
 
@@ -369,6 +371,7 @@
         
 		[[API sharedInstance] usePowerCube:powerCube completionHandler:^{
 			[HUD hide:YES];
+			self.itemType = self.itemType;
 		}];
 		
 	} else {
