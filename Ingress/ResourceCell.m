@@ -400,7 +400,7 @@
 		actionLevel = 0;
 
 		UITabBarController *tabBarVC = [[AppDelegate instance] tabBarVC];
-		ScannerViewController *scannerVC = (ScannerViewController *)[(UINavigationController *)([tabBarVC viewControllers][2]) topViewController];
+		ScannerViewController *scannerVC = (ScannerViewController *)[tabBarVC viewControllers][2];
 		scannerVC.virusToUse = flipCard;
 		[tabBarVC setSelectedIndex:2];
 
