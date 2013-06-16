@@ -803,6 +803,10 @@
 		currentPortal = (Portal *)view.annotation;
 		if (self.virusToUse) {
 			if ([currentPortal distanceFromCoordinate:_mapView.centerCoordinate] <= 40) {
+				if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+					[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+				}
+				
 				UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Confirm Deployment" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Confirm", nil];
 				actionSheet.tag = 2;
 				[actionSheet showFromTabBar:self.tabBarController.tabBar];
