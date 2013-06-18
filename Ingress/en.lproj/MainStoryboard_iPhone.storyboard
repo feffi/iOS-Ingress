@@ -6,31 +6,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3682.6"/>
     </dependencies>
     <scenes>
-        <!--Tab Bar Controller-->
-        <scene sceneID="kFv-Sh-Lkm">
-            <objects>
-                <tabBarController definesPresentationContext="YES" id="GaO-I4-JTp" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <nil key="simulatedBottomBarMetrics"/>
-                    <tabBar key="tabBar" contentMode="scaleToFill" id="F4L-Rt-vFw">
-                        <rect key="frame" x="129" y="330" width="163" height="49"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="selectedImageTintColor" red="0.0" green="0.72941176470588232" blue="0.70980392156862748" alpha="1" colorSpace="calibratedRGB"/>
-                    </tabBar>
-                    <connections>
-                        <segue destination="9cv-bD-s30" kind="relationship" relationship="viewControllers" id="Xsi-es-gnR"/>
-                        <segue destination="UPB-vb-vXl" kind="relationship" relationship="viewControllers" id="nt1-7y-00E"/>
-                        <segue destination="2" kind="relationship" relationship="viewControllers" id="om8-PM-EH5"/>
-                        <segue destination="itQ-wA-Fj4" kind="relationship" relationship="viewControllers" id="Giz-l6-G1E"/>
-                        <segue destination="Pcn-Hn-MnN" kind="relationship" relationship="viewControllers" id="Jvu-Gh-85W"/>
-                    </connections>
-                </tabBarController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="g0y-By-HTu" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-280" y="-521"/>
-        </scene>
-        <!--Items View Controller - Items-->
+        <!--Items View Controller-->
         <scene sceneID="hKS-7Z-ZNQ">
             <objects>
                 <viewController wantsFullScreenLayout="YES" id="UPB-vb-vXl" customClass="ItemsViewController" sceneMemberID="viewController">
@@ -102,10 +78,10 @@
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Items" image="items.png" id="7fZ-CD-8fj"/>
                     <navigationItem key="navigationItem" id="nSf-Ye-rbc">
                         <nil key="title"/>
                     </navigationItem>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="passcodeContainerView" destination="N61-HA-Nsl" id="MfQ-58-azL"/>
                         <outlet property="passcodeTextField" destination="d9U-0E-Aok" id="Q2x-dl-UeW"/>
@@ -114,9 +90,9 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HcJ-Uy-RZc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="867" y="-189"/>
+            <point key="canvasLocation" x="847" y="-2090"/>
         </scene>
-        <!--Intel View Controller - Intel-->
+        <!--Intel View Controller-->
         <scene sceneID="QxF-5D-TQB">
             <objects>
                 <viewController wantsFullScreenLayout="YES" id="9cv-bD-s30" customClass="IntelViewController" sceneMemberID="viewController">
@@ -126,52 +102,48 @@
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Intel" image="intel.png" id="bFe-TQ-Ty5"/>
                     <navigationItem key="navigationItem" id="Zpy-Pn-okr">
                         <nil key="title"/>
                     </navigationItem>
+                    <nil key="simulatedStatusBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pzc-8t-E1D" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="867" y="-1580"/>
-        </scene>
-        <!--Navigation Controller - Comm-->
-        <scene sceneID="FZF-To-TPP">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="itQ-wA-Fj4" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Comm" image="comm.png" id="gFP-og-IqF"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="6Zy-vF-dI0">
-                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="ZBH-Po-zoq" kind="relationship" relationship="rootViewController" id="Gu8-n2-eev"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hqx-PB-BGa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="422" y="513"/>
+            <point key="canvasLocation" x="467" y="-2090"/>
         </scene>
         <!--Comm View Controller-->
         <scene sceneID="qvd-LH-EQa">
             <objects>
-                <viewController wantsFullScreenLayout="YES" id="ZBH-Po-zoq" customClass="CommViewController" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="KKy-Ai-3Pl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                <viewController storyboardIdentifier="CommViewController" wantsFullScreenLayout="YES" id="ZBH-Po-zoq" customClass="CommViewController" sceneMemberID="viewController">
+                    <view key="view" opaque="NO" contentMode="scaleToFill" id="KKy-Ai-3Pl">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="393"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kNa-cP-Kh8">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="536"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="commBg.png" translatesAutoresizingMaskIntoConstraints="NO" id="jDs-fV-Dwr">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lju-ke-wfF">
+                                <rect key="frame" x="264" y="0.0" width="54" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="32" id="O6N-Bp-Pvm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <state key="normal" title="COMM">
+                                    <color key="titleColor" red="0.34901960780000002" green="0.98431372549999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
                                 <connections>
-                                    <segue destination="mX9-Da-fsv" kind="embed" id="hB3-5e-tY9"/>
+                                    <action selector="showHide" destination="ZBH-Po-zoq" eventType="touchUpInside" id="svQ-iP-OS1"/>
                                 </connections>
-                            </containerView>
+                            </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2pI-Dl-W4O">
-                                <rect key="frame" x="0.0" y="536" width="320" height="32"/>
+                                <rect key="frame" x="0.0" y="361" width="320" height="32"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l5w-3W-TDc">
                                         <rect key="frame" x="1" y="1" width="237" height="30"/>
@@ -226,36 +198,23 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="2pI-Dl-W4O" firstAttribute="trailing" secondItem="KKy-Ai-3Pl" secondAttribute="trailing" type="user" id="1a0-dq-6g6"/>
-                            <constraint firstAttribute="bottom" secondItem="kNa-cP-Kh8" secondAttribute="bottom" constant="32" id="6ip-fe-RuT"/>
-                            <constraint firstItem="kNa-cP-Kh8" firstAttribute="trailing" secondItem="KKy-Ai-3Pl" secondAttribute="trailing" type="default" id="Ann-ba-sfj"/>
+                            <constraint firstItem="jDs-fV-Dwr" firstAttribute="top" secondItem="KKy-Ai-3Pl" secondAttribute="top" type="default" id="CuX-Pz-krk"/>
                             <constraint firstItem="2pI-Dl-W4O" firstAttribute="leading" secondItem="KKy-Ai-3Pl" secondAttribute="leading" type="user" id="Jt8-Nu-JoB"/>
-                            <constraint firstItem="kNa-cP-Kh8" firstAttribute="top" secondItem="KKy-Ai-3Pl" secondAttribute="top" type="default" id="Yxm-jE-INk"/>
-                            <constraint firstItem="2pI-Dl-W4O" firstAttribute="bottom" secondItem="KKy-Ai-3Pl" secondAttribute="bottom" type="default" id="aOp-Uu-Zj2"/>
-                            <constraint firstItem="kNa-cP-Kh8" firstAttribute="leading" secondItem="KKy-Ai-3Pl" secondAttribute="leading" type="default" id="p51-Io-nPe"/>
+                            <constraint firstItem="lju-ke-wfF" firstAttribute="top" secondItem="jDs-fV-Dwr" secondAttribute="top" type="default" id="Rii-04-7R7"/>
+                            <constraint firstAttribute="trailing" secondItem="lju-ke-wfF" secondAttribute="trailing" constant="2" id="cc5-Pp-YoF"/>
+                            <constraint firstItem="jDs-fV-Dwr" firstAttribute="leading" secondItem="2pI-Dl-W4O" secondAttribute="leading" type="default" id="k1v-K1-C39"/>
+                            <constraint firstItem="2pI-Dl-W4O" firstAttribute="bottom" secondItem="KKy-Ai-3Pl" secondAttribute="bottom" type="default" id="kvN-oU-DKl"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" id="nRp-Kr-NVs">
-                        <nil key="title"/>
-                        <segmentedControl key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="bar" selectedSegmentIndex="0" id="Hxy-4s-olA">
-                            <rect key="frame" x="5" y="6" width="310" height="32"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <segments>
-                                <segment title="All"/>
-                                <segment title="Faction"/>
-                            </segments>
-                            <color key="tintColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
-                            <connections>
-                                <action selector="groupChanged:" destination="ZBH-Po-zoq" eventType="valueChanged" id="jqf-Hm-Z50"/>
-                            </connections>
-                        </segmentedControl>
-                    </navigationItem>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
-                        <outlet property="groupSegments" destination="Hxy-4s-olA" id="QlZ-uf-Osx"/>
+                        <outlet property="bgImageView" destination="jDs-fV-Dwr" id="UDG-9z-g15"/>
+                        <outlet property="showHideButton" destination="lju-ke-wfF" id="Poa-2v-FnB"/>
                         <outlet property="transmitButton" destination="deP-Js-bhv" id="kCm-Yo-BPN"/>
                         <outlet property="transmitContainerView" destination="2pI-Dl-W4O" id="1zH-Hd-iUH"/>
                         <outlet property="transmitTextField" destination="iS0-Si-ytU" id="17p-cE-NJm"/>
@@ -263,14 +222,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IBw-gp-6Ds" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="867" y="513"/>
+            <point key="canvasLocation" x="1964" y="562"/>
         </scene>
         <!--Device View Controller - Device-->
         <scene sceneID="e6j-6Z-d3P">
             <objects>
                 <tableViewController storyboardIdentifier="DeviceViewController" id="Pcn-Hn-MnN" customClass="DeviceViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="LbP-3h-9Ro">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.34901960780000002" green="0.98431372549999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -556,15 +515,15 @@
                         </sections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Device" image="device.png" id="o9E-Sg-NVc"/>
                     <navigationItem key="navigationItem" title="Device" id="qY5-jF-5EJ"/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <segue destination="3q1-04-OzW" kind="modal" identifier="ImagePickerSegue" id="Il2-uq-hnI"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="auy-s1-FIL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="867" y="1187"/>
+            <point key="canvasLocation" x="4212" y="2413"/>
         </scene>
         <!--Image Picker Controller-->
         <scene sceneID="iFq-xW-tFQ">
@@ -574,15 +533,16 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sh3-Kv-xPZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1324" y="1187"/>
+            <point key="canvasLocation" x="4661" y="2413"/>
         </scene>
         <!--Comm Table View Controller-->
         <scene sceneID="gb3-d6-LgV">
             <objects>
-                <tableViewController id="mX9-Da-fsv" customClass="CommTableViewController" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="CommTableViewController" id="mX9-Da-fsv" customClass="CommTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dJy-ZC-C7D">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="536"/>
-                        <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="340"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="sectionIndexTrackingBackgroundColor" red="0.074509803920000006" green="0.18823529410000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="msgCell" id="mXl-aT-oTE" customClass="CommTableViewCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
@@ -591,9 +551,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="glz-RR-AOj">
+                                        <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="glz-RR-AOj">
                                             <rect key="frame" x="0.0" y="0.0" width="70" height="26"/>
-                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                            <color key="backgroundColor" red="0.074509803921568626" green="0.18823529411764706" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="26" id="VfN-0M-oDL"/>
                                                 <constraint firstAttribute="width" constant="70" type="user" id="kO4-cP-OKv"/>
@@ -604,7 +564,7 @@
                                         </label>
                                         <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="246" translatesAutoresizingMaskIntoConstraints="NO" id="mGy-8S-Zh1">
                                             <rect key="frame" x="74" y="0.0" width="246" height="44"/>
-                                            <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="backgroundColor" red="0.074509803921568626" green="0.18823529411764706" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -612,7 +572,7 @@
                                     </subviews>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
-                                <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" red="0.074509803920000006" green="0.18823529410000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="glz-RR-AOj" firstAttribute="top" secondItem="mXl-aT-oTE" secondAttribute="top" type="default" id="1Na-nX-l38"/>
                                     <constraint firstItem="mGy-8S-Zh1" firstAttribute="top" secondItem="mXl-aT-oTE" secondAttribute="top" type="user" id="7Hn-4S-xlB"/>
@@ -633,10 +593,12 @@
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="57d-Q6-hJv" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1324" y="529"/>
+            <point key="canvasLocation" x="2387" y="589"/>
         </scene>
         <!--Loading View Controller-->
         <scene sceneID="uMM-3C-hgZ">
@@ -1193,7 +1155,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="49k-TZ-SO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-765" y="-521"/>
+            <point key="canvasLocation" x="493" y="-219"/>
         </scene>
         <!--Scanner View Controller - Scanner-->
         <scene sceneID="5">
@@ -1234,7 +1196,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waa-9V-nq3" customClass="GUIButton">
-                                <rect key="frame" x="110" y="445" width="100" height="44"/>
+                                <rect key="frame" x="110" y="446" width="100" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" type="user" id="KEj-Zc-1QN"/>
@@ -1368,6 +1330,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="MGD-pG-MhS" firstAttribute="leading" secondItem="stx-mu-7c3" secondAttribute="leading" type="default" id="40P-4Q-Ja3"/>
                             <constraint firstItem="Z0t-4M-3D3" firstAttribute="top" secondItem="3" secondAttribute="top" constant="40" id="67x-46-zBt"/>
                             <constraint firstItem="rgS-1f-mzM" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="user" id="7re-Hc-PwY"/>
+                            <constraint firstAttribute="bottom" secondItem="waa-9V-nq3" secondAttribute="bottom" constant="58" id="8rV-CO-9W5"/>
                             <constraint firstAttribute="centerX" secondItem="BX0-yd-s1M" secondAttribute="centerX" type="user" id="BbK-dH-K9q"/>
                             <constraint firstItem="oVe-o2-Lr5" firstAttribute="top" secondItem="3" secondAttribute="top" constant="20" symbolic="YES" type="default" id="CPT-9e-rua"/>
                             <constraint firstItem="stx-mu-7c3" firstAttribute="top" secondItem="HLu-v7-LER" secondAttribute="top" type="default" id="FNU-Rb-pQx"/>
@@ -1390,7 +1353,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="stx-mu-7c3" firstAttribute="top" secondItem="MGD-pG-MhS" secondAttribute="top" type="default" id="XER-Hz-tne"/>
                             <constraint firstItem="rgS-1f-mzM" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="user" id="YHS-V2-4sP"/>
                             <constraint firstItem="stx-mu-7c3" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="72" id="ZLB-W2-wZl"/>
-                            <constraint firstAttribute="bottom" secondItem="waa-9V-nq3" secondAttribute="bottom" constant="59" id="ZXK-fm-UhB"/>
                             <constraint firstItem="tWm-XI-3eu" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="user" id="a0b-6Q-wAf"/>
                             <constraint firstItem="oVe-o2-Lr5" firstAttribute="trailing" secondItem="MGD-pG-MhS" secondAttribute="trailing" type="default" id="abA-TK-4XR"/>
                             <constraint firstItem="YsP-qD-cUK" firstAttribute="baseline" secondItem="stx-mu-7c3" secondAttribute="baseline" type="default" id="ad1-ST-66u"/>
@@ -1409,9 +1371,9 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="YsP-qD-cUK" firstAttribute="baseline" secondItem="stx-mu-7c3" secondAttribute="baseline" type="default" id="nW9-0C-5Cl"/>
                             <constraint firstItem="stx-mu-7c3" firstAttribute="baseline" secondItem="YsP-qD-cUK" secondAttribute="baseline" type="default" id="nZH-BZ-M7U"/>
                             <constraint firstItem="YsP-qD-cUK" firstAttribute="top" secondItem="DmM-Ra-LBw" secondAttribute="top" type="default" id="oZr-TM-Yaa"/>
+                            <constraint firstAttribute="bottom" secondItem="tWm-XI-3eu" secondAttribute="bottom" type="user" id="pEI-Ct-awM"/>
                             <constraint firstItem="BX0-yd-s1M" firstAttribute="centerX" secondItem="waa-9V-nq3" secondAttribute="centerX" type="default" id="qAN-ce-Iwa"/>
                             <constraint firstItem="Z0t-4M-3D3" firstAttribute="leading" secondItem="oVe-o2-Lr5" secondAttribute="leading" type="default" id="qSO-ca-oXB"/>
-                            <constraint firstAttribute="bottom" secondItem="tWm-XI-3eu" secondAttribute="bottom" type="user" id="rAH-gx-Ju5"/>
                             <constraint firstItem="stx-mu-7c3" firstAttribute="baseline" secondItem="YsP-qD-cUK" secondAttribute="baseline" type="default" id="ug5-1s-8eU"/>
                             <constraint firstItem="YsP-qD-cUK" firstAttribute="baseline" secondItem="stx-mu-7c3" secondAttribute="baseline" type="default" id="x2S-xM-crg"/>
                             <constraint firstItem="MGD-pG-MhS" firstAttribute="trailing" secondItem="stx-mu-7c3" secondAttribute="trailing" type="default" id="yhh-zZ-9Tq"/>
@@ -1420,9 +1382,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <tabBarItem key="tabBarItem" title="Scanner" image="scanner.png" id="zLU-l9-prb"/>
                     <navigationItem key="navigationItem" title="Scanner" id="jRf-fb-O9l"/>
-                    <nil key="simulatedTopBarMetrics"/>
                     <connections>
                         <outlet property="_mapView" destination="tWm-XI-3eu" id="TYM-6X-0Mj"/>
                         <outlet property="apLabel" destination="Z0t-4M-3D3" id="gIB-7s-x2P"/>
@@ -1441,7 +1401,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="867" y="-903"/>
+            <point key="canvasLocation" x="1251" y="-933"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="aeB-dp-Laj">
@@ -1460,7 +1420,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uQF-gb-ikf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1324" y="-903"/>
+            <point key="canvasLocation" x="1964" y="-2573"/>
         </scene>
         <!--Portal Detail View Controller-->
         <scene sceneID="tKq-tx-ryc">
@@ -1482,7 +1442,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mac-VV-Wvp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1747" y="-903"/>
+            <point key="canvasLocation" x="2387" y="-2573"/>
         </scene>
         <!--Chooser View Controller-->
         <scene sceneID="gD5-7r-ULd">
@@ -1702,18 +1662,18 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MfC-oC-0gb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-475" y="711"/>
+            <point key="canvasLocation" x="2845" y="1367"/>
         </scene>
         <!--Score View Controller-->
         <scene sceneID="tJs-a1-kIX">
             <objects>
                 <viewController storyboardIdentifier="ScoreViewController" id="c8F-A4-QQu" customClass="ScoreViewController" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="Zw7-fb-KUn">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="orw-K8-UUa">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="vZR-4F-H2Z" kind="embed" id="uLU-Dv-S4x"/>
@@ -1730,17 +1690,18 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
+                    <nil key="simulatedStatusBarMetrics"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nVe-S6-2yC" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1324" y="-1580"/>
+            <point key="canvasLocation" x="4212" y="236"/>
         </scene>
         <!--GLKit View Controller-->
         <scene sceneID="Mce-9E-pGk">
             <objects>
                 <glkViewController autoresizesArchivedViewToFullSize="NO" preferredFramesPerSecond="30" id="vZR-4F-H2Z" customClass="GLViewController" sceneMemberID="viewController">
                     <glkView key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" tag="1" contentMode="center" id="Ild-u8-Olh">
-                        <rect key="frame" x="0.0" y="0.0" width="280" height="400"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <connections>
@@ -1751,7 +1712,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                 </glkViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iHK-dZ-ie3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1747" y="-2204"/>
+            <point key="canvasLocation" x="4661" y="236"/>
         </scene>
         <!--Mission View Controller-->
         <scene sceneID="MfD-U0-52I">
@@ -2021,14 +1982,14 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QPT-iM-BVZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2596" y="-2358"/>
+            <point key="canvasLocation" x="4661" y="994"/>
         </scene>
         <!--Missions View Controller-->
         <scene sceneID="kB9-mT-YOn">
             <objects>
                 <tableViewController storyboardIdentifier="MissionsViewController" id="GNK-rW-aij" customClass="MissionsViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="4Pr-Q8-cMs">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.34901960780000002" green="0.98431372549999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
@@ -2196,6 +2157,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <segue destination="SBG-lr-EyX" kind="modal" identifier="MissionSegue" modalTransitionStyle="crossDissolve" id="fPf-WR-TNV"/>
                     </connections>
@@ -2216,14 +2178,14 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                 </label>
             </objects>
-            <point key="canvasLocation" x="1747" y="-1580"/>
+            <point key="canvasLocation" x="4212" y="994"/>
         </scene>
         <!--Recruit View Controller-->
         <scene sceneID="C2I-yU-jlK">
             <objects>
                 <viewController storyboardIdentifier="RecruitViewController" id="ed9-zl-POU" customClass="RecruitViewController" sceneMemberID="viewController">
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="wpZ-1g-j3t">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0 invites remaining" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2i-9b-nlS">
@@ -2238,7 +2200,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                 <size key="shadowOffset" width="-1" height="-1"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Gc-fu-SbG">
-                                <rect key="frame" x="0.0" y="516" width="320" height="32"/>
+                                <rect key="frame" x="0.0" y="536" width="320" height="32"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4R3-5c-BKS">
                                         <rect key="frame" x="1" y="1" width="237" height="30"/>
@@ -2304,6 +2266,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <outlet property="inviteButton" destination="Xe9-Fh-lK4" id="CxA-cb-4ID"/>
                         <outlet property="inviteContainerView" destination="3Gc-fu-SbG" id="85j-CQ-81u"/>
@@ -2313,7 +2276,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Zn-ex-Sku" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2183" y="-1580"/>
+            <point key="canvasLocation" x="4212" y="1704"/>
         </scene>
         <!--Portal Keys View Controller-->
         <scene sceneID="pOX-u1-cSZ">
@@ -2357,17 +2320,18 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="fvZ-bx-kbJ"/>
+                    <nil key="simulatedStatusBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="esV-93-vjs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1747" y="-189"/>
+            <point key="canvasLocation" x="4212" y="-1189"/>
         </scene>
         <!--Media Items View Controller-->
         <scene sceneID="985-dd-AQF">
             <objects>
                 <tableViewController storyboardIdentifier="MediaItemsViewController" id="KTC-Mi-HZa" customClass="MediaItemsViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="tAe-Bj-Duz">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.34901960780000002" green="0.98431372549999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -2402,13 +2366,14 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <segue destination="lYb-zI-rbd" kind="modal" identifier="MediaWebViewSegue" id="7uL-es-Dzj"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="1r5-qZ-6pz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2183" y="-189"/>
+            <point key="canvasLocation" x="4212" y="-471"/>
         </scene>
         <!--Ops View Controller-->
         <scene sceneID="rZA-dh-eaz">
@@ -2460,7 +2425,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nz1-12-8fy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2262" y="879"/>
+            <point key="canvasLocation" x="1964" y="-933"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TLB-hP-Ugx">
@@ -2479,7 +2444,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="e1k-eR-YNb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2632" y="-189"/>
+            <point key="canvasLocation" x="4661" y="-471"/>
         </scene>
         <!--Media Web View View Controller-->
         <scene sceneID="q1P-fV-g1A">
@@ -2522,7 +2487,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jDe-Dw-abI" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3082" y="-189"/>
+            <point key="canvasLocation" x="5111" y="-471"/>
         </scene>
         <!--Portal Info View Controller-->
         <scene sceneID="Eh4-m3-S9L">
@@ -2717,15 +2682,17 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="08N-ra-OaE" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="105" id="Ges-Rq-Af1"/>
                                     <constraint firstItem="08N-ra-OaE" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="21" id="GrZ-yH-hVl"/>
                                     <constraint firstAttribute="bottom" secondItem="LPK-gl-VrS" secondAttribute="bottom" constant="47" id="IOt-Yd-kZW"/>
+                                    <constraint firstItem="mD4-FJ-bc0" firstAttribute="leading" secondItem="LPK-gl-VrS" secondAttribute="leading" type="default" id="JUR-TL-sA3"/>
                                     <constraint firstItem="G1b-Ok-CJl" firstAttribute="top" secondItem="qrg-gr-5hF" secondAttribute="top" type="default" id="Jcg-9z-AFq"/>
-                                    <constraint firstItem="TFw-BM-yYy" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" type="default" id="Juv-Zl-Evv"/>
                                     <constraint firstItem="08N-ra-OaE" firstAttribute="bottom" secondItem="pXL-eI-DBL" secondAttribute="bottom" type="default" id="LAB-rN-VD9"/>
                                     <constraint firstItem="qrg-gr-5hF" firstAttribute="bottom" secondItem="1uc-G7-RfQ" secondAttribute="bottom" type="default" id="Lhs-1p-4V8"/>
                                     <constraint firstItem="KLX-Br-DtD" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="84" id="LxY-kz-eVt"/>
                                     <constraint firstItem="iI8-Vk-fD4" firstAttribute="centerX" secondItem="WNO-Bo-z3R" secondAttribute="centerX" type="default" id="MdH-Rw-zi2"/>
                                     <constraint firstItem="qrg-gr-5hF" firstAttribute="top" secondItem="1uc-G7-RfQ" secondAttribute="top" type="default" id="N6q-tw-hNc"/>
                                     <constraint firstItem="6EI-dR-nxm" firstAttribute="leading" secondItem="Td6-71-ZLa" secondAttribute="leading" type="default" id="Nli-wq-fHD"/>
+                                    <constraint firstItem="TFw-BM-yYy" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" type="default" id="Ofz-IT-7Uw"/>
                                     <constraint firstItem="pXL-eI-DBL" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="48" id="QYs-mC-uPq"/>
+                                    <constraint firstItem="G1b-Ok-CJl" firstAttribute="bottom" secondItem="mD4-FJ-bc0" secondAttribute="bottom" type="default" id="RSm-iw-qIg"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" type="default" id="Rci-Rj-4YX"/>
                                     <constraint firstAttribute="width" constant="116" type="user" id="SVG-nU-IMp"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="trailing" secondItem="1aa-eF-7rd" secondAttribute="trailing" type="default" id="UOz-TM-RIi"/>
@@ -2740,7 +2707,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="ppk-RV-jhe" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="81" id="duM-gK-jUp"/>
                                     <constraint firstItem="KLX-Br-DtD" firstAttribute="centerX" secondItem="zEQ-0c-NAe" secondAttribute="centerX" type="default" id="eZq-KU-qya"/>
                                     <constraint firstItem="iI8-Vk-fD4" firstAttribute="leading" secondItem="BQp-Pm-fjj" secondAttribute="leading" type="default" id="f5x-ki-SeX"/>
-                                    <constraint firstItem="mD4-FJ-bc0" firstAttribute="bottom" secondItem="1uc-G7-RfQ" secondAttribute="bottom" type="default" id="gFW-fn-vEP"/>
                                     <constraint firstItem="NAI-t7-cTU" firstAttribute="centerX" secondItem="ych-BV-d2s" secondAttribute="centerX" type="default" id="h0O-sY-MEv"/>
                                     <constraint firstItem="GI8-4l-eUD" firstAttribute="centerX" secondItem="A9n-5u-eiN" secondAttribute="centerX" type="default" id="i5V-gv-Huo"/>
                                     <constraint firstItem="A9n-5u-eiN" firstAttribute="baseline" secondItem="iI8-Vk-fD4" secondAttribute="baseline" type="default" id="k4t-B6-wrL"/>
@@ -2756,7 +2722,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="EUM-hs-RCw" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="2" id="rdc-C0-zV4"/>
                                     <constraint firstItem="GI8-4l-eUD" firstAttribute="leading" secondItem="1uc-G7-RfQ" secondAttribute="leading" type="default" id="svE-Vo-IPK"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="top" secondItem="GI8-4l-eUD" secondAttribute="top" type="default" id="t8C-4s-Mi0"/>
-                                    <constraint firstItem="mD4-FJ-bc0" firstAttribute="leading" secondItem="LPK-gl-VrS" secondAttribute="leading" type="default" id="tKL-n3-DUe"/>
                                     <constraint firstItem="NAI-t7-cTU" firstAttribute="bottom" secondItem="WNO-Bo-z3R" secondAttribute="bottom" type="default" id="u0i-Kz-xBs"/>
                                     <constraint firstItem="ych-BV-d2s" firstAttribute="trailing" secondItem="SqP-Ow-Sgr" secondAttribute="trailing" type="default" id="wOd-fE-EPv"/>
                                     <constraint firstItem="EUM-hs-RCw" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="47" id="wad-cU-bTc"/>
@@ -2778,7 +2743,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tVf-gE-chp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2606" y="-847"/>
+            <point key="canvasLocation" x="3246" y="-2573"/>
         </scene>
         <!--Portal Actions View Controller-->
         <scene sceneID="9Yb-wm-wMW">
@@ -2938,7 +2903,7 @@ Range: 0km</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UeV-Oi-m2q" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2170" y="-847"/>
+            <point key="canvasLocation" x="2810" y="-2573"/>
         </scene>
         <!--Chooser View Controller-->
         <scene sceneID="OoB-0g-DNW">
@@ -3125,14 +3090,14 @@ Range: 0km</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ePh-OW-Egj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-475" y="913"/>
+            <point key="canvasLocation" x="2845" y="1569"/>
         </scene>
         <!--Resources View Controller-->
         <scene sceneID="aha-5f-TD9">
             <objects>
                 <tableViewController storyboardIdentifier="ResourcesViewController" id="zM3-Tr-bQA" customClass="ResourcesViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" allowsSelection="NO" rowHeight="150" sectionHeaderHeight="22" sectionFooterHeight="22" id="Xvr-fT-iuU">
-                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="separatorColor" red="0.34901960780000002" green="0.98431372549999996" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
@@ -3787,10 +3752,11 @@ RARE</string>
                         </connections>
                     </tableView>
                     <extendedEdge key="edgesForExtendedLayout"/>
+                    <nil key="simulatedStatusBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sb2-Ma-HN8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1324" y="-189"/>
+            <point key="canvasLocation" x="4212" y="-1891"/>
         </scene>
         <!--Portal Upgrade View Controller-->
         <scene sceneID="czi-Ff-zb7">
@@ -3908,7 +3874,7 @@ RARE</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tpA-bD-aeO" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3055" y="-847"/>
+            <point key="canvasLocation" x="3695" y="-2573"/>
         </scene>
         <!--Chooser View Controller-->
         <scene sceneID="3zc-eu-ELN">
@@ -3984,7 +3950,7 @@ RARE</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rFi-Ue-fbX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-475" y="1107"/>
+            <point key="canvasLocation" x="2845" y="1763"/>
         </scene>
         <!--Chooser View Controller-->
         <scene sceneID="Piv-fM-wR9">
@@ -4161,17 +4127,14 @@ RARE</string>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QTN-ve-f01" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-475" y="1299"/>
+            <point key="canvasLocation" x="2845" y="1955"/>
         </scene>
     </scenes>
     <resources>
-        <image name="comm.png" width="24" height="22"/>
-        <image name="device.png" width="16" height="28"/>
+        <image name="commBg.png" width="320" height="60"/>
         <image name="enl_res_energy_fill.png" width="6.5" height="1"/>
         <image name="forceAmpBtn.png" width="50" height="50"/>
         <image name="heatsinkBtn.png" width="50" height="50"/>
-        <image name="intel.png" width="26" height="17"/>
-        <image name="items.png" width="26" height="20"/>
         <image name="linkAmpBtn.png" width="50" height="50"/>
         <image name="multihackBtn.png" width="50" height="50"/>
         <image name="negative_btn_background_default.png" width="45" height="23.5"/>
@@ -4191,7 +4154,6 @@ RARE</string>
         <image name="resonator_W.png" width="52.5" height="36.5"/>
         <image name="resonators-bg.png" width="117" height="232"/>
         <image name="scanner-bg.png" width="320" height="455"/>
-        <image name="scanner.png" width="27" height="27"/>
         <image name="shield_verycommon.png" width="50" height="50"/>
         <image name="turretBtn.png" width="50" height="50"/>
     </resources>
@@ -4201,8 +4163,7 @@ RARE</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="0zx-wi-ift"/>
-        <segue reference="7q6-q9-DTR"/>
         <segue reference="zJ1-yC-6tR"/>
+        <segue reference="uLU-Dv-S4x"/>
     </inferredMetricsTieBreakers>
 </document>

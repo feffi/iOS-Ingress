@@ -21,12 +21,6 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	if (!self.linkingPortal) {
-		if (![Utilities isOS7]) {
-			self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
-			self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(64, 0, 0, 0);
-		}
-	}
 }
 
 - (void)viewWillAppear:(BOOL)animated {

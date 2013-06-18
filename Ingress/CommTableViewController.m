@@ -21,24 +21,17 @@
 	dateFormatter = [NSDateFormatter new];
 	[dateFormatter setDateStyle:NSDateFormatterShortStyle];
 	[dateFormatter setTimeStyle:NSDateFormatterShortStyle];
-	
-	self.factionOnly = NO;
 
-	if (![Utilities isOS7]) {
-		self.tableView.contentInset = UIEdgeInsetsMake(64, 0, 0, 0);
-		self.tableView.scrollIndicatorInsets = UIEdgeInsetsMake(64, 0, 0, 0);
+//	if (![Utilities isOS7]) {
+//		self.refreshControl = [UIRefreshControl new];
+//		[self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
+//	}
 
-		self.refreshControl = [UIRefreshControl new];
-		[self.refreshControl addTarget:self action:@selector(refresh) forControlEvents:UIControlEventValueChanged];
-	}
-	
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 
-	[Plext MR_truncateAll];
-	[self refresh];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -56,6 +49,8 @@
 	[self.refreshControl beginRefreshing];
 	[self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
 
+	[Plext MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"factionOnly == %d", self.factionOnly]];
+
 	[[API sharedInstance] loadCommunicationForFactionOnly:self.factionOnly completionHandler:^{
 		[self.refreshControl endRefreshing];
 
@@ -66,8 +61,6 @@
 
 - (void)setFactionOnly:(BOOL)factionOnly {
 	if (factionOnly == _factionOnly) return;
-	
-	[Plext MR_truncateAll];
 	_factionOnly = factionOnly;
 	[self refresh];
 }

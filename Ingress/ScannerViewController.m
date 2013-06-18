@@ -9,6 +9,7 @@
 #import "ScannerViewController.h"
 #import "PortalDetailViewController.h"
 #import "MissionViewController.h"
+#import "CommViewController.h"
 #import "MKMapView+ZoomLevel.h"
 
 #import "PortalOverlayView.h"
@@ -80,6 +81,12 @@
 
     [self validateLocationServicesAuthorization];
 
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+	CommViewController *commVC = [storyboard instantiateViewControllerWithIdentifier:@"CommViewController"];
+	commVC.view.frame = CGRectMake(0, self.view.frame.size.height-48, 320, 393);
+	[self.view addSubview:commVC.view];
+	[self addChildViewController:commVC];
+	
 	locationManager = [[CLLocationManager alloc] init];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
@@ -805,7 +812,7 @@
 
 				UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:@"Confirm Deployment" delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Confirm", nil];
 				actionSheet.tag = 2;
-				[actionSheet showFromTabBar:self.tabBarController.tabBar];
+				[actionSheet showInView:self.view.window];
 			}
 		} else {
 			[self performSegueWithIdentifier:@"PortalDetailSegue" sender:self];
@@ -819,7 +826,7 @@
 			currentItem = (Item *)view.annotation;
 			UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:currentItem.title delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Acquire", nil];
 			actionSheet.tag = 1;
-			[actionSheet showFromTabBar:self.tabBarController.tabBar];
+			[actionSheet showInView:self.view.window];
 		}
 	}
 }

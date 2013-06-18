@@ -53,16 +53,12 @@
         self.titleScrollerHidden = NO;
         self.titleScrollerHeight = 50;
         self.titleScrollerItemWidth = 150;
-        
-        UIImage *backgroundImage = [UIImage imageNamed:@"diagmonds.png"];
-        if (backgroundImage != nil){
-            self.titleScrollerBackgroundColour = [UIColor colorWithPatternImage:backgroundImage];
-        } else {
-            self.titleScrollerBackgroundColour = [UIColor blackColor];
-        }
-        
+		self.labelsOffset = 20;
+        self.titleScrollerBackgroundColour = [UIColor blackColor];
         self.titleScrollerTextColour = [UIColor whiteColor];
+        self.contentScrollerBackgroundColour = [UIColor clearColor];
         self.disableTitleScrollerShadow = NO;
+		self.disableTriangle = NO;
         self.disableUIPageControl = NO;
         self.initialPageNumber = 0;
         self.pagingEnabled = YES;
@@ -94,13 +90,16 @@
 
     TTBlackTriangle *triangle;
     if (!self.titleScrollerHidden){
-        //add a triangle view to point to the currently selected page from the header
-        int triangleWidth = 30;
-        int triangleHeight = 10;
-        triangle = [[TTBlackTriangle alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-(triangleWidth/2), nextYPosition/*start at the top of the nextYPosition, but dont increment the yposition, so this means the triangle sits on top of the topscroller and cuts into it a bit*/, triangleWidth, triangleHeight)];
-        triangle.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
-        [self.view addSubview:triangle];
-        
+
+		if (!self.disableTriangle) {
+			//add a triangle view to point to the currently selected page from the header
+			int triangleWidth = 30;
+			int triangleHeight = 10;
+			triangle = [[TTBlackTriangle alloc] initWithFrame:CGRectMake(self.view.frame.size.width/2-(triangleWidth/2), nextYPosition/*start at the top of the nextYPosition, but dont increment the yposition, so this means the triangle sits on top of the topscroller and cuts into it a bit*/, triangleWidth, triangleHeight)];
+			triangle.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+			[self.view addSubview:triangle];
+		}
+
         //set up the top scroller (for the nav titles to go in) - it is one frame wide, but has clipToBounds turned off to enable you to see the next and previous items in the scroller. We wrap it in an outer uiview so that the background colour can be set on that and span the entire view (because the width of the topScrollView is only one frame wide and centered).
         topScrollView = [[UIScrollView alloc] initWithFrame:CGRectMake(0, 0, self.titleScrollerItemWidth, self.titleScrollerHeight)];
         topScrollView.center = CGPointMake(self.view.center.x, topScrollView.center.y); //center it horizontally
@@ -139,6 +138,7 @@
     bottomScrollView.directionalLockEnabled = YES;
     bottomScrollView.delegate = self; //move the top scroller proportionally as you drag the bottom.
     bottomScrollView.alwaysBounceVertical = NO;
+	bottomScrollView.backgroundColor = self.contentScrollerBackgroundColour;
     [self.view addSubview:bottomScrollView];
     
     //add the drop shadow on the top scroller (if enabled) and bring the view to the front
@@ -212,11 +212,11 @@
             label.textAlignment = NSTextAlignmentCenter;
             label.adjustsFontSizeToFitWidth = YES;
             label.textColor = self.titleScrollerTextColour;
-            label.font = [UIFont fontWithName:@"Coda-Regular" size:19]; //[UIFont boldSystemFontOfSize:19];
+            label.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:19]; //[UIFont boldSystemFontOfSize:19];
             label.backgroundColor = [UIColor clearColor];
             
             //add subtle drop shadow
-            label.layer.shadowColor = [[UIColor blackColor] CGColor];
+            label.layer.shadowColor = self.titleScrollerTextColour.CGColor; //[[UIColor blackColor] CGColor];
             label.layer.shadowOffset = CGSizeMake(0.0f, 0.0f);
             label.layer.shadowRadius = 2.0f;
             label.layer.shadowOpacity = 1.0f;
@@ -224,7 +224,7 @@
             //set view as the top item
             topItem = (UIView *)label;
         }
-        topItem.frame = CGRectMake(nextTopScrollerXPosition, 20, topScrollView.frame.size.width, topScrollView.frame.size.height-20);
+        topItem.frame = CGRectMake(nextTopScrollerXPosition, self.labelsOffset, topScrollView.frame.size.width, topScrollView.frame.size.height-self.labelsOffset);
         [topScrollView addSubview:topItem];
         nextTopScrollerXPosition = nextTopScrollerXPosition + topItem.frame.size.width;
         
@@ -553,6 +553,10 @@
     [self raiseErrorIfViewDidLoadHasBeenCalled];
     _titleScrollerHeight = titleScrollerHeight;
 }
+-(void)setLabelsOffset:(int)labelsOffset{
+    [self raiseErrorIfViewDidLoadHasBeenCalled];
+    _labelsOffset = labelsOffset;
+}
 -(void)setTitleScrollerItemWidth:(int)titleScrollerItemWidth{
     [self raiseErrorIfViewDidLoadHasBeenCalled];
     _titleScrollerItemWidth = titleScrollerItemWidth;
@@ -565,9 +569,17 @@
     [self raiseErrorIfViewDidLoadHasBeenCalled];
     _titleScrollerTextColour = titleScrollerTextColour;
 }
+-(void)setContentScrollerBackgroundColour:(UIColor *)contentScrollerBackgroundColour{
+	[self raiseErrorIfViewDidLoadHasBeenCalled];
+	_contentScrollerBackgroundColour = contentScrollerBackgroundColour;
+}
 -(void)setDisableTitleScrollerShadow:(BOOL)disableTitleScrollerShadow{
     [self raiseErrorIfViewDidLoadHasBeenCalled];
     _disableTitleScrollerShadow = disableTitleScrollerShadow;
+}
+-(void)setDisableTriangle:(BOOL)disableTriangle{
+	[self raiseErrorIfViewDidLoadHasBeenCalled];
+	_disableTriangle = disableTriangle;
 }
 -(void)setDisableUIPageControl:(BOOL)disableUIPageControl{
     [self raiseErrorIfViewDidLoadHasBeenCalled];
