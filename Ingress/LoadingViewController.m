@@ -579,9 +579,9 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:@"LoadingCompletedSegue"]) {
-		_tabBarController = (UITabBarController *)segue.destinationViewController;
-		_tabBarController.delegate = self;
-		[[AppDelegate instance] setTabBarVC:_tabBarController];
+//		_tabBarController = (UITabBarController *)segue.destinationViewController;
+//		_tabBarController.delegate = self;
+//		[[AppDelegate instance] setTabBarVC:_tabBarController];
 
 //		[self addTabBarArrow];
 
@@ -589,7 +589,7 @@
 //			navC.topViewController.view.hidden = NO;
 //		}
 
-		[_tabBarController setSelectedIndex:2];
+//		[_tabBarController setSelectedIndex:2];
         if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleBackground]) {
             [[SoundManager sharedManager] playMusic:@"Sound/sfx_ambient_scanner_base.aif" looping:YES];
         }

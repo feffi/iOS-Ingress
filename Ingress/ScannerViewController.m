@@ -101,7 +101,7 @@
 #endif
 
 	if ([Utilities isOS7]) {
-		for (int i = 0; i < 50; i++) {
+		for (int i = 0; i < 20; i++) {
 			dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 + i*0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
 				[_mapView setCenterCoordinate:_mapView.centerCoordinate zoomLevel:15 animated:NO];
 			});

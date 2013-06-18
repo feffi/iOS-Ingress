@@ -1188,7 +1188,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                         <outlet property="typewriterLabel" destination="t40-vq-Kl2" id="h7Z-cn-vtp"/>
                         <outlet property="typewriterView" destination="SxK-Of-qfq" id="RdM-AB-UMF"/>
                         <outlet property="wheelActivityIndicatorView" destination="aW5-e2-DbE" id="BOG-Vg-vYK"/>
-                        <segue destination="GaO-I4-JTp" kind="modal" identifier="LoadingCompletedSegue" modalTransitionStyle="crossDissolve" id="Cdt-CO-p5s"/>
+                        <segue destination="2" kind="modal" identifier="LoadingCompletedSegue" modalTransitionStyle="crossDissolve" id="0zx-wi-ift"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="49k-TZ-SO3" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1200,14 +1200,11 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
             <objects>
                 <viewController id="2" customClass="ScannerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="3">
-                        <rect key="frame" x="0.0" y="20" width="320" height="499"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWm-XI-3eu">
-                                <rect key="frame" x="0.0" y="-20" width="320" height="520"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="520" id="2bT-Xa-t9a"/>
-                                </constraints>
+                                <rect key="frame" x="0.0" y="-20" width="320" height="568"/>
                                 <connections>
                                     <outlet property="delegate" destination="2" id="5J6-tb-StI"/>
                                 </connections>
@@ -1219,7 +1216,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 </constraints>
                             </imageView>
                             <imageView opaque="NO" userInteractionEnabled="NO" contentMode="center" image="playerArrow_aliens.png" translatesAutoresizingMaskIntoConstraints="NO" id="BX0-yd-s1M">
-                                <rect key="frame" x="135" y="225" width="50" height="50"/>
+                                <rect key="frame" x="135" y="249" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" type="user" id="7lC-bf-Unj"/>
@@ -1237,7 +1234,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waa-9V-nq3" customClass="GUIButton">
-                                <rect key="frame" x="110" y="396" width="100" height="44"/>
+                                <rect key="frame" x="110" y="445" width="100" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" type="user" id="KEj-Zc-1QN"/>
@@ -1414,6 +1411,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="YsP-qD-cUK" firstAttribute="top" secondItem="DmM-Ra-LBw" secondAttribute="top" type="default" id="oZr-TM-Yaa"/>
                             <constraint firstItem="BX0-yd-s1M" firstAttribute="centerX" secondItem="waa-9V-nq3" secondAttribute="centerX" type="default" id="qAN-ce-Iwa"/>
                             <constraint firstItem="Z0t-4M-3D3" firstAttribute="leading" secondItem="oVe-o2-Lr5" secondAttribute="leading" type="default" id="qSO-ca-oXB"/>
+                            <constraint firstAttribute="bottom" secondItem="tWm-XI-3eu" secondAttribute="bottom" type="user" id="rAH-gx-Ju5"/>
                             <constraint firstItem="stx-mu-7c3" firstAttribute="baseline" secondItem="YsP-qD-cUK" secondAttribute="baseline" type="default" id="ug5-1s-8eU"/>
                             <constraint firstItem="YsP-qD-cUK" firstAttribute="baseline" secondItem="stx-mu-7c3" secondAttribute="baseline" type="default" id="x2S-xM-crg"/>
                             <constraint firstItem="MGD-pG-MhS" firstAttribute="trailing" secondItem="stx-mu-7c3" secondAttribute="trailing" type="default" id="yhh-zZ-9Tq"/>
@@ -2705,7 +2703,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="trailing" secondItem="IWu-Y1-Qec" secondAttribute="trailing" type="default" id="4hL-xv-X2h"/>
                                     <constraint firstItem="ych-BV-d2s" firstAttribute="baseline" secondItem="EUM-hs-RCw" secondAttribute="baseline" type="default" id="7Q9-PB-Bv2"/>
                                     <constraint firstItem="6EI-dR-nxm" firstAttribute="trailing" secondItem="Td6-71-ZLa" secondAttribute="trailing" type="default" id="7q6-oI-bCK"/>
-                                    <constraint firstItem="1uc-G7-RfQ" firstAttribute="bottom" secondItem="mD4-FJ-bc0" secondAttribute="bottom" type="default" id="806-Ap-zG8"/>
                                     <constraint firstItem="zEQ-0c-NAe" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="104" id="8Rm-ZN-UR8"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="top" secondItem="WNO-Bo-z3R" secondAttribute="top" type="default" id="8fh-Pt-KKm"/>
                                     <constraint firstItem="A9n-5u-eiN" firstAttribute="leading" secondItem="IWu-Y1-Qec" secondAttribute="leading" type="default" id="AJl-PE-oko"/>
@@ -2738,12 +2735,12 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="top" secondItem="NAI-t7-cTU" secondAttribute="top" type="default" id="aK8-hX-Zy6"/>
                                     <constraint firstItem="iI8-Vk-fD4" firstAttribute="trailing" secondItem="BQp-Pm-fjj" secondAttribute="trailing" type="default" id="anw-Qe-wzQ"/>
                                     <constraint firstItem="xwW-0y-h05" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="31" id="b3v-C0-hL5"/>
-                                    <constraint firstItem="TFw-BM-yYy" firstAttribute="leading" secondItem="mD4-FJ-bc0" secondAttribute="leading" type="default" id="dEs-4d-BSz"/>
                                     <constraint firstItem="GI8-4l-eUD" firstAttribute="trailing" secondItem="1uc-G7-RfQ" secondAttribute="trailing" type="default" id="dVr-xy-2hj"/>
                                     <constraint firstItem="TFw-BM-yYy" firstAttribute="leading" secondItem="LPK-gl-VrS" secondAttribute="leading" type="default" id="dfV-f9-nA9"/>
                                     <constraint firstItem="ppk-RV-jhe" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="81" id="duM-gK-jUp"/>
                                     <constraint firstItem="KLX-Br-DtD" firstAttribute="centerX" secondItem="zEQ-0c-NAe" secondAttribute="centerX" type="default" id="eZq-KU-qya"/>
                                     <constraint firstItem="iI8-Vk-fD4" firstAttribute="leading" secondItem="BQp-Pm-fjj" secondAttribute="leading" type="default" id="f5x-ki-SeX"/>
+                                    <constraint firstItem="mD4-FJ-bc0" firstAttribute="bottom" secondItem="1uc-G7-RfQ" secondAttribute="bottom" type="default" id="gFW-fn-vEP"/>
                                     <constraint firstItem="NAI-t7-cTU" firstAttribute="centerX" secondItem="ych-BV-d2s" secondAttribute="centerX" type="default" id="h0O-sY-MEv"/>
                                     <constraint firstItem="GI8-4l-eUD" firstAttribute="centerX" secondItem="A9n-5u-eiN" secondAttribute="centerX" type="default" id="i5V-gv-Huo"/>
                                     <constraint firstItem="A9n-5u-eiN" firstAttribute="baseline" secondItem="iI8-Vk-fD4" secondAttribute="baseline" type="default" id="k4t-B6-wrL"/>
@@ -2759,6 +2756,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="EUM-hs-RCw" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="2" id="rdc-C0-zV4"/>
                                     <constraint firstItem="GI8-4l-eUD" firstAttribute="leading" secondItem="1uc-G7-RfQ" secondAttribute="leading" type="default" id="svE-Vo-IPK"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="top" secondItem="GI8-4l-eUD" secondAttribute="top" type="default" id="t8C-4s-Mi0"/>
+                                    <constraint firstItem="mD4-FJ-bc0" firstAttribute="leading" secondItem="LPK-gl-VrS" secondAttribute="leading" type="default" id="tKL-n3-DUe"/>
                                     <constraint firstItem="NAI-t7-cTU" firstAttribute="bottom" secondItem="WNO-Bo-z3R" secondAttribute="bottom" type="default" id="u0i-Kz-xBs"/>
                                     <constraint firstItem="ych-BV-d2s" firstAttribute="trailing" secondItem="SqP-Ow-Sgr" secondAttribute="trailing" type="default" id="wOd-fE-EPv"/>
                                     <constraint firstItem="EUM-hs-RCw" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="47" id="wad-cU-bTc"/>
@@ -4203,6 +4201,7 @@ RARE</string>
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="0zx-wi-ift"/>
         <segue reference="7q6-q9-DTR"/>
         <segue reference="zJ1-yC-6tR"/>
     </inferredMetricsTieBreakers>
