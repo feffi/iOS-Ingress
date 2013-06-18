@@ -93,12 +93,6 @@
 			[button setImage:nil forState:UIControlStateNormal];
 		}
 
-		if (self.portal.controllingTeam && ([self.portal.controllingTeam isEqualToString:player.team] || [self.portal.controllingTeam isEqualToString:@"NEUTRAL"])) {
-			[button setEnabled:YES];
-		} else {
-			[button setEnabled:NO];
-		}
-
 	}
 
 	NSMutableArray *tmpResonators = [NSMutableArray arrayWithCapacity:8];
@@ -144,11 +138,11 @@
 //        view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:.95];
 		view.backgroundColor = [UIColor colorWithRed:16.0/255.0 green:32.0/255.0 blue:34.0/255.0 alpha:0.95];
 
-        label = [[GlowingLabel alloc] initWithFrame:CGRectMake(0, 0, 220, 112)];
+        label = [[GlowingLabel alloc] initWithFrame:CGRectMake(20, 0, 180, 112)];
         label.backgroundColor = [UIColor clearColor];
         label.textColor = [UIColor whiteColor];
-        label.textAlignment = NSTextAlignmentCenter;
-        label.font = [label.font fontWithSize:20];
+//        label.textAlignment = NSTextAlignmentCenter;
+		label.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:18];
 		label.minimumScaleFactor = .75;
 		label.adjustsFontSizeToFitWidth = YES;
 		label.numberOfLines = 0;
@@ -156,11 +150,13 @@
         [view addSubview:label];
         
 		deployButton = [[GUIButton alloc] initWithFrame:CGRectMake(20, 112, 180, 44)];
+		deployButton.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
 		[deployButton addTarget:self action:@selector(resonatorButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         deployButton.tag = 2;
         [view addSubview:deployButton];
 
 		rechargeButton = [[GUIButton alloc] initWithFrame:CGRectMake(20, 166, 180, 44)];
+		rechargeButton.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
 		[rechargeButton setTitle:@"RECHARGE" forState:UIControlStateNormal];
 		[rechargeButton addTarget:self action:@selector(rechargeButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
         rechargeButton.tag = 3;
@@ -179,14 +175,24 @@
 	if (![resonator isKindOfClass:[NSNull class]]) {
 
 		NSMutableString *resonatorString = [NSMutableString string];
+		[resonatorString appendFormat:@"Level: L%d\n", resonator.level];
+		[resonatorString appendFormat:@"XM: %.1fk/%.1fk\n", resonator.energy/1000., [Utilities maxEnergyForResonatorLevel:resonator.level]/1000.];
 		[resonatorString appendFormat:@"Octant: %@\n", resonatorOctant];
-		[resonatorString appendFormat:@"Level: %d\n", resonator.level];
-		[resonatorString appendFormat:@"%d / %d XM\n", resonator.energy, [Utilities maxEnergyForResonatorLevel:resonator.level]];
 
 		NSString *nickname = resonator.owner.nickname;
 		if (nickname) { [resonatorString appendFormat:@"Owner: %@", nickname]; }
 
-		[label setText:resonatorString];
+		NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:resonatorString];
+
+		[attrString setAttributes:[Utilities attributesWithShadow:YES size:18 color:[UIColor whiteColor]] range:NSMakeRange(0, resonatorString.length)];
+
+		[attrString setAttributes:[Utilities attributesWithShadow:YES size:18 color:[Utilities colorForLevel:resonator.level]] range:NSMakeRange(7, 2)];
+
+		if (nickname) {
+			[attrString setAttributes:[Utilities attributesWithShadow:YES size:18 color:[Utilities colorForFaction:self.portal.controllingTeam]] range:NSMakeRange(resonatorString.length-nickname.length, nickname.length)];
+		}
+
+		[label setAttributedText:attrString];
 
 		[deployButton setTitle:@"UPGRADE" forState:UIControlStateNormal];
 
@@ -385,6 +391,14 @@
 
 	if (sender.disabled) { return; }
 
+	int slot = sender.tag-100;
+
+	DeployedMod *mod = [DeployedMod MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"portal = %@ && slot = %d", self.portal, slot]];
+
+	if (mod) {
+		return;
+	}
+
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 	HUD.userInteractionEnabled = YES;
 	HUD.removeFromSuperViewOnHide = YES;
@@ -405,7 +419,7 @@
 		_levelChooser = [ChooserViewController rarityChooserWithTitle:@"Choose shield rarity" completionHandler:^(ItemRarity rarity) {
 			[HUD hide:YES];
 			_levelChooser = nil;
-			[self deployMod:modType ofRarity:rarity toSlot:sender.tag-100];
+			[self deployMod:modType ofRarity:rarity toSlot:slot];
 		}];
 		HUD.customView = _levelChooser.view;
 		[[AppDelegate instance].window addSubview:HUD];
