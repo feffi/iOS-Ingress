@@ -428,6 +428,11 @@
 #pragma mark UIScrollView delegate
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+
+	if ([self.scrollViewDelegate respondsToSelector:@selector(scrollViewDidScroll:)]) {
+		[self.scrollViewDelegate scrollViewDidScroll:scrollView];
+	}
+
     int currentPage = [self getCurrentDisplayedPage];
     
     if (!self.zoomOutAnimationDisabled) {
@@ -504,6 +509,11 @@
 }
 
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+
+	if ([self.scrollViewDelegate respondsToSelector:@selector(scrollViewDidEndDecelerating:)]) {
+		[self.scrollViewDelegate scrollViewDidEndDecelerating:scrollView];
+	}
+	
     int currentPage = [self getCurrentDisplayedPage];
     
     //store the page you were on so if you have a rotate event, or you come back to this view you know what page to start at. (for example from a navigation controller), the viewDidLayoutSubviews method will know which page to navigate to (for example if the screen was portrait when you left, then you changed to landscape, and navigate back, then viewDidLayoutSubviews will need to change all the sizes of the views, but still know what page to set the offset to)
@@ -520,6 +530,18 @@
     if (self.pagingEnabled == YES && [self.dataSource respondsToSelector:@selector(widthForPageOnSlidingPagesViewController:atIndex:)]) {
         NSLog(@"Warning: TTScrollSlidingPagesController. You have paging enabled in the TTScrollSlidingPagesController (pagingEnabled is either not set, or specifically set to YES), but you have also implemented widthForPageOnSlidingPagesViewController:atIndex:. ScrollViews do not cope well with paging being disabled when items have custom widths. You may get weird behaviour with your paging, in which case you should either disable paging (set pagingEnabled to NO) and keep widthForPageOnSlidingPagesViewController:atIndex: implented, or not implement widthForPageOnSlidingPagesViewController:atIndex: in your datasource for the TTScrollSlidingPagesController instance.");
     }
+}
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+	if ([self.scrollViewDelegate respondsToSelector:@selector(scrollViewWillBeginDragging:)]) {
+		[self.scrollViewDelegate scrollViewWillBeginDragging:scrollView];
+	}
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+	if ([self.scrollViewDelegate respondsToSelector:@selector(scrollViewDidEndDragging:willDecelerate:)]) {
+		[self.scrollViewDelegate scrollViewDidEndDragging:scrollView willDecelerate:decelerate];
+	}
 }
 
 #pragma mark property setters - for when need to do fancy things as well as set the value

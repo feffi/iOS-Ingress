@@ -53,6 +53,8 @@
 
 @property (nonatomic, strong) id<TTSlidingPagesDataSource> dataSource;
 
+@property (nonatomic, strong) id<UIScrollViewDelegate> scrollViewDelegate;
+
 /** @property titleScrollerHidden
  *  @brief Whether the title scroller bar is hidden or not.
  *  Whether the title scroller bar is hidden or not. Set this to YES if you only want the pages, and don't want the titles at the top of the page. For now even if this is set to YES you will still need to implement the `-(TTSlidingPageTitle *)titleForSlidingPagesViewController:(TTScrollSlidingPagesController *)source atIndex:(int)index` method in your datasource class, but you can just return nil for everything. Default is NO.  **/
