@@ -61,6 +61,7 @@
 - (void)refresh {
 	
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+	HUD.removeFromSuperViewOnHide = YES;
 	HUD.userInteractionEnabled = NO;
 	//HUD.labelText = @"Loading...";
 	//HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
