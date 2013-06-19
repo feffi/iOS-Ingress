@@ -1396,31 +1396,12 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                         <outlet property="xmIndicator" destination="p8g-KV-tR1" id="C8I-2L-b6m"/>
                         <outlet property="xmLabel" destination="MGD-pG-MhS" id="0MC-Wc-EQg"/>
                         <segue destination="SBG-lr-EyX" kind="modal" identifier="FactionChooseSegue" modalTransitionStyle="crossDissolve" id="zJ1-yC-6tR"/>
-                        <segue destination="ibU-Xe-j32" kind="modal" identifier="PortalDetailSegue" modalTransitionStyle="crossDissolve" id="yX8-cj-Kkz"/>
+                        <segue destination="EpT-PX-0Xb" kind="modal" identifier="PortalDetailSegue" modalTransitionStyle="crossDissolve" id="fOb-NG-kQh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1251" y="-933"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="aeB-dp-Laj">
-            <objects>
-                <navigationController definesPresentationContext="YES" id="ibU-Xe-j32" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackTranslucent" id="6js-25-5io">
-                        <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <connections>
-                        <segue destination="EpT-PX-0Xb" kind="relationship" relationship="rootViewController" id="dCf-kC-j2h"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="uQF-gb-ikf" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1964" y="-2573"/>
         </scene>
         <!--Portal Detail View Controller-->
         <scene sceneID="tKq-tx-ryc">
@@ -1429,16 +1410,35 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                     <view key="view" contentMode="scaleToFill" id="ROn-sT-oc0">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9A-O4-19U">
+                                <rect key="frame" x="0.0" y="20" width="44" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="44" id="8KX-Mz-qGK"/>
+                                    <constraint firstAttribute="height" constant="30" id="bH1-Aa-TpP"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" size="button"/>
+                                <state key="normal" title="&lt;-">
+                                    <color key="titleColor" red="0.92156862750000001" green="0.73725490199999999" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="back" destination="qnH-ai-9uQ" eventType="touchUpInside" id="eFV-TK-LX5"/>
+                                    <action selector="back:" destination="EpT-PX-0Xb" eventType="touchUpInside" id="N3W-0b-Mmf"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="l9A-O4-19U" firstAttribute="leading" secondItem="ROn-sT-oc0" secondAttribute="leading" type="default" id="BJM-Wz-36V"/>
+                            <constraint firstItem="l9A-O4-19U" firstAttribute="top" secondItem="ROn-sT-oc0" secondAttribute="top" constant="20" symbolic="YES" type="default" id="brk-NQ-GIC"/>
+                        </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
-                    <navigationItem key="navigationItem" id="swx-60-AU9">
-                        <barButtonItem key="leftBarButtonItem" title="Back" id="Gua-V0-hdZ">
-                            <connections>
-                                <action selector="back:" destination="EpT-PX-0Xb" id="4Iv-Dn-ho2"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mac-VV-Wvp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2681,8 +2681,8 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="ych-BV-d2s" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="35" id="Fmd-iD-uWf"/>
                                     <constraint firstItem="08N-ra-OaE" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="105" id="Ges-Rq-Af1"/>
                                     <constraint firstItem="08N-ra-OaE" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="21" id="GrZ-yH-hVl"/>
+                                    <constraint firstItem="mD4-FJ-bc0" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" type="default" id="HIT-cX-ZAY"/>
                                     <constraint firstAttribute="bottom" secondItem="LPK-gl-VrS" secondAttribute="bottom" constant="47" id="IOt-Yd-kZW"/>
-                                    <constraint firstItem="mD4-FJ-bc0" firstAttribute="leading" secondItem="LPK-gl-VrS" secondAttribute="leading" type="default" id="JUR-TL-sA3"/>
                                     <constraint firstItem="G1b-Ok-CJl" firstAttribute="top" secondItem="qrg-gr-5hF" secondAttribute="top" type="default" id="Jcg-9z-AFq"/>
                                     <constraint firstItem="08N-ra-OaE" firstAttribute="bottom" secondItem="pXL-eI-DBL" secondAttribute="bottom" type="default" id="LAB-rN-VD9"/>
                                     <constraint firstItem="qrg-gr-5hF" firstAttribute="bottom" secondItem="1uc-G7-RfQ" secondAttribute="bottom" type="default" id="Lhs-1p-4V8"/>
@@ -2690,9 +2690,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="iI8-Vk-fD4" firstAttribute="centerX" secondItem="WNO-Bo-z3R" secondAttribute="centerX" type="default" id="MdH-Rw-zi2"/>
                                     <constraint firstItem="qrg-gr-5hF" firstAttribute="top" secondItem="1uc-G7-RfQ" secondAttribute="top" type="default" id="N6q-tw-hNc"/>
                                     <constraint firstItem="6EI-dR-nxm" firstAttribute="leading" secondItem="Td6-71-ZLa" secondAttribute="leading" type="default" id="Nli-wq-fHD"/>
-                                    <constraint firstItem="TFw-BM-yYy" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" type="default" id="Ofz-IT-7Uw"/>
                                     <constraint firstItem="pXL-eI-DBL" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="48" id="QYs-mC-uPq"/>
-                                    <constraint firstItem="G1b-Ok-CJl" firstAttribute="bottom" secondItem="mD4-FJ-bc0" secondAttribute="bottom" type="default" id="RSm-iw-qIg"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" type="default" id="Rci-Rj-4YX"/>
                                     <constraint firstAttribute="width" constant="116" type="user" id="SVG-nU-IMp"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="trailing" secondItem="1aa-eF-7rd" secondAttribute="trailing" type="default" id="UOz-TM-RIi"/>
@@ -2710,6 +2708,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="NAI-t7-cTU" firstAttribute="centerX" secondItem="ych-BV-d2s" secondAttribute="centerX" type="default" id="h0O-sY-MEv"/>
                                     <constraint firstItem="GI8-4l-eUD" firstAttribute="centerX" secondItem="A9n-5u-eiN" secondAttribute="centerX" type="default" id="i5V-gv-Huo"/>
                                     <constraint firstItem="A9n-5u-eiN" firstAttribute="baseline" secondItem="iI8-Vk-fD4" secondAttribute="baseline" type="default" id="k4t-B6-wrL"/>
+                                    <constraint firstItem="mD4-FJ-bc0" firstAttribute="leading" secondItem="TFw-BM-yYy" secondAttribute="leading" type="default" id="k8z-fD-EI4"/>
                                     <constraint firstItem="SqP-Ow-Sgr" firstAttribute="baseline" secondItem="LPK-gl-VrS" secondAttribute="baseline" type="default" id="kQc-Pw-viQ"/>
                                     <constraint firstItem="G1b-Ok-CJl" firstAttribute="bottom" secondItem="qrg-gr-5hF" secondAttribute="bottom" type="default" id="n3g-74-5Tf"/>
                                     <constraint firstItem="sTl-ca-2VI" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="70" id="n3t-PR-4Lh"/>
@@ -2723,6 +2722,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="GI8-4l-eUD" firstAttribute="leading" secondItem="1uc-G7-RfQ" secondAttribute="leading" type="default" id="svE-Vo-IPK"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="top" secondItem="GI8-4l-eUD" secondAttribute="top" type="default" id="t8C-4s-Mi0"/>
                                     <constraint firstItem="NAI-t7-cTU" firstAttribute="bottom" secondItem="WNO-Bo-z3R" secondAttribute="bottom" type="default" id="u0i-Kz-xBs"/>
+                                    <constraint firstItem="Td6-71-ZLa" firstAttribute="bottom" secondItem="mD4-FJ-bc0" secondAttribute="bottom" type="default" id="v2Z-ef-4UZ"/>
                                     <constraint firstItem="ych-BV-d2s" firstAttribute="trailing" secondItem="SqP-Ow-Sgr" secondAttribute="trailing" type="default" id="wOd-fE-EPv"/>
                                     <constraint firstItem="EUM-hs-RCw" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="47" id="wad-cU-bTc"/>
                                     <constraint firstItem="Td6-71-ZLa" firstAttribute="top" secondItem="G1b-Ok-CJl" secondAttribute="top" type="default" id="xFX-LN-MGC"/>

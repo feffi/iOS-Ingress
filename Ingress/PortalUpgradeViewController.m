@@ -184,12 +184,13 @@
 
 		NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:resonatorString];
 
-		[attrString setAttributes:[Utilities attributesWithShadow:YES size:18 color:[UIColor whiteColor]] range:NSMakeRange(0, resonatorString.length)];
+		[attrString setAttributes:[Utilities attributesWithShadow:YES size:16 color:[UIColor whiteColor]] range:NSMakeRange(0, resonatorString.length)];
 
-		[attrString setAttributes:[Utilities attributesWithShadow:YES size:18 color:[Utilities colorForLevel:resonator.level]] range:NSMakeRange(7, 2)];
+		[attrString setAttributes:[Utilities attributesWithShadow:YES size:16 color:[Utilities colorForLevel:resonator.level]] range:NSMakeRange(7, 2)];
 
 		if (nickname) {
-			[attrString setAttributes:[Utilities attributesWithShadow:YES size:18 color:[Utilities colorForFaction:self.portal.controllingTeam]] range:NSMakeRange(resonatorString.length-nickname.length, nickname.length)];
+			[attrString setAttributes:[Utilities attributesWithShadow:YES size:16
+																color:[Utilities colorForFaction:self.portal.controllingTeam]] range:NSMakeRange(resonatorString.length-nickname.length, nickname.length)];
 		}
 
 		[label setAttributedText:attrString];

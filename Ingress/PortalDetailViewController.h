@@ -7,16 +7,19 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TTSlidingPagesDataSource.h"
 #import "PortalActionsViewController.h"
 #import "PortalInfoViewController.h"
 #import "PortalUpgradeViewController.h"
+#import "MDCParallaxView.h"
 
-@interface PortalDetailViewController : UIViewController <UIScrollViewDelegate> {
+@interface PortalDetailViewController : UIViewController <TTSlidingPagesDataSource> {
 
-	UIScrollView *_scrollView;
-	UISegmentedControl *viewSegmentedControl;
+//	UIScrollView *_scrollView;
+//	UISegmentedControl *viewSegmentedControl;
 
 	PortalActionsViewController *portalActionsVC;
+	MDCParallaxView *infoContainerView;
 	PortalInfoViewController *portalInfoVC;
 	PortalUpgradeViewController *portalUpgradeVC;
 

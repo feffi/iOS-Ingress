@@ -24,8 +24,8 @@
 
 }
 
-@property (nonatomic, assign) Portal *portal;
-@property (nonatomic, assign) UIImageView *imageView;
+@property (nonatomic, strong) Portal *portal;
+@property (nonatomic, strong) UIImageView *imageView;
 
 - (void)refresh;
 - (IBAction)hack:(GUIButton *)sender;
