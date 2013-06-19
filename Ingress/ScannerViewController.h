@@ -11,6 +11,7 @@
 #import <CoreLocation/CoreLocation.h>
 #import <CoreImage/CoreImage.h>
 #import "ChooserViewController.h"
+#import "OpsViewController.h"
 #import "GlowingLabel.h"
 #import "GUIButton.h"
 #import "APView.h"
@@ -44,6 +45,8 @@
 
 @property (nonatomic, strong) FlipCard *virusToUse;
 
+@property (nonatomic, strong) OpsViewController *opsViewController;
+
 - (IBAction)showAP;
 - (IBAction)showXM;
 
@@ -51,5 +54,7 @@
 
 - (void)refresh;
 - (void)fireXMP;
+
+- (IBAction)openOPS;
 
 @end

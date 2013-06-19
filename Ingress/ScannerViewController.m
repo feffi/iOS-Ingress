@@ -211,7 +211,8 @@
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+
+	_opsViewController = nil;
 }
 
 - (void)dealloc
@@ -1156,6 +1157,20 @@
 
 	}];
 	
+}
+
+#pragma mark - OPS
+
+- (OpsViewController *)opsViewController {
+	if (!_opsViewController) {
+		UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+		_opsViewController = [storyboard instantiateViewControllerWithIdentifier:@"OpsViewController"];
+	}
+	return _opsViewController;
+}
+
+- (IBAction)openOPS {
+	[self presentViewController:self.opsViewController animated:YES completion:NULL];
 }
 
 #pragma mark - Storyboard

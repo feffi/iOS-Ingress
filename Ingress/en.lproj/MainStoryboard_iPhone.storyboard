@@ -1317,7 +1317,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                     <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <connections>
-                                    <segue destination="qnH-ai-9uQ" kind="modal" identifier="OpsModalSegue" modalTransitionStyle="crossDissolve" id="kDZ-ex-Skk"/>
+                                    <action selector="openOPS" destination="2" eventType="touchUpInside" id="Q1b-zS-DrM"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -2378,7 +2378,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
         <!--Ops View Controller-->
         <scene sceneID="rZA-dh-eaz">
             <objects>
-                <viewController wantsFullScreenLayout="YES" modalTransitionStyle="crossDissolve" id="qnH-ai-9uQ" customClass="OpsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="OpsViewController" wantsFullScreenLayout="YES" id="qnH-ai-9uQ" customClass="OpsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HQB-G9-BUn">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -2661,10 +2661,8 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                 </subviews>
                                 <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstItem="TFw-BM-yYy" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" type="default" id="0i1-BX-mZw"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="top" secondItem="6EI-dR-nxm" secondAttribute="top" type="default" id="1sM-mX-WoF"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="trailing" secondItem="KLX-Br-DtD" secondAttribute="trailing" type="default" id="27u-ZF-nx1"/>
-                                    <constraint firstItem="mD4-FJ-bc0" firstAttribute="leading" secondItem="LPK-gl-VrS" secondAttribute="leading" type="default" id="2kZ-ah-Jxc"/>
                                     <constraint firstItem="TFw-BM-yYy" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="102" id="2p3-2m-CJF"/>
                                     <constraint firstItem="NAI-t7-cTU" firstAttribute="trailing" secondItem="G1b-Ok-CJl" secondAttribute="trailing" type="default" id="4be-eE-rPM"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="trailing" secondItem="IWu-Y1-Qec" secondAttribute="trailing" type="default" id="4hL-xv-X2h"/>
@@ -2672,6 +2670,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="6EI-dR-nxm" firstAttribute="trailing" secondItem="Td6-71-ZLa" secondAttribute="trailing" type="default" id="7q6-oI-bCK"/>
                                     <constraint firstItem="zEQ-0c-NAe" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="104" id="8Rm-ZN-UR8"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="top" secondItem="WNO-Bo-z3R" secondAttribute="top" type="default" id="8fh-Pt-KKm"/>
+                                    <constraint firstItem="mD4-FJ-bc0" firstAttribute="leading" secondItem="LPK-gl-VrS" secondAttribute="leading" type="default" id="99a-KH-hlv"/>
                                     <constraint firstItem="A9n-5u-eiN" firstAttribute="leading" secondItem="IWu-Y1-Qec" secondAttribute="leading" type="default" id="AJl-PE-oko"/>
                                     <constraint firstItem="BQp-Pm-fjj" firstAttribute="baseline" secondItem="SqP-Ow-Sgr" secondAttribute="baseline" type="default" id="AWQ-LO-9r6"/>
                                     <constraint firstItem="ych-BV-d2s" firstAttribute="leading" secondItem="SqP-Ow-Sgr" secondAttribute="leading" type="default" id="CFy-tK-YB6"/>
@@ -2684,6 +2683,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="08N-ra-OaE" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="105" id="Ges-Rq-Af1"/>
                                     <constraint firstItem="08N-ra-OaE" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="21" id="GrZ-yH-hVl"/>
                                     <constraint firstAttribute="bottom" secondItem="LPK-gl-VrS" secondAttribute="bottom" constant="47" id="IOt-Yd-kZW"/>
+                                    <constraint firstItem="TFw-BM-yYy" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" type="default" id="JW8-dM-jey"/>
                                     <constraint firstItem="G1b-Ok-CJl" firstAttribute="top" secondItem="qrg-gr-5hF" secondAttribute="top" type="default" id="Jcg-9z-AFq"/>
                                     <constraint firstItem="08N-ra-OaE" firstAttribute="bottom" secondItem="pXL-eI-DBL" secondAttribute="bottom" type="default" id="LAB-rN-VD9"/>
                                     <constraint firstItem="qrg-gr-5hF" firstAttribute="bottom" secondItem="1uc-G7-RfQ" secondAttribute="bottom" type="default" id="Lhs-1p-4V8"/>
@@ -2691,6 +2691,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="iI8-Vk-fD4" firstAttribute="centerX" secondItem="WNO-Bo-z3R" secondAttribute="centerX" type="default" id="MdH-Rw-zi2"/>
                                     <constraint firstItem="qrg-gr-5hF" firstAttribute="top" secondItem="1uc-G7-RfQ" secondAttribute="top" type="default" id="N6q-tw-hNc"/>
                                     <constraint firstItem="6EI-dR-nxm" firstAttribute="leading" secondItem="Td6-71-ZLa" secondAttribute="leading" type="default" id="Nli-wq-fHD"/>
+                                    <constraint firstItem="1uc-G7-RfQ" firstAttribute="bottom" secondItem="mD4-FJ-bc0" secondAttribute="bottom" type="default" id="PyJ-Dv-nFm"/>
                                     <constraint firstItem="pXL-eI-DBL" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="48" id="QYs-mC-uPq"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" type="default" id="Rci-Rj-4YX"/>
                                     <constraint firstAttribute="width" constant="116" type="user" id="SVG-nU-IMp"/>
@@ -2712,7 +2713,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="SqP-Ow-Sgr" firstAttribute="baseline" secondItem="LPK-gl-VrS" secondAttribute="baseline" type="default" id="kQc-Pw-viQ"/>
                                     <constraint firstItem="G1b-Ok-CJl" firstAttribute="bottom" secondItem="qrg-gr-5hF" secondAttribute="bottom" type="default" id="n3g-74-5Tf"/>
                                     <constraint firstItem="sTl-ca-2VI" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="70" id="n3t-PR-4Lh"/>
-                                    <constraint firstItem="G1b-Ok-CJl" firstAttribute="bottom" secondItem="mD4-FJ-bc0" secondAttribute="bottom" type="default" id="nD9-F9-bvW"/>
                                     <constraint firstItem="G1b-Ok-CJl" firstAttribute="bottom" secondItem="Td6-71-ZLa" secondAttribute="bottom" type="default" id="nFd-BZ-ZtR"/>
                                     <constraint firstItem="NAI-t7-cTU" firstAttribute="leading" secondItem="G1b-Ok-CJl" secondAttribute="leading" type="default" id="noO-6t-nuH"/>
                                     <constraint firstItem="qrg-gr-5hF" firstAttribute="leading" secondItem="WNO-Bo-z3R" secondAttribute="leading" type="default" id="o2W-iL-SBL"/>
