@@ -11,9 +11,6 @@
 #import "TTSlidingPagesDataSource.h"
 
 @interface CommViewController : UIViewController <UITextFieldDelegate, TTSlidingPagesDataSource> {
-	
-//	CommTableViewController *commTableVC;
-//	__weak IBOutlet UISegmentedControl *groupSegments;
 
 	__weak IBOutlet UIView *transmitContainerView;
 	__weak IBOutlet UITextField *transmitTextField;
@@ -25,7 +22,6 @@
 }
 
 - (IBAction)showHide;
-//- (IBAction)groupChanged:(UISegmentedControl *)sender;
 - (void)mentionUser:(User *)user;
 - (IBAction)transmit;
 

@@ -51,10 +51,6 @@
 
 	[self.view bringSubviewToFront:transmitContainerView];
 
-//	commTableVC =  self.childViewControllers[0];
-
-//	[groupSegments setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:12]} forState:UIControlStateNormal];
-
 	transmitTextField.font = [UIFont fontWithName:[[[UITextField appearance] font] fontName] size:15];
 	transmitButton.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15];
 	showHideButton.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
@@ -85,8 +81,6 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-
 
 #pragma mark - TTSlidingPagesDataSource
 
@@ -145,13 +139,6 @@
 	}];
 
 }
-
-//- (IBAction)groupChanged:(UISegmentedControl *)sender {
-//	[commTableVC setFactionOnly:sender.selectedSegmentIndex];
-//	if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
-//        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-//    }
-//}
 
 - (void)mentionUser:(User *)user {
 	NSString *mentionToken = [NSString stringWithFormat:@"@%@", user.nickname];

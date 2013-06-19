@@ -89,32 +89,24 @@
 
 	NSMutableAttributedString *attrStr = [[NSMutableAttributedString alloc] initWithString:str];
 
-	NSShadow *shadow = [NSShadow shadowWithOffset:CGSizeZero blurRadius:15/5 color:[UIColor colorWithRed:.56 green:1 blue:1 alpha:1]];
-	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15], NSForegroundColorAttributeName : [UIColor colorWithRed:.56 green:1 blue:1 alpha:1], NSShadowAttributeName: shadow} range:NSMakeRange(0, str.length)];
-
-	shadow = [NSShadow shadowWithOffset:CGSizeZero blurRadius:15/5 color:[Utilities colorForLevel:self.portal.level]];
-	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15], NSForegroundColorAttributeName : [Utilities colorForLevel:self.portal.level], NSShadowAttributeName: shadow} range:NSMakeRange(7, 2)];
-
-	shadow = [NSShadow shadowWithOffset:CGSizeZero blurRadius:15/5 color:[Utilities colorForFaction:self.portal.controllingTeam]];
-	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15], NSForegroundColorAttributeName : [Utilities colorForFaction:self.portal.controllingTeam], NSShadowAttributeName: shadow} range:NSMakeRange(str.length-(nickname.length), nickname.length)];
+	[attrStr setAttributes:[Utilities attributesWithShadow:YES size:15 color:[UIColor colorWithRed:.56 green:1 blue:1 alpha:1]] range:NSMakeRange(0, str.length)];
+	[attrStr setAttributes:[Utilities attributesWithShadow:YES size:15 color:[Utilities colorForLevel:self.portal.level]] range:NSMakeRange(7, 2)];
+	[attrStr setAttributes:[Utilities attributesWithShadow:YES size:15 color:[Utilities colorForFaction:self.portal.controllingTeam]] range:NSMakeRange(str.length-(nickname.length), nickname.length)];
 
 	infoLabel1.attributedText = attrStr;
 
 	////////////////////////////
 
-    if (![[NSUserDefaults standardUserDefaults] boolForKey:MilesOrKM]) {
-        infoLabel2.text = [NSString stringWithFormat:@"Energy: %.1fk\nRange: %.1fmi", self.portal.energy/1000., (self.portal.range/1000.) * 0.62137];
-    }
-    else
-    {
-    	infoLabel2.text = [NSString stringWithFormat:@"Energy: %.1fk\nRange: %.1fkm", self.portal.energy/1000., self.portal.range/1000.];
-    }
-	
-//	attrStr = [[NSMutableAttributedString alloc] initWithString:str];
-//	[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15], NSForegroundColorAttributeName : [UIColor colorWithRed:.56 green:1 blue:1 alpha:1]} range:NSMakeRange(0, str.length)];
-//	//[attrStr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [API colorForFaction:self.portal.controllingTeam]} range:NSMakeRange(part1len+7, attrStr.length-(7+part1len))];
-//	infoLabel2.attributedText = attrStr;
-	
+	float milesModifier = 1;
+	if (![[NSUserDefaults standardUserDefaults] boolForKey:MilesOrKM]) {
+		milesModifier = 0.621371192;
+	}
+
+	NSString *str2 = [NSString stringWithFormat:@"Energy: %.1fk\nRange: %.1f%@", self.portal.energy/1000., (self.portal.range/1000.) * milesModifier, ([[NSUserDefaults standardUserDefaults] boolForKey:MilesOrKM] ? @"km" : @"mi")];
+	attrStr = [[NSMutableAttributedString alloc] initWithString:str2];
+	[attrStr setAttributes:[Utilities attributesWithShadow:YES size:15 color:[UIColor colorWithRed:.56 green:1 blue:1 alpha:1]] range:NSMakeRange(0, str2.length)];
+	infoLabel2.attributedText = attrStr;
+
 	////////////////////////////
 
 	Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
