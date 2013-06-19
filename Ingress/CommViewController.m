@@ -133,9 +133,6 @@
 			frame.origin.y = superViewHeight-8;
 			[transmitTextField resignFirstResponder];
 		}
-		if ([Utilities isOS7]) {
-			frame.origin.y -= 20;
-		}
 		self.view.frame = frame;
 	} completion:^(BOOL finished) {
 		hidden = !hidden;

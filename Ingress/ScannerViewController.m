@@ -159,6 +159,7 @@
 	if ([Utilities isOS7]) {
 		CGRect frame = self.view.frame;
 		frame.origin.y = 20;
+		frame.size.height = [UIScreen mainScreen].bounds.size.height-20;
 		self.view.frame = frame;
 	}
 }
