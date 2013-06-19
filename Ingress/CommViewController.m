@@ -173,7 +173,8 @@
     }
     
 	[[API sharedInstance] sendMessage:message factionOnly:factionOnly completionHandler:^{
-		[(factionOnly ? factionTableView : allTableView) refresh];
+		[allTableView refresh];
+		[factionTableView refresh];
 	}];
 
 }
