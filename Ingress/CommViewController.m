@@ -126,12 +126,15 @@
 		CGFloat superViewHeight = self.view.superview.frame.size.height-20;
 		CGRect frame = self.view.frame;
 		if (hidden) {
-			frame.origin.y = superViewHeight-393;
+			frame.origin.y = superViewHeight-373;
 			[allTableView refresh];
 			[factionTableView refresh];
 		} else {
-			frame.origin.y = superViewHeight-28;
+			frame.origin.y = superViewHeight-8;
 			[transmitTextField resignFirstResponder];
+		}
+		if ([Utilities isOS7]) {
+			frame.origin.y -= 20;
 		}
 		self.view.frame = frame;
 	} completion:^(BOOL finished) {
