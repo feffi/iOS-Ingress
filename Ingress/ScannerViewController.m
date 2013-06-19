@@ -1159,18 +1159,23 @@
 	
 }
 
-#pragma mark - OPS
+#pragma mark - OPS & OpsViewControllerDelegate
 
 - (OpsViewController *)opsViewController {
 	if (!_opsViewController) {
 		UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
 		_opsViewController = [storyboard instantiateViewControllerWithIdentifier:@"OpsViewController"];
+		_opsViewController.delegate = self;
 	}
 	return _opsViewController;
 }
 
 - (IBAction)openOPS {
 	[self presentViewController:self.opsViewController animated:YES completion:NULL];
+}
+
+- (void)didDismissOpsViewController:(OpsViewController *)opsViewController {
+//	_opsViewController = nil;
 }
 
 #pragma mark - Storyboard

@@ -9,10 +9,24 @@
 #import <UIKit/UIKit.h>
 #import "TTSlidingPagesDataSource.h"
 
-@interface OpsViewController : UIViewController <TTSlidingPagesDataSource>
 #import "ScoreViewController.h"
+
+@protocol OpsViewControllerDelegate;
+
+@interface OpsViewController : UIViewController <TTSlidingPagesDataSource, UIScrollViewDelegate>
+
+@property (nonatomic, weak) id <OpsViewControllerDelegate> delegate;
+
 @property (nonatomic, strong) ScoreViewController *scoreViewController;
 
 - (IBAction)back;
+
+@end
+
+@protocol OpsViewControllerDelegate <NSObject>
+
+@optional
+- (void)willDismissOpsViewController:(OpsViewController *)opsViewController;
+- (void)didDismissOpsViewController:(OpsViewController *)opsViewController;
 
 @end

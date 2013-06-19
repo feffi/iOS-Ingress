@@ -36,6 +36,25 @@
 	[self.view sendSubviewToBack:slider.view];
 	[self addChildViewController:slider];
 
+//	UIPageViewController *pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:UIPageViewControllerTransitionStyleScroll navigationOrientation:UIPageViewControllerNavigationOrientationHorizontal options:@{UIPageViewControllerOptionInterPageSpacingKey: @(10)}];
+//
+//	CGFloat viewWidth = [UIScreen mainScreen].bounds.size.width;
+//	CGFloat viewHeight = [UIScreen mainScreen].bounds.size.height-20;
+//	pageViewController.view.frame = CGRectMake(0, 20, viewWidth, viewHeight);
+//
+//	pageViewController.dataSource = self;
+//	pageViewController.delegate = self;
+//
+//	[self.view addSubview:pageViewController.view];
+//	[self.view sendSubviewToBack:pageViewController.view];
+//	[self addChildViewController:pageViewController];
+//
+//	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+//
+//	[pageViewController setViewControllers:@[[storyboard instantiateViewControllerWithIdentifier:@"ResourcesViewController"]] direction:UIPageViewControllerNavigationDirectionForward animated:NO completion:^(BOOL finished) {
+//		NSLog(@"setViewControllers completion %d", finished);
+//	}];
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -50,7 +69,63 @@
         [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
     }
 
-	[self dismissViewControllerAnimated:YES completion:NULL];
+	if ([self.delegate respondsToSelector:@selector(willDismissOpsViewController:)]) {
+		[self.delegate willDismissOpsViewController:self];
+	}
+
+	[self dismissViewControllerAnimated:YES completion:^{
+		if ([self.delegate respondsToSelector:@selector(didDismissOpsViewController:)]) {
+			[self.delegate didDismissOpsViewController:self];
+		}
+	}];
+}
+
+#pragma mark - UIPageViewControllerDataSource & UIPageViewControllerDelegate
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerBeforeViewController:(UIViewController *)viewController {
+
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+
+	if ([viewController isKindOfClass:NSClassFromString(@"PortalKeysViewController")]) {
+		return [storyboard instantiateViewControllerWithIdentifier:@"ResourcesViewController"];
+	} else if ([viewController isKindOfClass:NSClassFromString(@"MediaItemsViewController")]) {
+		return [storyboard instantiateViewControllerWithIdentifier:@"PortalKeysViewController"];
+	} else if ([viewController isKindOfClass:NSClassFromString(@"ScoreViewController")]) {
+		return [storyboard instantiateViewControllerWithIdentifier:@"MediaItemsViewController"];
+	} else if ([viewController isKindOfClass:NSClassFromString(@"MissionsViewController")]) {
+		return [storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];
+	} else if ([viewController isKindOfClass:NSClassFromString(@"RecruitViewController")]) {
+		return [storyboard instantiateViewControllerWithIdentifier:@"MissionsViewController"];
+	} else if ([viewController isKindOfClass:NSClassFromString(@"DeviceViewController")]) {
+		return [storyboard instantiateViewControllerWithIdentifier:@"RecruitViewController"];
+	}
+
+	return nil;
+
+}
+
+- (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController {
+
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+
+	if ([viewController isKindOfClass:NSClassFromString(@"ResourcesViewController")]) {
+		return [storyboard instantiateViewControllerWithIdentifier:@"PortalKeysViewController"];
+	} else if ([viewController isKindOfClass:NSClassFromString(@"PortalKeysViewController")]) {
+		return [storyboard instantiateViewControllerWithIdentifier:@"MediaItemsViewController"];
+	} else if ([viewController isKindOfClass:NSClassFromString(@"MediaItemsViewController")]) {
+		return [storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];
+	} else if ([viewController isKindOfClass:NSClassFromString(@"ScoreViewController")]) {
+		return [storyboard instantiateViewControllerWithIdentifier:@"MissionsViewController"];
+	} else if ([viewController isKindOfClass:NSClassFromString(@"MissionsViewController")]) {
+		return [storyboard instantiateViewControllerWithIdentifier:@"RecruitViewController"];
+	} else if ([viewController isKindOfClass:NSClassFromString(@"RecruitViewController")]) {
+		return [storyboard instantiateViewControllerWithIdentifier:@"DeviceViewController"];
+	}
+
+	return nil;
+	
+}
+
 #pragma mark UIScrollViewDelegate
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {

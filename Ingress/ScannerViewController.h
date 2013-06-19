@@ -16,7 +16,7 @@
 #import "GUIButton.h"
 #import "APView.h"
 
-@interface ScannerViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, UIActionSheetDelegate> {
+@interface ScannerViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, UIActionSheetDelegate, OpsViewControllerDelegate> {
 	
 	__weak IBOutlet MKMapView *_mapView;
 	__weak IBOutlet UIImageView *playerArrowImage;
