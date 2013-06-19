@@ -121,7 +121,7 @@
 	User *sender = plext.sender;
 
 	if (sender && ![sender.guid isEqualToString:player.guid]) {
-		CommViewController *commVC = (CommViewController *)self.parentViewController;
+		CommViewController *commVC = (CommViewController *)self.parentViewController.parentViewController;
 		[commVC mentionUser:plext.sender];
 	}
 }
