@@ -9,10 +9,15 @@
 #import "OpsViewController.h"
 #import "TTUIScrollViewSlidingPages.h"
 
-@implementation OpsViewController
+@implementation OpsViewController {
+	CADisplayLink *_displayLink;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+	self.scoreViewController = [storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];
 
 	TTScrollSlidingPagesController *slider = [TTScrollSlidingPagesController new];
 	slider.titleScrollerHeight = 64;
@@ -20,6 +25,7 @@
 	slider.disableUIPageControl = YES;
 	slider.zoomOutAnimationDisabled = YES;
 	slider.dataSource = self;
+	slider.scrollViewDelegate = self;
 	slider.view.backgroundColor = [UIColor colorWithRed:16./255. green:32./255. blue:34./255. alpha:1.0];
 
 	CGFloat viewWidth = [UIScreen mainScreen].bounds.size.width;
@@ -45,6 +51,40 @@
     }
 
 	[self dismissViewControllerAnimated:YES completion:NULL];
+#pragma mark UIScrollViewDelegate
+
+- (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
+	[self startDisplayLinkIfNeeded];
+}
+
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
+	if (!decelerate) {
+		[self stopDisplayLink];
+	}
+}
+
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
+	[self stopDisplayLink];
+}
+
+#pragma mark - Display Link
+
+- (void)startDisplayLinkIfNeeded {
+	if (!_displayLink) {
+		_displayLink = [CADisplayLink displayLinkWithTarget:self selector:@selector(draw)];
+		[_displayLink addToRunLoop:[NSRunLoop mainRunLoop] forMode:NSRunLoopCommonModes];
+	}
+}
+
+- (void)stopDisplayLink {
+	[_displayLink invalidate];
+	_displayLink = nil;
+}
+
+- (void)draw {
+	GLViewController *glVC = (GLViewController *)self.scoreViewController.glViewController;
+	[glVC performSelector:@selector(update) withObject:nil];
+	[glVC.view performSelector:@selector(display) withObject:nil];
 }
 
 #pragma mark - TTSlidingPagesDataSource
@@ -68,7 +108,7 @@
 			viewController = [storyboard instantiateViewControllerWithIdentifier:@"MediaItemsViewController"];
 			break;
 		case 3:
-			viewController = [storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];
+			viewController = self.scoreViewController; //[storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];
 			break;
 		case 4:
 			viewController = [storyboard instantiateViewControllerWithIdentifier:@"MissionsViewController"];

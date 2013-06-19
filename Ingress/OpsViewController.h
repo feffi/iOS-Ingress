@@ -10,6 +10,8 @@
 #import "TTSlidingPagesDataSource.h"
 
 @interface OpsViewController : UIViewController <TTSlidingPagesDataSource>
+#import "ScoreViewController.h"
+@property (nonatomic, strong) ScoreViewController *scoreViewController;
 
 - (IBAction)back;
 
