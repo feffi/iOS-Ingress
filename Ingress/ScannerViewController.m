@@ -134,6 +134,12 @@
 
 //	_mapView.scrollEnabled = YES;
 //	_mapView.zoomEnabled = YES;
+
+	for (UIView *view in _mapView.subviews) {
+		if ([view isKindOfClass:NSClassFromString(@"MKAttributionLabel")]) {
+			[view removeFromSuperview];
+		}
+	}
     
     self.alienPortalImage = [UIImage imageNamed:@"portal_aliens"];
     self.resistancePortalImage = [UIImage imageNamed:@"portal_resistance"];
