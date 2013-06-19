@@ -970,7 +970,7 @@ NSString *const MilesOrKM = @"MilesOrKM";
 	
 }
 
-- (void)addMod:(Item *)modItem toItem:(Portal *)modableItem toSlot:(int)slot completionHandler:(void (^)(NSString *errorStr))handler {
+- (void)addMod:(Mod *)modItem toItem:(Portal *)modableItem toSlot:(int)slot completionHandler:(void (^)(NSString *errorStr))handler {
 	
 	NSDictionary *dict = @{
 		@"modResourceGuid": modItem.guid,
@@ -998,6 +998,35 @@ NSString *const MilesOrKM = @"MilesOrKM";
 		
 	}];
 	
+}
+
+- (void)removeModFromItem:(Portal *)modableItem atSlot:(int)slot completionHandler:(void (^)(NSString *errorStr))handler {
+
+	NSDictionary *dict = @{
+		@"modableGuid": modableItem.guid,
+		@"index": @(slot)
+	};
+
+	[self sendRequest:@"gameplay/removeMod" params:dict completionHandler:^(id responseObj) {
+
+		if ([responseObj[@"error"] isEqualToString:@"PORTAL_OUT_OF_RANGE"]) {
+
+			dispatch_async(dispatch_get_main_queue(), ^{
+				handler(@"Portal out of range");
+			});
+
+		} else {
+
+			//NSLog(@"removeMod responseObj: %@", responseObj);
+
+			dispatch_async(dispatch_get_main_queue(), ^{
+				handler(nil);
+			});
+			
+		}
+		
+	}];
+
 }
 
 - (void)dropItemWithGuid:(NSString *)guid completionHandler:(void (^)(void))handler {
