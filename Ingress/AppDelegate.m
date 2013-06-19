@@ -11,7 +11,7 @@
 @implementation AppDelegate
 
 @synthesize mapView = _mapView;
-@synthesize tabBarVC = _tabBarVC;
+@synthesize scannerViewController = _scannerViewController;
 
 + (AppDelegate *)instance {
     return (AppDelegate *)[[UIApplication sharedApplication] delegate];

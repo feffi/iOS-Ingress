@@ -540,56 +540,12 @@
 
 }
 
-#pragma mark - UITabBarControllerDelegate
-
-- (void)tabBarController:(UITabBarController *)theTabBarController didSelectViewController:(UIViewController *)viewController {
-//	[UIView animateWithDuration:.2 animations:^{
-//		CGRect frame = _tabBarArrow.frame;
-//		frame.origin.x = [self horizontalLocationFor:_tabBarController.selectedIndex];
-//		_tabBarArrow.frame = frame;
-//	}];
-	if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
-        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-    }
-}
-
-//#pragma mark - Animated Tab Bar
-//
-//- (CGFloat)horizontalLocationFor:(NSUInteger)tabIndex {
-//	// A single tab item's width is the entire width of the tab bar divided by number of items
-//	CGFloat tabItemWidth = _tabBarController.tabBar.frame.size.width / _tabBarController.tabBar.items.count;
-//	// A half width is tabItemWidth divided by 2 minus half the width of the arrow
-//	CGFloat halfTabItemWidth = (tabItemWidth / 2.0) - (_tabBarArrow.frame.size.width / 2.0);
-//	
-//	// The horizontal location is the index times the width plus a half width
-//	return (tabIndex * tabItemWidth) + halfTabItemWidth;
-//}
-//
-//- (void)addTabBarArrow {
-//	UIImage *tabBarArrowImage = [UIImage imageNamed:@"TabBarNipple.png"];
-//	_tabBarArrow = [[UIImageView alloc] initWithImage:tabBarArrowImage];
-//	// To get the vertical location we start at the bottom of the window, go up by height of the tab bar, go up again by the height of arrow and then come back down 2 pixels so the arrow is slightly on top of the tab bar.
-//	CGFloat verticalLocation = [AppDelegate instance].window.frame.size.height - _tabBarController.tabBar.frame.size.height - tabBarArrowImage.size.height + 2;
-//	_tabBarArrow.frame = CGRectMake([self horizontalLocationFor:2], verticalLocation, tabBarArrowImage.size.width, tabBarArrowImage.size.height);
-//	
-//	[[AppDelegate instance].window addSubview:_tabBarArrow];
-//}
-
 #pragma mark - Storyboard
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
 	if ([segue.identifier isEqualToString:@"LoadingCompletedSegue"]) {
-//		_tabBarController = (UITabBarController *)segue.destinationViewController;
-//		_tabBarController.delegate = self;
-//		[[AppDelegate instance] setTabBarVC:_tabBarController];
+		[[AppDelegate instance] setScannerViewController:(ScannerViewController *)segue.destinationViewController];
 
-//		[self addTabBarArrow];
-
-//		for (UINavigationController *navC in _tabBarController.viewControllers) {
-//			navC.topViewController.view.hidden = NO;
-//		}
-
-//		[_tabBarController setSelectedIndex:2];
         if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleBackground]) {
             [[SoundManager sharedManager] playMusic:@"Sound/sfx_ambient_scanner_base.aif" looping:YES];
         }

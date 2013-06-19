@@ -18,7 +18,7 @@
 #import "TPKeyboardAvoidingScrollView.h"
 #import "SelectingButton.h"
 
-@interface LoadingViewController : UIViewController <UIWebViewDelegate, UITabBarControllerDelegate, UITextFieldDelegate> {
+@interface LoadingViewController : UIViewController <UIWebViewDelegate, UITextFieldDelegate> {
 	
 	NSURL *handshakeURL;
 	UIWebView *_webView;
@@ -64,9 +64,6 @@
 //	__weak IBOutlet UIImageView *innerWheel;
 //	__weak IBOutlet UIImageView *outerWheel;
 	__weak IBOutlet WheelActivityIndicatorView *wheelActivityIndicatorView;
-	
-	UITabBarController *_tabBarController;
-    UIImageView *_tabBarArrow;
 	
 }
 
