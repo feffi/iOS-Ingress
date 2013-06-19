@@ -25,7 +25,7 @@
 	slider.disableUIPageControl = YES;
 	slider.zoomOutAnimationDisabled = YES;
 	slider.dataSource = self;
-	slider.scrollViewDelegate = self;
+//	slider.scrollViewDelegate = self;
 	slider.view.backgroundColor = [UIColor colorWithRed:16./255. green:32./255. blue:34./255. alpha:1.0];
 
 	CGFloat viewWidth = [UIScreen mainScreen].bounds.size.width;
