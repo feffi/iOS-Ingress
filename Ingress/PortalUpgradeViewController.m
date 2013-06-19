@@ -134,7 +134,7 @@
     
     if (!view) {
         
-		view = [[GlowingLabel alloc] initWithFrame:CGRectMake(0, 0, 220, 220)];
+		view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 220, 220)];
 //        view.backgroundColor = [[UIColor whiteColor] colorWithAlphaComponent:.95];
 		view.backgroundColor = [UIColor colorWithRed:16.0/255.0 green:32.0/255.0 blue:34.0/255.0 alpha:0.95];
 
@@ -397,6 +397,66 @@
 	DeployedMod *mod = [DeployedMod MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"portal = %@ && slot = %d", self.portal, slot]];
 
 	if (mod) {
+		
+		Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+
+		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.userInteractionEnabled = YES;
+		HUD.removeFromSuperViewOnHide = YES;
+		HUD.mode = MBProgressHUDModeCustomView;
+		HUD.dimBackground = YES;
+		HUD.showCloseButton = YES;
+
+		UIView *view = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 180, 156)];
+
+        GlowingLabel *label = [[GlowingLabel alloc] initWithFrame:CGRectMake(0, 0, 180, 112)];
+        label.backgroundColor = [UIColor clearColor];
+        label.textColor = [UIColor whiteColor];
+		label.textAlignment = NSTextAlignmentCenter;
+		label.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:18];
+		label.minimumScaleFactor = .75;
+		label.adjustsFontSizeToFitWidth = YES;
+		label.numberOfLines = 0;
+        [view addSubview:label];
+
+		GUIButton *removeButton = [[GUIButton alloc] initWithFrame:CGRectMake(0, 112, 180, 44)];
+		removeButton.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
+		[removeButton setTitle:@"Remove Mod" forState:UIControlStateNormal];
+		if ([mod.owner.guid isEqualToString:player.guid]) {
+			[removeButton addTarget:self action:@selector(removeModButtonPressed::) forControlEvents:UIControlEventTouchUpInside];
+		} else {
+			[removeButton setEnabled:NO];
+			[removeButton setErrorString:@"Not Owner"];
+		}
+        removeButton.tag = 100+slot;
+        [view addSubview:removeButton];
+
+		if ([mod isKindOfClass:[DeployedShield class]]) {
+			DeployedShield *shield = (DeployedShield *)mod;
+			label.text = [NSString stringWithFormat:@"%@ Shield\nMitigation +%d", shield.rarityStr, shield.mitigation];
+		} else if ([mod isKindOfClass:[DeployedLinkAmp class]]) {
+//			DeployedLinkAmp *linkAmp = (DeployedLinkAmp *)mod;
+			label.text = [NSString stringWithFormat:@"%@ Link Amp", mod.rarityStr];
+		} else if ([mod isKindOfClass:[DeployedForceAmp class]]) {
+//			DeployedForceAmp *forceAmp = (DeployedForceAmp *)mod;
+			label.text = [NSString stringWithFormat:@"%@ Force Amp", mod.rarityStr];
+		} else if ([mod isKindOfClass:[DeployedHeatsink class]]) {
+//			DeployedHeatsink *heatsink = (DeployedHeatsink *)mod;
+			label.text = [NSString stringWithFormat:@"%@ Heat sink", mod.rarityStr];
+		} else if ([mod isKindOfClass:[DeployedMultihack class]]) {
+//			DeployedMultihack *multihack = (DeployedMultihack *)mod;
+			label.text = [NSString stringWithFormat:@"%@ Multi-hack", mod.rarityStr];
+		} else if ([mod isKindOfClass:[DeployedTurret class]]) {
+//			DeployedTurret *turret = (DeployedTurret *)mod;
+			label.text = [NSString stringWithFormat:@"%@ Turret", mod.rarityStr];
+		} else {
+			label.text = [NSString stringWithFormat:@"%@ Unknown Mod", mod.rarityStr];
+		}
+
+		HUD.customView = view;
+		[[AppDelegate instance].window addSubview:HUD];
+		[HUD show:YES];
+
 		return;
 	}
 
@@ -477,7 +537,7 @@
 		HUD.dimBackground = YES;
 		HUD.removeFromSuperViewOnHide = YES;
 		HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		HUD.detailsLabelText = @"Deploying shield...";
+		HUD.detailsLabelText = @"Deploying Mod...";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
 
@@ -526,6 +586,29 @@
 		
 	}
 	
+}
+
+- (IBAction)removeModButtonPressed:(GUIButton *)sender {
+
+	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+	HUD.userInteractionEnabled = YES;
+	HUD.dimBackground = YES;
+	HUD.removeFromSuperViewOnHide = YES;
+	HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+	HUD.detailsLabelText = @"Removing Mod...";
+	[[AppDelegate instance].window addSubview:HUD];
+	[HUD show:YES];
+
+	[[API sharedInstance] removeModFromItem:self.portal atSlot:sender.tag-100 completionHandler:^(NSString *errorStr) {
+
+		[HUD hide:YES];
+
+		if (errorStr) {
+			[Utilities showWarningWithTitle:errorStr];
+		}
+
+	}];
+
 }
 
 @end
