@@ -13,8 +13,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-	GLViewController *glVC = self.childViewControllers[0];
-	[glVC.view setBackgroundColor:[UIColor colorWithRed:16./255. green:32./255. blue:34./255. alpha:1]];
+	self.glViewController = self.childViewControllers[0];
+	[self.glViewController.view setBackgroundColor:[UIColor colorWithRed:16./255. green:32./255. blue:34./255. alpha:1]];
 	
 	int width = self.view.bounds.size.width;
 	int height = self.view.bounds.size.height;

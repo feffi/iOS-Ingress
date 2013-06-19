@@ -14,4 +14,6 @@
 	PCPieChart *pieChart;
 }
 
+@property (nonatomic, strong) GLViewController *glViewController;
+
 @end
