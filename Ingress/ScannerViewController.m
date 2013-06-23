@@ -790,7 +790,7 @@
 
 	CLLocation *mapLocation = [[CLLocation alloc] initWithLatitude:_mapView.centerCoordinate.latitude longitude:_mapView.centerCoordinate.longitude];
 	CLLocationDistance meters = [mapLocation distanceFromLocation:lastLocation];
-	if (meters == -1 || meters >= 10) {
+	if (meters == -1 || meters >= 10 || isnan(meters)) {
 		lastLocation = mapLocation;
 		[self refresh];
 	}
