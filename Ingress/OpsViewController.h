@@ -8,12 +8,17 @@
 
 #import <UIKit/UIKit.h>
 #import "TTSlidingPagesDataSource.h"
+#import "GlowingLabel.h"
 
 #import "ScoreViewController.h"
 
 @protocol OpsViewControllerDelegate;
 
-@interface OpsViewController : UIViewController <TTSlidingPagesDataSource, UIScrollViewDelegate>
+@interface OpsViewController : UIViewController <TTSlidingPagesDataSource, UIScrollViewDelegate> {
+	
+	__weak IBOutlet UIButton *opsCloseButton;
+	__weak IBOutlet GlowingLabel *opsLabel;
+}
 
 @property (nonatomic, weak) id <OpsViewControllerDelegate> delegate;
 

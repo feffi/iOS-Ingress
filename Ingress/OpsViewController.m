@@ -16,16 +16,21 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
+	[opsLabel setAttributedText:[[NSAttributedString alloc] initWithString:@"OPS" attributes:[Utilities attributesWithShadow:YES size:18 color:[UIColor colorWithRed:235./255. green:188./255. blue:74./255. alpha:1.0]]]];
+	[opsLabel setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"ops_background.png"]]];
+
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
 	self.scoreViewController = [storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];
 
 	TTScrollSlidingPagesController *slider = [TTScrollSlidingPagesController new];
 	slider.titleScrollerHeight = 64;
+	slider.labelsOffset = 30;
+//	slider.titleScrollerItemWidth = 100;
 	slider.disableTitleScrollerShadow = YES;
 	slider.disableUIPageControl = YES;
 	slider.zoomOutAnimationDisabled = YES;
 	slider.dataSource = self;
-//	slider.scrollViewDelegate = self;
+	slider.scrollViewDelegate = self;
 	slider.view.backgroundColor = [UIColor colorWithRed:16./255. green:32./255. blue:34./255. alpha:1.0];
 
 	CGFloat viewWidth = [UIScreen mainScreen].bounds.size.width;
