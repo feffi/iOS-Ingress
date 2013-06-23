@@ -15,7 +15,8 @@
     CGContextSaveGState(context);
     CGContextSetShadowWithColor(context, CGSizeZero, self.font.pointSize/5, self.textColor.CGColor);
 
-    [super drawTextInRect:rect];
+	UIEdgeInsets insets = {self.topInset, self.leftInset, self.bottomInset, self.rightInset};
+    [super drawTextInRect:UIEdgeInsetsInsetRect(rect, insets)];
 
     CGContextRestoreGState(context);
 }
