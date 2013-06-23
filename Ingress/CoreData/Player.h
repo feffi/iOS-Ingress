@@ -15,6 +15,7 @@
 
 @property (nonatomic) int32_t ap;
 @property (nonatomic) int16_t energy;
+@property (nonatomic) NSTimeInterval lastInventoryUpdated;
 @property (nonatomic) BOOL shouldSendEmail;
 @property (nonatomic) BOOL maySendPromoEmail;
 @property (nonatomic) BOOL allowNicknameEdit;

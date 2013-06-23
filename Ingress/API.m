@@ -474,8 +474,18 @@ NSString *const MilesOrKM = @"MilesOrKM";
 
 - (void)getInventoryWithCompletionHandler:(void (^)(void))handler {
 
-	[self sendRequest:@"playerUndecorated/getInventory" params:@{@"lastQueryTimestamp": @0} completionHandler:^(id responseObj) {
+	Player *player = [self playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+	long long lastInventoryUpdated = [[NSDate dateWithTimeIntervalSinceReferenceDate:player.lastInventoryUpdated] timeIntervalSince1970]*1000.;
+
+	NSDictionary *params = @{
+		@"lastQueryTimestamp": @(lastInventoryUpdated)
+	};
+
+	[self sendRequest:@"playerUndecorated/getInventory" params:params completionHandler:^(id responseObj) {
 //		NSLog(@"getInventory responseObj: %@", responseObj);
+
+		Player *player = [self playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+		player.lastInventoryUpdated = [[NSDate dateWithTimeIntervalSince1970:([responseObj[@"result"] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
 
 		dispatch_async(dispatch_get_main_queue(), ^{
 			handler();

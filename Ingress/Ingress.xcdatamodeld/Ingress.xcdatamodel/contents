@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="2061" systemVersion="12E55" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="3381.3" systemVersion="13A476u" minimumToolsVersion="Xcode 4.3" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="ControlField" representedClassName="ControlField" syncable="YES">
         <attribute name="controllingTeam" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="entityScore" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
@@ -64,6 +64,7 @@
         <attribute name="allowNicknameEdit" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="ap" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="energy" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="lastInventoryUpdated" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="maySendPromoEmail" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="shouldPushNotifyForAtPlayer" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="shouldPushNotifyForPortalAttacks" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -147,7 +148,7 @@
         <element name="Media" positionX="-362" positionY="-174" width="128" height="103"/>
         <element name="Mod" positionX="-326" positionY="149" width="128" height="58"/>
         <element name="Multihack" positionX="-162" positionY="243" width="128" height="43"/>
-        <element name="Player" positionX="549" positionY="234" width="128" height="165"/>
+        <element name="Player" positionX="549" positionY="234" width="128" height="178"/>
         <element name="Plext" positionX="745" positionY="81" width="128" height="135"/>
         <element name="Portal" positionX="349" positionY="-202" width="128" height="283"/>
         <element name="PortalKey" positionX="-146" positionY="-27" width="128" height="75"/>

@@ -13,6 +13,7 @@
 
 @dynamic ap;
 @dynamic energy;
+@dynamic lastInventoryUpdated;
 @dynamic shouldSendEmail;
 @dynamic maySendPromoEmail;
 @dynamic allowNicknameEdit;
