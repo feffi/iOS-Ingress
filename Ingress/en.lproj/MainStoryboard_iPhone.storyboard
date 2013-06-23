@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="4457.6" systemVersion="13A476u" targetRuntime="iOS.CocoaTouch" variant="6xAndEarlier" propertyAccessControl="none" useAutolayout="YES" initialViewController="fnb-Md-XrQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="3084" systemVersion="13A476u" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="fnb-Md-XrQ">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
+        <deployment defaultVersion="1552" identifier="iOS"/>
         <development version="4600" identifier="xcode"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3682.6"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="2083"/>
     </dependencies>
     <scenes>
         <!--Items View Controller-->
@@ -15,14 +15,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view autoresizesSubviews="NO" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="N61-HA-Nsl">
-                                <rect key="frame" x="0.0" y="536" width="320" height="32"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="99s-Xd-4gS">
-                                        <rect key="frame" x="1" y="1" width="237" height="30"/>
                                         <color key="backgroundColor" red="0.043137254899999998" green="0.047058823530000002" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter passcode" adjustsFontSizeToFit="NO" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="d9U-0E-Aok">
-                                        <rect key="frame" x="6" y="1" width="227" height="30"/>
                                         <color key="backgroundColor" red="0.043137254899999998" green="0.047058823530000002" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="jfz-qD-ho1"/>
@@ -35,7 +32,6 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lhn-Ji-4wC">
-                                        <rect key="frame" x="239" y="1" width="80" height="30"/>
                                         <color key="backgroundColor" red="0.0" green="0.30980392159999998" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" type="user" id="rGe-EG-woD"/>
@@ -77,7 +73,6 @@
                             <constraint firstItem="N61-HA-Nsl" firstAttribute="bottom" secondItem="TF2-3t-Eaf" secondAttribute="bottom" type="default" id="tAd-m3-orB"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="nSf-Ye-rbc">
                         <nil key="title"/>
                     </navigationItem>
@@ -101,7 +96,6 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.062745098040000002" green="0.12549019610000001" blue="0.1333333333" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="Zpy-Pn-okr">
                         <nil key="title"/>
                     </navigationItem>
@@ -119,13 +113,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="393"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="commBg.png" translatesAutoresizingMaskIntoConstraints="NO" id="jDs-fV-Dwr">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="commBg.png" translatesAutoresizingMaskIntoConstraints="NO" id="jDs-fV-Dwr"/>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lju-ke-wfF">
-                                <rect key="frame" x="264" y="0.0" width="54" height="32"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="O6N-Bp-Pvm"/>
@@ -143,14 +132,11 @@
                                 </connections>
                             </button>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2pI-Dl-W4O">
-                                <rect key="frame" x="0.0" y="361" width="320" height="32"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="l5w-3W-TDc">
-                                        <rect key="frame" x="1" y="1" width="237" height="30"/>
                                         <color key="backgroundColor" red="0.043137254899999998" green="0.047058823530000002" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Start broadcasting here" adjustsFontSizeToFit="NO" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="iS0-Si-ytU">
-                                        <rect key="frame" x="6" y="1" width="227" height="30"/>
                                         <color key="backgroundColor" red="0.043137254899999998" green="0.047058823530000002" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="227" type="user" id="SUV-at-zNz"/>
@@ -164,7 +150,6 @@
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="deP-Js-bhv">
-                                        <rect key="frame" x="239" y="1" width="80" height="30"/>
                                         <color key="backgroundColor" red="0.0" green="0.30980392156862746" blue="0.29019607843137252" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" type="user" id="uZ9-K5-ywF"/>
@@ -209,7 +194,6 @@
                             <constraint firstItem="2pI-Dl-W4O" firstAttribute="bottom" secondItem="KKy-Ai-3Pl" secondAttribute="bottom" type="default" id="kvN-oU-DKl"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <connections>
@@ -514,7 +498,6 @@
                             </tableViewSection>
                         </sections>
                     </tableView>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Device" id="qY5-jF-5EJ"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
@@ -528,9 +511,7 @@
         <!--Image Picker Controller-->
         <scene sceneID="iFq-xW-tFQ">
             <objects>
-                <viewController id="3q1-04-OzW" customClass="UIImagePickerController" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                </viewController>
+                <viewController id="3q1-04-OzW" customClass="UIImagePickerController" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sh3-Kv-xPZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="4661" y="2413"/>
@@ -542,7 +523,6 @@
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" showsSelectionImmediatelyOnTouchBegin="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="dJy-ZC-C7D">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="340"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <color key="sectionIndexTrackingBackgroundColor" red="0.074509803920000006" green="0.18823529410000001" blue="0.2470588235" alpha="1" colorSpace="calibratedRGB"/>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="msgCell" id="mXl-aT-oTE" customClass="CommTableViewCell">
                                 <rect key="frame" x="0.0" y="22" width="320" height="44"/>
@@ -552,7 +532,6 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" textAlignment="center" lineBreakMode="clip" baselineAdjustment="alignBaselines" minimumFontSize="10" translatesAutoresizingMaskIntoConstraints="NO" id="glz-RR-AOj">
-                                            <rect key="frame" x="0.0" y="0.0" width="70" height="26"/>
                                             <color key="backgroundColor" red="0.074509803921568626" green="0.18823529411764706" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="26" id="VfN-0M-oDL"/>
@@ -563,7 +542,6 @@
                                             <color key="highlightedColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </label>
                                         <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Label" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="246" translatesAutoresizingMaskIntoConstraints="NO" id="mGy-8S-Zh1">
-                                            <rect key="frame" x="74" y="0.0" width="246" height="44"/>
                                             <color key="backgroundColor" red="0.074509803921568626" green="0.18823529411764706" blue="0.24705882352941178" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -592,7 +570,6 @@
                             <outlet property="delegate" destination="mX9-Da-fsv" id="sVl-A1-mUS"/>
                         </connections>
                     </tableView>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                 </tableViewController>
@@ -609,7 +586,6 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E1j-ur-gtL" customClass="GUIButton">
-                                <rect key="frame" x="110" y="371" width="100" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" type="user" id="I0J-MS-tCR"/>
@@ -630,7 +606,6 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Loading..." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Tbw-Ja-rLt" customClass="GlowingLabel">
-                                <rect key="frame" x="20" y="333" width="280" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" type="user" id="1nR-54-K08"/>
                                 </constraints>
@@ -639,7 +614,6 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="aW5-e2-DbE" customClass="WheelActivityIndicatorView">
-                                <rect key="frame" x="110" y="223" width="100" height="102"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="102" type="user" id="8Iu-49-qYu"/>
@@ -647,10 +621,8 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hFV-9X-TaC">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <subviews>
                                     <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Ingress requires an invitation to play." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fE6-bF-nXY">
-                                        <rect key="frame" x="20" y="33" width="280" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="Z5W-n1-kK5"/>
@@ -660,7 +632,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Activation code validation failed." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RNY-Eo-l4E">
-                                        <rect key="frame" x="20" y="78" width="280" height="20"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="22B-Dl-nkf"/>
@@ -670,7 +641,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Activation code:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xd1-vN-Eyb">
-                                        <rect key="frame" x="20" y="96" width="280" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="A3V-ep-3BT"/>
@@ -680,7 +650,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="UE4-B0-iFm">
-                                        <rect key="frame" x="20" y="128" width="280" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="ZN9-rq-Rdc"/>
@@ -693,7 +662,6 @@
                                         </connections>
                                     </textField>
                                     <button contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hHD-Es-Bxa" customClass="CustomBackgroundColorButton">
-                                        <rect key="frame" x="210" y="166" width="90" height="32"/>
                                         <color key="backgroundColor" red="0.44705882352941173" green="0.96862745098039216" blue="0.89803921568627454" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="90" id="rTM-bs-egX"/>
@@ -737,10 +705,8 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="FZM-OK-SsE">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <subviews>
                                     <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="kyf-8v-Vub">
-                                        <rect key="frame" x="20" y="20" width="280" height="140"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="140" id="LgG-Oj-aj0"/>
@@ -751,7 +717,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="0Fm-IH-xk3">
-                                        <rect key="frame" x="20" y="168" width="280" height="140"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="140" id="pwN-gI-7fp"/>
@@ -762,7 +727,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="M4A-e1-PMT" customClass="SelectingButton">
-                                        <rect key="frame" x="20" y="415" width="30" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="30" id="IVx-4K-NE7"/>
                                             <constraint firstAttribute="height" constant="30" id="OXN-6O-zNh"/>
@@ -781,7 +745,6 @@
                                         </connections>
                                     </button>
                                     <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="I accept the Terms of Service for this app" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="242" translatesAutoresizingMaskIntoConstraints="NO" id="ohh-fC-iBo">
-                                        <rect key="frame" x="58" y="405" width="242" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="kJW-CP-CfW"/>
@@ -791,7 +754,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0dt-CF-hvy" customClass="StretchableBackgroundButton">
-                                        <rect key="frame" x="160" y="468" width="140" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="140" id="Qix-bl-IDy"/>
                                             <constraint firstAttribute="height" constant="60" id="xrP-1U-Sen"/>
@@ -830,10 +792,8 @@
                                 </constraints>
                             </view>
                             <scrollView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" translatesAutoresizingMaskIntoConstraints="NO" id="qSC-Ci-qZc" customClass="TPKeyboardAvoidingScrollView">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <subviews>
                                     <label hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Create your agent codename." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zI6-xc-Ioe">
-                                        <rect key="frame" x="20" y="375" width="280" height="20"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" id="1fe-n9-O3o"/>
@@ -843,7 +803,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textField hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="line" minimumFontSize="14" translatesAutoresizingMaskIntoConstraints="NO" id="HW8-94-PhW">
-                                        <rect key="frame" x="20" y="403" width="190" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="edm-7V-RWt"/>
@@ -857,7 +816,6 @@
                                         </connections>
                                     </textField>
                                     <button hidden="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PTP-Fi-mrs" customClass="CustomBackgroundColorButton">
-                                        <rect key="frame" x="210" y="403" width="90" height="30"/>
                                         <color key="backgroundColor" red="0.44705882349999998" green="0.96862745100000003" blue="0.8980392157" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="90" id="rvM-4q-OKw"/>
@@ -896,10 +854,8 @@
                                 </constraints>
                             </scrollView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Usw-mp-C7y">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <subviews>
                                     <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="NOR-hO-fzw" customClass="TypeWriterLabel">
-                                        <rect key="frame" x="20" y="249" width="280" height="50"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="I0U-8q-I9J"/>
@@ -909,7 +865,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1hb-8u-Aew" customClass="StretchableBackgroundButton">
-                                        <rect key="frame" x="58" y="483" width="80" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="45" id="9Fc-CW-gCQ"/>
                                             <constraint firstAttribute="width" constant="80" id="Ooa-Ij-lh7"/>
@@ -929,7 +884,6 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QRj-QW-Tqd" customClass="StretchableBackgroundButton">
-                                        <rect key="frame" x="122" y="428" width="140" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="60" id="OdB-H1-Gb4"/>
                                             <constraint firstAttribute="width" constant="140" id="m9L-Lv-Ly1"/>
@@ -961,10 +915,8 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g1Y-cc-bCD">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Error while validating codename." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="BDg-0i-19q">
-                                        <rect key="frame" x="20" y="259" width="280" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" type="user" id="6RE-Sq-Xfn"/>
                                         </constraints>
@@ -973,7 +925,6 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hmR-rN-Yki" customClass="GUIButton">
-                                        <rect key="frame" x="120" y="297" width="80" height="45"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" id="pvH-fg-Zwu"/>
                                             <constraint firstAttribute="height" constant="45" id="sfC-Ls-63U"/>
@@ -1002,10 +953,8 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SxK-Of-qfq">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <subviews>
                                     <label clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="t40-vq-Kl2" customClass="TypeWriterLabel">
-                                        <rect key="frame" x="20" y="40" width="280" height="160"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="160" id="EqL-5g-sgr"/>
@@ -1023,17 +972,14 @@
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="mgf-0f-U51">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <subviews>
                                     <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wEL-Xl-8K3">
-                                        <rect key="frame" x="20" y="74" width="280" height="400"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <connections>
                                             <segue destination="vZR-4F-H2Z" kind="embed" id="7q6-q9-DTR"/>
                                         </connections>
                                     </containerView>
                                     <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="N5u-xc-GD2" customClass="ScrollTextView">
-                                        <rect key="frame" x="0.0" y="368" width="320" height="180"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="180" id="Czg-Df-7oN"/>
@@ -1118,7 +1064,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="qSC-Ci-qZc" firstAttribute="top" secondItem="Wb5-yg-mPs" secondAttribute="top" type="default" id="wCy-CS-yiO"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="DGE-a3-6cB"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
@@ -1166,19 +1111,16 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tWm-XI-3eu">
-                                <rect key="frame" x="0.0" y="-20" width="320" height="568"/>
                                 <connections>
                                     <outlet property="delegate" destination="2" id="5J6-tb-StI"/>
                                 </connections>
                             </mapView>
                             <imageView opaque="NO" userInteractionEnabled="NO" alpha="0.75" contentMode="scaleToFill" image="scanner-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="rgS-1f-mzM">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="456"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="456" type="user" id="Xc8-SA-kYk"/>
                                 </constraints>
                             </imageView>
                             <imageView opaque="NO" userInteractionEnabled="NO" contentMode="center" image="playerArrow_aliens.png" translatesAutoresizingMaskIntoConstraints="NO" id="BX0-yd-s1M">
-                                <rect key="frame" x="135" y="249" width="50" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="50" type="user" id="7lC-bf-Unj"/>
@@ -1186,7 +1128,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 </constraints>
                             </imageView>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Choose Target Portal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="2e8-m3-jc6" customClass="GlowingLabel">
-                                <rect key="frame" x="20" y="120" width="281" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" type="user" id="gdI-h1-MfN"/>
                                 </constraints>
@@ -1196,7 +1137,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="waa-9V-nq3" customClass="GUIButton">
-                                <rect key="frame" x="110" y="446" width="100" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" type="user" id="KEj-Zc-1QN"/>
@@ -1217,11 +1157,8 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                     <action selector="virusChoosePortalCancel" destination="2" eventType="touchUpInside" id="YXZ-hd-Uk1"/>
                                 </connections>
                             </button>
-                            <progressView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p8g-KV-tR1">
-                                <rect key="frame" x="72" y="4" width="180" height="9"/>
-                            </progressView>
+                            <progressView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="p8g-KV-tR1"/>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0 XM" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="MGD-pG-MhS" customClass="GlowingLabel">
-                                <rect key="frame" x="72" y="4" width="180" height="16"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.25" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="180" id="W8x-pO-6QG"/>
@@ -1232,7 +1169,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="stx-mu-7c3">
-                                <rect key="frame" x="72" y="4" width="180" height="16"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="16" id="0pu-4m-88p"/>
                                 </constraints>
@@ -1249,7 +1185,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="UNKNOWN_AGENT" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000000000000004" translatesAutoresizingMaskIntoConstraints="NO" id="oVe-o2-Lr5" customClass="GlowingLabel">
-                                <rect key="frame" x="72" y="20" width="180" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" type="user" id="MJY-Uk-C7S"/>
                                 </constraints>
@@ -1259,7 +1194,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0 AP" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="Z0t-4M-3D3" customClass="GlowingLabel">
-                                <rect key="frame" x="72" y="40" width="180" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" type="user" id="0Id-Pl-FdK"/>
                                 </constraints>
@@ -1269,11 +1203,9 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <view opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DmM-Ra-LBw" customClass="APView">
-                                <rect key="frame" x="4" y="4" width="64" height="64"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="32" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="64" translatesAutoresizingMaskIntoConstraints="NO" id="7MI-jq-NjA" customClass="GlowingLabel">
-                                <rect key="frame" x="4" y="4" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="Q6e-U1-Xaz"/>
                                 </constraints>
@@ -1282,7 +1214,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YsP-qD-cUK">
-                                <rect key="frame" x="4" y="4" width="64" height="64"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="lM7-e1-GbS"/>
                                 </constraints>
@@ -1299,7 +1230,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HLu-v7-LER" customClass="GUIButton">
-                                <rect key="frame" x="256" y="4" width="60" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" type="user" id="Dgm-u0-1IV"/>
@@ -1381,7 +1311,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="stx-mu-7c3" firstAttribute="bottom" secondItem="MGD-pG-MhS" secondAttribute="bottom" type="default" id="zUt-UB-A8f"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" title="Scanner" id="jRf-fb-O9l"/>
                     <connections>
                         <outlet property="_mapView" destination="tWm-XI-3eu" id="TYM-6X-0Mj"/>
@@ -1408,12 +1337,10 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
             <objects>
                 <viewController wantsFullScreenLayout="YES" id="EpT-PX-0Xb" customClass="PortalDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ROn-sT-oc0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9A-O4-19U">
-                                <rect key="frame" x="0.0" y="20" width="44" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="44" id="8KX-Mz-qGK"/>
                                     <constraint firstAttribute="height" constant="30" id="bH1-Aa-TpP"/>
@@ -1438,7 +1365,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="l9A-O4-19U" firstAttribute="top" secondItem="ROn-sT-oc0" secondAttribute="top" constant="20" symbolic="YES" type="default" id="brk-NQ-GIC"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Mac-VV-Wvp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1453,7 +1379,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="evf-ua-h3Z" customClass="DarkPressedBackgroundButton">
-                                <rect key="frame" x="0.0" y="26" width="54" height="33"/>
                                 <color key="backgroundColor" red="0.99607843137254903" green="0.80784313725490198" blue="0.3529411764705882" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="54" id="Otv-5Z-lLu"/>
@@ -1474,7 +1399,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KHK-Rm-YoQ" customClass="DarkPressedBackgroundButton">
-                                <rect key="frame" x="62" y="26" width="54" height="33"/>
                                 <color key="backgroundColor" red="1" green="0.65098039220000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="L2">
@@ -1492,7 +1416,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aNg-tn-ZLQ" customClass="DarkPressedBackgroundButton">
-                                <rect key="frame" x="124" y="27" width="53" height="32"/>
                                 <color key="backgroundColor" red="1" green="0.45098039220000002" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" id="ZW3-9D-5oW"/>
@@ -1514,7 +1437,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vEx-cF-bBs" customClass="DarkPressedBackgroundButton">
-                                <rect key="frame" x="185" y="26" width="55" height="33"/>
                                 <color key="backgroundColor" red="0.89411764709999997" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="L4">
@@ -1532,7 +1454,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="piM-gu-36z" customClass="DarkPressedBackgroundButton">
-                                <rect key="frame" x="0.0" y="67" width="54" height="33"/>
                                 <color key="backgroundColor" red="0.99215686270000003" green="0.16078431369999999" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="L5">
@@ -1550,7 +1471,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 </connections>
                             </button>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Koq-BQ-Pqv" customClass="DarkPressedBackgroundButton">
-                                <rect key="frame" x="62" y="67" width="54" height="33"/>
                                 <color key="backgroundColor" red="0.92156862750000001" green="0.14901960780000001" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="54" id="0BR-nJ-uUA"/>
@@ -1572,7 +1492,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 </connections>
                             </button>
                             <button opaque="NO" tag="7" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hiW-wj-oH8" customClass="DarkPressedBackgroundButton">
-                                <rect key="frame" x="124" y="67" width="53" height="33"/>
                                 <color key="backgroundColor" red="0.75686274509999996" green="0.14117647059999999" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="L7">
@@ -1590,7 +1509,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 </connections>
                             </button>
                             <button opaque="NO" tag="8" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gmt-O3-o9G" customClass="DarkPressedBackgroundButton">
-                                <rect key="frame" x="185" y="67" width="55" height="33"/>
                                 <color key="backgroundColor" red="0.58823529409999997" green="0.1529411765" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" title="L8">
@@ -1608,7 +1526,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zj2-IH-wni">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="18"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -1650,7 +1567,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="hiW-wj-oH8" firstAttribute="height" secondItem="KHK-Rm-YoQ" secondAttribute="height" type="user" id="wxr-4r-r0N"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -1673,7 +1589,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="orw-K8-UUa">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 <connections>
                                     <segue destination="vZR-4F-H2Z" kind="embed" id="uLU-Dv-S4x"/>
@@ -1688,7 +1603,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <constraint firstItem="orw-K8-UUa" firstAttribute="top" secondItem="Zw7-fb-KUn" secondAttribute="top" type="default" id="i1y-hm-zCJ"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
                 </viewController>
@@ -1708,7 +1622,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                             <outlet property="delegate" destination="vZR-4F-H2Z" id="5Te-5b-KoJ"/>
                         </connections>
                     </glkView>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                 </glkViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iHK-dZ-ie3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1723,11 +1636,9 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <view alpha="0.5" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="srD-z3-80S" userLabel="Jarvis Background">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dRZ-0p-gAs" customClass="StretchableBackgroundButton">
-                                <rect key="frame" x="58" y="483" width="80" height="45"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="C5u-2k-OYW"/>
                                     <constraint firstAttribute="height" constant="45" id="s1J-7Q-x15"/>
@@ -1744,7 +1655,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YbB-e0-wDU" customClass="StretchableBackgroundButton">
-                                <rect key="frame" x="122" y="428" width="140" height="60"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="ocp-U8-LOQ"/>
                                     <constraint firstAttribute="width" constant="140" id="z7e-5Q-M7w"/>
@@ -1761,7 +1671,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 </state>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="ADA" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="ZyX-XW-ns8" customClass="GlowingLabel">
-                                <rect key="frame" x="20" y="20" width="150" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="150" id="Pez-hJ-MxJ"/>
                                     <constraint firstAttribute="height" constant="22" type="user" id="vRr-2n-5t3"/>
@@ -1772,7 +1681,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="unknown" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="kkM-Rv-xLo" customClass="GlowingLabel">
-                                <rect key="frame" x="20" y="50" width="150" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" type="user" id="3Nu-f5-HBD"/>
                                 </constraints>
@@ -1782,13 +1690,11 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="atl-Q1-DqB">
-                                <rect key="frame" x="20" y="100" width="280" height="320"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="320" id="p4x-B9-Fbc"/>
                                 </constraints>
                             </imageView>
                             <textView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" indicatorStyle="white" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XfJ-5i-ZBC" customClass="ScrollTextView">
-                                <rect key="frame" x="30" y="110" width="260" height="300"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="260" id="69i-Sd-ec4"/>
@@ -1804,7 +1710,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Authenticating operative code" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="8LJ-h3-TX5" customClass="GlowingLabel">
-                                <rect key="frame" x="20" y="235" width="280" height="26"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="26" id="QzT-mK-yBM"/>
                                 </constraints>
@@ -1814,13 +1719,11 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                             <progressView opaque="NO" contentMode="scaleToFill" progressViewStyle="bar" translatesAutoresizingMaskIntoConstraints="NO" id="4lP-iq-RKy">
-                                <rect key="frame" x="20" y="269" width="280" height="11"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <color key="progressTintColor" red="0.80392156862745101" green="0.35686274509803922" blue="0.043137254901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="trackTintColor" red="0.031372549019607843" green="0.16470588235294117" blue="0.20784313725490194" alpha="1" colorSpace="calibratedRGB"/>
                             </progressView>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="280" translatesAutoresizingMaskIntoConstraints="NO" id="Abd-XB-4IJ" customClass="TypeWriterLabel">
-                                <rect key="frame" x="20" y="20" width="280" height="160"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="160" id="j7w-iK-yFe"/>
@@ -1830,17 +1733,14 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                 <nil key="highlightedColor"/>
                             </label>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vsm-zf-atT">
-                                <rect key="frame" x="0.0" y="189" width="320" height="169"/>
                                 <subviews>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Awaiting input:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="0lP-0N-pT1" customClass="GlowingLabel">
-                                        <rect key="frame" x="20" y="20" width="280" height="26"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <color key="textColor" red="0.56470588239999997" green="0.99607843139999996" blue="0.99607843139999996" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                         <size key="shadowOffset" width="0.0" height="0.0"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VVy-jK-RNd" customClass="GUIButton">
-                                        <rect key="frame" x="20" y="54" width="280" height="44"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" type="user" id="EzG-Bm-TEz"/>
@@ -1863,7 +1763,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ptn-0v-Omd" customClass="GUIButton">
-                                        <rect key="frame" x="20" y="106" width="280" height="44"/>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" type="user" id="dqf-Fn-iSf"/>
@@ -1902,7 +1801,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                 </constraints>
                             </view>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Bh-7Q-FgC">
-                                <rect key="frame" x="128" y="242" width="64" height="64"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" type="user" id="cRe-h7-V6H"/>
@@ -1910,7 +1808,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                 </constraints>
                             </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="A6M-tr-ZgC" customClass="GlowingLabel">
-                                <rect key="frame" x="20" y="314" width="280" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" type="user" id="u7g-gE-Jdk"/>
                                 </constraints>
@@ -1959,7 +1856,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                             <constraint firstAttribute="trailing" secondItem="atl-Q1-DqB" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="xfe-vk-RP6"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics"/>
                     <connections>
@@ -2156,7 +2052,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                             <outlet property="delegate" destination="GNK-rW-aij" id="i1s-j5-OL6"/>
                         </connections>
                     </tableView>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <segue destination="SBG-lr-EyX" kind="modal" identifier="MissionSegue" modalTransitionStyle="crossDissolve" id="fPf-WR-TNV"/>
@@ -2189,7 +2084,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0 invites remaining" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O2i-9b-nlS">
-                                <rect key="frame" x="20" y="20" width="280" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="yDG-OA-0Si"/>
                                 </constraints>
@@ -2200,14 +2094,11 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                 <size key="shadowOffset" width="-1" height="-1"/>
                             </label>
                             <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3Gc-fu-SbG">
-                                <rect key="frame" x="0.0" y="536" width="320" height="32"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4R3-5c-BKS">
-                                        <rect key="frame" x="1" y="1" width="237" height="30"/>
                                         <color key="backgroundColor" red="0.043137254899999998" green="0.047058823530000002" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Enter an email address" adjustsFontSizeToFit="NO" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="zXD-bp-G5M">
-                                        <rect key="frame" x="6" y="1" width="227" height="30"/>
                                         <color key="backgroundColor" red="0.043137254899999998" green="0.047058823530000002" blue="0.050980392159999999" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" type="user" id="F2a-Ez-cHL"/>
@@ -2220,7 +2111,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                         </connections>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xe9-Fh-lK4">
-                                        <rect key="frame" x="239" y="1" width="80" height="30"/>
                                         <color key="backgroundColor" red="0.0" green="0.30980392159999998" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="80" type="user" id="SUW-L8-1gi"/>
@@ -2264,7 +2154,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                             <constraint firstItem="3Gc-fu-SbG" firstAttribute="bottom" secondItem="wpZ-1g-j3t" secondAttribute="bottom" type="user" id="z4A-Jq-mtK"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
@@ -2296,13 +2185,11 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DT5-37-m4u">
-                                            <rect key="frame" x="10" y="2" width="37" height="22"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHe-y2-jnb">
-                                            <rect key="frame" x="10" y="24" width="48" height="17"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -2318,7 +2205,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                             <outlet property="delegate" destination="pnd-0d-rSp" id="Tpv-5r-sdh"/>
                         </connections>
                     </tableView>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="fvZ-bx-kbJ"/>
                     <nil key="simulatedStatusBarMetrics"/>
                 </tableViewController>
@@ -2343,13 +2229,13 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="tlY-cT-uad">
-                                            <rect key="frame" x="10" y="2" width="37" height="22"/>
+                                            <rect key="frame" x="10" y="2" width="38" height="22"/>
                                             <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Subtitle" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="g5d-Dn-amK">
-                                            <rect key="frame" x="10" y="24" width="48" height="17"/>
+                                            <rect key="frame" x="10" y="24" width="47" height="18"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                             <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -2365,7 +2251,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                             <outlet property="delegate" destination="KTC-Mi-HZa" id="HsJ-MU-nJj"/>
                         </connections>
                     </tableView>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <connections>
                         <segue destination="lYb-zI-rbd" kind="modal" identifier="MediaWebViewSegue" id="7uL-es-Dzj"/>
@@ -2380,48 +2265,45 @@ You have downloaded what you believe to be a game, but it is not. Something is v
             <objects>
                 <viewController storyboardIdentifier="OpsViewController" wantsFullScreenLayout="YES" id="qnH-ai-9uQ" customClass="OpsViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="HQB-G9-BUn">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DD1-CI-J7z">
-                                <rect key="frame" x="0.0" y="20" width="44" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OPS" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEv-3b-yHD" customClass="GlowingLabel">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="PbP-12-Efh"/>
-                                    <constraint firstAttribute="width" constant="44" id="TIv-gH-gLk"/>
+                                    <constraint firstAttribute="height" constant="32" id="adb-Z4-9eL"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.92156862750000001" green="0.73725490199999999" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DD1-CI-J7z">
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
-                                <state key="normal" title="&lt;-">
+                                <state key="normal" image="ops_close_button_default.png">
                                     <color key="titleColor" red="0.92156862750000001" green="0.73725490199999999" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
-                                <state key="highlighted">
+                                <state key="highlighted" image="ops_close_button_pressed.png">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="back" destination="qnH-ai-9uQ" eventType="touchUpInside" id="GvL-nl-eeU"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OPS" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEv-3b-yHD">
-                                <rect key="frame" x="20" y="20" width="280" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.92156862750000001" green="0.73725490199999999" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="DD1-CI-J7z" firstAttribute="leading" secondItem="HQB-G9-BUn" secondAttribute="leading" type="default" id="AkL-mV-g9i"/>
                             <constraint firstItem="zEv-3b-yHD" firstAttribute="top" secondItem="DD1-CI-J7z" secondAttribute="top" type="default" id="Pij-it-34o"/>
-                            <constraint firstAttribute="trailing" secondItem="zEv-3b-yHD" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="QN4-4u-LfK"/>
                             <constraint firstItem="DD1-CI-J7z" firstAttribute="top" secondItem="HQB-G9-BUn" secondAttribute="top" constant="20" symbolic="YES" type="default" id="YDd-e9-X0Q"/>
-                            <constraint firstItem="zEv-3b-yHD" firstAttribute="leading" secondItem="HQB-G9-BUn" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="bkL-6b-CEf"/>
-                            <constraint firstItem="DD1-CI-J7z" firstAttribute="leading" secondItem="HQB-G9-BUn" secondAttribute="leading" type="default" id="t1M-N8-tlg"/>
-                            <constraint firstItem="DD1-CI-J7z" firstAttribute="bottom" secondItem="zEv-3b-yHD" secondAttribute="bottom" type="default" id="tKx-RB-U0d"/>
+                            <constraint firstItem="DD1-CI-J7z" firstAttribute="leading" secondItem="zEv-3b-yHD" secondAttribute="leading" type="default" id="jmf-N9-u5s"/>
+                            <constraint firstItem="zEv-3b-yHD" firstAttribute="trailing" secondItem="HQB-G9-BUn" secondAttribute="trailing" type="default" id="oi4-Et-Sot"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
+                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
+                    <connections>
+                        <outlet property="opsCloseButton" destination="DD1-CI-J7z" id="5YQ-hD-04N"/>
+                        <outlet property="opsLabel" destination="zEv-3b-yHD" id="gH7-YK-933"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nz1-12-8fy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -2431,10 +2313,9 @@ You have downloaded what you believe to be a game, but it is not. Something is v
         <scene sceneID="TLB-hP-Ugx">
             <objects>
                 <navigationController definesPresentationContext="YES" id="lYb-zI-rbd" sceneMemberID="viewController">
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
-                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="black" prompted="NO"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="black" id="a3o-Bp-9gL">
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" barStyle="blackOpaque" prompted="NO"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" barStyle="blackOpaque" id="a3o-Bp-9gL">
                         <rect key="frame" x="0.0" y="0.0" width="0.0" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -2455,7 +2336,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <webView contentMode="scaleToFill" scalesPageToFit="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R9o-1c-oAb">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                                 <color key="backgroundColor" red="0.031372549020000001" green="0.1647058824" blue="0.20784313730000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <dataDetectorType key="dataDetectorTypes"/>
                             </webView>
@@ -2468,7 +2348,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                             <constraint firstItem="R9o-1c-oAb" firstAttribute="bottom" secondItem="plU-c5-3e7" secondAttribute="bottom" type="default" id="z17-gn-We9"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="DyM-e3-rHd">
                         <barButtonItem key="leftBarButtonItem" title="Close" id="YN9-xD-Fpz">
                             <connections>
@@ -2498,13 +2377,9 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1aa-eF-7rd">
-                                <rect key="frame" x="102" y="112" width="116" height="232"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="resonators-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="mD4-FJ-bc0">
-                                        <rect key="frame" x="0.0" y="0.0" width="116" height="232"/>
-                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="resonators-bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="mD4-FJ-bc0"/>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="12" contentMode="left" text="L1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iI8-Vk-fD4" customClass="GlowingLabel">
-                                        <rect key="frame" x="64" y="47" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="TsR-pW-Hhl"/>
                                         </constraints>
@@ -2513,7 +2388,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="11" contentMode="left" text="L1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="A9n-5u-eiN" customClass="GlowingLabel">
-                                        <rect key="frame" x="96" y="47" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="ikz-oS-NQg"/>
                                         </constraints>
@@ -2522,7 +2396,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="10" contentMode="left" text="L1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IWu-Y1-Qec" customClass="GlowingLabel">
-                                        <rect key="frame" x="96" y="165" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" type="user" id="Qac-yn-sUs"/>
                                         </constraints>
@@ -2531,7 +2404,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="17" contentMode="left" text="L1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BQp-Pm-fjj" customClass="GlowingLabel">
-                                        <rect key="frame" x="64" y="165" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="20" type="user" id="BoV-MJ-Ffh"/>
                                         </constraints>
@@ -2540,13 +2412,11 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="16" contentMode="left" text="L1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SqP-Ow-Sgr" customClass="GlowingLabel">
-                                        <rect key="frame" x="35" y="165" width="20" height="20"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <color key="textColor" red="0.90588235294117647" green="0.58431372549019611" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="15" contentMode="left" text="L1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LPK-gl-VrS" customClass="GlowingLabel">
-                                        <rect key="frame" x="0.0" y="165" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="KhR-QQ-73H"/>
                                         </constraints>
@@ -2555,7 +2425,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="14" contentMode="left" text="L1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EUM-hs-RCw" customClass="GlowingLabel">
-                                        <rect key="frame" x="2" y="47" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" type="user" id="sdn-7q-1G4"/>
                                         </constraints>
@@ -2564,7 +2433,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="13" contentMode="left" text="L1" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ych-BV-d2s" customClass="GlowingLabel">
-                                        <rect key="frame" x="35" y="47" width="20" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="20" id="cHL-W6-SmE"/>
                                         </constraints>
@@ -2572,88 +2440,67 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                         <color key="textColor" red="0.90588235294117647" green="0.58431372549019611" blue="0.1764705882352941" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView userInteractionEnabled="NO" tag="32" contentMode="scaleToFill" image="resonator_N.png" translatesAutoresizingMaskIntoConstraints="NO" id="sTl-ca-2VI">
-                                        <rect key="frame" x="52" y="70" width="36" height="39"/>
-                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" tag="32" contentMode="scaleToFill" image="resonator_N.png" translatesAutoresizingMaskIntoConstraints="NO" id="sTl-ca-2VI"/>
                                     <imageView userInteractionEnabled="NO" tag="31" contentMode="scaleToFill" image="resonator_NE.png" translatesAutoresizingMaskIntoConstraints="NO" id="KLX-Br-DtD">
-                                        <rect key="frame" x="60" y="84" width="56" height="36"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="56" id="84z-pI-Qal"/>
                                             <constraint firstAttribute="height" constant="36" id="bYp-us-D8D"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" tag="30" contentMode="scaleToFill" image="resonator_E.png" translatesAutoresizingMaskIntoConstraints="NO" id="zEQ-0c-NAe">
-                                        <rect key="frame" x="54" y="104" width="68" height="38"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="68" id="d6J-8b-jgb"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" tag="37" contentMode="scaleToFill" image="resonator_SE.png" translatesAutoresizingMaskIntoConstraints="NO" id="pXL-eI-DBL">
-                                        <rect key="frame" x="48" y="108" width="46" height="55"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="55" id="nl6-vG-c3q"/>
                                             <constraint firstAttribute="width" constant="46" id="osl-wO-Su4"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" tag="36" contentMode="scaleToFill" image="resonator_S.png" translatesAutoresizingMaskIntoConstraints="NO" id="08N-ra-OaE">
-                                        <rect key="frame" x="21" y="105" width="44" height="58"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="58" id="8JT-kI-93h"/>
                                             <constraint firstAttribute="width" constant="44" id="IQC-F4-7gk"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" tag="35" contentMode="scaleToFill" image="resonator_SW.png" translatesAutoresizingMaskIntoConstraints="NO" id="TFw-BM-yYy">
-                                        <rect key="frame" x="0.0" y="102" width="58" height="38"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="38" id="srK-z4-JeS"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" tag="34" contentMode="scaleToFill" image="resonator_W.png" translatesAutoresizingMaskIntoConstraints="NO" id="ppk-RV-jhe">
-                                        <rect key="frame" x="4" y="81" width="53" height="37"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="53" id="Rpr-dY-dvs"/>
                                             <constraint firstAttribute="height" constant="37" id="gVL-Ml-aqV"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" tag="33" contentMode="scaleToFill" image="resonator_NW.png" translatesAutoresizingMaskIntoConstraints="NO" id="xwW-0y-h05">
-                                        <rect key="frame" x="31" y="71" width="35" height="39"/>
-                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" tag="33" contentMode="scaleToFill" image="resonator_NW.png" translatesAutoresizingMaskIntoConstraints="NO" id="xwW-0y-h05"/>
                                     <imageView userInteractionEnabled="NO" tag="42" contentMode="scaleToFill" image="enl_res_energy_fill.png" translatesAutoresizingMaskIntoConstraints="NO" id="WNO-Bo-z3R">
-                                        <rect key="frame" x="71" y="0.0" width="7" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="7" id="dme-0n-gk3"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" tag="41" contentMode="scaleToFill" image="enl_res_energy_fill.png" translatesAutoresizingMaskIntoConstraints="NO" id="GI8-4l-eUD">
-                                        <rect key="frame" x="103" y="0.0" width="7" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="7" id="sPj-6e-Jjv"/>
                                         </constraints>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" tag="40" contentMode="scaleToFill" image="enl_res_energy_fill.png" translatesAutoresizingMaskIntoConstraints="NO" id="1uc-G7-RfQ">
-                                        <rect key="frame" x="103" y="188" width="7" height="44"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" tag="47" contentMode="scaleToFill" image="enl_res_energy_fill.png" translatesAutoresizingMaskIntoConstraints="NO" id="qrg-gr-5hF">
-                                        <rect key="frame" x="71" y="188" width="7" height="44"/>
-                                    </imageView>
-                                    <imageView userInteractionEnabled="NO" tag="46" contentMode="scaleToFill" image="enl_res_energy_fill.png" translatesAutoresizingMaskIntoConstraints="NO" id="G1b-Ok-CJl">
-                                        <rect key="frame" x="42" y="188" width="7" height="44"/>
-                                    </imageView>
+                                    <imageView userInteractionEnabled="NO" tag="40" contentMode="scaleToFill" image="enl_res_energy_fill.png" translatesAutoresizingMaskIntoConstraints="NO" id="1uc-G7-RfQ"/>
+                                    <imageView userInteractionEnabled="NO" tag="47" contentMode="scaleToFill" image="enl_res_energy_fill.png" translatesAutoresizingMaskIntoConstraints="NO" id="qrg-gr-5hF"/>
+                                    <imageView userInteractionEnabled="NO" tag="46" contentMode="scaleToFill" image="enl_res_energy_fill.png" translatesAutoresizingMaskIntoConstraints="NO" id="G1b-Ok-CJl"/>
                                     <imageView userInteractionEnabled="NO" tag="45" contentMode="scaleToFill" image="enl_res_energy_fill.png" translatesAutoresizingMaskIntoConstraints="NO" id="Td6-71-ZLa">
-                                        <rect key="frame" x="8" y="188" width="7" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="Sig-zh-bvm"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" tag="44" contentMode="scaleToFill" image="enl_res_energy_fill.png" translatesAutoresizingMaskIntoConstraints="NO" id="6EI-dR-nxm">
-                                        <rect key="frame" x="8" y="0.0" width="7" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="7" id="G5V-Y6-qdk"/>
                                             <constraint firstAttribute="height" constant="44" id="hee-Kg-Mdr"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" tag="43" contentMode="scaleToFill" image="enl_res_energy_fill.png" translatesAutoresizingMaskIntoConstraints="NO" id="NAI-t7-cTU">
-                                        <rect key="frame" x="42" y="0.0" width="7" height="44"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="7" id="fta-WF-QCo"/>
                                         </constraints>
@@ -2666,15 +2513,16 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="TFw-BM-yYy" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="102" id="2p3-2m-CJF"/>
                                     <constraint firstItem="NAI-t7-cTU" firstAttribute="trailing" secondItem="G1b-Ok-CJl" secondAttribute="trailing" type="default" id="4be-eE-rPM"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="trailing" secondItem="IWu-Y1-Qec" secondAttribute="trailing" type="default" id="4hL-xv-X2h"/>
+                                    <constraint firstItem="qrg-gr-5hF" firstAttribute="bottom" secondItem="mD4-FJ-bc0" secondAttribute="bottom" type="default" id="6aQ-GB-mWo"/>
                                     <constraint firstItem="ych-BV-d2s" firstAttribute="baseline" secondItem="EUM-hs-RCw" secondAttribute="baseline" type="default" id="7Q9-PB-Bv2"/>
                                     <constraint firstItem="6EI-dR-nxm" firstAttribute="trailing" secondItem="Td6-71-ZLa" secondAttribute="trailing" type="default" id="7q6-oI-bCK"/>
                                     <constraint firstItem="zEQ-0c-NAe" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="104" id="8Rm-ZN-UR8"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="top" secondItem="WNO-Bo-z3R" secondAttribute="top" type="default" id="8fh-Pt-KKm"/>
-                                    <constraint firstItem="mD4-FJ-bc0" firstAttribute="leading" secondItem="LPK-gl-VrS" secondAttribute="leading" type="default" id="99a-KH-hlv"/>
                                     <constraint firstItem="A9n-5u-eiN" firstAttribute="leading" secondItem="IWu-Y1-Qec" secondAttribute="leading" type="default" id="AJl-PE-oko"/>
                                     <constraint firstItem="BQp-Pm-fjj" firstAttribute="baseline" secondItem="SqP-Ow-Sgr" secondAttribute="baseline" type="default" id="AWQ-LO-9r6"/>
                                     <constraint firstItem="ych-BV-d2s" firstAttribute="leading" secondItem="SqP-Ow-Sgr" secondAttribute="leading" type="default" id="CFy-tK-YB6"/>
                                     <constraint firstItem="IWu-Y1-Qec" firstAttribute="baseline" secondItem="BQp-Pm-fjj" secondAttribute="baseline" type="default" id="Dky-Bw-l7L"/>
+                                    <constraint firstItem="mD4-FJ-bc0" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" type="default" id="Dzc-0x-L7K"/>
                                     <constraint firstAttribute="trailing" secondItem="iI8-Vk-fD4" secondAttribute="trailing" constant="32" id="Exh-48-AjY"/>
                                     <constraint firstItem="NAI-t7-cTU" firstAttribute="bottom" secondItem="6EI-dR-nxm" secondAttribute="bottom" type="default" id="FOo-3b-SsI"/>
                                     <constraint firstItem="GI8-4l-eUD" firstAttribute="bottom" secondItem="WNO-Bo-z3R" secondAttribute="bottom" type="default" id="FdK-BA-7Mg"/>
@@ -2683,7 +2531,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="08N-ra-OaE" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="105" id="Ges-Rq-Af1"/>
                                     <constraint firstItem="08N-ra-OaE" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="21" id="GrZ-yH-hVl"/>
                                     <constraint firstAttribute="bottom" secondItem="LPK-gl-VrS" secondAttribute="bottom" constant="47" id="IOt-Yd-kZW"/>
-                                    <constraint firstItem="TFw-BM-yYy" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" type="default" id="JW8-dM-jey"/>
                                     <constraint firstItem="G1b-Ok-CJl" firstAttribute="top" secondItem="qrg-gr-5hF" secondAttribute="top" type="default" id="Jcg-9z-AFq"/>
                                     <constraint firstItem="08N-ra-OaE" firstAttribute="bottom" secondItem="pXL-eI-DBL" secondAttribute="bottom" type="default" id="LAB-rN-VD9"/>
                                     <constraint firstItem="qrg-gr-5hF" firstAttribute="bottom" secondItem="1uc-G7-RfQ" secondAttribute="bottom" type="default" id="Lhs-1p-4V8"/>
@@ -2691,7 +2538,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="iI8-Vk-fD4" firstAttribute="centerX" secondItem="WNO-Bo-z3R" secondAttribute="centerX" type="default" id="MdH-Rw-zi2"/>
                                     <constraint firstItem="qrg-gr-5hF" firstAttribute="top" secondItem="1uc-G7-RfQ" secondAttribute="top" type="default" id="N6q-tw-hNc"/>
                                     <constraint firstItem="6EI-dR-nxm" firstAttribute="leading" secondItem="Td6-71-ZLa" secondAttribute="leading" type="default" id="Nli-wq-fHD"/>
-                                    <constraint firstItem="1uc-G7-RfQ" firstAttribute="bottom" secondItem="mD4-FJ-bc0" secondAttribute="bottom" type="default" id="PyJ-Dv-nFm"/>
                                     <constraint firstItem="pXL-eI-DBL" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="48" id="QYs-mC-uPq"/>
                                     <constraint firstItem="mD4-FJ-bc0" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" type="default" id="Rci-Rj-4YX"/>
                                     <constraint firstAttribute="width" constant="116" type="user" id="SVG-nU-IMp"/>
@@ -2727,6 +2573,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="EUM-hs-RCw" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="47" id="wad-cU-bTc"/>
                                     <constraint firstItem="Td6-71-ZLa" firstAttribute="top" secondItem="G1b-Ok-CJl" secondAttribute="top" type="default" id="xFX-LN-MGC"/>
                                     <constraint firstItem="ppk-RV-jhe" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="4" id="zhB-Pw-p4d"/>
+                                    <constraint firstItem="mD4-FJ-bc0" firstAttribute="leading" secondItem="LPK-gl-VrS" secondAttribute="leading" type="default" id="zoU-zP-Bx8"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -2736,7 +2583,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                             <constraint firstItem="1aa-eF-7rd" firstAttribute="centerX" secondItem="xob-Tu-pne" secondAttribute="centerX" type="user" id="rRy-lj-hh1"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -2754,7 +2600,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="136" translatesAutoresizingMaskIntoConstraints="NO" id="Act-Ua-pfK">
-                                <rect key="frame" x="20" y="44" width="136" height="59"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="59" id="Mug-zl-DWe"/>
                                     <constraint firstAttribute="width" constant="136" type="user" id="pOg-Fk-sdw"/>
@@ -2780,7 +2625,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="136" translatesAutoresizingMaskIntoConstraints="NO" id="62b-zG-XxU" customClass="GlowingLabel">
-                                <rect key="frame" x="164" y="44" width="136" height="58"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="136" type="user" id="Cqo-L5-84g"/>
                                 </constraints>
@@ -2791,7 +2635,6 @@ Range: 0km</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XXe-e8-QSL" customClass="GUIButton">
-                                <rect key="frame" x="20" y="111" width="280" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" type="user" id="632-rg-LAf"/>
@@ -2813,7 +2656,6 @@ Range: 0km</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VzY-Vf-EiF" customClass="GUIButton">
-                                <rect key="frame" x="20" y="163" width="280" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" type="user" id="AMh-2o-FLo"/>
@@ -2835,7 +2677,6 @@ Range: 0km</string>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wif-aO-m2O" customClass="GUIButton">
-                                <rect key="frame" x="20" y="215" width="280" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="120" type="user" id="05j-uj-BBg"/>
@@ -2857,7 +2698,6 @@ Range: 0km</string>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="[Untitled]" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="onv-iS-2c6" customClass="GlowingLabel">
-                                <rect key="frame" x="20" y="11" width="280" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" type="user" id="W2X-rH-LPC"/>
                                 </constraints>
@@ -2888,7 +2728,6 @@ Range: 0km</string>
                             <constraint firstAttribute="trailing" secondItem="onv-iS-2c6" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="vtk-fQ-5xr"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -2914,7 +2753,6 @@ Range: 0km</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4kv-Kh-7Ab" customClass="DarkPressedBackgroundButton">
-                                <rect key="frame" x="0.0" y="68" width="75" height="32"/>
                                 <color key="backgroundColor" red="0.53725490200000003" green="0.30588235289999999" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" type="user" id="skU-F0-b8J"/>
@@ -2936,7 +2774,6 @@ Range: 0km</string>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4sY-RR-DpF" customClass="DarkPressedBackgroundButton">
-                                <rect key="frame" x="83" y="68" width="74" height="32"/>
                                 <color key="backgroundColor" red="1" green="0.23921568630000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" type="user" id="6rB-He-aj9"/>
@@ -2958,7 +2795,6 @@ Range: 0km</string>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9fE-M1-aM9" customClass="DarkPressedBackgroundButton">
-                                <rect key="frame" x="165" y="68" width="75" height="32"/>
                                 <color key="backgroundColor" red="1" green="0.1960784314" blue="0.1960784314" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" type="user" id="YbB-QF-AOP"/>
@@ -2980,7 +2816,6 @@ Range: 0km</string>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dd0-Cx-mVX" customClass="DarkPressedBackgroundButton">
-                                <rect key="frame" x="0.0" y="28" width="75" height="32"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" type="user" id="NbK-WK-NIs"/>
@@ -3002,7 +2837,6 @@ Range: 0km</string>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6oe-fM-rQJ" customClass="DarkPressedBackgroundButton">
-                                <rect key="frame" x="83" y="28" width="74" height="32"/>
                                 <color key="backgroundColor" red="0.21960784310000001" green="1" blue="0.74901960779999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="32" type="user" id="jSa-cd-LDb"/>
@@ -3024,7 +2858,6 @@ Range: 0km</string>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Q1G-gm-R56" customClass="DarkPressedBackgroundButton">
-                                <rect key="frame" x="165" y="28" width="75" height="33"/>
                                 <color key="backgroundColor" red="0.2156862745" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="33" type="user" id="etC-KL-Jcr"/>
@@ -3046,7 +2879,6 @@ Range: 0km</string>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cTH-EI-Vl6">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -3078,7 +2910,6 @@ Range: 0km</string>
                             <constraint firstItem="dd0-Cx-mVX" firstAttribute="top" secondItem="sxU-B7-AJz" secondAttribute="top" constant="28" type="user" id="ysX-N1-v1x"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -3109,14 +2940,12 @@ Range: 0km</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yRF-gZ-vNv">
-                                            <rect key="frame" x="39" y="45" width="90" height="90"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="90" id="h3M-T0-mLN"/>
                                                 <constraint firstAttribute="width" constant="90" id="i6d-Vk-rj6"/>
                                             </constraints>
                                         </imageView>
                                         <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oDY-1N-Fsh" customClass="DarkPressedBackgroundButton">
-                                            <rect key="frame" x="157" y="11" width="32" height="32"/>
                                             <color key="backgroundColor" red="0.99607843139999996" green="0.80784313730000001" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" type="user" id="qfZ-Hp-vLE"/>
@@ -3138,7 +2967,6 @@ Range: 0km</string>
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WRZ-Iq-JhM" customClass="DarkPressedBackgroundButton">
-                                            <rect key="frame" x="193" y="11" width="32" height="32"/>
                                             <color key="backgroundColor" red="1" green="0.65098039220000004" blue="0.18823529410000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="32" type="user" id="3o3-2M-MKp"/>
@@ -3160,7 +2988,6 @@ Range: 0km</string>
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8hR-0R-B7p" customClass="DarkPressedBackgroundButton">
-                                            <rect key="frame" x="229" y="11" width="32" height="32"/>
                                             <color key="backgroundColor" red="1" green="0.45098039220000002" blue="0.08235294118" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" type="user" id="KzM-Wg-E8f"/>
@@ -3182,7 +3009,6 @@ Range: 0km</string>
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H3i-AJ-u2E" customClass="DarkPressedBackgroundButton">
-                                            <rect key="frame" x="265" y="11" width="32" height="32"/>
                                             <color key="backgroundColor" red="0.89411764709999997" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="32" type="user" id="3yT-2a-7in"/>
@@ -3204,7 +3030,6 @@ Range: 0km</string>
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UXq-Ci-WS2" customClass="DarkPressedBackgroundButton">
-                                            <rect key="frame" x="157" y="80" width="32" height="32"/>
                                             <color key="backgroundColor" red="0.99215686270000003" green="0.16078431369999999" blue="0.57254901960000004" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" type="user" id="QYU-fn-0P1"/>
@@ -3226,7 +3051,6 @@ Range: 0km</string>
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBW-GW-AcA" customClass="DarkPressedBackgroundButton">
-                                            <rect key="frame" x="193" y="80" width="32" height="32"/>
                                             <color key="backgroundColor" red="0.92156862750000001" green="0.14901960780000001" blue="0.80392156859999997" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="32" type="user" id="ZTD-dr-aKU"/>
@@ -3248,7 +3072,6 @@ Range: 0km</string>
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="17" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dl6-A5-fDV" customClass="DarkPressedBackgroundButton">
-                                            <rect key="frame" x="229" y="80" width="32" height="32"/>
                                             <color key="backgroundColor" red="0.75686274509999996" green="0.14117647059999999" blue="0.87843137250000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="32" type="user" id="YmJ-Gl-VoB"/>
@@ -3270,7 +3093,6 @@ Range: 0km</string>
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="18" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0lh-L7-gNe" customClass="DarkPressedBackgroundButton">
-                                            <rect key="frame" x="265" y="80" width="32" height="32"/>
                                             <color key="backgroundColor" red="0.58823529409999997" green="0.1529411765" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" type="user" id="7bO-bL-wFc"/>
@@ -3292,55 +3114,46 @@ Range: 0km</string>
                                             </connections>
                                         </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HZu-Le-Tz0">
-                                            <rect key="frame" x="157" y="51" width="32" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cce-xO-Ehk">
-                                            <rect key="frame" x="193" y="51" width="32" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yyu-Zr-Lt1">
-                                            <rect key="frame" x="229" y="51" width="32" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcc-go-h8w">
-                                            <rect key="frame" x="265" y="51" width="32" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I2a-48-VNf">
-                                            <rect key="frame" x="157" y="118" width="32" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="6" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hHq-5t-Sle">
-                                            <rect key="frame" x="193" y="118" width="32" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="7" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rf9-r2-atR">
-                                            <rect key="frame" x="229" y="117" width="32" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="8" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="f9s-jV-NVX">
-                                            <rect key="frame" x="265" y="117" width="32" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AqE-rT-i4S">
-                                            <rect key="frame" x="23" y="17" width="120" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="BdO-vH-cme"/>
                                             </constraints>
@@ -3413,14 +3226,12 @@ Range: 0km</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="Bdm-3I-nJv">
-                                            <rect key="frame" x="39" y="45" width="90" height="90"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="90" id="L9E-5p-95F"/>
                                                 <constraint firstAttribute="height" constant="90" id="eWM-qB-xw7"/>
                                             </constraints>
                                         </imageView>
                                         <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fZi-Bv-8rN" customClass="DarkPressedBackgroundButton">
-                                            <rect key="frame" x="160" y="11" width="44" height="32"/>
                                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="44" id="YCw-Vg-ICh"/>
@@ -3442,7 +3253,6 @@ Range: 0km</string>
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ucK-fu-t0P" customClass="DarkPressedBackgroundButton">
-                                            <rect key="frame" x="208" y="11" width="44" height="32"/>
                                             <color key="backgroundColor" red="0.2196078431372549" green="1" blue="0.74901960784313726" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="44" id="ho3-Ed-zKS"/>
@@ -3463,7 +3273,6 @@ Range: 0km</string>
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="13" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cVb-uJ-z6A" customClass="DarkPressedBackgroundButton">
-                                            <rect key="frame" x="256" y="11" width="44" height="32"/>
                                             <color key="backgroundColor" red="0.21568627450980393" green="0.47843137254901957" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="44" id="hFn-74-L0x"/>
@@ -3484,25 +3293,21 @@ Range: 0km</string>
                                             </connections>
                                         </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="44" translatesAutoresizingMaskIntoConstraints="NO" id="OS1-jb-zD9">
-                                            <rect key="frame" x="160" y="51" width="44" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="44" translatesAutoresizingMaskIntoConstraints="NO" id="Qx2-g6-atM">
-                                            <rect key="frame" x="208" y="51" width="44" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="3" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="44" translatesAutoresizingMaskIntoConstraints="NO" id="6Lw-jH-lIS">
-                                            <rect key="frame" x="256" y="51" width="44" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" tag="14" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j99-gl-bDu" customClass="DarkPressedBackgroundButton">
-                                            <rect key="frame" x="160" y="79" width="44" height="32"/>
                                             <color key="backgroundColor" red="0.53725490196078429" green="0.30588235294117649" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="yc7-Yh-UVs"/>
@@ -3523,7 +3328,6 @@ Range: 0km</string>
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="15" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Tjy-6B-8iH" customClass="DarkPressedBackgroundButton">
-                                            <rect key="frame" x="208" y="79" width="44" height="32"/>
                                             <color key="backgroundColor" red="1" green="0.23921568627450979" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                             <state key="normal">
@@ -3543,7 +3347,6 @@ RARE</string>
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="16" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V8L-V9-bV1" customClass="DarkPressedBackgroundButton">
-                                            <rect key="frame" x="256" y="79" width="44" height="32"/>
                                             <color key="backgroundColor" red="1" green="0.19607843137254902" blue="0.19607843137254902" alpha="1" colorSpace="calibratedRGB"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="8"/>
                                             <state key="normal" title="EXTRA RARE">
@@ -3561,25 +3364,21 @@ RARE</string>
                                             </connections>
                                         </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="4" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="44" translatesAutoresizingMaskIntoConstraints="NO" id="QzJ-bh-qkf">
-                                            <rect key="frame" x="160" y="119" width="44" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="5" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="44" translatesAutoresizingMaskIntoConstraints="NO" id="6pK-LZ-Qv7">
-                                            <rect key="frame" x="208" y="119" width="44" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="6" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="44" translatesAutoresizingMaskIntoConstraints="NO" id="EgV-Wl-cCo">
-                                            <rect key="frame" x="256" y="119" width="44" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FN9-Xb-j5o">
-                                            <rect key="frame" x="23" y="15" width="120" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="FVv-S5-kgY"/>
                                             </constraints>
@@ -3649,14 +3448,12 @@ RARE</string>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bmu-Jx-CtL">
-                                            <rect key="frame" x="39" y="45" width="90" height="90"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="90" id="VTC-0P-MSK"/>
                                                 <constraint firstAttribute="width" constant="90" id="wOR-ix-QzU"/>
                                             </constraints>
                                         </imageView>
                                         <button opaque="NO" tag="11" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DmI-ha-idA" customClass="DarkPressedBackgroundButton">
-                                            <rect key="frame" x="157" y="11" width="140" height="32"/>
                                             <color key="backgroundColor" red="0.0" green="0.94509803921568625" blue="0.4392156862745098" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="140" id="XzL-2b-Y58"/>
@@ -3678,7 +3475,6 @@ RARE</string>
                                             </connections>
                                         </button>
                                         <button opaque="NO" tag="12" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BXi-nd-MO5" customClass="DarkPressedBackgroundButton">
-                                            <rect key="frame" x="157" y="79" width="140" height="32"/>
                                             <color key="backgroundColor" red="0.0" green="0.76078431372549016" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="32" id="nCg-Dv-MHz"/>
@@ -3699,19 +3495,16 @@ RARE</string>
                                             </connections>
                                         </button>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="140" translatesAutoresizingMaskIntoConstraints="NO" id="vai-oX-T84">
-                                            <rect key="frame" x="157" y="51" width="140" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="2" contentMode="left" text="0" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="140" translatesAutoresizingMaskIntoConstraints="NO" id="izn-Nv-lqJ">
-                                            <rect key="frame" x="157" y="119" width="140" height="20"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Title" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hxr-Eu-Lxa">
-                                            <rect key="frame" x="24" y="17" width="120" height="20"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="120" id="OZP-v6-4PI"/>
                                             </constraints>
@@ -3751,7 +3544,6 @@ RARE</string>
                             <outlet property="delegate" destination="zM3-Tr-bQA" id="IxQ-BT-tUn"/>
                         </connections>
                     </tableView>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedStatusBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sb2-Ma-HN8" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3767,7 +3559,6 @@ RARE</string>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" tag="100" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Xb-Wh-5aO" customClass="GUIButton">
-                                <rect key="frame" x="20" y="16" width="64" height="64"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="64" id="3TN-Q5-7cx"/>
@@ -3789,7 +3580,6 @@ RARE</string>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="101" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OYY-dc-1p9" customClass="GUIButton">
-                                <rect key="frame" x="92" y="16" width="64" height="64"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" type="user" id="uwW-xo-csH"/>
@@ -3810,7 +3600,6 @@ RARE</string>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="102" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="g9d-7G-vJo" customClass="GUIButton">
-                                <rect key="frame" x="165" y="16" width="64" height="64"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" id="tYm-hf-Chd"/>
@@ -3831,7 +3620,6 @@ RARE</string>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="103" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="08H-Vc-v0b" customClass="GUIButton">
-                                <rect key="frame" x="237" y="16" width="64" height="64"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="64" type="user" id="6rA-TA-Nyg"/>
@@ -3867,7 +3655,6 @@ RARE</string>
                             <constraint firstItem="5Xb-Wh-5aO" firstAttribute="top" secondItem="OYY-dc-1p9" secondAttribute="top" type="default" id="zks-6i-IwV"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <toolbarItems/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
@@ -3885,7 +3672,6 @@ RARE</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <stepper opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="NI6-CI-JHW">
-                                <rect key="frame" x="20" y="0.0" width="94" height="27"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="94" id="4pD-hX-tZ0"/>
                                 </constraints>
@@ -3894,13 +3680,11 @@ RARE</string>
                                 </connections>
                             </stepper>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="0 / 0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nHg-af-OkE">
-                                <rect key="frame" x="122" y="0.0" width="98" height="27"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1S2-QW-imL" customClass="GUIButton">
-                                <rect key="frame" x="0.0" y="56" width="240" height="44"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="44" type="user" id="7N4-BN-BwE"/>
@@ -3936,7 +3720,6 @@ RARE</string>
                             <constraint firstItem="1S2-QW-imL" firstAttribute="bottom" secondItem="qfJ-64-Fdf" secondAttribute="bottom" type="default" id="nPl-cN-cpZ"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -3961,7 +3744,6 @@ RARE</string>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CEh-YU-a0B">
-                                <rect key="frame" x="0.0" y="0.0" width="240" height="18"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="18" id="S1M-LT-CRx"/>
                                 </constraints>
@@ -3970,7 +3752,6 @@ RARE</string>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YJt-v3-UfJ" customClass="GUIButton">
-                                <rect key="frame" x="0.0" y="26" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="75" id="Evf-LS-3If"/>
                                 </constraints>
@@ -3991,7 +3772,6 @@ RARE</string>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HN4-Ta-5Zo" customClass="GUIButton">
-                                <rect key="frame" x="83" y="26" width="74" height="75"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" image="linkAmpBtn.png">
                                     <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -4009,7 +3789,6 @@ RARE</string>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xs5-dH-2e9" customClass="GUIButton">
-                                <rect key="frame" x="165" y="26" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="7Lq-ma-Kuf"/>
                                 </constraints>
@@ -4030,7 +3809,6 @@ RARE</string>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bl4-o1-Jhz" customClass="GUIButton">
-                                <rect key="frame" x="0.0" y="109" width="75" height="75"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="75" id="3W5-C5-uPz"/>
                                 </constraints>
@@ -4051,7 +3829,6 @@ RARE</string>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UOw-wP-Ci7" customClass="GUIButton">
-                                <rect key="frame" x="83" y="109" width="74" height="75"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" image="multihackBtn.png">
                                     <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -4069,7 +3846,6 @@ RARE</string>
                                 </connections>
                             </button>
                             <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rhS-Rq-B06" customClass="GUIButton">
-                                <rect key="frame" x="165" y="109" width="75" height="75"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                 <state key="normal" image="turretBtn.png">
                                     <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -4115,7 +3891,6 @@ RARE</string>
                             <constraint firstItem="CEh-YU-a0B" firstAttribute="trailing" secondItem="CEh-TI-MRy" secondAttribute="trailing" type="default" id="zi9-I9-HLz"/>
                         </constraints>
                     </view>
-                    <extendedEdge key="edgesForExtendedLayout"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -4140,6 +3915,8 @@ RARE</string>
         <image name="negative_btn_background_default.png" width="45" height="23.5"/>
         <image name="negative_btn_background_disabled.png" width="45" height="23.5"/>
         <image name="negative_btn_background_pressed.png" width="45" height="23.5"/>
+        <image name="ops_close_button_default.png" width="62" height="34"/>
+        <image name="ops_close_button_pressed.png" width="62" height="34"/>
         <image name="playerArrow_aliens.png" width="50" height="50"/>
         <image name="positive_btn_background_default.png" width="45" height="23.5"/>
         <image name="positive_btn_background_disabled.png" width="45" height="23.5"/>
