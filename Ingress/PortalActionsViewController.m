@@ -390,8 +390,11 @@
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
 	PortalKeysViewController *portalKeysVC = [storyboard instantiateViewControllerWithIdentifier:@"PortalKeysViewController"];
 	portalKeysVC.linkingPortal = self.portal;
-	[self.navigationController pushViewController:portalKeysVC animated:YES]; //.parentViewController
+    [self presentViewController:portalKeysVC animated:YES completion:^{
+    }];
+//	[self.navigationController pushViewController:portalKeysVC animated:YES]; //.parentViewController
 
 }
+
 
 @end
