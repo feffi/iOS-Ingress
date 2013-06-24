@@ -8,6 +8,11 @@
 
 #import "PortalKeysViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
+#import "GUIButton.h"
+
+@interface PortalKeysViewController ()
+@property (nonatomic, weak) GUIButton* closeButton;
+@end
 
 @implementation PortalKeysViewController {
 	NSMutableDictionary *keysDict;
@@ -20,7 +25,26 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    if (_linkingPortal) {
+        self.tableView.contentInset = UIEdgeInsetsMake(22, 0, 60, 0);
+        GUIButton* closeButton = [[GUIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width-110, self.view.bounds.size.height-75, 100, 45)];
+        closeButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+        [closeButton setTitle:@"CANCEL" forState:UIControlStateNormal];
+        [closeButton addTarget:self action:@selector(closePortalKeyChooser:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:closeButton];
+        _closeButton = closeButton;
+    }
+}
 
+- (void)closePortalKeyChooser:(id)sender
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+-(void)scrollViewDidScroll:(UIScrollView *)scrollView
+{
+    _closeButton.transform = CGAffineTransformMakeTranslation(0, (scrollView.contentInset.top + scrollView.contentOffset.y));
 }
 
 - (void)viewWillAppear:(BOOL)animated {
