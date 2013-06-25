@@ -12,7 +12,6 @@
 
 - (id)initWithFrame:(CGRect)frame
 {
-    NSLog(@"initWithFrame called.");
     self = [super initWithFrame:frame];
     if (self) {
         // Initialization code
@@ -22,8 +21,6 @@
 }
 
 -(id)initWithCoder:(NSCoder*)coder {
-
-    NSLog(@"initWithCoder called.");
 
     self = [super initWithCoder:coder];
     if (self) {
