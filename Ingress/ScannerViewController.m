@@ -564,10 +564,6 @@
 }
 
 - (void)updateRangeCircleView {
-    if ([Utilities isOS7]) {
-#warning Crashes on iOS7
-        return;
-    }
     
     // Create view on first update
     if ( ! rangeCircleView) {
@@ -620,12 +616,12 @@
     
     // Update range diameter
     CGFloat diameter = 0.;
-    if (_mapView.bounds.size.width > 0) {
-        diameter = 100/((_mapView.region.span.latitudeDelta * 111200) / _mapView.bounds.size.width);
+    if (_mapView.bounds.size.width > 0 && _mapView.region.span.latitudeDelta > 0) {
+        diameter = 100./((_mapView.region.span.latitudeDelta * 111200.) / _mapView.bounds.size.width);
     }
     rangeCircleViewWidth.constant = diameter + IG_RANGE_CIRCLE_VIEW_BORDER_WIDTH * 2;
     rangeCircleViewHeight.constant = diameter + IG_RANGE_CIRCLE_VIEW_BORDER_WIDTH * 2;
-    rangeCircleView.layer.cornerRadius = diameter/2;
+    rangeCircleView.layer.cornerRadius = rangeCircleView.layer.cornerRadius = (diameter + IG_RANGE_CIRCLE_VIEW_BORDER_WIDTH * 2.)/2.;
 }
 
 #pragma mark - CLLocationManagerDelegate
