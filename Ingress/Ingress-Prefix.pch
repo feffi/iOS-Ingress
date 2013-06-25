@@ -16,6 +16,7 @@
 #import "MBProgressHUD.h"
 #import "MTStatusBarOverlay.h"
 #import "SoundManager.h"
+#import "UIControl+Blocks.h"
 
 #define MR_ENABLE_ACTIVE_RECORD_LOGGING 0
 #import "CoreData+MagicalRecord.h"

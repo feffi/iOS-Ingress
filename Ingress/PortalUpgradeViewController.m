@@ -423,7 +423,10 @@
 		removeButton.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
 		[removeButton setTitle:@"Remove Mod" forState:UIControlStateNormal];
 		if ([mod.owner.guid isEqualToString:player.guid]) {
-			[removeButton addTarget:self action:@selector(removeModButtonPressed::) forControlEvents:UIControlEventTouchUpInside];
+            [removeButton handleControlEvent:UIControlEventTouchUpInside withBlock:^{
+                [HUD hide:YES];
+                [self removeModButtonPressed:removeButton];
+            }];
 		} else {
 			[removeButton setEnabled:NO];
 			[removeButton setErrorString:@"Not Owner"];
@@ -606,6 +609,8 @@
 		if (errorStr) {
 			[Utilities showWarningWithTitle:errorStr];
 		}
+        
+        [self refresh];
 
 	}];
 

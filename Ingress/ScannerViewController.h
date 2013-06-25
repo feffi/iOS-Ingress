@@ -15,17 +15,18 @@
 #import "GlowingLabel.h"
 #import "GUIButton.h"
 #import "APView.h"
+#import "QuickActionsMenu.h"
 
 @interface ScannerViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, UIActionSheetDelegate, OpsViewControllerDelegate> {
 	
 	__weak IBOutlet MKMapView *_mapView;
 	__weak IBOutlet UIImageView *playerArrowImage;
 	
-	__weak IBOutlet UIButton *fireXmpButton;
 	ChooserViewController *_levelChooser;
+    QuickActionsMenu *quickActionsMenu;
 	
 	__weak IBOutlet UIImageView *bgImage;
-	
+    __weak IBOutlet GUIButton *opsButton;
 	__weak IBOutlet UILabel *levelLabel;
 //	__weak IBOutlet UIImageView *levelImage;
 	__weak IBOutlet APView *apView;

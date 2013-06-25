@@ -67,6 +67,11 @@
 	apLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
 	xmLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
 	virusChoosePortalLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
+    
+    [opsButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	[opsButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    opsButton.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:18];
+    opsButton.titleLabel.layer.shadowColor = [UIColor whiteColor].CGColor;
 
 	apLabel.hidden = YES;
 	xmLabel.hidden = YES;
@@ -81,8 +86,8 @@
 
     [self validateLocationServicesAuthorization];
 
-	CGFloat offset = 28;
-	if ([Utilities isOS7]) { offset = 48; }
+	CGFloat offset = 32;
+	if ([Utilities isOS7]) { offset += 20; }
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
 	CommViewController *commVC = [storyboard instantiateViewControllerWithIdentifier:@"CommViewController"];
 	commVC.view.frame = CGRectMake(0, self.view.frame.size.height-offset, 320, 393);
@@ -139,6 +144,21 @@
 
     _xmOverlay = [XMOverlay new];
     [_mapView addOverlay:_xmOverlay];
+    
+    quickActionsMenu = [[QuickActionsMenu alloc] initWithSeletionHandler:^(int option) {
+
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+        }
+        
+        switch (option) {
+            case 1:
+                [self fireXMP];
+                break;
+        }
+        
+    }];
+    [self.view addSubview:quickActionsMenu];
     
 	[[NSNotificationCenter defaultCenter] addObserverForName:@"DBUpdatedNotification" object:nil queue:nil usingBlock:^(NSNotification *note) {
         //if ([self isSelectedAndTopmost]) {
@@ -559,11 +579,7 @@
 }
 
 - (void)updateRangeCircleView {
-	if ([Utilities isOS7]) {
-		#warning Crashes on iOS7
-		return;
-	}
-	
+    
     // Create view on first update
     if ( ! rangeCircleView) {
         rangeCircleView = [UIView new];
@@ -615,12 +631,12 @@
     
     // Update range diameter
     CGFloat diameter = 0.;
-    if (_mapView.bounds.size.width > 0) {
-        diameter = 100/((_mapView.region.span.latitudeDelta * 111200) / _mapView.bounds.size.width);
+    if (_mapView.bounds.size.width > 0 && _mapView.region.span.latitudeDelta > 0) {
+        diameter = 100./((_mapView.region.span.latitudeDelta * 111200.) / _mapView.bounds.size.width);
     }
     rangeCircleViewWidth.constant = diameter + IG_RANGE_CIRCLE_VIEW_BORDER_WIDTH * 2;
     rangeCircleViewHeight.constant = diameter + IG_RANGE_CIRCLE_VIEW_BORDER_WIDTH * 2;
-    rangeCircleView.layer.cornerRadius = diameter/2;
+    rangeCircleView.layer.cornerRadius = rangeCircleView.layer.cornerRadius = (diameter + IG_RANGE_CIRCLE_VIEW_BORDER_WIDTH * 2.)/2.;
 }
 
 #pragma mark - CLLocationManagerDelegate
@@ -748,11 +764,8 @@
 	if (mapView.zoomLevel < 15) {
 		if ([Utilities isOS7]) {
 			#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
-			
-				#warning Doesn't work on iOS 7 and causes infinite loop
-//				[mapView setCenterCoordinate:mapView.centerCoordinate zoomLevel:15 animated:NO];
+                [mapView setCenterCoordinate:mapView.centerCoordinate zoomLevel:15 animated:NO];
 
-//				This new api does nothing too
 //				MKMapCamera *camera = [MKMapCamera camera];
 //				camera.centerCoordinate = mapView.centerCoordinate;
 //				camera.heading = 0;
@@ -760,7 +773,6 @@
 //				camera.altitude = 50;
 //				NSLog(@"camera: %@", camera);
 //				[mapView setCamera:camera animated:NO];
-			
 			#endif
 		} else {
 			[mapView setCenterCoordinate:mapView.centerCoordinate zoomLevel:15 animated:NO];
@@ -931,8 +943,7 @@
     MKCoordinateSpan span = MKCoordinateSpanMake(latdelta, londelta);
 	MKCoordinateRegion region = MKCoordinateRegionMake(originalRegion.center, span);
 
-	#warning Temporary solution for iOS7
-	if ([Utilities isOS7] || [self zoomLevelForRegion:region] >= 15) {
+	if ([self zoomLevelForRegion:region] >= 15) {
 		[_mapView setRegion:region animated:NO];
 	}
     
@@ -977,31 +988,33 @@
 }
 
 - (void)mapLongPress:(UILongPressGestureRecognizer *)recognizer {
-	if (recognizer.state == UIGestureRecognizerStateBegan) {
-
-		[self becomeFirstResponder];
-        CGPoint location = [recognizer locationInView:recognizer.view];
-        UIMenuController *menuController = [UIMenuController sharedMenuController];
-        UIMenuItem *resetMenuItem = [[UIMenuItem alloc] initWithTitle:@"Fire XMP" action:@selector(fireXMP)];
-        [menuController setMenuItems:[NSArray arrayWithObject:resetMenuItem]];
-        [menuController setTargetRect:CGRectMake(location.x, location.y, 0.0f, 0.0f) inView:recognizer.view];
-        [menuController setMenuVisible:YES animated:YES];
-
-	}
+    [quickActionsMenu showMenu:recognizer];
+    
+//	if (recognizer.state == UIGestureRecognizerStateBegan) {
+//
+//		[self becomeFirstResponder];
+//        CGPoint location = [recognizer locationInView:recognizer.view];
+//        UIMenuController *menuController = [UIMenuController sharedMenuController];
+//        UIMenuItem *resetMenuItem = [[UIMenuItem alloc] initWithTitle:@"Fire XMP" action:@selector(fireXMP)];
+//        [menuController setMenuItems:[NSArray arrayWithObject:resetMenuItem]];
+//        [menuController setTargetRect:CGRectMake(location.x, location.y, 0.0f, 0.0f) inView:recognizer.view];
+//        [menuController setMenuVisible:YES animated:YES];
+//
+//	}
 }
 
-#pragma mark - Actions
-
-- (BOOL)canBecomeFirstResponder {
-    return YES;
-}
-
-- (BOOL)canPerformAction:(SEL)selector withSender:(id) sender {
-    if (selector == @selector(fireXMP)) {
-        return YES;
-    }
-    return NO;
-}
+//#pragma mark - Actions
+//
+//- (BOOL)canBecomeFirstResponder {
+//    return YES;
+//}
+//
+//- (BOOL)canPerformAction:(SEL)selector withSender:(id) sender {
+//    if (selector == @selector(fireXMP)) {
+//        return YES;
+//    }
+//    return NO;
+//}
 
 #pragma mark - Firing XMP
 
@@ -1010,10 +1023,6 @@
 //	int ap = [[API sharedInstance].playerInfo[@"ap"] intValue];
 //	int level = [API levelForAp:ap];
 //	[self fireXMPOfLevel:level];
-	
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
-        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-    }
     
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 	HUD.userInteractionEnabled = YES;
