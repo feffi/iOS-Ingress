@@ -91,6 +91,7 @@
 		FA54DEF916A19B47006A92E0 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = FA54DEF816A19B47006A92E0 /* MBProgressHUD.m */; };
 		FA54DEFD16A19BD8006A92E0 /* IntelViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA54DEFC16A19BD8006A92E0 /* IntelViewController.m */; };
 		FA54DF0816A1D882006A92E0 /* Coda-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = FA54DF0616A1D870006A92E0 /* Coda-Regular.ttf */; };
+		FA5826AF177A2F3700BF1FD7 /* QuickActionsMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = FA5826AE177A2F3700BF1FD7 /* QuickActionsMenu.m */; };
 		FA5B897A176908EA006D4653 /* forceAmpBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5B8975176908EA006D4653 /* forceAmpBtn@2x.png */; };
 		FA5B897B176908EA006D4653 /* heatsinkBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5B8976176908EA006D4653 /* heatsinkBtn@2x.png */; };
 		FA5B897C176908EA006D4653 /* linkAmpBtn@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA5B8977176908EA006D4653 /* linkAmpBtn@2x.png */; };
@@ -417,6 +418,8 @@
 		FA54DEFB16A19BD8006A92E0 /* IntelViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntelViewController.h; sourceTree = "<group>"; };
 		FA54DEFC16A19BD8006A92E0 /* IntelViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntelViewController.m; sourceTree = "<group>"; };
 		FA54DF0616A1D870006A92E0 /* Coda-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Coda-Regular.ttf"; path = "Ingress/Coda-Regular.ttf"; sourceTree = "<group>"; };
+		FA5826AD177A2F3700BF1FD7 /* QuickActionsMenu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickActionsMenu.h; sourceTree = "<group>"; };
+		FA5826AE177A2F3700BF1FD7 /* QuickActionsMenu.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickActionsMenu.m; sourceTree = "<group>"; };
 		FA5B8975176908EA006D4653 /* forceAmpBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "forceAmpBtn@2x.png"; sourceTree = "<group>"; };
 		FA5B8976176908EA006D4653 /* heatsinkBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heatsinkBtn@2x.png"; sourceTree = "<group>"; };
 		FA5B8977176908EA006D4653 /* linkAmpBtn@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "linkAmpBtn@2x.png"; sourceTree = "<group>"; };
@@ -1194,6 +1197,15 @@
 			name = Missions;
 			sourceTree = "<group>";
 		};
+		FA5826AC177A2F2300BF1FD7 /* QuickActionsMenu */ = {
+			isa = PBXGroup;
+			children = (
+				FA5826AD177A2F3700BF1FD7 /* QuickActionsMenu.h */,
+				FA5826AE177A2F3700BF1FD7 /* QuickActionsMenu.m */,
+			);
+			path = QuickActionsMenu;
+			sourceTree = "<group>";
+		};
 		FA600FD6175E3FFC00F360A6 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
@@ -1747,6 +1759,7 @@
 		FAE6AC7616A0E27B0082BBB5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FA5826AC177A2F2300BF1FD7 /* QuickActionsMenu */,
 				FAB7BA231779D94B0047C7C0 /* UIControl+Blocks */,
 				FA13A55A1767833400974387 /* UIScrollSlidingPages */,
 				FACEE6141737E9AB006A9912 /* NSShadow+Initializer */,
@@ -2122,6 +2135,7 @@
 				FA54DEF916A19B47006A92E0 /* MBProgressHUD.m in Sources */,
 				FA54DEFD16A19BD8006A92E0 /* IntelViewController.m in Sources */,
 				FAD5EF0A16A2005900182F6B /* ScoreViewController.m in Sources */,
+				FA5826AF177A2F3700BF1FD7 /* QuickActionsMenu.m in Sources */,
 				FAB7BA261779D96B0047C7C0 /* UIControl+Blocks.m in Sources */,
 				FAD5EF0D16A2006C00182F6B /* MissionsViewController.m in Sources */,
 				FAD5EF1016A2008400182F6B /* RecruitViewController.m in Sources */,
