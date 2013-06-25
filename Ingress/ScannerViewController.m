@@ -559,11 +559,6 @@
 }
 
 - (void)updateRangeCircleView {
-	if ([Utilities isOS7]) {
-		#warning Crashes on iOS7
-		return;
-	}
-	
     // Create view on first update
     if ( ! rangeCircleView) {
         rangeCircleView = [UIView new];
@@ -748,11 +743,8 @@
 	if (mapView.zoomLevel < 15) {
 		if ([Utilities isOS7]) {
 			#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
-			
-				#warning Doesn't work on iOS 7 and causes infinite loop
-//				[mapView setCenterCoordinate:mapView.centerCoordinate zoomLevel:15 animated:NO];
+                [mapView setCenterCoordinate:mapView.centerCoordinate zoomLevel:15 animated:NO];
 
-//				This new api does nothing too
 //				MKMapCamera *camera = [MKMapCamera camera];
 //				camera.centerCoordinate = mapView.centerCoordinate;
 //				camera.heading = 0;
@@ -760,7 +752,6 @@
 //				camera.altitude = 50;
 //				NSLog(@"camera: %@", camera);
 //				[mapView setCamera:camera animated:NO];
-			
 			#endif
 		} else {
 			[mapView setCenterCoordinate:mapView.centerCoordinate zoomLevel:15 animated:NO];
@@ -931,8 +922,7 @@
     MKCoordinateSpan span = MKCoordinateSpanMake(latdelta, londelta);
 	MKCoordinateRegion region = MKCoordinateRegionMake(originalRegion.center, span);
 
-	#warning Temporary solution for iOS7
-	if ([Utilities isOS7] || [self zoomLevelForRegion:region] >= 15) {
+	if ([self zoomLevelForRegion:region] >= 15) {
 		[_mapView setRegion:region animated:NO];
 	}
     
