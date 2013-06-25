@@ -564,6 +564,11 @@
 }
 
 - (void)updateRangeCircleView {
+    if ([Utilities isOS7]) {
+#warning Crashes on iOS7
+        return;
+    }
+    
     // Create view on first update
     if ( ! rangeCircleView) {
         rangeCircleView = [UIView new];
