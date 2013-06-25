@@ -21,11 +21,10 @@
 	__weak IBOutlet MKMapView *_mapView;
 	__weak IBOutlet UIImageView *playerArrowImage;
 	
-	__weak IBOutlet UIButton *fireXmpButton;
 	ChooserViewController *_levelChooser;
 	
 	__weak IBOutlet UIImageView *bgImage;
-	
+    __weak IBOutlet GUIButton *opsButton;
 	__weak IBOutlet UILabel *levelLabel;
 //	__weak IBOutlet UIImageView *levelImage;
 	__weak IBOutlet APView *apView;

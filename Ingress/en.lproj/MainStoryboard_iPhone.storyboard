@@ -121,6 +121,9 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="commBg.png" translatesAutoresizingMaskIntoConstraints="NO" id="jDs-fV-Dwr">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="iOV-VZ-aeO"/>
+                                </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lju-ke-wfF">
                                 <rect key="frame" x="264" y="0.0" width="54" height="32"/>
@@ -203,6 +206,7 @@
                             <constraint firstItem="2pI-Dl-W4O" firstAttribute="leading" secondItem="KKy-Ai-3Pl" secondAttribute="leading" type="user" id="Jt8-Nu-JoB"/>
                             <constraint firstItem="lju-ke-wfF" firstAttribute="top" secondItem="jDs-fV-Dwr" secondAttribute="top" type="default" id="Rii-04-7R7"/>
                             <constraint firstAttribute="trailing" secondItem="lju-ke-wfF" secondAttribute="trailing" constant="2" id="cc5-Pp-YoF"/>
+                            <constraint firstItem="jDs-fV-Dwr" firstAttribute="trailing" secondItem="2pI-Dl-W4O" secondAttribute="trailing" type="default" id="dmg-uA-VS2"/>
                             <constraint firstItem="jDs-fV-Dwr" firstAttribute="leading" secondItem="2pI-Dl-W4O" secondAttribute="leading" type="default" id="k1v-K1-C39"/>
                             <constraint firstItem="2pI-Dl-W4O" firstAttribute="bottom" secondItem="KKy-Ai-3Pl" secondAttribute="bottom" type="default" id="kvN-oU-DKl"/>
                         </constraints>
@@ -1117,7 +1121,6 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
                     <navigationItem key="navigationItem" id="DGE-a3-6cB"/>
-                    <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
                         <outlet property="activationButton" destination="hHD-Es-Bxa" id="wf9-2T-4Qa"/>
                         <outlet property="activationCodeField" destination="UE4-B0-iFm" id="sId-tg-6lX"/>
@@ -1302,9 +1305,9 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                                     <constraint firstAttribute="height" constant="44" type="user" id="Dgm-u0-1IV"/>
                                     <constraint firstAttribute="width" constant="60" id="M0D-Wj-9Dp"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="OPS">
-                                    <color key="titleColor" red="0.56470588239999997" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <state key="disabled">
@@ -1387,6 +1390,7 @@ What is clear, is that whoever controls the XM, controls the destiny of mankind.
                         <outlet property="bgImage" destination="rgS-1f-mzM" id="0oU-xG-bLH"/>
                         <outlet property="levelLabel" destination="7MI-jq-NjA" id="hjb-HK-2sK"/>
                         <outlet property="nicknameLabel" destination="oVe-o2-Lr5" id="vpD-9Y-GZW"/>
+                        <outlet property="opsButton" destination="HLu-v7-LER" id="Rhx-FJ-rQz"/>
                         <outlet property="playerArrowImage" destination="BX0-yd-s1M" id="8sT-MT-J35"/>
                         <outlet property="virusChoosePortalCancelButton" destination="waa-9V-nq3" id="DdO-1U-GIX"/>
                         <outlet property="virusChoosePortalLabel" destination="2e8-m3-jc6" id="IMm-SW-ggs"/>
@@ -2390,6 +2394,10 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DD1-CI-J7z">
                                 <rect key="frame" x="0.0" y="20" width="62" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="62" id="W3j-O3-aLX"/>
+                                    <constraint firstAttribute="height" constant="34" id="eGR-Pg-loz"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" size="button"/>
                                 <state key="normal" image="ops_close_button_default.png">
                                     <color key="titleColor" red="0.92156862750000001" green="0.73725490199999999" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
@@ -2570,6 +2578,10 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     </label>
                                     <imageView userInteractionEnabled="NO" tag="32" contentMode="scaleToFill" image="resonator_N.png" translatesAutoresizingMaskIntoConstraints="NO" id="sTl-ca-2VI">
                                         <rect key="frame" x="52" y="70" width="36" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="39" id="6mY-k1-NYv"/>
+                                            <constraint firstAttribute="width" constant="36" id="UnM-g4-5Sf"/>
+                                        </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" tag="31" contentMode="scaleToFill" image="resonator_NE.png" translatesAutoresizingMaskIntoConstraints="NO" id="KLX-Br-DtD">
                                         <rect key="frame" x="60" y="84" width="56" height="36"/>
@@ -2582,6 +2594,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                         <rect key="frame" x="54" y="104" width="68" height="38"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="68" id="d6J-8b-jgb"/>
+                                            <constraint firstAttribute="height" constant="38" id="jti-ij-JtJ"/>
                                         </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" tag="37" contentMode="scaleToFill" image="resonator_SE.png" translatesAutoresizingMaskIntoConstraints="NO" id="pXL-eI-DBL">
@@ -2601,6 +2614,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <imageView userInteractionEnabled="NO" tag="35" contentMode="scaleToFill" image="resonator_SW.png" translatesAutoresizingMaskIntoConstraints="NO" id="TFw-BM-yYy">
                                         <rect key="frame" x="0.0" y="102" width="58" height="38"/>
                                         <constraints>
+                                            <constraint firstAttribute="width" constant="58" id="24V-h0-jE7"/>
                                             <constraint firstAttribute="height" constant="38" id="srK-z4-JeS"/>
                                         </constraints>
                                     </imageView>
@@ -2613,6 +2627,10 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" tag="33" contentMode="scaleToFill" image="resonator_NW.png" translatesAutoresizingMaskIntoConstraints="NO" id="xwW-0y-h05">
                                         <rect key="frame" x="31" y="71" width="35" height="39"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="39" id="kLs-IX-BQE"/>
+                                            <constraint firstAttribute="width" constant="35" id="ngU-U6-cgz"/>
+                                        </constraints>
                                     </imageView>
                                     <imageView userInteractionEnabled="NO" tag="42" contentMode="scaleToFill" image="enl_res_energy_fill.png" translatesAutoresizingMaskIntoConstraints="NO" id="WNO-Bo-z3R">
                                         <rect key="frame" x="71" y="0.0" width="7" height="44"/>
@@ -2669,7 +2687,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="A9n-5u-eiN" firstAttribute="leading" secondItem="IWu-Y1-Qec" secondAttribute="leading" type="default" id="AJl-PE-oko"/>
                                     <constraint firstItem="BQp-Pm-fjj" firstAttribute="baseline" secondItem="SqP-Ow-Sgr" secondAttribute="baseline" type="default" id="AWQ-LO-9r6"/>
                                     <constraint firstItem="ych-BV-d2s" firstAttribute="leading" secondItem="SqP-Ow-Sgr" secondAttribute="leading" type="default" id="CFy-tK-YB6"/>
-                                    <constraint firstItem="Td6-71-ZLa" firstAttribute="bottom" secondItem="mD4-FJ-bc0" secondAttribute="bottom" type="default" id="Cqe-wN-7QC"/>
                                     <constraint firstItem="IWu-Y1-Qec" firstAttribute="baseline" secondItem="BQp-Pm-fjj" secondAttribute="baseline" type="default" id="Dky-Bw-l7L"/>
                                     <constraint firstAttribute="trailing" secondItem="iI8-Vk-fD4" secondAttribute="trailing" constant="32" id="Exh-48-AjY"/>
                                     <constraint firstItem="NAI-t7-cTU" firstAttribute="bottom" secondItem="6EI-dR-nxm" secondAttribute="bottom" type="default" id="FOo-3b-SsI"/>
@@ -2678,6 +2695,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="ych-BV-d2s" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="35" id="Fmd-iD-uWf"/>
                                     <constraint firstItem="08N-ra-OaE" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="105" id="Ges-Rq-Af1"/>
                                     <constraint firstItem="08N-ra-OaE" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="21" id="GrZ-yH-hVl"/>
+                                    <constraint firstItem="qrg-gr-5hF" firstAttribute="bottom" secondItem="mD4-FJ-bc0" secondAttribute="bottom" type="default" id="HDd-pF-weo"/>
                                     <constraint firstAttribute="bottom" secondItem="LPK-gl-VrS" secondAttribute="bottom" constant="47" id="IOt-Yd-kZW"/>
                                     <constraint firstItem="G1b-Ok-CJl" firstAttribute="top" secondItem="qrg-gr-5hF" secondAttribute="top" type="default" id="Jcg-9z-AFq"/>
                                     <constraint firstItem="08N-ra-OaE" firstAttribute="bottom" secondItem="pXL-eI-DBL" secondAttribute="bottom" type="default" id="LAB-rN-VD9"/>
@@ -2701,6 +2719,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="ppk-RV-jhe" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="81" id="duM-gK-jUp"/>
                                     <constraint firstItem="KLX-Br-DtD" firstAttribute="centerX" secondItem="zEQ-0c-NAe" secondAttribute="centerX" type="default" id="eZq-KU-qya"/>
                                     <constraint firstItem="iI8-Vk-fD4" firstAttribute="leading" secondItem="BQp-Pm-fjj" secondAttribute="leading" type="default" id="f5x-ki-SeX"/>
+                                    <constraint firstItem="TFw-BM-yYy" firstAttribute="leading" secondItem="mD4-FJ-bc0" secondAttribute="leading" type="default" id="gKg-eg-UgF"/>
                                     <constraint firstItem="NAI-t7-cTU" firstAttribute="centerX" secondItem="ych-BV-d2s" secondAttribute="centerX" type="default" id="h0O-sY-MEv"/>
                                     <constraint firstItem="GI8-4l-eUD" firstAttribute="centerX" secondItem="A9n-5u-eiN" secondAttribute="centerX" type="default" id="i5V-gv-Huo"/>
                                     <constraint firstItem="A9n-5u-eiN" firstAttribute="baseline" secondItem="iI8-Vk-fD4" secondAttribute="baseline" type="default" id="k4t-B6-wrL"/>
@@ -2711,6 +2730,7 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="NAI-t7-cTU" firstAttribute="leading" secondItem="G1b-Ok-CJl" secondAttribute="leading" type="default" id="noO-6t-nuH"/>
                                     <constraint firstItem="qrg-gr-5hF" firstAttribute="leading" secondItem="WNO-Bo-z3R" secondAttribute="leading" type="default" id="o2W-iL-SBL"/>
                                     <constraint firstItem="iI8-Vk-fD4" firstAttribute="baseline" secondItem="ych-BV-d2s" secondAttribute="baseline" type="default" id="ohR-ai-cXK"/>
+                                    <constraint firstItem="G1b-Ok-CJl" firstAttribute="bottom" secondItem="1aa-eF-7rd" secondAttribute="bottom" type="default" id="oti-hg-7c4"/>
                                     <constraint firstItem="qrg-gr-5hF" firstAttribute="trailing" secondItem="WNO-Bo-z3R" secondAttribute="trailing" type="default" id="p9t-B8-eKE"/>
                                     <constraint firstItem="TFw-BM-yYy" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" type="default" id="pOh-ol-mok"/>
                                     <constraint firstItem="xwW-0y-h05" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="71" id="qJx-bG-Bar"/>
@@ -2722,7 +2742,6 @@ You have downloaded what you believe to be a game, but it is not. Something is v
                                     <constraint firstItem="EUM-hs-RCw" firstAttribute="top" secondItem="1aa-eF-7rd" secondAttribute="top" constant="47" id="wad-cU-bTc"/>
                                     <constraint firstItem="Td6-71-ZLa" firstAttribute="top" secondItem="G1b-Ok-CJl" secondAttribute="top" type="default" id="xFX-LN-MGC"/>
                                     <constraint firstItem="ppk-RV-jhe" firstAttribute="leading" secondItem="1aa-eF-7rd" secondAttribute="leading" constant="4" id="zhB-Pw-p4d"/>
-                                    <constraint firstItem="mD4-FJ-bc0" firstAttribute="leading" secondItem="LPK-gl-VrS" secondAttribute="leading" type="default" id="zoU-zP-Bx8"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -4155,6 +4174,262 @@ RARE</string>
         <image name="shield_verycommon.png" width="50" height="50"/>
         <image name="turretBtn.png" width="50" height="50"/>
     </resources>
+    <classes>
+        <class className="APView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/APView.h"/>
+        </class>
+        <class className="ChooserViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChooserViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="action:" candidateClass="UIButton"/>
+                <relationship kind="action" name="stepperChanged:" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="countButton" candidateClass="GUIButton"/>
+                <relationship kind="outlet" name="countLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="countStepper" candidateClass="UIStepper"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CommTableViewCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CommTableViewCell.h"/>
+            <relationships>
+                <relationship kind="outlet" name="messageLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="CommTableViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CommTableViewController.h"/>
+        </class>
+        <class className="CommViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CommViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="showHide"/>
+                <relationship kind="action" name="transmit"/>
+                <relationship kind="outlet" name="bgImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="showHideButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="transmitButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="transmitContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="transmitTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="CustomBackgroundColorButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomBackgroundColorButton.h"/>
+        </class>
+        <class className="DarkPressedBackgroundButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DarkPressedBackgroundButton.h"/>
+        </class>
+        <class className="DeviceViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/DeviceViewController.h"/>
+        </class>
+        <class className="GLViewController" superclassName="GLKViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GLViewController.h"/>
+        </class>
+        <class className="GUIButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GUIButton.h"/>
+        </class>
+        <class className="GlowingLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/GlowingLabel.h"/>
+        </class>
+        <class className="IntelViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/IntelViewController.h"/>
+        </class>
+        <class className="ItemsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ItemsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="submitPasscode"/>
+                <relationship kind="outlet" name="passcodeContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="passcodeTextField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="submitPasscodeButton" candidateClass="UIButton"/>
+            </relationships>
+        </class>
+        <class className="LoadingViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoadingViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="activate"/>
+                <relationship kind="action" name="codenameConfirm"/>
+                <relationship kind="action" name="codenameRetry"/>
+                <relationship kind="action" name="createCodename"/>
+                <relationship kind="action" name="retryHandshake"/>
+                <relationship kind="action" name="termsCheckboxChanged"/>
+                <relationship kind="action" name="termsConfirm"/>
+                <relationship kind="outlet" name="activationButton" candidateClass="CustomBackgroundColorButton"/>
+                <relationship kind="outlet" name="activationCodeField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="activationErrorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="activationView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="codenameConfirmButton" candidateClass="StretchableBackgroundButton"/>
+                <relationship kind="outlet" name="codenameConfirmLabel" candidateClass="TypeWriterLabel"/>
+                <relationship kind="outlet" name="codenameConfirmRetryButton" candidateClass="StretchableBackgroundButton"/>
+                <relationship kind="outlet" name="codenameConfirmView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="codenameErrorLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="codenameErrorRetryButton" candidateClass="StretchableBackgroundButton"/>
+                <relationship kind="outlet" name="codenameErrorView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="createCodenameButton" candidateClass="CustomBackgroundColorButton"/>
+                <relationship kind="outlet" name="createCodenameField" candidateClass="UITextField"/>
+                <relationship kind="outlet" name="createCodenameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="createCodenameScrollview" candidateClass="TPKeyboardAvoidingScrollView"/>
+                <relationship kind="outlet" name="introTextView" candidateClass="UITextView"/>
+                <relationship kind="outlet" name="introView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="label" candidateClass="GlowingLabel"/>
+                <relationship kind="outlet" name="retryHandshakeButton" candidateClass="GUIButton"/>
+                <relationship kind="outlet" name="termsCheckboxButton" candidateClass="SelectingButton"/>
+                <relationship kind="outlet" name="termsConfirmButton" candidateClass="StretchableBackgroundButton"/>
+                <relationship kind="outlet" name="termsDescriptionLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="termsLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="termsView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="termsWarningLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="typewriterLabel" candidateClass="TypeWriterLabel"/>
+                <relationship kind="outlet" name="typewriterView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="wheelActivityIndicatorView" candidateClass="WheelActivityIndicatorView"/>
+            </relationships>
+        </class>
+        <class className="MediaItemsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MediaItemsViewController.h"/>
+        </class>
+        <class className="MediaWebViewViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MediaWebViewViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="action"/>
+                <relationship kind="action" name="close"/>
+                <relationship kind="outlet" name="_webView" candidateClass="UIWebView"/>
+            </relationships>
+        </class>
+        <class className="MissionViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MissionViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="join:"/>
+                <relationship kind="outlet" name="altButton" candidateClass="StretchableBackgroundButton"/>
+                <relationship kind="outlet" name="authLabel" candidateClass="GlowingLabel"/>
+                <relationship kind="outlet" name="authProgressView" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="choosingLabel" candidateClass="GlowingLabel"/>
+                <relationship kind="outlet" name="factionChooseButtons" candidateClass="UIView"/>
+                <relationship kind="outlet" name="factionChooseButtonsLabel" candidateClass="GlowingLabel"/>
+                <relationship kind="outlet" name="jarvisBackground" candidateClass="UIView"/>
+                <relationship kind="outlet" name="joinEnlightenedButton" candidateClass="GUIButton"/>
+                <relationship kind="outlet" name="joinResistanceButton" candidateClass="GUIButton"/>
+                <relationship kind="outlet" name="mainButton" candidateClass="StretchableBackgroundButton"/>
+                <relationship kind="outlet" name="subtitleLabel" candidateClass="GlowingLabel"/>
+                <relationship kind="outlet" name="textView" candidateClass="ScrollTextView"/>
+                <relationship kind="outlet" name="titleLabel" candidateClass="GlowingLabel"/>
+                <relationship kind="outlet" name="typewriterLabel" candidateClass="TypeWriterLabel"/>
+            </relationships>
+        </class>
+        <class className="MissionsViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/MissionsViewController.h"/>
+        </class>
+        <class className="NSLayoutConstraint" superclassName="NSObject">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
+        </class>
+        <class className="OpsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/OpsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="back"/>
+                <relationship kind="outlet" name="opsCloseButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="opsLabel" candidateClass="GlowingLabel"/>
+            </relationships>
+        </class>
+        <class className="PortalActionsViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalActionsViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="hack:" candidateClass="GUIButton"/>
+                <relationship kind="action" name="link:" candidateClass="GUIButton"/>
+                <relationship kind="action" name="recharge:" candidateClass="GUIButton"/>
+                <relationship kind="outlet" name="hackButton" candidateClass="GUIButton"/>
+                <relationship kind="outlet" name="imageActivityIndicator" candidateClass="UIActivityIndicatorView"/>
+                <relationship kind="outlet" name="infoLabel1" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="infoLabel2" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="linkButton" candidateClass="GUIButton"/>
+                <relationship kind="outlet" name="portalTitleLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="rechargeButton" candidateClass="GUIButton"/>
+            </relationships>
+        </class>
+        <class className="PortalDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalDetailViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="back:" candidateClass="UIBarButtonItem"/>
+            </relationships>
+        </class>
+        <class className="PortalInfoViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalInfoViewController.h"/>
+        </class>
+        <class className="PortalKeyCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalKeyCell.h"/>
+        </class>
+        <class className="PortalKeysViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalKeysViewController.h"/>
+        </class>
+        <class className="PortalUpgradeViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalUpgradeViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="modButtonPressed:" candidateClass="GUIButton"/>
+                <relationship kind="action" name="rechargeButtonPressed:" candidateClass="GUIButton"/>
+                <relationship kind="action" name="removeModButtonPressed:" candidateClass="GUIButton"/>
+                <relationship kind="action" name="resonatorButtonPressed:" candidateClass="GUIButton"/>
+            </relationships>
+        </class>
+        <class className="RecruitViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecruitViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="invite"/>
+                <relationship kind="outlet" name="inviteButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="inviteContainerView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="inviteLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="inviteTextField" candidateClass="UITextField"/>
+            </relationships>
+        </class>
+        <class className="ResourceCell" superclassName="UITableViewCell">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ResourceCell.h"/>
+            <relationships>
+                <relationship kind="action" name="action:" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="itemImageView" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="itemTitleLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="ResourcesViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ResourcesViewController.h"/>
+        </class>
+        <class className="ScannerViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScannerViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="openOPS"/>
+                <relationship kind="action" name="showAP"/>
+                <relationship kind="action" name="showXM"/>
+                <relationship kind="action" name="virusChoosePortalCancel"/>
+                <relationship kind="outlet" name="_mapView" candidateClass="MKMapView"/>
+                <relationship kind="outlet" name="apLabel" candidateClass="GlowingLabel"/>
+                <relationship kind="outlet" name="apView" candidateClass="APView"/>
+                <relationship kind="outlet" name="bgImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="levelLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="nicknameLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="opsButton" candidateClass="GUIButton"/>
+                <relationship kind="outlet" name="playerArrowImage" candidateClass="UIImageView"/>
+                <relationship kind="outlet" name="virusChoosePortalCancelButton" candidateClass="GUIButton"/>
+                <relationship kind="outlet" name="virusChoosePortalLabel" candidateClass="GlowingLabel"/>
+                <relationship kind="outlet" name="xmIndicator" candidateClass="UIProgressView"/>
+                <relationship kind="outlet" name="xmLabel" candidateClass="GlowingLabel"/>
+            </relationships>
+        </class>
+        <class className="ScoreViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScoreViewController.h"/>
+        </class>
+        <class className="ScrollTextView" superclassName="UITextView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScrollTextView.h"/>
+        </class>
+        <class className="SelectingButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectingButton.h"/>
+        </class>
+        <class className="StretchableBackgroundButton" superclassName="UIButton">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/StretchableBackgroundButton.h"/>
+        </class>
+        <class className="TPKeyboardAvoidingScrollView" superclassName="UIScrollView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TPKeyboardAvoidingScrollView.h"/>
+        </class>
+        <class className="TypeWriterLabel" superclassName="UILabel">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/TypeWriterLabel.h"/>
+        </class>
+        <class className="WheelActivityIndicatorView" superclassName="UIView">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/WheelActivityIndicatorView.h"/>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

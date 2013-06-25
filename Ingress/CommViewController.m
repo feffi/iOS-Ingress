@@ -130,7 +130,7 @@
 			[allTableView refresh];
 			[factionTableView refresh];
 		} else {
-			frame.origin.y = superViewHeight-8;
+			frame.origin.y = superViewHeight-12;
 			[transmitTextField resignFirstResponder];
 		}
 		self.view.frame = frame;
