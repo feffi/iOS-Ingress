@@ -19,7 +19,8 @@
     [super viewDidLoad];
 
 	TTScrollSlidingPagesController *slider = [TTScrollSlidingPagesController new];
-	slider.titleScrollerHeight = 64;
+	slider.titleScrollerHeight = 30;
+    slider.labelsOffset = 0;
 	slider.disableTitleScrollerShadow = YES;
 	slider.disableUIPageControl = YES;
 	slider.zoomOutAnimationDisabled = YES;

@@ -171,7 +171,7 @@
 #pragma mark - TTSlidingPagesDataSource
 
 - (int)numberOfPagesForSlidingPagesViewController:(TTScrollSlidingPagesController *)source {
-    return 7;
+    return 5;
 }
 
 - (TTSlidingPage *)pageForSlidingPagesViewController:(TTScrollSlidingPagesController*)source atIndex:(int)index{
@@ -179,25 +179,28 @@
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
 
 	switch (index) {
+//		case 0:
+//			viewController = [storyboard instantiateViewControllerWithIdentifier:@"ResourcesViewController"];
+//			break;
+//		case 1:
+//			viewController = [storyboard instantiateViewControllerWithIdentifier:@"PortalKeysViewController"];
+//			break;
+//		case 2:
+//			viewController = [storyboard instantiateViewControllerWithIdentifier:@"MediaItemsViewController"];
+//			break;
 		case 0:
-			viewController = [storyboard instantiateViewControllerWithIdentifier:@"ResourcesViewController"];
+            viewController = [storyboard instantiateViewControllerWithIdentifier:@"ItemsViewController"];
 			break;
-		case 1:
-			viewController = [storyboard instantiateViewControllerWithIdentifier:@"PortalKeysViewController"];
+        case 1:
+			viewController = [storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];
 			break;
 		case 2:
-			viewController = [storyboard instantiateViewControllerWithIdentifier:@"MediaItemsViewController"];
-			break;
-		case 3:
-			viewController = self.scoreViewController; //[storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];
-			break;
-		case 4:
 			viewController = [storyboard instantiateViewControllerWithIdentifier:@"MissionsViewController"];
 			break;
-		case 5:
+		case 3:
 			viewController = [storyboard instantiateViewControllerWithIdentifier:@"RecruitViewController"];
 			break;
-		case 6:
+		case 4:
 			viewController = [storyboard instantiateViewControllerWithIdentifier:@"DeviceViewController"];
 			break;
 	}
@@ -208,25 +211,28 @@
 - (TTSlidingPageTitle *)titleForSlidingPagesViewController:(TTScrollSlidingPagesController *)source atIndex:(int)index{
     TTSlidingPageTitle *title;
 	switch (index) {
+//		case 0:
+//			title = [[TTSlidingPageTitle alloc] initWithHeaderText:@"Resources"];
+//			break;
+//		case 1:
+//			title = [[TTSlidingPageTitle alloc] initWithHeaderText:@"Portal Keys"];
+//			break;
+//		case 2:
+//			title = [[TTSlidingPageTitle alloc] initWithHeaderText:@"Media"];
+//			break;
 		case 0:
-			title = [[TTSlidingPageTitle alloc] initWithHeaderText:@"Resources"];
+			title = [[TTSlidingPageTitle alloc] initWithHeaderText:@"Items"];
 			break;
 		case 1:
-			title = [[TTSlidingPageTitle alloc] initWithHeaderText:@"Portal Keys"];
-			break;
-		case 2:
-			title = [[TTSlidingPageTitle alloc] initWithHeaderText:@"Media"];
-			break;
-		case 3:
 			title = [[TTSlidingPageTitle alloc] initWithHeaderText:@"Intel"];
 			break;
-		case 4:
+		case 2:
 			title = [[TTSlidingPageTitle alloc] initWithHeaderText:@"Missions"];
 			break;
-		case 5:
+		case 3:
 			title = [[TTSlidingPageTitle alloc] initWithHeaderText:@"Recruit"];
 			break;
-		case 6:
+		case 4:
 			title = [[TTSlidingPageTitle alloc] initWithHeaderText:@"Device"];
 			break;
 	}
