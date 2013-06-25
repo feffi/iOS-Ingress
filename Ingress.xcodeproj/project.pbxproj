@@ -181,6 +181,7 @@
 		FAAF378217610D63009BD67C /* multihack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAF377E17610D63009BD67C /* multihack@2x.png */; };
 		FAAF378317610D63009BD67C /* turret@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAF377F17610D63009BD67C /* turret@2x.png */; };
 		FAB5A2CD16AA165D00176C34 /* ChooserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB5A2CC16AA165D00176C34 /* ChooserViewController.m */; };
+		FAB7BA261779D96B0047C7C0 /* UIControl+Blocks.m in Sources */ = {isa = PBXBuildFile; fileRef = FAB7BA251779D96B0047C7C0 /* UIControl+Blocks.m */; };
 		FAC23D7716B16F31000C17DD /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAC23D7616B16F31000C17DD /* CoreData.framework */; };
 		FAC23D7A16B16F44000C17DD /* Ingress.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = FAC23D7816B16F44000C17DD /* Ingress.xcdatamodeld */; };
 		FAC23E4F16B2E3A9000C17DD /* MKPolyline+PortalLink.m in Sources */ = {isa = PBXBuildFile; fileRef = FAC23E4E16B2E3A8000C17DD /* MKPolyline+PortalLink.m */; };
@@ -556,6 +557,8 @@
 		FAAF377F17610D63009BD67C /* turret@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "turret@2x.png"; sourceTree = "<group>"; };
 		FAB5A2CB16AA165D00176C34 /* ChooserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChooserViewController.h; sourceTree = "<group>"; };
 		FAB5A2CC16AA165D00176C34 /* ChooserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChooserViewController.m; sourceTree = "<group>"; };
+		FAB7BA241779D96B0047C7C0 /* UIControl+Blocks.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIControl+Blocks.h"; sourceTree = "<group>"; };
+		FAB7BA251779D96B0047C7C0 /* UIControl+Blocks.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIControl+Blocks.m"; sourceTree = "<group>"; };
 		FAC23D6F16B16EB6000C17DD /* DB.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DB.h; sourceTree = "<group>"; };
 		FAC23D7616B16F31000C17DD /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		FAC23D7916B16F44000C17DD /* Ingress.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Ingress.xcdatamodel; sourceTree = "<group>"; };
@@ -1416,6 +1419,15 @@
 			path = Ingress;
 			sourceTree = "<group>";
 		};
+		FAB7BA231779D94B0047C7C0 /* UIControl+Blocks */ = {
+			isa = PBXGroup;
+			children = (
+				FAB7BA241779D96B0047C7C0 /* UIControl+Blocks.h */,
+				FAB7BA251779D96B0047C7C0 /* UIControl+Blocks.m */,
+			);
+			path = "UIControl+Blocks";
+			sourceTree = "<group>";
+		};
 		FAC23D7B16B16F5A000C17DD /* DB */ = {
 			isa = PBXGroup;
 			children = (
@@ -1735,6 +1747,7 @@
 		FAE6AC7616A0E27B0082BBB5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FAB7BA231779D94B0047C7C0 /* UIControl+Blocks */,
 				FA13A55A1767833400974387 /* UIScrollSlidingPages */,
 				FACEE6141737E9AB006A9912 /* NSShadow+Initializer */,
 				FA3BD77E17352C5B004F5ED5 /* APView */,
@@ -2109,6 +2122,7 @@
 				FA54DEF916A19B47006A92E0 /* MBProgressHUD.m in Sources */,
 				FA54DEFD16A19BD8006A92E0 /* IntelViewController.m in Sources */,
 				FAD5EF0A16A2005900182F6B /* ScoreViewController.m in Sources */,
+				FAB7BA261779D96B0047C7C0 /* UIControl+Blocks.m in Sources */,
 				FAD5EF0D16A2006C00182F6B /* MissionsViewController.m in Sources */,
 				FAD5EF1016A2008400182F6B /* RecruitViewController.m in Sources */,
 				FAD5EF1816A2081B00182F6B /* PCPieChart.m in Sources */,

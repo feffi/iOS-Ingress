@@ -989,22 +989,23 @@ NSString *const MilesOrKM = @"MilesOrKM";
 	};
 	
 	[self sendRequest:@"gameplay/addMod" params:dict completionHandler:^(id responseObj) {
+        //NSLog(@"addMod responseObj: %@", responseObj);
 		
-		if ([responseObj[@"error"] isEqualToString:@"PORTAL_OUT_OF_RANGE"]) {
-			
-			dispatch_async(dispatch_get_main_queue(), ^{
-				handler(@"Portal out of range");
-			});
-			
-		} else {
-			
-			//NSLog(@"addMod responseObj: %@", responseObj);
-			
-			dispatch_async(dispatch_get_main_queue(), ^{
-				handler(nil);
-			});
-			
-		}
+        if (responseObj[@"error"]) {
+            if ([responseObj[@"error"] isEqualToString:@"PORTAL_OUT_OF_RANGE"]) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    handler(@"Portal out of range");
+                });
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    handler(responseObj[@"error"]);
+                });
+            }
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                handler(nil);
+            });
+        }
 		
 	}];
 	
@@ -1018,22 +1019,23 @@ NSString *const MilesOrKM = @"MilesOrKM";
 	};
 
 	[self sendRequest:@"gameplay/removeMod" params:dict completionHandler:^(id responseObj) {
-
-		if ([responseObj[@"error"] isEqualToString:@"PORTAL_OUT_OF_RANGE"]) {
-
-			dispatch_async(dispatch_get_main_queue(), ^{
-				handler(@"Portal out of range");
-			});
-
-		} else {
-
-			//NSLog(@"removeMod responseObj: %@", responseObj);
-
-			dispatch_async(dispatch_get_main_queue(), ^{
-				handler(nil);
-			});
-			
-		}
+        //NSLog(@"removeMod responseObj: %@", responseObj);
+        
+        if (responseObj[@"error"]) {
+            if ([responseObj[@"error"] isEqualToString:@"PORTAL_OUT_OF_RANGE"]) {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    handler(@"Portal out of range");
+                });
+            } else {
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    handler(responseObj[@"error"]);
+                });
+            }
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                handler(nil);
+            });
+        }
 		
 	}];
 
