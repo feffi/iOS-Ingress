@@ -886,6 +886,12 @@ NSString *const MilesOrKM = @"MilesOrKM";
 				handler(@"You don't have enough XM", nil, 0);
 			});
 			
+		} else if ([responseObj[@"error"] isEqualToString:@"SERVER_ERROR"]) {
+			
+			dispatch_async(dispatch_get_main_queue(), ^{
+				handler(@"Server error", nil, 0);
+			});
+
 		} else {
 			
 			dispatch_async(dispatch_get_main_queue(), ^{
@@ -925,7 +931,19 @@ NSString *const MilesOrKM = @"MilesOrKM";
 			dispatch_async(dispatch_get_main_queue(), ^{
 				handler(@"Portal has all resonators");
 			});
+
+		} else if ([responseObj[@"error"] isEqualToString:@"ITEM_DOES_NOT_EXIST"]) {
+			// This happens when attempting to deploy to a portal that is out of range. TODO Don't allow player to deploy if portal is not in range.
+			dispatch_async(dispatch_get_main_queue(), ^{
+				handler(@"Item does not exist");
+			});
+
+		} else if ([responseObj[@"error"] isEqualToString:@"SERVER_ERROR"]) {
 			
+			dispatch_async(dispatch_get_main_queue(), ^{
+				handler(@"Server error");
+			});
+
 		} else {
 			//NSLog(@"deployResonator responseObj: %@", responseObj);
 			
@@ -1320,7 +1338,7 @@ NSString *const MilesOrKM = @"MilesOrKM";
 		@"Connection" : @"Keep-Alive",
 		@"Cookie" : [NSString stringWithFormat:@"SACSID=%@", ((self.SACSID) ? (self.SACSID) : @"")],
 	};
-	
+
 	[request setAllHTTPHeaderFields:headers];
 	
 	NSError *error;
@@ -1343,6 +1361,16 @@ NSString *const MilesOrKM = @"MilesOrKM";
 //			NSLog(@"text response: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
 //			return;
 //		}
+
+        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+            //NSLog(@"status code: %d", [httpResponse statusCode]);
+            if ([httpResponse statusCode] == 500) {
+                NSDictionary *responseObj = @{ @"error": @"SERVER_ERROR" };
+                handler(responseObj);
+                return;
+            }
+        }
 
 		NSError *jsonParseError;
 		id responseObj;
