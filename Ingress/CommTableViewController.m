@@ -46,16 +46,21 @@
 }
 
 - (void)refresh {
-	[self.refreshControl beginRefreshing];
-	[self.tableView scrollRectToVisible:CGRectMake(0, 0, 1, 1) animated:YES];
+//	[self.refreshControl beginRefreshing];
+    
+    NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:([self.tableView numberOfRowsInSection:([self.tableView numberOfSections] - 1)] - 1) inSection:([self.tableView numberOfSections] - 1)];
+    [self.tableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 
-	[Plext MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"factionOnly == %d", self.factionOnly]];
+//	[Plext MR_deleteAllMatchingPredicate:[NSPredicate predicateWithFormat:@"factionOnly == %d", self.factionOnly]];
 
 	[[API sharedInstance] loadCommunicationForFactionOnly:self.factionOnly completionHandler:^{
-		[self.refreshControl endRefreshing];
+//		[self.refreshControl endRefreshing];
 
 		self.fetchedResultsController.fetchRequest.predicate = [NSPredicate predicateWithFormat:@"factionOnly == %d", self.factionOnly];
 		[Plext MR_performFetch:self.fetchedResultsController];
+        
+        NSIndexPath *scrollIndexPath = [NSIndexPath indexPathForRow:([self.tableView numberOfRowsInSection:([self.tableView numberOfSections] - 1)] - 1) inSection:([self.tableView numberOfSections] - 1)];
+        [self.tableView scrollToRowAtIndexPath:scrollIndexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
 	}];
 }
 
@@ -69,7 +74,7 @@
 
 - (NSFetchedResultsController *)fetchedResultsController {
 	if (!_fetchedResultsController) {
-		_fetchedResultsController = [Plext MR_fetchAllSortedBy:@"date" ascending:NO withPredicate:[NSPredicate predicateWithFormat:@"factionOnly == %d", self.factionOnly] groupBy:nil delegate:self];
+		_fetchedResultsController = [Plext MR_fetchAllSortedBy:@"date" ascending:YES withPredicate:[NSPredicate predicateWithFormat:@"factionOnly == %d", self.factionOnly] groupBy:nil delegate:self];
 	}
 	return _fetchedResultsController;
 }
@@ -98,7 +103,7 @@
 	
 	CGRect rect = [plext.message boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingTruncatesLastVisibleLine context:NULL];
 	
-	return rect.size.height;
+	return rect.size.height+1;
 	
 }
 

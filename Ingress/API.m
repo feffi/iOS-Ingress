@@ -670,6 +670,26 @@ NSString *const MilesOrKM = @"MilesOrKM";
 		
 		int alienScore = [responseObj[@"result"][@"alienScore"] intValue];
 		int resistanceScore = [responseObj[@"result"][@"resistanceScore"] intValue];
+        
+        [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+
+            NSMutableAttributedString *atrstr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Enlightened %d - Resistance %d", alienScore, resistanceScore] attributes:[Utilities attributesWithShadow:NO size:16 color:[UIColor whiteColor]]];
+            
+            int len1 = [NSString stringWithFormat:@"Enlightened %d", alienScore].length;
+            [atrstr setAttributes:[Utilities attributesWithShadow:NO size:16 color:[Utilities colorForFaction:@"ALIENS"]] range:NSMakeRange(0, len1)];
+            
+            int len2 = [NSString stringWithFormat:@"Resistance %d", resistanceScore].length;
+            [atrstr setAttributes:[Utilities attributesWithShadow:NO size:16 color:[Utilities colorForFaction:@"RESISTANCE"]] range:NSMakeRange(atrstr.length-len2, len2)];
+
+            Plext *plext = [Plext MR_createInContext:localContext];
+            plext.guid = nil;
+            plext.message = atrstr;
+            plext.factionOnly = NO;
+            plext.date = [[NSDate date] timeIntervalSinceReferenceDate];
+            plext.mentionsYou = nil;
+            plext.sender = nil;
+            
+        }];
 		
 		dispatch_async(dispatch_get_main_queue(), ^{
 			handler(alienScore, resistanceScore);
@@ -886,6 +906,12 @@ NSString *const MilesOrKM = @"MilesOrKM";
 				handler(@"You don't have enough XM", nil, 0);
 			});
 			
+		} else if ([responseObj[@"error"] isEqualToString:@"SERVER_ERROR"]) {
+			
+			dispatch_async(dispatch_get_main_queue(), ^{
+				handler(@"Server error", nil, 0);
+			});
+
 		} else {
 			
 			dispatch_async(dispatch_get_main_queue(), ^{
@@ -925,7 +951,19 @@ NSString *const MilesOrKM = @"MilesOrKM";
 			dispatch_async(dispatch_get_main_queue(), ^{
 				handler(@"Portal has all resonators");
 			});
+
+		} else if ([responseObj[@"error"] isEqualToString:@"ITEM_DOES_NOT_EXIST"]) {
+			// This happens when attempting to deploy to a portal that is out of range. TODO Don't allow player to deploy if portal is not in range.
+			dispatch_async(dispatch_get_main_queue(), ^{
+				handler(@"Item does not exist");
+			});
+
+		} else if ([responseObj[@"error"] isEqualToString:@"SERVER_ERROR"]) {
 			
+			dispatch_async(dispatch_get_main_queue(), ^{
+				handler(@"Server error");
+			});
+
 		} else {
 			//NSLog(@"deployResonator responseObj: %@", responseObj);
 			
@@ -1320,7 +1358,7 @@ NSString *const MilesOrKM = @"MilesOrKM";
 		@"Connection" : @"Keep-Alive",
 		@"Cookie" : [NSString stringWithFormat:@"SACSID=%@", ((self.SACSID) ? (self.SACSID) : @"")],
 	};
-	
+
 	[request setAllHTTPHeaderFields:headers];
 	
 	NSError *error;
@@ -1343,6 +1381,16 @@ NSString *const MilesOrKM = @"MilesOrKM";
 //			NSLog(@"text response: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
 //			return;
 //		}
+
+        if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
+            NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
+            //NSLog(@"status code: %d", [httpResponse statusCode]);
+            if ([httpResponse statusCode] == 500) {
+                NSDictionary *responseObj = @{ @"error": @"SERVER_ERROR" };
+                handler(responseObj);
+                return;
+            }
+        }
 
 		NSError *jsonParseError;
 		id responseObj;
@@ -2025,6 +2073,20 @@ NSString *const MilesOrKM = @"MilesOrKM";
         if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects] && [[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
             [self playSound:@"SFX_PLAYER_LEVEL_UP"];
         }
+        
+        [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+            
+            NSAttributedString *atrstr = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Level up! You are now level %d.", newLevel] attributes:[Utilities attributesWithShadow:NO size:16 color:[UIColor colorWithRed:226./255. green:179./255. blue:76./255. alpha:1.0]]];
+            
+            Plext *plext = [Plext MR_createInContext:localContext];
+            plext.guid = nil;
+            plext.message = atrstr;
+            plext.factionOnly = NO;
+            plext.date = [[NSDate date] timeIntervalSinceReferenceDate];
+            plext.mentionsYou = nil;
+            plext.sender = nil;
+            
+        }];
 	}
 
 	if (player.energy != [playerEntity[2][@"playerPersonal"][@"energy"] intValue]) {
@@ -2123,6 +2185,50 @@ NSString *const MilesOrKM = @"MilesOrKM";
 		dispatch_async(dispatch_get_main_queue(), ^{
 			[[MTStatusBarOverlay sharedInstance] postFinishMessage:[NSString stringWithFormat:@"+ %d AP", [apGain[@"apGainAmount"] intValue]] duration:3 animated:YES];
 		});
+        
+        NSString *actionStr;
+        
+        if ([apGain[@"apTrigger"] isEqualToString:@"DEPLOYED_RESONATOR"]) {
+            actionStr = @"deploying a Resonator";
+        } else if ([apGain[@"apTrigger"] isEqualToString:@"CAPTURED_PORTAL"]) {
+            actionStr = @"capturing a Portal";
+        } else if ([apGain[@"apTrigger"] isEqualToString:@"CREATED_PORTAL_LINK"]) {
+            actionStr = @"creating a Link";
+        } else if ([apGain[@"apTrigger"] isEqualToString:@"CREATED_A_PORTAL_REGION"]) {
+            actionStr = @"creating a Control Field";
+        } else if ([apGain[@"apTrigger"] isEqualToString:@"DESTROYED_A_RESONATOR"]) {
+            actionStr = @"destroying a Resonator";
+        } else if ([apGain[@"apTrigger"] isEqualToString:@"DESTROYED_A_PORTAL_LINK"]) {
+            actionStr = @"destroying a Link";
+        } else if ([apGain[@"apTrigger"] isEqualToString:@"DESTROYED_PORTAL_REGION"]) {
+            actionStr = @"destroying a Control Field";
+        } else if ([apGain[@"apTrigger"] isEqualToString:@"DEPLOYED_RESONATOR_MOD"]) {
+            actionStr = @"creating a Resonator Mod";
+        } else if ([apGain[@"apTrigger"] isEqualToString:@"HACKING_ENEMY_PORTAL"]) {
+            actionStr = @"hacking an enemy Portal";
+//        } else if ([apGain[@"apTrigger"] isEqualToString:@"INVITED_PLAYER_JOINED"]) {
+        } else if ([apGain[@"apTrigger"] isEqualToString:@"PORTAL_FULLY_POPULATED_WITH_RESONATORS"]) {
+            actionStr = @"fully powering a Portal";
+        } else if ([apGain[@"apTrigger"] isEqualToString:@"REDEEMED_AP"]) {
+            actionStr = @"passcode redemption";
+        } else {
+            actionStr = [NSString stringWithFormat:@"doing something really awesome! (%@)", apGain[@"apTrigger"]];
+        }
+        
+        [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+
+            NSAttributedString *atrstr = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Gained %d AP for %@.", [apGain[@"apGainAmount"] intValue], actionStr] attributes:[Utilities attributesWithShadow:NO size:16 color:[UIColor colorWithRed:226./255. green:179./255. blue:76./255. alpha:1.0]]];
+            
+            Plext *plext = [Plext MR_createInContext:localContext];
+            plext.guid = nil;
+            plext.message = atrstr;
+            plext.factionOnly = NO;
+            plext.date = [[NSDate date] timeIntervalSinceReferenceDate];
+            plext.mentionsYou = nil;
+            plext.sender = nil;
+            
+        }];
+        
 	}
 }
 
@@ -2135,7 +2241,24 @@ NSString *const MilesOrKM = @"MilesOrKM";
                 [[SoundManager sharedManager] playSound:@"Sound/sfx_player_hit.aif"];
             }
             
-			[[MTStatusBarOverlay sharedInstance] postErrorMessage:[NSString stringWithFormat:@"- %d XM", [playerDamage[@"damageAmount"] intValue]] duration:3 animated:YES];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[MTStatusBarOverlay sharedInstance] postErrorMessage:[NSString stringWithFormat:@"- %d XM", [playerDamage[@"damageAmount"] intValue]] duration:3 animated:YES];
+            });
+
+            [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+                
+                NSAttributedString *atrstr = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"You've been hit and lost %d XM!", [playerDamage[@"damageAmount"] intValue]] attributes:[Utilities attributesWithShadow:NO size:16 color:[UIColor colorWithRed:226./255. green:179./255. blue:76./255. alpha:1.0]]];
+                
+                Plext *plext = [Plext MR_createInContext:localContext];
+                plext.guid = nil;
+                plext.message = atrstr;
+                plext.factionOnly = NO;
+                plext.date = [[NSDate date] timeIntervalSinceReferenceDate];
+                plext.mentionsYou = nil;
+                plext.sender = nil;
+                
+            }];
+            
 		});
 	}
 }
