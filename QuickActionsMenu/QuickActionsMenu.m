@@ -73,11 +73,9 @@
         button2 = [QuickActionsMenu optionButton];
         button2.tag = 2;
         [button2 setTitle:@"NEW PORTAL" forState:UIControlStateNormal];
-        button2.hidden = YES;
         [self addSubview:button2];
         
         line2 = [QuickActionsMenu optionLine];
-        line2.hidden = YES;
         [self addSubview:line2];
         
         // -------------------------------------------------
@@ -97,7 +95,6 @@
         button4 = [QuickActionsMenu optionButton];
         button4.tag = 4;
         [button4 setTitle:@"COLLECT ALL" forState:UIControlStateNormal];
-//        button4.hidden = YES;
         [self addSubview:button4];
         
         line4 = [QuickActionsMenu optionLine];

@@ -155,6 +155,16 @@
             case 1:
                 [self fireXMP];
                 break;
+            case 2:
+                
+                if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
+                    UIImagePickerController *cameraVC = [UIImagePickerController new];
+                    cameraVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+//                    cameraVC.delegate = self;
+                    [self presentViewController:cameraVC animated:YES completion:nil];
+                }
+                
+                break;
             case 4: {
                 
                 NSMutableArray *itemsToCollect = [NSMutableArray array];
