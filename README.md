@@ -25,6 +25,11 @@ Website
 
 [http://ios-ingress.com/](http://ios-ingress.com/)
 
+Issues Tracker
+--------------
+
+[![Waffle](http://badge.waffle.io/alex-alex/iOS-Ingress.png)](http://www.waffle.io/alex-alex/iOS-Ingress)
+
 Support
 -------
 
