@@ -93,9 +93,13 @@
 
 - (void)touchUp {
 	if (!self.disabled) {
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+        }
 	} else {
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_fail.aif"];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_fail.aif"];
+        }
 
 		if (self.errorString && ![[self titleColorForState:UIControlStateApplication] isEqual:[UIColor redColor]]) {
 			__block UIColor *oldColor = [self titleColorForState:UIControlStateApplication];
