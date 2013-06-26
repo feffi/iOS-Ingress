@@ -155,6 +155,60 @@
             case 1:
                 [self fireXMP];
                 break;
+            case 4: {
+                
+                NSMutableArray *itemsToCollect = [NSMutableArray array];
+                for (Item *droppedItem in [Item MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"dropped = YES"]]) {
+                    if ([droppedItem distanceFromCoordinate:_mapView.centerCoordinate] <= 40) {
+                        [itemsToCollect addObject:droppedItem];
+                    }
+                }
+                
+                if (itemsToCollect.count > 0) {
+                    
+                    __block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+                    HUD.userInteractionEnabled = YES;
+                    HUD.mode = MBProgressHUDModeIndeterminate;
+                    HUD.dimBackground = YES;
+                    HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+                    HUD.labelText = @"Picking up...";
+                    [[AppDelegate instance].window addSubview:HUD];
+                    [HUD show:YES];
+                    
+                    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+                        [[API sharedInstance] playSound:@"SFX_RESOURCE_PICK_UP"];
+                    }
+                    
+                    __block int completed = 0;
+                    for (Item *droppedItem in itemsToCollect) {
+                        
+                        [[API sharedInstance] pickUpItemWithGuid:droppedItem.guid completionHandler:^(NSString *errorStr) {
+                            
+                            completed++;
+                            
+                            if (completed == itemsToCollect.count) {
+                                [HUD hide:YES];
+                            }
+                            
+                            [_mapView removeAnnotation:droppedItem];
+                            
+                            [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+                                Item *item = (Item *)[localContext existingObjectWithID:droppedItem.objectID error:nil];
+                                item.latitude = 0;
+                                item.longitude = 0;
+                                item.dropped = NO;
+                            } completion:^(BOOL success, NSError *error) {
+                                [[NSNotificationCenter defaultCenter] postNotificationName:@"InventoryUpdatedNotification" object:nil];
+                            }];
+                            
+                        }];
+                        
+                    }
+                    
+                }
+                
+                break;
+            }
         }
         
     }];
