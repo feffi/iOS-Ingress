@@ -675,10 +675,10 @@ NSString *const MilesOrKM = @"MilesOrKM";
 
             NSMutableAttributedString *atrstr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Enlightened %d - Resistance %d", alienScore, resistanceScore] attributes:[Utilities attributesWithShadow:NO size:16 color:[UIColor whiteColor]]];
             
-            int len1 = [NSString stringWithFormat:@"Enlightened %d", alienScore].length;
+            int len1 = [[NSString stringWithFormat:@"Enlightened %d", alienScore] length];
             [atrstr setAttributes:[Utilities attributesWithShadow:NO size:16 color:[Utilities colorForFaction:@"ALIENS"]] range:NSMakeRange(0, len1)];
             
-            int len2 = [NSString stringWithFormat:@"Resistance %d", resistanceScore].length;
+            int len2 = [[NSString stringWithFormat:@"Resistance %d", resistanceScore] length];
             [atrstr setAttributes:[Utilities attributesWithShadow:NO size:16 color:[Utilities colorForFaction:@"RESISTANCE"]] range:NSMakeRange(atrstr.length-len2, len2)];
 
             Plext *plext = [Plext MR_createInContext:localContext];

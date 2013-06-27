@@ -24,6 +24,7 @@
 
 }
 
+@property (nonatomic, strong) CLLocation *playerLocation;
 @property (nonatomic, strong) Portal *portal;
 @property (nonatomic, strong) UIImageView *imageView;
 
