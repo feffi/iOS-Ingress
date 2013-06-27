@@ -56,7 +56,7 @@
 	[GAI sharedInstance].trackUncaughtExceptions = YES;
 	[GAI sharedInstance].dispatchInterval = 20;
 //	[GAI sharedInstance].debug = YES;
-	id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@"UA-41323983-1"];
+	id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:@""];
 	[GAI sharedInstance].defaultTracker = tracker;
 
     return YES;
