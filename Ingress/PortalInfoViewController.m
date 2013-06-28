@@ -26,7 +26,7 @@
 		
 		UILabel *levelLabel = (UILabel *)[self.view viewWithTag:10+i];
 		levelLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:14];
-		levelLabel.text = @"";
+		levelLabel.text = @" "; // IMPORTANT This needs to be a space or alignment will not work for all resonators.
 		
 		UIImageView *resonatorImage = (UIImageView *)[self.view viewWithTag:30+i];
 		[resonatorImage setHidden:YES];
