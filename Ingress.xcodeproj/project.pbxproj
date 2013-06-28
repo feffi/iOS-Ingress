@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		52BF802B177903790027BE3C /* ResonatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BF802A177903790027BE3C /* ResonatorView.m */; };
-		52BF802D177A40A50027BE3C /* output.txt in Resources */ = {isa = PBXBuildFile; fileRef = 52BF802C177A40A50027BE3C /* output.txt */; };
 		FA008E19171D334700176C3D /* powerCube@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA008E18171D334700176C3D /* powerCube@2x.png */; };
 		FA02F9D8173D54540016EE7F /* MediaWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA02F9D7173D54540016EE7F /* MediaWebViewViewController.m */; };
 		FA036DE7175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA036DE6175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController.m */; };
@@ -302,7 +301,6 @@
 /* Begin PBXFileReference section */
 		52BF8029177903790027BE3C /* ResonatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResonatorView.h; sourceTree = "<group>"; };
 		52BF802A177903790027BE3C /* ResonatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResonatorView.m; sourceTree = "<group>"; };
-		52BF802C177A40A50027BE3C /* output.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = output.txt; sourceTree = "<group>"; };
 		FA008E18171D334700176C3D /* powerCube@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "powerCube@2x.png"; sourceTree = "<group>"; };
 		FA02F9D6173D54540016EE7F /* MediaWebViewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MediaWebViewViewController.h; sourceTree = "<group>"; };
 		FA02F9D7173D54540016EE7F /* MediaWebViewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MediaWebViewViewController.m; sourceTree = "<group>"; };
@@ -1822,7 +1820,6 @@
 		FAEA582C169C7E7500E2F502 = {
 			isa = PBXGroup;
 			children = (
-				52BF802C177A40A50027BE3C /* output.txt */,
 				FAEA5841169C7E7500E2F502 /* Ingress */,
 				FAC37C46169DE2EB000F88AB /* Loading View Controller */,
 				FA54DEFA16A19BAE006A92E0 /* Intel */,
@@ -2116,7 +2113,6 @@
 				FAAF378117610D63009BD67C /* heatsink@2x.png in Resources */,
 				FAAF378217610D63009BD67C /* multihack@2x.png in Resources */,
 				FAAF378317610D63009BD67C /* turret@2x.png in Resources */,
-				52BF802D177A40A50027BE3C /* output.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
