@@ -94,7 +94,7 @@
 	[self.view addSubview:commVC.view];
 	[self addChildViewController:commVC];
 	
-	locationManager = [[CLLocationManager alloc] init];
+	locationManager = [SharedLocationManager locationManager];
     locationManager.delegate = self;
     locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
 	if ([locationManager respondsToSelector:@selector(activityType)]) {

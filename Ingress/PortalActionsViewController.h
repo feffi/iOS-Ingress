@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "GUIButton.h"
+#import "SharedLocationManager.h"
 
-@interface PortalActionsViewController : UIViewController {
+@interface PortalActionsViewController : UIViewController <CLLocationManagerDelegate> {
 	
 //	__weak IBOutlet UIImageView *imageView;
 	__weak IBOutlet UIActivityIndicatorView *imageActivityIndicator;
