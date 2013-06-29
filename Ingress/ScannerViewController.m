@@ -830,10 +830,9 @@
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
 
 	if (mapView.zoomLevel < 15) {
-		if ([Utilities isOS7]) {
-			#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
-                [mapView setCenterCoordinate:mapView.centerCoordinate zoomLevel:15 animated:NO];
-
+//		if ([Utilities isOS7]) {
+//            [mapView setCenterCoordinate:mapView.centerCoordinate zoomLevel:15 animated:NO];
+//#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
 //				MKMapCamera *camera = [MKMapCamera camera];
 //				camera.centerCoordinate = mapView.centerCoordinate;
 //				camera.heading = 0;
@@ -841,10 +840,10 @@
 //				camera.altitude = 50;
 //				NSLog(@"camera: %@", camera);
 //				[mapView setCamera:camera animated:NO];
-			#endif
-		} else {
+//#endif
+//		} else {
 			[mapView setCenterCoordinate:mapView.centerCoordinate zoomLevel:15 animated:NO];
-		}
+//		}
 		return;
     }
 
