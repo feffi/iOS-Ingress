@@ -8,7 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-CLLocationDistance const SCANNER_RANGE = 40;
+#ifndef SCANNER_RANGE
+#define SCANNER_RANGE 40
+#endif
 
 @interface LocationManager : NSObject <CLLocationManagerDelegate> {
     NSMutableArray *_delegates;
