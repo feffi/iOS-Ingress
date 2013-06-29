@@ -25,6 +25,7 @@
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    
     if (_linkingPortal) {
         self.tableView.contentInset = UIEdgeInsetsMake(22, 0, 60, 0);
         GUIButton* closeButton = [[GUIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width-110, self.view.bounds.size.height-75, 100, 45)];
@@ -34,6 +35,12 @@
         [self.view addSubview:closeButton];
         _closeButton = closeButton;
     }
+    
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < 70000
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 32, 0);
+    self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+#endif
+    
 }
 
 - (void)closePortalKeyChooser:(id)sender

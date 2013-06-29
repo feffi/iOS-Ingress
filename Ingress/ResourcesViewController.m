@@ -28,6 +28,11 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 
+#if __IPHONE_OS_VERSION_MAX_ALLOWED < 70000
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 32, 0);
+    self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+#endif
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
