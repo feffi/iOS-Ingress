@@ -10,7 +10,7 @@
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "PortalKeysViewController.h"
 #import "NSShadow+Initilalizer.h"
-#import "SharedLocationManager.h"
+#import "LocationManager.h"
 
 @implementation PortalActionsViewController {
 	PortalKey *_portalKey;
@@ -31,15 +31,9 @@
 	linkButton.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 
 	self.imageView.image = [UIImage imageNamed:@"missing_image"];
-
-	CLLocationManager *locationManager = [SharedLocationManager locationManager];
-	locationManager.delegate = self;
-	locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-	if ([locationManager respondsToSelector:@selector(activityType)]) {
-		locationManager.activityType = CLActivityTypeFitness;
-	}
-	
-	[locationManager startUpdatingLocation];
+    
+    [[LocationManager sharedInstance] addDelegate:self];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -57,7 +51,6 @@
 	[super viewDidDisappear:animated];
 	
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
-	[[SharedLocationManager locationManager] stopUpdatingLocation];
 }
 
 - (void)setPortal:(Portal *)portal {
@@ -127,54 +120,53 @@
 	infoLabel2.attributedText = attrStr;
 
 	////////////////////////////
+    
+    Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+    
+    if (self.portal.controllingTeam && [self.portal.controllingTeam isEqualToString:player.team]) {
+        rechargeButton.enabled = YES;
+        linkButton.enabled = YES;
+        rechargeButton.errorString = nil;
+        linkButton.errorString = nil;
+    } else {
+        rechargeButton.enabled = NO;
+        linkButton.enabled = NO;
+        
+        if ([self.portal.controllingTeam isEqualToString:@"NEUTRAL"]) {
+            rechargeButton.errorString = @"Neutral Portal";
+            linkButton.errorString = @"Neutral Portal";
+        } else {
+            rechargeButton.errorString = @"Enemy Portal";
+            linkButton.errorString = @"Enemy Portal";
+        }
+    }
 
 	[self refreshActions];
 }
 
--(void)refreshActions {
-	//NSLog(@"portal %f, %f", self.portal.latitude, self.portal.longitude);
+- (void)refreshActions {
+
 	BOOL portalWithinActionRange = [self portalInRange];
 
-#if DEBUG
-	BOOL debugMode = YES; // Allow developer movement hack
-#else
-	BOOL debugMode = NO;
-#endif
-	
-	Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-	
-	// player can hack portal regardless of portal owner affiliation
-	hackButton.enabled = debugMode || portalWithinActionRange;
-	
-	// player can only link if team is the same.
-	// player can recharge if they are within range or if they have the portal key.
-    if (self.portal.controllingTeam && [self.portal.controllingTeam isEqualToString:player.team]) {
-		rechargeButton.enabled = debugMode || portalWithinActionRange || _portalKey;
-		linkButton.enabled = debugMode || portalWithinActionRange;
-		rechargeButton.errorString = nil;
-		linkButton.errorString = nil;
-	} else {
-		rechargeButton.enabled = NO;
-		linkButton.enabled = NO;
-        
-		if ([self.portal.controllingTeam isEqualToString:@"NEUTRAL"]) {
-			rechargeButton.errorString = @"Neutral Portal";
-			linkButton.errorString = @"Neutral Portal";
-		} else {
-			rechargeButton.errorString = @"Enemy Portal";
-			linkButton.errorString = @"Enemy Portal";
-		}
-	}
+    if (portalWithinActionRange) {
+        hackButton.enabled = YES;
+        hackButton.errorString = nil;
+    } else {
+        hackButton.enabled = NO;
+        hackButton.errorString = @"Out of Range";
+    }
+
 }
 
 - (BOOL)portalInRange {
 	BOOL portalWithinActionRange = NO;
+    
+    CLLocation *playerLocation = [LocationManager sharedInstance].playerLocation;
 	
-	if (_playerLocation != nil) {
+	if (playerLocation != nil) {
 		CLLocation *portalLocation = [[CLLocation alloc] initWithLatitude:self.portal.latitude longitude:self.portal.longitude];
-		CLLocationDistance meters = [_playerLocation distanceFromLocation:portalLocation];
-		//NSLog(@"distance: %f", meters);
-		portalWithinActionRange = (meters <= 40) ? YES : NO;
+		CLLocationDistance meters = [playerLocation distanceFromLocation:portalLocation];
+		portalWithinActionRange = (meters <= SCANNER_RANGE) ? YES : NO;
 	}
 	
 	return portalWithinActionRange;
@@ -429,10 +421,8 @@
 	};
 	
 	if ([self portalInRange]) {
-		NSLog(@"standard recharge.");
 		[[API sharedInstance] rechargePortal:self.portal slots:@[@0, @1, @2, @3, @4, @5, @6, @7] completionHandler:handler];
 	} else {
-		NSLog(@"remote recharge.");
 		[[API sharedInstance] remoteRechargePortal:self.portal portalKey:_portalKey completionHandler:handler];
 	}
 	
@@ -455,8 +445,9 @@
 
 #pragma mark - CLLocationManagerDelegate protocol
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation*)newLocation fromLocation:(CLLocation*)oldLocation {
-	_playerLocation = newLocation;
+//- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation*)newLocation fromLocation:(CLLocation*)oldLocation {
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
 	[self refreshActions];
 }
+
 @end

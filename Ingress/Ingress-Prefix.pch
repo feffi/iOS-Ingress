@@ -32,6 +32,7 @@
 #import "API.h"
 #import "DB.h"
 #import "Utilities.h"
+#import "LocationManager.h"
 #import "S2Geometry.h"
 #import "GAI.h"
 

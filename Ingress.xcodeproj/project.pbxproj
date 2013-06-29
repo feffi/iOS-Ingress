@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		52B37979177CED160066FEE7 /* SharedLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 52B37978177CED160066FEE7 /* SharedLocationManager.m */; };
 		52BF802B177903790027BE3C /* ResonatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = 52BF802A177903790027BE3C /* ResonatorView.m */; };
 		FA008E19171D334700176C3D /* powerCube@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA008E18171D334700176C3D /* powerCube@2x.png */; };
 		FA02F9D8173D54540016EE7F /* MediaWebViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA02F9D7173D54540016EE7F /* MediaWebViewViewController.m */; };
@@ -295,13 +294,12 @@
 		FAF5A8FF16A7449600EB42CF /* resonator_SW@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF5A8F716A7449600EB42CF /* resonator_SW@2x.png */; };
 		FAF5A90016A7449600EB42CF /* resonator_W@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAF5A8F816A7449600EB42CF /* resonator_W@2x.png */; };
 		FAF618B416DBDA6700AF0742 /* WheelActivityIndicatorView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAF618B316DBDA6700AF0742 /* WheelActivityIndicatorView.m */; };
+		FAF935CA177F034900DC0167 /* LocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = FA199CE7177EF8E000C56042 /* LocationManager.m */; };
 		FAFBD60316A5CD030000B90D /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFBD60216A5CD030000B90D /* MessageUI.framework */; };
 		FAFBD60C16A5EEF40000B90D /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FAFBD60B16A5EEF40000B90D /* AudioToolbox.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		52B37975177CD8030066FEE7 /* SharedLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SharedLocationManager.h; sourceTree = "<group>"; };
-		52B37978177CED160066FEE7 /* SharedLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SharedLocationManager.m; sourceTree = "<group>"; };
 		52BF8029177903790027BE3C /* ResonatorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ResonatorView.h; sourceTree = "<group>"; };
 		52BF802A177903790027BE3C /* ResonatorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ResonatorView.m; sourceTree = "<group>"; };
 		FA008E18171D334700176C3D /* powerCube@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "powerCube@2x.png"; sourceTree = "<group>"; };
@@ -344,6 +342,8 @@
 		FA17F05E174C9DAF003C3E24 /* ada_refactor@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ada_refactor@2x.png"; sourceTree = "<group>"; };
 		FA17F05F174C9DAF003C3E24 /* jarvis_virus@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jarvis_virus@2x.png"; sourceTree = "<group>"; };
 		FA17F064174CB0CC003C3E24 /* link_amp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "link_amp@2x.png"; sourceTree = "<group>"; };
+		FA199CE6177EF8E000C56042 /* LocationManager.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationManager.h; sourceTree = "<group>"; };
+		FA199CE7177EF8E000C56042 /* LocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		FA29CCF6171F05C6007FB43E /* TypeWriterLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TypeWriterLabel.h; path = TypeWriterLabel/TypeWriterLabel.h; sourceTree = "<group>"; };
 		FA29CCF7171F05C6007FB43E /* TypeWriterLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TypeWriterLabel.m; path = TypeWriterLabel/TypeWriterLabel.m; sourceTree = "<group>"; };
 		FA32E881169F2D9F00D30E90 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = API.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
@@ -1214,8 +1214,8 @@
 			children = (
 				FA600FD3175E3FF900F360A6 /* Utilities.h */,
 				FA600FD4175E3FF900F360A6 /* Utilities.m */,
-				52B37975177CD8030066FEE7 /* SharedLocationManager.h */,
-				52B37978177CED160066FEE7 /* SharedLocationManager.m */,
+				FA199CE6177EF8E000C56042 /* LocationManager.h */,
+				FA199CE7177EF8E000C56042 /* LocationManager.m */,
 			);
 			name = Utilities;
 			sourceTree = "<group>";
@@ -2274,7 +2274,7 @@
 				FADC993D1760ECD2009C497A /* ForceAmp.m in Sources */,
 				FADC99401760ECD2009C497A /* XMP.m in Sources */,
 				52BF802B177903790027BE3C /* ResonatorView.m in Sources */,
-				52B37979177CED160066FEE7 /* SharedLocationManager.m in Sources */,
+				FAF935CA177F034900DC0167 /* LocationManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

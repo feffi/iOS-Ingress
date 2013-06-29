@@ -8,7 +8,6 @@
 
 #import <UIKit/UIKit.h>
 #import "GUIButton.h"
-#import "SharedLocationManager.h"
 
 @interface PortalActionsViewController : UIViewController <CLLocationManagerDelegate> {
 	
@@ -25,7 +24,6 @@
 
 }
 
-@property (nonatomic, strong) CLLocation *playerLocation;
 @property (nonatomic, strong) Portal *portal;
 @property (nonatomic, strong) UIImageView *imageView;
 
