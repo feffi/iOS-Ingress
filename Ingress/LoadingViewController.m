@@ -201,7 +201,7 @@
                     
                     [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
                         
-                        NSAttributedString *atrstr = [[NSAttributedString alloc] initWithString:@"Ingress" attributes:[Utilities attributesWithShadow:NO size:16 color:[UIColor colorWithRed:226./255. green:179./255. blue:76./255. alpha:1.0]]];
+                        NSAttributedString *atrstr = [[NSAttributedString alloc] initWithString:@"Ingress" attributes:[Utilities attributesWithShadow:NO size:CHAT_FONT_SIZE color:[UIColor colorWithRed:226./255. green:179./255. blue:76./255. alpha:1.0]]];
                         
                         Plext *plext = [Plext MR_createInContext:localContext];
                         plext.guid = nil;
@@ -214,8 +214,8 @@
                         // --------------------
                         
                         Player *player = [[API sharedInstance] playerForContext:localContext];
-                        NSMutableAttributedString *atrstr2 = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Agent ID Confirmed. Welcome %@", player.nickname] attributes:[Utilities attributesWithShadow:NO size:16 color:[UIColor colorWithRed:226./255. green:179./255. blue:76./255. alpha:1.0]]];
-                        [atrstr2 setAttributes:[Utilities attributesWithShadow:NO size:16 color:[Utilities colorForFaction:player.team]] range:NSMakeRange(atrstr2.length-player.nickname.length, player.nickname.length)];
+                        NSMutableAttributedString *atrstr2 = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Agent ID Confirmed. Welcome %@", player.nickname] attributes:[Utilities attributesWithShadow:NO size:CHAT_FONT_SIZE color:[UIColor colorWithRed:226./255. green:179./255. blue:76./255. alpha:1.0]]];
+                        [atrstr2 setAttributes:[Utilities attributesWithShadow:NO size:CHAT_FONT_SIZE color:[Utilities colorForFaction:player.team]] range:NSMakeRange(atrstr2.length-player.nickname.length, player.nickname.length)];
                         
                         plext = [Plext MR_createInContext:localContext];
                         plext.guid = nil;

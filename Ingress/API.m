@@ -594,27 +594,27 @@ NSString *const MilesOrKM = @"MilesOrKM";
 						}
 
 						if ([markup[0] isEqualToString:@"AT_PLAYER"] && [[markup[1][@"plain"] substringFromIndex:1] isEqualToString:player.nickname]) {
-							[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:1.000 green:0.839 blue:0.322 alpha:1.000]} range:range];
+							[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:CHAT_FONT_SIZE], NSForegroundColorAttributeName : [UIColor colorWithRed:1.000 green:0.839 blue:0.322 alpha:1.000]} range:range];
 							mentionsYou = YES;
 						} else {
 							if ([markup[1][@"team"] isEqualToString:@"ALIENS"]) {
-								[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:40./255. green:244./255. blue:40./255. alpha:1]} range:range];
+								[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:CHAT_FONT_SIZE], NSForegroundColorAttributeName : [UIColor colorWithRed:40./255. green:244./255. blue:40./255. alpha:1]} range:range];
 							} else {
-								[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:0 green:194./255. blue:1 alpha:1]} range:range];
+								[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:CHAT_FONT_SIZE], NSForegroundColorAttributeName : [UIColor colorWithRed:0 green:194./255. blue:1 alpha:1]} range:range];
 							}
 						}
 
 					} else if ([markup[0] isEqualToString:@"PORTAL"]) {
-						[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:0 green:135./255. blue:128./255. alpha:1]} range:range];
+						[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:CHAT_FONT_SIZE], NSForegroundColorAttributeName : [UIColor colorWithRed:0 green:135./255. blue:128./255. alpha:1]} range:range];
 
 					} else if ([markup[0] isEqualToString:@"SECURE"]) {
-						[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:245./255. green:95./255. blue:85./255. alpha:1]} range:range];
+						[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:CHAT_FONT_SIZE], NSForegroundColorAttributeName : [UIColor colorWithRed:245./255. green:95./255. blue:85./255. alpha:1]} range:range];
 					} else {
 
 						if (isMessage) {
-							[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:207./255. green:229./255. blue:229./255. alpha:1]} range:range];
+							[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:CHAT_FONT_SIZE], NSForegroundColorAttributeName : [UIColor colorWithRed:207./255. green:229./255. blue:229./255. alpha:1]} range:range];
 						} else {
-							[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16], NSForegroundColorAttributeName : [UIColor colorWithRed:0 green:186./255. blue:181./255. alpha:1]} range:range];
+							[atrstr setAttributes:@{NSFontAttributeName: [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:CHAT_FONT_SIZE], NSForegroundColorAttributeName : [UIColor colorWithRed:0 green:186./255. blue:181./255. alpha:1]} range:range];
 						}
 
 					}
@@ -673,13 +673,13 @@ NSString *const MilesOrKM = @"MilesOrKM";
         
         [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
 
-            NSMutableAttributedString *atrstr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Enlightened %d - Resistance %d", alienScore, resistanceScore] attributes:[Utilities attributesWithShadow:NO size:16 color:[UIColor whiteColor]]];
+            NSMutableAttributedString *atrstr = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Enlightened %d - Resistance %d", alienScore, resistanceScore] attributes:[Utilities attributesWithShadow:NO size:CHAT_FONT_SIZE color:[UIColor whiteColor]]];
             
             int len1 = [[NSString stringWithFormat:@"Enlightened %d", alienScore] length];
-            [atrstr setAttributes:[Utilities attributesWithShadow:NO size:16 color:[Utilities colorForFaction:@"ALIENS"]] range:NSMakeRange(0, len1)];
+            [atrstr setAttributes:[Utilities attributesWithShadow:NO size:CHAT_FONT_SIZE color:[Utilities colorForFaction:@"ALIENS"]] range:NSMakeRange(0, len1)];
             
             int len2 = [[NSString stringWithFormat:@"Resistance %d", resistanceScore] length];
-            [atrstr setAttributes:[Utilities attributesWithShadow:NO size:16 color:[Utilities colorForFaction:@"RESISTANCE"]] range:NSMakeRange(atrstr.length-len2, len2)];
+            [atrstr setAttributes:[Utilities attributesWithShadow:NO size:CHAT_FONT_SIZE color:[Utilities colorForFaction:@"RESISTANCE"]] range:NSMakeRange(atrstr.length-len2, len2)];
 
             Plext *plext = [Plext MR_createInContext:localContext];
             plext.guid = nil;
@@ -2076,7 +2076,7 @@ NSString *const MilesOrKM = @"MilesOrKM";
         
         [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
             
-            NSAttributedString *atrstr = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Level up! You are now level %d.", newLevel] attributes:[Utilities attributesWithShadow:NO size:16 color:[UIColor colorWithRed:226./255. green:179./255. blue:76./255. alpha:1.0]]];
+            NSAttributedString *atrstr = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Level up! You are now level %d.", newLevel] attributes:[Utilities attributesWithShadow:NO size:CHAT_FONT_SIZE color:[UIColor colorWithRed:226./255. green:179./255. blue:76./255. alpha:1.0]]];
             
             Plext *plext = [Plext MR_createInContext:localContext];
             plext.guid = nil;
@@ -2217,7 +2217,7 @@ NSString *const MilesOrKM = @"MilesOrKM";
         
         [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
 
-            NSAttributedString *atrstr = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Gained %d AP for %@.", [apGain[@"apGainAmount"] intValue], actionStr] attributes:[Utilities attributesWithShadow:NO size:16 color:[UIColor colorWithRed:226./255. green:179./255. blue:76./255. alpha:1.0]]];
+            NSAttributedString *atrstr = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"Gained %d AP for %@.", [apGain[@"apGainAmount"] intValue], actionStr] attributes:[Utilities attributesWithShadow:NO size:CHAT_FONT_SIZE color:[UIColor colorWithRed:226./255. green:179./255. blue:76./255. alpha:1.0]]];
             
             Plext *plext = [Plext MR_createInContext:localContext];
             plext.guid = nil;
@@ -2247,7 +2247,7 @@ NSString *const MilesOrKM = @"MilesOrKM";
 
             [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
                 
-                NSAttributedString *atrstr = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"You've been hit and lost %d XM!", [playerDamage[@"damageAmount"] intValue]] attributes:[Utilities attributesWithShadow:NO size:16 color:[UIColor colorWithRed:226./255. green:179./255. blue:76./255. alpha:1.0]]];
+                NSAttributedString *atrstr = [[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"You've been hit and lost %d XM!", [playerDamage[@"damageAmount"] intValue]] attributes:[Utilities attributesWithShadow:NO size:CHAT_FONT_SIZE color:[UIColor colorWithRed:226./255. green:179./255. blue:76./255. alpha:1.0]]];
                 
                 Plext *plext = [Plext MR_createInContext:localContext];
                 plext.guid = nil;
