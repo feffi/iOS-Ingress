@@ -96,7 +96,7 @@
     #endif
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
 	CommViewController *commVC = [storyboard instantiateViewControllerWithIdentifier:@"CommViewController"];
-	commVC.view.frame = CGRectMake(0, self.view.frame.size.height-offset, 320, 393);
+	commVC.view.frame = CGRectMake(0, self.view.frame.size.height-offset, self.view.frame.size.width, 393);
 	[self.view addSubview:commVC.view];
 	[self addChildViewController:commVC];
 	

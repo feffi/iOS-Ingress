@@ -2216,13 +2216,18 @@ NSString *const MilesOrKM = @"MilesOrKM";
             actionStr = @"destroying a Control Field";
         } else if ([apGain[@"apTrigger"] isEqualToString:@"DEPLOYED_RESONATOR_MOD"]) {
             actionStr = @"creating a Resonator Mod";
-        } else if ([apGain[@"apTrigger"] isEqualToString:@"HACKING_ENEMY_PORTAL"]) {
-            actionStr = @"hacking an enemy Portal";
-//        } else if ([apGain[@"apTrigger"] isEqualToString:@"INVITED_PLAYER_JOINED"]) {
         } else if ([apGain[@"apTrigger"] isEqualToString:@"PORTAL_FULLY_POPULATED_WITH_RESONATORS"]) {
             actionStr = @"fully powering a Portal";
+        } else if ([apGain[@"apTrigger"] isEqualToString:@"HACKING_ENEMY_PORTAL"]) {
+            actionStr = @"hacking an enemy Portal";
         } else if ([apGain[@"apTrigger"] isEqualToString:@"REDEEMED_AP"]) {
             actionStr = @"passcode redemption";
+        } else if ([apGain[@"apTrigger"] isEqualToString:@"RECHARGE_RESONATOR"]) {
+            actionStr = @"recharging a Resonator";
+        } else if ([apGain[@"apTrigger"] isEqualToString:@"REMOTE_RECHARGE_RESONATOR"]) {
+            actionStr = @"remote recharging a Resonator";
+//      } else if ([apGain[@"apTrigger"] isEqualToString:@"INVITED_PLAYER_JOINED"]) {
+//			actionStr = @"";
         } else {
             actionStr = [NSString stringWithFormat:@"doing something really awesome! (%@)", apGain[@"apTrigger"]];
         }
