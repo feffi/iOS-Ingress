@@ -11,6 +11,7 @@
 #import "MissionViewController.h"
 #import "CommViewController.h"
 #import "MKMapView+ZoomLevel.h"
+#import "NewPortalViewController.h"
 
 #import "PortalOverlayView.h"
 #import "MKPolyline+PortalLink.h"
@@ -43,8 +44,8 @@
 
 	NSMutableSet *mapGuids;
     
-    UIImage *imageData;
-	NSString *imageLocation;
+    UIImage *selectedPortalImage;
+	CLLocation *selectedPortalLocation;
 
 }
 
@@ -838,6 +839,7 @@
             }
             
             imagePickerVC.delegate = self;
+			imagePickerVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
             [self presentViewController:imagePickerVC animated:YES completion:nil];
         }
         
@@ -1279,34 +1281,38 @@
 
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
     
-	imageData = nil;
-	imageLocation = nil;
+	selectedPortalImage = nil;
+	selectedPortalLocation = nil;
     
 	NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
 	if ([mediaType isEqualToString:(NSString*)kUTTypeImage]) {
+		selectedPortalImage = info[UIImagePickerControllerOriginalImage];
 		NSURL *url = [info objectForKey:UIImagePickerControllerReferenceURL];
 		if (url) {
 			[[ALAssetsLibrary new] assetForURL:url resultBlock:^(ALAsset *asset) {
 				CLLocation *location = [asset valueForProperty:ALAssetPropertyLocation];
 				if (location) {
-					imageLocation = [NSString stringWithFormat:@"lat=%g\nlng=%g\n", location.coordinate.latitude, location.coordinate.longitude];
-					imageData = info[UIImagePickerControllerOriginalImage];
-					NSLog(@"imageData: %@", imageData);
+					selectedPortalLocation = location;
+					//[NSString stringWithFormat:@"lat=%g\nlng=%g\n", location.coordinate.latitude, location.coordinate.longitude];
 				}
 			} failureBlock:nil];
 		}
 	}
+	
+	if (!selectedPortalLocation) {
+		selectedPortalLocation = [[LocationManager sharedInstance] playerLocation];
+	}
     
 	[picker dismissViewControllerAnimated:YES completion:^{
-		if (imageData) {
-			NSLog(@"imageData: %@", imageData);
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Enter title for portal" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-			alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-			[alertView textFieldAtIndex:0].placeholder = @"Enter portal title";
-			[alertView show];
+		if (selectedPortalImage) {
+			UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+			NewPortalViewController *newPortalVC = [storyboard instantiateViewControllerWithIdentifier:@"NewPortalViewController"];
+			newPortalVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+			newPortalVC.portalImage = selectedPortalImage;
+			newPortalVC.portalLocation = selectedPortalLocation;
+			[self presentViewController:newPortalVC animated:YES completion:NULL];
 		} else {
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error getting photo" message:nil delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
-			[alertView show];
+			[Utilities showWarningWithTitle:@"Error getting photo"];
 		}
 	}];
     

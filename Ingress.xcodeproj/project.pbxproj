@@ -30,6 +30,9 @@
 		FA17E903174BA212003C3E24 /* UIRefreshControl+Inset.m in Sources */ = {isa = PBXBuildFile; fileRef = FA17E902174BA212003C3E24 /* UIRefreshControl+Inset.m */; };
 		FA17F065174CB0CE003C3E24 /* link_amp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA17F064174CB0CC003C3E24 /* link_amp@2x.png */; };
 		FA29CCF8171F05C6007FB43E /* TypeWriterLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = FA29CCF7171F05C6007FB43E /* TypeWriterLabel.m */; };
+		FA325D601780920800FDC5A5 /* NewPortalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA325D5F1780920800FDC5A5 /* NewPortalViewController.m */; };
+		FA325D631780921400FDC5A5 /* NewPortalLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA325D621780921400FDC5A5 /* NewPortalLocationViewController.m */; };
+		FA325D651780A82300FDC5A5 /* discovery_location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA325D641780A82300FDC5A5 /* discovery_location@2x.png */; };
 		FA32E883169F2D9F00D30E90 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E882169F2D9F00D30E90 /* API.m */; };
 		FA32E888169F657400D30E90 /* CommViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E887169F657400D30E90 /* CommViewController.m */; };
 		FA32E88B169F661500D30E90 /* CommTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E88A169F661500D30E90 /* CommTableViewController.m */; };
@@ -346,6 +349,11 @@
 		FA199CE7177EF8E000C56042 /* LocationManager.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LocationManager.m; sourceTree = "<group>"; };
 		FA29CCF6171F05C6007FB43E /* TypeWriterLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TypeWriterLabel.h; path = TypeWriterLabel/TypeWriterLabel.h; sourceTree = "<group>"; };
 		FA29CCF7171F05C6007FB43E /* TypeWriterLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TypeWriterLabel.m; path = TypeWriterLabel/TypeWriterLabel.m; sourceTree = "<group>"; };
+		FA325D5E1780920800FDC5A5 /* NewPortalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPortalViewController.h; sourceTree = "<group>"; };
+		FA325D5F1780920800FDC5A5 /* NewPortalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPortalViewController.m; sourceTree = "<group>"; };
+		FA325D611780921400FDC5A5 /* NewPortalLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPortalLocationViewController.h; sourceTree = "<group>"; };
+		FA325D621780921400FDC5A5 /* NewPortalLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPortalLocationViewController.m; sourceTree = "<group>"; };
+		FA325D641780A82300FDC5A5 /* discovery_location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "discovery_location@2x.png"; sourceTree = "<group>"; };
 		FA32E881169F2D9F00D30E90 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = API.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		FA32E882169F2D9F00D30E90 /* API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = API.m; sourceTree = "<group>"; };
 		FA32E886169F657400D30E90 /* CommViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommViewController.h; sourceTree = "<group>"; };
@@ -935,6 +943,18 @@
 			name = TypeWriterLabel;
 			sourceTree = "<group>";
 		};
+		FA325D5D17808A1600FDC5A5 /* New Portal */ = {
+			isa = PBXGroup;
+			children = (
+				FA325D5E1780920800FDC5A5 /* NewPortalViewController.h */,
+				FA325D5F1780920800FDC5A5 /* NewPortalViewController.m */,
+				FA325D611780921400FDC5A5 /* NewPortalLocationViewController.h */,
+				FA325D621780921400FDC5A5 /* NewPortalLocationViewController.m */,
+			);
+			name = "New Portal";
+			path = Ingress;
+			sourceTree = "<group>";
+		};
 		FA32E871169EC13900D30E90 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -1066,6 +1086,7 @@
 				FACD4FFC16A428A80077837F /* marker_images */,
 				FAF5A90116A7449C00EB42CF /* Resonators */,
 				FA600FD7175E90C500F360A6 /* mods */,
+				FA325D641780A82300FDC5A5 /* discovery_location@2x.png */,
 				FAAF377C17610D63009BD67C /* force_amp@2x.png */,
 				FAAF377D17610D63009BD67C /* heatsink@2x.png */,
 				FAAF377E17610D63009BD67C /* multihack@2x.png */,
@@ -1835,6 +1856,7 @@
 				FACD502016A441280077837F /* Portal Detail */,
 				FA32E885169F655E00D30E90 /* Comm */,
 				FAE71C2C1732ACA900742071 /* Device */,
+				FA325D5D17808A1600FDC5A5 /* New Portal */,
 				FAB5A2C916AA164900176C34 /* Chooser */,
 				FA32E871169EC13900D30E90 /* Model */,
 				FA512D1C16A0A2AA00C8A81C /* Resources */,
@@ -2118,6 +2140,7 @@
 				FAAF378117610D63009BD67C /* heatsink@2x.png in Resources */,
 				FAAF378217610D63009BD67C /* multihack@2x.png in Resources */,
 				FAAF378317610D63009BD67C /* turret@2x.png in Resources */,
+				FA325D651780A82300FDC5A5 /* discovery_location@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2275,6 +2298,8 @@
 				FADC99401760ECD2009C497A /* XMP.m in Sources */,
 				52BF802B177903790027BE3C /* ResonatorView.m in Sources */,
 				FAF935CA177F034900DC0167 /* LocationManager.m in Sources */,
+				FA325D601780920800FDC5A5 /* NewPortalViewController.m in Sources */,
+				FA325D631780921400FDC5A5 /* NewPortalLocationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

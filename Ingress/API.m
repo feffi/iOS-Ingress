@@ -1313,6 +1313,86 @@ NSString *const MilesOrKM = @"MilesOrKM";
 	
 }
 
+- (void)setPortalDetailsForCurationWithParams:(NSDictionary *)params completionHandler:(void (^)(NSString *errorStr))handler {
+	
+	[self sendRequest:@"playerUndecorated/setPortalDetailsForCuration" params:@[params] completionHandler:^(id responseObj) {
+		//NSLog(@"setPortalDetailsForCuration responseObj: %@", responseObj);
+		
+		dispatch_async(dispatch_get_main_queue(), ^{
+			handler(responseObj[@"error"]);
+		});
+		
+	}];
+	
+}
+
+- (void)getUploadUrl:(void (^)(NSString *url))handler {
+	
+	[self sendRequest:@"playerUndecorated/getUploadUrl" params:nil completionHandler:^(id responseObj) {
+		//NSLog(@"getUploadUrl responseObj: %@", responseObj);
+		
+		dispatch_async(dispatch_get_main_queue(), ^{
+			handler(responseObj[@"result"]);
+		});
+		
+	}];
+	
+}
+
+- (void)uploadPortalPhotoByUrlWithRequestId:(NSString *)requestId imageUrl:(NSString *)imageUrl completionHandler:(void (^)(NSString *errorStr))handler {
+	
+	NSDictionary *dict = @{
+		@"requestId": requestId,
+		@"imageUrl": imageUrl,
+		@"portalGuid": [NSNull null],
+		@"addDirectlyToGame": @(NO)
+	};
+	
+	[self sendRequest:@"playerUndecorated/uploadPortalPhotoByUrl" params:@[dict] completionHandler:^(id responseObj) {
+		//NSLog(@"uploadPortalPhotoByUrl responseObj: %@", responseObj);
+		
+		dispatch_async(dispatch_get_main_queue(), ^{
+			handler(responseObj[@"error"]);
+		});
+		
+	}];
+	
+}
+
+- (void)uploadPortalImage:(UIImage *)image toURL:(NSString *)url completionHandler:(void (^)(void))handler {
+	
+	NSData *imageData = UIImageJPEGRepresentation(image, .85);
+		
+	NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+	
+	[request setHTTPMethod:@"PUT"];
+	
+	NSDictionary *headers = @{
+		 @"Content-Type" : @"application/x-www-form-urlencoded",
+		 @"x-goog-api-version" : @"2",
+		 @"Accept-Encoding" : @"gzip",
+		 @"User-Agent" : @"Dalvik/1.6.0 (Linux; U; Android 4.1.1;",
+		 @"Host" : @"ingress-incoming.storage.googleapis.com",
+		 @"Connection" : @"Keep-Alive",
+		 @"Content-Length" : [NSString stringWithFormat:@"%d", imageData.length],
+	};
+	
+	[request setAllHTTPHeaderFields:headers];
+	
+	[request setHTTPBody:imageData];
+	
+	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue new] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+		
+		if (error) { NSLog(@"NSURLConnection error: %@", error); }
+		
+		if (handler) {
+			handler();
+		}
+		
+	}];
+	
+}
+
 - (void)cheatSetPlayerLevel {
 
 	[self sendRequest:@"devCheat/cheatSetPlayerLevel" params:@[@5] completionHandler:^(id responseObj) {
