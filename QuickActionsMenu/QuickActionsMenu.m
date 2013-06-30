@@ -111,10 +111,25 @@
     
     if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
         
-        self.hidden = NO;
-        [UIView animateWithDuration:0.3 animations:^{
-            self.alpha = 1;
-        }];
+//        self.hidden = NO;
+//        [UIView animateWithDuration:0.3 animations:^{
+//            self.alpha = 1;
+//        }];
+		
+		self.hidden = NO;
+		self.alpha = 1;
+
+		CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+		[animation setFromValue:[NSNumber numberWithFloat:0]];
+		[animation setToValue:[NSNumber numberWithFloat:1]];
+		[animation setDuration:0.25];
+		[animation setRemovedOnCompletion:YES];
+		[animation setFillMode:kCAFillModeRemoved];
+		
+		[button1.layer addAnimation:animation forKey:@"scale"];
+		[button2.layer addAnimation:animation forKey:@"scale"];
+		[button3.layer addAnimation:animation forKey:@"scale"];
+		[button4.layer addAnimation:animation forKey:@"scale"];
         
         dragStartPoint = CGPointMake([gestureRecognizer locationInView:self].x, [gestureRecognizer locationInView:self].y+20);
         
