@@ -189,6 +189,7 @@
 					[HUD show:YES];
 
 					[[API sharedInstance] getInventoryWithCompletionHandler:^{
+                        [[NSNotificationCenter defaultCenter] postNotificationName:@"DBUpdatedNotification" object:nil];
 						[HUD hide:YES];
 					}];
 
