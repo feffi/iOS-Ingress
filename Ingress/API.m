@@ -20,6 +20,8 @@ NSString *const MilesOrKM = @"MilesOrKM";
 	NSMutableArray *soundsQueue;
 	NSMutableDictionary *cellsDates;
 	NSString *playerGuid;
+	
+	NSTimer *inventoryRefreshTimer;
 }
 
 @synthesize networkQueue = _networkQueue;
@@ -45,6 +47,8 @@ NSString *const MilesOrKM = @"MilesOrKM";
 		self.energyToCollect = [NSMutableArray array];
 		self.networkQueue = [NSOperationQueue new];
 		self.networkQueue.name = @"Network Queue";
+		
+		inventoryRefreshTimer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(autorefreshInventory) userInfo:nil repeats:YES];
 	}
     return self;
 }
@@ -55,6 +59,12 @@ NSString *const MilesOrKM = @"MilesOrKM";
 	NSString *timestampString = [NSString stringWithFormat:@"%.3f", [[NSDate date] timeIntervalSince1970]];
 	timestampString = [timestampString stringByReplacingOccurrencesOfString:@"." withString:@""];
 	return [timestampString longLongValue];
+}
+
+#pragma mark - Auto refresh
+
+- (void)autorefreshInventory {
+	[[API sharedInstance] getInventoryWithCompletionHandler:NULL];
 }
 
 #pragma mark - Sound
@@ -487,9 +497,11 @@ NSString *const MilesOrKM = @"MilesOrKM";
 		Player *player = [self playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
 		player.lastInventoryUpdated = [[NSDate dateWithTimeIntervalSince1970:([responseObj[@"result"] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
 
-		dispatch_async(dispatch_get_main_queue(), ^{
-			handler();
-        });
+		if (handler) {
+			dispatch_async(dispatch_get_main_queue(), ^{
+				handler();
+			});
+		}
 		
 	}];
 	
