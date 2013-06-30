@@ -120,40 +120,58 @@
 	infoLabel2.attributedText = attrStr;
 
 	////////////////////////////
-    
-    Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-    
-    if (self.portal.controllingTeam && [self.portal.controllingTeam isEqualToString:player.team]) {
-        rechargeButton.enabled = YES;
-        linkButton.enabled = YES;
-        rechargeButton.errorString = nil;
-        linkButton.errorString = nil;
-    } else {
-        rechargeButton.enabled = NO;
-        linkButton.enabled = NO;
-        
-        if ([self.portal.controllingTeam isEqualToString:@"NEUTRAL"]) {
-            rechargeButton.errorString = @"Neutral Portal";
-            linkButton.errorString = @"Neutral Portal";
-        } else {
-            rechargeButton.errorString = @"Enemy Portal";
-            linkButton.errorString = @"Enemy Portal";
-        }
-    }
 
 	[self refreshActions];
 }
 
 - (void)refreshActions {
 
-	BOOL portalWithinActionRange = [self portalInRange];
+    Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
 
-    if (portalWithinActionRange) {
+    // ------------------------------------------
+    
+    if (self.portalInRange) {
         hackButton.enabled = YES;
         hackButton.errorString = nil;
+        
+        if (self.portal.controllingTeam && [self.portal.controllingTeam isEqualToString:player.team]) {
+            
+            linkButton.enabled = YES;
+            linkButton.errorString = nil;
+            
+        } else {
+            linkButton.enabled = NO;
+            
+            if ([self.portal.controllingTeam isEqualToString:@"NEUTRAL"]) {
+                linkButton.errorString = @"Neutral Portal";
+            } else {
+                linkButton.errorString = @"Enemy Portal";
+            }
+        }
+        
     } else {
         hackButton.enabled = NO;
         hackButton.errorString = @"Out of Range";
+        linkButton.enabled = NO;
+        linkButton.errorString = @"Out of Range";
+    }
+    
+    if ((self.portal.controllingTeam && [self.portal.controllingTeam isEqualToString:player.team]) && (self.portalInRange || _portalKey)) {
+        rechargeButton.enabled = YES;
+        rechargeButton.errorString = nil;
+    } else {
+        rechargeButton.enabled = NO;
+        
+        if (self.portalInRange) {
+            if ([self.portal.controllingTeam isEqualToString:@"NEUTRAL"]) {
+                rechargeButton.errorString = @"Neutral Portal";
+            } else {
+                rechargeButton.errorString = @"Enemy Portal";
+            }
+        } else {
+            rechargeButton.errorString = @"Out of Range";
+        }
+
     }
 
 }
