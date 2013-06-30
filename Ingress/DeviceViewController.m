@@ -164,14 +164,21 @@
 
 					break;
 				}
-				case 1: {
-
-					[self performSegueWithIdentifier:@"ImagePickerSegue" sender:self];
-
-					break;
-				}
-				case 2: {
-
+                    
+                case 1: {
+                    
+                    Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+                    NSString *nickname = [player.nickname copy];
+                    
+					[MagicalRecord cleanUp];
+					[[NSFileManager defaultManager] removeItemAtURL:[NSPersistentStore MR_urlForStoreName:@"Ingress.sqlite"] error:nil];
+					[MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Ingress.sqlite"];
+                    
+                    player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+                    player.nickname = nickname;
+                    
+                    nickname = nil;
+                    
 					__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view.window];
 					HUD.userInteractionEnabled = YES;
 					HUD.dimBackground = YES;
@@ -186,18 +193,43 @@
 					}];
 
 					break;
-				}
+                    
+                }
+                    
+//				case 1: {
+//
+//					[self performSegueWithIdentifier:@"ImagePickerSegue" sender:self];
+//
+//					break;
+//				}
+//				case 2: {
+//
+//					__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view.window];
+//					HUD.userInteractionEnabled = YES;
+//					HUD.dimBackground = YES;
+//					HUD.mode = MBProgressHUDModeIndeterminate;
+//					HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+//					HUD.labelText = @"Loading inventory...";
+//					[self.view.window addSubview:HUD];
+//					[HUD show:YES];
+//
+//					[[API sharedInstance] getInventoryWithCompletionHandler:^{
+//						[HUD hide:YES];
+//					}];
+//
+//					break;
+//				}
+//
+//				case 3: {
+//
+//					[MagicalRecord cleanUp];
+//					[[NSFileManager defaultManager] removeItemAtURL:[NSPersistentStore MR_urlForStoreName:@"Ingress.sqlite"] error:nil];
+//					[MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Ingress.sqlite"];
+//
+//					break;
+//				}
 
-				case 3: {
-
-					[MagicalRecord cleanUp];
-					[[NSFileManager defaultManager] removeItemAtURL:[NSPersistentStore MR_urlForStoreName:@"Ingress.sqlite"] error:nil];
-					[MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Ingress.sqlite"];
-
-					break;
-				}
-
-				case 4: {
+				case 2: {
 
 					BOOL background = [[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleBackground];
 					UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
@@ -215,7 +247,7 @@
 					break;
 				}
 
-				case 5: {
+				case 3: {
 
 					BOOL effects = [[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects];
 					UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
@@ -231,7 +263,7 @@
 					break;
 				}
 
-				case 6: {
+				case 4: {
 
 					BOOL speech = [[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech];
 					UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
@@ -248,7 +280,7 @@
 					break;
 				}
 
-				case 7: {
+				case 5: {
 
 					UITableViewCell *cell = [super tableView:tableView cellForRowAtIndexPath:indexPath];
 					Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
@@ -268,7 +300,7 @@
 					break;
 				}
 
-				case 8: {
+				case 6: {
 					BOOL newDayModeValue = ! [[NSUserDefaults standardUserDefaults] boolForKey:IGMapDayMode];
 
 					[[NSUserDefaults standardUserDefaults] setBool:newDayModeValue forKey:IGMapDayMode];
@@ -283,7 +315,7 @@
 
 					break;
 				}
-				case 9:
+				case 7:
 				{
 
 					BOOL newMilesorKMValue = ! [[NSUserDefaults standardUserDefaults] boolForKey:MilesOrKM];

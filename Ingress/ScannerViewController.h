@@ -10,6 +10,8 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 #import <CoreImage/CoreImage.h>
+#import <AssetsLibrary/AssetsLibrary.h>
+#import <MobileCoreServices/UTCoreTypes.h>
 #import "ChooserViewController.h"
 #import "OpsViewController.h"
 #import "GlowingLabel.h"
@@ -17,7 +19,7 @@
 #import "APView.h"
 #import "QuickActionsMenu.h"
 
-@interface ScannerViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, UIActionSheetDelegate, OpsViewControllerDelegate> {
+@interface ScannerViewController : UIViewController <MKMapViewDelegate, CLLocationManagerDelegate, UIActionSheetDelegate, UINavigationControllerDelegate, UIImagePickerControllerDelegate, OpsViewControllerDelegate> {
 	
 	__weak IBOutlet MKMapView *_mapView;
 	__weak IBOutlet UIImageView *playerArrowImage;

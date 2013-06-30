@@ -31,7 +31,6 @@
     NSLayoutConstraint *rangeCircleViewWidth;
     NSLayoutConstraint *rangeCircleViewHeight;
     
-	CLLocationManager *locationManager;
 	CLLocation *lastLocation;
 	BOOL firstRefreshProfile;
 	BOOL firstLocationUpdate;
@@ -43,6 +42,9 @@
 	NSTimer *refreshTimer;
 
 	NSMutableSet *mapGuids;
+    
+    UIImage *imageData;
+	NSString *imageLocation;
 
 }
 
@@ -161,16 +163,14 @@
             case 1:
                 [self fireXMP];
                 break;
-            case 2:
+            case 2: {
                 
-                if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) {
-                    UIImagePickerController *cameraVC = [UIImagePickerController new];
-                    cameraVC.sourceType = UIImagePickerControllerSourceTypeCamera;
-//                    cameraVC.delegate = self;
-                    [self presentViewController:cameraVC animated:YES completion:nil];
-                }
+                UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Choose Existing", nil];
+				actionSheet.tag = 3;
+				[actionSheet showInView:self.view.window];
                 
                 break;
+            }
             case 4: {
                 
                 NSMutableArray *itemsToCollect = [NSMutableArray array];
@@ -183,6 +183,7 @@
                 if (itemsToCollect.count > 0) {
                     
                     __block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+                    HUD.removeFromSuperViewOnHide = YES;
                     HUD.userInteractionEnabled = YES;
                     HUD.mode = MBProgressHUDModeIndeterminate;
                     HUD.dimBackground = YES;
@@ -825,7 +826,22 @@
 			}
 		}];
 		
-	}
+	} else if (actionSheet.tag == 3) {
+    
+        if (buttonIndex != actionSheet.cancelButtonIndex) {
+            UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+            
+            if (buttonIndex == 0) {
+                imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+            } else if (buttonIndex == 1) {
+                imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            }
+            
+            imagePickerVC.delegate = self;
+            [self presentViewController:imagePickerVC animated:YES completion:nil];
+        }
+        
+    }
 
 }
 
@@ -1023,10 +1039,10 @@
 - (void)mapTapped:(UITapGestureRecognizer *)recognizer {
 
 	if (_mapView.scrollEnabled) {
-		[locationManager startUpdatingLocation];
+        [[LocationManager sharedInstance] addDelegate:self];
 		[_mapView setScrollEnabled:NO];
 	} else {
-		[locationManager stopUpdatingLocation];
+        [[LocationManager sharedInstance] removeDelegate:self];
 		[_mapView setScrollEnabled:YES];
 	}
 
@@ -1096,6 +1112,7 @@
 //	[self fireXMPOfLevel:level];
     
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+    HUD.removeFromSuperViewOnHide = YES;
 	HUD.userInteractionEnabled = YES;
 	HUD.mode = MBProgressHUDModeCustomView;
 	HUD.dimBackground = YES;
@@ -1121,6 +1138,7 @@
 	
 	if (!xmpItem) {
 		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+        HUD.removeFromSuperViewOnHide = YES;
 		HUD.userInteractionEnabled = YES;
 		HUD.dimBackground = YES;
 		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
@@ -1255,6 +1273,43 @@
 
 - (void)didDismissOpsViewController:(OpsViewController *)opsViewController {
 //	_opsViewController = nil;
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+	imageData = nil;
+	imageLocation = nil;
+    
+	NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+	if ([mediaType isEqualToString:(NSString*)kUTTypeImage]) {
+		NSURL *url = [info objectForKey:UIImagePickerControllerReferenceURL];
+		if (url) {
+			[[ALAssetsLibrary new] assetForURL:url resultBlock:^(ALAsset *asset) {
+				CLLocation *location = [asset valueForProperty:ALAssetPropertyLocation];
+				if (location) {
+					imageLocation = [NSString stringWithFormat:@"lat=%g\nlng=%g\n", location.coordinate.latitude, location.coordinate.longitude];
+					imageData = info[UIImagePickerControllerOriginalImage];
+					NSLog(@"imageData: %@", imageData);
+				}
+			} failureBlock:nil];
+		}
+	}
+    
+	[picker dismissViewControllerAnimated:YES completion:^{
+		if (imageData) {
+			NSLog(@"imageData: %@", imageData);
+			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Enter title for portal" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
+			alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
+			[alertView textFieldAtIndex:0].placeholder = @"Enter portal title";
+			[alertView show];
+		} else {
+			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error getting photo" message:nil delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
+			[alertView show];
+		}
+	}];
+    
 }
 
 #pragma mark - Storyboard
