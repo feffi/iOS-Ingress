@@ -18,9 +18,6 @@
 - (void)viewDidLoad {
 	[super viewDidLoad];
 
-	Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-	BOOL canUpgrade = (self.portal.controllingTeam && ([self.portal.controllingTeam isEqualToString:player.team] || [self.portal.controllingTeam isEqualToString:@"NEUTRAL"]));
-
 	CGFloat viewWidth = [UIScreen mainScreen].bounds.size.width;
 	CGFloat viewHeight = [UIScreen mainScreen].bounds.size.height-20;
 
@@ -49,7 +46,7 @@
 	portalInfoVC.portal = self.portal;
 	[self addChildViewController:portalInfoVC];
 
-	if (canUpgrade) {
+	if (self.canUpgrade) {
 		portalUpgradeVC = [storyboard instantiateViewControllerWithIdentifier:@"PortalUpgradeViewController"];
 		portalUpgradeVC.portal = self.portal;
 		[self addChildViewController:portalUpgradeVC];
@@ -88,6 +85,13 @@
     // Dispose of any resources that can be recreated.
 }
 
+#pragma mark - 
+
+- (BOOL)canUpgrade {
+	Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
+	return (self.portal.isInPlayerRange && ((self.portal.controllingTeam && ([self.portal.controllingTeam isEqualToString:player.team] || [self.portal.controllingTeam isEqualToString:@"NEUTRAL"]))));
+}
+
 #pragma mark - NSManagedObjectContext Did Change
 
 - (void)managedObjectContextObjectsDidChange:(NSNotification *)notification {
@@ -108,9 +112,7 @@
 #pragma mark - TTSlidingPagesDataSource
 
 - (int)numberOfPagesForSlidingPagesViewController:(TTScrollSlidingPagesController *)source {
-	Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
-    BOOL canUpgrade = (self.portal.controllingTeam && ([self.portal.controllingTeam isEqualToString:player.team] || [self.portal.controllingTeam isEqualToString:@"NEUTRAL"]));
-	return 2+canUpgrade;
+	return 2+self.canUpgrade;
 }
 
 - (TTSlidingPage *)pageForSlidingPagesViewController:(TTScrollSlidingPagesController*)source atIndex:(int)index{

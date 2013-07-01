@@ -38,6 +38,8 @@
 
 @property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
 
+@property (nonatomic, readonly) BOOL isInPlayerRange;
+
 - (CLLocationDistance)distanceFromCoordinate:(CLLocationCoordinate2D)coordinate;
 
 @end

@@ -1286,7 +1286,7 @@
         <!--Portal Detail View Controller-->
         <scene sceneID="tKq-tx-ryc">
             <objects>
-                <viewController wantsFullScreenLayout="YES" id="EpT-PX-0Xb" customClass="PortalDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PortalDetailViewController" wantsFullScreenLayout="YES" id="EpT-PX-0Xb" customClass="PortalDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ROn-sT-oc0">
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>

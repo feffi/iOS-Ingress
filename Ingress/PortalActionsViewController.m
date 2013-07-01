@@ -130,7 +130,7 @@
 
     // ------------------------------------------
     
-    if (self.portalInRange) {
+    if (self.portal.isInPlayerRange) {
         hackButton.enabled = YES;
         hackButton.errorString = nil;
         
@@ -156,13 +156,20 @@
         linkButton.errorString = @"Out of Range";
     }
     
-    if ((self.portal.controllingTeam && [self.portal.controllingTeam isEqualToString:player.team]) && (self.portalInRange || _portalKey)) {
+    if ((self.portal.controllingTeam && [self.portal.controllingTeam isEqualToString:player.team]) && (self.portal.isInPlayerRange || _portalKey)) {
         rechargeButton.enabled = YES;
         rechargeButton.errorString = nil;
+		
+		if (self.portal.isInPlayerRange) {
+			[rechargeButton setTitle:@"RECHARGE" forState:UIControlStateNormal];
+		} else {
+			[rechargeButton setTitle:@"REMOTE RECHARGE" forState:UIControlStateNormal];
+		}
+		
     } else {
         rechargeButton.enabled = NO;
         
-        if (self.portalInRange) {
+        if (self.portal.isInPlayerRange) {
             if ([self.portal.controllingTeam isEqualToString:@"NEUTRAL"]) {
                 rechargeButton.errorString = @"Neutral Portal";
             } else {
@@ -174,20 +181,6 @@
 
     }
 
-}
-
-- (BOOL)portalInRange {
-	BOOL portalWithinActionRange = NO;
-    
-    CLLocation *playerLocation = [LocationManager sharedInstance].playerLocation;
-	
-	if (playerLocation != nil) {
-		CLLocation *portalLocation = [[CLLocation alloc] initWithLatitude:self.portal.latitude longitude:self.portal.longitude];
-		CLLocationDistance meters = [playerLocation distanceFromLocation:portalLocation];
-		portalWithinActionRange = (meters <= SCANNER_RANGE) ? YES : NO;
-	}
-	
-	return portalWithinActionRange;
 }
 
 #pragma mark - Actions
@@ -438,7 +431,7 @@
 		
 	};
 	
-	if ([self portalInRange]) {
+	if (self.portal.isInPlayerRange) {
 		[[API sharedInstance] rechargePortal:self.portal slots:@[@0, @1, @2, @3, @4, @5, @6, @7] completionHandler:handler];
 	} else {
 		[[API sharedInstance] remoteRechargePortal:self.portal portalKey:_portalKey completionHandler:handler];

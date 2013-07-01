@@ -22,7 +22,7 @@
 }
 
 - (CLLocationDistance)distanceFromCoordinate:(CLLocationCoordinate2D)coordinate {
-	CLLocation *loc1 = [[CLLocation alloc] initWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
+	CLLocation *loc1 = [[CLLocation alloc] initWithLatitude:self.latitude longitude:self.longitude];
 	CLLocation *loc2 = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
 	return [loc1 distanceFromLocation:loc2];
 }
