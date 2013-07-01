@@ -20,6 +20,8 @@
 	NSMutableArray *portals;
 
 	PortalKey *currentPortalKey;
+	
+	ChooserViewController *_countChooser;
 }
 
 @synthesize linkingPortal = _linkingPortal;
@@ -254,49 +256,130 @@
         [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
     }
 	if (actionSheet.tag == 1 && buttonIndex == 0) {
+		
+		Portal *portal = currentPortalKey.portal;
+		NSArray *portalKeys = keysDict[portal.guid];
 
-		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-		HUD.removeFromSuperViewOnHide = YES;
-		HUD.userInteractionEnabled = YES;
-		HUD.mode = MBProgressHUDModeIndeterminate;
-		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		HUD.labelText = @"Dropping Portal Key...";
-		[[AppDelegate instance].window addSubview:HUD];
-		[HUD show:YES];
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
-            [[API sharedInstance] playSound:@"SFX_DROP_RESOURCE"];
-        }
-        
-		[[API sharedInstance] dropItemWithGuid:currentPortalKey.guid completionHandler:^(void) {
-			[HUD hide:YES];
+		if (portalKeys.count > 0) {
+			
+			MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+			HUD.removeFromSuperViewOnHide = YES;
+			HUD.userInteractionEnabled = YES;
+			HUD.mode = MBProgressHUDModeCustomView;
+			HUD.dimBackground = YES;
+			HUD.showCloseButton = YES;
+			
+			_countChooser = [ChooserViewController countChooserWithButtonTitle:@"DROP" maxCount:portalKeys.count completionHandler:^(int count) {
+				if (count > 0) {
+					[HUD hide:YES];
+					_countChooser = nil;
+					
+					MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+					HUD.removeFromSuperViewOnHide = YES;
+					HUD.userInteractionEnabled = YES;
+					HUD.mode = MBProgressHUDModeIndeterminate;
+					HUD.dimBackground = YES;
+					HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+					HUD.labelText = @"Dropping...";
+					[[AppDelegate instance].window addSubview:HUD];
+					[HUD show:YES];
+					
+					if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+						[[SoundManager sharedManager] playSound:@"Sound/sfx_drop_resource.aif"];
+					}
+					
+					NSArray *items;
 
-			[self refresh];
-		}];
+					if (portalKeys.count > count) {
+						items = [portalKeys subarrayWithRange:NSMakeRange(0, count)];
+					}
+					
+					__block int completed = 0;
+					for (PortalKey *portalKey in portalKeys) {
+						
+						[[API sharedInstance] dropItemWithGuid:portalKey.guid completionHandler:^(void) {
+							completed++;
+							if (completed == items.count) {
+								[HUD hide:YES];
+								[self refresh];
+							}
+						}];
+						
+					}
+					
+				}
+			}];
+			HUD.customView = _countChooser.view;
+			
+			[[AppDelegate instance].window addSubview:HUD];
+			[HUD show:YES];
+			
+		} else {
+			[Utilities showWarningWithTitle:@"No Item"];
+		}
 
 	} else if (actionSheet.tag == 1 && buttonIndex == 1) {
-
-		PortalKey *portalKey = currentPortalKey;
-
-		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-		HUD.removeFromSuperViewOnHide = YES;
-		HUD.userInteractionEnabled = YES;
-		HUD.mode = MBProgressHUDModeIndeterminate;
-		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		HUD.labelText = @"Recycling Item...";
-		[[AppDelegate instance].window addSubview:HUD];
-		[HUD show:YES];
-
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
-            [[SoundManager sharedManager] playSound:[NSString stringWithFormat:@"Sound/sfx_recycle_%@.aif", arc4random_uniform(2) ? @"a" : @"b"]];
-        }
-
-		[[API sharedInstance] recycleItem:portalKey completionHandler:^{
-			[HUD hide:YES];
-
-			[self refresh];
-		}];
+		
+		Portal *portal = currentPortalKey.portal;
+		NSArray *portalKeys = keysDict[portal.guid];
+		
+		if (portalKeys.count > 0) {
+			
+			MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+			HUD.removeFromSuperViewOnHide = YES;
+			HUD.userInteractionEnabled = YES;
+			HUD.mode = MBProgressHUDModeCustomView;
+			HUD.dimBackground = YES;
+			HUD.showCloseButton = YES;
+			
+			_countChooser = [ChooserViewController countChooserWithButtonTitle:@"RECYCLE" maxCount:portalKeys.count completionHandler:^(int count) {
+				if (count > 0) {
+					[HUD hide:YES];
+					_countChooser = nil;
+					
+					MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+					HUD.removeFromSuperViewOnHide = YES;
+					HUD.userInteractionEnabled = YES;
+					HUD.mode = MBProgressHUDModeIndeterminate;
+					HUD.dimBackground = YES;
+					HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+					HUD.labelText = @"Recycling...";
+					[[AppDelegate instance].window addSubview:HUD];
+					[HUD show:YES];
+					
+					if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+						[[SoundManager sharedManager] playSound:[NSString stringWithFormat:@"Sound/sfx_recycle_%@.aif", arc4random_uniform(2) ? @"a" : @"b"]];
+					}
+					
+					NSArray *items;
+					
+					if (portalKeys.count > count) {
+						items = [portalKeys subarrayWithRange:NSMakeRange(0, count)];
+					}
+					
+					__block int completed = 0;
+					for (PortalKey *portalKey in portalKeys) {
+						
+						[[API sharedInstance] recycleItem:portalKey completionHandler:^(void) {
+							completed++;
+							if (completed == items.count) {
+								[HUD hide:YES];
+								[self refresh];
+							}
+						}];
+						
+					}
+					
+				}
+			}];
+			HUD.customView = _countChooser.view;
+			
+			[[AppDelegate instance].window addSubview:HUD];
+			[HUD show:YES];
+			
+		} else {
+			[Utilities showWarningWithTitle:@"No Item"];
+		}
 		
 	} else if (actionSheet.tag == 1 && buttonIndex == 2) {
 
