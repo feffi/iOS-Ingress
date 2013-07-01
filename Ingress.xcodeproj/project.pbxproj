@@ -33,6 +33,7 @@
 		FA325D601780920800FDC5A5 /* NewPortalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA325D5F1780920800FDC5A5 /* NewPortalViewController.m */; };
 		FA325D631780921400FDC5A5 /* NewPortalLocationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA325D621780921400FDC5A5 /* NewPortalLocationViewController.m */; };
 		FA325D651780A82300FDC5A5 /* discovery_location@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA325D641780A82300FDC5A5 /* discovery_location@2x.png */; };
+		FA325D691781A8EA00FDC5A5 /* BorderedTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = FA325D681781A8EA00FDC5A5 /* BorderedTextField.m */; };
 		FA32E883169F2D9F00D30E90 /* API.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E882169F2D9F00D30E90 /* API.m */; };
 		FA32E888169F657400D30E90 /* CommViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E887169F657400D30E90 /* CommViewController.m */; };
 		FA32E88B169F661500D30E90 /* CommTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA32E88A169F661500D30E90 /* CommTableViewController.m */; };
@@ -354,6 +355,8 @@
 		FA325D611780921400FDC5A5 /* NewPortalLocationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewPortalLocationViewController.h; sourceTree = "<group>"; };
 		FA325D621780921400FDC5A5 /* NewPortalLocationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewPortalLocationViewController.m; sourceTree = "<group>"; };
 		FA325D641780A82300FDC5A5 /* discovery_location@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "discovery_location@2x.png"; sourceTree = "<group>"; };
+		FA325D671781A8EA00FDC5A5 /* BorderedTextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BorderedTextField.h; path = BorderedTextField/BorderedTextField.h; sourceTree = "<group>"; };
+		FA325D681781A8EA00FDC5A5 /* BorderedTextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BorderedTextField.m; path = BorderedTextField/BorderedTextField.m; sourceTree = "<group>"; };
 		FA32E881169F2D9F00D30E90 /* API.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = API.h; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objcpp; };
 		FA32E882169F2D9F00D30E90 /* API.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = API.m; sourceTree = "<group>"; };
 		FA32E886169F657400D30E90 /* CommViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommViewController.h; sourceTree = "<group>"; };
@@ -953,6 +956,15 @@
 			);
 			name = "New Portal";
 			path = Ingress;
+			sourceTree = "<group>";
+		};
+		FA325D661781A8D300FDC5A5 /* BorderedTextField */ = {
+			isa = PBXGroup;
+			children = (
+				FA325D671781A8EA00FDC5A5 /* BorderedTextField.h */,
+				FA325D681781A8EA00FDC5A5 /* BorderedTextField.m */,
+			);
+			name = BorderedTextField;
 			sourceTree = "<group>";
 		};
 		FA32E871169EC13900D30E90 /* Model */ = {
@@ -1785,6 +1797,7 @@
 		FAE6AC7616A0E27B0082BBB5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				FA325D661781A8D300FDC5A5 /* BorderedTextField */,
 				FA5826AC177A2F2300BF1FD7 /* QuickActionsMenu */,
 				FAB7BA231779D94B0047C7C0 /* UIControl+Blocks */,
 				FA13A55A1767833400974387 /* UIScrollSlidingPages */,
@@ -2300,6 +2313,7 @@
 				FAF935CA177F034900DC0167 /* LocationManager.m in Sources */,
 				FA325D601780920800FDC5A5 /* NewPortalViewController.m in Sources */,
 				FA325D631780921400FDC5A5 /* NewPortalLocationViewController.m in Sources */,
+				FA325D691781A8EA00FDC5A5 /* BorderedTextField.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

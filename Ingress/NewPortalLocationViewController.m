@@ -21,6 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
+	titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
+	
 	for (UIView *view in mapView.subviews) {
 		if ([view isKindOfClass:NSClassFromString(@"MKAttributionLabel")]) {
 			[view removeFromSuperview];
@@ -32,7 +34,7 @@
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
 	
-	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0), dispatch_get_main_queue(), ^(void){
+	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0.1), dispatch_get_main_queue(), ^(void){
 		[mapView setCenterCoordinate:self.portalLocation.coordinate zoomLevel:16 animated:NO];
 	});
 
@@ -44,6 +46,20 @@
 }
 
 #pragma mark - IBActions
+
+- (IBAction)mapTypeChanged:(UISegmentedControl *)sender {
+	switch (sender.selectedSegmentIndex) {
+		case 0:
+			[mapView setMapType:MKMapTypeStandard];
+			break;
+		case 1:
+			[mapView setMapType:MKMapTypeSatellite];
+			break;
+		case 2:
+			[mapView setMapType:MKMapTypeHybrid];
+			break;
+	}
+}
 
 - (IBAction)confirm {
 	self.delegate.portalLocation = [[CLLocation alloc] initWithLatitude:mapView.centerCoordinate.latitude longitude:mapView.centerCoordinate.longitude];

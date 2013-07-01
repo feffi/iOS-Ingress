@@ -13,12 +13,14 @@
 @interface NewPortalLocationViewController : UIViewController {
 	
 	__weak IBOutlet MKMapView *mapView;
+	__weak IBOutlet UILabel *titleLabel;
 	
 }
 
 @property (nonatomic, strong) CLLocation *portalLocation;
 @property (nonatomic, weak) NewPortalViewController *delegate;
 
+- (IBAction)mapTypeChanged:(UISegmentedControl *)sender;
 - (IBAction)confirm;
 - (IBAction)cancel;
 
