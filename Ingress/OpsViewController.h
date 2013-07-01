@@ -17,6 +17,7 @@
 @interface OpsViewController : UIViewController <TTSlidingPagesDataSource, UIScrollViewDelegate> {
 	
 	__weak IBOutlet UIButton *opsCloseButton;
+	__weak IBOutlet UIImageView *labelBackgroundImage;
 	__weak IBOutlet GlowingLabel *opsLabel;
 }
 

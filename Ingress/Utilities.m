@@ -21,7 +21,11 @@
     return __sharedInstance;
 }
 
-#pragma mark - iOS 7
+#pragma mark - 
+
++ (BOOL)isPad {
+	return [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPad;
+}
 
 + (BOOL)isOS7 {
 	return ([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] != NSOrderedAscending);

@@ -45,11 +45,17 @@
 	slider.disableUIPageControl = YES;
 	slider.zoomOutAnimationDisabled = YES;
 	slider.dataSource = self;
-	slider.view.frame = CGRectMake(0, 28, 320, 508);
+	
+	CGRect frame = self.view.bounds;
+	frame.origin.y = 28;
+	frame.size.height -= 60; //28+32
+	slider.view.frame = frame;
+
 	[self.view addSubview:slider.view];
 	[self addChildViewController:slider];
-
 	[self.view bringSubviewToFront:transmitContainerView];
+	
+	bgImageView.image = [[UIImage imageNamed:@"commBg.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(30, 200, 20, 100)];
 
 	transmitTextField.font = [UIFont fontWithName:[[[UITextField appearance] font] fontName] size:15];
 	transmitButton.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15];

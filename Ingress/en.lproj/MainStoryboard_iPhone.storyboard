@@ -2198,7 +2198,10 @@
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next"/>
+                                <connections>
+                                    <outlet property="delegate" destination="TMW-Fq-WLZ" id="4gJ-ns-eyT"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="NAME:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UZF-nV-uuK">
                                 <constraints>
@@ -2214,7 +2217,10 @@
                                 </constraints>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="TMW-Fq-WLZ" id="a9b-yw-uWZ"/>
+                                </connections>
                             </textField>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="DESCRIPTION:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZUx-lo-ceC">
                                 <constraints>
@@ -2288,11 +2294,13 @@
                         </constraints>
                     </scrollView>
                     <connections>
+                        <outlet property="cancelButton" destination="PFC-N9-qQd" id="RdV-yi-mbc"/>
                         <outlet property="mapViewLabel" destination="I9S-cI-882" id="LYu-UB-1nE"/>
                         <outlet property="portalDescriptionTextField" destination="T7V-Mz-ivQ" id="Qp4-wM-mK7"/>
                         <outlet property="portalImageView" destination="Zhe-Ci-s8M" id="3VD-N5-ZOv"/>
                         <outlet property="portalLocationMapView" destination="ilt-h1-yxN" id="NqE-xE-mrB"/>
                         <outlet property="portalNameTextField" destination="bBK-NT-nut" id="58G-VD-Zgr"/>
+                        <outlet property="sendButton" destination="r16-S9-UGu" id="ndg-Fy-vnM"/>
                         <outlet property="subtitleLabel" destination="Wcz-7i-eaD" id="R9f-ri-5fo"/>
                         <outlet property="titleLabel" destination="4QJ-uC-Qbx" id="yZJ-PP-cQm"/>
                     </connections>
@@ -2402,10 +2410,12 @@
                         <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OPS" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEv-3b-yHD" customClass="GlowingLabel">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="ops_background@2x.png" translatesAutoresizingMaskIntoConstraints="NO" id="zIk-qk-ReO">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="32" id="adb-Z4-9eL"/>
+                                    <constraint firstAttribute="height" constant="32" id="VQe-gq-9yj"/>
                                 </constraints>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="OPS" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zEv-3b-yHD" customClass="GlowingLabel">
                                 <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <color key="textColor" red="0.92156862750000001" green="0.73725490199999999" blue="0.2901960784" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2426,15 +2436,20 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="zIk-qk-ReO" firstAttribute="bottom" secondItem="zEv-3b-yHD" secondAttribute="bottom" type="default" id="1OO-xE-8hr"/>
                             <constraint firstItem="DD1-CI-J7z" firstAttribute="leading" secondItem="HQB-G9-BUn" secondAttribute="leading" type="default" id="AkL-mV-g9i"/>
-                            <constraint firstItem="zEv-3b-yHD" firstAttribute="top" secondItem="DD1-CI-J7z" secondAttribute="top" type="default" id="Pij-it-34o"/>
+                            <constraint firstItem="zIk-qk-ReO" firstAttribute="leading" secondItem="HQB-G9-BUn" secondAttribute="leading" type="default" id="NEs-el-n7S"/>
                             <constraint firstItem="DD1-CI-J7z" firstAttribute="top" secondItem="HQB-G9-BUn" secondAttribute="top" constant="20" symbolic="YES" type="default" id="YDd-e9-X0Q"/>
-                            <constraint firstItem="DD1-CI-J7z" firstAttribute="leading" secondItem="zEv-3b-yHD" secondAttribute="leading" type="default" id="jmf-N9-u5s"/>
+                            <constraint firstItem="zIk-qk-ReO" firstAttribute="leading" secondItem="zEv-3b-yHD" secondAttribute="leading" type="default" id="YR0-7g-ceG"/>
+                            <constraint firstItem="zIk-qk-ReO" firstAttribute="top" secondItem="HQB-G9-BUn" secondAttribute="top" constant="20" symbolic="YES" type="default" id="aoW-Mv-cXW"/>
+                            <constraint firstItem="zIk-qk-ReO" firstAttribute="trailing" secondItem="HQB-G9-BUn" secondAttribute="trailing" type="default" id="bKj-h8-Nh1"/>
                             <constraint firstItem="zEv-3b-yHD" firstAttribute="trailing" secondItem="HQB-G9-BUn" secondAttribute="trailing" type="default" id="oi4-Et-Sot"/>
+                            <constraint firstItem="zIk-qk-ReO" firstAttribute="top" secondItem="zEv-3b-yHD" secondAttribute="top" type="default" id="rmn-Nz-kOo"/>
                         </constraints>
                     </view>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics"/>
                     <connections>
+                        <outlet property="labelBackgroundImage" destination="zIk-qk-ReO" id="797-8d-y8V"/>
                         <outlet property="opsCloseButton" destination="DD1-CI-J7z" id="5YQ-hD-04N"/>
                         <outlet property="opsLabel" destination="zEv-3b-yHD" id="gH7-YK-933"/>
                     </connections>
@@ -4142,6 +4157,7 @@
         <image name="negative_btn_background_default.png" width="45" height="23.5"/>
         <image name="negative_btn_background_disabled.png" width="45" height="23.5"/>
         <image name="negative_btn_background_pressed.png" width="45" height="23.5"/>
+        <image name="ops_background@2x.png" width="640" height="64"/>
         <image name="ops_close_button_default.png" width="62" height="34"/>
         <image name="ops_close_button_pressed.png" width="62" height="34"/>
         <image name="playerArrow_aliens.png" width="50" height="50"/>
@@ -4161,285 +4177,6 @@
         <image name="shield_verycommon.png" width="50" height="50"/>
         <image name="turretBtn.png" width="50" height="50"/>
     </resources>
-    <classes>
-        <class className="APView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/APView.h"/>
-        </class>
-        <class className="ChooserViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ChooserViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="action:" candidateClass="UIButton"/>
-                <relationship kind="action" name="stepperChanged:" candidateClass="UIStepper"/>
-                <relationship kind="outlet" name="countButton" candidateClass="GUIButton"/>
-                <relationship kind="outlet" name="countLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="countStepper" candidateClass="UIStepper"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="CommTableViewCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CommTableViewCell.h"/>
-            <relationships>
-                <relationship kind="outlet" name="messageLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="timeLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="CommTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CommTableViewController.h"/>
-        </class>
-        <class className="CommViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CommViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="showHide"/>
-                <relationship kind="action" name="transmit"/>
-                <relationship kind="outlet" name="bgImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="showHideButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="transmitButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="transmitContainerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="transmitTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="CustomBackgroundColorButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/CustomBackgroundColorButton.h"/>
-        </class>
-        <class className="DarkPressedBackgroundButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DarkPressedBackgroundButton.h"/>
-        </class>
-        <class className="DeviceViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/DeviceViewController.h"/>
-        </class>
-        <class className="GLViewController" superclassName="GLKViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GLViewController.h"/>
-        </class>
-        <class className="GUIButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GUIButton.h"/>
-        </class>
-        <class className="GlowingLabel" superclassName="UILabel">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/GlowingLabel.h"/>
-        </class>
-        <class className="IntelViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/IntelViewController.h"/>
-        </class>
-        <class className="ItemsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ItemsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="submitPasscode"/>
-                <relationship kind="outlet" name="passcodeContainerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="passcodeTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="submitPasscodeButton" candidateClass="UIButton"/>
-            </relationships>
-        </class>
-        <class className="LoadingViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/LoadingViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="activate"/>
-                <relationship kind="action" name="codenameConfirm"/>
-                <relationship kind="action" name="codenameRetry"/>
-                <relationship kind="action" name="createCodename"/>
-                <relationship kind="action" name="retryHandshake"/>
-                <relationship kind="action" name="termsCheckboxChanged"/>
-                <relationship kind="action" name="termsConfirm"/>
-                <relationship kind="outlet" name="activationButton" candidateClass="CustomBackgroundColorButton"/>
-                <relationship kind="outlet" name="activationCodeField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="activationErrorLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="activationView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="codenameConfirmButton" candidateClass="StretchableBackgroundButton"/>
-                <relationship kind="outlet" name="codenameConfirmLabel" candidateClass="TypeWriterLabel"/>
-                <relationship kind="outlet" name="codenameConfirmRetryButton" candidateClass="StretchableBackgroundButton"/>
-                <relationship kind="outlet" name="codenameConfirmView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="codenameErrorLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="codenameErrorRetryButton" candidateClass="StretchableBackgroundButton"/>
-                <relationship kind="outlet" name="codenameErrorView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="createCodenameButton" candidateClass="CustomBackgroundColorButton"/>
-                <relationship kind="outlet" name="createCodenameField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="createCodenameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="createCodenameScrollview" candidateClass="TPKeyboardAvoidingScrollView"/>
-                <relationship kind="outlet" name="introTextView" candidateClass="UITextView"/>
-                <relationship kind="outlet" name="introView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="label" candidateClass="GlowingLabel"/>
-                <relationship kind="outlet" name="retryHandshakeButton" candidateClass="GUIButton"/>
-                <relationship kind="outlet" name="termsCheckboxButton" candidateClass="SelectingButton"/>
-                <relationship kind="outlet" name="termsConfirmButton" candidateClass="StretchableBackgroundButton"/>
-                <relationship kind="outlet" name="termsDescriptionLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="termsLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="termsView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="termsWarningLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="typewriterLabel" candidateClass="TypeWriterLabel"/>
-                <relationship kind="outlet" name="typewriterView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="wheelActivityIndicatorView" candidateClass="WheelActivityIndicatorView"/>
-            </relationships>
-        </class>
-        <class className="MediaItemsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MediaItemsViewController.h"/>
-        </class>
-        <class className="MediaWebViewViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MediaWebViewViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="action"/>
-                <relationship kind="action" name="close"/>
-                <relationship kind="outlet" name="_webView" candidateClass="UIWebView"/>
-            </relationships>
-        </class>
-        <class className="MissionViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MissionViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="join:"/>
-                <relationship kind="outlet" name="altButton" candidateClass="StretchableBackgroundButton"/>
-                <relationship kind="outlet" name="authLabel" candidateClass="GlowingLabel"/>
-                <relationship kind="outlet" name="authProgressView" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="backgroundImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="choosingLabel" candidateClass="GlowingLabel"/>
-                <relationship kind="outlet" name="factionChooseButtons" candidateClass="UIView"/>
-                <relationship kind="outlet" name="factionChooseButtonsLabel" candidateClass="GlowingLabel"/>
-                <relationship kind="outlet" name="jarvisBackground" candidateClass="UIView"/>
-                <relationship kind="outlet" name="joinEnlightenedButton" candidateClass="GUIButton"/>
-                <relationship kind="outlet" name="joinResistanceButton" candidateClass="GUIButton"/>
-                <relationship kind="outlet" name="mainButton" candidateClass="StretchableBackgroundButton"/>
-                <relationship kind="outlet" name="subtitleLabel" candidateClass="GlowingLabel"/>
-                <relationship kind="outlet" name="textView" candidateClass="ScrollTextView"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="GlowingLabel"/>
-                <relationship kind="outlet" name="typewriterLabel" candidateClass="TypeWriterLabel"/>
-            </relationships>
-        </class>
-        <class className="MissionsViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/MissionsViewController.h"/>
-        </class>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="NewPortalLocationViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewPortalLocationViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel"/>
-                <relationship kind="action" name="confirm"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
-            </relationships>
-        </class>
-        <class className="NewPortalViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NewPortalViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel"/>
-                <relationship kind="action" name="selectLocation"/>
-                <relationship kind="action" name="send"/>
-                <relationship kind="outlet" name="mapViewLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="portalDescriptionTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="portalImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="portalLocationMapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="portalNameTextField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="subtitleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="titleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="OpsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/OpsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="back"/>
-                <relationship kind="outlet" name="opsCloseButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="opsLabel" candidateClass="GlowingLabel"/>
-            </relationships>
-        </class>
-        <class className="PortalActionsViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalActionsViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="hack:" candidateClass="GUIButton"/>
-                <relationship kind="action" name="link:" candidateClass="GUIButton"/>
-                <relationship kind="action" name="recharge:" candidateClass="GUIButton"/>
-                <relationship kind="outlet" name="hackButton" candidateClass="GUIButton"/>
-                <relationship kind="outlet" name="imageActivityIndicator" candidateClass="UIActivityIndicatorView"/>
-                <relationship kind="outlet" name="infoLabel1" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="infoLabel2" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="linkButton" candidateClass="GUIButton"/>
-                <relationship kind="outlet" name="portalTitleLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="rechargeButton" candidateClass="GUIButton"/>
-            </relationships>
-        </class>
-        <class className="PortalDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalDetailViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="back:"/>
-            </relationships>
-        </class>
-        <class className="PortalInfoViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalInfoViewController.h"/>
-        </class>
-        <class className="PortalKeyCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalKeyCell.h"/>
-        </class>
-        <class className="PortalKeysViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalKeysViewController.h"/>
-        </class>
-        <class className="PortalUpgradeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/PortalUpgradeViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="modButtonPressed:" candidateClass="GUIButton"/>
-            </relationships>
-        </class>
-        <class className="RecruitViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/RecruitViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="invite"/>
-                <relationship kind="outlet" name="inviteButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="inviteContainerView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="inviteLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="inviteTextField" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="ResonatorView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ResonatorView.h"/>
-        </class>
-        <class className="ResourceCell" superclassName="UITableViewCell">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ResourceCell.h"/>
-            <relationships>
-                <relationship kind="action" name="action:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="itemImageView" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="itemTitleLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="ResourcesViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ResourcesViewController.h"/>
-        </class>
-        <class className="ScannerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScannerViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="openOPS"/>
-                <relationship kind="action" name="showAP"/>
-                <relationship kind="action" name="showXM"/>
-                <relationship kind="action" name="virusChoosePortalCancel"/>
-                <relationship kind="outlet" name="_mapView" candidateClass="MKMapView"/>
-                <relationship kind="outlet" name="apLabel" candidateClass="GlowingLabel"/>
-                <relationship kind="outlet" name="apView" candidateClass="APView"/>
-                <relationship kind="outlet" name="bgImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="levelLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="nicknameLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="opsButton" candidateClass="GUIButton"/>
-                <relationship kind="outlet" name="playerArrowImage" candidateClass="UIImageView"/>
-                <relationship kind="outlet" name="virusChoosePortalCancelButton" candidateClass="GUIButton"/>
-                <relationship kind="outlet" name="virusChoosePortalLabel" candidateClass="GlowingLabel"/>
-                <relationship kind="outlet" name="xmIndicator" candidateClass="UIProgressView"/>
-                <relationship kind="outlet" name="xmLabel" candidateClass="GlowingLabel"/>
-            </relationships>
-        </class>
-        <class className="ScoreViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScoreViewController.h"/>
-        </class>
-        <class className="ScrollTextView" superclassName="UITextView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ScrollTextView.h"/>
-        </class>
-        <class className="SelectingButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/SelectingButton.h"/>
-        </class>
-        <class className="StretchableBackgroundButton" superclassName="UIButton">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/StretchableBackgroundButton.h"/>
-        </class>
-        <class className="TPKeyboardAvoidingScrollView" superclassName="UIScrollView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TPKeyboardAvoidingScrollView.h"/>
-        </class>
-        <class className="TypeWriterLabel" superclassName="UILabel">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TypeWriterLabel.h"/>
-        </class>
-        <class className="WheelActivityIndicatorView" superclassName="UIView">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/WheelActivityIndicatorView.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

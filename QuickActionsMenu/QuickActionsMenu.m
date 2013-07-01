@@ -110,6 +110,10 @@
 - (void)showMenu:(UIGestureRecognizer *)gestureRecognizer {
     
     if (gestureRecognizer.state == UIGestureRecognizerStateBegan) {
+		
+		if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+			[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+		}
         
 //        self.hidden = NO;
 //        [UIView animateWithDuration:0.3 animations:^{

@@ -43,6 +43,7 @@ typedef enum {
 
 + (instancetype)sharedInstance;
 
++ (BOOL)isPad;
 + (BOOL)isOS7;
 
 + (void)showWarningWithTitle:(NSString *)title;

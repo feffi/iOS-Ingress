@@ -17,8 +17,10 @@
     [super viewDidLoad];
 
 	[opsLabel setAttributedText:[[NSAttributedString alloc] initWithString:@"OPS" attributes:[Utilities attributesWithShadow:YES size:18 color:[UIColor colorWithRed:235./255. green:188./255. blue:74./255. alpha:1.0]]]];
-	[opsLabel setBackgroundColor:[UIColor colorWithPatternImage:[UIImage imageNamed:@"ops_background.png"]]];
+//	[opsLabel setBackgroundColor:[UIColor colorWithPatternImage:]];
 	opsLabel.rightInset = 10;
+	
+	labelBackgroundImage.image = [[UIImage imageNamed:@"ops_background.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(2, 2, 2, 236)];
 
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
 	self.scoreViewController = [storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];

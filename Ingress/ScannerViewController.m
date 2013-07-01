@@ -23,6 +23,12 @@
 
 #define IG_RANGE_CIRCLE_VIEW_BORDER_WIDTH 2
 
+@interface ScannerViewController ()
+
+@property (nonatomic, strong) IBOutlet UIPopoverController *popover;
+
+@end
+
 @implementation ScannerViewController {
 
 	Portal *currentPortal;
@@ -46,7 +52,7 @@
     
     UIImage *selectedPortalImage;
 	CLLocation *selectedPortalLocation;
-
+	
 }
 
 @synthesize virusToUse = _virusToUse;
@@ -833,14 +839,23 @@
             UIImagePickerController *imagePickerVC = [UIImagePickerController new];
             
             if (buttonIndex == 0) {
+				if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) return;
                 imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
             } else if (buttonIndex == 1) {
                 imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
             }
             
             imagePickerVC.delegate = self;
-			imagePickerVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-            [self presentViewController:imagePickerVC animated:YES completion:nil];
+			
+			if ([Utilities isPad]) {
+				self.popover = [[UIPopoverController alloc] initWithContentViewController:imagePickerVC];
+				self.popover.popoverContentSize = CGSizeMake(320, 480);
+				[self.popover presentPopoverFromRect:apView.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+			} else {
+				imagePickerVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+				[self presentViewController:imagePickerVC animated:YES completion:nil];
+			}
+
         }
         
     }
@@ -1303,19 +1318,28 @@
 		selectedPortalLocation = [[LocationManager sharedInstance] playerLocation];
 	}
     
-	[picker dismissViewControllerAnimated:YES completion:^{
-		if (selectedPortalImage) {
-			UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-			NewPortalViewController *newPortalVC = [storyboard instantiateViewControllerWithIdentifier:@"NewPortalViewController"];
-			newPortalVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
-			newPortalVC.portalImage = selectedPortalImage;
-			newPortalVC.portalLocation = selectedPortalLocation;
-			[self presentViewController:newPortalVC animated:YES completion:NULL];
-		} else {
-			[Utilities showWarningWithTitle:@"Error getting photo"];
-		}
-	}];
+	if ([Utilities isPad]) {
+		[self.popover dismissPopoverAnimated:YES];
+		[self openNewPortalVC];
+	} else {
+		[picker dismissViewControllerAnimated:YES completion:^{
+			[self openNewPortalVC];
+		}];
+	}
     
+}
+
+- (void)openNewPortalVC {
+	if (selectedPortalImage) {
+		UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+		NewPortalViewController *newPortalVC = [storyboard instantiateViewControllerWithIdentifier:@"NewPortalViewController"];
+		newPortalVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+		newPortalVC.portalImage = selectedPortalImage;
+		newPortalVC.portalLocation = selectedPortalLocation;
+		[self presentViewController:newPortalVC animated:YES completion:NULL];
+	} else {
+		[Utilities showWarningWithTitle:@"Error getting photo"];
+	}
 }
 
 #pragma mark - Storyboard

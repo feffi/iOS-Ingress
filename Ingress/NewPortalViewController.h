@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "MKMapView+ZoomLevel.h"
 #import "DAKeyboardControl.h"
+#import "GUIButton.h"
 
-@interface NewPortalViewController : UIViewController {
+@interface NewPortalViewController : UIViewController <UITextFieldDelegate> {
 	
 	__weak IBOutlet UILabel *titleLabel;
 	__weak IBOutlet UILabel *subtitleLabel;
@@ -21,6 +22,9 @@
 	
 	__weak IBOutlet UITextField *portalNameTextField;
 	__weak IBOutlet UITextField *portalDescriptionTextField;
+	
+	__weak IBOutlet GUIButton *sendButton;
+	__weak IBOutlet GUIButton *cancelButton;
 	
 }
 

@@ -36,16 +36,16 @@
 			[view removeFromSuperview];
 		}
 	}
+
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
 	
 	[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputKeyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(inputKeyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
 	
 	[self.view addKeyboardPanningWithActionHandler:NULL];
-	
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
 	
 	dispatch_after(dispatch_time(DISPATCH_TIME_NOW, 0), dispatch_get_main_queue(), ^(void){
 		
@@ -62,13 +62,27 @@
 	});
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+	[super viewDidDisappear:animated];
+	
+	[self.view removeKeyboardControl];
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)viewDidLayoutSubviews {
+	
+	CGSize viewSize = self.view.frame.size;
+	CGFloat width = ((viewSize.width-20)/2)-20;
+	sendButton.frame = CGRectMake(20, viewSize.height-60, width, 40);
+	cancelButton.frame = CGRectMake(width+40, viewSize.height-60, width, 40);
+	UIScrollView *scrollView = (UIScrollView *)(self.view);
+	scrollView.contentSize = viewSize;
+	
+}
+
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
-}
-
-- (void)dealloc {
-	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - Keyboard
@@ -94,6 +108,7 @@
 	
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
 	NewPortalLocationViewController *newPortalLocationVC = [storyboard instantiateViewControllerWithIdentifier:@"NewPortalLocationViewController"];
+	newPortalLocationVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
 	newPortalLocationVC.portalLocation = self.portalLocation;
 	newPortalLocationVC.delegate = self;
 	[self presentViewController:newPortalLocationVC animated:YES completion:NULL];
@@ -128,7 +143,7 @@
 	HUD.dimBackground = YES;
 	HUD.mode = MBProgressHUDModeIndeterminate;
 	HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-	HUD.labelText = @"Uploading image...";
+	HUD.labelText = @"Submitting portal...";
 	[self.view.window addSubview:HUD];
 	[HUD show:YES];
 	
@@ -160,6 +175,16 @@
 
 - (IBAction)cancel {
 	[self dismissViewControllerAnimated:YES completion:NULL];
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+	if ([textField isEqual:portalNameTextField]) {
+		[portalDescriptionTextField becomeFirstResponder];
+	} else if ([textField isEqual:portalDescriptionTextField]) {
+		[portalDescriptionTextField resignFirstResponder];
+	}
 }
 
 @end
