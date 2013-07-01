@@ -61,7 +61,7 @@
 		case 1:
 
 			switch (indexPath.row) {
-				case 4: {
+				case 2: {
 					if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleBackground]) {
 						cell.textLabel.text = @"Mute Background";
 					} else {
@@ -69,7 +69,7 @@
 					}
 					break;
 				}
-				case 5: {
+				case 3: {
 					if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
 						cell.textLabel.text = @"Mute Effects";
 					} else {
@@ -77,7 +77,7 @@
 					}
 					break;
 				}
-				case 6: {
+				case 4: {
 					if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
 						cell.textLabel.text = @"Mute Speech";
 					} else {
@@ -85,7 +85,7 @@
 					}
 					break;
 				}
-				case 7: {
+				case 5: {
 					Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
 					if (player.shouldSendEmail) {
 						cell.textLabel.text = @"Disable Email Notifications";
@@ -94,7 +94,7 @@
 					}
 					break;
 				}
-				case 8: {
+				case 6: {
 					if ([[NSUserDefaults standardUserDefaults] boolForKey:IGMapDayMode]) {
 						cell.textLabel.text = @"Switch map to night mode";
 					} else {
@@ -102,8 +102,7 @@
 					}
 					break;
 				}
-				case 9:
-				{
+				case 7: {
 					if (![[NSUserDefaults standardUserDefaults] boolForKey:MilesOrKM]) {
 						cell.textLabel.text = @"Switch units to kilometers";
 					} else {
@@ -337,92 +336,6 @@
 			break;
 	}
 
-}
-
-#pragma mark - UIImagePickerControllerDelegate
-
-- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
-
-	imageData = nil;
-	imageLocation = nil;
-
-	NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
-	if ([mediaType isEqualToString:(NSString*)kUTTypeImage]) {
-		NSURL *url = [info objectForKey:UIImagePickerControllerReferenceURL];
-		if (url) {
-			[[ALAssetsLibrary new] assetForURL:url resultBlock:^(ALAsset *asset) {
-				CLLocation *location = [asset valueForProperty:ALAssetPropertyLocation];
-				if (location) {
-					imageLocation = [NSString stringWithFormat:@"lat=%g\nlng=%g\n", location.coordinate.latitude, location.coordinate.longitude];
-					imageData = info[UIImagePickerControllerOriginalImage];
-					NSLog(@"imageData: %@", imageData);
-				}
-			} failureBlock:nil];
-		}
-	}
-
-	[picker dismissViewControllerAnimated:YES completion:^{
-		if (imageData) {
-			NSLog(@"imageData: %@", imageData);
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Enter title for portal" message:nil delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"OK", nil];
-			alertView.alertViewStyle = UIAlertViewStylePlainTextInput;
-			[alertView textFieldAtIndex:0].placeholder = @"Enter portal title";
-			[alertView show];
-		} else {
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error getting photo" message:nil delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
-			[alertView show];
-		}
-	}];
-
-}
-
-#pragma mark - UIAlertViewDelegate
-
-- (BOOL)alertViewShouldEnableFirstOtherButton:(UIAlertView *)alertView {
-	return ([alertView textFieldAtIndex:0].text.length > 0);
-}
-
-- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-	if (buttonIndex == 1) {
-		if ([MFMailComposeViewController canSendMail]) {
-
-			[[UINavigationBar appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont boldSystemFontOfSize:18]}];
-			[[UIBarButtonItem appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont boldSystemFontOfSize:12]} forState:UIControlStateNormal];
-
-			MFMailComposeViewController *mailVC = [MFMailComposeViewController new];
-			[mailVC setMailComposeDelegate:self];
-			[mailVC setToRecipients:@[@"super-ops@google.com"]];
-			[mailVC setSubject:[alertView textFieldAtIndex:0].text];
-			[mailVC setMessageBody:imageLocation isHTML:NO];
-			[mailVC addAttachmentData:UIImageJPEGRepresentation(imageData, .75) mimeType:@"image/jpg" fileName:@"portal_image.jpg"];
-			[self presentViewController:mailVC animated:YES completion:^{
-				
-				[[UINavigationBar appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:16]}];
-				[[UIBarButtonItem appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:10]} forState:UIControlStateNormal];
-				imageData = nil;
-				imageLocation = nil;
-				
-			}];
-		} else {
-			UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Error while sending mail" message:nil delegate:self cancelButtonTitle:@"Dismiss" otherButtonTitles:nil];
-			[alertView show];
-		}
-	}
-}
-
-#pragma mark - MFMailComposeViewControllerDelegate
-
-- (void)mailComposeController:(MFMailComposeViewController *)controller didFinishWithResult:(MFMailComposeResult)result error:(NSError *)error {
-	[controller dismissViewControllerAnimated:YES completion:nil];
-}
-
-#pragma mark - Storyboard
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-	if ([segue.identifier isEqualToString:@"ImagePickerSegue"]) {
-		UIImagePickerController *vc = (UIImagePickerController *)segue.destinationViewController;
-		vc.delegate = self;
-	}
 }
 
 @end

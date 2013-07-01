@@ -11,6 +11,6 @@
 #import <AssetsLibrary/AssetsLibrary.h>
 #import <MobileCoreServices/UTCoreTypes.h>
 
-@interface DeviceViewController : UITableViewController <UINavigationControllerDelegate, UIImagePickerControllerDelegate, UIAlertViewDelegate, MFMailComposeViewControllerDelegate>
+@interface DeviceViewController : UITableViewController <UIAlertViewDelegate>
 
 @end
