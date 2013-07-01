@@ -14,16 +14,15 @@
 
 @protocol OpsViewControllerDelegate;
 
-@interface OpsViewController : UIViewController <TTSlidingPagesDataSource, UIScrollViewDelegate> {
+@interface OpsViewController : UIViewController {
 	
 	__weak IBOutlet UIButton *opsCloseButton;
 	__weak IBOutlet UIImageView *labelBackgroundImage;
 	__weak IBOutlet GlowingLabel *opsLabel;
+	
 }
 
 @property (nonatomic, weak) id <OpsViewControllerDelegate> delegate;
-
-@property (nonatomic, strong) ScoreViewController *scoreViewController;
 
 - (IBAction)back;
 

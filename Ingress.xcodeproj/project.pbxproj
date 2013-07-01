@@ -181,6 +181,8 @@
 		FAAB8F42176E48E6008489D8 /* OpsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FAAB8F41176E48E6008489D8 /* OpsViewController.m */; };
 		FAADA23A17291564001865D9 /* SelectingButton.m in Sources */ = {isa = PBXBuildFile; fileRef = FAADA23917291564001865D9 /* SelectingButton.m */; };
 		FAADA24017297DD9001865D9 /* MDCParallaxView.m in Sources */ = {isa = PBXBuildFile; fileRef = FAADA23F17297DD9001865D9 /* MDCParallaxView.m */; };
+		FAADEEBC17821B35003435DC /* opsButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAADEEBA17821B35003435DC /* opsButton@2x.png */; };
+		FAADEEBD17821B35003435DC /* opsButtonSelected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAADEEBB17821B35003435DC /* opsButtonSelected@2x.png */; };
 		FAAF378017610D63009BD67C /* force_amp@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAF377C17610D63009BD67C /* force_amp@2x.png */; };
 		FAAF378117610D63009BD67C /* heatsink@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAF377D17610D63009BD67C /* heatsink@2x.png */; };
 		FAAF378217610D63009BD67C /* multihack@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAAF377E17610D63009BD67C /* multihack@2x.png */; };
@@ -568,6 +570,8 @@
 		FAADA23917291564001865D9 /* SelectingButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectingButton.m; sourceTree = "<group>"; };
 		FAADA23E17297DD9001865D9 /* MDCParallaxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MDCParallaxView.h; path = MDCParallaxView/MDCParallaxView.h; sourceTree = "<group>"; };
 		FAADA23F17297DD9001865D9 /* MDCParallaxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MDCParallaxView.m; path = MDCParallaxView/MDCParallaxView.m; sourceTree = "<group>"; };
+		FAADEEBA17821B35003435DC /* opsButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "opsButton@2x.png"; sourceTree = "<group>"; };
+		FAADEEBB17821B35003435DC /* opsButtonSelected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "opsButtonSelected@2x.png"; sourceTree = "<group>"; };
 		FAAF377C17610D63009BD67C /* force_amp@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "force_amp@2x.png"; sourceTree = "<group>"; };
 		FAAF377D17610D63009BD67C /* heatsink@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "heatsink@2x.png"; sourceTree = "<group>"; };
 		FAAF377E17610D63009BD67C /* multihack@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "multihack@2x.png"; sourceTree = "<group>"; };
@@ -1098,6 +1102,8 @@
 				FACD4FFC16A428A80077837F /* marker_images */,
 				FAF5A90116A7449C00EB42CF /* Resonators */,
 				FA600FD7175E90C500F360A6 /* mods */,
+				FAADEEBA17821B35003435DC /* opsButton@2x.png */,
+				FAADEEBB17821B35003435DC /* opsButtonSelected@2x.png */,
 				FA325D641780A82300FDC5A5 /* discovery_location@2x.png */,
 				FAAF377C17610D63009BD67C /* force_amp@2x.png */,
 				FAAF377D17610D63009BD67C /* heatsink@2x.png */,
@@ -2060,6 +2066,7 @@
 				FA4FB40016A730A000FD989C /* enl_8res@2x.png in Resources */,
 				FA4FB40116A730A000FD989C /* enl_lev2@2x.png in Resources */,
 				FA4FB40216A730A000FD989C /* enl_lev3@2x.png in Resources */,
+				FAADEEBD17821B35003435DC /* opsButtonSelected@2x.png in Resources */,
 				FA4FB40316A730A000FD989C /* enl_lev4@2x.png in Resources */,
 				FA4FB40416A730A000FD989C /* enl_lev5@2x.png in Resources */,
 				FA4FB40516A730A000FD989C /* enl_lev6@2x.png in Resources */,
@@ -2119,6 +2126,7 @@
 				FA008E19171D334700176C3D /* powerCube@2x.png in Resources */,
 				FA82129A1722C21E0019E5FD /* negative_btn_background_default@2x.png in Resources */,
 				FA82129B1722C21E0019E5FD /* negative_btn_background_disabled@2x.png in Resources */,
+				FAADEEBC17821B35003435DC /* opsButton@2x.png in Resources */,
 				FA82129C1722C21E0019E5FD /* negative_btn_background_pressed@2x.png in Resources */,
 				FA82129D1722C21E0019E5FD /* positive_btn_background_default@2x.png in Resources */,
 				FA82129E1722C21E0019E5FD /* positive_btn_background_disabled@2x.png in Resources */,

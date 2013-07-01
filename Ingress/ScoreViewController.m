@@ -16,14 +16,11 @@
 	self.glViewController = self.childViewControllers[0];
 	[self.glViewController.view setBackgroundColor:[UIColor colorWithRed:16./255. green:32./255. blue:34./255. alpha:1]];
 	
-	int width = self.view.bounds.size.width;
-	int height = self.view.bounds.size.height;
-	
-	pieChart = [[PCPieChart alloc] initWithFrame:CGRectMake(([self.view bounds].size.width-width)/2,([self.view bounds].size.height-height)/2,width,height)];
+	pieChart = [[PCPieChart alloc] initWithFrame:self.view.bounds];
 	[pieChart setShowArrow:NO];
 	[pieChart setSameColorLabel:YES];
 	[pieChart setAutoresizingMask:UIViewAutoresizingFlexibleLeftMargin|UIViewAutoresizingFlexibleRightMargin|UIViewAutoresizingFlexibleTopMargin|UIViewAutoresizingFlexibleBottomMargin];
-	[pieChart setDiameter:270];
+	[pieChart setDiameter:260];
 	pieChart.alpha = .25;
 	[self.view addSubview:pieChart];
 	
