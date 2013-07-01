@@ -56,10 +56,12 @@
 	[self setTitleColor:[UIColor colorWithRed:144./255. green:1 blue:1 alpha:1] forState:UIControlStateNormal];
 	[self setTitleColor:[UIColor colorWithRed:144./255. green:1 blue:1 alpha:1] forState:UIControlStateHighlighted];
 	[self setTitleColor:[UIColor lightGrayColor] forState:UIControlStateApplication];
+	
+    self.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:18];
 
 	self.titleLabel.layer.shadowColor = [self titleColorForState:UIControlStateNormal].CGColor;
 	self.titleLabel.layer.shadowOffset = CGSizeZero;
-	self.titleLabel.layer.shadowRadius = 16/5;
+	self.titleLabel.layer.shadowRadius = 18/5;
 	self.titleLabel.layer.shadowOpacity = 1;
 	self.titleLabel.layer.shouldRasterize = YES;
 	self.titleLabel.layer.masksToBounds = NO;

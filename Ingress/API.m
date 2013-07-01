@@ -364,7 +364,7 @@ NSString *const MilesOrKM = @"MilesOrKM";
 #pragma mark - Location
 
 - (NSString *)currentE6Location {
-	CLLocationCoordinate2D loc = [AppDelegate instance].mapView.centerCoordinate;
+	CLLocationCoordinate2D loc = [LocationManager sharedInstance].playerLocation.coordinate;
 	return [NSString stringWithFormat:@"%08x,%08x", (int)(loc.latitude*1E6), (int)(loc.longitude*1E6)];
 }
 
