@@ -309,46 +309,6 @@
 		[self presentViewController:portalDetailVC animated:YES completion:NULL];
 		
 		currentPortalKey = nil;
-		
-//		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-//		HUD.userInteractionEnabled = YES;
-//		HUD.mode = MBProgressHUDModeIndeterminate;
-//		HUD.dimBackground = YES;
-//		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-//		HUD.labelText = @"Recharging Portal...";
-//		[[AppDelegate instance].window addSubview:HUD];
-//		[HUD show:YES];
-//        
-//        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
-//            [[API sharedInstance] playSound:@"SFX_RESONATOR_RECHARGE"];
-//        }
-//        
-//		[[API sharedInstance] remoteRechargePortal:portalKey.portal portalKey:portalKey completionHandler:^(NSString *errorStr) {
-//
-//			[HUD hide:YES];
-//
-//			if (errorStr) {
-//
-//				MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-//				HUD.userInteractionEnabled = YES;
-//				HUD.dimBackground = YES;
-//				HUD.mode = MBProgressHUDModeCustomView;
-//				HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-//				HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-//				HUD.detailsLabelText = errorStr;
-//				[[AppDelegate instance].window addSubview:HUD];
-//				[HUD show:YES];
-//				[HUD hide:YES afterDelay:HUD_DELAY_TIME];
-//
-//			} else {
-//                if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
-//                    [[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_RECHARGED"]];
-//                }
-//			}
-//
-//			currentPortalKey = nil;
-//
-//		}];
 
 	}
 }
