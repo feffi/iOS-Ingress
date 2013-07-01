@@ -115,6 +115,8 @@
 }
 
 - (IBAction)send {
+	
+	if (sendButton.disabled) { return; }
 
 	unsigned long long min = 1000000000000000000U;
 	unsigned long long max = 9999999999999999999U;
@@ -179,6 +181,14 @@
 }
 
 #pragma mark - UITextFieldDelegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+	if ([textField isEqual:portalNameTextField]) {
+		int textLength = portalNameTextField.text.length - range.length + string.length;
+		sendButton.enabled = textLength > 0;
+	}
+	return YES;
+}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
 	if ([textField isEqual:portalNameTextField]) {

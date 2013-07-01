@@ -376,6 +376,7 @@
 				HUD.showCloseButton = YES;
 				[[AppDelegate instance].window addSubview:HUD];
 				[HUD show:YES];
+				[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 				
 			} else {
 

@@ -1390,6 +1390,9 @@ NSString *const MilesOrKM = @"MilesOrKM";
 		
 		if (error) { NSLog(@"NSURLConnection error: %@", error); }
 		
+		//NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse *)response;
+		//NSLog(@"uploadPortalImage => %d -- %@ -- %@", httpResponse.statusCode, httpResponse.allHeaderFields, [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
+		
 		if (handler) {
 			handler();
 		}
