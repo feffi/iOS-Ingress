@@ -873,6 +873,11 @@ NSString *const MilesOrKM = @"MilesOrKM";
 
 - (void)hackPortal:(Portal *)portal completionHandler:(void (^)(NSString *errorStr, NSArray *acquiredItems, int secondsRemaining))handler {
 	
+	if (!portal || !portal.guid) {
+		handler(@"Application error", nil, 0);
+		return;
+	}
+	
 	NSDictionary *dict = @{
 		@"itemGuid": portal.guid
 	};

@@ -197,7 +197,8 @@
 
 	[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Portal Hack" withLabel:self.portal.name withValue:@(0)];
 
-	__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+	HUD.removeFromSuperViewOnHide = YES;
 	HUD.userInteractionEnabled = YES;
 	HUD.mode = MBProgressHUDModeIndeterminate;
 	HUD.dimBackground = YES;
@@ -364,7 +365,8 @@
 
 				}
 
-				HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+				MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+				HUD.removeFromSuperViewOnHide = YES;
 				HUD.userInteractionEnabled = YES;
 				HUD.dimBackground = YES;
 				HUD.mode = MBProgressHUDModeText;
@@ -377,7 +379,8 @@
 				
 			} else {
 
-				HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+				MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+				HUD.removeFromSuperViewOnHide = YES;
 				HUD.userInteractionEnabled = YES;
 				HUD.dimBackground = YES;
 				HUD.mode = MBProgressHUDModeText;
@@ -405,7 +408,8 @@
 
 	[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Portal Recharge" withLabel:self.portal.name withValue:@(0)];
 	
-	__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+	HUD.removeFromSuperViewOnHide = YES;
 	HUD.userInteractionEnabled = YES;
 	HUD.mode = MBProgressHUDModeIndeterminate;
 	HUD.dimBackground = YES;

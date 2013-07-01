@@ -189,7 +189,7 @@
                 
                 if (itemsToCollect.count > 0) {
                     
-                    __block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+                    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
                     HUD.removeFromSuperViewOnHide = YES;
                     HUD.userInteractionEnabled = YES;
                     HUD.mode = MBProgressHUDModeIndeterminate;
@@ -768,7 +768,8 @@
 		
 		__block Item *item = currentItem;
 
-		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.removeFromSuperViewOnHide = YES;
 		HUD.userInteractionEnabled = YES;
 		HUD.mode = MBProgressHUDModeIndeterminate;
 		HUD.dimBackground = YES;
@@ -807,7 +808,8 @@
 		virusChoosePortalLabel.hidden = YES;
 		virusChoosePortalCancelButton.hidden = YES;
 
-		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.removeFromSuperViewOnHide = YES;
 		HUD.userInteractionEnabled = YES;
 		HUD.mode = MBProgressHUDModeIndeterminate;
 		HUD.dimBackground = YES;
@@ -1176,6 +1178,7 @@
 	[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Fire XMP" withLabel:nil withValue:@(xmpItem.level)];
 	
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+	HUD.removeFromSuperViewOnHide = YES;
 	HUD.userInteractionEnabled = YES;
 	HUD.dimBackground = YES;
 	HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
@@ -1188,6 +1191,7 @@
 		[HUD hide:YES];
 		
 		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.removeFromSuperViewOnHide = YES;
 		HUD.userInteractionEnabled = YES;
 		HUD.dimBackground = YES;
 		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];

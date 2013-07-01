@@ -139,6 +139,7 @@
 	};
 	
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view.window];
+	HUD.removeFromSuperViewOnHide = YES;
 	HUD.userInteractionEnabled = YES;
 	HUD.dimBackground = YES;
 	HUD.mode = MBProgressHUDModeIndeterminate;
@@ -185,6 +186,7 @@
 	} else if ([textField isEqual:portalDescriptionTextField]) {
 		[portalDescriptionTextField resignFirstResponder];
 	}
+	return NO;
 }
 
 @end

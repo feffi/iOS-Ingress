@@ -360,7 +360,7 @@
 
 - (IBAction)rechargeButtonPressed:(GUIButton *)sender {
 
-	__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 	HUD.userInteractionEnabled = YES;
 	HUD.mode = MBProgressHUDModeIndeterminate;
 	HUD.dimBackground = YES;
@@ -483,7 +483,7 @@
 		[HUD hide:YES];
 		_modChooser = nil;
 
-		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
 		HUD.userInteractionEnabled = YES;
 		HUD.removeFromSuperViewOnHide = NO;
 		HUD.mode = MBProgressHUDModeCustomView;
@@ -491,6 +491,8 @@
 		HUD.showCloseButton = YES;
 		_levelChooser = [ChooserViewController rarityChooserWithTitle:@"Choose shield rarity" completionHandler:^(ItemRarity rarity) {
 			[HUD hide:YES];
+			[HUD removeFromSuperview];
+			HUD = nil;
 			_levelChooser = nil;
 			[self deployMod:modType ofRarity:rarity toSlot:slot];
 		}];

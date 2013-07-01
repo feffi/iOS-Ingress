@@ -178,7 +178,8 @@
                     
                     nickname = nil;
                     
-					__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view.window];
+					MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view.window];
+					HUD.removeFromSuperViewOnHide = YES;
 					HUD.userInteractionEnabled = YES;
 					HUD.dimBackground = YES;
 					HUD.mode = MBProgressHUDModeIndeterminate;
@@ -195,39 +196,6 @@
 					break;
                     
                 }
-                    
-//				case 1: {
-//
-//					[self performSegueWithIdentifier:@"ImagePickerSegue" sender:self];
-//
-//					break;
-//				}
-//				case 2: {
-//
-//					__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view.window];
-//					HUD.userInteractionEnabled = YES;
-//					HUD.dimBackground = YES;
-//					HUD.mode = MBProgressHUDModeIndeterminate;
-//					HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-//					HUD.labelText = @"Loading inventory...";
-//					[self.view.window addSubview:HUD];
-//					[HUD show:YES];
-//
-//					[[API sharedInstance] getInventoryWithCompletionHandler:^{
-//						[HUD hide:YES];
-//					}];
-//
-//					break;
-//				}
-//
-//				case 3: {
-//
-//					[MagicalRecord cleanUp];
-//					[[NSFileManager defaultManager] removeItemAtURL:[NSPersistentStore MR_urlForStoreName:@"Ingress.sqlite"] error:nil];
-//					[MagicalRecord setupCoreDataStackWithAutoMigratingSqliteStoreNamed:@"Ingress.sqlite"];
-//
-//					break;
-//				}
 
 				case 2: {
 
