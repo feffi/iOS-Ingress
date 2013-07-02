@@ -82,12 +82,10 @@
         
         button3 = [QuickActionsMenu optionButton];
         button3.tag = 3;
-        [button3 setTitle:@"TARGET" forState:UIControlStateNormal];
-        button3.hidden = YES;
+        [button3 setTitle:@"REFRESH" forState:UIControlStateNormal];
         [self addSubview:button3];
         
         line3 = [QuickActionsMenu optionLine];
-        line3.hidden = YES;
         [self addSubview:line3];
         
         // -------------------------------------------------

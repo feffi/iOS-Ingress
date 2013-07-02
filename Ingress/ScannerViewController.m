@@ -178,6 +178,10 @@
                 
                 break;
             }
+            case 3: {
+            	[self refresh];
+            	break;
+            }
             case 4: {
                 
                 NSMutableArray *itemsToCollect = [NSMutableArray array];
