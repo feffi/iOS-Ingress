@@ -33,15 +33,6 @@
 	[component2 setColour:[Utilities colorForFaction:@"RESISTANCE"]];
 	[pieChart setComponents:@[component2, component1]];
 	
-//	for (UIViewController *vc in self.childViewControllers) {
-//		if ([vc isKindOfClass:[GLViewController class]]) {
-//			[(GLViewController *)vc setModelID:1];
-//			break;
-//		}
-//	}
-	
-	//[self refresh];
-	
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -57,17 +48,7 @@
 
 - (void)refresh {
 	
-	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
-	HUD.removeFromSuperViewOnHide = YES;
-	HUD.userInteractionEnabled = NO;
-	//HUD.labelText = @"Loading...";
-	//HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-	[self.view addSubview:HUD];
-	[HUD show:YES];
-	
 	[[API sharedInstance] loadScoreWithCompletionHandler:^(int alienScore, int resistanceScore) {
-		
-		[HUD hide:YES];
 		
 		PCPieComponent *component1 = [PCPieComponent pieComponentWithTitle:@"Enlightened" value:alienScore];
 		[component1 setColour:[UIColor colorWithRed:40./255. green:244./255. blue:40./255. alpha:1]];

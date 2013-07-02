@@ -37,21 +37,25 @@
     return self;
 }
 
+- (void)setupBackground {
+	UIImage *bgImage;
+	
+	bgImage = [[UIImage imageNamed:@"default_btn"] stretchableImageWithLeftCapWidth:2 topCapHeight:12];
+	[self setBackgroundImage:bgImage forState:UIControlStateNormal];
+	
+	bgImage = [[UIImage imageNamed:@"default_btn_down"] stretchableImageWithLeftCapWidth:2 topCapHeight:12];
+	[self setBackgroundImage:bgImage forState:UIControlStateHighlighted];
+	
+	bgImage = [[UIImage imageNamed:@"default_btn_disabled"] stretchableImageWithLeftCapWidth:2 topCapHeight:12];
+	[self setBackgroundImage:bgImage forState:UIControlStateApplication];
+}
+
 - (void)setup {
 	
 	_disabled = NO;
 	_errorString = nil;
 
-	UIImage *bgImage;
-
-	bgImage = [[UIImage imageNamed:@"default_btn"] stretchableImageWithLeftCapWidth:2 topCapHeight:12];
-	[self setBackgroundImage:bgImage forState:UIControlStateNormal];
-
-	bgImage = [[UIImage imageNamed:@"default_btn_down"] stretchableImageWithLeftCapWidth:2 topCapHeight:12];
-	[self setBackgroundImage:bgImage forState:UIControlStateHighlighted];
-
-	bgImage = [[UIImage imageNamed:@"default_btn_disabled"] stretchableImageWithLeftCapWidth:2 topCapHeight:12];
-	[self setBackgroundImage:bgImage forState:UIControlStateApplication];
+	[self setupBackground];
 
 	[self setTitleColor:[UIColor colorWithRed:144./255. green:1 blue:1 alpha:1] forState:UIControlStateNormal];
 	[self setTitleColor:[UIColor colorWithRed:144./255. green:1 blue:1 alpha:1] forState:UIControlStateHighlighted];
@@ -83,6 +87,7 @@
 - (void)setEnabled:(BOOL)enabled {
 	[super setEnabled:YES];
 	self.disabled = !enabled;
+	[self setupBackground];
 }
 
 //- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {

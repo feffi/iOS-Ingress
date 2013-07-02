@@ -103,11 +103,11 @@
 	Plext *plext = [self.fetchedResultsController objectAtIndexPath:indexPath];
 
 	CGFloat width = tableView.frame.size.width;
-	width -= 74;
+	width -= 76;
 	
 	CGRect rect = [plext.message boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingTruncatesLastVisibleLine context:NULL];
 	
-	return rect.size.height+1;
+	return rect.size.height+2;
 	
 }
 

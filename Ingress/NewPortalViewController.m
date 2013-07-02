@@ -65,7 +65,7 @@
 - (void)viewDidDisappear:(BOOL)animated {
 	[super viewDidDisappear:animated];
 	
-	[self.view removeKeyboardControl];
+//	[self.view removeKeyboardControl];
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 

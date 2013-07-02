@@ -30,32 +30,19 @@
 	[super viewDidLoad];
     
     if (self.linkingPortal) {
-        self.tableView.contentInset = UIEdgeInsetsMake(22, 0, 60, 0);
+        self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 60, 0);
         GUIButton *closeButton = [[GUIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width-110, self.view.bounds.size.height-75, 100, 45)];
         closeButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
         [closeButton setTitle:@"CANCEL" forState:UIControlStateNormal];
         [closeButton addTarget:self action:@selector(closePortalKeyChooser:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:closeButton];
         _closeButton = closeButton;
-    }
-
-#if __IPHONE_OS_VERSION_MAX_ALLOWED < 70000
-	if (!self.linkingPortal || ![Utilities isOS7]) {
+    } else {
 		self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 32, 0);
 		self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
 	}
-#endif
     
 }
-
-//- (void)viewWillLayoutSubviews {
-//	if (self.linkingPortal && [Utilities isOS7]) {
-//		CGRect frame = self.view.frame;
-//		frame.origin.y = 20;
-//		frame.size.height = [UIScreen mainScreen].bounds.size.height-20;
-//		self.view.frame = frame;
-//	}
-//}
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];

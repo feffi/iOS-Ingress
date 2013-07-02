@@ -106,6 +106,10 @@
 #pragma mark - Back
 
 - (IBAction)back:(UIBarButtonItem *)sender {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_back.aif"];
+    }
+
 	[self dismissViewControllerAnimated:YES completion:NULL];
 }
 

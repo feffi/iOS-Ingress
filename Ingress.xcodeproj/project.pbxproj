@@ -47,6 +47,7 @@
 		FA3BD7891735308A004F5ED5 /* ap_stroke_resistance@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3BD7871735308A004F5ED5 /* ap_stroke_resistance@2x.png */; };
 		FA3BD78F1735B704004F5ED5 /* blue_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3BD78E1735B704004F5ED5 /* blue_bg@2x.png */; };
 		FA3E8AEC17267F6700673665 /* TPKeyboardAvoidingScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3E8AEB17267F6700673665 /* TPKeyboardAvoidingScrollView.m */; };
+		FA3F69601782F01F00561118 /* DAKeyboardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3F695F1782F01F00561118 /* DAKeyboardControl.m */; };
 		FA3FC30E173656AC009CD94A /* MissionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FA3FC30D173656AC009CD94A /* MissionViewController.m */; };
 		FA3FC31317369E4D009CD94A /* green_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA3FC31217369E4D009CD94A /* green_bg@2x.png */; };
 		FA47817F16AC8FE00041FDFB /* enl_res_energy_fill@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA47817D16AC8FE00041FDFB /* enl_res_energy_fill@2x.png */; };
@@ -258,7 +259,6 @@
 		FADC993A1760ECD2009C497A /* DeployedResonator.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC99391760ECD2009C497A /* DeployedResonator.m */; };
 		FADC993D1760ECD2009C497A /* ForceAmp.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC993C1760ECD2009C497A /* ForceAmp.m */; };
 		FADC99401760ECD2009C497A /* XMP.m in Sources */ = {isa = PBXBuildFile; fileRef = FADC993F1760ECD2009C497A /* XMP.m */; };
-		FAE6AC7416A0E2700082BBB5 /* DAKeyboardControl.m in Sources */ = {isa = PBXBuildFile; fileRef = FAE6AC7316A0E2700082BBB5 /* DAKeyboardControl.m */; };
 		FAE6FB6316AD391800FE188C /* UIBlackCloseButton.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE6FB5F16AD391800FE188C /* UIBlackCloseButton.png */; };
 		FAE6FB6416AD391800FE188C /* UIBlackCloseButton@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE6FB6016AD391800FE188C /* UIBlackCloseButton@2x.png */; };
 		FAE6FB6516AD391800FE188C /* UIBlackCloseButtonPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = FAE6FB6116AD391800FE188C /* UIBlackCloseButtonPressed.png */; };
@@ -379,6 +379,8 @@
 		FA3BD78E1735B704004F5ED5 /* blue_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "blue_bg@2x.png"; sourceTree = "<group>"; };
 		FA3E8AEA17267F6700673665 /* TPKeyboardAvoidingScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TPKeyboardAvoidingScrollView.h; sourceTree = "<group>"; };
 		FA3E8AEB17267F6700673665 /* TPKeyboardAvoidingScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TPKeyboardAvoidingScrollView.m; sourceTree = "<group>"; };
+		FA3F695E1782F01F00561118 /* DAKeyboardControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAKeyboardControl.h; sourceTree = "<group>"; };
+		FA3F695F1782F01F00561118 /* DAKeyboardControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAKeyboardControl.m; sourceTree = "<group>"; };
 		FA3FC30C173656AC009CD94A /* MissionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MissionViewController.h; sourceTree = "<group>"; };
 		FA3FC30D173656AC009CD94A /* MissionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MissionViewController.m; sourceTree = "<group>"; };
 		FA3FC31217369E4D009CD94A /* green_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "green_bg@2x.png"; sourceTree = "<group>"; };
@@ -754,8 +756,6 @@
 		FADC993C1760ECD2009C497A /* ForceAmp.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ForceAmp.m; path = CoreData/ForceAmp.m; sourceTree = "<group>"; };
 		FADC993E1760ECD2009C497A /* XMP.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XMP.h; path = CoreData/XMP.h; sourceTree = "<group>"; };
 		FADC993F1760ECD2009C497A /* XMP.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XMP.m; path = CoreData/XMP.m; sourceTree = "<group>"; };
-		FAE6AC7216A0E2700082BBB5 /* DAKeyboardControl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DAKeyboardControl.h; sourceTree = "<group>"; };
-		FAE6AC7316A0E2700082BBB5 /* DAKeyboardControl.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DAKeyboardControl.m; sourceTree = "<group>"; };
 		FAE6FB5F16AD391800FE188C /* UIBlackCloseButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIBlackCloseButton.png; sourceTree = "<group>"; };
 		FAE6FB6016AD391800FE188C /* UIBlackCloseButton@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UIBlackCloseButton@2x.png"; sourceTree = "<group>"; };
 		FAE6FB6116AD391800FE188C /* UIBlackCloseButtonPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UIBlackCloseButtonPressed.png; sourceTree = "<group>"; };
@@ -1033,6 +1033,15 @@
 				FA3E8AEB17267F6700673665 /* TPKeyboardAvoidingScrollView.m */,
 			);
 			path = TPKeyboardAvoidingScrollView;
+			sourceTree = "<group>";
+		};
+		FA3F695D1782F01F00561118 /* DAKeyboardControl */ = {
+			isa = PBXGroup;
+			children = (
+				FA3F695E1782F01F00561118 /* DAKeyboardControl.h */,
+				FA3F695F1782F01F00561118 /* DAKeyboardControl.m */,
+			);
+			path = DAKeyboardControl;
 			sourceTree = "<group>";
 		};
 		FA3FC30B1736569B009CD94A /* Mission */ = {
@@ -1791,15 +1800,6 @@
 			name = Info;
 			sourceTree = "<group>";
 		};
-		FAE6AC7116A0E2700082BBB5 /* DAKeyboardControl */ = {
-			isa = PBXGroup;
-			children = (
-				FAE6AC7216A0E2700082BBB5 /* DAKeyboardControl.h */,
-				FAE6AC7316A0E2700082BBB5 /* DAKeyboardControl.m */,
-			);
-			path = DAKeyboardControl;
-			sourceTree = SOURCE_ROOT;
-		};
 		FAE6AC7616A0E27B0082BBB5 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
@@ -1824,8 +1824,8 @@
 				FA4FB3C716A71FFB00FD989C /* iCarousel */,
 				FAD5EF1516A2081B00182F6B /* iOSPlot */,
 				FAF618B116DBDA4400AF0742 /* WheelActivityIndicatorView */,
+				FA3F695D1782F01F00561118 /* DAKeyboardControl */,
 				FA54DEF616A19B47006A92E0 /* MBProgressHUD */,
-				FAE6AC7116A0E2700082BBB5 /* DAKeyboardControl */,
 				FAE797CD16B4874100A57316 /* UIImage+ColorReplace */,
 				FA036DE4175681CA00E3C55B /* XCDYouTubeVideoPlayerViewController */,
 				FA036DEA17576B7000E3C55B /* GoogleAnalytics */,
@@ -2179,8 +2179,8 @@
 				FA32E883169F2D9F00D30E90 /* API.m in Sources */,
 				FA32E888169F657400D30E90 /* CommViewController.m in Sources */,
 				FA32E88B169F661500D30E90 /* CommTableViewController.m in Sources */,
+				FA3F69601782F01F00561118 /* DAKeyboardControl.m in Sources */,
 				FA13CDA416A038D7003C9962 /* CommTableViewCell.m in Sources */,
-				FAE6AC7416A0E2700082BBB5 /* DAKeyboardControl.m in Sources */,
 				FA54DEF916A19B47006A92E0 /* MBProgressHUD.m in Sources */,
 				FA54DEFD16A19BD8006A92E0 /* IntelViewController.m in Sources */,
 				FAD5EF0A16A2005900182F6B /* ScoreViewController.m in Sources */,

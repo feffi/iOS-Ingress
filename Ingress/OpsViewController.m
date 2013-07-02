@@ -53,9 +53,9 @@
 	NSArray *views = @[@"ITEMS", @"INTEL", @"MISSION", @"RECRUIT", @"DEVICE"];
 	
 	buttonsScrollView = [UIScrollView new];
-	buttonsScrollView.bounces = NO;
+//	buttonsScrollView.bounces = NO;
+//	buttonsScrollView.alwaysBounceHorizontal = NO;
 	buttonsScrollView.clipsToBounds = NO;
-	buttonsScrollView.alwaysBounceHorizontal = NO;
 	buttonsScrollView.showsHorizontalScrollIndicator = NO;
 	buttonsScrollView.frame = CGRectMake(0, 52, viewWidth, 44);
 	
@@ -82,8 +82,6 @@
 	buttonsScrollView.contentSize = CGSizeMake(offset, 44);
 	[self.view addSubview:buttonsScrollView];
 	[self.view sendSubviewToBack:buttonsScrollView];
-	
-	[self menuSelected:(UIButton *)[buttonsScrollView viewWithTag:10]];
 
 }
 
@@ -92,11 +90,25 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewWillLayoutSubviews {
+	if (!selectedButton) {
+		[self menuSelected:(UIButton *)[buttonsScrollView viewWithTag:10]];
+	}
+}
+
+- (void)viewDidLayoutSubviews {
+	if (selectedButton.tag == 10) {
+		dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^(void){
+			[self menuSelected:selectedButton];
+		});
+	}
+}
+
 #pragma mark - IBActions
 
 - (IBAction)back {
     if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
-        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_back.aif"];
     }
 
 	if ([self.delegate respondsToSelector:@selector(willDismissOpsViewController:)]) {
@@ -116,13 +128,19 @@
 	
 	if ([button isEqual:selectedButton]) { return; }
 	
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+	
 	[self setButtonStyle:selectedButton selected:NO];
 	[self setButtonStyle:button selected:YES];
 	selectedButton = button;
 	
-	CGFloat x = (button.frame.origin.x-(buttonsScrollView.frame.size.width/2))+(button.frame.size.width/2);
-	x = MIN(buttonsScrollView.contentSize.width-buttonsScrollView.frame.size.width, MAX(0, x));
-	buttonsScrollView.contentOffset = CGPointMake(x, 0);
+	if (buttonsScrollView.contentSize.width > buttonsScrollView.frame.size.width) {
+		CGFloat x = (button.frame.origin.x-(buttonsScrollView.frame.size.width/2))+(button.frame.size.width/2);
+		x = MIN(buttonsScrollView.contentSize.width-buttonsScrollView.frame.size.width, MAX(0, x));
+		[buttonsScrollView setContentOffset:CGPointMake(x, 0) animated:YES];
+	}
 	
 	[selectedViewController.view removeFromSuperview];
 	[selectedViewController removeFromParentViewController];
