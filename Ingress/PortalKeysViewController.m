@@ -105,8 +105,21 @@
 	
 	Portal *portal = portals[indexPath.row];
 	
-	int numberOfKeys = [keysDict[portal.guid] count];
-	cell.textLabel.text = [NSString stringWithFormat:@"%dx %@", numberOfKeys, portal.subtitle];
+	UIColor *portalColor = [UIColor whiteColor];
+	if (self.linkingPortal) {
+		portalColor = [UIColor lightGrayColor];
+	}
+	
+	if (portal.completeInfo) {
+		NSMutableAttributedString *attrStr = [NSMutableAttributedString new];
+		[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%dx ", [keysDict[portal.guid] count]] attributes:[Utilities attributesWithShadow:NO size:14 color:[UIColor whiteColor]]]];
+		[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:portal.name attributes:[Utilities attributesWithShadow:NO size:14 color:portalColor]]];
+		cell.textLabel.attributedText = attrStr;
+	}
+	
+	if (portal.level > 8) {
+		NSLog(@"WTF? L%d - %d resonators", portal.level, portal.resonators.count);
+	}
 	
 	if (self.linkingPortal) {
 		cell.detailTextLabel.text = @"Querying Linkability...";
@@ -124,20 +137,8 @@
 	}
 	
 	[cell.imageView setImageWithURL:[NSURL URLWithString:portal.imageURL] placeholderImage:[UIImage imageNamed:@"missing_image"]];
-
-	if (self.linkingPortal) {
-		cell.textLabel.textColor = [UIColor lightGrayColor];
-	} else {
-		if (portal.completeInfo) {
-			if ([@[@"ALIENS", @"RESISTANCE"] containsObject:portal.controllingTeam]) {
-				cell.textLabel.textColor = [Utilities colorForFaction:portal.controllingTeam];
-			} else {
-				cell.textLabel.textColor = [UIColor lightGrayColor];
-			}
-		} else {
-			cell.textLabel.textColor = [UIColor whiteColor];
-		}
-	}
+	
+	[cell layoutIfNeeded];
 
     return cell;
 }
@@ -145,27 +146,41 @@
 - (void)configureCellAtIndexPath:(NSIndexPath *)indexPath inTableView:(UITableView *)tableView withErrorStr:(NSString *)errorStr {
 	UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 	if (cell) {
+		
 		Portal *portal = portals[indexPath.row];
+		
+		UIColor *portalColor = [UIColor whiteColor];
+		if (self.linkingPortal) {
+			if (errorStr) {
+				portalColor = [UIColor lightGrayColor];
+			} else {
+				portalColor = [Utilities colorForFaction:portal.controllingTeam];
+			}
+		} else if (portal.completeInfo) {
+			if ([@[@"ALIENS", @"RESISTANCE"] containsObject:portal.controllingTeam]) {
+				portalColor = [Utilities colorForFaction:portal.controllingTeam];
+			} else {
+				portalColor = [UIColor lightGrayColor];
+			}
+		}
+		
+		if (portal.completeInfo) {
+			NSMutableAttributedString *attrStr = [NSMutableAttributedString new];
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%dx ", [keysDict[portal.guid] count]] attributes:[Utilities attributesWithShadow:NO size:14 color:[UIColor whiteColor]]]];
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"L%d ", portal.level] attributes:[Utilities attributesWithShadow:NO size:14 color:[Utilities colorForLevel:portal.level]]]];
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:portal.name attributes:[Utilities attributesWithShadow:NO size:14 color:portalColor]]];
+			cell.textLabel.attributedText = attrStr;
+		}
 
 		if (self.linkingPortal) {
 			if (errorStr) {
-				cell.textLabel.textColor = [UIColor lightGrayColor];
 				cell.detailTextLabel.text = errorStr;
 			} else {
-				cell.textLabel.textColor = [Utilities colorForFaction:portal.controllingTeam];
 				cell.detailTextLabel.text = portal.address;
 			}
-		} else {
-			if (portal.completeInfo) {
-				if ([@[@"ALIENS", @"RESISTANCE"] containsObject:portal.controllingTeam]) {
-					cell.textLabel.textColor = [Utilities colorForFaction:portal.controllingTeam];
-				} else {
-					cell.textLabel.textColor = [UIColor lightGrayColor];
-				}
-			} else {
-				cell.textLabel.textColor = [UIColor whiteColor];
-			}
 		}
+		
+		[cell layoutIfNeeded];
 		
 	}
 }

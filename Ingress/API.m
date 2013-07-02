@@ -1287,9 +1287,9 @@ NSString *const MilesOrKM = @"MilesOrKM";
 
 - (void)getModifiedEntity:(Portal *)item completionHandler:(void (^)(void))handler {
 
-	NSString *timestampString = [NSString stringWithFormat:@"%.3f", [[NSDate dateWithTimeIntervalSinceReferenceDate:item.timestamp] timeIntervalSince1970]];
-	timestampString = [timestampString stringByReplacingOccurrencesOfString:@"." withString:@""];
-	long long timestamp = [timestampString longLongValue];
+//	NSString *timestampString = [NSString stringWithFormat:@"%.3f", [[NSDate dateWithTimeIntervalSinceReferenceDate:item.timestamp] timeIntervalSince1970]];
+//	timestampString = [timestampString stringByReplacingOccurrencesOfString:@"." withString:@""];
+	long long timestamp = 0; //[timestampString longLongValue];
 
 	NSDictionary *dict = @{
 		@"guids": @[item.guid],
@@ -1773,7 +1773,7 @@ NSString *const MilesOrKM = @"MilesOrKM";
 
 				NSDictionary *resonatorDict = gameEntity[2][@"resonatorArray"][@"resonators"][i];
 
-				DeployedResonator *resonator = [DeployedResonator MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"portal = %@ && slot = %d", portal, i] inContext:context];
+				DeployedResonator *resonator = [DeployedResonator MR_findFirstWithPredicate:[NSPredicate predicateWithFormat:@"portal.guid = %@ && slot = %d", portal.guid, i] inContext:context];
 
 				if ([resonatorDict isKindOfClass:[NSNull class]]) {
 					if (resonator) {

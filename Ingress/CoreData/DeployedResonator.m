@@ -107,7 +107,7 @@ CLLocationCoordinate2D LatLonDestPoint(CLLocationCoordinate2D origin, double bea
 }
 
 - (NSString *)description {
-	return [NSString stringWithFormat:@"DepoloyedResonator forPortal:%@ slot:%d", self.portal.name, self.slot];
+	return [NSString stringWithFormat:@"DepoloyedResonator forPortal:%@ slot:%d level:%d", self.portal.name, self.slot, self.level];
 }
 
 - (void)updateWithData:(NSDictionary *)data forPortal:(Portal *)portal context:(NSManagedObjectContext *)context {
