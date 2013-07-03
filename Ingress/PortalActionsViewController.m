@@ -32,12 +32,12 @@
 
 	self.imageView.image = [UIImage imageNamed:@"missing_image"];
     
-    [[LocationManager sharedInstance] addDelegate:self];
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
+	
+	[[LocationManager sharedInstance] addDelegate:self];
 	
 //	[[NSNotificationCenter defaultCenter] addObserverForName:@"PortalChanged" object:nil queue:[API sharedInstance].notificationQueue usingBlock:^(NSNotification *note) {
 //		Portal *newPortal = note.userInfo[@"portal"];
@@ -50,6 +50,7 @@
 - (void)viewDidDisappear:(BOOL)animated {
 	[super viewDidDisappear:animated];
 	
+	[[LocationManager sharedInstance] removeDelegate:self];
 	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
@@ -125,6 +126,7 @@
 }
 
 - (void)refreshActions {
+	NSLog(@"%s", __FUNCTION__);
 
     Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
 
