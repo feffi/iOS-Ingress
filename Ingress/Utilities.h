@@ -41,8 +41,6 @@ typedef enum {
 
 @interface Utilities : NSObject
 
-+ (instancetype)sharedInstance;
-
 + (BOOL)isPad;
 + (BOOL)isOS7;
 

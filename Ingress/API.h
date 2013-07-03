@@ -39,6 +39,9 @@ typedef void (^SoundCompletionBlock)(void);
 
 + (instancetype)sharedInstance;
 
+- (void)incrementNetworkActivityCount;
+- (void)decrementNetworkActivityCount;
+
 + (NSDictionary *)sounds;
 + (float)durationOfSound:(NSString *)soundName;
 + (NSArray *)soundsForNumber:(int)number;

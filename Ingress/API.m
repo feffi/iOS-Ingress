@@ -21,6 +21,8 @@ NSString *const MilesOrKM = @"MilesOrKM";
 	NSMutableDictionary *cellsDates;
 	NSString *playerGuid;
 	
+	int _networkActivityCount;
+	
 	NSTimer *inventoryRefreshTimer;
 	
 	BOOL inventoryAutorefreshInProgress;
@@ -53,6 +55,23 @@ NSString *const MilesOrKM = @"MilesOrKM";
 		inventoryRefreshTimer = [NSTimer scheduledTimerWithTimeInterval:30 target:self selector:@selector(autorefreshInventory) userInfo:nil repeats:YES];
 	}
     return self;
+}
+
+#pragma mark - Network Activity Indicator
+
+- (void)incrementNetworkActivityCount {
+    if (_networkActivityCount == 0) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    }
+    _networkActivityCount++;
+}
+
+- (void)decrementNetworkActivityCount {
+    _networkActivityCount--;
+    if (_networkActivityCount <= 0) {
+        _networkActivityCount = 0;
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    }
 }
 
 #pragma mark - Knob Sync
@@ -1395,7 +1414,10 @@ NSString *const MilesOrKM = @"MilesOrKM";
 	
 	[request setHTTPBody:imageData];
 	
+	[self incrementNetworkActivityCount];
 	[NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue new] completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
+		
+		[self decrementNetworkActivityCount];
 		
 		if (error) { NSLog(@"NSURLConnection error: %@", error); }
 		
@@ -1481,19 +1503,15 @@ NSString *const MilesOrKM = @"MilesOrKM";
 	[request setHTTPBody:[NSJSONSerialization dataWithJSONObject:@{@"params": tmpParams} options:0 error:&error]];
 	if (error) { NSLog(@"error: %@", error); }
 	
+	[self incrementNetworkActivityCount];
 	[NSURLConnection sendAsynchronousRequest:request queue:self.networkQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
 		
-		if (error) { NSLog(@"NSURLConnection error: %@", error); }
+		[self decrementNetworkActivityCount];
 		
-//		if ([requestName isEqualToString:@"rpc/playerUndecorated/getNickNamesFromPlayerIds"]) {
-//			//NSLog(@"response: %@", response);
-//			NSLog(@"text response: %@", [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding]);
-//			return;
-//		}
+		if (error) { NSLog(@"NSURLConnection error: %@", error); }
 
         if ([response isKindOfClass:[NSHTTPURLResponse class]]) {
             NSHTTPURLResponse *httpResponse = (NSHTTPURLResponse*)response;
-            //NSLog(@"status code: %d", [httpResponse statusCode]);
             if ([httpResponse statusCode] == 500) {
                 NSDictionary *responseObj = @{ @"error": @"SERVER_ERROR" };
                 handler(responseObj);

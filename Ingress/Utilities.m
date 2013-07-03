@@ -10,17 +10,6 @@
 
 @implementation Utilities
 
-#pragma mark - Singleton
-
-+ (instancetype)sharedInstance {
-    static dispatch_once_t onceToken;
-    static Utilities * __sharedInstance = nil;
-    dispatch_once(&onceToken, ^{
-        __sharedInstance = [self new];
-    });
-    return __sharedInstance;
-}
-
 #pragma mark - 
 
 + (BOOL)isPad {
