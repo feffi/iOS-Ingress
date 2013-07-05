@@ -292,13 +292,12 @@
 					
 					NSArray *items;
 
-					if (portalKeys.count > count) {
+					if (portalKeys.count >= count) {
 						items = [portalKeys subarrayWithRange:NSMakeRange(0, count)];
 					}
-					
+
 					__block int completed = 0;
-					for (PortalKey *portalKey in portalKeys) {
-						
+					for (PortalKey *portalKey in items) {
 						[[API sharedInstance] dropItemWithGuid:portalKey.guid completionHandler:^(void) {
 							completed++;
 							if (completed == items.count) {
