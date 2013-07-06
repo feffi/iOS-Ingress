@@ -142,6 +142,7 @@
 		FA941E791772FBCA0064C810 /* ops_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA941E761772FBCA0064C810 /* ops_background@2x.png */; };
 		FA941E7A1772FBCA0064C810 /* ops_close_button_default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA941E771772FBCA0064C810 /* ops_close_button_default@2x.png */; };
 		FA941E7B1772FBCA0064C810 /* ops_close_button_pressed@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA941E781772FBCA0064C810 /* ops_close_button_pressed@2x.png */; };
+		FA9AD44B17843EB400EF7AF5 /* NearbyPortalView.m in Sources */ = {isa = PBXBuildFile; fileRef = FA9AD44A17843EB400EF7AF5 /* NearbyPortalView.m */; };
 		FA9D4BE017705C1C00A7F889 /* commBg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FA9D4BDF17705C1C00A7F889 /* commBg@2x.png */; };
 		FAA0C30116B992EF00DB57E8 /* resonatorTexture.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA0C30016B992EF00DB57E8 /* resonatorTexture.png */; };
 		FAA0C30516B993B800DB57E8 /* default_btn_disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = FAA0C30216B993B800DB57E8 /* default_btn_disabled@2x.png */; };
@@ -496,6 +497,8 @@
 		FA941E761772FBCA0064C810 /* ops_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ops_background@2x.png"; sourceTree = "<group>"; };
 		FA941E771772FBCA0064C810 /* ops_close_button_default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ops_close_button_default@2x.png"; sourceTree = "<group>"; };
 		FA941E781772FBCA0064C810 /* ops_close_button_pressed@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ops_close_button_pressed@2x.png"; sourceTree = "<group>"; };
+		FA9AD44917843EB400EF7AF5 /* NearbyPortalView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NearbyPortalView.h; sourceTree = "<group>"; };
+		FA9AD44A17843EB400EF7AF5 /* NearbyPortalView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NearbyPortalView.m; sourceTree = "<group>"; };
 		FA9D4BDF17705C1C00A7F889 /* commBg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "commBg@2x.png"; sourceTree = "<group>"; };
 		FAA0C30016B992EF00DB57E8 /* resonatorTexture.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = resonatorTexture.png; sourceTree = "<group>"; };
 		FAA0C30216B993B800DB57E8 /* default_btn_disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "default_btn_disabled@2x.png"; sourceTree = "<group>"; };
@@ -1958,6 +1961,8 @@
 			children = (
 				FAEA5859169C7E7500E2F502 /* ScannerViewController.h */,
 				FAEA585A169C7E7500E2F502 /* ScannerViewController.m */,
+				FA9AD44917843EB400EF7AF5 /* NearbyPortalView.h */,
+				FA9AD44A17843EB400EF7AF5 /* NearbyPortalView.m */,
 			);
 			name = Scanner;
 			path = Ingress;
@@ -2192,6 +2197,7 @@
 				FACD502316A441400077837F /* PortalDetailViewController.m in Sources */,
 				FA4D43B816A860D600B98C1F /* ItemsViewController.m in Sources */,
 				FA4D43D416A8AB6C00B98C1F /* MTStatusBarOverlay.m in Sources */,
+				FA9AD44B17843EB400EF7AF5 /* NearbyPortalView.m in Sources */,
 				FA52007016A99AB0004AFE4D /* PortalKeysViewController.m in Sources */,
 				FA52007216A99C98004AFE4D /* iCarousel.m in Sources */,
 				FAB5A2CD16AA165D00176C34 /* ChooserViewController.m in Sources */,

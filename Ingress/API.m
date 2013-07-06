@@ -1432,6 +1432,42 @@ NSString *const MilesOrKM = @"MilesOrKM";
 	
 }
 
+- (void)findNearbyPortalsWithCompletionHandler:(void (^)(NSArray *portals))handler {
+	
+	NSDictionary *dict = @{
+		@"continuationToken": [NSNull null],
+		@"maxPortals": @(1)
+	};
+	
+	[self sendRequest:@"gameplay/findNearbyPortals" params:dict completionHandler:^(id responseObj) {
+		//NSLog(@"findNearbyPortals responseObj: %@", responseObj);
+		
+		NSArray *portals = responseObj[@"result"];
+		NSMutableArray *portalsToReturn = [NSMutableArray arrayWithCapacity:portals.count];
+		
+		for (NSArray *portal in portals) {
+
+			NSDictionary *portalDict = @{
+				@"guid": portal[0],
+				@"location": [[CLLocation alloc] initWithLatitude:[portal[2][@"locationE6"][@"latE6"] intValue]/1E6 longitude:[portal[2][@"locationE6"][@"lngE6"] intValue]/1E6],
+				@"controllingTeam": portal[2][@"controllingTeam"][@"team"],
+				@"imageURL": portal[2][@"imageByUrl"][@"imageUrl"],
+				@"name": portal[2][@"portalV2"][@"descriptiveText"][@"TITLE"],
+				@"address": portal[2][@"portalV2"][@"descriptiveText"][@"ADDRESS"]
+			};
+			
+			[portalsToReturn addObject:portalDict];
+			
+		}
+		
+		dispatch_async(dispatch_get_main_queue(), ^{
+			handler(portalsToReturn);
+		});
+		
+	}];
+	
+}
+
 - (void)cheatSetPlayerLevel {
 
 	[self sendRequest:@"devCheat/cheatSetPlayerLevel" params:@[@5] completionHandler:^(id responseObj) {

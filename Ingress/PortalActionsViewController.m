@@ -126,7 +126,6 @@
 }
 
 - (void)refreshActions {
-	NSLog(@"%s", __FUNCTION__);
 
     Player *player = [[API sharedInstance] playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
 

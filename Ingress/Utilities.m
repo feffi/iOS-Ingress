@@ -36,6 +36,22 @@
 	[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 }
 
+#pragma mark - Location
+
++ (CLLocationDirection)angleFromCoordinate:(CLLocationCoordinate2D)first toCoordinate:(CLLocationCoordinate2D)second {
+	
+    float deltaLongitude = second.longitude - first.longitude;
+    float deltaLatitude = second.latitude - first.latitude;
+    float angle = (M_PI * .5f) - atan(deltaLatitude / deltaLongitude);
+	
+	if (deltaLongitude > 0)			angle = angle;
+	else if (deltaLongitude < 0)	angle = angle + M_PI;
+    else if (deltaLatitude < 0)		angle = M_PI;
+	else							angle = 0;
+		
+	return GLKMathRadiansToDegrees(angle);
+}
+
 #pragma mark - NSAttributedString attributes
 
 + (NSDictionary *)attributesWithShadow:(BOOL)shadow size:(CGFloat)size color:(UIColor *)color {

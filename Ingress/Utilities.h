@@ -46,6 +46,8 @@ typedef enum {
 
 + (void)showWarningWithTitle:(NSString *)title;
 
++ (CLLocationDirection)angleFromCoordinate:(CLLocationCoordinate2D)first toCoordinate:(CLLocationCoordinate2D)second;
+
 + (NSDictionary *)attributesWithShadow:(BOOL)shadow size:(CGFloat)size color:(UIColor *)color;
 
 + (UIColor *)colorForRarity:(ItemRarity)rarity;

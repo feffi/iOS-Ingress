@@ -9,7 +9,6 @@
 #import "ScannerViewController.h"
 #import "PortalDetailViewController.h"
 #import "MissionViewController.h"
-#import "CommViewController.h"
 #import "MKMapView+ZoomLevel.h"
 #import "NewPortalViewController.h"
 
@@ -52,6 +51,8 @@
     
     UIImage *selectedPortalImage;
 	CLLocation *selectedPortalLocation;
+	
+	NearbyPortalView *nearbyPortalView;
 	
 }
 
@@ -102,7 +103,7 @@
     }
     #endif
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-	CommViewController *commVC = [storyboard instantiateViewControllerWithIdentifier:@"CommViewController"];
+	commVC = [storyboard instantiateViewControllerWithIdentifier:@"CommViewController"];
 	commVC.view.frame = CGRectMake(0, self.view.frame.size.height-offset, self.view.frame.size.width, 393);
 	[self.view addSubview:commVC.view];
 	[self addChildViewController:commVC];
@@ -294,7 +295,7 @@
 	if (player.allowFactionChoice) {
 		[self performSegueWithIdentifier:@"FactionChooseSegue" sender:self];
 	}
-	
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -371,18 +372,38 @@
 					});
 				}
 			}
+			
+			// ---------------------------------------------------
 
+			__block int addedPortals = 0;
 			NSArray *fetchedPortals = [Portal MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"completeInfo = YES"] inContext:context];
 			for (Portal *portal in fetchedPortals) {
 				//NSLog(@"adding portal to map: %@ (%f, %f)", portal.subtitle, portal.latitude, portal.longitude);
 				if (portal.coordinate.latitude == 0 && portal.coordinate.longitude == 0) { continue; }
 				if (MKMapRectContainsPoint(_mapView.visibleMapRect, MKMapPointForCoordinate(portal.coordinate))) {
+					addedPortals++;
 					dispatch_async(dispatch_get_main_queue(), ^{
 						[_mapView addAnnotation:portal];
 						[_mapView addOverlay:portal];
 					});
 				}
 			}
+			
+			if (nearbyPortalView) {
+				[nearbyPortalView removeFromSuperview];
+				nearbyPortalView = nil;
+			}
+			
+			if (addedPortals == 0) {
+				[[API sharedInstance] findNearbyPortalsWithCompletionHandler:^(NSArray *portals) {
+
+					nearbyPortalView = [[NearbyPortalView alloc] initWithFrame:CGRectMake(20, self.view.frame.size.height-140, 280, 80) portal:portals[0]];
+					[self.view insertSubview:nearbyPortalView belowSubview:commVC.view];
+	
+				}];
+			}
+			
+			// ---------------------------------------------------
 
 			NSArray *fetchedResonators = [DeployedResonator MR_findAllInContext:context];
 			for (DeployedResonator *resonator in fetchedResonators) {

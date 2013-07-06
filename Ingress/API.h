@@ -88,6 +88,7 @@ typedef void (^SoundCompletionBlock)(void);
 - (void)getUploadUrl:(void (^)(NSString *url))handler;
 - (void)uploadPortalPhotoByUrlWithRequestId:(NSString *)requestId imageUrl:(NSString *)imageUrl completionHandler:(void (^)(NSString *errorStr))handler;
 - (void)uploadPortalImage:(UIImage *)image toURL:(NSString *)url completionHandler:(void (^)(void))handler;
+- (void)findNearbyPortalsWithCompletionHandler:(void (^)(NSArray *portals))handler;
 - (void)cheatSetPlayerLevel;
 
 - (void)sendRequest:(NSString *)requestName params:(id)params completionHandler:(void (^)(id responseObj))handler;
