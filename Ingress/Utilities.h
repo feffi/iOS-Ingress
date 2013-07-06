@@ -8,12 +8,20 @@
 
 #import <Foundation/Foundation.h>
 
+#pragma mark - Macros
+
+#define NILIFNULL(foo) ((foo == [NSNull null]) ? nil : foo)
+#define NULLIFNIL(foo) ((foo == nil) ? [NSNull null] : foo)
+#define EMPTYIFNIL(foo) ((foo == nil) ? @"" : foo)
+
 #define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 \
 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 #ifndef CHAT_FONT_SIZE
 #define CHAT_FONT_SIZE 14
 #endif
+
+#pragma mark - Enums
 
 typedef enum {
 	ItemRarityVeryCommon,
@@ -38,6 +46,8 @@ typedef enum {
 	ItemTypeTurret,
 	ItemTypeUnknown = -1
 } ItemType;
+
+#pragma mark - Interface
 
 @interface Utilities : NSObject
 

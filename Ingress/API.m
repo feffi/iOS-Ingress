@@ -1452,8 +1452,8 @@ NSString *const MilesOrKM = @"MilesOrKM";
 				@"location": [[CLLocation alloc] initWithLatitude:[portal[2][@"locationE6"][@"latE6"] intValue]/1E6 longitude:[portal[2][@"locationE6"][@"lngE6"] intValue]/1E6],
 				@"controllingTeam": portal[2][@"controllingTeam"][@"team"],
 				@"imageURL": portal[2][@"imageByUrl"][@"imageUrl"],
-				@"name": portal[2][@"portalV2"][@"descriptiveText"][@"TITLE"],
-				@"address": portal[2][@"portalV2"][@"descriptiveText"][@"ADDRESS"]
+				@"name": EMPTYIFNIL(portal[2][@"portalV2"][@"descriptiveText"][@"TITLE"]),
+				@"address": EMPTYIFNIL(portal[2][@"portalV2"][@"descriptiveText"][@"ADDRESS"])
 			};
 			
 			[portalsToReturn addObject:portalDict];
