@@ -69,7 +69,14 @@
 }
 
 - (NSInteger)level {
-	return floorf([self averageResonatorLevel]);
+	float averageResonatorLevel = [self averageResonatorLevel];
+	if (averageResonatorLevel > 1) {
+		return floorf(averageResonatorLevel);
+	} else if (averageResonatorLevel > 0) {
+		return 1;
+	} else {
+		return 0;
+	}
 }
 
 - (NSInteger)range {
