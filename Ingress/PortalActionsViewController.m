@@ -351,8 +351,18 @@
 					if ([acquiredItem hasPrefix:@"L"]) {
 						int level = [[acquiredItem substringWithRange:NSMakeRange(1, 1)] intValue];
 						[acquiredItemStr setAttributes:[Utilities attributesWithShadow:YES size:15 color:[Utilities colorForLevel:level]] range:NSMakeRange(0, 2)];
+					} else if ([acquiredItem hasPrefix:@"Very Common"]) {
+						[acquiredItemStr setAttributes:[Utilities attributesWithShadow:YES size:15 color:[Utilities colorForRarity:ItemRarityVeryCommon]] range:NSMakeRange(0, acquiredItem.length)];
 					} else if ([acquiredItem hasPrefix:@"Common"]) {
-						//[acquiredItemStr setAttributes:[Utilities attributesWithShadow:YES size:15 color:[API colorForLevel:level]] range:NSMakeRange(0, 2)];
+						[acquiredItemStr setAttributes:[Utilities attributesWithShadow:YES size:15 color:[Utilities colorForRarity:ItemRarityCommon]] range:NSMakeRange(0, acquiredItem.length)];
+					} else if ([acquiredItem hasPrefix:@"Less Common"]) {
+						[acquiredItemStr setAttributes:[Utilities attributesWithShadow:YES size:15 color:[Utilities colorForRarity:ItemRarityLessCommon]] range:NSMakeRange(0, acquiredItem.length)];
+					} else if ([acquiredItem hasPrefix:@"Rare"]) {
+						[acquiredItemStr setAttributes:[Utilities attributesWithShadow:YES size:15 color:[Utilities colorForRarity:ItemRarityRare]] range:NSMakeRange(0, acquiredItem.length)];
+					} else if ([acquiredItem hasPrefix:@"Very Rare"]) {
+						[acquiredItemStr setAttributes:[Utilities attributesWithShadow:YES size:15 color:[Utilities colorForRarity:ItemRarityVeryRare]] range:NSMakeRange(0, acquiredItem.length)];
+					} else if ([acquiredItem hasPrefix:@"Extra Rare"]) {
+						[acquiredItemStr setAttributes:[Utilities attributesWithShadow:YES size:15 color:[Utilities colorForRarity:ItemRarityExtraRare]] range:NSMakeRange(0, acquiredItem.length)];
 					}
 
 					[acquiredItemsStr appendAttributedString:acquiredItemStr];
