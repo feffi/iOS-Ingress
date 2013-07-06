@@ -25,7 +25,7 @@ NSString *const MilesOrKM = @"MilesOrKM";
 	
 	NSTimer *inventoryRefreshTimer;
 	
-	BOOL inventoryAutorefreshInProgress;
+	BOOL inventoryRefreshInProgress;
 }
 
 @synthesize networkQueue = _networkQueue;
@@ -85,11 +85,8 @@ NSString *const MilesOrKM = @"MilesOrKM";
 #pragma mark - Auto refresh
 
 - (void)autorefreshInventory {
-	if (!inventoryAutorefreshInProgress) {
-		inventoryAutorefreshInProgress = YES;
-		[[API sharedInstance] getInventoryWithCompletionHandler:^{
-			inventoryAutorefreshInProgress = NO;
-		}];
+	if (!inventoryRefreshInProgress) {
+		[[API sharedInstance] getInventoryWithCompletionHandler:NULL];
 	}
 }
 
@@ -509,6 +506,8 @@ NSString *const MilesOrKM = @"MilesOrKM";
 #pragma mark - API
 
 - (void)getInventoryWithCompletionHandler:(void (^)(void))handler {
+	
+	inventoryRefreshInProgress = YES;
 
 	Player *player = [self playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
 	long long lastInventoryUpdated = [[NSDate dateWithTimeIntervalSinceReferenceDate:player.lastInventoryUpdated] timeIntervalSince1970]*1000.;
@@ -520,6 +519,8 @@ NSString *const MilesOrKM = @"MilesOrKM";
 
 	[self sendRequest:@"playerUndecorated/getInventory" params:params completionHandler:^(id responseObj) {
 //		NSLog(@"getInventory responseObj: %@", responseObj);
+		
+		inventoryRefreshInProgress = NO;
 
 		Player *player = [self playerForContext:[NSManagedObjectContext MR_contextForCurrentThread]];
 		player.lastInventoryUpdated = [[NSDate dateWithTimeIntervalSince1970:([responseObj[@"result"] doubleValue]/1000.)] timeIntervalSinceReferenceDate];
