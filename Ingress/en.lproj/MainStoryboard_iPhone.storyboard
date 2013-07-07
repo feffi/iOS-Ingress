@@ -1354,9 +1354,9 @@
         <!--Portal Detail View Controller-->
         <scene sceneID="tKq-tx-ryc">
             <objects>
-                <viewController storyboardIdentifier="PortalDetailViewController" wantsFullScreenLayout="YES" id="EpT-PX-0Xb" customClass="PortalDetailViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="PortalDetailViewController" id="EpT-PX-0Xb" customClass="PortalDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ROn-sT-oc0">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l9A-O4-19U">
@@ -1382,7 +1382,7 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="l9A-O4-19U" firstAttribute="leading" secondItem="ROn-sT-oc0" secondAttribute="leading" type="default" id="BJM-Wz-36V"/>
-                            <constraint firstItem="l9A-O4-19U" firstAttribute="top" secondItem="ROn-sT-oc0" secondAttribute="top" constant="20" symbolic="YES" type="default" id="brk-NQ-GIC"/>
+                            <constraint firstItem="l9A-O4-19U" firstAttribute="top" secondItem="ROn-sT-oc0" secondAttribute="top" type="default" id="PHp-XE-7PZ"/>
                         </constraints>
                     </view>
                     <extendedEdge key="edgesForExtendedLayout"/>
