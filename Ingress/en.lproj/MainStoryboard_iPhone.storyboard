@@ -1227,9 +1227,8 @@
                             <constraint firstAttribute="trailing" secondItem="MGD-pG-MhS" secondAttribute="trailing" constant="68" type="user" id="75A-xJ-KMb"/>
                             <constraint firstItem="rgS-1f-mzM" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="user" id="7re-Hc-PwY"/>
                             <constraint firstAttribute="bottom" secondItem="waa-9V-nq3" secondAttribute="bottom" constant="58" id="8rV-CO-9W5"/>
-                            <constraint firstAttribute="centerX" secondItem="BX0-yd-s1M" secondAttribute="centerX" type="user" id="BbK-dH-K9q"/>
                             <constraint firstItem="oVe-o2-Lr5" firstAttribute="top" secondItem="3" secondAttribute="top" constant="22" id="CQ8-hY-jqA"/>
-                            <constraint firstAttribute="centerY" secondItem="BX0-yd-s1M" secondAttribute="centerY" type="user" id="KOg-up-E7j"/>
+                            <constraint firstAttribute="trailing" secondItem="2e8-m3-jc6" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="IHX-Qe-jf8"/>
                             <constraint firstItem="MGD-pG-MhS" firstAttribute="trailing" secondItem="oVe-o2-Lr5" secondAttribute="trailing" type="default" id="L2c-fm-N8w"/>
                             <constraint firstItem="stx-mu-7c3" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="72" type="user" id="Lqf-WB-WAd"/>
                             <constraint firstItem="DmM-Ra-LBw" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="4" id="Sd1-IL-5mT"/>
@@ -1238,9 +1237,11 @@
                             <constraint firstItem="DmM-Ra-LBw" firstAttribute="trailing" secondItem="7MI-jq-NjA" secondAttribute="trailing" type="default" id="TDw-F7-zM2"/>
                             <constraint firstItem="2e8-m3-jc6" firstAttribute="top" secondItem="3" secondAttribute="top" constant="120" type="user" id="TEW-CG-3QY"/>
                             <constraint firstItem="7MI-jq-NjA" firstAttribute="top" secondItem="3" secondAttribute="top" constant="4" type="user" id="TNE-QM-Jjj"/>
+                            <constraint firstItem="BX0-yd-s1M" firstAttribute="centerY" secondItem="tWm-XI-3eu" secondAttribute="centerY" type="user" id="TPU-yh-OCD"/>
                             <constraint firstItem="7MI-jq-NjA" firstAttribute="leading" secondItem="YsP-qD-cUK" secondAttribute="leading" type="default" id="VU0-pm-F9E"/>
                             <constraint firstItem="MGD-pG-MhS" firstAttribute="top" secondItem="p8g-KV-tR1" secondAttribute="top" type="default" id="Wii-7T-7hd"/>
                             <constraint firstItem="2e8-m3-jc6" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="WxN-4h-K9e"/>
+                            <constraint firstItem="BX0-yd-s1M" firstAttribute="centerY" secondItem="tWm-XI-3eu" secondAttribute="centerY" type="user" id="YEH-7P-Sse"/>
                             <constraint firstItem="rgS-1f-mzM" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="user" id="YHS-V2-4sP"/>
                             <constraint firstItem="tWm-XI-3eu" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="user" id="a0b-6Q-wAf"/>
                             <constraint firstAttribute="trailing" secondItem="stx-mu-7c3" secondAttribute="trailing" constant="68" type="user" id="aQ7-zX-E5c"/>

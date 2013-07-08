@@ -33,9 +33,7 @@
 	Portal *currentPortal;
 	Item *currentItem;
 
-	UIView *rangeCircleView;
-    NSLayoutConstraint *rangeCircleViewWidth;
-    NSLayoutConstraint *rangeCircleViewHeight;
+	UIImageView *rangeCircleImageView;
     
 	CLLocation *lastLocation;
 	BOOL firstRefreshProfile;
@@ -684,68 +682,36 @@
 - (void)updateRangeCircleView {
     
     // Create view on first update
-    if ( ! rangeCircleView) {
-        rangeCircleView = [UIView new];
-        rangeCircleView.backgroundColor = [UIColor clearColor];
-        rangeCircleView.opaque = NO;
-        rangeCircleView.userInteractionEnabled = NO;
-        rangeCircleView.layer.masksToBounds = YES;
-        rangeCircleView.layer.borderWidth = IG_RANGE_CIRCLE_VIEW_BORDER_WIDTH;
-        rangeCircleView.layer.borderColor = [[[UIColor blueColor] colorWithAlphaComponent:0.25] CGColor];
-        
-        rangeCircleView.translatesAutoresizingMaskIntoConstraints = NO;
-        
-        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:_mapView
-                                                              attribute:NSLayoutAttributeCenterX
-                                  
-                                                              relatedBy:NSLayoutRelationEqual
-                                  
-                                                                 toItem:rangeCircleView
-                                                              attribute:NSLayoutAttributeCenterX
-                                  
-                                                             multiplier:1
-                                                               constant:0]];
-        
-        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:_mapView
-                                                              attribute:NSLayoutAttributeCenterY
-                                  
-                                                              relatedBy:NSLayoutRelationEqual
-                                  
-                                                                 toItem:rangeCircleView
-                                                              attribute:NSLayoutAttributeCenterY
-                                  
-                                                             multiplier:1
-                                                               constant:-10]];
-        
-        rangeCircleViewWidth = [NSLayoutConstraint constraintWithItem:rangeCircleView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:0 constant:0];
-        rangeCircleViewHeight = [NSLayoutConstraint constraintWithItem:rangeCircleView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:0 constant:0];
-        [self.view addConstraint:rangeCircleViewWidth];
-        [self.view addConstraint:rangeCircleViewHeight];
-        
-        [self.view addSubview:rangeCircleView];
+    if (!rangeCircleImageView) {
+		rangeCircleImageView = [UIImageView new];
+        rangeCircleImageView.image = [UIImage imageNamed:@"compass_ring.png"];
+        rangeCircleImageView.opaque = NO;
+        rangeCircleImageView.userInteractionEnabled = NO;
+        rangeCircleImageView.clipsToBounds = YES;
+        [self.view addSubview:rangeCircleImageView];
     }
     
     // Hide view while no sensible data can be shown
     if (locationAllowHUD) {
-        rangeCircleView.hidden = YES;
-        
+        rangeCircleImageView.hidden = YES;
         return;
     }
-    
-    // Update range diameter
-    CGFloat diameter = 0.;
-    if (_mapView.bounds.size.width > 0 && _mapView.region.span.latitudeDelta > 0) {
-        diameter = 100./((_mapView.region.span.latitudeDelta * 111200.) / _mapView.bounds.size.width);
-    }
-    rangeCircleViewWidth.constant = diameter + IG_RANGE_CIRCLE_VIEW_BORDER_WIDTH * 2;
-    rangeCircleViewHeight.constant = diameter + IG_RANGE_CIRCLE_VIEW_BORDER_WIDTH * 2;
-    rangeCircleView.layer.cornerRadius = rangeCircleView.layer.cornerRadius = (diameter + IG_RANGE_CIRCLE_VIEW_BORDER_WIDTH * 2.)/2.;
+
+	if (_mapView.bounds.size.width > 0 && _mapView.region.span.latitudeDelta > 0) {
+		MKMapRect mRect = _mapView.visibleMapRect;
+		MKMapPoint eastMapPoint = MKMapPointMake(MKMapRectGetMinX(mRect), MKMapRectGetMidY(mRect));
+		MKMapPoint westMapPoint = MKMapPointMake(MKMapRectGetMaxX(mRect), MKMapRectGetMidY(mRect));
+		CLLocationDistance altDistance = MKMetersBetweenMapPoints(eastMapPoint, westMapPoint);
+		CGFloat width = ((_mapView.frame.size.width * SCANNER_RANGE) / altDistance)*2;
+		rangeCircleImageView.frame = CGRectMake(0, 0, width, width);
+		rangeCircleImageView.center = _mapView.center;
+	}
+
 }
 
 #pragma mark - CLLocationManagerDelegate
 
-- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
-{
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     [self validateLocationServicesAuthorization];
 }
 
