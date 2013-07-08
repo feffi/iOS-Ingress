@@ -19,7 +19,7 @@
 	[super viewDidLoad];
 
 	CGFloat viewWidth = [UIScreen mainScreen].bounds.size.width;
-	CGFloat viewHeight = [UIScreen mainScreen].bounds.size.height-20;
+	CGFloat viewHeight = [UIScreen mainScreen].bounds.size.height;
 
 	CGRect backgroundRect = CGRectMake(0, 0, viewWidth, viewHeight);
 	UIImageView *backgroundImageView = [[UIImageView alloc] initWithFrame:backgroundRect];
