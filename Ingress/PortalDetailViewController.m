@@ -82,16 +82,19 @@
 	opsCloseButton.frame = CGRectMake(0, statusBarHeight, 62, 34);
 }
 
-- (void)viewWillDisappear:(BOOL)animated {
-	[super viewWillDisappear:animated];
-
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+	
 	[[[GAI sharedInstance] defaultTracker] sendView:@"Portal Detail Screen"];
+	
+	[[LocationManager sharedInstance] addDelegate:self];
+}
 
-	if (self.isMovingFromParentViewController) {
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
-            [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-        }
-	}
+- (void)viewDidDisappear:(BOOL)animated {
+	[super viewDidDisappear:animated];
+	
+	[[LocationManager sharedInstance] removeDelegate:self];
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -159,6 +162,29 @@
 			break;
 	}
     return title;
+}
+
+#pragma mark - CLLocationManagerDelegate protocol
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+	
+	float yardModifier;
+	NSString *unitLabel;
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:MilesOrKM]) {
+		yardModifier = 1;
+		unitLabel = @"m";
+	} else {
+		yardModifier = 1.0936133;
+		unitLabel = @"yd";
+	}
+
+	if (_portal.isInPlayerRange) {
+		CLLocationDistance distance = [_portal distanceFromCoordinate:[LocationManager sharedInstance].playerLocation.coordinate];
+		opsLabel.text = [NSString stringWithFormat:@"Distance: %.0f%@", distance * yardModifier, unitLabel];
+	} else {
+		opsLabel.text = @"Out of Range";
+	}
+	
 }
 
 @end

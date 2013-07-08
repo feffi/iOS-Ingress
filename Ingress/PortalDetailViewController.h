@@ -13,7 +13,7 @@
 #import "PortalUpgradeViewController.h"
 #import "MDCParallaxView.h"
 
-@interface PortalDetailViewController : UIViewController <TTSlidingPagesDataSource> {
+@interface PortalDetailViewController : UIViewController <TTSlidingPagesDataSource, CLLocationManagerDelegate> {
 
 	__weak IBOutlet UIButton *opsCloseButton;
 	__weak IBOutlet UIImageView *labelBackgroundImage;
