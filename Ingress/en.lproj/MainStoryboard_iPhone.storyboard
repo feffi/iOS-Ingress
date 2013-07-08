@@ -1089,13 +1089,6 @@
                                     <constraint firstAttribute="height" constant="456" type="user" id="Xc8-SA-kYk"/>
                                 </constraints>
                             </imageView>
-                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="playerArrow_aliens.png" translatesAutoresizingMaskIntoConstraints="NO" id="BX0-yd-s1M">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="50" type="user" id="7lC-bf-Unj"/>
-                                    <constraint firstAttribute="height" constant="50" type="user" id="U7H-jJ-vg1"/>
-                                </constraints>
-                            </imageView>
                             <label hidden="YES" opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Choose Target Portal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.80000001192092896" translatesAutoresizingMaskIntoConstraints="NO" id="2e8-m3-jc6" customClass="GlowingLabel">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="22" type="user" id="gdI-h1-MfN"/>
@@ -1237,16 +1230,14 @@
                             <constraint firstItem="DmM-Ra-LBw" firstAttribute="trailing" secondItem="7MI-jq-NjA" secondAttribute="trailing" type="default" id="TDw-F7-zM2"/>
                             <constraint firstItem="2e8-m3-jc6" firstAttribute="top" secondItem="3" secondAttribute="top" constant="120" type="user" id="TEW-CG-3QY"/>
                             <constraint firstItem="7MI-jq-NjA" firstAttribute="top" secondItem="3" secondAttribute="top" constant="4" type="user" id="TNE-QM-Jjj"/>
-                            <constraint firstItem="BX0-yd-s1M" firstAttribute="centerY" secondItem="tWm-XI-3eu" secondAttribute="centerY" type="user" id="TPU-yh-OCD"/>
+                            <constraint firstItem="waa-9V-nq3" firstAttribute="centerX" secondItem="2e8-m3-jc6" secondAttribute="centerX" type="default" id="U8Y-ts-iae"/>
                             <constraint firstItem="7MI-jq-NjA" firstAttribute="leading" secondItem="YsP-qD-cUK" secondAttribute="leading" type="default" id="VU0-pm-F9E"/>
                             <constraint firstItem="MGD-pG-MhS" firstAttribute="top" secondItem="p8g-KV-tR1" secondAttribute="top" type="default" id="Wii-7T-7hd"/>
                             <constraint firstItem="2e8-m3-jc6" firstAttribute="leading" secondItem="3" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="WxN-4h-K9e"/>
-                            <constraint firstItem="BX0-yd-s1M" firstAttribute="centerY" secondItem="tWm-XI-3eu" secondAttribute="centerY" type="user" id="YEH-7P-Sse"/>
                             <constraint firstItem="rgS-1f-mzM" firstAttribute="trailing" secondItem="3" secondAttribute="trailing" type="user" id="YHS-V2-4sP"/>
                             <constraint firstItem="tWm-XI-3eu" firstAttribute="leading" secondItem="3" secondAttribute="leading" type="user" id="a0b-6Q-wAf"/>
                             <constraint firstAttribute="trailing" secondItem="stx-mu-7c3" secondAttribute="trailing" constant="68" type="user" id="aQ7-zX-E5c"/>
                             <constraint firstItem="Z0t-4M-3D3" firstAttribute="top" secondItem="3" secondAttribute="top" constant="44" id="bQG-5H-axq"/>
-                            <constraint firstItem="2e8-m3-jc6" firstAttribute="centerX" secondItem="BX0-yd-s1M" secondAttribute="centerX" type="default" id="bYE-DB-xyZ"/>
                             <constraint firstItem="tWm-XI-3eu" firstAttribute="top" secondItem="3" secondAttribute="top" constant="-20" type="user" id="cR0-5C-nDn"/>
                             <constraint firstItem="stx-mu-7c3" firstAttribute="top" secondItem="HLu-v7-LER" secondAttribute="top" type="default" id="dEO-Vg-2nB"/>
                             <constraint firstItem="DmM-Ra-LBw" firstAttribute="leading" secondItem="YsP-qD-cUK" secondAttribute="leading" type="default" id="dh3-cz-KaR"/>
@@ -1260,7 +1251,6 @@
                             <constraint firstItem="7MI-jq-NjA" firstAttribute="top" secondItem="DmM-Ra-LBw" secondAttribute="top" type="default" id="n7r-wH-d5d"/>
                             <constraint firstItem="YsP-qD-cUK" firstAttribute="top" secondItem="DmM-Ra-LBw" secondAttribute="top" type="default" id="oZr-TM-Yaa"/>
                             <constraint firstAttribute="bottom" secondItem="tWm-XI-3eu" secondAttribute="bottom" type="user" id="pEI-Ct-awM"/>
-                            <constraint firstItem="BX0-yd-s1M" firstAttribute="centerX" secondItem="waa-9V-nq3" secondAttribute="centerX" type="default" id="qAN-ce-Iwa"/>
                             <constraint firstItem="Z0t-4M-3D3" firstAttribute="leading" secondItem="oVe-o2-Lr5" secondAttribute="leading" type="default" id="qSO-ca-oXB"/>
                         </constraints>
                     </view>
@@ -1272,7 +1262,6 @@
                         <outlet property="bgImage" destination="rgS-1f-mzM" id="0oU-xG-bLH"/>
                         <outlet property="levelLabel" destination="7MI-jq-NjA" id="hjb-HK-2sK"/>
                         <outlet property="nicknameLabel" destination="oVe-o2-Lr5" id="vpD-9Y-GZW"/>
-                        <outlet property="playerArrowImage" destination="BX0-yd-s1M" id="8sT-MT-J35"/>
                         <outlet property="virusChoosePortalCancelButton" destination="waa-9V-nq3" id="DdO-1U-GIX"/>
                         <outlet property="virusChoosePortalLabel" destination="2e8-m3-jc6" id="IMm-SW-ggs"/>
                         <outlet property="xmIndicator" destination="p8g-KV-tR1" id="C8I-2L-b6m"/>
@@ -4218,7 +4207,6 @@
         <image name="ops_background.png" width="320" height="32"/>
         <image name="ops_close_button_default.png" width="62" height="34"/>
         <image name="ops_close_button_pressed.png" width="62" height="34"/>
-        <image name="playerArrow_aliens.png" width="50" height="50"/>
         <image name="positive_btn_background_default.png" width="45" height="23.5"/>
         <image name="positive_btn_background_disabled.png" width="45" height="23.5"/>
         <image name="positive_btn_background_pressed.png" width="45" height="23.5"/>

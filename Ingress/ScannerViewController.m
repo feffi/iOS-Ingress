@@ -34,6 +34,7 @@
 	Item *currentItem;
 
 	UIImageView *rangeCircleImageView;
+	UIImageView *playerArrowImage;
     
 	CLLocation *lastLocation;
 	BOOL firstRefreshProfile;
@@ -105,6 +106,11 @@
 	commVC.view.frame = CGRectMake(0, self.view.frame.size.height-offset, self.view.frame.size.width, 393);
 	[self.view addSubview:commVC.view];
 	[self addChildViewController:commVC];
+	
+	playerArrowImage = [UIImageView new];
+	playerArrowImage.frame = CGRectMake(0, 0, 50, 50);
+	playerArrowImage.center = _mapView.center;
+	[self.view addSubview:playerArrowImage];
 	
 //	locationManager = [LocationManager locationManager];
 //    locationManager.delegate = self;
@@ -715,15 +721,10 @@
     [self validateLocationServicesAuthorization];
 }
 
-//- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
     CLLocation *newLocation = [locations lastObject];
 	[_mapView setCenterCoordinate:newLocation.coordinate animated:!firstLocationUpdate];
 	if (firstLocationUpdate) firstLocationUpdate = NO;
-}
-
-- (BOOL)locationManagerShouldDisplayHeadingCalibration:(CLLocationManager *)manager {
-	return NO;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
@@ -740,10 +741,11 @@
     
     #define INGRESS_SCANNER_BEARING_ANIMATION_DURATION 0.2
     
-    if ( ! playerArrowImage.layer.animationKeys.count) {
+    if (!playerArrowImage.layer.animationKeys.count) {
         [UIView animateWithDuration:INGRESS_SCANNER_BEARING_ANIMATION_DURATION delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
             CGAffineTransform transform = CGAffineTransformMakeRotation(GLKMathDegreesToRadians(newHeading.trueHeading));
             playerArrowImage.transform = transform;
+			playerArrowImage.center = _mapView.center;
         } completion:nil];
     }
 }
