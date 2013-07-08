@@ -24,6 +24,14 @@
 	return [UIApplication sharedApplication].statusBarFrame.size.height;
 }
 
+#pragma mark - Random
+
++ (double)randomWithMin:(double)min max:(double)max {
+	int range = (max - min);
+	int rand = (arc4random() % (range + 1));
+	return rand + min;
+}
+
 #pragma mark - Warning
 
 + (void)showWarningWithTitle:(NSString *)title {

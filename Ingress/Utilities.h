@@ -55,6 +55,8 @@ typedef enum {
 + (BOOL)isOS7;
 + (CGFloat)statusBarHeight;
 
++ (double)randomWithMin:(double)min max:(double)max;
+
 + (void)showWarningWithTitle:(NSString *)title;
 
 + (CLLocationDirection)angleFromCoordinate:(CLLocationCoordinate2D)first toCoordinate:(CLLocationCoordinate2D)second;
