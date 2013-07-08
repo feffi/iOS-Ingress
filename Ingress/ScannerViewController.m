@@ -110,7 +110,7 @@
 	playerArrowImage = [UIImageView new];
 	playerArrowImage.frame = CGRectMake(0, 0, 50, 50);
 	playerArrowImage.center = _mapView.center;
-	[self.view addSubview:playerArrowImage];
+	[self.view insertSubview:playerArrowImage belowSubview:commVC.view];
 	
 //	locationManager = [LocationManager locationManager];
 //    locationManager.delegate = self;
