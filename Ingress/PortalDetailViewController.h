@@ -15,8 +15,9 @@
 
 @interface PortalDetailViewController : UIViewController <TTSlidingPagesDataSource> {
 
-//	UIScrollView *_scrollView;
-//	UISegmentedControl *viewSegmentedControl;
+	__weak IBOutlet UIButton *opsCloseButton;
+	__weak IBOutlet UIImageView *labelBackgroundImage;
+	__weak IBOutlet GlowingLabel *opsLabel;
 
 	PortalActionsViewController *portalActionsVC;
 	MDCParallaxView *infoContainerView;

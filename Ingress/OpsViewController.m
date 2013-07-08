@@ -44,12 +44,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-	[opsLabel setAttributedText:[[NSAttributedString alloc] initWithString:@"OPS" attributes:[Utilities attributesWithShadow:YES size:18 color:[UIColor colorWithRed:235./255. green:188./255. blue:74./255. alpha:1.0]]]];
 	opsLabel.rightInset = 10;
-	
 	labelBackgroundImage.image = [[UIImage imageNamed:@"ops_background.png"] resizableImageWithCapInsets:UIEdgeInsetsMake(2, 2, 2, 236)];
 	
 	CGFloat viewWidth = [UIScreen mainScreen].bounds.size.width;
+	CGFloat statusBarHeight = [Utilities statusBarHeight];
+	
 	NSArray *views = @[@"ITEMS", @"INTEL", @"MISSION", @"RECRUIT", @"DEVICE"];
 	
 	buttonsScrollView = [UIScrollView new];
@@ -57,7 +57,7 @@
 //	buttonsScrollView.alwaysBounceHorizontal = NO;
 	buttonsScrollView.clipsToBounds = NO;
 	buttonsScrollView.showsHorizontalScrollIndicator = NO;
-	buttonsScrollView.frame = CGRectMake(0, 52, viewWidth, 44);
+	buttonsScrollView.frame = CGRectMake(0, statusBarHeight+32, viewWidth, 44);
 	
 	int i = 0;
 	CGFloat offset = 0;
@@ -102,6 +102,15 @@
 			[self menuSelected:selectedButton];
 		});
 	}
+	
+	CGFloat viewWidth = [UIScreen mainScreen].bounds.size.width;
+	CGFloat statusBarHeight = [Utilities statusBarHeight];
+	
+	buttonsScrollView.frame = CGRectMake(0, statusBarHeight+32, viewWidth, 44);
+	
+	opsLabel.frame = CGRectMake(0, statusBarHeight, viewWidth, 32);
+	labelBackgroundImage.frame = opsLabel.frame;
+	opsCloseButton.frame = CGRectMake(0, statusBarHeight, 62, 34);
 }
 
 #pragma mark - IBActions
@@ -176,9 +185,10 @@
 			break;
 	}
 	
+	CGFloat statusBarHeight = [Utilities statusBarHeight];
 	CGFloat viewWidth = [UIScreen mainScreen].bounds.size.width;
-	CGFloat viewHeight = [UIScreen mainScreen].bounds.size.height;
-	viewController.view.frame = CGRectMake(0, 96, viewWidth, viewHeight-96);
+	CGFloat viewHeight = [UIScreen mainScreen].bounds.size.height-statusBarHeight;
+	viewController.view.frame = CGRectMake(0, statusBarHeight+76, viewWidth, viewHeight-76);
 	
 	[self.view addSubview:viewController.view];
 	[self.view sendSubviewToBack:viewController.view];

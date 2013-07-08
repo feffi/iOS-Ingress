@@ -53,6 +53,7 @@ typedef enum {
 
 + (BOOL)isPad;
 + (BOOL)isOS7;
++ (CGFloat)statusBarHeight;
 
 + (void)showWarningWithTitle:(NSString *)title;
 

@@ -20,6 +20,10 @@
 	return ([[[UIDevice currentDevice] systemVersion] compare:@"7.0" options:NSNumericSearch] != NSOrderedAscending);
 }
 
++ (CGFloat)statusBarHeight {
+	return [UIApplication sharedApplication].statusBarFrame.size.height;
+}
+
 #pragma mark - Warning
 
 + (void)showWarningWithTitle:(NSString *)title {
