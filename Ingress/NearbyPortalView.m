@@ -32,16 +32,22 @@
 		arrowImageView.transform = CGAffineTransformMakeRotation(GLKMathDegreesToRadians(direction));
 		[self addSubview:arrowImageView];
 		
-		float yardModifier = 1;
-		if (![[NSUserDefaults standardUserDefaults] boolForKey:MilesOrKM]) {
+		float yardModifier;
+		NSString *unitLabel;
+		if ([[NSUserDefaults standardUserDefaults] boolForKey:MilesOrKM]) {
+			yardModifier = 1;
+			unitLabel = @"m";
+		} else {
 			yardModifier = 1.0936133;
+			unitLabel = @"yd";
 		}
 		
 		UILabel *label = [[GlowingLabel alloc] initWithFrame:CGRectMake(55, 0, 145, 80)];
 		label.numberOfLines = 0;
-		label.text = [NSString stringWithFormat:@"%@ (%.0f %@)", portal[@"name"], floorf(distance*yardModifier), ([[NSUserDefaults standardUserDefaults] boolForKey:MilesOrKM] ? @"m" : @"yd")];
+		label.text = [NSString stringWithFormat:@"%@ (%.0f %@)", portal[@"name"], floorf(distance*yardModifier), unitLabel];
 		label.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 		label.textColor = [UIColor whiteColor];
+		label.backgroundColor = [UIColor clearColor];
 		[self addSubview:label];
 		
 		UIImageView *portalImageView = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width-70, 10, 60, 60)];

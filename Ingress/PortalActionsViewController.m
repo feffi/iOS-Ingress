@@ -110,12 +110,17 @@
 
 	////////////////////////////
 
-	float milesModifier = 1;
-	if (![[NSUserDefaults standardUserDefaults] boolForKey:MilesOrKM]) {
+	float milesModifier;
+	NSString *unitLabel;
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:MilesOrKM]) {
+		milesModifier = 1;
+		unitLabel = @"km";
+	} else {
 		milesModifier = 0.621371192;
+		unitLabel = @"mi";
 	}
 
-	NSString *str2 = [NSString stringWithFormat:@"Energy: %.1fk\nRange: %.1f%@", self.portal.energy/1000., (self.portal.range/1000.) * milesModifier, ([[NSUserDefaults standardUserDefaults] boolForKey:MilesOrKM] ? @"km" : @"mi")];
+	NSString *str2 = [NSString stringWithFormat:@"Energy: %.1fk\nRange: %.1f%@", self.portal.energy/1000., (self.portal.range/1000.) * milesModifier, unitLabel];
 	attrStr = [[NSMutableAttributedString alloc] initWithString:str2];
 	[attrStr setAttributes:[Utilities attributesWithShadow:YES size:15 color:[UIColor colorWithRed:.56 green:1 blue:1 alpha:1]] range:NSMakeRange(0, str2.length)];
 	infoLabel2.attributedText = attrStr;
