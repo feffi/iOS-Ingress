@@ -393,18 +393,28 @@
 				}
 			}
 			
-			if (nearbyPortalView) {
-				[nearbyPortalView removeFromSuperview];
-				nearbyPortalView = nil;
-			}
-			
 			if (addedPortals == 0) {
 				[[API sharedInstance] findNearbyPortalsWithCompletionHandler:^(NSArray *portals) {
-
-					nearbyPortalView = [[NearbyPortalView alloc] initWithFrame:CGRectMake(20, self.view.frame.size.height-140, 280, 80) portal:portals[0]];
-					[self.view insertSubview:nearbyPortalView belowSubview:commVC.view];
-	
+					if ([nearbyPortalView.portalGUID isEqualToString:portals[0][@"guid"]]) {
+						[nearbyPortalView updateInformation];
+					} else {
+						if( nearbyPortalView ) {
+							[nearbyPortalView removeFromSuperview];
+							nearbyPortalView = nil;
+						}
+					
+						nearbyPortalView = [[NearbyPortalView alloc] initWithFrame:CGRectMake(20, self.view.frame.size.height-140, 280, 80) portal:portals[0]];
+						nearbyPortalView.alpha = 0;
+						[self.view insertSubview:nearbyPortalView belowSubview:commVC.view];
+		
+						[UIView animateWithDuration:0.15 animations:^{
+							nearbyPortalView.alpha = 1;
+						}];
+					}
 				}];
+			} else if( nearbyPortalView ) {
+				[nearbyPortalView removeFromSuperview];
+				nearbyPortalView = nil;
 			}
 			
 			// ---------------------------------------------------

@@ -10,6 +10,10 @@
 
 @interface NearbyPortalView : UIView
 
+@property NSString *portalGUID;
+
 - (id)initWithFrame:(CGRect)frame portal:(NSDictionary *)portal;
+
+- (void)updateInformation;
 
 @end
