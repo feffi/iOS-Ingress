@@ -37,17 +37,18 @@
 //	[[UIButton appearanceWhenContainedIn:[UIActionSheet class], nil] setFont:[UIFont fontWithName:@"Coda-Regular" size:18]];
 //	[[UIButton appearanceWhenContainedIn:[UINavigationBar class], nil] setFont:[UIFont fontWithName:@"Coda-Regular" size:12]];
 
-
-	#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
-
-	if ([UITabBar instancesRespondToSelector:@selector(barTintColor)]) {
-		[[UITabBar appearance] setBarTintColor:[UIColor blackColor]];
-	}
-
-	#endif
-
 	if ([Utilities isOS7]) {
-		[[UIView appearance] setTintColor:[UIColor colorWithRed:0 green:186./255. blue:181./255. alpha:1]];
+		
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
+		
+		if ([UITabBar instancesRespondToSelector:@selector(barTintColor)]) {
+			[[UITabBar appearance] setBarTintColor:[UIColor blackColor]];
+		}
+		
+		self.window.tintColor = [UIColor colorWithRed:0 green:186./255. blue:181./255. alpha:1];
+		
+#endif
+
 		[[UINavigationBar appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:19]}];
 	} else {
 		[[UINavigationBar appearance] setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:16]}];

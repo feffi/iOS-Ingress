@@ -862,7 +862,7 @@
 - (void)mapView:(MKMapView *)mapView regionDidChangeAnimated:(BOOL)animated {
 
 	if (mapView.zoomLevel < 15) {
-//		if ([Utilities isOS7]) {
+		if ([Utilities isOS7]) {
 //            [mapView setCenterCoordinate:mapView.centerCoordinate zoomLevel:15 animated:NO];
 //#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
 //				MKMapCamera *camera = [MKMapCamera camera];
@@ -873,9 +873,9 @@
 //				NSLog(@"camera: %@", camera);
 //				[mapView setCamera:camera animated:NO];
 //#endif
-//		} else {
+		} else {
 			[mapView setCenterCoordinate:mapView.centerCoordinate zoomLevel:15 animated:NO];
-//		}
+		}
 		return;
     }
 
