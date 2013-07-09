@@ -1052,7 +1052,7 @@
     MKCoordinateSpan span = MKCoordinateSpanMake(latdelta, londelta);
 	MKCoordinateRegion region = MKCoordinateRegionMake(originalRegion.center, span);
 
-	if ([self zoomLevelForRegion:region] >= 15) {
+	if ([Utilities isOS7] || [self zoomLevelForRegion:region] >= 15) {
 		[_mapView setRegion:region animated:NO];
 	}
     
