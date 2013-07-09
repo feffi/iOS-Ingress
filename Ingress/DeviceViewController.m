@@ -184,7 +184,7 @@
 					HUD.dimBackground = YES;
 					HUD.mode = MBProgressHUDModeIndeterminate;
 					HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-					HUD.labelText = @"Loading inventory...";
+					HUD.labelText = @"Force Sync In Progress...";
 					[self.view.window addSubview:HUD];
 					[HUD show:YES];
 
