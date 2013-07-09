@@ -489,7 +489,7 @@
 		HUD.mode = MBProgressHUDModeCustomView;
 		HUD.dimBackground = YES;
 		HUD.showCloseButton = YES;
-		_levelChooser = [ChooserViewController rarityChooserWithTitle:@"Choose shield rarity" completionHandler:^(ItemRarity rarity) {
+		_levelChooser = [ChooserViewController rarityChooserWithTitle:@"Choose Rarity" completionHandler:^(ItemRarity rarity) {
 			[HUD hide:YES];
 			[HUD removeFromSuperview];
 			HUD = nil;
