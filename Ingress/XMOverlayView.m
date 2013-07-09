@@ -39,6 +39,8 @@
 		CLLocation *location = energy[@"location"];
 		CLLocationCoordinate2D coordinate = location.coordinate;
 		MKMapPoint xmCenter = MKMapPointForCoordinate(coordinate);
+		xmCenter.x += [Utilities randomWithMin:-20 max:20];
+		xmCenter.y += [Utilities randomWithMin:-20 max:20];
 		if (MKMapRectContainsRect(mapRect, MKMapRectMake(xmCenter.x - xmRadius, xmCenter.y - xmRadius, 2*xmRadius, 2*xmRadius))) {
 			CGPoint xmCenterPoint = [self pointForMapPoint:xmCenter];
 			CGFloat xmScaledRadius = xmDelta/100 * [energy[@"amount"] intValue] + xmRadius-xmDelta;

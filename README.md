@@ -13,7 +13,7 @@ Requirements
 Download
 --------
 
-- 1.0.7 (06/12/2013)
+- 1.1.2 (07/09/2013)
 - [Download ipa](http://www.ios-ingress.com/downloads/Ingress.ipa)
 - [Install app via OTA](http://tinyurl.com/iosingressota) (visit this link from Safari on your iDevice)
 - Availabile at Cydia repo http://cydia.angelxwind.net/
@@ -24,6 +24,11 @@ Website
 -------
 
 [http://ios-ingress.com/](http://ios-ingress.com/)
+
+Issues Tracker
+--------------
+
+[![Waffle](http://badge.waffle.io/alex-alex/iOS-Ingress.png)](http://www.waffle.io/alex-alex/iOS-Ingress)
 
 Support
 -------

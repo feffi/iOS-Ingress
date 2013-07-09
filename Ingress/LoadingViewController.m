@@ -79,11 +79,11 @@
 	////////
 
 	jsonDict = [@{
-				@"nemesisSoftwareVersion": @"2013-06-17T22:55:32Z 2d12f990c905 opt",
+				@"nemesisSoftwareVersion": @"2013-06-28T23:28:27Z 760a7a8ffc90 opt",
 				@"deviceSoftwareVersion": @"4.1.1",
 	} mutableCopy];
 
-	versionString = @"v1.28.2";
+	versionString = @"v1.30.2";
 	
 }
 
@@ -198,8 +198,38 @@
 			NSString *jsonString = [webView stringByEvaluatingJavaScriptFromString:@"document.body.innerText"];
 			[[API sharedInstance] processHandshakeData:jsonString completionHandler:^(NSString *errorStr) {
 				if (!errorStr) {
+                    
+                    [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+                        
+                        NSAttributedString *atrstr = [[NSAttributedString alloc] initWithString:@"Ingress" attributes:[Utilities attributesWithShadow:NO size:CHAT_FONT_SIZE color:[UIColor colorWithRed:226./255. green:179./255. blue:76./255. alpha:1.0]]];
+                        
+                        Plext *plext = [Plext MR_createInContext:localContext];
+                        plext.guid = nil;
+                        plext.message = atrstr;
+                        plext.factionOnly = NO;
+                        plext.date = [[NSDate date] timeIntervalSinceReferenceDate];
+                        plext.mentionsYou = nil;
+                        plext.sender = nil;
+                        
+                        // --------------------
+                        
+                        Player *player = [[API sharedInstance] playerForContext:localContext];
+                        NSMutableAttributedString *atrstr2 = [[NSMutableAttributedString alloc] initWithString:[NSString stringWithFormat:@"Agent ID Confirmed. Welcome %@", player.nickname] attributes:[Utilities attributesWithShadow:NO size:CHAT_FONT_SIZE color:[UIColor colorWithRed:226./255. green:179./255. blue:76./255. alpha:1.0]]];
+                        [atrstr2 setAttributes:[Utilities attributesWithShadow:NO size:CHAT_FONT_SIZE color:[Utilities colorForFaction:player.team]] range:NSMakeRange(atrstr2.length-player.nickname.length, player.nickname.length)];
+                        
+                        plext = [Plext MR_createInContext:localContext];
+                        plext.guid = nil;
+                        plext.message = atrstr2;
+                        plext.factionOnly = NO;
+                        plext.date = [[NSDate date] timeIntervalSinceReferenceDate];
+                        plext.mentionsYou = nil;
+                        plext.sender = nil;
+                        
+                    }];
+                    
 					[[SoundManager sharedManager] stopMusic:YES];
 					[self performSegueWithIdentifier:@"LoadingCompletedSegue" sender:self];
+                    
 				} else {
 					
 					if ([errorStr isEqualToString:@"USER_REQUIRES_ACTIVATION"]) {

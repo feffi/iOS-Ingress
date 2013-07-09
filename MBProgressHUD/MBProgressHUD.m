@@ -598,7 +598,9 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 }
 
 - (void)closeButtonPressed {
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
 	[self hide:YES];
 }
 

@@ -65,9 +65,13 @@
 - (void)playSound {
 	
 	if (self.enabled) {
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+        }
 	} else {
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_fail.aif"];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_fail.aif"];
+        }
 	}
 	
 }

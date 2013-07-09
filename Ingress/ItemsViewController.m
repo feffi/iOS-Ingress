@@ -19,7 +19,8 @@
     [super viewDidLoad];
 
 	TTScrollSlidingPagesController *slider = [TTScrollSlidingPagesController new];
-	slider.titleScrollerHeight = 64;
+	slider.titleScrollerHeight = 30;
+    slider.labelsOffset = 0;
 	slider.disableTitleScrollerShadow = YES;
 	slider.disableUIPageControl = YES;
 	slider.zoomOutAnimationDisabled = YES;
@@ -129,6 +130,7 @@
     }
     
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view.window];
+	HUD.removeFromSuperViewOnHide = YES;
 	HUD.userInteractionEnabled = NO;
 	HUD.labelText = @"Redeeming...";
 	HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
@@ -140,6 +142,7 @@
 		[HUD hide:YES];
 
 		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view.window];
+		HUD.removeFromSuperViewOnHide = YES;
 		HUD.userInteractionEnabled = NO;
 		HUD.mode = MBProgressHUDModeCustomView;
 		if (accepted) {

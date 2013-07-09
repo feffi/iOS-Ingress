@@ -84,7 +84,8 @@
     
 	[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Recruit" withLabel:nil withValue:@(0)];
 	
-	__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+	HUD.removeFromSuperViewOnHide = YES;
 	HUD.userInteractionEnabled = NO;
 	//HUD.labelText = @"Loading...";
 	//HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
@@ -98,15 +99,7 @@
 		[inviteLabel setText:[NSString stringWithFormat:@"%d invites remaining", numberOfInvites]];
 
 		if (errorStr && errorStr.length > 0) {
-			HUD = [[MBProgressHUD alloc] initWithView:self.view];
-			HUD.userInteractionEnabled = NO;
-			HUD.mode = MBProgressHUDModeCustomView;
-			HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-			HUD.labelText = errorStr;
-			HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-			[self.view addSubview:HUD];
-			[HUD show:YES];
-			[HUD hide:YES afterDelay:HUD_DELAY_TIME];
+			[Utilities showWarningWithTitle:errorStr];
 		}
 		
 	}];

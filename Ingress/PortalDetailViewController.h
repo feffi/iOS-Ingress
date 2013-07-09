@@ -13,10 +13,11 @@
 #import "PortalUpgradeViewController.h"
 #import "MDCParallaxView.h"
 
-@interface PortalDetailViewController : UIViewController <TTSlidingPagesDataSource> {
+@interface PortalDetailViewController : UIViewController <TTSlidingPagesDataSource, CLLocationManagerDelegate> {
 
-//	UIScrollView *_scrollView;
-//	UISegmentedControl *viewSegmentedControl;
+	__weak IBOutlet UIButton *opsCloseButton;
+	__weak IBOutlet UIImageView *labelBackgroundImage;
+	__weak IBOutlet GlowingLabel *opsLabel;
 
 	PortalActionsViewController *portalActionsVC;
 	MDCParallaxView *infoContainerView;

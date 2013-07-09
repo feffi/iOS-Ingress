@@ -39,9 +39,13 @@
 }
 
 - (CLLocationDistance)distanceFromCoordinate:(CLLocationCoordinate2D)coordinate {
-	CLLocation *loc1 = [[CLLocation alloc] initWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
+	CLLocation *loc1 = [[CLLocation alloc] initWithLatitude:self.latitude longitude:self.longitude];
 	CLLocation *loc2 = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
 	return [loc1 distanceFromLocation:loc2];
+}
+
+- (BOOL)isInPlayerRange {
+	return [self distanceFromCoordinate:[LocationManager sharedInstance].playerLocation.coordinate] <= SCANNER_RANGE;
 }
 
 - (NSString *)title {
@@ -65,7 +69,14 @@
 }
 
 - (NSInteger)level {
-	return floorf([self averageResonatorLevel]);
+	float averageResonatorLevel = [self averageResonatorLevel];
+	if (averageResonatorLevel > 1) {
+		return floorf(averageResonatorLevel);
+	} else if (averageResonatorLevel > 0) {
+		return 1;
+	} else {
+		return 0;
+	}
 }
 
 - (NSInteger)range {

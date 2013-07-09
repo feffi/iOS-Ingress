@@ -9,8 +9,8 @@
 #import "ScannerViewController.h"
 #import "PortalDetailViewController.h"
 #import "MissionViewController.h"
-#import "CommViewController.h"
 #import "MKMapView+ZoomLevel.h"
+#import "NewPortalViewController.h"
 
 #import "PortalOverlayView.h"
 #import "MKPolyline+PortalLink.h"
@@ -22,16 +22,20 @@
 
 #define IG_RANGE_CIRCLE_VIEW_BORDER_WIDTH 2
 
+@interface ScannerViewController ()
+
+@property (nonatomic, strong) IBOutlet UIPopoverController *popover;
+
+@end
+
 @implementation ScannerViewController {
 
 	Portal *currentPortal;
 	Item *currentItem;
 
-	UIView *rangeCircleView;
-    NSLayoutConstraint *rangeCircleViewWidth;
-    NSLayoutConstraint *rangeCircleViewHeight;
+	UIImageView *rangeCircleImageView;
+	UIImageView *playerArrowImage;
     
-	CLLocationManager *locationManager;
 	CLLocation *lastLocation;
 	BOOL firstRefreshProfile;
 	BOOL firstLocationUpdate;
@@ -43,7 +47,12 @@
 	NSTimer *refreshTimer;
 
 	NSMutableSet *mapGuids;
-
+    
+    UIImage *selectedPortalImage;
+	CLLocation *selectedPortalLocation;
+	
+	NearbyPortalView *nearbyPortalView;
+	
 }
 
 @synthesize virusToUse = _virusToUse;
@@ -67,6 +76,11 @@
 	apLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
 	xmLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
 	virusChoosePortalLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:20];
+    
+    [opsButton setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+	[opsButton setTitleColor:[UIColor whiteColor] forState:UIControlStateHighlighted];
+    opsButton.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:18];
+    opsButton.titleLabel.layer.shadowColor = [UIColor whiteColor].CGColor;
 
 	apLabel.hidden = YES;
 	xmLabel.hidden = YES;
@@ -81,28 +95,39 @@
 
     [self validateLocationServicesAuthorization];
 
-	CGFloat offset = 28;
-	if ([Utilities isOS7]) { offset = 48; }
+	CGFloat offset = 32;
+    #if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
+	if ([Utilities isOS7]) {
+        offset += 20;
+    }
+    #endif
 	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
-	CommViewController *commVC = [storyboard instantiateViewControllerWithIdentifier:@"CommViewController"];
-	commVC.view.frame = CGRectMake(0, self.view.frame.size.height-offset, 320, 393);
+	commVC = [storyboard instantiateViewControllerWithIdentifier:@"CommViewController"];
+	commVC.view.frame = CGRectMake(0, self.view.frame.size.height-offset, self.view.frame.size.width, 393);
 	[self.view addSubview:commVC.view];
 	[self addChildViewController:commVC];
 	
-	locationManager = [[CLLocationManager alloc] init];
-    locationManager.delegate = self;
-    locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
-	if ([locationManager respondsToSelector:@selector(activityType)]) {
-		locationManager.activityType = CLActivityTypeFitness;
-	}
+	playerArrowImage = [UIImageView new];
+	playerArrowImage.frame = CGRectMake(0, 0, 50, 50);
+	playerArrowImage.center = _mapView.center;
+	[self.view insertSubview:playerArrowImage belowSubview:commVC.view];
 	
-	[locationManager startUpdatingLocation];
-	[locationManager startUpdatingHeading];
+//	locationManager = [LocationManager locationManager];
+//    locationManager.delegate = self;
+//    locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation;
+//	if ([locationManager respondsToSelector:@selector(activityType)]) {
+//		locationManager.activityType = CLActivityTypeFitness;
+//	}
+//	
+//	[locationManager startUpdatingLocation];
+//	[locationManager startUpdatingHeading];
+    
+    [[LocationManager sharedInstance] addDelegate:self];
 
 	UIPinchGestureRecognizer *recognizer = [[UIPinchGestureRecognizer alloc] initWithTarget:self action:@selector(handlePinch:)];
 	[_mapView addGestureRecognizer:recognizer];
 
-#ifdef DEBUG
+#if DEBUG
 #warning Manual scrolling for debug purposes only!
 	UITapGestureRecognizer *mapViewTapGestureRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(mapTapped:)];
 	mapViewTapGestureRecognizer.numberOfTapsRequired = 2;
@@ -139,6 +164,88 @@
 
     _xmOverlay = [XMOverlay new];
     [_mapView addOverlay:_xmOverlay];
+    
+    quickActionsMenu = [[QuickActionsMenu alloc] initWithSeletionHandler:^(int option) {
+
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+        }
+        
+        switch (option) {
+            case 1:
+                [self fireXMP];
+                break;
+            case 2: {
+                
+                UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:nil otherButtonTitles:@"Take Photo", @"Choose Existing", nil];
+				actionSheet.tag = 3;
+				[actionSheet showInView:self.view.window];
+                
+                break;
+            }
+            case 3: {
+            	[self refresh];
+            	break;
+            }
+            case 4: {
+                
+                NSMutableArray *itemsToCollect = [NSMutableArray array];
+                for (Item *droppedItem in [Item MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"dropped = YES"]]) {
+                    if ([droppedItem distanceFromCoordinate:_mapView.centerCoordinate] <= SCANNER_RANGE) {
+                        [itemsToCollect addObject:droppedItem];
+                    }
+                }
+                
+                if (itemsToCollect.count > 0) {
+                    
+                    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+                    HUD.removeFromSuperViewOnHide = YES;
+                    HUD.userInteractionEnabled = YES;
+                    HUD.mode = MBProgressHUDModeIndeterminate;
+                    HUD.dimBackground = YES;
+                    HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+                    HUD.labelText = @"Picking up...";
+                    [[AppDelegate instance].window addSubview:HUD];
+                    [HUD show:YES];
+                    
+                    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+                        [[API sharedInstance] playSound:@"SFX_RESOURCE_PICK_UP"];
+                    }
+                    
+                    __block int completed = 0;
+                    for (Item *droppedItem in itemsToCollect) {
+                        
+                        [[API sharedInstance] pickUpItemWithGuid:droppedItem.guid completionHandler:^(NSString *errorStr) {
+                            
+                            completed++;
+                            
+                            if (completed == itemsToCollect.count) {
+                                [HUD hide:YES];
+                            }
+                            
+                            [_mapView removeAnnotation:droppedItem];
+                            
+                            [MagicalRecord saveWithBlock:^(NSManagedObjectContext *localContext) {
+                                Item *item = (Item *)[localContext existingObjectWithID:droppedItem.objectID error:nil];
+                                item.latitude = 0;
+                                item.longitude = 0;
+                                item.dropped = NO;
+                            } completion:^(BOOL success, NSError *error) {
+                                [[NSNotificationCenter defaultCenter] postNotificationName:@"InventoryUpdatedNotification" object:nil];
+                            }];
+                            
+                        }];
+                        
+                    }
+                    
+                }
+                
+                break;
+            }
+        }
+        
+    }];
+    [self.view addSubview:quickActionsMenu];
     
 	[[NSNotificationCenter defaultCenter] addObserverForName:@"DBUpdatedNotification" object:nil queue:nil usingBlock:^(NSNotification *note) {
         //if ([self isSelectedAndTopmost]) {
@@ -192,7 +299,7 @@
 	if (player.allowFactionChoice) {
 		[self performSegueWithIdentifier:@"FactionChooseSegue" sender:self];
 	}
-	
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
@@ -269,18 +376,48 @@
 					});
 				}
 			}
+			
+			// ---------------------------------------------------
 
+			__block int addedPortals = 0;
 			NSArray *fetchedPortals = [Portal MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"completeInfo = YES"] inContext:context];
 			for (Portal *portal in fetchedPortals) {
 				//NSLog(@"adding portal to map: %@ (%f, %f)", portal.subtitle, portal.latitude, portal.longitude);
 				if (portal.coordinate.latitude == 0 && portal.coordinate.longitude == 0) { continue; }
 				if (MKMapRectContainsPoint(_mapView.visibleMapRect, MKMapPointForCoordinate(portal.coordinate))) {
+					addedPortals++;
 					dispatch_async(dispatch_get_main_queue(), ^{
 						[_mapView addAnnotation:portal];
 						[_mapView addOverlay:portal];
 					});
 				}
 			}
+			
+			if (addedPortals == 0) {
+				[[API sharedInstance] findNearbyPortalsWithCompletionHandler:^(NSArray *portals) {
+					if ([nearbyPortalView.portalGUID isEqualToString:portals[0][@"guid"]]) {
+						[nearbyPortalView updateInformation];
+					} else {
+						if( nearbyPortalView ) {
+							[nearbyPortalView removeFromSuperview];
+							nearbyPortalView = nil;
+						}
+					
+						nearbyPortalView = [[NearbyPortalView alloc] initWithFrame:CGRectMake(20, self.view.frame.size.height-140, 280, 80) portal:portals[0]];
+						nearbyPortalView.alpha = 0;
+						[self.view insertSubview:nearbyPortalView belowSubview:commVC.view];
+		
+						[UIView animateWithDuration:0.15 animations:^{
+							nearbyPortalView.alpha = 1;
+						}];
+					}
+				}];
+			} else if( nearbyPortalView ) {
+				[nearbyPortalView removeFromSuperview];
+				nearbyPortalView = nil;
+			}
+			
+			// ---------------------------------------------------
 
 			NSArray *fetchedResonators = [DeployedResonator MR_findAllInContext:context];
 			for (DeployedResonator *resonator in fetchedResonators) {
@@ -559,84 +696,45 @@
 }
 
 - (void)updateRangeCircleView {
-	if ([Utilities isOS7]) {
-		#warning Crashes on iOS7
-		return;
-	}
-	
+    
     // Create view on first update
-    if ( ! rangeCircleView) {
-        rangeCircleView = [UIView new];
-        rangeCircleView.backgroundColor = [UIColor clearColor];
-        rangeCircleView.opaque = NO;
-        rangeCircleView.userInteractionEnabled = NO;
-        rangeCircleView.layer.masksToBounds = YES;
-        rangeCircleView.layer.borderWidth = IG_RANGE_CIRCLE_VIEW_BORDER_WIDTH;
-        rangeCircleView.layer.borderColor = [[[UIColor blueColor] colorWithAlphaComponent:0.25] CGColor];
-        
-        rangeCircleView.translatesAutoresizingMaskIntoConstraints = NO;
-        
-        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:_mapView
-                                                              attribute:NSLayoutAttributeCenterX
-                                  
-                                                              relatedBy:NSLayoutRelationEqual
-                                  
-                                                                 toItem:rangeCircleView
-                                                              attribute:NSLayoutAttributeCenterX
-                                  
-                                                             multiplier:1
-                                                               constant:0]];
-        
-        [self.view addConstraint:[NSLayoutConstraint constraintWithItem:_mapView
-                                                              attribute:NSLayoutAttributeCenterY
-                                  
-                                                              relatedBy:NSLayoutRelationEqual
-                                  
-                                                                 toItem:rangeCircleView
-                                                              attribute:NSLayoutAttributeCenterY
-                                  
-                                                             multiplier:1
-                                                               constant:-10]];
-        
-        rangeCircleViewWidth = [NSLayoutConstraint constraintWithItem:rangeCircleView attribute:NSLayoutAttributeWidth relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:0 constant:0];
-        rangeCircleViewHeight = [NSLayoutConstraint constraintWithItem:rangeCircleView attribute:NSLayoutAttributeHeight relatedBy:NSLayoutRelationEqual toItem:nil attribute:0 multiplier:0 constant:0];
-        [self.view addConstraint:rangeCircleViewWidth];
-        [self.view addConstraint:rangeCircleViewHeight];
-        
-        [self.view addSubview:rangeCircleView];
+    if (!rangeCircleImageView) {
+		rangeCircleImageView = [UIImageView new];
+        rangeCircleImageView.image = [UIImage imageNamed:@"compass_ring.png"];
+        rangeCircleImageView.opaque = NO;
+        rangeCircleImageView.userInteractionEnabled = NO;
+        rangeCircleImageView.clipsToBounds = YES;
+        [self.view addSubview:rangeCircleImageView];
     }
     
     // Hide view while no sensible data can be shown
     if (locationAllowHUD) {
-        rangeCircleView.hidden = YES;
-        
+        rangeCircleImageView.hidden = YES;
         return;
     }
-    
-    // Update range diameter
-    CGFloat diameter = 0.;
-    if (_mapView.bounds.size.width > 0) {
-        diameter = 100/((_mapView.region.span.latitudeDelta * 111200) / _mapView.bounds.size.width);
-    }
-    rangeCircleViewWidth.constant = diameter + IG_RANGE_CIRCLE_VIEW_BORDER_WIDTH * 2;
-    rangeCircleViewHeight.constant = diameter + IG_RANGE_CIRCLE_VIEW_BORDER_WIDTH * 2;
-    rangeCircleView.layer.cornerRadius = diameter/2;
+
+	if (_mapView.bounds.size.width > 0 && _mapView.region.span.latitudeDelta > 0) {
+		MKMapRect mRect = _mapView.visibleMapRect;
+		MKMapPoint eastMapPoint = MKMapPointMake(MKMapRectGetMinX(mRect), MKMapRectGetMidY(mRect));
+		MKMapPoint westMapPoint = MKMapPointMake(MKMapRectGetMaxX(mRect), MKMapRectGetMidY(mRect));
+		CLLocationDistance altDistance = MKMetersBetweenMapPoints(eastMapPoint, westMapPoint);
+		CGFloat width = ((_mapView.frame.size.width * SCANNER_RANGE) / altDistance)*2;
+		rangeCircleImageView.frame = CGRectMake(0, 0, width, width);
+		rangeCircleImageView.center = _mapView.center;
+	}
+
 }
 
 #pragma mark - CLLocationManagerDelegate
 
-- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status
-{
+- (void)locationManager:(CLLocationManager *)manager didChangeAuthorizationStatus:(CLAuthorizationStatus)status {
     [self validateLocationServicesAuthorization];
 }
 
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation {
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations {
+    CLLocation *newLocation = [locations lastObject];
 	[_mapView setCenterCoordinate:newLocation.coordinate animated:!firstLocationUpdate];
 	if (firstLocationUpdate) firstLocationUpdate = NO;
-}
-
-- (BOOL)locationManagerShouldDisplayHeadingCalibration:(CLLocationManager *)manager {
-	return NO;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateHeading:(CLHeading *)newHeading {
@@ -653,10 +751,11 @@
     
     #define INGRESS_SCANNER_BEARING_ANIMATION_DURATION 0.2
     
-    if ( ! playerArrowImage.layer.animationKeys.count) {
+    if (!playerArrowImage.layer.animationKeys.count) {
         [UIView animateWithDuration:INGRESS_SCANNER_BEARING_ANIMATION_DURATION delay:0 options:UIViewAnimationOptionCurveEaseOut animations:^{
             CGAffineTransform transform = CGAffineTransformMakeRotation(GLKMathDegreesToRadians(newHeading.trueHeading));
             playerArrowImage.transform = transform;
+			playerArrowImage.center = _mapView.center;
         } completion:nil];
     }
 }
@@ -672,7 +771,8 @@
 		
 		__block Item *item = currentItem;
 
-		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.removeFromSuperViewOnHide = YES;
 		HUD.userInteractionEnabled = YES;
 		HUD.mode = MBProgressHUDModeIndeterminate;
 		HUD.dimBackground = YES;
@@ -711,7 +811,8 @@
 		virusChoosePortalLabel.hidden = YES;
 		virusChoosePortalCancelButton.hidden = YES;
 
-		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.removeFromSuperViewOnHide = YES;
 		HUD.userInteractionEnabled = YES;
 		HUD.mode = MBProgressHUDModeIndeterminate;
 		HUD.dimBackground = YES;
@@ -737,7 +838,32 @@
 			}
 		}];
 		
-	}
+	} else if (actionSheet.tag == 3) {
+    
+        if (buttonIndex != actionSheet.cancelButtonIndex) {
+            UIImagePickerController *imagePickerVC = [UIImagePickerController new];
+            
+            if (buttonIndex == 0) {
+				if (![UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypeCamera]) return;
+                imagePickerVC.sourceType = UIImagePickerControllerSourceTypeCamera;
+            } else if (buttonIndex == 1) {
+                imagePickerVC.sourceType = UIImagePickerControllerSourceTypePhotoLibrary;
+            }
+            
+            imagePickerVC.delegate = self;
+			
+			if ([Utilities isPad]) {
+				self.popover = [[UIPopoverController alloc] initWithContentViewController:imagePickerVC];
+				self.popover.popoverContentSize = CGSizeMake(320, 480);
+				[self.popover presentPopoverFromRect:apView.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+			} else {
+				imagePickerVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+				[self presentViewController:imagePickerVC animated:YES completion:nil];
+			}
+
+        }
+        
+    }
 
 }
 
@@ -747,12 +873,8 @@
 
 	if (mapView.zoomLevel < 15) {
 		if ([Utilities isOS7]) {
-			#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
-			
-				#warning Doesn't work on iOS 7 and causes infinite loop
-//				[mapView setCenterCoordinate:mapView.centerCoordinate zoomLevel:15 animated:NO];
-
-//				This new api does nothing too
+//            [mapView setCenterCoordinate:mapView.centerCoordinate zoomLevel:15 animated:NO];
+//#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 70000
 //				MKMapCamera *camera = [MKMapCamera camera];
 //				camera.centerCoordinate = mapView.centerCoordinate;
 //				camera.heading = 0;
@@ -760,8 +882,7 @@
 //				camera.altitude = 50;
 //				NSLog(@"camera: %@", camera);
 //				[mapView setCamera:camera animated:NO];
-			
-			#endif
+//#endif
 		} else {
 			[mapView setCenterCoordinate:mapView.centerCoordinate zoomLevel:15 animated:NO];
 		}
@@ -777,7 +898,7 @@
 	if (energy < maxEnergy) {
 		[[[API sharedInstance] energyToCollect] removeAllObjects];
 		for (EnergyGlob *xm in [EnergyGlob MR_findAll]) {
-			if ([xm distanceFromCoordinate:_mapView.centerCoordinate] <= 40) {
+			if ([xm distanceFromCoordinate:_mapView.centerCoordinate] <= SCANNER_RANGE) {
 				[[[API sharedInstance] energyToCollect] addObject:xm];
 				collecting += xm.amount;
 			}
@@ -807,7 +928,7 @@
 	if ([view.annotation isKindOfClass:[Portal class]]) {
 		currentPortal = (Portal *)view.annotation;
 		if (self.virusToUse) {
-			if ([currentPortal distanceFromCoordinate:_mapView.centerCoordinate] <= 40) {
+			if ([currentPortal distanceFromCoordinate:_mapView.centerCoordinate] <= SCANNER_RANGE) {
 				if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
 					[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
 				}
@@ -820,7 +941,7 @@
 			[self performSegueWithIdentifier:@"PortalDetailSegue" sender:self];
 		}
 	} else if ([view.annotation isKindOfClass:[Item class]]) {
-		if ([(Item *)(view.annotation) distanceFromCoordinate:_mapView.centerCoordinate] <= 40) {
+		if ([(Item *)(view.annotation) distanceFromCoordinate:_mapView.centerCoordinate] <= SCANNER_RANGE) {
             if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
                 [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
             }
@@ -931,7 +1052,6 @@
     MKCoordinateSpan span = MKCoordinateSpanMake(latdelta, londelta);
 	MKCoordinateRegion region = MKCoordinateRegionMake(originalRegion.center, span);
 
-	#warning Temporary solution for iOS7
 	if ([Utilities isOS7] || [self zoomLevelForRegion:region] >= 15) {
 		[_mapView setRegion:region animated:NO];
 	}
@@ -941,10 +1061,10 @@
 - (void)mapTapped:(UITapGestureRecognizer *)recognizer {
 
 	if (_mapView.scrollEnabled) {
-		[locationManager startUpdatingLocation];
+        [[LocationManager sharedInstance] addDelegate:self];
 		[_mapView setScrollEnabled:NO];
 	} else {
-		[locationManager stopUpdatingLocation];
+        [[LocationManager sharedInstance] removeDelegate:self];
 		[_mapView setScrollEnabled:YES];
 	}
 
@@ -977,31 +1097,33 @@
 }
 
 - (void)mapLongPress:(UILongPressGestureRecognizer *)recognizer {
-	if (recognizer.state == UIGestureRecognizerStateBegan) {
-
-		[self becomeFirstResponder];
-        CGPoint location = [recognizer locationInView:recognizer.view];
-        UIMenuController *menuController = [UIMenuController sharedMenuController];
-        UIMenuItem *resetMenuItem = [[UIMenuItem alloc] initWithTitle:@"Fire XMP" action:@selector(fireXMP)];
-        [menuController setMenuItems:[NSArray arrayWithObject:resetMenuItem]];
-        [menuController setTargetRect:CGRectMake(location.x, location.y, 0.0f, 0.0f) inView:recognizer.view];
-        [menuController setMenuVisible:YES animated:YES];
-
-	}
+    [quickActionsMenu showMenu:recognizer];
+    
+//	if (recognizer.state == UIGestureRecognizerStateBegan) {
+//
+//		[self becomeFirstResponder];
+//        CGPoint location = [recognizer locationInView:recognizer.view];
+//        UIMenuController *menuController = [UIMenuController sharedMenuController];
+//        UIMenuItem *resetMenuItem = [[UIMenuItem alloc] initWithTitle:@"Fire XMP" action:@selector(fireXMP)];
+//        [menuController setMenuItems:[NSArray arrayWithObject:resetMenuItem]];
+//        [menuController setTargetRect:CGRectMake(location.x, location.y, 0.0f, 0.0f) inView:recognizer.view];
+//        [menuController setMenuVisible:YES animated:YES];
+//
+//	}
 }
 
-#pragma mark - Actions
-
-- (BOOL)canBecomeFirstResponder {
-    return YES;
-}
-
-- (BOOL)canPerformAction:(SEL)selector withSender:(id) sender {
-    if (selector == @selector(fireXMP)) {
-        return YES;
-    }
-    return NO;
-}
+//#pragma mark - Actions
+//
+//- (BOOL)canBecomeFirstResponder {
+//    return YES;
+//}
+//
+//- (BOOL)canPerformAction:(SEL)selector withSender:(id) sender {
+//    if (selector == @selector(fireXMP)) {
+//        return YES;
+//    }
+//    return NO;
+//}
 
 #pragma mark - Firing XMP
 
@@ -1010,12 +1132,9 @@
 //	int ap = [[API sharedInstance].playerInfo[@"ap"] intValue];
 //	int level = [API levelForAp:ap];
 //	[self fireXMPOfLevel:level];
-	
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
-        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-    }
     
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+    HUD.removeFromSuperViewOnHide = YES;
 	HUD.userInteractionEnabled = YES;
 	HUD.mode = MBProgressHUDModeCustomView;
 	HUD.dimBackground = YES;
@@ -1040,17 +1159,7 @@
 //	NSLog(@"Firing: %@", xmpItem);
 	
 	if (!xmpItem) {
-		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-		HUD.userInteractionEnabled = YES;
-		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		HUD.mode = MBProgressHUDModeCustomView;
-		HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-		HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		HUD.detailsLabelText = @"No XMP remaining!";
-		[[AppDelegate instance].window addSubview:HUD];
-		[HUD show:YES];
-		[HUD hide:YES afterDelay:HUD_DELAY_TIME];
+		[Utilities showWarningWithTitle:@"No XMP remaining!"];
 		return;
 	} else {
         if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
@@ -1061,6 +1170,7 @@
 	[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Fire XMP" withLabel:nil withValue:@(xmpItem.level)];
 	
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+	HUD.removeFromSuperViewOnHide = YES;
 	HUD.userInteractionEnabled = YES;
 	HUD.dimBackground = YES;
 	HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
@@ -1072,16 +1182,7 @@
 		
 		[HUD hide:YES];
 		
-		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-		HUD.userInteractionEnabled = YES;
-		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		
 		if (damages) {
-			
-//			HUD.mode = MBProgressHUDModeText;
-//			HUD.labelText = @"Damages";
-//			HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:10];
 			
 			UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(0, 0, 240, 320)];
 			textView.editable = NO;
@@ -1089,6 +1190,11 @@
 			textView.opaque = NO;
 			textView.textColor = [UIColor whiteColor];
 			
+			MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+			HUD.removeFromSuperViewOnHide = YES;
+			HUD.userInteractionEnabled = YES;
+			HUD.dimBackground = YES;
+			HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 			HUD.mode = MBProgressHUDModeCustomView;
 			HUD.customView = textView;
 			HUD.showCloseButton = YES;
@@ -1137,20 +1243,12 @@
 			//[HUD show:YES];
 
 		} else {
-			
-			HUD.mode = MBProgressHUDModeCustomView;
-			HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-			HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-			
+
 			if (errorStr) {
-				HUD.detailsLabelText = errorStr;
+				[Utilities showWarningWithTitle:errorStr];
 			} else {
-				HUD.detailsLabelText = @"Unknown Error";
+				[Utilities showWarningWithTitle:@"Unknown Error"];
 			}
-			
-			[[AppDelegate instance].window addSubview:HUD];
-			[HUD show:YES];
-			[HUD hide:YES afterDelay:HUD_DELAY_TIME];
 			
 		}
 
@@ -1175,6 +1273,56 @@
 
 - (void)didDismissOpsViewController:(OpsViewController *)opsViewController {
 //	_opsViewController = nil;
+}
+
+#pragma mark - UIImagePickerControllerDelegate
+
+- (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info {
+    
+	selectedPortalImage = nil;
+	selectedPortalLocation = nil;
+    
+	NSString *mediaType = [info objectForKey:UIImagePickerControllerMediaType];
+	if ([mediaType isEqualToString:(NSString*)kUTTypeImage]) {
+		selectedPortalImage = info[UIImagePickerControllerOriginalImage];
+		NSURL *url = [info objectForKey:UIImagePickerControllerReferenceURL];
+		if (url) {
+			[[ALAssetsLibrary new] assetForURL:url resultBlock:^(ALAsset *asset) {
+				CLLocation *location = [asset valueForProperty:ALAssetPropertyLocation];
+				if (location) {
+					selectedPortalLocation = location;
+					//[NSString stringWithFormat:@"lat=%g\nlng=%g\n", location.coordinate.latitude, location.coordinate.longitude];
+				}
+			} failureBlock:nil];
+		}
+	}
+	
+	if (!selectedPortalLocation) {
+		selectedPortalLocation = [[LocationManager sharedInstance] playerLocation];
+	}
+    
+	if ([Utilities isPad]) {
+		[self.popover dismissPopoverAnimated:YES];
+		[self openNewPortalVC];
+	} else {
+		[picker dismissViewControllerAnimated:YES completion:^{
+			[self openNewPortalVC];
+		}];
+	}
+    
+}
+
+- (void)openNewPortalVC {
+	if (selectedPortalImage) {
+		UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+		NewPortalViewController *newPortalVC = [storyboard instantiateViewControllerWithIdentifier:@"NewPortalViewController"];
+		newPortalVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+		newPortalVC.portalImage = selectedPortalImage;
+		newPortalVC.portalLocation = selectedPortalLocation;
+		[self presentViewController:newPortalVC animated:YES completion:NULL];
+	} else {
+		[Utilities showWarningWithTitle:@"Error getting photo"];
+	}
 }
 
 #pragma mark - Storyboard

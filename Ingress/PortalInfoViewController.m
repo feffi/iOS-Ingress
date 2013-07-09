@@ -7,6 +7,7 @@
 //
 
 #import "PortalInfoViewController.h"
+#import "ResonatorView.h"
 
 @implementation PortalInfoViewController
 
@@ -25,28 +26,22 @@
 		
 		UILabel *levelLabel = (UILabel *)[self.view viewWithTag:10+i];
 		levelLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:14];
-		levelLabel.text = @"";
+		levelLabel.text = @" "; // IMPORTANT This needs to be a space or alignment will not work for all resonators.
 		
 		UIImageView *resonatorImage = (UIImageView *)[self.view viewWithTag:30+i];
 		[resonatorImage setHidden:YES];
-		
-		UIImageView *progressView = (UIImageView *)[self.view viewWithTag:40+i];
+        
+		ResonatorView *resonatorView = (ResonatorView *)[self.view viewWithTag:40+i];
+		UIImageView *progressView = resonatorView.imageView;
 		if ([self.portal.controllingTeam isEqualToString:@"ALIENS"]) {
 			progressView.image = [UIImage imageNamed:@"enl_res_energy_fill.png"];
 		} else {
 			progressView.image = [UIImage imageNamed:@"hum_res_energy_fill.png"];
 		}
-		CGRect rect = progressView.frame;
-		rect.size.height = 0;
-		if (i == 0 || i == 1 || i == 6 || i == 7) {
-			rect.origin.y = 0;
-		} else {
-			rect.origin.y = 188;
-		}
-		progressView.frame = rect;
+
 		[progressView setHidden:YES];
-		
 	}
+     
 
 	for (DeployedResonator *resonator in self.portal.resonators) {
 
@@ -64,17 +59,14 @@
 			UIImageView *resonatorImage = (UIImageView *)[self.view viewWithTag:30+slot];
 			[resonatorImage setHidden:NO];
 
-			UIImageView *progressView = (UIImageView *)[self.view viewWithTag:40+slot];
+			ResonatorView *resonatorView = (ResonatorView *)[self.view viewWithTag:40+slot];
+			UIImageView *progressView = resonatorView.imageView;
 			[progressView setHidden:NO];
-			CGRect rect = progressView.frame;
-			rect.size.height = (energy/maxEnergy) * 44;
-			if (slot >= 1 && slot <= 4) {
-				rect.origin.y = 0 + (44 - rect.size.height);
-			} else {
-				rect.origin.y = 188 + (44 - rect.size.height);
-			}
+
+			float currentEnergy = (energy/maxEnergy) * 44;
+			CGRect rect = CGRectMake(0, 44 - currentEnergy, 7, currentEnergy);
+
 			progressView.frame = rect;
-			
 		}
 		
 	}

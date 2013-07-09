@@ -167,6 +167,7 @@
 	if (maxCount > 0) {
 
 		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.removeFromSuperViewOnHide = YES;
 		HUD.userInteractionEnabled = YES;
 		HUD.mode = MBProgressHUDModeCustomView;
 		HUD.dimBackground = YES;
@@ -177,7 +178,8 @@
 				[HUD hide:YES];
 				_countChooser = nil;
 
-				__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+				MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+				HUD.removeFromSuperViewOnHide = YES;
 				HUD.userInteractionEnabled = YES;
 				HUD.mode = MBProgressHUDModeIndeterminate;
 				HUD.dimBackground = YES;
@@ -284,6 +286,7 @@
 	if (maxCount > 0) {
 
 		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.removeFromSuperViewOnHide = YES;
 		HUD.userInteractionEnabled = YES;
 		HUD.mode = MBProgressHUDModeCustomView;
 		HUD.dimBackground = YES;
@@ -294,7 +297,8 @@
 				[HUD hide:YES];
 				_countChooser = nil;
 
-				__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+				MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+				HUD.removeFromSuperViewOnHide = YES;
 				HUD.userInteractionEnabled = YES;
 				HUD.mode = MBProgressHUDModeIndeterminate;
 				HUD.dimBackground = YES;
@@ -356,7 +360,8 @@
 
 		actionLevel = 0;
 
-		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.removeFromSuperViewOnHide = YES;
 		HUD.userInteractionEnabled = YES;
 		HUD.mode = MBProgressHUDModeIndeterminate;
 		HUD.dimBackground = YES;
@@ -375,18 +380,7 @@
 		}];
 		
 	} else {
-
-		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-		HUD.userInteractionEnabled = YES;
-		HUD.dimBackground = YES;
-		HUD.mode = MBProgressHUDModeCustomView;
-		HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-		HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		HUD.detailsLabelText = @"No Item";
-		[[AppDelegate instance].window addSubview:HUD];
-		[HUD show:YES];
-		[HUD hide:YES afterDelay:HUD_DELAY_TIME];
-		
+		[Utilities showWarningWithTitle:@"No Item"];
 	}
 
 }
@@ -404,18 +398,7 @@
 		[scannerVC.opsViewController dismissViewControllerAnimated:YES completion:NULL];
 
 	} else {
-
-		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-		HUD.userInteractionEnabled = YES;
-		HUD.dimBackground = YES;
-		HUD.mode = MBProgressHUDModeCustomView;
-		HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-		HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		HUD.detailsLabelText = @"No Item";
-		[[AppDelegate instance].window addSubview:HUD];
-		[HUD show:YES];
-		[HUD hide:YES afterDelay:HUD_DELAY_TIME];
-		
+		[Utilities showWarningWithTitle:@"No Item"];
 	}
 	
 }

@@ -7,6 +7,7 @@
 //
 
 #import "PortalKeysViewController.h"
+#import "PortalDetailViewController.h"
 #import <SDWebImage/UIImageView+WebCache.h>
 #import "GUIButton.h"
 
@@ -19,40 +20,32 @@
 	NSMutableArray *portals;
 
 	PortalKey *currentPortalKey;
+	
+	ChooserViewController *_countChooser;
 }
 
 @synthesize linkingPortal = _linkingPortal;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-    if (_linkingPortal) {
-        self.tableView.contentInset = UIEdgeInsetsMake(22, 0, 60, 0);
-        GUIButton* closeButton = [[GUIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width-110, self.view.bounds.size.height-75, 100, 45)];
+    
+    if (self.linkingPortal) {
+        self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 60, 0);
+        GUIButton *closeButton = [[GUIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width-110, self.view.bounds.size.height-75, 100, 45)];
         closeButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
         [closeButton setTitle:@"CANCEL" forState:UIControlStateNormal];
         [closeButton addTarget:self action:@selector(closePortalKeyChooser:) forControlEvents:UIControlEventTouchUpInside];
         [self.view addSubview:closeButton];
         _closeButton = closeButton;
-    }
-}
-
-- (void)closePortalKeyChooser:(id)sender
-{
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-
--(void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
-    _closeButton.transform = CGAffineTransformMakeTranslation(0, (scrollView.contentInset.top + scrollView.contentOffset.y));
+    } else {
+		self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 32, 0);
+		self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+	}
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-
-	if (self.linkingPortal) {
-		self.navigationItem.title = @"Select Portal Key";
-	}
 
 	[self refresh];
 }
@@ -109,132 +102,148 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PortalKeyCell" forIndexPath:indexPath];
+	
 	Portal *portal = portals[indexPath.row];
 	
-	[[API sharedInstance] getModifiedEntity:portal completionHandler:^{
-		[self configureCellAtIndexPath:indexPath inTableView:tableView];
-	}];
-	[cell.imageView setImageWithURL:[NSURL URLWithString:portal.imageURL] placeholderImage:[UIImage imageNamed:@"missing_image"]];
-
-	int numberOfPortals = [keysDict[portal.guid] count];
-	cell.textLabel.text = [NSString stringWithFormat:@"%dx %@", numberOfPortals, portal.subtitle];
-	cell.detailTextLabel.text = portal.address;
-	if (portal.completeInfo) {
-		if ([@[@"ALIENS", @"RESISTANCE"] containsObject:portal.controllingTeam]) {
-			cell.textLabel.textColor = [Utilities colorForFaction:portal.controllingTeam];
-		} else {
-			cell.textLabel.textColor = [UIColor lightGrayColor];
-		}
-	} else {
-		cell.textLabel.textColor = [UIColor whiteColor];
+	UIColor *portalColor = [UIColor whiteColor];
+	if (self.linkingPortal) {
+		portalColor = [UIColor lightGrayColor];
 	}
+	
+	if (portal.completeInfo) {
+		NSMutableAttributedString *attrStr = [NSMutableAttributedString new];
+		[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%dx ", [keysDict[portal.guid] count]] attributes:[Utilities attributesWithShadow:NO size:14 color:[UIColor whiteColor]]]];
+		[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:portal.name attributes:[Utilities attributesWithShadow:NO size:14 color:portalColor]]];
+		cell.textLabel.attributedText = attrStr;
+	}
+	
+	if (portal.level > 8) {
+		NSLog(@"WTF? L%d - %d resonators", portal.level, portal.resonators.count);
+	}
+	
+	if (self.linkingPortal) {
+		cell.detailTextLabel.text = @"Querying Linkability...";
+		
+		PortalKey *portalKey = [keysDict[portal.guid] lastObject];
+		[[API sharedInstance] queryLinkabilityForPortal:self.linkingPortal portalKey:portalKey completionHandler:^(NSString *errorStr) {
+			[self configureCellAtIndexPath:indexPath inTableView:tableView withErrorStr:errorStr];
+		}];
+	} else {
+		cell.detailTextLabel.text = portal.address;
+		
+		[[API sharedInstance] getModifiedEntity:portal completionHandler:^{
+			[self configureCellAtIndexPath:indexPath inTableView:tableView withErrorStr:nil];
+		}];
+	}
+	
+	[cell.imageView setImageWithURL:[NSURL URLWithString:portal.imageURL] placeholderImage:[UIImage imageNamed:@"missing_image"]];
+	
+	[cell layoutIfNeeded];
 
     return cell;
 }
 
-- (void)configureCellAtIndexPath:(NSIndexPath *)indexPath inTableView:(UITableView *)tableView {
+- (void)configureCellAtIndexPath:(NSIndexPath *)indexPath inTableView:(UITableView *)tableView withErrorStr:(NSString *)errorStr {
 	UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
 	if (cell) {
+		
 		Portal *portal = portals[indexPath.row];
-		if (portal.completeInfo) {
-			if ([@[@"ALIENS", @"RESISTANCE"] containsObject:portal.controllingTeam]) {
-				cell.textLabel.textColor = [Utilities colorForFaction:portal.controllingTeam];
+		
+		UIColor *portalColor = [UIColor whiteColor];
+		if (self.linkingPortal) {
+			if (errorStr) {
+				portalColor = [UIColor lightGrayColor];
 			} else {
-				cell.textLabel.textColor = [UIColor lightGrayColor];
+				portalColor = [Utilities colorForFaction:portal.controllingTeam];
 			}
-		} else {
-			cell.textLabel.textColor = [UIColor whiteColor];
+		} else if (portal.completeInfo) {
+			if ([@[@"ALIENS", @"RESISTANCE"] containsObject:portal.controllingTeam]) {
+				portalColor = [Utilities colorForFaction:portal.controllingTeam];
+			} else {
+				portalColor = [UIColor lightGrayColor];
+			}
 		}
+		
+		if (portal.completeInfo) {
+			NSMutableAttributedString *attrStr = [NSMutableAttributedString new];
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%dx ", [keysDict[portal.guid] count]] attributes:[Utilities attributesWithShadow:NO size:14 color:[UIColor whiteColor]]]];
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"L%d ", portal.level] attributes:[Utilities attributesWithShadow:NO size:14 color:[Utilities colorForLevel:portal.level]]]];
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:portal.name attributes:[Utilities attributesWithShadow:NO size:14 color:portalColor]]];
+			cell.textLabel.attributedText = attrStr;
+		}
+
+		if (self.linkingPortal) {
+			if (errorStr) {
+				cell.detailTextLabel.text = errorStr;
+			} else {
+				cell.detailTextLabel.text = portal.address;
+			}
+		}
+		
+		[cell layoutIfNeeded];
+		
 	}
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
-    
-    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
-        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-    }
+	
+	Portal *portal = portals[indexPath.row];
     
 	if (self.linkingPortal) {
+
+		UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+		if (![cell.detailTextLabel.text isEqualToString:portal.address]) {
+			if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+				[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_fail.aif"];
+			}
+			return;
+		}
+		
+		if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+			[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+		}
+		
         if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
             [[API sharedInstance] playSound:@"SPEECH_ESTABLISHING_PORTAL_LINK"];
         }
-        
-		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		
+		PortalKey *portalKey = [keysDict[portal.guid] lastObject];
+
+		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.removeFromSuperViewOnHide = YES;
 		HUD.userInteractionEnabled = YES;
 		HUD.dimBackground = YES;
 		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		HUD.labelText = @"Querying Linkability...";
+		HUD.labelText = @"Linking Portal...";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
 
-		Portal *portal = portals[indexPath.row];
-		PortalKey *portalKey = [keysDict[portal.guid] lastObject];
-
-		[[API sharedInstance] queryLinkabilityForPortal:self.linkingPortal portalKey:portalKey completionHandler:^(NSString *errorStr) {
+		[[API sharedInstance] linkPortal:self.linkingPortal withPortalKey:portalKey completionHandler:^(NSString *errorStr) {
 
 			[HUD hide:YES];
 
-			if (errorStr) {
-				HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-				HUD.userInteractionEnabled = YES;
-				HUD.dimBackground = YES;
-				HUD.mode = MBProgressHUDModeCustomView;
-				HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-				HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-				HUD.detailsLabelText = errorStr;
-				[[AppDelegate instance].window addSubview:HUD];
-				[HUD show:YES];
-				[HUD hide:YES afterDelay:HUD_DELAY_TIME];
-			} else {
-
-				HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-				HUD.userInteractionEnabled = YES;
-				HUD.dimBackground = YES;
-				HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-				HUD.labelText = @"Linking Portal...";
-				[[AppDelegate instance].window addSubview:HUD];
-				[HUD show:YES];
-
-				[[API sharedInstance] linkPortal:self.linkingPortal withPortalKey:portalKey completionHandler:^(NSString *errorStr) {
-
-					[HUD hide:YES];
-
-					if (errorStr) {
-						HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-						HUD.userInteractionEnabled = YES;
-						HUD.dimBackground = YES;
-						HUD.mode = MBProgressHUDModeCustomView;
-						HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-						HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-						HUD.detailsLabelText = errorStr;
-						[[AppDelegate instance].window addSubview:HUD];
-						[HUD show:YES];
-						[HUD hide:YES afterDelay:HUD_DELAY_TIME];
-					} else {
-                        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
-                            [[SoundManager sharedManager] playSound:@"Sound/sfx_link_power_up.aif"];
-                        }
-                        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
-                            [[API sharedInstance] playSound:@"SPEECH_PORTAL_LINK_ESTABLISHED"];
-                        }
-					}
-
-					[self refresh];
-					
-				}];
-
+			if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+				[[SoundManager sharedManager] playSound:@"Sound/sfx_link_power_up.aif"];
+			}
+			if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+				[[API sharedInstance] playSound:@"SPEECH_PORTAL_LINK_ESTABLISHED"];
 			}
 
+			[self refresh];
+			
 		}];
 		
 	} else {
+		
+		if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+			[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+		}
 
-		Portal *portal = portals[indexPath.row];
 		PortalKey *portalKey = [keysDict[portal.guid] lastObject];
 		currentPortalKey = portalKey;
 
-		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Drop" otherButtonTitles:@"Recycle", @"Recharge Portal", nil];
+		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Drop" otherButtonTitles:@"Recycle", @"View Portal Info", nil];
 		actionSheet.tag = 1;
 		[actionSheet showInView:self.view.window];
 
@@ -249,93 +258,155 @@
         [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
     }
 	if (actionSheet.tag == 1 && buttonIndex == 0) {
+		
+		Portal *portal = currentPortalKey.portal;
+		NSArray *portalKeys = keysDict[portal.guid];
 
-		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-		HUD.userInteractionEnabled = YES;
-		HUD.mode = MBProgressHUDModeIndeterminate;
-		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		HUD.labelText = @"Dropping Portal Key...";
-		[[AppDelegate instance].window addSubview:HUD];
-		[HUD show:YES];
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
-            [[API sharedInstance] playSound:@"SFX_DROP_RESOURCE"];
-        }
-        
-		[[API sharedInstance] dropItemWithGuid:currentPortalKey.guid completionHandler:^(void) {
-			[HUD hide:YES];
+		if (portalKeys.count > 0) {
+			
+			MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+			HUD.removeFromSuperViewOnHide = YES;
+			HUD.userInteractionEnabled = YES;
+			HUD.mode = MBProgressHUDModeCustomView;
+			HUD.dimBackground = YES;
+			HUD.showCloseButton = YES;
+			
+			_countChooser = [ChooserViewController countChooserWithButtonTitle:@"DROP" maxCount:portalKeys.count completionHandler:^(int count) {
+				if (count > 0) {
+					[HUD hide:YES];
+					_countChooser = nil;
+					
+					MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+					HUD.removeFromSuperViewOnHide = YES;
+					HUD.userInteractionEnabled = YES;
+					HUD.mode = MBProgressHUDModeIndeterminate;
+					HUD.dimBackground = YES;
+					HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+					HUD.labelText = @"Dropping...";
+					[[AppDelegate instance].window addSubview:HUD];
+					[HUD show:YES];
+					
+					if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+						[[SoundManager sharedManager] playSound:@"Sound/sfx_drop_resource.aif"];
+					}
+					
+					NSArray *items;
 
-			[self refresh];
-		}];
+					if (portalKeys.count >= count) {
+						items = [portalKeys subarrayWithRange:NSMakeRange(0, count)];
+					}
+
+					__block int completed = 0;
+					for (PortalKey *portalKey in items) {
+						[[API sharedInstance] dropItemWithGuid:portalKey.guid completionHandler:^(void) {
+							completed++;
+							if (completed == items.count) {
+								[HUD hide:YES];
+								[self refresh];
+							}
+						}];
+						
+					}
+					
+				}
+			}];
+			HUD.customView = _countChooser.view;
+			
+			[[AppDelegate instance].window addSubview:HUD];
+			[HUD show:YES];
+			
+		} else {
+			[Utilities showWarningWithTitle:@"No Item"];
+		}
 
 	} else if (actionSheet.tag == 1 && buttonIndex == 1) {
-
-		PortalKey *portalKey = currentPortalKey;
-
-		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-		HUD.userInteractionEnabled = YES;
-		HUD.mode = MBProgressHUDModeIndeterminate;
-		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		HUD.labelText = @"Recycling Item...";
-		[[AppDelegate instance].window addSubview:HUD];
-		[HUD show:YES];
-
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
-            [[SoundManager sharedManager] playSound:[NSString stringWithFormat:@"Sound/sfx_recycle_%@.aif", arc4random_uniform(2) ? @"a" : @"b"]];
-        }
-
-		[[API sharedInstance] recycleItem:portalKey completionHandler:^{
-			[HUD hide:YES];
-
-			[self refresh];
-		}];
+		
+		Portal *portal = currentPortalKey.portal;
+		NSArray *portalKeys = keysDict[portal.guid];
+		
+		if (portalKeys.count > 0) {
+			
+			MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+			HUD.removeFromSuperViewOnHide = YES;
+			HUD.userInteractionEnabled = YES;
+			HUD.mode = MBProgressHUDModeCustomView;
+			HUD.dimBackground = YES;
+			HUD.showCloseButton = YES;
+			
+			_countChooser = [ChooserViewController countChooserWithButtonTitle:@"RECYCLE" maxCount:portalKeys.count completionHandler:^(int count) {
+				if (count > 0) {
+					[HUD hide:YES];
+					_countChooser = nil;
+					
+					MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+					HUD.removeFromSuperViewOnHide = YES;
+					HUD.userInteractionEnabled = YES;
+					HUD.mode = MBProgressHUDModeIndeterminate;
+					HUD.dimBackground = YES;
+					HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+					HUD.labelText = @"Recycling...";
+					[[AppDelegate instance].window addSubview:HUD];
+					[HUD show:YES];
+					
+					if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+						[[SoundManager sharedManager] playSound:[NSString stringWithFormat:@"Sound/sfx_recycle_%@.aif", arc4random_uniform(2) ? @"a" : @"b"]];
+					}
+					
+					NSArray *items;
+					
+					if (portalKeys.count > count) {
+						items = [portalKeys subarrayWithRange:NSMakeRange(0, count)];
+					}
+					
+					__block int completed = 0;
+					for (PortalKey *portalKey in portalKeys) {
+						
+						[[API sharedInstance] recycleItem:portalKey completionHandler:^(void) {
+							completed++;
+							if (completed == items.count) {
+								[HUD hide:YES];
+								[self refresh];
+							}
+						}];
+						
+					}
+					
+				}
+			}];
+			HUD.customView = _countChooser.view;
+			
+			[[AppDelegate instance].window addSubview:HUD];
+			[HUD show:YES];
+			
+		} else {
+			[Utilities showWarningWithTitle:@"No Item"];
+		}
 		
 	} else if (actionSheet.tag == 1 && buttonIndex == 2) {
 
 		PortalKey *portalKey = currentPortalKey;
-
-		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-		HUD.userInteractionEnabled = YES;
-		HUD.mode = MBProgressHUDModeIndeterminate;
-		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-		HUD.labelText = @"Recharging Portal...";
-		[[AppDelegate instance].window addSubview:HUD];
-		[HUD show:YES];
-        
-        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
-            [[API sharedInstance] playSound:@"SFX_RESONATOR_RECHARGE"];
-        }
-        
-		[[API sharedInstance] remoteRechargePortal:portalKey.portal portalKey:portalKey completionHandler:^(NSString *errorStr) {
-
-			[HUD hide:YES];
-
-			if (errorStr) {
-
-				MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-				HUD.userInteractionEnabled = YES;
-				HUD.dimBackground = YES;
-				HUD.mode = MBProgressHUDModeCustomView;
-				HUD.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"warning.png"]];
-				HUD.detailsLabelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
-				HUD.detailsLabelText = errorStr;
-				[[AppDelegate instance].window addSubview:HUD];
-				[HUD show:YES];
-				[HUD hide:YES afterDelay:HUD_DELAY_TIME];
-
-			} else {
-                if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
-                    [[API sharedInstance] playSounds:@[@"SPEECH_RESONATOR", @"SPEECH_RECHARGED"]];
-                }
-			}
-
-			currentPortalKey = nil;
-
-		}];
+		
+		UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+		PortalDetailViewController *portalDetailVC = [storyboard instantiateViewControllerWithIdentifier:@"PortalDetailViewController"];
+		portalDetailVC.portal = portalKey.portal;
+		portalDetailVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+		[self presentViewController:portalDetailVC animated:YES completion:NULL];
+		
+		currentPortalKey = nil;
 
 	}
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+	_closeButton.transform = CGAffineTransformMakeTranslation(0, (scrollView.contentInset.top + scrollView.contentOffset.y));
+}
+
+#pragma mark - Actions
+
+- (void)closePortalKeyChooser:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end
