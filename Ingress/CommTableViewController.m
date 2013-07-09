@@ -101,12 +101,11 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
 
 	Plext *plext = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	NSAttributedString *message = plext.message;
 
 	CGFloat width = tableView.frame.size.width;
 	width -= 76;
 	
-	CGRect rect = [message boundingRectWithSize:CGSizeMake(width, 0.0f) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading|NSStringDrawingUsesDeviceMetrics context:nil];
+	CGRect rect = [plext.message boundingRectWithSize:CGSizeMake(width, MAXFLOAT) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingTruncatesLastVisibleLine context:NULL];
 	
 	return rect.size.height+2;
 	
