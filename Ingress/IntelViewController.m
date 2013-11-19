@@ -7,6 +7,7 @@
 //
 
 #import "IntelViewController.h"
+#import "TTUIScrollViewSlidingPages.h"
 #import "ScoreViewController.h"
 #import "MissionsViewController.h"
 #import "RecruitViewController.h"
@@ -16,11 +17,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-	[viewSegmentedControl setTitleTextAttributes:@{UITextAttributeFont: [UIFont fontWithName:@"Coda-Regular" size:10]} forState:UIControlStateNormal];
-}
-
-- (void)viewWillAppear:(BOOL)animated {
-	[super viewWillAppear:animated];
+	TTScrollSlidingPagesController *slider = [TTScrollSlidingPagesController new];
+	slider.titleScrollerHeight = 64;
+	slider.disableTitleScrollerShadow = YES;
+	slider.disableUIPageControl = YES;
+	slider.zoomOutAnimationDisabled = YES;
+	slider.dataSource = self;
+	slider.view.frame = self.view.frame;
+	[self.view addSubview:slider.view];
+	[self addChildViewController:slider];
 
 }
 
@@ -29,67 +34,45 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (UIViewController *)childViewControllerWithClass:(Class)class {
-	for (UIViewController *vc in self.childViewControllers) {
-		if ([vc isKindOfClass:class]) {
-			return vc;
-		}
-	}
-	return nil;
+#pragma mark - TTSlidingPagesDataSource
+
+- (int)numberOfPagesForSlidingPagesViewController:(TTScrollSlidingPagesController *)source {
+    return 3;
 }
 
-- (IBAction)viewSegmentedControlChanged {
-	
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-	
-	switch (viewSegmentedControl.selectedSegmentIndex) {
+- (TTSlidingPage *)pageForSlidingPagesViewController:(TTScrollSlidingPagesController*)source atIndex:(int)index{
+    UIViewController *viewController;
+	UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+
+	switch (index) {
 		case 0:
-			
-			[[self childViewControllerWithClass:[ScoreViewController class]] viewWillAppear:NO];
-			[scoreContainerView setHidden:NO];
-			[[self childViewControllerWithClass:[ScoreViewController class]] viewDidAppear:NO];
-			
-			[[self childViewControllerWithClass:[MissionsViewController class]] viewWillDisappear:NO];
-			[missionsContainerView setHidden:YES];
-			[[self childViewControllerWithClass:[MissionsViewController class]] viewDidDisappear:NO];
-			
-			[[self childViewControllerWithClass:[RecruitViewController class]] viewWillDisappear:NO];
-			[recruitContainerView setHidden:YES];
-			[[self childViewControllerWithClass:[RecruitViewController class]] viewDidDisappear:NO];
-			
+			viewController = [storyboard instantiateViewControllerWithIdentifier:@"ScoreViewController"];
 			break;
 		case 1:
-			
-			[[self childViewControllerWithClass:[ScoreViewController class]] viewWillDisappear:NO];
-			[scoreContainerView setHidden:YES];
-			[[self childViewControllerWithClass:[ScoreViewController class]] viewDidDisappear:NO];
-			
-			[[self childViewControllerWithClass:[MissionsViewController class]] viewWillAppear:NO];
-			[missionsContainerView setHidden:NO];
-			[[self childViewControllerWithClass:[MissionsViewController class]] viewDidAppear:NO];
-			
-			[[self childViewControllerWithClass:[RecruitViewController class]] viewWillDisappear:NO];
-			[recruitContainerView setHidden:YES];
-			[[self childViewControllerWithClass:[RecruitViewController class]] viewDidDisappear:NO];
-			
+			viewController = [storyboard instantiateViewControllerWithIdentifier:@"MissionsViewController"];
 			break;
 		case 2:
-			
-			[[self childViewControllerWithClass:[ScoreViewController class]] viewWillDisappear:NO];
-			[scoreContainerView setHidden:YES];
-			[[self childViewControllerWithClass:[ScoreViewController class]] viewDidDisappear:NO];
-			
-			[[self childViewControllerWithClass:[MissionsViewController class]] viewWillDisappear:NO];
-			[missionsContainerView setHidden:YES];
-			[[self childViewControllerWithClass:[MissionsViewController class]] viewDidDisappear:NO];
-			
-			[[self childViewControllerWithClass:[RecruitViewController class]] viewWillAppear:NO];
-			[recruitContainerView setHidden:NO];
-			[[self childViewControllerWithClass:[RecruitViewController class]] viewDidAppear:NO];
-			
+			viewController = [storyboard instantiateViewControllerWithIdentifier:@"RecruitViewController"];
 			break;
 	}
-	
+
+    return [[TTSlidingPage alloc] initWithContentViewController:viewController];
+}
+
+- (TTSlidingPageTitle *)titleForSlidingPagesViewController:(TTScrollSlidingPagesController *)source atIndex:(int)index{
+    TTSlidingPageTitle *title;
+	switch (index) {
+		case 0:
+			title = [[TTSlidingPageTitle alloc] initWithHeaderText:@"Global Control"];
+			break;
+		case 1:
+			title = [[TTSlidingPageTitle alloc] initWithHeaderText:@"Missions"];
+			break;
+		case 2:
+			title = [[TTSlidingPageTitle alloc] initWithHeaderText:@"Recruit"];
+			break;
+	}
+    return title;
 }
 
 @end

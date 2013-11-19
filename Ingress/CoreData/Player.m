@@ -2,7 +2,7 @@
 //  Player.m
 //  Ingress
 //
-//  Created by Alex Studnicka on 24.01.13.
+//  Created by Alex Studnička on 23.05.13.
 //  Copyright (c) 2013 A&A Code. All rights reserved.
 //
 
@@ -13,8 +13,24 @@
 
 @dynamic ap;
 @dynamic energy;
-@dynamic level;
-@dynamic maxEnergy;
-@dynamic nextLevelAP;
+@dynamic lastInventoryUpdated;
+@dynamic shouldSendEmail;
+@dynamic maySendPromoEmail;
+@dynamic allowNicknameEdit;
+@dynamic allowFactionChoice;
+@dynamic shouldPushNotifyForAtPlayer;
+@dynamic shouldPushNotifyForPortalAttacks;
+
+- (int)level {
+	return [Utilities levelForAp:self.ap];
+}
+
+- (int)maxEnergy {
+	return [Utilities maxXmForLevel:self.level];
+}
+
+- (int)nextLevelAP {
+	return [Utilities maxApForLevel:self.level];
+}
 
 @end

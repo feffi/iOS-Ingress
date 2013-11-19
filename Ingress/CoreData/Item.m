@@ -15,19 +15,24 @@
 @synthesize dropped;
 @dynamic latitude;
 @dynamic longitude;
+@dynamic timestamp;
 
 - (CLLocationCoordinate2D)coordinate {
 	return CLLocationCoordinate2DMake(self.latitude, self.longitude);
 }
 
 - (CLLocationDistance)distanceFromCoordinate:(CLLocationCoordinate2D)coordinate {
-	CLLocation *loc1 = [[CLLocation alloc] initWithLatitude:self.coordinate.latitude longitude:self.coordinate.longitude];
+	CLLocation *loc1 = [[CLLocation alloc] initWithLatitude:self.latitude longitude:self.longitude];
 	CLLocation *loc2 = [[CLLocation alloc] initWithLatitude:coordinate.latitude longitude:coordinate.longitude];
 	return [loc1 distanceFromLocation:loc2];
 }
 
 - (NSString *)title {
 	return self.description;
+}
+
+- (NSString *)description {
+	return [NSString stringWithFormat:@"Unknown Item"];
 }
 
 @end

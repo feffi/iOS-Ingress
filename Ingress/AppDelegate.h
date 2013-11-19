@@ -9,10 +9,13 @@
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
 
+@class ScannerViewController;
+
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 @property (strong, nonatomic) MKMapView *mapView;
+@property (strong, nonatomic) ScannerViewController *scannerViewController;
 
 + (AppDelegate *)instance;
 

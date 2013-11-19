@@ -7,18 +7,42 @@
 //
 
 #import "MediaItemsViewController.h"
+#import "MediaWebViewViewController.h"
+#import "XCDYouTubeVideoPlayerViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
 
-@implementation MediaItemsViewController
+@implementation MediaItemsViewController {
+	Media *currentMedia;
+}
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
-	
-	NSError *error;
-	if (![[self fetchedResultsController] performFetch:&error]) {
-		// Update to handle the error appropriately.
-		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-		exit(-1);  // Fail
-	}
+
+    self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 32, 0);
+    self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+	[super viewWillAppear:animated];
+
+	[[NSNotificationCenter defaultCenter] addObserverForName:MPMoviePlayerPlaybackDidFinishNotification object:nil queue:nil usingBlock:^(NSNotification *note) {
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleBackground]) {
+            [[SoundManager sharedManager] playMusic:@"Sound/sfx_ambient_scanner_base.aif" looping:YES];
+        }
+	}];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+	[super viewDidDisappear:animated];
+
+	[[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)didReceiveMemoryWarning {
+	[super didReceiveMemoryWarning];
+
+	self.fetchedResultsController = nil;
 }
 
 - (void)dealloc {
@@ -28,23 +52,11 @@
 #pragma mark - NSFetchedResultsController & NSFetchedResultsControllerDelegate
 
 - (NSFetchedResultsController *)fetchedResultsController {
-	
 	if (_fetchedResultsController != nil) {
 		return _fetchedResultsController;
 	}
-	
-	NSFetchRequest *fetchRequest = [NSFetchRequest new];
-	NSEntityDescription *entity = [NSEntityDescription entityForName:@"Media" inManagedObjectContext:[[DB sharedInstance] managedObjectContext]];
-	[fetchRequest setEntity:entity];
-	
-	NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"level" ascending:NO];
-	[fetchRequest setSortDescriptors:@[sortDescriptor]];
-	
-	_fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[[DB sharedInstance] managedObjectContext] sectionNameKeyPath:nil cacheName:@"PortalKeys"];
-	_fetchedResultsController.delegate = self;
-	
+	_fetchedResultsController = [Media MR_fetchAllSortedBy:@"level" ascending:NO withPredicate:nil groupBy:nil delegate:self];
 	return _fetchedResultsController;
-	
 }
 
 - (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
@@ -116,7 +128,7 @@
 	cell.textLabel.text = [NSString stringWithFormat:@"L%d %@", media.level, media.name];
 	cell.detailTextLabel.text = media.url; //[media.url substringFromIndex:49];
 	
-	cell.imageView.image = [UIImage imageNamed:@"missing_image"];
+//	cell.imageView.image = [UIImage imageNamed:@"missing_image"];
 	
 //	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:media.imageURL]];
 //	[NSURLConnection sendAsynchronousRequest:request queue:[API sharedInstance].networkQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
@@ -125,55 +137,111 @@
 //		});
 //	}];
 
+	[cell.imageView setImageWithURL:[NSURL URLWithString:media.imageURL] placeholderImage:[UIImage imageNamed:@"missing_image"]];
+
     return cell;
 	
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return @"Drop";
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+	
+	currentMedia = [self.fetchedResultsController objectAtIndexPath:indexPath];
+
+	UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Drop" otherButtonTitles:@"Recycle", @"View", nil];
+	actionSheet.tag = 1;
+	[actionSheet showInView:self.view.window];
+
 }
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-	if (editingStyle == UITableViewCellEditingStyleDelete) {
-		
-		Media *media = [self.fetchedResultsController objectAtIndexPath:indexPath];
-		
-		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+	if (actionSheet.tag == 1 && buttonIndex == 0) {
+
+		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.removeFromSuperViewOnHide = YES;
 		HUD.userInteractionEnabled = YES;
 		HUD.mode = MBProgressHUDModeIndeterminate;
 		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
-		HUD.labelText = @"Dropping Media...";
+		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+		HUD.labelText = @"Dropping Item...";
 		[[AppDelegate instance].window addSubview:HUD];
 		[HUD show:YES];
-		
-		[[API sharedInstance] dropItemWithGuid:media.guid completionHandler:^(void) {
-			
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[API sharedInstance] playSound:@"SFX_DROP_RESOURCE"];
+        }
+
+		[[API sharedInstance] dropItemWithGuid:currentMedia.guid completionHandler:^(void) {
 			[HUD hide:YES];
-			
+
+			[self.tableView reloadData];
 		}];
-		
+
+	} else if (actionSheet.tag == 1 && buttonIndex == 1) {
+
+		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.removeFromSuperViewOnHide = YES;
+		HUD.userInteractionEnabled = YES;
+		HUD.mode = MBProgressHUDModeIndeterminate;
+		HUD.dimBackground = YES;
+		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+		HUD.labelText = @"Recycling Item...";
+		[[AppDelegate instance].window addSubview:HUD];
+		[HUD show:YES];
+
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:[NSString stringWithFormat:@"Sound/sfx_recycle_%@.aif", arc4random_uniform(2) ? @"a" : @"b"]];
+        }
+
+		[[API sharedInstance] recycleItem:currentMedia completionHandler:^{
+			[HUD hide:YES];
+
+			[self.tableView reloadData];
+		}];
+
+	} else if (actionSheet.tag == 1 && buttonIndex == 2) {
+
+		if ([currentMedia.mediaURL.host isEqualToString:@"www.youtube.com"]) {
+			NSString *videoID = [currentMedia.url componentsSeparatedByString:@"v="][1];
+			NSRange search = [videoID rangeOfString:@"&"];
+			if (search.location != NSNotFound) {
+				videoID = [videoID substringToIndex:search.location];
+			}
+			XCDYouTubeVideoPlayerViewController *videoPlayerViewController = [[XCDYouTubeVideoPlayerViewController alloc] initWithVideoIdentifier:videoID];
+			[self presentMoviePlayerViewControllerAnimated:videoPlayerViewController];
+			[[SoundManager sharedManager] stopMusic:YES];
+		} else if ([currentMedia.mediaURL.lastPathComponent.pathExtension isEqualToString:@"mp3"]) {
+			MPMoviePlayerViewController *audioPlayerViewController = [[MPMoviePlayerViewController alloc] initWithContentURL:currentMedia.mediaURL];
+			[self presentMoviePlayerViewControllerAnimated:audioPlayerViewController];
+			[[SoundManager sharedManager] stopMusic:YES];
+		} else {
+			[self performSegueWithIdentifier:@"MediaWebViewSegue" sender:self];
+		}
+
 	}
 }
 
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-	[tableView deselectRowAtIndexPath:indexPath animated:YES];
-	
-	Media *media = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	
-	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:media.url]];
-	UIWebView *webView = [[UIWebView alloc] initWithFrame:CGRectMake(0, 0, 240, 320)];
-	[webView loadRequest:request];
-	
-	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-	HUD.userInteractionEnabled = YES;
-	HUD.mode = MBProgressHUDModeCustomView;
-	HUD.dimBackground = YES;
-	HUD.showCloseButton = YES;
-	HUD.customView = webView;
-	[[AppDelegate instance].window addSubview:HUD];
-	[HUD show:YES];
-	
+
+#pragma mark - Storyboard
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+	if ([segue.identifier isEqualToString:@"MediaWebViewSegue"]) {
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+        }
+
+		UINavigationController *navC = segue.destinationViewController;
+		MediaWebViewViewController *vc = (MediaWebViewViewController *)navC.topViewController;
+		vc.media = currentMedia;
+	}
 }
 
 @end

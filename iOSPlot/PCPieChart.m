@@ -1,34 +1,34 @@
 /**
  * Copyright (c) 2011 Muh Hon Cheng
  * Created by honcheng on 28/4/11.
- * 
- * Permission is hereby granted, free of charge, to any person obtaining 
- * a copy of this software and associated documentation files (the 
- * "Software"), to deal in the Software without restriction, including 
- * without limitation the rights to use, copy, modify, merge, publish, 
- * distribute, sublicense, and/or sell copies of the Software, and to 
- * permit persons to whom the Software is furnished to do so, subject 
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining
+ * a copy of this software and associated documentation files (the
+ * "Software"), to deal in the Software without restriction, including
+ * without limitation the rights to use, copy, modify, merge, publish,
+ * distribute, sublicense, and/or sell copies of the Software, and to
+ * permit persons to whom the Software is furnished to do so, subject
  * to the following conditions:
- * 
- * The above copyright notice and this permission notice shall be 
+ *
+ * The above copyright notice and this permission notice shall be
  * included in all copies or substantial portions of the Software.
- * 
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT 
- * WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, 
- * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF 
- * MERCHANTABILITY, FITNESS FOR A PARTICULAR 
- * PURPOSE AND NONINFRINGEMENT. IN NO EVENT 
- * SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE 
- * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
- * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, 
- * TORT OR OTHERWISE, ARISING FROM, OUT OF OR 
- * IN CONNECTION WITH THE SOFTWARE OR 
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT
+ * WARRANTY OF ANY KIND, EXPRESS OR IMPLIED,
+ * INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+ * MERCHANTABILITY, FITNESS FOR A PARTICULAR
+ * PURPOSE AND NONINFRINGEMENT. IN NO EVENT
+ * SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE
+ * LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT,
+ * TORT OR OTHERWISE, ARISING FROM, OUT OF OR
+ * IN CONNECTION WITH THE SOFTWARE OR
  * THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- * 
+ *
  * @author 		Muh Hon Cheng <honcheng@gmail.com>
  * @copyright	2011	Muh Hon Cheng
  * @version
- * 
+ *
  */
 
 #import "PCPieChart.h"
@@ -182,7 +182,7 @@
 				{
 					CGContextSetFillColorWithColor(ctx, [component.colour CGColor]);
 				}
-				else 
+				else
 				{
 					CGContextSetRGBFillColor(ctx, 0.1f, 0.1f, 0.1f, 1.0f);
 				}
@@ -194,21 +194,21 @@
 				NSString *percentageText = [NSString stringWithFormat:@"%.1f%%", component.value/total*100];
 				CGSize optimumSize = [percentageText sizeWithFont:self.percentageFont constrainedToSize:CGSizeMake(max_text_width,100)];
 				//CGRect percFrame = CGRectMake(5, left_label_y,  max_text_width, optimumSize.height);
-        
-        if (self.hasOutline) {
-          CGContextSaveGState(ctx);
-          
-          CGContextSetLineWidth(ctx, 1.0f);
-          CGContextSetLineJoin(ctx, kCGLineJoinRound);
-          CGContextSetTextDrawingMode (ctx, kCGTextFillStroke);
-          CGContextSetRGBStrokeColor(ctx, 0.2f, 0.2f, 0.2f, 0.8f);
-          
-          //[percentageText drawInRect:percFrame withFont:self.percentageFont lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentRight];
-          
-          CGContextRestoreGState(ctx);
-        } else {
-          //[percentageText drawInRect:percFrame withFont:self.percentageFont lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentRight];
-        }
+				
+				if (self.hasOutline) {
+					CGContextSaveGState(ctx);
+					
+					CGContextSetLineWidth(ctx, 1.0f);
+					CGContextSetLineJoin(ctx, kCGLineJoinRound);
+					CGContextSetTextDrawingMode (ctx, kCGTextFillStroke);
+					CGContextSetRGBStrokeColor(ctx, 0.2f, 0.2f, 0.2f, 0.8f);
+					
+					//[percentageText drawInRect:percFrame withFont:self.percentageFont lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentRight];
+					
+					CGContextRestoreGState(ctx);
+				} else {
+					//[percentageText drawInRect:percFrame withFont:self.percentageFont lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentRight];
+				}
 				
 				if (self.showArrow)
 				{
@@ -220,7 +220,7 @@
 					//CGContextSetShadow(ctx, CGSizeMake(0.0f, 0.0f), 5);
 					
 					
-					int x1 = inner_radius/4*3*cos((nextStartDeg+component.value/total*360/2-90)*M_PI/180.0)+origin_x; 
+					int x1 = inner_radius/4*3*cos((nextStartDeg+component.value/total*360/2-90)*M_PI/180.0)+origin_x;
 					int y1 = inner_radius/4*3*sin((nextStartDeg+component.value/total*360/2-90)*M_PI/180.0)+origin_y;
 					CGContextSetLineWidth(ctx, 1);
 					if (left_label_y + optimumSize.height/2 < y)//(left_label_y==LABEL_TOP_MARGIN)
@@ -290,7 +290,7 @@
 								CGContextAddLineToPoint(ctx, x1+ARROW_HEAD_WIDTH/2, y1);
 								CGContextClosePath(ctx);
 								CGContextFillPath(ctx);
-							} 
+							}
 							else
 							{
 								// arrow point up
@@ -312,14 +312,14 @@
 					
 				}
 				// display title on the left
-//				CGContextSetRGBFillColor(ctx, 0.4f, 0.4f, 0.4f, 1.0f);
-//				left_label_y += optimumSize.height - 4;
-//				optimumSize = [component.title sizeWithFont:self.titleFont constrainedToSize:CGSizeMake(max_text_width,100)];
-//				CGRect titleFrame = CGRectMake(5, left_label_y, max_text_width, optimumSize.height);
-//				[component.title drawInRect:titleFrame withFont:self.titleFont lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentRight];
-//				left_label_y += optimumSize.height + 10;
+				//				CGContextSetRGBFillColor(ctx, 0.4f, 0.4f, 0.4f, 1.0f);
+				//				left_label_y += optimumSize.height - 4;
+				//				optimumSize = [component.title sizeWithFont:self.titleFont constrainedToSize:CGSizeMake(max_text_width,100)];
+				//				CGRect titleFrame = CGRectMake(5, left_label_y, max_text_width, optimumSize.height);
+				//				[component.title drawInRect:titleFrame withFont:self.titleFont lineBreakMode:NSLineBreakByWordWrapping alignment:NSTextAlignmentRight];
+				//				left_label_y += optimumSize.height + 10;
 			}
-			else 
+			else
 			{
 				// right
 				
@@ -330,7 +330,7 @@
 					//CGContextSetRGBStrokeColor(ctx, 1.0f, 1.0f, 1.0f, 0.5);
 					//CGContextSetTextDrawingMode(ctx, kCGTextFillStroke);
 				}
-				else 
+				else
 				{
 					CGContextSetRGBFillColor(ctx, 0.1f, 0.1f, 0.1f, 1.0f);
 				}
@@ -342,21 +342,21 @@
 				NSString *percentageText = [NSString stringWithFormat:@"%.1f%%", component.value/total*100];
 				CGSize optimumSize = [percentageText sizeWithFont:self.percentageFont constrainedToSize:CGSizeMake(max_text_width,100)];
 				//CGRect percFrame = CGRectMake(text_x, right_label_y, optimumSize.width, optimumSize.height);
-        
-        if (self.hasOutline) {
-          CGContextSaveGState(ctx);
-          
-          CGContextSetLineWidth(ctx, 1.0f);
-          CGContextSetLineJoin(ctx, kCGLineJoinRound);
-          CGContextSetTextDrawingMode (ctx, kCGTextFillStroke);
-          CGContextSetRGBStrokeColor(ctx, 0.2f, 0.2f, 0.2f, 0.8f);
-          
-          //[percentageText drawInRect:percFrame withFont:self.percentageFont];
-          
-          CGContextRestoreGState(ctx);
-        } else {
-          //[percentageText drawInRect:percFrame withFont:self.percentageFont];
-        }
+				
+				if (self.hasOutline) {
+					CGContextSaveGState(ctx);
+					
+					CGContextSetLineWidth(ctx, 1.0f);
+					CGContextSetLineJoin(ctx, kCGLineJoinRound);
+					CGContextSetTextDrawingMode (ctx, kCGTextFillStroke);
+					CGContextSetRGBStrokeColor(ctx, 0.2f, 0.2f, 0.2f, 0.8f);
+					
+					//[percentageText drawInRect:percFrame withFont:self.percentageFont];
+					
+					CGContextRestoreGState(ctx);
+				} else {
+					//[percentageText drawInRect:percFrame withFont:self.percentageFont];
+				}
 				
 				if (self.showArrow)
 				{
@@ -368,7 +368,7 @@
 					//CGContextSetShadow(ctx, CGSizeMake(0.0f, 0.0f), 5);
 					
 					CGContextSetLineWidth(ctx, 1);
-					int x1 = inner_radius/4*3*cos((nextStartDeg+component.value/total*360/2-90)*M_PI/180.0)+origin_x; 
+					int x1 = inner_radius/4*3*cos((nextStartDeg+component.value/total*360/2-90)*M_PI/180.0)+origin_x;
 					int y1 = inner_radius/4*3*sin((nextStartDeg+component.value/total*360/2-90)*M_PI/180.0)+origin_y;
 					
 					
@@ -416,7 +416,7 @@
 							CGContextAddLineToPoint(ctx, x1, right_label_y + optimumSize.height/2);
 							//CGContextAddLineToPoint(ctx, x1+5, y1);
 							CGContextAddLineToPoint(ctx, x1, y1);
-							CGContextStrokePath(ctx); 
+							CGContextStrokePath(ctx);
 							
 							//CGContextSetRGBFillColor(ctx, 0.0f, 0.0f, 0.0f, 1.0f);
 							CGContextMoveToPoint(ctx, x1+ARROW_HEAD_WIDTH/2, y1);
@@ -424,7 +424,7 @@
 							CGContextAddLineToPoint(ctx, x1-ARROW_HEAD_WIDTH/2, y1);
 							CGContextClosePath(ctx);
 							CGContextFillPath(ctx);
-						} 
+						}
 						else //if (nextStartDeg<180 && endDeg>180)
 						{
 							// arrow point up
@@ -445,13 +445,13 @@
 					}
 				}
 				
-//				// display title on the left
-//				CGContextSetRGBFillColor(ctx, 0.4f, 0.4f, 0.4f, 1.0f);
-//				right_label_y += optimumSize.height - 4;
-//				optimumSize = [component.title sizeWithFont:self.titleFont constrainedToSize:CGSizeMake(max_text_width,100)];
-//				CGRect titleFrame = CGRectMake(text_x, right_label_y, optimumSize.width, optimumSize.height);
-//				[component.title drawInRect:titleFrame withFont:self.titleFont];
-//				right_label_y += optimumSize.height + 10;
+				//				// display title on the left
+				//				CGContextSetRGBFillColor(ctx, 0.4f, 0.4f, 0.4f, 1.0f);
+				//				right_label_y += optimumSize.height - 4;
+				//				optimumSize = [component.title sizeWithFont:self.titleFont constrainedToSize:CGSizeMake(max_text_width,100)];
+				//				CGRect titleFrame = CGRectMake(text_x, right_label_y, optimumSize.width, optimumSize.height);
+				//				[component.title drawInRect:titleFrame withFont:self.titleFont];
+				//				right_label_y += optimumSize.height + 10;
 			}
 			nextStartDeg = endDeg;
 		}

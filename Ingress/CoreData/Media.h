@@ -17,6 +17,6 @@
 @property (nonatomic) int16_t level;
 @property (nonatomic, retain) NSString * imageURL;
 @property (nonatomic, retain) NSString * url;
-@property (nonatomic, retain) NSData * imageData;
+@property (nonatomic, readonly) NSURL * mediaURL;
 
 @end

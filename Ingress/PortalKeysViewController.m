@@ -7,181 +7,406 @@
 //
 
 #import "PortalKeysViewController.h"
+#import "PortalDetailViewController.h"
+#import <SDWebImage/UIImageView+WebCache.h>
+#import "GUIButton.h"
 
-@implementation PortalKeysViewController
+@interface PortalKeysViewController ()
+@property (nonatomic, weak) GUIButton* closeButton;
+@end
+
+@implementation PortalKeysViewController {
+	NSMutableDictionary *keysDict;
+	NSMutableArray *portals;
+
+	PortalKey *currentPortalKey;
+	
+	ChooserViewController *_countChooser;
+}
+
+@synthesize linkingPortal = _linkingPortal;
 
 - (void)viewDidLoad {
 	[super viewDidLoad];
+    
+    if (self.linkingPortal) {
+        self.tableView.contentInset = UIEdgeInsetsMake(20, 0, 60, 0);
+        GUIButton *closeButton = [[GUIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width-110, self.view.bounds.size.height-75, 100, 45)];
+        closeButton.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+        [closeButton setTitle:@"CANCEL" forState:UIControlStateNormal];
+        [closeButton addTarget:self action:@selector(closePortalKeyChooser:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:closeButton];
+        _closeButton = closeButton;
+    } else {
+		self.tableView.contentInset = UIEdgeInsetsMake(0, 0, 32, 0);
+		self.tableView.scrollIndicatorInsets = self.tableView.contentInset;
+	}
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
 	[super viewWillAppear:animated];
-	
-	NSError *error;
-	if (![[self fetchedResultsController] performFetch:&error]) {
-		// Update to handle the error appropriately.
-		NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-		exit(-1);  // Fail
+
+	[self refresh];
+}
+
+- (void)didReceiveMemoryWarning {
+	[super didReceiveMemoryWarning];
+
+}
+
+- (void)refresh {
+
+	NSArray *fetchedKeys = [PortalKey MR_findAllWithPredicate:[NSPredicate predicateWithFormat:@"dropped = NO"]];
+	keysDict = [NSMutableDictionary dictionary];
+	for (PortalKey *portalKey in fetchedKeys) {
+		if ([keysDict.allKeys containsObject:portalKey.portal.guid]) {
+			NSMutableArray *array = keysDict[portalKey.portal.guid];
+			[array addObject:portalKey];
+		} else {
+			keysDict[portalKey.portal.guid] = [NSMutableArray arrayWithObject:portalKey];
+		}
 	}
-}
 
-- (void)dealloc {
-	self.fetchedResultsController = nil;
-}
-
-#pragma mark - NSFetchedResultsController & NSFetchedResultsControllerDelegate
-
-- (NSFetchedResultsController *)fetchedResultsController {
-	
-	if (_fetchedResultsController != nil) {
-		return _fetchedResultsController;
+	portals = [NSMutableArray arrayWithCapacity:keysDict.allKeys.count];
+	for (NSString *portalGuid in keysDict.allKeys) {
+		[portals addObject:[Portal MR_findFirstByAttribute:@"guid" withValue:portalGuid]];
 	}
-	
-	NSFetchRequest *fetchRequest = [NSFetchRequest new];
-	NSEntityDescription *entity = [NSEntityDescription entityForName:@"PortalKey" inManagedObjectContext:[[DB sharedInstance] managedObjectContext]];
-	[fetchRequest setEntity:entity];
-	
-	NSSortDescriptor *sortDescriptor1 = [[NSSortDescriptor alloc] initWithKey:@"portal.guid" ascending:NO];
-	[fetchRequest setSortDescriptors:@[sortDescriptor1]];
-	
-	_fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetchRequest managedObjectContext:[[DB sharedInstance] managedObjectContext] sectionNameKeyPath:@"portal.guid" cacheName:@"PortalKeys"];
-	_fetchedResultsController.delegate = self;
-	
-	return _fetchedResultsController;
-	
-}
 
-- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView beginUpdates];
-}
+	[portals sortUsingComparator:^NSComparisonResult(Portal *obj1, Portal *obj2) {
+		CLLocationDistance dist1 = [obj1 distanceFromCoordinate:[AppDelegate instance].mapView.centerCoordinate];
+		CLLocationDistance dist2 = [obj2 distanceFromCoordinate:[AppDelegate instance].mapView.centerCoordinate];
 
+		if (dist1 < dist2) {
+			return NSOrderedAscending;
+		} else if (dist1 > dist2) {
+			return NSOrderedDescending;
+		} else {
+			return NSOrderedSame;
+		}
+	}];
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
-    
-	UITableView *tableView = self.tableView;
-	
-	switch(type) {
-		case NSFetchedResultsChangeInsert:
-			[tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationLeft];
-			break;
-			
-		case NSFetchedResultsChangeDelete:
-			[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationLeft];
-			break;
-			
-		case NSFetchedResultsChangeUpdate:
-			[tableView reloadRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-			break;
-			
-		case NSFetchedResultsChangeMove:
-			[tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-			[tableView insertRowsAtIndexPaths:@[newIndexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-			break;
-	}
-	
-}
+	[self.tableView reloadData];
 
-- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id )sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
-	
-    switch(type) {
-			
-        case NSFetchedResultsChangeInsert:
-            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-			
-        case NSFetchedResultsChangeDelete:
-            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
-            break;
-    }
-}
-
-
-- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
-    [self.tableView endUpdates];
 }
 
 #pragma mark - UITableViewDataSource & UITableViewDelegate
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-	return self.fetchedResultsController.sections.count;
+	return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-	id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:section];
-	return sectionInfo.numberOfObjects;
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-	if (indexPath.row == 0) {
-		return tableView.rowHeight;
-	}
-	return 0;
+	return portals.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PortalKeyCell" forIndexPath:indexPath];
 	
-	if (indexPath.row != 0) {
-		cell.hidden = YES;
-		return cell;
+	Portal *portal = portals[indexPath.row];
+	
+	UIColor *portalColor = [UIColor whiteColor];
+	if (self.linkingPortal) {
+		portalColor = [UIColor lightGrayColor];
 	}
 	
-	cell.hidden = NO;
-	
-	PortalKey *portalKey = [self.fetchedResultsController objectAtIndexPath:indexPath];
-	Portal *portal = portalKey.portal;
-	id <NSFetchedResultsSectionInfo> sectionInfo = [self.fetchedResultsController.sections objectAtIndex:indexPath.section];
-	int numberOfPortals = sectionInfo.numberOfObjects;
-    cell.textLabel.text = [NSString stringWithFormat:@"%dx %@", numberOfPortals, portal.subtitle];
-	cell.detailTextLabel.text = portal.address;
-	
-	cell.imageView.image = [UIImage imageNamed:@"missing_image"];
-	
-	if (!portal) {
-		NSLog(@"not portal: %@", sectionInfo.name);
+	if (portal.completeInfo) {
+		NSMutableAttributedString *attrStr = [NSMutableAttributedString new];
+		[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%dx ", [keysDict[portal.guid] count]] attributes:[Utilities attributesWithShadow:NO size:14 color:[UIColor whiteColor]]]];
+		[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:portal.name attributes:[Utilities attributesWithShadow:NO size:14 color:portalColor]]];
+		cell.textLabel.attributedText = attrStr;
 	}
 	
-//	NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:portal.imageURL]];
-//	[NSURLConnection sendAsynchronousRequest:request queue:[API sharedInstance].networkQueue completionHandler:^(NSURLResponse *response, NSData *data, NSError *error) {
-//		dispatch_async(dispatch_get_main_queue(), ^{
-//			cell.imageView.image =  [UIImage imageWithData:data];
-//		});
-//	}];
+	if (portal.level > 8) {
+		NSLog(@"WTF? L%d - %d resonators", portal.level, portal.resonators.count);
+	}
+	
+	if (self.linkingPortal) {
+		cell.detailTextLabel.text = @"Querying Linkability...";
+		
+		PortalKey *portalKey = [keysDict[portal.guid] lastObject];
+		[[API sharedInstance] queryLinkabilityForPortal:self.linkingPortal portalKey:portalKey completionHandler:^(NSString *errorStr) {
+			[self configureCellAtIndexPath:indexPath inTableView:tableView withErrorStr:errorStr];
+		}];
+	} else {
+		cell.detailTextLabel.text = portal.address;
+		
+		[[API sharedInstance] getModifiedEntity:portal completionHandler:^{
+			[self configureCellAtIndexPath:indexPath inTableView:tableView withErrorStr:nil];
+		}];
+	}
+	
+	[cell.imageView setImageWithURL:[NSURL URLWithString:portal.imageURL] placeholderImage:[UIImage imageNamed:@"missing_image"]];
+	
+	[cell layoutIfNeeded];
 
     return cell;
-	
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {
-	return @"Drop";
-}
+- (void)configureCellAtIndexPath:(NSIndexPath *)indexPath inTableView:(UITableView *)tableView withErrorStr:(NSString *)errorStr {
+	UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+	if (cell) {
+		
+		Portal *portal = portals[indexPath.row];
+		
+		UIColor *portalColor = [UIColor whiteColor];
+		if (self.linkingPortal) {
+			if (errorStr) {
+				portalColor = [UIColor lightGrayColor];
+			} else {
+				portalColor = [Utilities colorForFaction:portal.controllingTeam];
+			}
+		} else if (portal.completeInfo) {
+			if ([@[@"ALIENS", @"RESISTANCE"] containsObject:portal.controllingTeam]) {
+				portalColor = [Utilities colorForFaction:portal.controllingTeam];
+			} else {
+				portalColor = [UIColor lightGrayColor];
+			}
+		}
+		
+		if (portal.completeInfo) {
+			NSMutableAttributedString *attrStr = [NSMutableAttributedString new];
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"%dx ", [keysDict[portal.guid] count]] attributes:[Utilities attributesWithShadow:NO size:14 color:[UIColor whiteColor]]]];
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:[NSString stringWithFormat:@"L%d ", portal.level] attributes:[Utilities attributesWithShadow:NO size:14 color:[Utilities colorForLevel:portal.level]]]];
+			[attrStr appendAttributedString:[[NSAttributedString alloc] initWithString:portal.name attributes:[Utilities attributesWithShadow:NO size:14 color:portalColor]]];
+			cell.textLabel.attributedText = attrStr;
+		}
 
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
-	if (editingStyle == UITableViewCellEditingStyleDelete) {
+		if (self.linkingPortal) {
+			if (errorStr) {
+				cell.detailTextLabel.text = errorStr;
+			} else {
+				cell.detailTextLabel.text = portal.address;
+			}
+		}
 		
-		PortalKey *portalKey = [self.fetchedResultsController objectAtIndexPath:indexPath];
-		
-		__block MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
-		HUD.userInteractionEnabled = YES;
-		HUD.mode = MBProgressHUDModeIndeterminate;
-		HUD.dimBackground = YES;
-		HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
-		HUD.labelText = @"Dropping Portal Key...";
-		[[AppDelegate instance].window addSubview:HUD];
-		[HUD show:YES];
-		
-		[[API sharedInstance] dropItemWithGuid:portalKey.guid completionHandler:^(void) {
-			
-			[HUD hide:YES];
-			
-		}];
+		[cell layoutIfNeeded];
 		
 	}
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 	[tableView deselectRowAtIndexPath:indexPath animated:YES];
+	
+	Portal *portal = portals[indexPath.row];
+    
+	if (self.linkingPortal) {
+
+		UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+		if (![cell.detailTextLabel.text isEqualToString:portal.address]) {
+			if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+				[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_fail.aif"];
+			}
+			return;
+		}
+		
+		if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+			[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+		}
+		
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+            [[API sharedInstance] playSound:@"SPEECH_ESTABLISHING_PORTAL_LINK"];
+        }
+		
+		PortalKey *portalKey = [keysDict[portal.guid] lastObject];
+
+		MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+		HUD.removeFromSuperViewOnHide = YES;
+		HUD.userInteractionEnabled = YES;
+		HUD.dimBackground = YES;
+		HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+		HUD.labelText = @"Linking Portal...";
+		[[AppDelegate instance].window addSubview:HUD];
+		[HUD show:YES];
+
+		[[API sharedInstance] linkPortal:self.linkingPortal withPortalKey:portalKey completionHandler:^(NSString *errorStr) {
+
+			[HUD hide:YES];
+
+			if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+				[[SoundManager sharedManager] playSound:@"Sound/sfx_link_power_up.aif"];
+			}
+			if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleSpeech]) {
+				[[API sharedInstance] playSound:@"SPEECH_PORTAL_LINK_ESTABLISHED"];
+			}
+
+			[self refresh];
+			
+		}];
+		
+	} else {
+		
+		if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+			[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+		}
+
+		PortalKey *portalKey = [keysDict[portal.guid] lastObject];
+		currentPortalKey = portalKey;
+
+		UIActionSheet *actionSheet = [[UIActionSheet alloc] initWithTitle:nil delegate:self cancelButtonTitle:@"Cancel" destructiveButtonTitle:@"Drop" otherButtonTitles:@"Recycle", @"View Portal Info", nil];
+		actionSheet.tag = 1;
+		[actionSheet showInView:self.view.window];
+
+	}
+
+}
+
+#pragma mark - UIActionSheetDelegate
+
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+	if (actionSheet.tag == 1 && buttonIndex == 0) {
+		
+		Portal *portal = currentPortalKey.portal;
+		NSArray *portalKeys = keysDict[portal.guid];
+
+		if (portalKeys.count > 0) {
+			
+			MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+			HUD.removeFromSuperViewOnHide = YES;
+			HUD.userInteractionEnabled = YES;
+			HUD.mode = MBProgressHUDModeCustomView;
+			HUD.dimBackground = YES;
+			HUD.showCloseButton = YES;
+			
+			_countChooser = [ChooserViewController countChooserWithButtonTitle:@"DROP" maxCount:portalKeys.count completionHandler:^(int count) {
+				if (count > 0) {
+					[HUD hide:YES];
+					_countChooser = nil;
+					
+					MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+					HUD.removeFromSuperViewOnHide = YES;
+					HUD.userInteractionEnabled = YES;
+					HUD.mode = MBProgressHUDModeIndeterminate;
+					HUD.dimBackground = YES;
+					HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+					HUD.labelText = @"Dropping...";
+					[[AppDelegate instance].window addSubview:HUD];
+					[HUD show:YES];
+					
+					if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+						[[SoundManager sharedManager] playSound:@"Sound/sfx_drop_resource.aif"];
+					}
+					
+					NSArray *items;
+
+					if (portalKeys.count >= count) {
+						items = [portalKeys subarrayWithRange:NSMakeRange(0, count)];
+					}
+
+					__block int completed = 0;
+					for (PortalKey *portalKey in items) {
+						[[API sharedInstance] dropItemWithGuid:portalKey.guid completionHandler:^(void) {
+							completed++;
+							if (completed == items.count) {
+								[HUD hide:YES];
+								[self refresh];
+							}
+						}];
+						
+					}
+					
+				}
+			}];
+			HUD.customView = _countChooser.view;
+			
+			[[AppDelegate instance].window addSubview:HUD];
+			[HUD show:YES];
+			
+		} else {
+			[Utilities showWarningWithTitle:@"No Item"];
+		}
+
+	} else if (actionSheet.tag == 1 && buttonIndex == 1) {
+		
+		Portal *portal = currentPortalKey.portal;
+		NSArray *portalKeys = keysDict[portal.guid];
+		
+		if (portalKeys.count > 0) {
+			
+			MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+			HUD.removeFromSuperViewOnHide = YES;
+			HUD.userInteractionEnabled = YES;
+			HUD.mode = MBProgressHUDModeCustomView;
+			HUD.dimBackground = YES;
+			HUD.showCloseButton = YES;
+			
+			_countChooser = [ChooserViewController countChooserWithButtonTitle:@"RECYCLE" maxCount:portalKeys.count completionHandler:^(int count) {
+				if (count > 0) {
+					[HUD hide:YES];
+					_countChooser = nil;
+					
+					MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:[AppDelegate instance].window];
+					HUD.removeFromSuperViewOnHide = YES;
+					HUD.userInteractionEnabled = YES;
+					HUD.mode = MBProgressHUDModeIndeterminate;
+					HUD.dimBackground = YES;
+					HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
+					HUD.labelText = @"Recycling...";
+					[[AppDelegate instance].window addSubview:HUD];
+					[HUD show:YES];
+					
+					if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+						[[SoundManager sharedManager] playSound:[NSString stringWithFormat:@"Sound/sfx_recycle_%@.aif", arc4random_uniform(2) ? @"a" : @"b"]];
+					}
+					
+					NSArray *items;
+					
+					if (portalKeys.count > count) {
+						items = [portalKeys subarrayWithRange:NSMakeRange(0, count)];
+					}
+					
+					__block int completed = 0;
+					for (PortalKey *portalKey in portalKeys) {
+						
+						[[API sharedInstance] recycleItem:portalKey completionHandler:^(void) {
+							completed++;
+							if (completed == items.count) {
+								[HUD hide:YES];
+								[self refresh];
+							}
+						}];
+						
+					}
+					
+				}
+			}];
+			HUD.customView = _countChooser.view;
+			
+			[[AppDelegate instance].window addSubview:HUD];
+			[HUD show:YES];
+			
+		} else {
+			[Utilities showWarningWithTitle:@"No Item"];
+		}
+		
+	} else if (actionSheet.tag == 1 && buttonIndex == 2) {
+
+		PortalKey *portalKey = currentPortalKey;
+		
+		UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"MainStoryboard_iPhone" bundle:nil];
+		PortalDetailViewController *portalDetailVC = [storyboard instantiateViewControllerWithIdentifier:@"PortalDetailViewController"];
+		portalDetailVC.portal = portalKey.portal;
+		portalDetailVC.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+		[self presentViewController:portalDetailVC animated:YES completion:NULL];
+		
+		currentPortalKey = nil;
+
+	}
+}
+
+#pragma mark - UIScrollViewDelegate
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+	_closeButton.transform = CGAffineTransformMakeTranslation(0, (scrollView.contentInset.top + scrollView.contentOffset.y));
+}
+
+#pragma mark - Actions
+
+- (void)closePortalKeyChooser:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

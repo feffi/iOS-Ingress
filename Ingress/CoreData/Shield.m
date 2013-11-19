@@ -2,7 +2,7 @@
 //  Shield.m
 //  Ingress
 //
-//  Created by Alex Studnicka on 24.01.13.
+//  Created by Alex Studnička on 06.06.13.
 //  Copyright (c) 2013 A&A Code. All rights reserved.
 //
 
@@ -11,14 +11,8 @@
 
 @implementation Shield
 
-@dynamic rarity;
-
-- (NSString *)rarityStr {
-	return [API shieldRarityStrFromRarity:self.rarity];
-}
-
 - (NSString *)description {
-	return [NSString stringWithFormat:@"%@ Portal Shield", self.rarityStr];
+	return [NSString stringWithFormat:@"%@ Shield", self.rarityStr];
 }
 
 @end

@@ -60,6 +60,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	id objectForExecution;
 	UILabel *label;
 	UILabel *detailsLabel;
+	UIButton *closeBtn;
 	BOOL isFinished;
 	CGAffineTransform rotationTransform;
 }
@@ -90,6 +91,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 @synthesize mode;
 @synthesize labelText;
 @synthesize detailsLabelText;
+@synthesize detailsLabelAttributedText;
 @synthesize progress;
 @synthesize size;
 @synthesize showCloseButton;
@@ -158,6 +160,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		self.mode = MBProgressHUDModeIndeterminate;
 		self.labelText = nil;
 		self.detailsLabelText = nil;
+		self.detailsLabelAttributedText = nil;
 		self.opacity = 0.8f;
         self.color = nil;
 		self.labelFont = [UIFont boldSystemFontOfSize:kLabelFontSize];
@@ -215,6 +218,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	[detailsLabel release];
 	[labelText release];
 	[detailsLabelText release];
+	[detailsLabelAttributedText release];
 	[graceTimer release];
 	[minShowTimer release];
 	[showStarted release];
@@ -442,7 +446,11 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	detailsLabel.textColor = [UIColor whiteColor];
 	detailsLabel.numberOfLines = 0;
 	detailsLabel.font = self.detailsLabelFont;
-	detailsLabel.text = self.detailsLabelText;
+	if (self.detailsLabelAttributedText) {
+		detailsLabel.attributedText = self.detailsLabelAttributedText;
+	} else {
+		detailsLabel.text = self.detailsLabelText;
+	}
 	[self addSubview:detailsLabel];
 }
 
@@ -570,9 +578,12 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	}
 	
 	self.size = totalSize;
-	
-	if (self.showCloseButton) {
-		UIButton *closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+
+	if (!self.showCloseButton && closeBtn) {
+		[closeBtn removeFromSuperview];
+		closeBtn = nil;
+	} else if (self.showCloseButton && !closeBtn) {
+		closeBtn = [UIButton buttonWithType:UIButtonTypeCustom];
 		[closeBtn setImage:[UIImage imageNamed:@"UIBlackCloseButton.png"] forState:UIControlStateNormal];
 		[closeBtn setImage:[UIImage imageNamed:@"UIBlackCloseButtonPressed.png"] forState:UIControlStateHighlighted];
 		[closeBtn addTarget:self action:@selector(closeButtonPressed) forControlEvents:UIControlEventTouchUpInside];
@@ -587,7 +598,9 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 }
 
 - (void)closeButtonPressed {
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
 	[self hide:YES];
 }
 
@@ -659,7 +672,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 
 - (NSArray *)observableKeypaths {
 	return [NSArray arrayWithObjects:@"mode", @"customView", @"labelText", @"labelFont",
-			@"detailsLabelText", @"detailsLabelFont", @"progress", nil];
+			@"detailsLabelText", @"detailsLabelAttributedText", @"detailsLabelFont", @"progress", nil];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
@@ -679,6 +692,8 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		label.font = self.labelFont;
 	} else if ([keyPath isEqualToString:@"detailsLabelText"]) {
 		detailsLabel.text = self.detailsLabelText;
+	} else if ([keyPath isEqualToString:@"detailsLabelAttributedText"]) {
+		detailsLabel.attributedText = self.detailsLabelAttributedText;
 	} else if ([keyPath isEqualToString:@"detailsLabelFont"]) {
 		detailsLabel.font = self.detailsLabelFont;
 	} else if ([keyPath isEqualToString:@"progress"]) {

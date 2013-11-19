@@ -15,9 +15,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 	
-	inviteTextField.font = [UIFont fontWithName:@"Coda-Regular" size:15];
-	inviteButton.titleLabel.font = [UIFont fontWithName:@"Coda-Regular" size:15];
-	inviteLabel.font = [UIFont fontWithName:@"Coda-Regular" size:12];
+	inviteTextField.font = [UIFont fontWithName:[[[UITextField appearance] font] fontName] size:15];
+	inviteButton.titleLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:15];
+	inviteLabel.font = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:12];
 	
 	__weak typeof(self) weakSelf = self;
 	__weak typeof(inviteContainerView) weakInviteContainerView = inviteContainerView;
@@ -48,9 +48,10 @@
 - (void)loadNumberOfInvites {
 	
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+	HUD.removeFromSuperViewOnHide = YES;
 	HUD.userInteractionEnabled = NO;
 	//HUD.labelText = @"Loading...";
-	//HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+	//HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 	[self.view addSubview:HUD];
 	[HUD show:YES];
 	
@@ -71,29 +72,46 @@
 	[inviteTextField resignFirstResponder];
 
 	if (!email || email.length < 1) {
-		[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_fail.aif"];
+        if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+            [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_fail.aif"];
+        }
 		return;
 	}
 	
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-	
+    if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
+    
+	[[[GAI sharedInstance] defaultTracker] sendEventWithCategory:@"Game Action" withAction:@"Recruit" withLabel:nil withValue:@(0)];
 	
 	MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:self.view];
+	HUD.removeFromSuperViewOnHide = YES;
 	HUD.userInteractionEnabled = NO;
-	HUD.labelText = @"No invites remaining!";
-	HUD.labelFont = [UIFont fontWithName:@"Coda-Regular" size:16];
+	//HUD.labelText = @"Loading...";
+	//HUD.labelFont = [UIFont fontWithName:[[[UILabel appearance] font] fontName] size:16];
 	[self.view addSubview:HUD];
 	[HUD show:YES];
-	[HUD hide:YES afterDelay:3];
+	
+	[[API sharedInstance] inviteUserWithEmail:email completionHandler:^(NSString *errorStr, int numberOfInvites) {
+		
+		[HUD hide:YES];
+		
+		[inviteLabel setText:[NSString stringWithFormat:@"%d invites remaining", numberOfInvites]];
+
+		if (errorStr && errorStr.length > 0) {
+			[Utilities showWarningWithTitle:errorStr];
+		}
+		
+	}];
 	
 }
 
 #pragma mark - UITextFieldDelegate
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-	
-	[[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
-	
+	if ([[NSUserDefaults standardUserDefaults] boolForKey:DeviceSoundToggleEffects]) {
+        [[SoundManager sharedManager] playSound:@"Sound/sfx_ui_success.aif"];
+    }
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {

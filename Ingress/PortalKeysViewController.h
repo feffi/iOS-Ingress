@@ -8,8 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface PortalKeysViewController : UITableViewController <NSFetchedResultsControllerDelegate>
+@interface PortalKeysViewController : UITableViewController <UIActionSheetDelegate>
 
-@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
+@property (nonatomic) Portal *linkingPortal;
 
 @end

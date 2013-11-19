@@ -9,12 +9,10 @@
 #import <UIKit/UIKit.h>
 #import "CommTableViewCell.h"
 
-@interface CommTableViewController : UITableViewController {
-	NSDateFormatter *dateFormatter;
-	NSMutableArray *_messages;
-}
+@interface CommTableViewController : UITableViewController <NSFetchedResultsControllerDelegate>
 
 @property (nonatomic) BOOL factionOnly;
+@property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 
 - (void)refresh;
 

@@ -11,5 +11,6 @@
 @interface GUIButton : UIButton
 
 @property (nonatomic) BOOL disabled;
+@property (nonatomic, assign) NSString *errorString;
 
 @end

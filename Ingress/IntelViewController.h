@@ -7,17 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TTSlidingPagesDataSource.h"
 
-@interface IntelViewController : UIViewController {
-	
-	__weak IBOutlet UISegmentedControl *viewSegmentedControl;
-	
-	__weak IBOutlet UIView *scoreContainerView;
-	__weak IBOutlet UIView *missionsContainerView;
-	__weak IBOutlet UIView *recruitContainerView;
-	
-}
-
-- (IBAction)viewSegmentedControlChanged;
+@interface IntelViewController : UIViewController <TTSlidingPagesDataSource>
 
 @end

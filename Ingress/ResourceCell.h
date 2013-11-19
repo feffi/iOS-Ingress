@@ -8,15 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-typedef enum {
-	ItemTypeResonator,
-	ItemTypeXMP,
-	ItemTypePortalShield
-} ItemType;
-
 @interface ResourceCell : UITableViewCell <UIActionSheetDelegate>
 
 @property (weak, nonatomic) IBOutlet UIImageView *itemImageView;
+@property (weak, nonatomic) IBOutlet UILabel *itemTitleLabel;
 @property (nonatomic) ItemType itemType;
 
 - (IBAction)action:(UIButton *)sender;

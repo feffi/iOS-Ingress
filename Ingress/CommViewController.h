@@ -8,19 +8,21 @@
 
 #import <UIKit/UIKit.h>
 #import "CommTableViewController.h"
+#import "TTSlidingPagesDataSource.h"
 
-@interface CommViewController : UIViewController <UITextFieldDelegate> {
-	
-	CommTableViewController *commTableVC;
-	__weak IBOutlet UISegmentedControl *groupSegments;
-	
+@interface CommViewController : UIViewController <UITextFieldDelegate, TTSlidingPagesDataSource> {
+
 	__weak IBOutlet UIView *transmitContainerView;
 	__weak IBOutlet UITextField *transmitTextField;
 	__weak IBOutlet UIButton *transmitButton;
 
+	__weak IBOutlet UIImageView *bgImageView;
+	__weak IBOutlet UIButton *showHideButton;
+
 }
 
-- (IBAction)groupChanged:(UISegmentedControl *)sender;
+- (IBAction)showHide;
+- (void)mentionUser:(User *)user;
 - (IBAction)transmit;
 
 @end

@@ -7,19 +7,27 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TTSlidingPagesDataSource.h"
+#import "PortalActionsViewController.h"
+#import "PortalInfoViewController.h"
+#import "PortalUpgradeViewController.h"
+#import "MDCParallaxView.h"
 
-@interface PortalDetailViewController : UIViewController {
-	
-	__weak IBOutlet UISegmentedControl *viewSegmentedControl;
-	
-	__weak IBOutlet UIView *infoContainerView;
-	__weak IBOutlet UIView *upgradeContainerView;
+@interface PortalDetailViewController : UIViewController <TTSlidingPagesDataSource, CLLocationManagerDelegate> {
+
+	__weak IBOutlet UIButton *opsCloseButton;
+	__weak IBOutlet UIImageView *labelBackgroundImage;
+	__weak IBOutlet GlowingLabel *opsLabel;
+
+	PortalActionsViewController *portalActionsVC;
+	MDCParallaxView *infoContainerView;
+	PortalInfoViewController *portalInfoVC;
+	PortalUpgradeViewController *portalUpgradeVC;
 
 }
 
 @property (nonatomic, assign) Portal *portal;
-@property (nonatomic, assign) CLLocationCoordinate2D mapCenterCoordinate;
 
-- (IBAction)viewSegmentedControlChanged;
+- (IBAction)back:(id)sender;
 
 @end

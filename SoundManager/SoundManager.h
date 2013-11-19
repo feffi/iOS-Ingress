@@ -129,6 +129,7 @@ typedef void (^SoundCompletionHandler)(BOOL didFinish);
 - (void)fadeTo:(float)volume duration:(NSTimeInterval)duration;
 - (void)fadeIn:(NSTimeInterval)duration;
 - (void)fadeOut:(NSTimeInterval)duration;
+- (void)prepareToPlay;
 - (void)play;
 - (void)stop;
 

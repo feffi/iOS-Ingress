@@ -2,18 +2,16 @@
 //  Shield.h
 //  Ingress
 //
-//  Created by Alex Studnicka on 24.01.13.
+//  Created by Alex Studnička on 06.06.13.
 //  Copyright (c) 2013 A&A Code. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
 #import <CoreData/CoreData.h>
-#import "Item.h"
+#import "Mod.h"
 
 
-@interface Shield : Item
+@interface Shield : Mod
 
-@property (nonatomic) int16_t rarity;
-@property (nonatomic, readonly) NSString *rarityStr;
 
 @end

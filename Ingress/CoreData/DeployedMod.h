@@ -14,6 +14,8 @@
 @interface DeployedMod : NSManagedObject
 
 @property (nonatomic) int16_t slot;
+@property (nonatomic) int16_t rarity;
+@property (nonatomic, readonly) NSString *rarityStr;
 @property (nonatomic, retain) User *owner;
 @property (nonatomic, retain) Portal *portal;
 
